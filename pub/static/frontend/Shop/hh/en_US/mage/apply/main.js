@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/hh/lib/web/mage/apply/main.js

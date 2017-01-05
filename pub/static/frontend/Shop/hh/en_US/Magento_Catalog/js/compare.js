@@ -1,0 +1,1 @@
+/Applications/MAMP/htdocs/hh/vendor/magento/module-catalog/view/frontend/web/js/compare.js
