@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/hh/app/design/frontend/Shop/hh/web/js/main.js

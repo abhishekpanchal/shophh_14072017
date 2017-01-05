@@ -1,1 +1,0 @@
-/Applications/MAMP/htdocs/hh/lib/web/tiny_mce/langs/en.js
