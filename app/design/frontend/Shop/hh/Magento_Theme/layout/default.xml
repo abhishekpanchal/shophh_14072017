@@ -117,8 +117,9 @@
          <!-- Remove Header Panel (Skip to content) -->
         <referenceBlock name="navigation.sections" remove="true" />
 
-        <referenceBlock  name="my-account-link" remove="true"/>
-        <referenceBlock  name="register-link" remove="true"/>
+        <referenceBlock name="my-account-link" remove="true"/>
+        <referenceBlock name="register-link" remove="true"/>
+        <referenceBlock name="report.bugs" remove="true" />
 
     </body>
 </page>
