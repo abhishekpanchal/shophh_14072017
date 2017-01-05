@@ -19,9 +19,9 @@ return array (
     array (
       'default' => 
       array (
-        'host' => 'localhost',
-        'dbname' => 'magento',
-        'username' => 'root',
+        'host' => '127.0.0.1:8889',
+        'dbname' => 'shophh',
+        'username' => 'abhishek',
         'password' => 'root',
         'active' => '1',
       ),
