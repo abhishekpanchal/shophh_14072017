@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+.header-search .block-search {
+	position: relative;
+}
+
+.header-search button {
+  position: absolute;
+  left: 21px;
+  top: 2px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+#search_mini_form {
+	width: 100%;
+}
+
+.search-input {
+  border-radius: 20px;
+  padding: 3px 10px;
+  padding-left: 40px;
+  background: url(../img/icon-search.png) no-repeat 10px 10px;
+  border: 1px solid #cacaca;
+  box-shadow: inset 0 1px 2px rgba(10,10,10,0.1);
+  display: block;
+  width: 100%;
+  max-width: 250px;
+}
+
+
+.vcenter {
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+	align-items: center;
+}
+
+.header-top {
+	background: url(../images/shop-keyline-logo.png) no-repeat bottom center;
+	padding-top: 10px;
+}
+
+.navbar-default {
+	background-color: transparent;
+	border: none;
+}
+
+.page-footer {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background: #e6e6e7;
+	font: normal 11px/11px 'Montserrat', Helvetica, Arial, sans-serif;
+}
+
+	.footer-links li {
+		display: block;
+		padding: 5px 0;
+	}
+
+
+/* ==========================================================================
+Social Links
+ ========================================================================== */
+
+.social{
+	margin: 0;
+}
+.social li {
+	display: inline-block;
+}
+.social li i {
+	font-size: 16px;
+	color: #fff;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	display: block;
+	text-align: center;
+ 	transition: all 0.2s ease-out;
+	background: #707070;
+}
+.social li .icon{
+	background: #707070;
+}
+
+.social .ion-social-twitter-outline:hover { background: #00aced; }
+.social .ion-social-facebook:hover { background: #3b5998; }
+.social .ion-social-instagram-outline:hover { background: #517fa4; }
+.social .ion-social-pinterest-outline:hover { background: #cb2027; }
+
+.main-nav {
+	box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+}
+
+.main-nav a{
+	display: block;
+	padding: 0.7rem 1rem;
+	line-height: 1;
+	font: normal 12px/12px 'Montserrat', Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	margin-top: 0.7rem;
+	margin-bottom: 0.7rem;
+	color: #000;
+}
+
+
+
