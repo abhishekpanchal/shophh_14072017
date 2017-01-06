@@ -19,10 +19,10 @@ return array (
     array (
       'default' => 
       array (
-        'host' => '127.0.0.1:8889',
+        'host' => 'chp-rds.crfjybhiwfvf.us-east-1.rds.amazonaws.com',
         'dbname' => 'shophh',
-        'username' => 'abhishek',
-        'password' => 'root',
+        'username' => 'chp_dbuser',
+        'password' => 'a3c3804ed2',
         'active' => '1',
       ),
     ),
