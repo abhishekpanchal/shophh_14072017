@@ -13,6 +13,11 @@ ul, ol {
 	padding: 0;
 	margin: 0;
 }
+
+ul > li, ol > li {
+	margin: 0;
+}
+
 .header-search .block-search {
 	position: relative;
 }
@@ -31,14 +36,14 @@ ul, ol {
 }
 
 .search-input {
-  border-radius: 20px;
-  padding: 3px 10px;
-  padding-left: 40px;
+  border-radius: 20px!important;
+  padding: 3px 10px!important;
+  padding-left: 40px!important;
   background: url(../img/icon-search.png) no-repeat 10px 10px;
   border: 1px solid #cacaca;
   box-shadow: inset 0 1px 2px rgba(10,10,10,0.1);
   display: block;
-  width: 100%;
+  width: 100%!important;
   max-width: 250px;
 }
 
@@ -72,7 +77,8 @@ ul, ol {
 
 	.footer-links li {
 		display: block;
-		padding: 5px 0;
+		padding: 6px 0;
+		list-style: none;
 	}
 
 	.footer-links ul {
@@ -135,9 +141,27 @@ Social Links
 	padding: 30px 0;
 }
 
-
-
 .list-inline {
 	margin: 0;
 }
 
+
+.header.content {
+	padding: 0;
+}
+
+.navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper > .widget, .page-wrapper > .page-bottom, .block.category.event, .top-container, .page-main {
+	padding: 0;
+	max-width: inherit;
+}
+
+.block.newsletter {
+	width: 100%;
+}
+
+.breadcrumb {
+	padding: 15px 0;
+	margin: 0;
+	background-color: transparent;
+	border-radius: 0;
+}

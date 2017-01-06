@@ -76,49 +76,62 @@
                 </container>
             </container>
         </referenceContainer>
-        
+                
         <referenceContainer name="footer-container" htmlClass="page-footer">
-            <container name="footer-wrap" htmlTag="div" htmlClass="container">      
-            <container name="footer-row-1" htmlTag="div" htmlClass="row">
-                <container name="footer-links-container" htmlTag="div" htmlClass="col-xs-12 col-md-8 footer-links">
-
+            <container name="footer-wrap" htmlTag="div" htmlClass="container">
+                <container name="footer-row-1" htmlTag="div" htmlClass="row footer-links">
+                    <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                        <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
+                          <arguments>
+                             <argument name="block_id" xsi:type="string">footer-col-1</argument>
+                          </arguments>
+                        </block>
+                    </container>
+                    <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                        <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
+                          <arguments>
+                             <argument name="block_id" xsi:type="string">footer-col-2</argument>
+                          </arguments>
+                        </block>
+                    </container>
+                    <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                        <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
+                          <arguments>
+                             <argument name="block_id" xsi:type="string">footer-col-3</argument>
+                          </arguments>
+                        </block>
+                    </container>
+                    <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                        <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
+                          <arguments>
+                             <argument name="block_id" xsi:type="string">footer-col-4</argument>
+                          </arguments>
+                        </block>
+                    </container>
+                    <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 col-md-4">
+                    </container>
                 </container>
-                <container name="footer-tools-container" htmlTag="div" htmlClass="col-xs-12 col-md-4">
-
+                <container name="footer-row-2" htmlTag="div" htmlClass="row">
+                    <container name="footer-legal-container" htmlTag="div" htmlClass="col-xs-12 text-right">
+                    </container>
                 </container>
-            </container>
-            <container name="footer-row-2" htmlTag="div" htmlClass="row">
-                <container name="footer-legal-container" htmlTag="div" htmlClass="col-xs-12 text-right">
-
-                </container>
-            </container>
-            </container>
+            </container>    
         </referenceContainer>
-
-
 
         <move element="top.links" destination="nav.right"/>
         <move element="top.search" destination="header.search" after="-"/>
         <move element="header.social" destination="header.row" before="header.mid" />
-
         <move element="cms_footer_links_container" destination="footer-links-container" />
         <move element="footer_links" destination="footer-links-container" />
-        <move element="form.subscribe" destination="footer-tools-container" />
+        <move element="form.subscribe" destination="footer_col_5" />
         <move element="store_switcher" destination="footer-tools-container" />
         <move element="copyright" destination="footer-legal-container" />
         <move element="report.bugs" destination="footer-legal-container" />
 
-        <!-- Remove Advance Search -->
         <referenceBlock name="advanced-search-link" remove="true"/>
-
-        <!-- Remove Header Panel (Skip to content) -->
         <referenceBlock name="top.links.wrapper" remove="true"/>
-
-         <!-- Remove Header Panel (Skip to content) -->
         <referenceBlock name="navigation.sections" remove="true" />
-
         <referenceBlock name="my-account-link" remove="true"/>
-
         <referenceBlock name="report.bugs" remove="true" />
 
     </body>
