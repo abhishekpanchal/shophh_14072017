@@ -3,15 +3,10 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 
     <head>
-        <remove src="css/styles-m.css" />
-        <remove src="css/styles-l.css" />
-        <remove src="css/print.css" />
-
         <css src="css/bootstrap.css" />
         <css src="css/main.css" />
         <css src="css/ionicons.min.css" />
         <css src="css/style.css" />
-        <script src="js/main.js" type="text/javascript" />
     </head>
 
 </page>
