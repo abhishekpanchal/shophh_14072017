@@ -23,6 +23,7 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  font: normal 14px/22px 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
 a,
@@ -60,7 +61,6 @@ ol > li {
 }
 
 p {
-  font: normal 13px/20px 'Montserrat', Helvetica, Arial, sans-serif;
   margin-bottom: 20px;
 }
 
@@ -188,30 +188,34 @@ Main Navigation
   padding: 25px 0;
 }
 
+.customer-name {
+  color: #000;
+  font-weight: bold;
+}
+
 /* ==========================================================================
 Buttons
  ========================================================================== */
 .action.primary {
   background: #000;
   border: 1px solid #000;
-  font-family: 'Montserrat','Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  padding: 15px 30px;
-  font-size: 14px;
   text-transform: uppercase;
 }
 
 .bundle-actions .action.primary, .bundle-options-container .block-bundle-summary .box-tocart .action.primary, .product-info-main .box-tocart .action.tocart, .product-options-bottom .box-tocart .action.tocart, .cart-container .checkout-methods-items .action.primary, .block-minicart .block-content > .actions > .primary .action.primary, .methods-shipping .actions-toolbar .action.primary, .block-authentication .action.action-register, .block-authentication .action.action-login, .checkout-payment-method .payment-method-content > .actions-toolbar > .primary .action.primary, .form-address-edit .actions-toolbar .action.primary, .multicheckout .action.primary {
   line-height: normal;
-  padding: 15px 30px;
+  padding: 10px 30px;
   font-size: 14px;
+  font-family: 'Montserrat','Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 /* ==========================================================================
 Content
  ========================================================================== */
 .main-content {
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .list-inline {
@@ -227,13 +231,12 @@ Content
   max-width: inherit;
 }
 
-
-
 .breadcrumb {
   padding: 15px 0;
   margin: 0;
   background-color: transparent;
   border-radius: 0;
+  text-align: center;
 }
 
 .page-wrapper {
@@ -243,6 +246,14 @@ Content
 .minicart-wrapper .action.showcart {
   padding: 0!important;
   margin-top: 14px;
+}
+
+
+/* ==========================================================================
+Page Title
+ ========================================================================== */
+.page-title {
+  text-align: center;
 }
 
 /* ==========================================================================
@@ -265,7 +276,6 @@ Newsletter
 .form-inline .input-group {
   width: 100%!important;
 }
-
 
 /* ==========================================================================
 Newsletter
