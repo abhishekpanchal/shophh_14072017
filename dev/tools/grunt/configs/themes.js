@@ -36,7 +36,7 @@ module.exports = {
         locale: 'en_US',
         files: [
             'css/bootstrap',
-            'css/style'
+            'css/main'
         ],
         dsl: 'less'
     },

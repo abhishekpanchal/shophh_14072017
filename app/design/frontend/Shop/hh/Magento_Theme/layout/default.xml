@@ -49,7 +49,7 @@
                             </container>
                             <!-- Search -->
                             <container name="header.search" htmlTag="div" htmlClass="col-md-3 header-search">
-                            </container>                
+                            </container>
                         </container>
                     </container>
                 </container>
@@ -70,38 +70,38 @@
                                 </block>
                             </container>
                         </container>
-                        <container name="nav.right" htmlTag="div" htmlClass="col-md-6">                        
+                        <container name="nav.right" htmlTag="div" htmlClass="col-md-6">
                         </container>
                     </container>
                 </container>
             </container>
         </referenceContainer>
-                
+
         <referenceContainer name="footer-container" htmlClass="page-footer">
             <container name="footer-wrap" htmlTag="div" htmlClass="container">
-                <container name="footer-row-1" htmlTag="div" htmlClass="row footer-links">
-                    <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                <container name="footer-row-1" htmlTag="div" htmlClass="row is-flex footer-links">
+                    <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-1</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                    <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-2</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                    <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-3</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 col-md-2">
+                    <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-4</argument>
@@ -115,7 +115,7 @@
                     <container name="footer-legal-container" htmlTag="div" htmlClass="col-xs-12 text-right">
                     </container>
                 </container>
-            </container>    
+            </container>
         </referenceContainer>
 
         <move element="top.links" destination="nav.right"/>
