@@ -11,10 +11,10 @@
     <move element="product.info.price" destination="product.info.main" after="product.attributes"/>
     <move element="product.info.addtocart" destination="product.info.main" after="product.attributes"/>
     <move element="product.info.main" destination="product.details"/>
+    <move element="product.info.price" destination="product.info.addtocart" before="-"/>
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
-
 
     <referenceContainer name="content">
       <container name="product.details.row" htmlTag="section" htmlClass="row">
@@ -23,13 +23,17 @@
             <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="product/view/gallery.phtml"/>
           </container>
         </container>
-        <container name="product.details" htmlTag="div" htmlClass="col-md-7"></container>
+        <container name="product.details" htmlTag="div" htmlClass="col-md-7">
+        </container>
       </container>
-      <container name="product.reviews.row" htmlTag="section" htmlClass="row">
+      <container name="product.reviews.row" htmlTag="section" htmlClass="row margin40">
         <container name="product.reviews" htmlTag="div" htmlClass="col-md-12"></container>
       </container>
     </referenceContainer>
 
+    <referenceBlock name="reviewSummary" remove="true"/>
+    <referenceBlock name="customerReviewBlock" remove="true"/>
+    <referenceBlock name="reviewFormBlock" remove="true"/>
 
   </body>
 </page>

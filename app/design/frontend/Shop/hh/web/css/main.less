@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
 
 /* ==========================================================================
@@ -24,6 +24,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   font: normal 13px/20px 'Montserrat', Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 a,
@@ -32,9 +33,10 @@ button {
   color: #000;
 }
 
-a:hover, a:focus {
+a:hover, a:focus,
+a:visited, alink:visited {
   text-decoration: none;
-  color: #007DA0;
+  color: #1a1a1a;
   outline: none;
 }
 
@@ -70,6 +72,10 @@ body {
   webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
 /* ==========================================================================
 Classes
 ========================================================================== */
@@ -89,6 +95,14 @@ Classes
 
 .bg-grey {
   background-color: #e6e6e7;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.margin40 {
+  margin: 40px auto;
 }
 
 /* ==========================================================================
@@ -237,8 +251,6 @@ Content
   max-width: inherit;
 }
 
-
-
 .page-wrapper {
   min-height: auto!important;
 }
@@ -249,9 +261,32 @@ Content
 }
 
 /* ==========================================================================
-Sidebar
+Reviews
  ========================================================================== */
+.review-body {
+  border-top: 1px solid #e6e6e7;
+  border-bottom: 1px solid #e6e6e7;
+  padding-top: 20px;
+}
 
+.review-toolbar {
+  margin: 0!important;
+  border: none!important;
+}
+
+.review-ratings {
+  float: none;
+  margin: 0;
+  max-width: auto;
+}
+.review-author {
+  font-weight: bold;
+}
+
+.review-content {
+  margin-top: 20px;
+  text-align: justify;
+}
 
 /* ==========================================================================
 Page Title
@@ -287,18 +322,16 @@ Breadcrumb
   li {
     color: #8d8d8d;
 
-    .home a {
-      color: #000;
-    }
-
     a {
       text-decoration: underline;
       color: #8d8d8d;
     }
-
     strong {
       font-weight: normal;
     }
+  }
+  li.item.home a {
+    color: #000!important;
   }
 }
 
@@ -355,19 +388,61 @@ Product Description
   background-color: #f0f0f0;
 }
 
+.product-info-main .box-tocart .field.qty,
+.product-options-bottom .box-tocart .field.qty,
+.product-info-main .box-tocart .actions,
+.product-options-bottom .box-tocart .actions {
+  display: inline-block!important;
+  margin: 0;
+  padding: 0;
+  float: none;
+  line-height: 0;
+}
+
+.product-info-main .box-tocart, .product-options-bottom .box-tocart {
+  margin: 20px 0;
+  border-top: 1px solid #e6e6e7;
+  border-bottom: 1px solid #e6e6e7;
+  display: block!important;
+  width: 100%;
+  padding: 10px 0;
+}
+
 .qty label {
   font-size: 16px;
+}
+
+.product-info-price {
+  display: inline-block;
+  margin: 0 30px;
+}
+
+.product-info-main .price-box .price-wrapper .price,
+.product-options-bottom .price-box .price-wrapper .price {
+  font-size: 16px;
+}
+.product-info-main .price-box {
+  margin: 0!important;
 }
 
 /* ==========================================================================
 Messges
  ========================================================================== */
-.message {
-  .info {
-    font-size: 13px;
-  }
+.message.info {
+  font-size: 13px!important;
 }
 
+/* ==========================================================================
+Sidebar
+ ========================================================================== */
+.sidebar {
+  padding-top: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-options .filter-options-title {
+  font-size: 14px!important;
+}
 
 /* ==========================================================================
 Forms
@@ -375,28 +450,26 @@ Forms
 .label {
   color: #000;
 }
+input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"] {
+  font-family: 'Montserrat'!important;
+  font-size: 12px!important;
+  font-weight: normal!important;
+}
+
+/* ==========================================================================
+Products
+ ========================================================================== */
+.product-item .price-box .price {
+  font-size: 13px!important;
+}
+
+.product-item-details {
+  text-align: center!important;
+}
 
 /* ==========================================================================
 Newsletter
  ========================================================================== */
-.block.newsletter {
-  width: 100%;
-}
-
-.block {
-  .newsletter {
-    width: 100%!important;
-
-    .action.subscribe {
-      border-radius: 3px;
-      padding: 6px 20px;
-      font-size: 11px;
-      margin-top: 10px;
-      display: block;
-      width: 100%;
-    }
-  }
-}
 .form-inline .input-group {
   width: 100%!important;
 }
@@ -420,6 +493,17 @@ div.mage-error[generated] {
 .form-inline .input-group > .form-control {
   width: auto;
 }
+.btn-subscribe {
+  border-radius: 0;
+  padding: 9px 15px;
+  font-size: 12px;
+  background: #000;
+  border-color: #000;
+}
+.newsletter-input {
+  width: auto;
+  min-width: 200px;
+}
 
 /* ==========================================================================
 Newsletter
@@ -427,7 +511,6 @@ Newsletter
 .fotorama__stage__shaft {
   border: 1px solid #DDD;
 }
-
 
 /* ==========================================================================
 Footer
@@ -515,6 +598,10 @@ CSS Overwrites (Blank Theme)
 .page-layout-1column .product-info-main, .page-layout-1column .product.media {
   float: none!important;
   width: 100%!important;
+}
+
+fieldset {
+  letter-spacing: none!important;
 }
 
 /* ==========================================================================
