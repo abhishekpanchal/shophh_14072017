@@ -1,25 +1,39 @@
 <?xml version="1.0"?>
-<page layout="1column-products" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <body>
-      <move element="product.info.review" destination="product-reviews"/>
-      <move element="product.info.description" destination="product.info.main" after="product_options_wrapper_bottom"/>
-      <move element="product.attributes" destination="product.info.main" after="product.info.description"/>
-      <referenceBlock name="product.info.stock.sku" remove="true" />
-      <referenceBlock name="product.info.overview" remove="true" />
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <body>
 
-      <referenceContainer name="content">
-				<container name="product-row" htmlTag="section" htmlClass="row">
-          <container name="product-img" htmlTag="div" htmlClass="col-md-5">
-            <container name="product.info.media" htmlTag="div" htmlClass="product media" before="product.info.main">
-            </container>
-          </container>
-      		<container name="product-details" htmlTag="div" htmlClass="col-md-7">
-	            <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" after="-">
-	            </container>
+    <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+    <move element="product.info.description" destination="product.info.main" after="product_options_wrapper_bottom"/>
+    <move element="product.attributes" destination="product.info.main" after="product.info.description"/>
+    <move element="reviews.tab" destination="product.reviews"/>
+    <move element="product.attributes" destination="product.info.main"/>
+
+    <move element="product.info.price" destination="product.info.main" after="product.attributes"/>
+    <move element="product.info.addtocart" destination="product.info.main" after="product.attributes"/>
+    <move element="product.info.main" destination="product.details"/>
+    <move element="product.info.price" destination="product.info.addtocart" before="-"/>
+
+    <referenceBlock name="product.info.stock.sku" remove="true" />
+    <referenceBlock name="product.info.overview" remove="true" />
+
+    <referenceContainer name="content">
+      <container name="product.details.row" htmlTag="section" htmlClass="row">
+        <container name="product-img" htmlTag="div" htmlClass="col-md-5">
+          <container name="product.info.media" htmlTag="div" htmlClass="product media">
+            <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="product/view/gallery.phtml"/>
           </container>
         </container>
-        <container name="product-reviews" htmlTag="section" htmlClass="row">
+        <container name="product.details" htmlTag="div" htmlClass="col-md-7">
         </container>
-      </referenceContainer>
-    </body>
+      </container>
+      <container name="product.reviews.row" htmlTag="section" htmlClass="row margin40">
+        <container name="product.reviews" htmlTag="div" htmlClass="col-md-12"></container>
+      </container>
+    </referenceContainer>
+
+    <referenceBlock name="reviewSummary" remove="true"/>
+    <referenceBlock name="customerReviewBlock" remove="true"/>
+    <referenceBlock name="reviewFormBlock" remove="true"/>
+
+  </body>
 </page>
