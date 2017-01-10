@@ -23,7 +23,7 @@ body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  font: normal 14px/22px 'Montserrat', Helvetica, Arial, sans-serif;
+  font: normal 13px/20px 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
 a,
@@ -62,6 +62,8 @@ ol > li {
 
 p {
   margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 20px;
 }
 
 body {
@@ -83,6 +85,10 @@ Classes
 
 .border-left {
   border-left: 1px solid #000;
+}
+
+.bg-grey {
+  background-color: #e6e6e7;
 }
 
 /* ==========================================================================
@@ -140,7 +146,7 @@ Social
       border-radius: 50%;
       width: 30px;
       height: 30px;
-      line-height: 34px;
+      line-height: 30px;
       display: block;
       text-align: center;
       transition: all 0.2s ease-out;
@@ -179,6 +185,7 @@ Main Navigation
 }
 .main-nav {
   box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
 }
 .main-nav a {
   display: block;
@@ -214,8 +221,7 @@ Buttons
 Content
  ========================================================================== */
 .main-content {
-  padding-top: 30px;
-  padding-bottom: 30px;
+
 }
 
 .list-inline {
@@ -231,13 +237,7 @@ Content
   max-width: inherit;
 }
 
-.breadcrumb {
-  padding: 15px 0;
-  margin: 0;
-  background-color: transparent;
-  border-radius: 0;
-  text-align: center;
-}
+
 
 .page-wrapper {
   min-height: auto!important;
@@ -248,17 +248,141 @@ Content
   margin-top: 14px;
 }
 
+/* ==========================================================================
+Sidebar
+ ========================================================================== */
+
 
 /* ==========================================================================
 Page Title
  ========================================================================== */
 .page-title {
+  background: url(../images/shop-keyline-faded-center.png) no-repeat center;
+  font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
+  text-transform: none;
+  display: inline;
+  margin-top: 0;
+  display: block;
   text-align: center;
+
+  span {
+    background: #FFF;
+    padding: 0 30px;
+  }
+}
+
+
+/* ==========================================================================
+Breadcrumb
+ ========================================================================== */
+.breadcrumb {
+  padding: 15px 0;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 0;
+  text-align: center;
+  font-size: 11px;
+  text-transform: uppercase;
+
+  li {
+    color: #8d8d8d;
+
+    .home a {
+      color: #000;
+    }
+
+    a {
+      text-decoration: underline;
+      color: #8d8d8d;
+    }
+
+    strong {
+      font-weight: normal;
+    }
+  }
+}
+
+
+.breadcrumb li.item.home {
+  color: #000;
+}
+
+
+/* ==========================================================================
+Product Description
+ ========================================================================== */
+.description {
+  p {
+    text-align: justify;
+    margin-bottom: 10px;
+
+    strong {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+
+  ul {
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
+  li {
+    position: relative;
+    list-style-type: circle;
+  }
+}
+
+.product.data.items > .item.title > .switch {
+  font-weight: bold!important;
+  line-height: normal!important;
+  font-size: 15px!important;
+  color: #7d7d7d!important;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid #d1d1d1;
+  border-bottom: none;
+  height: auto!important;
+  padding: 10px 30px!important;
+}
+
+.product-info-main .box-tocart .input-text.qty,
+.product-options-bottom .box-tocart .input-text.qty {
+  height: 39px;
+  text-align: center;
+  width: 69px;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+}
+
+.qty label {
+  font-size: 16px;
+}
+
+/* ==========================================================================
+Messges
+ ========================================================================== */
+.message {
+  .info {
+    font-size: 13px;
+  }
+}
+
+
+/* ==========================================================================
+Forms
+ ========================================================================== */
+.label {
+  color: #000;
 }
 
 /* ==========================================================================
 Newsletter
  ========================================================================== */
+.block.newsletter {
+  width: 100%;
+}
+
 .block {
   .newsletter {
     width: 100%!important;
@@ -275,6 +399,26 @@ Newsletter
 }
 .form-inline .input-group {
   width: 100%!important;
+}
+
+.action.primary {
+  font-family: "Montserrat", Open Sans!important;
+  font-size: 13px!important;
+  padding: 10px 35px!important;
+}
+
+div.mage-error[generated] {
+  color: #e02b27;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+.input-group-addon {
+  display: inline-block;
+}
+
+.form-inline .input-group > .form-control {
+  width: auto;
 }
 
 /* ==========================================================================
@@ -303,6 +447,10 @@ Footer
 
 .footer-links ul {
   padding-left: 10px;
+}
+
+div.mage-error[generated] {
+  font-size: 14px;
 }
 
 /* ==========================================================================
@@ -362,6 +510,11 @@ CSS Overwrites (Blank Theme)
 .navigation, .breadcrumbs, .page-header .header.panel, .header.content, .footer.content, .page-wrapper > .widget, .page-wrapper > .page-bottom, .block.category.event, .top-container, .page-main {
   padding: 0!important;
   max-width: inherit!important;
+}
+
+.page-layout-1column .product-info-main, .page-layout-1column .product.media {
+  float: none!important;
+  width: 100%!important;
 }
 
 /* ==========================================================================
