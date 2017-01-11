@@ -3,8 +3,10 @@
 
 @black: #000;
 
-@baseFont: 'Montserrat-Light', Helvetica, Arial, sans-serif;
-@baseFontSize: 12px;
+@baseFont     : 'Montserrat-Light', Helvetica, Arial, sans-serif;
+@headlineFont : 'Montserrat', Helvetica, Arial, sans-serif;
+@fancyFont    : 'DietDidot-BoldItalic';
+@baseFontSize : 12px;
 @baseLineHeight: 20px;
 
 
@@ -72,8 +74,6 @@ ol > li {
 
 p {
   margin-bottom: 20px;
-  font-size: 13px;
-  line-height: 20px;
 }
 
 body {
@@ -81,6 +81,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: @headlineFont;
   font-weight: 700;
 }
 
@@ -135,6 +136,8 @@ Header
 .header-top {
   background: url(../images/shop-keyline-logo.png) no-repeat bottom center;
   padding-top: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 #search_mini_form {
@@ -206,8 +209,13 @@ Main Navigation
   color: #000;
 }
 .main-nav {
-  box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
-  margin-bottom: 30px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  border-top: 2px solid #ccc;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
 }
 .main-nav a {
   display: block;
@@ -307,6 +315,7 @@ Page Title
   margin-top: 0;
   display: block;
   text-align: center;
+  margin-bottom: 5px;
 
   span {
     background: #FFF;
@@ -319,13 +328,15 @@ Page Title
 Breadcrumb
  ========================================================================== */
 .breadcrumb {
-  padding: 15px 0;
+  padding: 5px 0;
   margin: 0;
   background-color: transparent;
   border-radius: 0;
   text-align: center;
-  font-size: 11px;
+  font-family: @headlineFont;
   text-transform: uppercase;
+  font-size: 11px;
+  margin-bottom: 30px;
 
   li {
     color: #8d8d8d;
@@ -444,12 +455,8 @@ Messges
 Sidebar
  ========================================================================== */
 .sidebar {
-  padding-top: 20px;
+  padding: 30px;
   margin-bottom: 40px;
-}
-
-.filter-options .filter-options-title {
-  font-size: 14px!important;
 }
 
 /* ==========================================================================
@@ -473,6 +480,48 @@ Products
 
 .product-item-details {
   text-align: center!important;
+}
+
+
+/* ==========================================================================
+Sidebar Filter
+ ========================================================================== */
+.filter-options .filter-options-title {
+  font-size: 13px!important;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Montserrat" !important;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.filter-options .filter-options-title:before {
+  display: inline-block;
+  font-family: "Ionicons";
+  position: absolute;
+  left: 0;
+  content: '\f35f';
+  margin-top: -1px;
+  font-size: 16px;
+}
+
+.filter-options .filter-options-content .item {
+  margin-bottom: 8px;
+  font-size: 11px;
+}
+
+.filter-options .filter-options-content .item .badge {
+  background-color: #000;
+  font-size: 7px;
+  height: 15px;
+  width: 15px;
+  line-height: 15px;
+  text-align: center;
+  float: right;
+  padding: 0;
 }
 
 /* ==========================================================================
@@ -514,7 +563,7 @@ div.mage-error[generated] {
 }
 
 /* ==========================================================================
-Newsletter
+Gallery
  ========================================================================== */
 .fotorama__stage__shaft {
   border: 1px solid #DDD;
@@ -611,6 +660,24 @@ CSS Overwrites (Blank Theme)
 fieldset {
   letter-spacing: none!important;
 }
+
+.toolbar {
+  padding: 0!important;
+  margin: 0!important;
+  margin-bottom: 10px!important;
+}
+
+.swatch-option.text,
+.swatch-option {
+  font-size: 10px!important;
+  height: 25px!important;
+  width: 25px!important;
+  line-height: 25px!important;
+  margin-right: 5px!important;
+  padding: 0!important;
+  min-width: auto!important;
+}
+
 
 /* ==========================================================================
 Media Queries
