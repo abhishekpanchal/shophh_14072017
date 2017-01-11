@@ -2,6 +2,7 @@
 return array (
   'modules' => 
   array (
+    'Hhmedia_Productpage' => 1,
     'Magento_Store' => 1,
     'Magento_AdvancedPricingImportExport' => 1,
     'Magento_Directory' => 1,
@@ -104,6 +105,7 @@ return array (
     'Magento_Weee' => 1,
     'Magento_CatalogWidget' => 1,
     'Magento_Wishlist' => 1,
-    
+    'WeltPixel_Backend' => 1,
+    'WeltPixel_Quickview' => 1,
   ),
 );
