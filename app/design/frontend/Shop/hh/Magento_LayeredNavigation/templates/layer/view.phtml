@@ -16,12 +16,12 @@
 ?>
 
 <?php if ($block->canShowBlock()): ?>
-    <div class="panel panel-default filter">
-        <div class="panel-heading filter-title">
-            <strong><?php /* @escapeNotVerified */ echo __('Shop By') ?></strong>
+    <div class="filters">
+        <div class="filter-title">
+            <h4><?php /* @escapeNotVerified */ echo __('Latest') ?></h4>
         </div>
 
-        <div class="panel-body filter-content">
+        <div class="filter-content">
             <?php echo $block->getChildHtml('state') ?>
 
             <?php if ($block->getLayer()->getState()->getFilters()): ?>
@@ -36,9 +36,11 @@
             <?php $wrapOptions = false; ?>
             <?php foreach ($block->getFilters() as $filter): ?>
                 <?php if (!$wrapOptions): ?>
+                    <!--
                     <h4 role="heading" aria-level="2" class="block-subtitle filter-subtitle">
-                        <?php /* @escapeNotVerified */ echo __('Shopping Options') ?>
+                        <?php echo __('Shopping Options') ?>
                     </h4>
+                    -->
                     <dl class="filter-options" id="narrow-by-list">
                 <?php $wrapOptions = true; endif; ?>
                     <?php if ($filter->getItemsCount()): ?>
