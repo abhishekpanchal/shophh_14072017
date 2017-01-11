@@ -134,5 +134,7 @@
         <referenceBlock name="my-account-link" remove="true"/>
         <referenceBlock name="report.bugs" remove="true" />
 
+        <move element="breadcrumbs" destination="page.main.title" after="-"/>
+
     </body>
 </page>
