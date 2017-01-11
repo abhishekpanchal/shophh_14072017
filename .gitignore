@@ -28,6 +28,7 @@ atlassian*
 !/pub/media/.htaccess
 
 /pub/media/catalog/*
+!/pub/media/catalog/product/*
 !/pub/media/catalog/.htaccess
 
 /pub/media/customer/*

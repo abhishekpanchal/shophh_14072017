@@ -9,6 +9,16 @@
         <referenceBlock name="page.top" remove="true" />
         <referenceBlock name="copyright" remove="true" />
         <referenceBlock name="authentication-popup" remove="true" />
+        <referenceBlock name="product.review.form" remove="true" />
+        <referenceBlock name="product.info.review" remove="true" />
+        <referenceBlock name="reviews.tab" remove="true" />
+        <referenceBlock name="product.info.details" remove="true"/>
+        <referenceBlock name="product.info.product_additional_data" remove="true" />
+        
+
+        <move element="product.info.description" destination="product.info.main" after="product.info.price"/>
+        <move element="product.info.social" destination="product.info.price" after="product.price.tier" />
+
         <!--remove the short description-->
         <referenceBlock name="product.info.overview">
             <action method="setTemplate" ifconfig="weltpixel_quickview/general/remove_short_description">
@@ -30,9 +40,7 @@
             <block class="Magento\Framework\View\Element\Template" name="welpixel.quickview.beforebodyend" template="WeltPixel_Quickview::beforebodyend.phtml" />
         </referenceContainer>
 
-        <referenceContainer name="product.info.social" remove="true"/>
-
-        <referenceBlock name="product.info.details" remove="true"/>
+        
 
         <!-- for 2.1 -->
         <referenceBlock name="product.info.addtocart">
