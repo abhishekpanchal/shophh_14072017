@@ -28,7 +28,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
     if ($block->getMode() == 'grid') {
         $viewMode = 'grid';
         $image = 'category_page_grid';
-        $showDescription = false;
+        $showDescription = true;
         $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     } else {
         $viewMode = 'list';
@@ -46,7 +46,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         <div class="products list items product-items row">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product): ?>
-                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item col-xs-12 col-sm-4 col-md-3">' : '</div><div class="item product product-item col-xs-12 col-sm-4 col-md-3">' ?>
+                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item-listing col-xs-12 col-sm-4 col-md-4">' : '</div><div class="item product product-item-listing col-xs-12 col-sm-4 col-md-4">' ?>
                 <div class="product-item-info" data-container="product-grid">
                     <?php
                     $productImage = $block->getImage($_product, $image);
@@ -85,7 +85,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                             <button type="submit"
                                                     title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
                                                     class="action tocart primary">
-                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                <span><i class="ion-ios-cart-outline"></i></span>
                                             </button>
                                         </form>
                                     <?php else: ?>
@@ -105,8 +105,6 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                             <?php if ($showDescription):?>
                                 <div class="product description product-item-description">
                                     <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
-                                    <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" title="<?php /* @escapeNotVerified */ echo $_productNameStripped ?>"
-                                       class="action more"><?php /* @escapeNotVerified */ echo __('Learn More') ?></a>
                                 </div>
                             <?php endif; ?>
                         </div>

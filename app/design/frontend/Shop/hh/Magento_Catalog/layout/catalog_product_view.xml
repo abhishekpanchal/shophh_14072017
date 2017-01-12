@@ -5,17 +5,16 @@
     <!--<move element="product.info.review" destination="product.info.main" before="product.info.price"/>
     <move element="product.info.description" destination="product.info.main" after="product_options_wrapper_bottom"/>
     <move element="product.attributes" destination="product.info.main" after="product.info.description"/>
-    
     <move element="product.attributes" destination="product.info.main"/>
-
     <move element="product.info.price" destination="product.info.main" after="product.attributes"/>
     <move element="product.info.addtocart" destination="product.info.main" after="product.attributes"/>
     <move element="product.info.main" destination="product.details"/>
     <move element="product.info.price" destination="product.info.addtocart" before="-"/>-->
-    
-    <move element="product.info.social" destination="product.info.price" after="product.price.tier" />
+
     <move element="reviews.tab" destination="product.reviews"/>
     <move element="product.info.details" destination="product.info.main" after="product.info"/>
+    <move element="product.info.main" destination="product.details"/>
+    <move element="product.info.social" destination="product.info.price" after="-"/>
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
@@ -34,7 +33,7 @@
       <container name="product.reviews.row" htmlTag="section" htmlClass="row margin40">
         <container name="product.reviews" htmlTag="div" htmlClass="col-md-12"></container>
       </container>
-      
+
     </referenceContainer>
     <referenceBlock name="product.info.description">
         <action method="setTitle">
@@ -46,7 +45,7 @@
             <argument name="title" xsi:type="string">Specs &amp; Care</argument>
         </action>
     </referenceBlock>
-    
+
     <referenceBlock name="product.info.details">
       <block class="Magento\Catalog\Block\Product\View" name="shipping.delivery" template="product/view/shipping_delivery.phtml" group="detailed_info" >
         <arguments>
