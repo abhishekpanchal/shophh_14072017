@@ -76,6 +76,10 @@ p {
   margin-bottom: 20px;
 }
 
+strong {
+  font-weight: 700!important;
+}
+
 body {
   webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
@@ -131,6 +135,10 @@ Classes
 
 .margin40 {
   margin: 40px auto;
+}
+
+.hidden {
+  display: none;
 }
 
 
@@ -807,6 +815,80 @@ fieldset {
   clear: both;
 }
 
+.label {
+  padding: 0!important;
+}
+
+/* ==========================================================================
+Dashboard Fixes
+ ========================================================================== */
+.block-dashboard-info,
+.block-dashboard-addresses {
+  .box-title {
+    font-family: @headlineFont;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin: 10px 0;
+    display: block;
+  }
+  a {
+    color: #848484;
+    text-decoration: underline;
+  }
+}
+.block-main-title {
+  margin-bottom: 20px;
+  font-size: 22px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e6e6e7;
+
+  a {
+    font-size: 13px;
+    margin-left: 10px;
+  }
+}
+.login-container {
+  margin-top: 40px;
+}
+
+.login-container .block .block-title {
+    font-size: 20px;
+    font-family: @headlineFont;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.login-container .block .block-title strong {
+  font-weight: 700;
+}
+
+.login-container .fieldset:after {
+  font-size: 13px;
+}
+
+.account-nav {
+  .content {
+    background-color: transparent;
+  }
+  .item {
+    margin: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: @headlineFont;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
+.block-reviews-dashboard {
+  .product-name {
+    font-family: @headlineFont;
+    font-size: 14px;
+  }
+}
 /* ==========================================================================
 Media Queries
  ========================================================================== */
