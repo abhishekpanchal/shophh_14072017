@@ -2,23 +2,15 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
   <body>
 
-    <!--<move element="product.info.review" destination="product.info.main" before="product.info.price"/>
-    <move element="product.info.description" destination="product.info.main" after="product_options_wrapper_bottom"/>
-    <move element="product.attributes" destination="product.info.main" after="product.info.description"/>
-    <move element="product.attributes" destination="product.info.main"/>
-    <move element="product.info.price" destination="product.info.main" after="product.attributes"/>
-    <move element="product.info.addtocart" destination="product.info.main" after="product.attributes"/>
-    <move element="product.info.main" destination="product.details"/>
-    <move element="product.info.price" destination="product.info.addtocart" before="-"/>-->
-
     <move element="reviews.tab" destination="product.reviews"/>
     <move element="product.info.details" destination="product.info.main" after="product.info"/>
     <move element="product.info.main" destination="product.details"/>
     <move element="product.info.social" destination="product.info.price" after="-"/>
+    <move element="product.name" destination="product.info.main" before="product.info.price"/>
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
-    <referenceBlock name="reviewSummary" remove="true"/>
+    <referenceBlock name="product.info.review" remove="true"/>
 
     <referenceContainer name="content">
       <container name="product.details.row" htmlTag="section" htmlClass="row">
@@ -27,23 +19,34 @@
             <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="product/view/gallery.phtml"/>
           </container>
         </container>
-        <container name="product.details" htmlTag="div" htmlClass="col-md-7">
-        </container>
+        <container name="product.details" htmlTag="div" htmlClass="col-md-7"></container>
       </container>
       <container name="product.reviews.row" htmlTag="section" htmlClass="row margin40">
         <container name="product.reviews" htmlTag="div" htmlClass="col-md-12"></container>
       </container>
-
+       <container name="name.product" label="Product auxiliary info" htmlTag="div" htmlClass="product-info-name">
+          <container name="product.info.type" before="-"/>
+          <block class="Magento\Catalog\Block\Product\View\Description" name="name.info.product" template="product/view/attribute.phtml" after="product.info.type">
+              <arguments>
+                  <argument name="at_call" xsi:type="string">getName</argument>
+                  <argument name="at_code" xsi:type="string">name</argument>
+                  <argument name="css_class" xsi:type="string">name</argument>
+                  <argument name="at_label" xsi:type="string">default</argument>
+                  <argument name="add_attribute" xsi:type="string">itemprop="name"</argument>
+              </arguments>
+          </block>
+      </container>
     </referenceContainer>
+
     <referenceBlock name="product.info.description">
-        <action method="setTitle">
-            <argument name="title" xsi:type="string">Description</argument>
-        </action>
+      <action method="setTitle">
+        <argument name="title" xsi:type="string">Description</argument>
+      </action>
     </referenceBlock>
     <referenceBlock name="product.attributes">
-        <action method="setTitle">
-            <argument name="title" xsi:type="string">Specs &amp; Care</argument>
-        </action>
+      <action method="setTitle">
+        <argument name="title" xsi:type="string">Specs &amp; Care</argument>
+      </action>
     </referenceBlock>
 
     <referenceBlock name="product.info.details">
@@ -52,6 +55,12 @@
           <argument translate="true" name="title" xsi:type="string">Shipping &amp; Delivery</argument>
         </arguments>
       </block>
+    </referenceBlock>
+
+    <referenceBlock name="page.main.title">
+      <action method="setPageTitle">
+        <argument translate="true" name="title" xsi:type="string">Shop</argument>
+      </action>
     </referenceBlock>
 
   </body>

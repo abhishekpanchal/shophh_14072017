@@ -199,7 +199,13 @@ switch ($type = $block->getType()) {
                             <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>">
                                 <?php echo $block->escapeHtml($_item->getName()) ?></a>
                             </strong>
-
+                            <?php if ($description):?>
+                                <?php 
+                                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                                    $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
+                                    echo $product->getShortDescription();
+                                ?>
+                            <?php endif; ?>
                             <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
 
                                 <?php if ($templateType): ?>
@@ -242,6 +248,9 @@ switch ($type = $block->getType()) {
                                                     <?php endif; ?>
                                                 <?php endif; ?>
                                             </li>
+                                            <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview">
+                                                <div class="title">Quick View</div>
+                                            </a>
                                         <?php endif; ?>
 
                                         <?php if ($showAddTo): ?>
