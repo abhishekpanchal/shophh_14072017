@@ -7,6 +7,7 @@
         	 <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Sign Up</argument>
+                    <argument name="id" xsi:type="string">my-account</argument>
                 </arguments>
             </block>
             <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>
