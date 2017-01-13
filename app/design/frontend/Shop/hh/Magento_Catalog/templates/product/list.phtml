@@ -46,7 +46,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         <div class="products list items product-items row">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product): ?>
-                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item col-xs-12 col-sm-4 col-md-3">' : '</div><div class="item product product-item col-xs-12 col-sm-4 col-md-3">' ?>
+                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item-listing col-xs-12 col-sm-4 col-md-4">' : '</div><div class="item product product-item-listing col-xs-12 col-sm-4 col-md-4">' ?>
                 <div class="product-item-info" data-container="product-grid">
                     <?php
                     $productImage = $block->getImage($_product, $image);
@@ -92,7 +92,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                             <button type="submit"
                                                     title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
                                                     class="action tocart primary">
-                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                                <span><i class="ion-ios-cart-outline"></i></span>
                                             </button>
                                         </form>
                                     <?php else: ?>
