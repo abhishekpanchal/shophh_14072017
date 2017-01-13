@@ -2,12 +2,15 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
 
-    <head>
-      <css src="css/bootstrap.css" />
-      <css src="css/ionicons.min.css" />
-      <css src="css/fonts.css" />
-      <css src="css/main.css" />
-      <css src="css/style.css" />
-    </head>
+  <head>
+    <css src="css/bootstrap.css" />
+    <css src="css/ionicons.min.css" />
+    <css src="css/fonts.css" />
+    <css src="css/main.css" />
+    <css src="css/style.css" />
 
+    <script src="js/main.js"/>
+
+  </head>
 </page>
+
