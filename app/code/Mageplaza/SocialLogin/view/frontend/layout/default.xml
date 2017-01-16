@@ -44,6 +44,7 @@
                     </block>
                 </block>
                 <block class="Mageplaza\SocialLogin\Block\Popup\Create" name="social-login-popup-create" as="popup.create" template="popup/form/create.phtml">
+                    <block class="Mageplaza\SocialLogin\Block\Popup\Authentication\Social" name="social-create-popup-social" as="popup.create.social" template="popup/form/authentication/social_signup.phtml" cacheable="false"/>
                     <block class="Magento\Captcha\Block\Captcha" name="social-create-captcha" as="create.captcha" after="-">
                         <action method="setFormId">
                             <argument name="formId" xsi:type="string">user_create</argument>
