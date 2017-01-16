@@ -2,7 +2,7 @@
 <?php if (sizeof($availableSocials)): ?>
 <div class="block social-login-authentication-channel col-mg mg-5">
     <div class="block-title">
-        <?php echo __('Or Sign In With') ?>
+        <?php echo __('Or') ?>
     </div>
     <div class="block-content">
         <?php foreach ($availableSocials as $key => $social): ?>
@@ -10,7 +10,7 @@
                 <div class="primary">
                     <button class="action btn_<?= $key ?>_login" id="btn_<?= $key ?>_login" type="button">
                         <span>
-                            <span><?php echo __('%1 Sign In', $social->getLabel()) ?></span>
+                            <span><?php echo __('Login with %1', $social->getLabel()) ?></span>
                         </span>
                     </button>
                 </div>

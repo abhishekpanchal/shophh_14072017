@@ -8,7 +8,11 @@
 
 /** @var $block \Magento\Checkout\Block\Cart\Sidebar */
 ?>
-
+<?php
+$obj = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $obj->get('Magento\Customer\Model\Session'); 
+if($customerSession->isLoggedIn()):
+?>
 <ul data-block="minicart" class="minicart-wrapper nav navbar-nav navbar-right">
     <li>
         <a class="action showcart" href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>"
@@ -62,5 +66,4 @@
     }
     </script>
 </ul>
-
-
+<?php endif; ?>

@@ -1,4 +1,4 @@
-<!--
+    <!--
 /**
  * Mageplaza_SocialLogin extension
  *                     NOTICE OF LICENSE
@@ -23,13 +23,13 @@
     <div style="clear: both"></div>
     <script>
         var x = document.getElementById("my-account").parentNode;
-        x.className += "authorization-link";
+        x.className += "sign-up";
         require(['Mageplaza_SocialLogin/js/sociallogin/form'], function (SocialLoginForm) {
             var config = {
                 /*General*/
                 popup: '#social-login-popup',
                 popupEffect: '<?php echo $block->getPopupEffect()?>',
-                headerLink:  '.list-inline .authorization-link',
+                headerLink:  '.list-inline',
                 sectionLink: '.section-item-content .header.links',
                 ajaxLoading: '#social-login-popup .ajax-loading',
                 /*Login*/
@@ -66,6 +66,20 @@
             var headerLink = $('.list-inline');
             if(headerLink.length) {
                 headerLink.magnificPopup({
+                    delegate: 'a.social-login',
+                    removalDelay: 500, //delay removal by X to allow out-animation
+                    callbacks: {
+                        beforeOpen: function () {
+                            this.st.mainClass = this.st.el.attr('data-effect');
+                        }
+                    },
+                    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+                });
+            }
+
+            var signUpLink = $('.sign-up');
+            if(signUpLink.length) {
+                signUpLink.magnificPopup({
                     delegate: 'a.social-login',
                     removalDelay: 500, //delay removal by X to allow out-animation
                     callbacks: {
