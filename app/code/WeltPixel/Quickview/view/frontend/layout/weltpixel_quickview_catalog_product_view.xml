@@ -14,7 +14,7 @@
         <referenceBlock name="reviews.tab" remove="true" />
         <referenceBlock name="product.info.details" remove="true"/>
         <referenceBlock name="product.info.product_additional_data" remove="true" />
-        
+        <referenceBlock name="page.main.title" remove="true" />
 
         <move element="product.info.description" destination="product.info.main" after="product.info.price"/>
         <move element="product.info.social" destination="product.info.price" after="product.price.tier" />
@@ -39,8 +39,6 @@
         <referenceContainer name="before.body.end">
             <block class="Magento\Framework\View\Element\Template" name="welpixel.quickview.beforebodyend" template="WeltPixel_Quickview::beforebodyend.phtml" />
         </referenceContainer>
-
-        
 
         <!-- for 2.1 -->
         <referenceBlock name="product.info.addtocart">
