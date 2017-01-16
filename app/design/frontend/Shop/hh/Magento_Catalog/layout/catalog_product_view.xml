@@ -65,5 +65,7 @@
       </action>
     </referenceBlock>
 
+    <move element="category.view" destination="category.product.list.additional" after="-"/>
+
   </body>
 </page>

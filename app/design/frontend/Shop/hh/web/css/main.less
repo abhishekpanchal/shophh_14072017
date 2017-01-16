@@ -513,7 +513,7 @@ Products
 }
 
 .product-info-main {
-  .value {
+  .name .value {
     text-transform: uppercase;
     font-size: 36px;
     font-family: @headlineFont;
@@ -1013,12 +1013,12 @@ Quick View
  ========================================================================== */
 .mfp-iframe-holder .mfp-close {
   height: 35px;
-  width: 35px;
+  width: 35px!important;
   display: block;
   border-radius: 50%;
   background-color: #FFF;
   color: #000;
-  right: -40px;
+  right: -40px!important;
   line-height: 35px;
 }
 
@@ -1043,4 +1043,31 @@ Media Queries
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
 @media only screen and (max-width: 479px) {
 
+}
+
+.primary-cart-btn, .weltpixel_quickview_button_v2 {
+  display: inline-block;
+  background-color: #666;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #FFF;
+  margin: 0 2px;
+  transition: 0.3s all;
+}
+
+.wishlist-btn {
+  display: inline-block;
+}
+
+
+.abs-actions-addto-gridlist:before, .product-item-actions .actions-secondary > .action:before, .table-comparison .wishlist.split.button > .action.split:before, .product-items .wishlist.split.button > .action.split:before, .products.list.items .action.towishlist:before, .table-comparison .action.towishlist:before {
+  margin-left: -4px;
+}
+
+.catalog-product-view {
+  .stock {
+    display: none;
+  }
 }
