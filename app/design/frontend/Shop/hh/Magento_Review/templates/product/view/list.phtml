@@ -17,11 +17,11 @@
     $_items = $block->getReviewsCollection()->getItems();
     $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
 ?>
-<?php if (count($_items)):?>
-<div class="block review-list" id="customer-review">
     <div class="page-title">
         <span><?php /* @escapeNotVerified */ echo __('Reviews & Comments') ?></span>
     </div>
+<?php if (count($_items)):?>
+<div class="block review-list" id="customer-review">
     <div class="block-content">
         <div class="toolbar review-toolbar">
             <?php echo $block->getChildHtml('toolbar') ?>

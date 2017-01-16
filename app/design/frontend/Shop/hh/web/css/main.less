@@ -133,8 +133,15 @@ Classes
   text-align: right;
 }
 
+.margin20 {
+  margin: 20px auto;
+}
 .margin40 {
   margin: 40px auto;
+}
+
+.marginbottom-30 {
+  margin-bottom: 30px;
 }
 
 .hidden {
@@ -333,6 +340,10 @@ Content
   margin-top: 14px;
 }
 
+.columns .column.main {
+  padding-bottom: 0;
+}
+
 /* ==========================================================================
 Reviews
  ========================================================================== */
@@ -442,6 +453,13 @@ Product Description
   }
 }
 
+.product-item-name, .product.name a {
+  font-family: @headlineFont;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
 
 /* ==========================================================================
 Products
@@ -459,6 +477,10 @@ Products
 }
 
 .product-info-price {
+  padding: 10px 0;
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 20px;
+
   .price-box {
     display: inline-block;
     width: 50%;
@@ -487,7 +509,19 @@ Products
     padding: 5px 10px;
     width: 45px;
   }
+}
 
+.product-info-main {
+  .value {
+    text-transform: uppercase;
+    font-size: 24px;
+    font-family: @headlineFont;
+    font-weight: 700;
+  }
+}
+
+.product-info-main .product-addto-links, .product-options-bottom .product-addto-links {
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -532,7 +566,7 @@ Products Buttons
 .product-item-actions {
   text-align: center;
 
-  li {
+  li, a {
     display: inline-block;
     background-color: #666;
     height: 40px;
@@ -559,18 +593,27 @@ Products Buttons
   }
 }
 
+
 .products.list.items .action.towishlist::before,
 .table-comparison .action.towishlist::before {
   color: #FFF;
 }
 
-.product-options-wrapper {
+.product-item-details {
+  .price-container {
+    display: block;
+    padding: 10px 0;
 
-
+    .price {
+      font-size: 12px;
+      font-family: @headlineFont;
+    }
+  }
 }
 
+
 /* ==========================================================================
-Messges
+Messages
  ========================================================================== */
 .message.info {
   font-size: 13px!important;
@@ -580,7 +623,7 @@ Messges
 Sidebar
  ========================================================================== */
 .sidebar {
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 40px;
 }
 
@@ -595,7 +638,16 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
   font-size: 12px!important;
   font-weight: normal!important;
 }
+.fieldset > .legend {
+  font-size: 14px;
+  margin: 0!important;
+  float: none;
+}
 
+.fieldset > .field:not(.choice) > .label {
+  padding-right: 20px!important;
+  padding-top: 5px!important;
+}
 
 /* ==========================================================================
 Sidebar Filter
@@ -819,6 +871,13 @@ fieldset {
   padding: 0!important;
 }
 
+.abs-margin-for-forms-desktop, .fieldset .legend, .column:not(.sidebar-main) form .actions-toolbar, .column:not(.sidebar-additional) form .actions-toolbar, .login-container .fieldset:after {
+  margin: 0!important;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  line-height: inherit;
+}
 /* ==========================================================================
 Dashboard Fixes
  ========================================================================== */
@@ -889,6 +948,45 @@ Dashboard Fixes
     font-size: 14px;
   }
 }
+
+.account {
+  .page-title-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .legend {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e7;
+  }
+}
+
+/* ==========================================================================
+Icon Font
+ ========================================================================== */
+.mdi {
+  font-size: 15px;
+}
+
+/* ==========================================================================
+Quick View
+ ========================================================================== */
+.mfp-iframe-holder .mfp-close {
+  height: 35px;
+  width: 35px;
+  display: block;
+  border-radius: 50%;
+  background-color: #FFF;
+  color: #000;
+  right: -40px;
+  line-height: 35px;
+}
+
+.mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+  padding: 0;
+}
+
 /* ==========================================================================
 Media Queries
  ========================================================================== */

@@ -7,24 +7,26 @@
     <move element="product.info.main" destination="product.details"/>
     <move element="product.info.social" destination="product.info.price" after="-"/>
     <move element="product.name" destination="product.info.main" before="product.info.price"/>
+    <move element="name.info.product" destination="product.info.main" before="product.info.price"/>
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
     <referenceBlock name="product.info.review" remove="true"/>
+    <referenceBlock name="product.info.name" remove="true" />
 
     <referenceContainer name="content">
       <container name="product.details.row" htmlTag="section" htmlClass="row">
-        <container name="product-img" htmlTag="div" htmlClass="col-md-5">
+        <container name="product-img" htmlTag="div" htmlClass="col-lg-5 col-md-5 col-sm-5 col-xs-12">
           <container name="product.info.media" htmlTag="div" htmlClass="product media">
             <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="product/view/gallery.phtml"/>
           </container>
         </container>
-        <container name="product.details" htmlTag="div" htmlClass="col-md-7"></container>
+        <container name="product.details" htmlTag="div" htmlClass="col-lg-7 col-md-7 col-sm-7 col-cs-7"></container>
       </container>
-      <container name="product.reviews.row" htmlTag="section" htmlClass="row margin40">
+      <container name="product.reviews.row" htmlTag="section" htmlClass="row margin20">
         <container name="product.reviews" htmlTag="div" htmlClass="col-md-12"></container>
       </container>
-       <container name="name.product" label="Product auxiliary info" htmlTag="div" htmlClass="product-info-name">
+      <container name="name.product" label="Product auxiliary info" htmlTag="div" htmlClass="product-info-name">
           <container name="product.info.type" before="-"/>
           <block class="Magento\Catalog\Block\Product\View\Description" name="name.info.product" template="product/view/attribute.phtml" after="product.info.type">
               <arguments>

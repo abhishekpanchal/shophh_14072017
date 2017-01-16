@@ -5,6 +5,7 @@
   <head>
     <css src="css/bootstrap.css" />
     <css src="css/ionicons.min.css" />
+    <css src="css/materialdesignicons.css" />
     <css src="css/fonts.css" />
     <css src="css/main.css" />
     <css src="css/style.css" />

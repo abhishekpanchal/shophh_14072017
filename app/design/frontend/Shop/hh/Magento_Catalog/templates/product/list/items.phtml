@@ -27,7 +27,7 @@ switch ($type = $block->getType()) {
             $showAddTo = true;
             $showCart = false;
             $templateType = null;
-            $description = true;
+            $description = false;
         }
     break;
 
@@ -47,7 +47,7 @@ switch ($type = $block->getType()) {
             $showAddTo = true;
             $showCart = false;
             $templateType = null;
-            $description = true;
+            $description = false;
         }
     break;
 
@@ -65,7 +65,7 @@ switch ($type = $block->getType()) {
             $showAddTo = false;
             $showCart = false;
             $templateType = null;
-            $description = true;
+            $description = false;
             $canItemsAddToCart = false;
         }
     break;
@@ -85,7 +85,7 @@ switch ($type = $block->getType()) {
             $showAddTo = true;
             $showCart = true;
             $templateType = null;
-            $description = true;
+            $description = false;
             $canItemsAddToCart = true;
         }
     break;
@@ -237,7 +237,7 @@ switch ($type = $block->getType()) {
                                                         <button class="action icon-cart"
                                                                 data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
                                                                 type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
-                                                                <i class="ion-ios-cart-outline"></i>
+                                                                <i class="mdi mdi-cart-outline"></i>
                                                         </button>
                                                     <?php endif; ?>
                                                 <?php else: ?>
@@ -248,9 +248,11 @@ switch ($type = $block->getType()) {
                                                     <?php endif; ?>
                                                 <?php endif; ?>
                                             </li>
-                                            <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview">
-                                                <div class="title">Quick View</div>
-                                            </a>
+                                            <li>
+                                                <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview">
+                                                <i class="mdi mdi-magnify"></i>
+                                                </a>
+                                            </li>
                                         <?php endif; ?>
 
                                         <?php if ($showAddTo): ?>
