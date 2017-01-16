@@ -49,6 +49,7 @@
                             </container>
                             <!-- Search -->
                             <container name="header.search" htmlTag="div" htmlClass="col-md-3 header-search">
+                                <block name="header-top-nav" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-nav.phtml"/>
                             </container>
                         </container>
                     </container>

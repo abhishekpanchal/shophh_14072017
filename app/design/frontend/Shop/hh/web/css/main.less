@@ -133,8 +133,15 @@ Classes
   text-align: right;
 }
 
+.margin20 {
+  margin: 20px auto;
+}
 .margin40 {
   margin: 40px auto;
+}
+
+.marginbottom-30 {
+  margin-bottom: 30px;
 }
 
 .hidden {
@@ -182,7 +189,7 @@ Header
 
   button {
     position: absolute;
-    left: 21px;
+    left: 0;
     top: 2px;
     border: none;
     box-shadow: none;
@@ -199,6 +206,7 @@ Header
 
 #search_mini_form {
   width: 100%;
+  position: relative;
 }
 
 .search-input {
@@ -333,6 +341,10 @@ Content
   margin-top: 14px;
 }
 
+.columns .column.main {
+  padding-bottom: 0;
+}
+
 /* ==========================================================================
 Reviews
  ========================================================================== */
@@ -442,6 +454,13 @@ Product Description
   }
 }
 
+.product-item-name, .product.name a {
+  font-family: @headlineFont;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
 
 /* ==========================================================================
 Products
@@ -455,10 +474,14 @@ Products
 }
 .product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {
   font-family: @headlineFont;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .product-info-price {
+  padding: 10px 0;
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 20px;
+
   .price-box {
     display: inline-block;
     width: 50%;
@@ -487,7 +510,49 @@ Products
     padding: 5px 10px;
     width: 45px;
   }
+}
 
+.product-info-main {
+  .name .value {
+    text-transform: uppercase;
+    font-size: 36px;
+    font-family: @headlineFont;
+    font-weight: 700;
+  }
+}
+
+.product-info-main .product-addto-links, .product-options-bottom .product-addto-links {
+  margin: 0;
+}
+
+.product-info-main .special-price, .product-options-bottom .special-price {
+  display: inline-block;
+}
+
+.product-info-main .price-box .weee {
+  font-family: @headlineFont;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.old-price, .old.price {
+  margin-left: 10px;
+}
+
+.old-price span {
+  color: #666;
+  position: relative;
+}
+
+.old-price .product-info-main .price-box .weee .price {
+  font-size: 14px!important;
+}
+.old-price span.price-label:before {
+  content: '(';
+}
+
+.old-price span.price-wrapper:after {
+  content: ')';
 }
 
 /* ==========================================================================
@@ -532,7 +597,7 @@ Products Buttons
 .product-item-actions {
   text-align: center;
 
-  li {
+  li, a {
     display: inline-block;
     background-color: #666;
     height: 40px;
@@ -559,18 +624,27 @@ Products Buttons
   }
 }
 
+
 .products.list.items .action.towishlist::before,
 .table-comparison .action.towishlist::before {
   color: #FFF;
 }
 
-.product-options-wrapper {
+.product-item-details {
+  .price-container {
+    display: block;
+    padding: 10px 0;
 
-
+    .price {
+      font-size: 12px;
+      font-family: @headlineFont;
+    }
+  }
 }
 
+
 /* ==========================================================================
-Messges
+Messages
  ========================================================================== */
 .message.info {
   font-size: 13px!important;
@@ -580,7 +654,7 @@ Messges
 Sidebar
  ========================================================================== */
 .sidebar {
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 40px;
 }
 
@@ -595,7 +669,16 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
   font-size: 12px!important;
   font-weight: normal!important;
 }
+.fieldset > .legend {
+  font-size: 14px;
+  margin: 0!important;
+  float: none;
+}
 
+.fieldset > .field:not(.choice) > .label {
+  padding-right: 20px!important;
+  padding-top: 5px!important;
+}
 
 /* ==========================================================================
 Sidebar Filter
@@ -819,6 +902,21 @@ fieldset {
   padding: 0!important;
 }
 
+.abs-margin-for-forms-desktop, .fieldset .legend, .column:not(.sidebar-main) form .actions-toolbar, .column:not(.sidebar-additional) form .actions-toolbar, .login-container .fieldset:after {
+  margin: 0!important;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  line-height: inherit;
+}
+.product-info-main .special-price .price-container, .product-options-bottom .special-price .price-container {
+  font-size: inherit;
+}
+
+.product-info-main .old-price .price-label:after, .product-options-bottom .old-price .price-label:after, .product-info-main .special-price .price-label:after, .product-options-bottom .special-price .price-label:after {
+  content: '';
+}
+
 /* ==========================================================================
 Dashboard Fixes
  ========================================================================== */
@@ -889,6 +987,45 @@ Dashboard Fixes
     font-size: 14px;
   }
 }
+
+.account {
+  .page-title-wrapper {
+    margin-bottom: 40px;
+  }
+
+  .legend {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e7;
+  }
+}
+
+/* ==========================================================================
+Icon Font
+ ========================================================================== */
+.mdi {
+  font-size: 15px;
+}
+
+/* ==========================================================================
+Quick View
+ ========================================================================== */
+.mfp-iframe-holder .mfp-close {
+  height: 35px;
+  width: 35px!important;
+  display: block;
+  border-radius: 50%;
+  background-color: #FFF;
+  color: #000;
+  right: -40px!important;
+  line-height: 35px;
+}
+
+.mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
+  padding: 0;
+}
+
 /* ==========================================================================
 Media Queries
  ========================================================================== */
@@ -906,4 +1043,31 @@ Media Queries
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
 @media only screen and (max-width: 479px) {
 
+}
+
+.primary-cart-btn, .weltpixel_quickview_button_v2 {
+  display: inline-block;
+  background-color: #666;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  color: #FFF;
+  margin: 0 2px;
+  transition: 0.3s all;
+}
+
+.wishlist-btn {
+  display: inline-block;
+}
+
+
+.abs-actions-addto-gridlist:before, .product-item-actions .actions-secondary > .action:before, .table-comparison .wishlist.split.button > .action.split:before, .product-items .wishlist.split.button > .action.split:before, .products.list.items .action.towishlist:before, .table-comparison .action.towishlist:before {
+  margin-left: -4px;
+}
+
+.catalog-product-view {
+  .stock {
+    display: none;
+  }
 }
