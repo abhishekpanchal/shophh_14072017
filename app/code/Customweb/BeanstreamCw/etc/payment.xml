@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<payment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Payment:etc/payment.xsd">
+    <groups>
+        <group id="beanstreamcw">
+            <label>Beanstream</label>
+        </group>
+    </groups>
+    <methods>
+        <method name="beanstreamcw_creditcard">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method><method name="beanstreamcw_visa">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method><method name="beanstreamcw_mastercard">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method><method name="beanstreamcw_americanexpress">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method><method name="beanstreamcw_diners">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method><method name="beanstreamcw_jcb">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method><method name="beanstreamcw_discovercard">
+			<allow_multiple_address>1</allow_multiple_address>
+		</method>
+    </methods>
+</payment>

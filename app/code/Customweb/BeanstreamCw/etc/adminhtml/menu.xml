@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Customweb_BeanstreamCw::transactions" title="Beanstream Transactions" module="Customweb_BeanstreamCw" sortOrder="10" parent="Customweb_Base::sales_customweb" action="beanstreamcw/transaction" resource="Customweb_BeanstreamCw::transaction" />
+
+        <add id="Customweb_BeanstreamCw::config" title="Beanstream" module="Customweb_BeanstreamCw" sortOrder="100" parent="Customweb_Base::config" action="beanstreamcw/config" resource="Customweb_BeanstreamCw::config"/>
+    </menu>
+</config>
