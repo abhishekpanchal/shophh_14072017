@@ -35,9 +35,9 @@
         <?php endif ?>
 
         <?php if ($block->getLastPageNum()>1): ?>
-        <nav class="pages pull-left" aria-label="<?php /* @escapeNotVerified */ echo __('Page navigation') ?>">
+        <nav class="pages" aria-label="<?php /* @escapeNotVerified */ echo __('Page navigation') ?>">
             <ul class="items pages-items pagination pagination-sm" aria-labelledby="paging-label" style="margin: 0;">
-            <?php if (!$block->isFirstPage()): ?>
+            <?php if ($block->isFirstPage()): ?>
                 <li class="item pages-item-previous">
                     <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
                     <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'action ' ?> previous"

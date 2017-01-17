@@ -159,8 +159,13 @@ buttons
   font-family: @fancyFont;
   font-size: 14px;
   line-height: normal;
-  padding: 8px 20px;
+  padding: 12px 25px;
+
+  i {
+    margin-right: 10px;
+  }
 }
+
 .btn-main:hover {
   background-color: #1a1a1a;
   color: #FFF;
@@ -484,12 +489,12 @@ Products
 
   .price-box {
     display: inline-block;
-    width: 50%;
+    width: 70%;
   }
   .product-social-links {
     display: inline-block;
     text-align: right;
-    width: 50%;
+    width: 30%;
   }
 }
 
@@ -1069,5 +1074,67 @@ Media Queries
 .catalog-product-view {
   .stock {
     display: none;
+  }
+  .page-title-wrapper {
+    margin-bottom: 60px;
+  }
+}
+
+.add-to-cart, .view-full {
+  display: inline-block;
+}
+
+.btn-view-full {
+  border: 2px solid #000;
+  border-radius: 0;
+  color: #000;
+  font-family: @fancyFont;
+  font-size: 14px;
+  line-height: normal;
+  padding: 10px 25px;
+  display: block;
+  margin-bottom: 20px;
+  margin-left: 30px;
+
+  i {
+    margin-right: 10px;
+  }
+}
+
+
+.mfp-close {
+  opacity: 1!important;
+  color: #000!important;
+  padding: 0!important;
+  margin: 0!important;
+  text-align: center!important;
+}
+
+.weltpixel-quickview-catalog-product-view {
+  .main-content {
+    margin-top: 50px;
+  }
+}
+
+.page-products {
+  .product-item-inner {
+    display: inline-block;
+  }
+  
+  .quickview-main-btn {
+    display: inline-block;
+    background-color: #666;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #FFF;
+    margin: 0 2px;
+    transition: 0.3s all;
+  }
+
+  .toolbar-products .pages,
+  .page-products .toolbar .limiter {
+    display: block!important;
   }
 }
