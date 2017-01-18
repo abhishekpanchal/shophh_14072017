@@ -111,6 +111,7 @@ return array (
     'Mageplaza_Core' => 1,
     'Mageplaza_SocialLogin' => 1,
     'MagicToolbox_MagicZoomPlus' => 1,
+    'Sebwite_Sidebar' => 1,
     'WeltPixel_Backend' => 1,
     'WeltPixel_OwlCarouselSlider' => 1,
     'WeltPixel_Quickview' => 1,
