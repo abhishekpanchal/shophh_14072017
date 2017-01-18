@@ -9,10 +9,11 @@
     <update handle="1column"/>
     <referenceContainer name="columns" htmlClass="columns row is-flex">
         <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar col-sm-3 bg-grey" before="main">
+             <block class="Sebwite\Sidebar\Block\Sidebar" name="category-sidebar" template="Sebwite_Sidebar::sidebar.phtml"/>
             <container name="sidebar.main" as="sidebar_main" label="Sidebar Main"/>
         </container>
         <referenceContainer name="main" htmlClass="col-xs-12 col-sm-9" after="div.sidebar.main">
         </referenceContainer>
     </referenceContainer>
-    <!-- <move element="breadcrumbs" destination="page.main.title" after="-"/> -->
+    <referenceContainer name="sidebar.main" remove="true" />
 </layout>
