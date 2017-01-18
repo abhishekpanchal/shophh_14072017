@@ -1,0 +1,363 @@
+<?php
+$helper = $this->helper('Altima\Lookbookslider\Helper\Data');
+if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
+
+    $slideCollection = $block->getSlideCollection();
+
+    if (!empty($slideCollection) && $slideCollection->getSize()) :
+
+        $currentUrl = $block->getUrl();
+        $styleSlide = $block->getSlider()->getStyleSlide();
+        $slider = $block->getSlider();
+        $htmlId = $block->getFlexsliderHtmlId();
+        $navigation = ($slider->getNavigation() == 1) ? TRUE : FALSE;
+        $navigationHover = ($slider->getNavigationHover() == 1) ? TRUE : FALSE;
+        $thumbnails = ($slider->getThumbnails() == 1) ? TRUE : FALSE;
+        $contentBefore = $slider->getContentBefore();
+        $contentAfter = $slider->getContentAfter();
+
+        $effect = $slider->getEffect();
+        $effect_opt = FALSE;
+        if ($effect == 'shuffle_revert') {
+            $effect = 'shuffle';
+            $effect_opt = 'data-cycle-reverse=true';
+        }
+        if ($effect == '' || $effect == 'all') {
+            $effect = 'fade,' .
+                    'scrollLeft,scrollRight,scrollVert,scrollUp,scrollDown,' .
+                    'cover,tileSlide,tileSlideHorz,tileBlind,tileBlindHorz,' .
+                    'slideLeft,slideRight,slideTop,slideBottom,slideLeftTop,' .
+                    'slideLeftBottom,slideRightTop,slideRightBottom';
+        }
+        $effect_arr = FALSE;
+        $effect_arr = strpos($effect, ',');
+        if ($effect_arr) {
+            $effect = explode(',', $effect);
+        }
+
+        $time = $slider->getTime();
+        $trans_period = $slider->getTransPeriod();
+        $thumb = TRUE;
+        if (count($slideCollection) <= 1):
+            $navigation = FALSE;
+            $thumbnails = FALSE;
+            $thumb = FALSE;
+        endif;
+        ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
+
+        <div class="lookbookslider-top">
+            <?php if ($contentBefore): ?>
+                <div class="content-before"><?php echo $contentBefore; ?></div>
+            <?php endif; ?>    
+            <div id="lookbookslider_container_<?php echo $slider->getId() ?>"  class="lookbookslider-container">
+                <div class="cycle-slideshow1" id="lookbookslider_<?php echo $slider->getId() ?>"
+                     data-cycle-center-horz="true"
+                     data-cycle-loader="wait"
+                     data-cycle-slides="> div.slide"
+                     data-cycle-auto-height="container"
+                     data-cycle-log="false"
+                     
+                     <?php
+                     /*                      * ** effect options ********* */
+
+                     if ($effect_opt) {
+                         echo $effect_opt;
+                     }
+                     if ($effect_arr === FALSE):
+                         ?>
+                         data-cycle-fx="<?php echo $effect; ?>"
+                     <?php
+                     endif;
+
+
+                     /*                      * ***** end effect options ******** */
+                     ?>
+                     <?php
+                     if (count($slideCollection) > 1):
+                         ?>
+                         data-cycle-swipe="true"
+                         data-cycle-pause-on-hover="#lookbookslider_container_<?php echo $slider->getId() ?>"
+                         data-cycle-timeout="<?php echo $time; ?>"
+                         data-cycle-speed="<?php echo $trans_period; ?>"
+                         <?php
+                     endif;
+                     ?>            
+        <?php if (!$thumbnails && $thumb): ?>
+                         data-cycle-pager="#pagernav_<?php echo $slider->getId() ?> .cycle"
+                         data-cycle-pager-template="<li><span> {{slideNum}} </span></li>"
+                     <?php endif; ?>
+        <?php if ($navigation): ?>
+                         data-cycle-prev="#lookbookslider_<?php echo $slider->getId() ?> .slide-prev"
+                         data-cycle-next="#lookbookslider_<?php echo $slider->getId() ?> .slide-next"
+        <?php endif; ?>
+
+
+
+                     style="max-width:<?php echo $slider->getWidth(); ?>px; max-height:<?php echo $slider->getHeight(); ?>px; display: block;"
+
+                     >
+                    <?php if ($navigation): ?>
+                        <div class="slide_commands <?php
+                        if ($navigationHover) {
+                            echo 'hover';
+                        }
+                        ?>">
+                            <div class="slide_play" style="display: none;"></div>
+                            <div class="slide_stop" style="display: block;"></div>
+                        </div>
+                        <div class="slide-prev <?php
+                        if ($navigationHover) {
+                            echo 'hover';
+                        }
+                        ?>"><span></span></div>
+                        <div class="slide-next <?php
+                        if ($navigationHover) {
+                            echo 'hover';
+                        }
+                        ?>"><span></span></div>    
+        <?php endif; ?>
+
+
+                    <?php $slide_ind = 1; ?>
+
+                    <?php foreach ($slideCollection as $slide): ?>
+                        <div class="slide"
+                        <?php
+                        if ($effect_arr):
+                            $ind = array_rand($effect, 1);
+                            echo 'data-cycle-fx="' . $effect[$ind] . '"';
+                        endif;
+                        ?>
+                             >
+                                 <?php
+                                 if ($slide->getLink()):
+                                     $link = $slide->getLink();
+                                     $pos = strpos($link, 'http://');
+                                     $pos1 = strpos($link, 'https://');
+                                     if ($pos === FALSE && $pos1 === FALSE) {
+                                         $link = 'http://' . $link;
+                                     }
+                                     ?>
+                                <a href="<?php echo $link; ?>">
+            <?php endif; ?>                    
+
+                                <img alt="Slide <?php echo $slide->getId(); ?>"  src="<?php echo $block->getSlideImageUrl($slide) ?>"/>
+
+                                    <?php if ($slide->getCaption() != '' && $slider->getShowslidenames() == 1) : ?>
+                                    <div class="cycle-overlay">
+                                    <?php echo $slide->getCaption(); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                            <?php if ($slide->getLink()): ?>
+                                </a>
+                            <?php endif; ?>
+            <?php if ($helper->canShowPinitButton()): ?>
+                                <!------------ Pin It Button ------------------->
+                                <div class="pinit_button">
+                                    <a target="_blank" href="//www.pinterest.com/pin/create/button/?url=<?php echo $currentUrl . '?slide=' . $slide_ind ?>&media=<?php echo $block->getSlideImageUrl($slide); ?>"
+                                       data-pin-do="buttonPin" 
+                                       data-pin-config="above" >
+                                        <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+                                    </a>
+                                </div>
+                                <!------------ Pin It Button ------------------->
+            <?php endif; ?>
+
+                        </div>
+                        <?php $hotspots[] = $block->getHotspotsWithProductDetails($slide); ?>
+                        <?php $slide_ind++; ?>
+
+        <?php endforeach ?>
+                    <div id="progress"></div>
+                </div>
+                <!---------------------------------------->
+                <?php if ($thumbnails && $thumb): ?>
+                    <?php $count_pager = 5; ?>
+                    <?php
+                    if (count($slideCollection) < 5) {
+                        $count_pager = $slideCollection->getSize();
+                    }
+                    ?>
+                    <div id="pagernav_<?php echo $slider->getId() ?>" class="pagernav" style="max-width:<?php echo $slider->getWidth(); ?>px;" >
+                        <ul  id="pagernav_<?php echo $slider->getId() ?>_thumb" class="cycle-slideshow1" 
+                             data-cycle-fx="carousel" 
+                             data-cycle-slides="> li.thumb"
+                             data-cycle-timeout="0"
+                             data-cycle-carousel-fluid="true"
+                             data-cycle-log="false"
+                             data-cycle-carousel-visible="<?php echo $count_pager; ?>"
+                             data-allow-wrap="false"
+                             >
+            <?php foreach ($slideCollection as $slide): ?>
+                                <li class="thumb">
+                                    <img src='<?php echo $block->getSlideThumbUrl($slide); ?>'/>
+                                </li>
+            <?php endforeach; ?>
+                        </ul>
+                    </div>
+        <?php elseif ($thumb): ?>
+                    <div id="pagernav_<?php echo $slider->getId() ?>" class="pagernav" >
+                        <ul class="cycle">
+
+                        </ul>
+                    </div>
+        <?php endif; ?>
+                <!----------------------------------------->
+
+            </div>    
+            <?php if ($contentAfter): ?>
+                <div class="content-after"><?php echo $contentAfter; ?></div>
+        <?php endif; ?>    
+        </div>
+
+        <script type="text/javascript">
+
+            (function () {
+                var flexSliderSelector = '<?php echo $htmlId; ?>';
+                require(['jquery', 'altima/cycle', 'altima/hotspots', 'altima/cyclecarousel', 'altima/cyclecenter', 'altima/cycleAddEffects', 'altima/cycleflip'], function (jQuery) {
+                    var $altima_jq = jQuery.noConflict();
+
+                    $altima_jq(window).load(function () {
+                        $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle();
+                        $altima_jq('#pagernav_<?php echo $slider->getId() ?>_thumb').cycle();
+                        var hotspots = <?php echo json_encode($hotspots); ?>;
+                        $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> > div.slide:not(.cycle-sentinel)').each(function (i) {
+                            var ind = $altima_jq(this).index();
+                            var slide = $altima_jq(this);
+                            $altima_jq.setHotspots(slide, hotspots[i]);
+                        });
+        <?php if ($navigation): ?>
+                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').click(function () {
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('pause');
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').hide();
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').show();
+                            });
+                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').click(function () {
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('resume');
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').hide();
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').show();
+                                
+                                
+                            });
+        <?php endif; ?>
+        <?php if ($thumbnails): ?>
+                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').on('cycle-update-view', function (e, opts) {
+                                $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').cycle('goto', opts.currSlide);
+                            });
+
+                            $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul li').click(function () {
+                                var index = $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').data('cycle.API').getSlideIndex(this);
+                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('goto', index);
+                                $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').cycle('goto', index);
+                            });
+        <?php endif; ?>
+                        var progress = $altima_jq('#progress'),
+                                slideshow = $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>');
+                        slideshow.on('cycle-initialized cycle-before', function (e, opts) {
+                            progress.stop(true).css('width', 0);
+                        });
+                        slideshow.on('cycle-initialized cycle-after', function (e, opts) {
+                            if (!slideshow.is('.cycle-paused'))
+                                progress.animate({width: '100%'}, opts.timeout, 'linear');
+                        });
+                        slideshow.on('cycle-paused', function (e, opts) {
+                            progress.stop();
+                        });
+                        slideshow.on('cycle-resumed', function (e, opts, timeoutRemaining) {
+                            progress.animate({width: '100%'}, timeoutRemaining, 'linear');
+                        });
+                        
+        jQuery.fn.cycle.transitions.carousel.transition = function( opts, curr, next, fwd, callback ) {
+        var moveBy, props = {};
+        var hops = opts.nextSlide - opts.currSlide;
+        var vert = opts.carouselVertical;
+        var speed = opts.speed;
+	var offset = 2; //Number of slides to offset
+        if ( opts.allowWrap === false ) {
+        fwd = hops > 0;
+        var currSlide = opts._currSlide;
+        var maxCurr = opts.slideCount - (opts.carouselVisible - offset);
+        var minCurr = opts.slideCount - (opts.carouselVisible + offset);
+        if(minCurr < offset){
+            minCurr = offset;
+        }
+        if(fwd){ // MOVING FORWARDS
+            
+            if ( opts.nextSlide > maxCurr && currSlide == maxCurr|| opts.nextSlide <= minCurr ) {
+                hops = 0;
+            }
+            else if (opts.currSlide < minCurr && opts.nextSlide > maxCurr){
+                 hops = maxCurr-minCurr;
+            }
+            else if (opts.currSlide < minCurr && opts.nextSlide > maxCurr || opts.nextSlide > maxCurr){
+                 hops += opts.currSlide - maxCurr;
+            }
+            else if (opts.currSlide < minCurr && opts.nextSlide > minCurr){
+                 hops = opts.nextSlide - minCurr;  
+            }
+            else {
+                currSlide = opts.currSlide;
+            }
+
+        } else { // MOVING BACKWARDS
+            if ( opts.currSlide > maxCurr && opts.nextSlide > maxCurr || opts.currSlide <= minCurr ) {
+                hops = 0;
+            }
+            else if (opts.currSlide > maxCurr && opts.nextSlide < minCurr){
+                hops = minCurr - maxCurr;
+            }
+            else if (hops < -offset && opts.nextSlide < minCurr){
+                hops = opts.nextSlide;
+            }
+            else if ( opts.currSlide > maxCurr) {
+                hops += opts.currSlide - maxCurr;
+            }
+            else if (opts.nextSlide < minCurr){
+                hops = opts.nextSlide - minCurr; 
+            }
+            else {
+                currSlide = opts.currSlide; 
+            }
+        }
+        moveBy = this.getScroll( opts, vert, currSlide, hops );
+        opts.API.opts()._currSlide = opts.nextSlide > maxCurr ? maxCurr : opts.nextSlide;
+    }
+        else {
+            if ( fwd && opts.nextSlide === 0 ) {
+                // moving from last slide to first
+                moveBy = this.getDim( opts, opts.currSlide, vert );
+                callback = this.genCallback( opts, fwd, vert, callback );
+            }
+            else if ( !fwd && opts.nextSlide == opts.slideCount - 1 ) {
+                // moving from first slide to last
+                moveBy = this.getDim( opts, opts.currSlide, vert );
+                callback = this.genCallback( opts, fwd, vert, callback );
+            }
+            else {
+                moveBy = this.getScroll( opts, vert, opts.currSlide, hops );
+            }
+        }
+
+        props[ vert ? 'top' : 'left' ] = fwd ? ( "-=" + moveBy ) : ( "+=" + moveBy );
+
+        // throttleSpeed means to scroll slides at a constant rate, rather than
+        // a constant speed
+        if ( opts.throttleSpeed )
+            speed = (moveBy / $(opts.slides[0])[vert ? 'height' : 'width']() ) * opts.speed;
+
+        opts._carouselWrap.animate( props, speed, opts.easing, callback );
+    }            
+                        
+                        
+                    });
+
+
+                });
+            })();
+        </script>
+        <?php
+    endif;
+endif;
+?>
