@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="WeltPixel_OwlCarouselSlider::owlcarouselslider" title="Owl Carousel And Slider" module="WeltPixel_OwlCarouselSlider" sortOrder="100" parent="WeltPixel_Backend::WeltPixel" resource="WeltPixel_OwlCarouselSlider::owlcarouselslider"/>
+        <add id="WeltPixel_OwlCarouselSlider::owlcarouselslider_products_sliders" title="Product Sliders" module="WeltPixel_OwlCarouselSlider" action="adminhtml/system_config/edit/section/weltpixel_owl_carousel_config/" sortOrder="10" parent="WeltPixel_OwlCarouselSlider::owlcarouselslider" resource="WeltPixel_OwlCarouselSlider::owlcarouselslider_products_sliders"/>
+        <add id="WeltPixel_OwlCarouselSlider::owlcarouselslider_custom_sliders" title="Custom Sliders" module="WeltPixel_OwlCarouselSlider" action="weltowlcarousel/slider" sortOrder="20" parent="WeltPixel_OwlCarouselSlider::owlcarouselslider" resource="WeltPixel_OwlCarouselSlider::owlcarouselslider_custom_sliders"/>
+        <add id="WeltPixel_OwlCarouselSlider::owlcarouselslider_custom_banners" title="Custom Slider Banners" module="WeltPixel_OwlCarouselSlider" action="weltowlcarousel/banner" sortOrder="30" parent="WeltPixel_OwlCarouselSlider::owlcarouselslider" resource="WeltPixel_OwlCarouselSlider::owlcarouselslider_custom_banners"/>
+    </menu>
+</config>

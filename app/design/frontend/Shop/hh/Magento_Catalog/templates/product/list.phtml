@@ -46,7 +46,17 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         <div class="products list items product-items row">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product): ?>
+                
+
+
+
                 <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item-listing col-xs-12 col-sm-4 col-md-4">' : '</div><div class="item product product-item-listing col-xs-12 col-sm-4 col-md-4">' ?>
+
+                <?php $newProduct = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                <?php if($newProduct->isProductNew($_product)): ?>
+                <div class="new"><?php echo __('New'); ?></div>
+                <?php endif; ?>
+                
                 <div class="product-item-info" data-container="product-grid">
                     <?php
                     $productImage = $block->getImage($_product, $image);

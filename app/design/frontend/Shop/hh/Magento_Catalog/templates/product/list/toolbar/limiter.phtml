@@ -17,7 +17,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 ?>
 <div class="field limiter form-inline pull-right">
     <label class="label" for="limiter">
-        <span><?php /* @escapeNotVerified */ echo __('Show') ?></span>
+        <span><?php /* @escapeNotVerified */ echo __('View') ?></span>
     </label>
     <select id="limiter" data-role="limiter" class="limiter-options form-control input-sm">
         <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
@@ -27,5 +27,5 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
             </option>
         <?php endforeach; ?>
     </select>
-    <span class="limiter-text"><?php /* @escapeNotVerified */ echo __('per page') ?></span>
+    <!--<span class="limiter-text"><?php /* @escapeNotVerified */ echo __('per page') ?></span>-->
 </div>

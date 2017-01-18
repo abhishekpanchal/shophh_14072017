@@ -22,7 +22,7 @@
                     <container name="headertop.innerwrap" htmlTag="div" htmlClass="container">
                         <container name="header.row" htmlTag="div" htmlClass="row vcenter">
                             <!-- Social Icons -->
-                            <container name="header.social" htmlTag="div" htmlClass="col-md-3 header-social">
+                            <container name="header.social" htmlTag="div" htmlClass="col-md-3 hidden-xs header-social">
                                 <block name="social-block" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
                             </container>
                             <!-- Logo -->
@@ -48,7 +48,7 @@
                                 </container>
                             </container>
                             <!-- Search -->
-                            <container name="header.search" htmlTag="div" htmlClass="col-md-3 header-search">
+                            <container name="header.search" htmlTag="div" htmlClass="col-md-3 hidden-xs header-search">
                                 <block name="header-top-nav" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-nav.phtml"/>
                             </container>
                         </container>
