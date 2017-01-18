@@ -1,0 +1,15 @@
+<?php
+$helper = $this->helper("Lof\Faq\Helper\Data");
+$collection = $block->getCategoryCollection();
+$title = $block->getData('title');
+?>
+<?php if($collection->count()){ ?>
+<div class="faqcategory-sidebar block">
+	<div class="block-title"><?php echo ($title)?$title:'Category' ?></div>
+	<ul class="main-cat">
+		<?php foreach ($collection as $_cat) { ?>
+		<li><a href="<?php echo $helper->getCategoryUrl($_cat) ?>" title="<?php echo $_cat->getTitle() ?>"><?php echo $_cat->getTitle() ?></a></li>
+		<?php } ?>
+	</ul>
+</div>
+<?php } ?>

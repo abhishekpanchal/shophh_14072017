@@ -1,0 +1,230 @@
+<?php
+if($menu = $this->getMenu()){
+	$data = $this->helper("Ves\Megamenu\Helper\Data");
+	$layout = $this->getData('layout');
+	if(!$layout) $layout = 'horizontal';
+	$menuItems = $menu->getData('menuItems');
+	$structure = json_decode($menu->getStructure(), true);
+	$items = [];
+	$html = $class = '';
+	if(is_array($structure)){
+		foreach ($structure as $k => $v) {
+			$itemData = $data->renderMenuItemData($v, [], $menuItems);
+			$html .= $data->drawItem($itemData);
+		}
+	}
+	$html = $data->filter($html);
+	$mobileTemplate = $menu->getData("mobile_template");
+	if($this->hasData("mobile_template")) $mobileTemplate = $this->getData("mobile_template");
+	$alias = $menu->getAlias().time().rand();
+	$disableBellow = (int)$menu->getData('disable_bellow');
+	if($mobileTemplate == 0){
+		$class = 'offcanvas-menu offcanvas-menu-left';
+	}elseif($mobileTemplate == 1){
+		$class = 'accordion-menu';
+	}
+	$disableItemBlocks = $menu->getData("disable_iblocks");
+	if($disableItemBlocks)
+		$class .= ' hide-blocks';
+
+	$desktopTemplate = $menu->getData("desktop_template");
+	if(!$desktopTemplate) $desktopTemplate = 'horizontal';
+	if($this->hasData("desktop_template")) $desktopTemplate = $this->getData("desktop_template");
+
+	$event = $menu->getData("event");
+	if(!$event) $event = 'hover';
+
+	$id = time().rand();
+
+	if($desktopTemplate == 'vertical-left' ||  $desktopTemplate == 'vertical-right'){
+		$class .= ' ves-vertical';
+	}
+	?>
+	<div class="block ves-menu mgm-widget <?php echo $menu->getData("classes"); ?>" id="<?php echo $alias ?>-menu">
+		<?php if($title = $this->getData("title")){ ?>
+		<div class="block-title"><strong><span><?php echo __($title); ?></span></strong></div>
+		<?php } ?>
+		<?php // Off Canvas Menu ?>
+		<?php if($mobileTemplate == 0){ ?>
+		<div class="navbar ves-navbar">
+			<span class="ves-navtoggle ves-navtoggle<?php echo $id ?>">
+				<span><?php echo __('Toggle Nav'); ?></span>
+			</span>
+		</div>
+		<?php } ?>
+		<div class="navigation">
+			<ul id="<?php echo $alias ?>" class="ves-megamenu <?php echo 'menu-' . $event ?> <?php echo $class; ?> ves-<?php echo $desktopTemplate ?>" <?php if($disableBellow>0){ ?>data-disable-bellow="<?php echo $disableBellow ?>"<?php } ?>>
+				<?php echo $html; ?>
+			</ul>
+		</div>
+		<script type="text/javascript">
+			require([
+				'jquery',
+				<?php if($menu->getData('scrolltofixed')){ ?>'Ves_Megamenu/js/jquery-scrolltofixed-min'<?php } ?>
+				],function($){
+					jQuery(document).ready(function($) {
+						<?php if($desktopTemplate == 'horizontal'){ ?>
+							jQuery('#<?php echo $alias ?>-menu .ves-megamenu .level0').hover(function() {
+								if ($(window).width() >= 768){
+									var mParent = jQuery(this).parents('.ves-megamenu').offset().top;
+									var mHeight = jQuery(this).offset().top;
+									var mTop    = (mHeight - mParent) + jQuery(this).height();
+									jQuery(this).find('.submenu').first().css({top:mTop+"px"});
+								}
+							});
+							<?php } ?>
+							<?php if($menu->getData('scrolltofixed')){ ?>
+								$(window).on("resize load", function(){
+									if ($(window).width() >= 768){
+										$('#<?php echo $alias ?>').scrollToFixed();
+									}
+								});
+								<?php } ?>
+								$("#<?php echo $alias ?> .dynamic-items li:first").addClass("dynamic-active");
+								var id = $("#<?php echo $alias ?> .dynamic-items li:first").data("dynamic-id");
+								$("#<?php echo $alias ?> ."+id).addClass("dynamic-active");
+								$("#<?php echo $alias ?> .level0 .submenu").find(".active").addClass("");
+								$("#<?php echo $alias ?>").find(".level0 .submenu").each(function(index, elemetn){
+									var eSelected = $(this).find(".active");
+									if(eSelected.length){
+										$(this).addClass("active");
+									}
+								});
+								$('#<?php echo $alias ?> p').each(function() {
+									var $this = $(this);
+									if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+									$this.remove();
+								});
+								$("#<?php echo $alias ?> .dynamic-items li").hover(function(){
+									$(this).parents(".dynamic-items").find("li").removeClass("dynamic-active");
+									$(this).addClass("dynamic-active");
+									var id = $(this).data("dynamic-id");
+									$("#<?php echo $alias ?> ."+id).parent().find(".dynamic-item").removeClass("dynamic-active");
+									$("#<?php echo $alias ?> ."+id).addClass("dynamic-active");
+								});
+								var ihBgcolor, ihColor, ibgColor, icolor;
+								$("#<?php echo $alias ?> .nav-item > a").hover(function(){
+									ihBgcolor = ihColor = ibgColor = icolor = '';
+									ihBgcolor = $(this).data("hover-bgcolor");
+									ihColor   = $(this).data("hover-color");
+									ibgColor  = $(this).data("bgcolor");
+									icolor    = $(this).data("color");
+									$(this).css({
+										"background-color": ihBgcolor,
+										"color": ihColor
+									});
+								}, function(){
+									if(typeof(ibgColor)=='undefined'){
+										ibgColor = '';
+									}
+									if(typeof(icolor)=='undefined'){
+										icolor = '';
+									}
+									$(this).css({
+										"background-color": ibgColor,
+										"color": icolor
+									});
+								});
+								var mImg = '';
+								$("#<?php echo $alias ?> img").hover(function(){
+									mImg = '';
+									mImg = $(this).attr('src');
+									if($(this).data('hoverimg')){
+										$(this).attr('src',$(this).data('hoverimg'));
+									}
+								},function(){
+									$(this).attr('src',mImg);
+								});
+								$("#<?php echo $alias ?> li a").hover(function(){
+									$(this).css({
+										"background-color": $(this).data("hover-bgcolor"),
+										"color": $(this).data("hover-color")
+									});
+								}, function(){
+									$(this).css({
+										"background-color": $(this).data("bgcolor"),
+										"color": $(this).data("color")
+									});
+								});
+								$(window).on("resize load", function(){
+									if($("#<?php echo $alias ?>").data("disable-bellow")){
+										if ($(window).width() <= $("#<?php echo $alias ?>").data("disable-bellow")){
+											$("#<?php echo $alias ?>").hide();
+										}else{
+											$("#<?php echo $alias ?>").show();
+										}
+									}
+									if ($(window).width() >= 768 && $(window).width() <= 1024){
+										$("#<?php echo $alias ?> .nav-anchor").off().click(function(){
+											var iParent = $(this).parent('li');
+											iParent.addClass("clicked");
+											if($(iParent).children('.submenu').length == 1){
+												iParent.trigger('hover');
+												if(iParent.hasClass('submenu-alignleft') || iParent.hasClass('submenu-alignright')){
+													if((iParent.offset().left + iParent.find('.submenu').eq(0).width()) > $(window).width()){
+														iParent.find('.submenu').eq(0).css('max-width','100%');
+														iParent.css('position','static');
+													}
+												}
+												return false;
+											}
+										});
+									}else{
+										$("#<?php echo $alias ?>").find('.submenu').css('max-width','');
+										$("#<?php echo $alias ?>").find('.submenu-alignleft').css('position','relative');
+									}
+									$("#<?php echo $alias ?>").find("li").each(function(index, element){
+										if($(this).data("disable-bellow") && $(window).width() <= $(this).data("disable-bellow")){
+											$(this).addClass("hidden");
+										}else if($(this).hasClass("hidden")){
+											$(this).removeClass("hidden");
+										}
+									});
+									if ($(window).width() <= 768){
+										$("#<?php echo $alias ?>").addClass("nav-mobile");
+									}else{
+										$("#<?php echo $alias ?>").find("div").removeClass("mbactive");
+										$("#<?php echo $alias ?>").removeClass("nav-mobile");
+									}
+								}).resize();
+									//Toggle mobile menu
+									$('#<?php echo $alias ?> .opener').on('click', function(e) {
+										e.preventDefault();
+										$("#<?php echo $alias ?> .nav-item").removeClass("item-active");
+										var parent = $(this).parents(".nav-item").eq(0);
+										$(this).toggleClass('item-active');
+										$(parent).find(".submenu").eq(0).slideToggle();
+										return false;
+									});
+									$("#<?php echo $alias ?>-menu .ves-navtoggle<?php echo $id ?>").click(function(){
+										jQuery("html, body").animate({ scrollTop: 1000 }, 600);
+										$('html').removeClass('nav-before-open nav-open');
+										$('.ves-overlay<?php echo $alias ?>').show();
+										$('body').append('<div class="ves-overlay ves-overlay<?php echo $alias ?>"></div>');
+										$('#<?php echo $alias ?>').css("left", "0px");
+										if ($('html').hasClass('ves-navopen')) {
+											$('html').removeClass('ves-navopen');
+											setTimeout(function () {
+												$('html').removeClass('ves-nav-before-open');
+											}, 300);
+										}	 else {
+											$('html').addClass('ves-nav-before-open');
+											setTimeout(function () {
+												$('html').addClass('ves-navopen');
+											}, 42);
+										}
+									});
+									$(document).on("click", ".ves-overlay<?php echo $alias ?>", function(){
+										$('#<?php echo $alias ?>').css("left","");
+										$('html').removeClass('ves-navopen');
+										setTimeout(function () {
+											$('html').removeClass('ves-nav-before-open');
+										}, 300);
+										$(this).remove();
+										return false;
+									});
+								});
+});
+</script>
+</div>
+<?php } ?>

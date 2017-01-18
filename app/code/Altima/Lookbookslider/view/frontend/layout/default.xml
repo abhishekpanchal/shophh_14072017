@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+	<referenceContainer name="before.body.end">
+		<block class="Altima\Lookbookslider\Block\Lookbookslider" name="lookbookslider.page.bottom">
+			<action method="setPosition">
+				<argument name="position" xsi:type="string">page-bottom</argument>
+			</action>
+		</block>
+	</referenceContainer>
+    	<referenceContainer name="content">
+            <block class="Altima\Lookbookslider\Block\Lookbookslider" name="lookbookslider.content.top" before="-">
+    		<action method="setPosition">
+                    <argument name="position" xsi:type="string">content-top</argument>
+    		</action>
+            </block>
+            <block class="Altima\Lookbookslider\Block\Lookbookslider" name="lookbookslider.content.bottom" after="-">
+    		<action method="setPosition">
+                    <argument name="position" xsi:type="string">content-bottom</argument>
+    		</action>
+            </block>
+    	</referenceContainer>
+    	<referenceBlock name="page.top">
+    		<block class="Altima\Lookbookslider\Block\Lookbookslider" name="lookbookslider.menu.bottom" >
+    			<action method="setPosition">
+    				<argument name="position" xsi:type="string">menu-bottom</argument>
+    			</action>
+    		</block>
+    	</referenceBlock>
+    </body>
+</page>
