@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif');
 
 @black: #000;
 
 @baseFont     : 'Montserrat-Light', Helvetica, Arial, sans-serif;
 @headlineFont : 'Montserrat', Helvetica, Arial, sans-serif;
-@fancyFont    : 'DietDidot-BoldItalic';
+@fancyFont    : 'Droid Serif', 'DietDidot-BoldItalic';
 @baseFontSize : 12px;
 @baseLineHeight: 20px;
 
@@ -157,6 +157,7 @@ buttons
   color: #FFF;
   border-radius: 0;
   font-family: @fancyFont;
+  font-style: italic;
   font-size: 14px;
   line-height: normal;
   padding: 12px 25px;
@@ -467,8 +468,9 @@ Product Description
   font-family: @headlineFont;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 16px;
 }
+
 
 
 /* ==========================================================================
@@ -518,6 +520,7 @@ Products
     height: auto;
     padding: 5px 10px;
     width: 45px;
+    margin-left: 10px;
   }
 }
 
@@ -551,6 +554,11 @@ Products
 .old-price span {
   color: #666;
   position: relative;
+  font-size: 14px;
+}
+
+.old-price span span {
+  font-size: 14px!important;
 }
 
 .old-price .product-info-main .price-box .weee .price {
@@ -922,9 +930,6 @@ fieldset {
   font-size: inherit;
 }
 
-.product-info-main .old-price .price-label:after, .product-options-bottom .old-price .price-label:after, .product-info-main .special-price .price-label:after, .product-options-bottom .special-price .price-label:after {
-  content: '';
-}
 
 /* ==========================================================================
 Dashboard Fixes
@@ -1040,7 +1045,11 @@ Media Queries
  ========================================================================== */
 /* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
 @media only screen and (max-width: 959px) {
-
+.product.data.items > .item.content {margin: 0; margin-top: 0!important;}
+.page-title {font-size: 25px;}
+.product.data.items > .item.title {display: none;}
+.product.data.items > .item.content {border: none;}
+.page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
 }
 
 
@@ -1093,6 +1102,7 @@ Media Queries
   border-radius: 0;
   color: #000;
   font-family: @fancyFont;
+  font-style: italic;
   font-size: 14px;
   line-height: normal;
   padding: 10px 25px;
@@ -1201,6 +1211,7 @@ Flexbox - Rows
   }
   .create-acnt {
     font-family: @fancyFont;
+    font-style: italic;
     font-size: 16px;
 
     a {
@@ -1213,6 +1224,7 @@ Flexbox - Rows
     color: #FFF;
     border-radius: 0;
     font-family: @fancyFont;
+    font-style: italic;
     font-size: 14px;
     line-height: normal;
     padding: 12px 25px;
@@ -1247,6 +1259,7 @@ Flexbox - Rows
       height: auto;
       display: block;
       font-family: @fancyFont;
+      font-style: italic;
       font-size: 16px!important;
     }
 
@@ -1314,7 +1327,7 @@ Flexbox - Rows
   display: none!important;
 }
 
-.catalog-category-view, .category-shop {
+.catalog-category-view {
   .product-reviews-summary {
     display: none;
   }
@@ -1359,11 +1372,70 @@ Flexbox - Rows
     font-size: 28px;
   }
 
-  blockquote, code {
+  blockquote, pre {
     margin: 15px auto;
     padding: 10px;
     background-color: #EFEFEF;
   }
 }
 
+.products-upsell {
+  .special-price {
+    width: 40%;
+    display: inline-block;
+    text-align: right;
 
+    .price-container .price {
+      color: #cc0000;
+    }
+  }
+  .old-price {
+    width: 50%;
+    display: inline-block;
+  }
+}
+
+.swatch-option {
+  border-radius: 50%!important;
+}
+
+.rating-summary .rating-result > span:before {
+  color: #000!important;
+}
+
+.message.notice {
+  font-size: 13px!important;
+}
+
+.categorypath-shop {
+  .old-price span span {font-size: 12px!important;}
+}
+
+
+.abs-actions-addto-gridlist:hover::before, .product-item-actions .actions-secondary > .action:hover::before, .table-comparison .wishlist.split.button > .action.split:hover::before, .product-items .wishlist.split.button > .action.split:hover::before, .products.list.items .action.towishlist:hover::before, .table-comparison .action.towishlist:hover::before {
+    color: #FFF!important;
+}
+
+.swatch-attribute {
+  margin-bottom: 20px;
+  position: relative;
+}
+.swatch-attribute-options {
+  display: inline-block;
+  position: absolute;
+  margin-top: 0!important;
+}
+
+.swatch-attribute-label {
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  text-transform: uppercase;
+  min-width: 50px;
+}
+
+.product-qty label {
+  min-width: 50px;
+  text-align: left;
+}
