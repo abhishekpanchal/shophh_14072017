@@ -5,7 +5,8 @@
 
 @baseFont     : 'Montserrat-Light', Helvetica, Arial, sans-serif;
 @headlineFont : 'Montserrat', Helvetica, Arial, sans-serif;
-@fancyFont    : 'Droid Serif', 'DietDidot-BoldItalic';
+@fancyFont    : 'Droid Serif';
+@fancyFront2  : 'DietDidot-BoldItalic';
 @baseFontSize : 12px;
 @baseLineHeight: 20px;
 
@@ -91,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h4 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 
@@ -160,7 +161,7 @@ buttons
   font-style: italic;
   font-size: 14px;
   line-height: normal;
-  padding: 12px 25px;
+  padding: 8px 22px;
 
   i {
     margin-right: 10px;
@@ -322,6 +323,8 @@ Buttons
   font-weight: normal;
 }
 
+
+
 /* ==========================================================================
 Content
  ========================================================================== */
@@ -359,14 +362,15 @@ Content
 Reviews
  ========================================================================== */
 .review-body {
-  border-top: 1px solid #e6e6e7;
-  border-bottom: 1px solid #e6e6e7;
+  border-top: 1px solid #ababab;
+  border-bottom: 1px solid #ababab;
   padding-top: 20px;
 }
 
 .review-toolbar {
   margin: 0!important;
   border: none!important;
+  display: none!important;
 }
 
 .review-ratings {
@@ -375,12 +379,17 @@ Reviews
   max-width: auto;
 }
 .review-author {
-  font-weight: bold;
+  font-weight: 700;
+  font-family: @headlineFont;
 }
 
 .review-content {
   margin-top: 20px;
   text-align: justify;
+}
+
+.review-item {
+  padding: 20px 0;
 }
 
 /* ==========================================================================
@@ -389,6 +398,9 @@ Page Title
 .page-title {
   background: url(../images/shop-keyline-faded-center.png) no-repeat center;
   font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
+  font-family: @fancyFont;
+  font-size: 34px;
+  font-style: italic;
   text-transform: none;
   display: inline;
   margin-top: 0;
@@ -399,6 +411,7 @@ Page Title
   span {
     background: #FFF;
     padding: 0 30px;
+    font-style: italic;
   }
 }
 
@@ -448,8 +461,9 @@ Product Description
     margin-bottom: 10px;
 
     strong {
-      font-weight: bold;
-      font-size: 16px;
+      font-weight: 700;
+      font-size: 13px;
+      font-family: @headlineFont;
     }
   }
 
@@ -460,7 +474,7 @@ Product Description
 
   li {
     position: relative;
-    list-style-type: circle;
+    list-style-type: disc;
   }
 }
 
@@ -518,8 +532,8 @@ Products
     border-radius: 3px;
     padding: 0;
     height: auto;
-    padding: 5px 10px;
-    width: 45px;
+    padding: 9px 10px;
+    width: 69px;
     margin-left: 10px;
   }
 }
@@ -548,7 +562,8 @@ Products
 }
 
 .old-price, .old.price {
-  margin-left: 10px;
+  margin: 0;
+  text-decoration: none;
 }
 
 .old-price span {
@@ -606,6 +621,8 @@ Products Tabs
 
 .product.data.items > .item.title.active > .switch, .product.data.items > .item.title.active > .switch:focus, .product.data.items > .item.title.active > .switch:hover {
   color: #000!important;
+  font-weight: 700;
+  font-family: @headlineFont;
 }
 
 /* ==========================================================================
@@ -626,7 +643,7 @@ Products Buttons
     transition: 0.3s all;
 
     &:hover {
-      background-color: #000;
+      background-color: #000!important;
     }
   }
 
@@ -650,10 +667,11 @@ Products Buttons
 .product-item-details {
   .price-container {
     display: block;
-    padding: 10px 0;
+    margin-bottom: 20px;
+    padding: 0;
 
     .price {
-      font-size: 12px;
+      font-size: 14px;
       font-family: @headlineFont;
     }
   }
@@ -723,8 +741,8 @@ Sidebar Filter
 }
 
 .filter-options .filter-options-content .item {
-  margin-bottom: 8px;
-  font-size: 11px;
+  margin-bottom: 0;
+  font-size: 12px;
 }
 
 .filter-options .filter-options-content .item .badge {
@@ -937,8 +955,6 @@ Dashboard Fixes
 .block-dashboard-info,
 .block-dashboard-addresses {
   .box-title {
-    font-family: @headlineFont;
-    font-weight: bold;
     font-size: 16px;
     margin-bottom: 15px;
     margin: 10px 0;
@@ -1040,28 +1056,7 @@ Quick View
   padding: 0;
 }
 
-/* ==========================================================================
-Media Queries
- ========================================================================== */
-/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
-@media only screen and (max-width: 959px) {
-.product.data.items > .item.content {margin: 0; margin-top: 0!important;}
-.page-title {font-size: 25px;}
-.product.data.items > .item.title {display: none;}
-.product.data.items > .item.content {border: none;}
-.page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
-}
 
-
-/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
-@media only screen and (max-width: 767px) {
-
-}
-
-/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
-@media only screen and (max-width: 479px) {
-
-}
 
 .primary-cart-btn, .weltpixel_quickview_button_v2 {
   display: inline-block;
@@ -1147,9 +1142,16 @@ Media Queries
     transition: 0.3s all;
   }
 
-  .toolbar-products .pages,
-  .page-products .toolbar .limiter {
+  .toolbar-products .pages {
     display: block;
+  }
+
+  .page-products .toolbar .limiter {
+    display: block!important;
+  }
+
+  .toolbar-sorter {
+    display: none;
   }
 }
 
@@ -1295,7 +1297,7 @@ Flexbox - Rows
     padding: 0;
     line-height: 35px;
     border-radius: 50%;
-    color: #333!important;
+    color: #666!important;
     border: none;
 }
 
@@ -1304,7 +1306,7 @@ Flexbox - Rows
 .pagination-sm > li:last-child > span,
 .pagination-sm > li:first-child > span  {
   border-radius: 50%!important;
-  background-color: #333;
+  background-color: #666;
   border: none;
 }
 
@@ -1319,7 +1321,8 @@ Flexbox - Rows
   background-color: transparent!important;
   border-color: none!important;
   color: #000!important;
-  font-weight: bold!important;
+  font-weight: 700!important;
+  font-family: @headlineFont!important;
 }
 
 
@@ -1337,7 +1340,8 @@ Flexbox - Rows
     text-align: right;
 
     .price-container .price {
-      color: #cc0000;
+      color: #b13301;
+      font-weight: 700;
     }
   }
   .old-price {
@@ -1346,7 +1350,7 @@ Flexbox - Rows
   }
 
   .product-items {
-    margin-bottom: 40px!important;
+    margin-bottom: 50px!important;
   }
 }
 
@@ -1386,7 +1390,7 @@ Flexbox - Rows
     text-align: right;
 
     .price-container .price {
-      color: #cc0000;
+      color: #b13301;
     }
   }
   .old-price {
@@ -1439,3 +1443,242 @@ Flexbox - Rows
   min-width: 50px;
   text-align: left;
 }
+
+.product-info-main .old-price .price-label::after, .product-options-bottom .old-price .price-label::after, .product-info-main .special-price .price-label::after, .product-options-bottom .special-price .price-label::after {
+    content: ''!important;
+}
+
+/* ==========================================================================
+Media Queries
+ ========================================================================== */
+/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
+@media only screen and (max-width: 959px) {
+  .product.data.items > .item.content {margin: 0; margin-top: 0!important;}
+  .page-title {font-size: 25px;}
+  .product.data.items > .item.content {border: none;}
+  .page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
+  .product.data.items > .item.title {
+    border: 1px solid #DDD;
+  }
+}
+
+
+/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
+@media only screen and (max-width: 767px) {
+
+}
+
+/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
+@media only screen and (max-width: 479px) {
+
+}
+
+.product-item .price-box .price-label:after {
+  content: ''!important;
+}
+:root .catalog-product-view .owl-carousel.products .owl-controls .owl-nav.fullscreen .owl-next,
+:root .catalog-product-view .owl-carousel.products .owl-controls .owl-nav.fullscreen .owl-prev {
+  top: 45%!important;
+}
+
+.upsell {
+  .product-item-info {width: 80%; margin: 0 auto;}
+  .block-title {
+    background: url(../images/shop-keyline-faded-center.png) no-repeat center;
+    font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
+    text-transform: none;
+    display: inline;
+    margin-top: 0;
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+
+    span {
+      background: #FFF;
+      padding: 0 30px;
+    }
+  }
+}
+
+
+.new {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #FFF;
+  background: #6a2d44;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  font-size: 10px;
+  position: absolute;
+  right: 30px;
+}
+
+.product.data.items > .item.title:first-child a {
+  padding-left: 0!important;
+}
+
+.product-qty .label {
+  font-size: 18px!important;
+  font-weight: normal!important;
+  text-transform: capitalize;
+  font-weight: normal;
+  font-family: Montserrat-Light;
+}
+
+.product.data.items > .item.content {
+  padding-left: 0!important;
+  padding-top: 15px!important;
+}
+
+.products-upsell  {
+  .product-item-details .price-container .price {
+    color: #666!important;
+  }
+}
+
+.category-image {
+  max-height: 350px;
+  overflow: hidden;
+  margin-top: -10px;
+  margin-bottom: 30px!important;
+}
+
+.catalog-category-view {
+  .product-item-details .price-container  {
+    padding: 0!important;
+  }
+  .product-item-name, .product.name a {
+
+  }
+}
+
+.page-products .toolbar .limiter {
+  display: block!important;
+}
+
+.filter-options-content {
+  .item {
+    padding: 5px;
+    padding-left: 20px;
+
+    a {
+      color: #707070;
+    }
+  }
+
+  .item:hover {
+    background-color: #FFF;
+  }
+}
+
+
+.filter-options-content .item:hover {
+  background-color: #FFF;
+}
+
+.abs-actions-addto-gridlist:before, .product-item-actions .actions-secondary > .action:before, .table-comparison .wishlist.split.button > .action.split:before, .product-items .wishlist.split.button > .action.split:before, .products.list.items .action.towishlist:before, .table-comparison .action.towishlist:before {
+    display: inline-block;
+    font: normal normal normal 24px/1 "Material Design Icons"!important;
+    content: "\F2D5";
+    font-size: 16px!important;
+    margin: 0!important;
+    padding: 0!important;
+}
+
+.filter-options .filter-options-content .item .badge {
+  display: none!important;
+}
+
+.product-item-photo {
+  margin-bottom: 20px;
+}
+
+.account-nav .item.current a, .account-nav .item.current strong {
+  border-color: transparent;
+}
+
+.account-nav .item:hover {
+  background-color: #FFF;
+}
+
+.account-nav .item a:hover {
+  background-color: #FFF!important;
+}
+.account {
+  .current {
+    background-color: #FFF!important;
+  }
+  .current a {
+    color: #707070!important
+  }
+}
+
+.page-layout-2columns-left .sidebar-additional {
+  display: none!important;
+}
+
+.customer-account-index {
+  font-size: 14px;
+
+  .block-main-title strong {
+    font-weight: normal!important;
+  }
+}
+
+.form-edit-account {
+
+  .fieldset > .field:not(.choice) > .label {
+    float: none!important;
+    text-align: left!important;
+    display: block!important;
+    font-family: Montserrat-Light!important;
+    text-transform: capitalize!important;
+    font-size: 15px;
+    font-weight: normal !important;
+  }
+
+  input {
+    background-color: #f0f0f0;
+    display: block;
+    text-align: left;
+    border-radius: 3px;
+    padding: 0;
+    height: auto;
+    padding: 11px 16px;
+    width: 80%;
+    margin: 0;
+    margin-top: 15px;
+    font-size: 15px!important;
+  }
+
+  .field-name-firstname  {
+    margin-top: 20px;
+    display: block;
+  }
+
+  .checkbox {
+    float: left!important;
+    width: auto!important;
+    margin-top: 4px;
+    margin-right: 20px;
+  }
+
+  .label {
+    text-transform: capitalize!important;
+  }
+
+  .action.primary {
+    font-family: @fancyFont!important;
+    font-style: italic!important;
+    font-weight: normal!important;
+  }
+}
+
+
+.fieldset > .field.choice::before, .fieldset > .field.no-label::before {width: auto!important;}
+
+
