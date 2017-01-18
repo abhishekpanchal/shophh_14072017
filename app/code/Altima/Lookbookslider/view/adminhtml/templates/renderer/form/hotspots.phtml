@@ -1,0 +1,102 @@
+<?php
+$captions = array(
+    "add_btn" => __("Add Hotspot"),
+    "cancel_btn" => __("Cancel"),
+    "delete_btn" => __("Delete"),
+    "note_saving_err" => __("An error occurred saving this hotspot."),
+    "note_overlap_err" => __("Areas should not overlap."),
+    "link_text" => __("Link text"),
+    "link_href" => __("Link url"),
+    "enter_text_err" => __("Please, enter link text"),
+    "enter_href_err" => __("Please, enter link url"),
+    "link_type" => __("Select link type"),
+    "link_required_err" => __("Please, enter link text and link url"),
+    "enter_sku_err" => __("Please, enter product SKU"),
+    "select_link_type_err" => __("Please, select link type"),
+    "prod_dont_exists_err" => __("The product with SKU="),
+    "prod_sku" => __("Product SKU:"),
+    "delete_note_err" => __("An error occurred deleting this hotspot."),
+    "product_page" => __("Product page"),
+    "other_page" => __("Other page"),
+);
+$hotspot_icon = $block->getHotspotIcon();
+$interdict_overlap = $block->getInterdictOverlap();
+$hspots = ($block->getValues()) ? $block->getValues() : NULL;
+?>
+
+<style>
+    .image-annotate-area, .image-annotate-edit-area {
+        background: url(<?php echo $hotspot_icon ?>) no-repeat center center;
+        background-color: RGBA(203, 236, 203, 0.61);
+        min-height:10px;
+        min-width:10px;
+    }                                                              
+</style>
+
+<br/>
+
+<div>
+    <input id='hotspots' name='slide[hotspots]' type='hidden' value='<?php echo $hspots; ?>'/>
+</div>
+
+<script>
+    require([
+        'jquery',
+        'mage/template',
+        'Magento_Ui/js/modal/alert',
+        'mage/translate',
+        'altima/annotate'
+    ],
+            /* define("altima/inithotspot",
+             ["jquery", "altima/annotate", ],*/
+                    function (jQuery, mageTemplate, alert) {
+
+
+                        function InitHotspotBtn() {
+                            if (jQuery("img#LookbookImage")) {
+                                var annotObj = jQuery("img#LookbookImage").annotateImage({
+                                    editable: true,
+                                    useAjax: false,
+                                    //      interdict_areas_overlap: <?php echo $interdict_overlap ?>,
+                                    captions: <?php echo $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($captions) ?>,
+                                    checkProductUrl: "<?php echo $block->getUrl('lookbookslider/slide/checkproduct') ?>",
+<?php
+if ($hspots):
+    json_decode($hspots);
+    if (json_last_error() === JSON_ERROR_NONE)
+        echo 'notes: ' . $hspots . ',';
+endif;
+?>
+                                    input_field_id: "hotspots"
+                                });
+
+                                var top = Math.round(jQuery("img#LookbookImage").height() / 2);
+
+                                jQuery(".image-annotate-canvas").append('<div class="hotspots-msg" style="top:\' + top + \'px;"><?php echo __('Rollover on the image to see hotspots') ?></div>');
+                                jQuery(".image-annotate-canvas").hover(
+                                        function () {
+                                            ShowHideHotspotsMsg();
+                                        },
+                                        function () {
+                                            ShowHideHotspotsMsg();
+                                        }
+                                );
+                                return annotObj;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        }
+                        ;
+                        jQuery(window).load(function () {
+                            InitHotspotBtn();
+                        });
+
+                        jQuery("#lookbookimage").on("addItem", function () {
+                            InitHotspotBtn();
+                        });
+                      
+
+                    });
+</script>

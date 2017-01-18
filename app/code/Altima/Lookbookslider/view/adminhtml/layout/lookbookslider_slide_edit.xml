@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <link src="Altima_Lookbookslider::css/annotation.css"/>
+        <link src="Altima_Lookbookslider::css/fileuploader.css"/>
+        <link src="Altima_Lookbookslider::css/jquery.fileupload.css"/>
+        <link src="Altima_Lookbookslider::css/jquery.fileupload-ui.css"/>
+    </head>
+
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit" name="lookbookslider.slide.edit" />
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tabs" name="lookbookslider.slide.edit.tabs">
+                <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\Main" name="lookbookslider.slide.edit.tab.main"/>
+
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.main</argument>
+                </action>
+
+            </block>
+        </referenceContainer>
+    </body>
+</page>
