@@ -300,6 +300,10 @@ Main Navigation
   font-weight: bold;
 }
 
+.navigation {
+  background: transparent!important;
+}
+
 /* ==========================================================================
 Buttons
  ========================================================================== */
@@ -1135,6 +1139,231 @@ Media Queries
 
   .toolbar-products .pages,
   .page-products .toolbar .limiter {
-    display: block!important;
+    display: block;
   }
 }
+
+
+.mfp-preloader {animation: none!important;}
+
+.columns, .columns .column.main, .catalog-product-view .column.main {display: block!important;}
+
+.checkout-cart-index {
+  .price-including-tax, .price-excluding-tax {
+    font-size: 17px;
+  }
+  .action.primary {
+    padding: 10px 25px !important;
+  }
+}
+
+button, .cart.table-wrapper .actions-toolbar > .action, .cart.table-wrapper .action-gift {
+  font-size: 13px!important;
+}
+
+.column.main .cart-summary .block > .title strong, .column.main .paypal-review-discount .block > .title strong {
+  font-size: 13px!important;
+}
+
+.abs-discount-block > .title::after, .cart-summary .block > .title::after, .paypal-review-discount .block > .title::after {
+  top: 7px!important;
+}
+
+.block-cart-failed .action.continue, .cart-container .form-cart .action.continue {
+  font-size: 14px!important;
+}
+
+
+
+
+/* ==========================================================================
+Flexbox - Rows
+========================================================================== */
+.social-login {
+  text-align: center;
+
+  input {
+    background-color: #f0f0f0;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+    padding: 0;
+    height: auto;
+    padding: 10px 15px;
+    width: 100%;
+    font-size: 14px!important;
+  }
+  .forgot-pass a {
+    text-transform: uppercase;
+    color: #949494;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .create-acnt {
+    font-family: @fancyFont;
+    font-size: 16px;
+
+    a {
+      color: #949494;
+      text-decoration: underline;
+    }
+  }
+  .btn-social-login {
+    background-color: #000;
+    color: #FFF;
+    border-radius: 0;
+    font-family: @fancyFont;
+    font-size: 14px;
+    line-height: normal;
+    padding: 12px 25px;
+    background-color: #000!important;
+    font-size: 16px!important;
+    line-height: normal;
+    padding: 12px 25px;
+  }
+
+  .actions-toolbar .primary {
+    float: none!important;
+  }
+
+  .facebook-login button {
+    background: none;
+    background-color: #3b5998;
+  }
+  .google-login button {
+    background: none;
+    background-color: #dd4b39;
+  }
+  .twitter-login button {
+    background: none;
+    background-color: #28bceb;
+  }
+
+  .social-login-authentication-channel {
+
+    button {
+      padding: 15px 25px;
+      text-align: center;
+      height: auto;
+      display: block;
+      font-family: @fancyFont;
+      font-size: 16px!important;
+    }
+
+    .login > .primary, .login > .secondary {
+      width: 70%!important;
+      float: none!important;
+      display: block!important;
+    }
+  }
+}
+
+#social-login-popup .mfp-close {
+  border-radius: 50%;
+  background-color: #FFF;
+  top: -50px;
+  right: -50px;
+}
+
+.white-popup {
+  max-width: 500px!important;
+}
+
+
+.navigation .level0.active > .level-top, .navigation .level0.has-active > .level-top {
+  border: none!important;
+}
+
+.pagination-sm > li > a, .pagination-sm > li > span {
+    font-size: 12px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    padding: 0;
+    line-height: 35px;
+    border-radius: 50%;
+    color: #333!important;
+    border: none;
+}
+
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:last-child > span,
+.pagination-sm > li:first-child > span  {
+  border-radius: 50%!important;
+  background-color: #333;
+  border: none;
+}
+
+.pages .action.next:before,
+.pages .action.previous:before {
+  color: #FFF!important;
+  font-size: 25px!important;
+  margin: 0!important;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+  background-color: transparent!important;
+  border-color: none!important;
+  color: #000!important;
+  font-weight: bold!important;
+}
+
+
+.toolbar-products .pages {
+  display: none!important;
+}
+
+.catalog-category-view, .category-shop {
+  .product-reviews-summary {
+    display: none;
+  }
+  .special-price {
+    width: 40%;
+    display: inline-block;
+    text-align: right;
+
+    .price-container .price {
+      color: #cc0000;
+    }
+  }
+  .old-price {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .product-items {
+    margin-bottom: 40px!important;
+  }
+}
+
+.products-grid {
+  .toolbar-products .pages {
+    display: block!important;
+  }
+  .toolbar-sorter {
+    display: none!important;
+  }
+}
+
+.cms-page-view {
+  .main-content {
+    margin-bottom: 40px;
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+
+  blockquote, code {
+    margin: 15px auto;
+    padding: 10px;
+    background-color: #EFEFEF;
+  }
+}
+
+
