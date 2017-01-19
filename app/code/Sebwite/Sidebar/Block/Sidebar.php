@@ -158,11 +158,11 @@ class Sidebar extends Template
                     {
                         if ( $this->isActive($childCategory) )
                         {
-                            $html .= '<span class="expanded"><i class="fa fa-minus"></i></span>';
+                            $html .= '<span class="expanded"><i class="mdi mdi-chevron-up"></i></span>';
                         }
                         else
                         {
-                            $html .= '<span class="expand"><i class="fa fa-plus"></i></span>';
+                            $html .= '<span class="expand"><i class="mdi mdi-chevron-down"></i></span>';
                         }
                     }
 

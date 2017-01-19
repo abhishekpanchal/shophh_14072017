@@ -466,16 +466,6 @@ Product Description
       font-family: @headlineFont;
     }
   }
-
-  ul {
-    margin-bottom: 20px;
-    margin-left: 20px;
-  }
-
-  li {
-    position: relative;
-    list-style-type: disc;
-  }
 }
 
 .product-item-name, .product.name a {
@@ -595,20 +585,6 @@ Products Tabs
 }
 .product.data.items > .item.title {
   margin: 0;
-}
-
-.product.data.items > .item.title > .switch {
-  line-height: normal!important;
-  font-size: 12px!important;
-  color: #8d8d8d!important;
-  text-decoration: none;
-  background-color: transparent!important;
-  background: none!important;
-  border-bottom: none;
-  height: auto!important;
-  padding: 10px 30px!important;
-  border: none!important;
-  text-transform: uppercase;
 }
 
 .product.data.items > .item.content {
@@ -917,16 +893,6 @@ fieldset {
   margin-bottom: 10px!important;
 }
 
-.swatch-option.text,
-.swatch-option {
-  font-size: 10px!important;
-  height: 25px!important;
-  width: 25px!important;
-  line-height: 25px!important;
-  margin-right: 5px!important;
-  padding: 0!important;
-  min-width: auto!important;
-}
 
 
 .product-item-listing:nth-child(n+4) {
@@ -1129,7 +1095,6 @@ Quick View
   .product-item-inner {
     display: inline-block;
   }
-  
   .quickview-main-btn {
     display: inline-block;
     background-color: #666;
@@ -1149,9 +1114,42 @@ Quick View
   .page-products .toolbar .limiter {
     display: block!important;
   }
-
+  .toolbar-products  {
+    border-top: 1px solid #b2b2b2;
+    border-bottom: 1px solid #b2b2b2;
+    padding: 10px 0!important;
+  }
   .toolbar-sorter {
-    display: none;
+    display: block;
+    text-transform: uppercase;
+    font-family: @headlineFont;
+    text-align: left;
+  }
+
+  .sorter {
+    float: none;
+
+    a {
+      padding: 0 10px;
+      .relative;
+
+      &:hover {
+        color: #b2b2b2;
+        cursor: pointer;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -19px;
+          border-style: solid;
+          border-width: 0 5px 5px 5px;
+          border-color: transparent transparent #b2b2b2 transparent;
+          left: 50%;
+          right: 50%;
+          margin: 0 auto;
+        }
+      }
+    }
   }
 }
 
@@ -1399,9 +1397,6 @@ Flexbox - Rows
   }
 }
 
-.swatch-option {
-  border-radius: 50%!important;
-}
 
 .rating-summary .rating-result > span:before {
   color: #000!important;
@@ -1430,14 +1425,7 @@ Flexbox - Rows
   margin-top: 0!important;
 }
 
-.swatch-attribute-label {
-  font-weight: bold;
-  position: relative;
-  display: inline-block;
-  font-size: 13px;
-  text-transform: uppercase;
-  min-width: 50px;
-}
+
 
 .product-qty label {
   min-width: 50px;
@@ -1466,12 +1454,16 @@ Flexbox - Rows
     margin-top: 0;
     display: block;
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 30px;
 
     span {
       background: #FFF;
       padding: 0 30px;
     }
+  }
+
+  .product-item-details .price-container {
+    display: inline-block;
   }
 }
 
@@ -1562,6 +1554,7 @@ Flexbox - Rows
     font-size: 16px!important;
     margin: 0!important;
     padding: 0!important;
+    color: #FFF!important;
 }
 
 .filter-options .filter-options-content .item .badge {
@@ -1658,65 +1651,6 @@ Flexbox - Rows
 
 
 
-/* ==========================================================================
-Media Queries
- ========================================================================== */
-/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
-@media only screen and (max-width: 959px) {
-  .product.data.items > .item.content {margin: 0; margin-top: 0!important;}
-  .page-title {font-size: 25px;}
-  .product.data.items > .item.content {border: none;}
-  .page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
-  .product.data.items > .item.title {
-    border: 1px solid #DDD;
-  }
-  .product.data.items > .item.title:first-child a {
-    padding-left: 30px!important;
-  }
-  .product.data.items > .item.title:last-child a {
-    margin-top: -1px;
-  }
-
-
-
-  .product.data.items > .item.title a {
-    position: relative;
-  }
-
-  .product.data.items > .item.title a:after {
-    margin: 0;
-    font: normal normal normal 24px/1 "Material Design Icons";
-    font-size: inherit;
-    text-rendering: auto;
-    content: "\F415";
-    position: absolute;
-    right: 10px;
-  }
-
-
-  .product.data.items > .item.title.active a:after {
-    margin: 0;
-    font: normal normal normal 24px/1 "Material Design Icons";
-    font-size: inherit;
-    text-rendering: auto;
-    content: "\F374";
-    position: absolute;
-    right: 10px;
-  }
-
-
-}
-
-
-/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
-@media only screen and (max-width: 767px) {
-
-}
-
-/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
-@media only screen and (max-width: 479px) {
-
-}
 
 .mfp-preloader {
   max-width: 50%;
@@ -1758,7 +1692,7 @@ Media Queries
   background: transparent;
   width: auto!important;
   padding: 0!important;
-  top: 35%;
+  top: 15%;
 }
 
 .carousel-control {
@@ -1766,7 +1700,7 @@ Media Queries
   text-shadow: none!important;
 
   .mdi {
-    font-size: 25px!important;
+    font-size: 110px!important;
   }
 }
 
@@ -1780,4 +1714,303 @@ Media Queries
 }
 
 
+/* =========================================================
+Products
+============================================================ */
+.product-labels {
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: capitalize;
+  font-weight: normal;
+  font-family: @baseFont;
+  color: #000;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.circle-radius {
+  border-radius: 50%;
+}
+
+.relative {
+  position: relative;
+}
+
+.display-none {
+  display: none;
+}
+
+.visible {
+  display: block!important;
+}
+
+
+.product-info-main {
+  .product-options-wrapper {
+    .fieldset {
+      .product-labels;
+
+      .swatch-attribute-label {
+        min-width: 65px;
+        .inline-block;
+      }
+      .swatch-option {
+        .relative;
+        .circle-radius;
+        overflow: visible;
+        height: 24px;
+        width: 24px;
+        padding: 0;
+        min-width: auto;
+        font-size: 10px;
+      }
+      .swatch-option.selected {
+        outline: none;
+
+        &:after {
+          content: '';
+          border: 1px solid #a2aaab;
+          height: 30px;
+          width: 30px;
+          display: block;
+          left: -4px;
+          top: -4px;
+          position: absolute;
+          .circle-radius;
+        }
+      }
+      .swatch-attribute-selected-option {
+        .display-none;
+      }
+      .swatch-option.image:not(.disabled):hover, .swatch-option.color:not(.disabled):hover {
+        outline: none;
+      }
+    }
+  }
+}
+
+.product.info.detailed .additional-attributes > tbody > tr {
+  padding: 5px 0;
+}
+.product.info.detailed .additional-attributes > tbody > tr > td {
+  padding: 0 10px!important;
+}
+
+.product.data.items > .item.title > .switch {
+  line-height: normal!important;
+  font-size: 14px!important;
+  color: #8d8d8d!important;
+  text-decoration: none;
+  background-color: transparent!important;
+  background: none!important;
+  border-bottom: none;
+  height: auto!important;
+  padding: 10px 20px!important;
+  border: none!important;
+  text-transform: uppercase;
+  font-family: @baseFont;
+}
+
+
+/* =========================================================
+Content Typo
+============================================================ */
+.main {
+  .content {
+    ul {
+      margin-bottom: 20px;
+      margin-left: 20px;
+
+      li {
+        position: relative;
+        list-style-type: disc;
+      }
+    }
+  }
+}
+
+/* =========================================================
+Gallery
+============================================================ */
+.fotorama__thumb-border {
+  border-color: #000!important;
+}
+
+
+
+
+
+#product-review-container {
+  .page-title {
+    margin-bottom: 30px;
+  }
+}
+
+
+
+/* =========================================================
+Sidebar
+============================================================ */
+.c-sidebar {
+  h3 {
+    text-transform: uppercase;;
+    padding: 15px 0;
+    border-top: 1px solid #c4c4c4;
+    border-bottom: 1px solid #c4c4c4;
+  }
+  .o-list {
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+    padding-right: 0!important;
+
+    li {
+      padding: 0;
+      padding: 10px 0;
+      border-bottom: 1px solid #c4c4c4!important;
+      transition: 0.2s all;
+
+      a.active {
+        font-family: @headlineFont;
+        font-weight: bold;
+      }
+    }
+    .level0 {
+      border-bottom: none!important;
+      a {
+        text-transform: uppercase;
+      }
+      .expand:first-child {
+        float: left;
+      }
+    }
+
+    .o-list--unstyled {
+      .level1 {
+
+        &:hover {
+          background-color: #FFF;
+          color: #707070;
+          cursor: pointer;
+        }
+        &:last-child {
+          padding-bottom: 10px!important;
+        }
+        a {
+          text-transform: capitalize;
+          font-family: @headlineFont;
+        }
+      }
+      .level1.active {
+        &:hover {
+          background-color: transparent!important;
+          color: #707070;
+          cursor: pointer;
+        }
+        ul li:last-of-type {
+          padding-bottom: 5px;
+        }
+      }
+      .level2 {
+        padding: 5px 0;
+        border-bottom: none!important;
+
+        &:hover {
+          background-color: #FFF;
+          color: #707070;
+          cursor: pointer;
+        }
+
+        a {
+          color: #a2a2a2;
+          font-family: @baseFont;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* ==========================================================================
+Media Queries
+ ========================================================================== */
+/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
+@media only screen and (max-width: 959px) {
+  .product.data.items > .item.content {
+    margin: 0;
+    margin-top: 0!important;
+    padding-bottom: 0;
+
+  }
+  .page-title {font-size: 25px;}
+  .product.data.items > .item.content {border: none; padding-left: 20px!important;border-bottom: 1px solid #DDD;}
+  .page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
+  .product.data.items > .item.title {
+    border-bottom: 1px solid #DDD;
+  }
+  .product.data.items > .item.title:first-child a {
+    padding-left: 20px!important;
+  }
+  .product.data.items > .item.title:last-child a {
+    margin-top: -1px;
+  }
+
+  .product {
+    .table-wrapper {
+      margin-bottom: 0;
+    }
+  }
+
+
+  .product.data.items > .item.title a {
+    position: relative;
+  }
+
+  .product.data.items > .item.title a:after {
+    margin: 0;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    content: "\F415";
+    position: absolute;
+    right: 10px; font-size: 20px;
+  }
+
+
+  .product.data.items > .item.title.active a:after {
+    margin: 0;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    content: "\F374";
+    position: absolute;
+    right: 10px; font-size: 20px;
+  }
+  .product.data.items > .item.title > .switch {
+    padding: 15px 20px!important;
+  }
+  .table-wrapper .table:not(.cart):not(.totals):not(.table-comparison).additional-attributes tbody td:last-child {
+    padding: 0!important
+  }
+  .towishlist, .towishlist span {
+    color: #FFF!important;
+  }
+  .product-info-main .name .value {
+    font-size: 28px;
+    text-align: center;
+  }
+}
+
+
+/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
+@media only screen and (max-width: 767px) {
+
+}
+
+/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
+@media only screen and (max-width: 479px) {
+
+}
 

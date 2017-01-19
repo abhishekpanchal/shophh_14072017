@@ -169,43 +169,95 @@ switch ($type = $block->getType()) {
     </div>
 
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="hidden-sm hidden-md visible-xs">
+    <div class="row mobile-upsell-carousel hidden-sm hidden-md hidden-lg">
+
+
                 <div id="upsellCarousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#upsellCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#upsellCarousel" data-slide-to="1"></li>
-                    <li data-target="#upsellCarousel" data-slide-to="2"></li>
-                    <li data-target="#upsellCarousel" data-slide-to="3"></li>
-                  </ol>
+                     <div class="carousel-inner" role="listbox">
+                        <?php $iterator = 1; ?>
+                        <?php foreach ($items as $_item): ?>
+                        <?php $available = ''; ?>
+                        <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
+                            <?php if (!$_item->getRequiredOptions()): ?>
+                                <?php $available = 'related-available'; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <div class="item <?php if($iterator == 1) echo 'active'; ?>">
+                        <div class="product-item-details <?php echo $available; ?>">
+                        <?php echo '<!-- ' . $image . '-->' ?>
+                        <a href="<?php echo $block->getProductUrl($_item) ?>" class="product photo product-item-photo">
+                            <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                        </a>
+                        <div class="product details product-item-details carousel-caption">
+                            <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php echo $block->getProductUrl($_item) ?>">
+                                <?php echo $block->escapeHtml($_item->getName()) ?></a>
+                            </strong>
+                            <?php if ($description):?>
+                                <?php
+                                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                                    $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
+                                    echo $product->getShortDescription();
+                                ?>
+                            <?php endif; ?>
+                            <?php echo $block->getProductPrice($_item); ?>
 
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <img src="http://hhshop.hhmedia.com:8888/shophh/pub/media/catalog/product/cache/1/image/700x700/e9c3970ab036de70892d86c6d221abfe/l/a/lamp-1.jpg">
-                      <div class="carousel-caption">
-                        <h3>Flowers</h3>
-                        <p>Beatiful flowers in Kolymbari, Crete.</p>
-                      </div>
+                            <?php if ($templateType): ?>
+                                <?php echo $block->getReviewsSummaryHtml($_item, $templateType) ?>
+                            <?php endif; ?>
+
+                            <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
+                                <?php if (!$_item->getRequiredOptions()): ?>
+                                    <div class="field choice related">
+                                        <input type="checkbox" class="checkbox related" id="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>" name="related_products[]" value="<?php /* @escapeNotVerified */ echo $_item->getId() ?>" />
+                                        <label class="label" for="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>"><span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span></label>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
+                                <ul class="product actions product-item-actions visible">
+
+                                    <li class="secondary-addto-links actions-secondary product-meta-wishlist" data-role="add-to-links">
+                                        <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
+                                            <?php echo $addToBlock->setProduct($_item)->getChildHtml(); ?>
+                                        <?php endif; ?>
+                                    </li>
+
+
+                                    <li class="product-meta-cart">
+                                        <?php if ($_item->isSaleable()): ?>
+                                            <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
+                                                <button class="action icon-cart" data-mage-init='{"redirectUrl": {"url": "<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_item) ?>"}}' type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                        <i class="mdi mdi-cart-outline"></i>
+                                                </button>
+                                            <?php else: ?>
+                                                <?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+                                                ?>
+                                                <button class="action icon-cart"
+                                                        data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+                                                        type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                        <i class="mdi mdi-cart-outline"></i>
+                                                </button>
+                                            <?php endif; ?>
+                                        <?php else: ?>
+                                            <?php if ($_item->getIsSalable()): ?>
+                                                <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                            <?php else: ?>
+                                                <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </li>
+                                </ul>
+
+                        </div>
                     </div>
-
-                    <div class="item">
-                      <img src="img_chania2.jpg">
+                </div>
+                        <?php $iterator++; ?>
+                        <?php //echo($iterator == count($items)+1) ? '</li>' : '' ?>
+                    <?php endforeach ?>
                     </div>
-
-                    <div class="item">
-                      <img src="img_flower.jpg">
-                    </div>
-
-                    <div class="item">
-                      <img src="img_flower2.jpg">
-                    </div>
-                  </div>
-
-                  <!-- Left and right controls -->
-                  <a class="left carousel-control" href="#upsellCarousel" role="button" data-slide="prev">
+                <!--</ol>-->
+                <a class="left carousel-control" href="#upsellCarousel" role="button" data-slide="prev">
                     <span class="mdi mdi-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                   </a>
@@ -213,9 +265,7 @@ switch ($type = $block->getType()) {
                     <span class="mdi mdi-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                   </a>
-                </div>
             </div>
-        </div>
     </div>
 
 
