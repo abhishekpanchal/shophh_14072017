@@ -1095,7 +1095,6 @@ Quick View
   .product-item-inner {
     display: inline-block;
   }
-  
   .quickview-main-btn {
     display: inline-block;
     background-color: #666;
@@ -1115,9 +1114,42 @@ Quick View
   .page-products .toolbar .limiter {
     display: block!important;
   }
-
+  .toolbar-products  {
+    border-top: 1px solid #b2b2b2;
+    border-bottom: 1px solid #b2b2b2;
+    padding: 10px 0!important;
+  }
   .toolbar-sorter {
-    display: none;
+    display: block;
+    text-transform: uppercase;
+    font-family: @headlineFont;
+    text-align: left;
+  }
+
+  .sorter {
+    float: none;
+
+    a {
+      padding: 0 10px;
+      .relative;
+
+      &:hover {
+        color: #b2b2b2;
+        cursor: pointer;
+
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -19px;
+          border-style: solid;
+          border-width: 0 5px 5px 5px;
+          border-color: transparent transparent #b2b2b2 transparent;
+          left: 50%;
+          right: 50%;
+          margin: 0 auto;
+        }
+      }
+    }
   }
 }
 
