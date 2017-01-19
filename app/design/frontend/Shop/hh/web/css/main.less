@@ -1098,9 +1098,9 @@ Quick View
   color: #000;
   font-family: @fancyFont;
   font-style: italic;
-  font-size: 14px;
+  font-size: 13px;
   line-height: normal;
-  padding: 10px 25px;
+  padding: 8px 22px;
   display: block;
   margin-bottom: 20px;
   margin-left: 30px;
@@ -1198,7 +1198,7 @@ Flexbox - Rows
     background-color: #f0f0f0;
     display: inline-block;
     text-align: center;
-    border-radius: 3px;
+    border-radius: 7px;
     padding: 0;
     height: auto;
     padding: 10px 15px;
@@ -1448,31 +1448,6 @@ Flexbox - Rows
     content: ''!important;
 }
 
-/* ==========================================================================
-Media Queries
- ========================================================================== */
-/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
-@media only screen and (max-width: 959px) {
-  .product.data.items > .item.content {margin: 0; margin-top: 0!important;}
-  .page-title {font-size: 25px;}
-  .product.data.items > .item.content {border: none;}
-  .page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
-  .product.data.items > .item.title {
-    border: 1px solid #DDD;
-  }
-}
-
-
-/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
-@media only screen and (max-width: 767px) {
-
-}
-
-/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
-@media only screen and (max-width: 479px) {
-
-}
-
 .product-item .price-box .price-label:after {
   content: ''!important;
 }
@@ -1645,7 +1620,7 @@ Media Queries
     background-color: #f0f0f0;
     display: block;
     text-align: left;
-    border-radius: 3px;
+    border-radius: 8px;
     padding: 0;
     height: auto;
     padding: 11px 16px;
@@ -1680,5 +1655,129 @@ Media Queries
 
 
 .fieldset > .field.choice::before, .fieldset > .field.no-label::before {width: auto!important;}
+
+
+
+/* ==========================================================================
+Media Queries
+ ========================================================================== */
+/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
+@media only screen and (max-width: 959px) {
+  .product.data.items > .item.content {margin: 0; margin-top: 0!important;}
+  .page-title {font-size: 25px;}
+  .product.data.items > .item.content {border: none;}
+  .page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
+  .product.data.items > .item.title {
+    border: 1px solid #DDD;
+  }
+  .product.data.items > .item.title:first-child a {
+    padding-left: 30px!important;
+  }
+  .product.data.items > .item.title:last-child a {
+    margin-top: -1px;
+  }
+
+
+
+  .product.data.items > .item.title a {
+    position: relative;
+  }
+
+  .product.data.items > .item.title a:after {
+    margin: 0;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    content: "\F415";
+    position: absolute;
+    right: 10px;
+  }
+
+
+  .product.data.items > .item.title.active a:after {
+    margin: 0;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    content: "\F374";
+    position: absolute;
+    right: 10px;
+  }
+
+
+}
+
+
+/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
+@media only screen and (max-width: 767px) {
+
+}
+
+/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
+@media only screen and (max-width: 479px) {
+
+}
+
+.mfp-preloader {
+  max-width: 50%;
+  opacity: 1;
+  padding: 30px;
+}
+
+.mfp-iframe-holder .mfp-close {
+  font-size: 25px!important;
+}
+
+.mfp-preloader:after {
+  content: '';
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 30%;
+  left: 45%;
+  border-radius: 50%;
+  border: 2px solid #000;
+  border-top-color: transparent;
+  animation: lai-spinnair 1s linear infinite;
+  /*animation: lai-spinnair 1.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;*/
+  box-sizing: border-box;
+}
+
+@keyframes lai-spinnair {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+
+.carousel-control.right,
+.carousel-control.left {
+  background: transparent;
+  width: auto!important;
+  padding: 0!important;
+  top: 35%;
+}
+
+.carousel-control {
+  color: #000!important;
+  text-shadow: none!important;
+
+  .mdi {
+    font-size: 25px!important;
+  }
+}
+
+.carousel-caption {
+  position: relative;
+  left: auto;
+  right: auto;
+  text-shadow: none;
+  color: #000;
+  margin-top: 30px;
+}
+
 
 
