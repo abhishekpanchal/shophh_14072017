@@ -5,9 +5,17 @@
                 <width>270</width>
                 <height>270</height>
             </image>
+            <image id="bundled_product_customization_page" type="thumbnail">
+                <width>350</width>
+                <height>350</height>
+            </image>
+            <image id="product_comparison_list" type="small_image">
+                <width>350</width>
+                <height>350</height>
+            </image>
             <image id="cart_cross_sell_products" type="thumbnail">
-                <width>270</width>
-                <height>270</height>
+                <width>350</width>
+                <height>350</height>
             </image>
             <image id="cart_page_product_thumbnail" type="small_image">
                 <width>165</width>
