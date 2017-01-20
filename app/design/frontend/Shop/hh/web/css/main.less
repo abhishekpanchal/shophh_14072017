@@ -320,7 +320,8 @@ Buttons
   line-height: normal;
   padding: 10px 30px;
   font-size: 14px;
-  font-family: 'Montserrat','Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: @fancyFont;
+  font-style: italic;
   font-weight: normal;
 }
 
@@ -1526,7 +1527,7 @@ Flexbox - Rows
 
 .product-item-photo{
   img {
-    width: 100%!important;
+    width: 60%!important;
   }
 }
 
@@ -2257,27 +2258,67 @@ Media Queries
   z-index: 2;
 }
 
-
-
 .hidden {
   display: none!important;
-}
-
-body {
-  background-color: blue!important;
 }
 
 /* =========================================================
 Checkout
 ============================================================ */
-.review-field {
+
+.review-form {
+  max-width: 100%;
+
+  .fieldset > .field:not(.choice) > .label,
+  .fieldset > .field:not(.choice) > .control{
+    float: none!important;
+    width: 100%;
+    display: block!important;
+    text-align: left!important;
+    padding: 5px 0;
+    text-transform: capitalize!important;
+  }
+}
+
+.field.review-field-text.required {
+
+}
+
+.review-field-ratings {
+  .relative;
+
+  .label {
+    text-transform: capitalize!important;
+  }
+
+  legend.label {
+    display: inline-block;
+    width: 15%;
+    float: left;
+    text-align: left;
+    font-weight: normal!important;
+  }
+
+  .control {
+    display: inline-block;
+    float: left;
+    margin-top: -6px;
+    margin-bottom: 15px;
+  }
+}
+
+.review-fieldset {
+  margin-bottom: 10px;
+}
+.review-form-actions {
   display: block;
+  clear: both;
 }
 
-.review-text {
-
+.fieldset > .field.required > .label:after, .fieldset > .fields > .field.required > .label:after, .fieldset > .field._required > .label:after, .fieldset > .fields > .field._required > .label:after {
+  content: ''!important;
 }
 
-.review-btn {
-  
+#Overall_rating_label {
+  display: none;
 }
