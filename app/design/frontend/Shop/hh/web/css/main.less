@@ -270,6 +270,7 @@ Social
 /* ==========================================================================
 Main Navigation
  ========================================================================== */
+
 .navbar-default {
   background-color: transparent;
   border: none;
@@ -1723,30 +1724,6 @@ Flexbox - Rows
   font-size: 25px!important;
 }
 
-.mfp-preloader:after {
-  content: '';
-  position: absolute;
-  height: 30px;
-  width: 30px;
-  top: 30%;
-  left: 45%;
-  border-radius: 50%;
-  border: 2px solid #000;
-  border-top-color: transparent;
-  animation: lai-spinnair 1s linear infinite;
-  /*animation: lai-spinnair 1.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;*/
-  box-sizing: border-box;
-}
-
-@keyframes lai-spinnair {
-  0% {
-    transform: rotateZ(0);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
 
 .carousel-control.right,
 .carousel-control.left {
@@ -1867,7 +1844,8 @@ Products
       .swatch-attribute-label {
         min-width: 65px;
         .inline-block;
-        font-size: 15px!important;
+        font-size: 15px;
+        font-weight: normal!important;
       }
       .swatch-option {
         .relative;
@@ -2201,7 +2179,7 @@ Media Queries
 }
 
 .mfp-iframe-holder .mfp-content {
-  max-width: 800px!important;
+  max-width: 80%;
 }
 
 .quickview-qty {
@@ -2235,4 +2213,71 @@ Media Queries
 }
 .page-products .columns {
   margin-left: 0!important;
+}
+
+.header {
+  position: relative;
+  z-index: 15;
+}
+
+.mfp-iframe-scaler {
+  background-color: #FFF!important;
+}
+
+
+.mfp-iframe-scaler:after {
+  content: '';
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 2px solid #000;
+  border-top-color: transparent;
+  animation: lai-spinnair 1s linear infinite;
+  /*animation: lai-spinnair 1.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;*/
+  box-sizing: border-box;
+}
+
+@keyframes lai-spinnair {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.mfp-iframe-holder .mfp-close {
+  top: -20px!important;
+}
+
+.mfp-iframe-scaler iframe {
+  z-index: 2;
+}
+
+
+
+.hidden {
+  display: none!important;
+}
+
+body {
+  background-color: blue!important;
+}
+
+/* =========================================================
+Checkout
+============================================================ */
+.review-field {
+  display: block;
+}
+
+.review-text {
+
+}
+
+.review-btn {
+  
 }
