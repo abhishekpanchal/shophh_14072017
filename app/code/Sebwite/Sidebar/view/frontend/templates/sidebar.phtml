@@ -15,7 +15,8 @@ $brands     = $block->getBrands();
     // Loop through categories
     foreach ( $categories as $category ) :
         ?>
-        <li class="level0<?php echo($block->isActive($category) ? ' active' : ''); ?>">
+        <!-- <li class="level0<?php echo($block->isActive($category) ? ' active' : ''); ?>"> -->
+            <li class="level0 active">
             <?php if ( $category->hasChildren() ) : ?>
                 <span class="expand"><?php echo $block->isActive($category) ? '<i class="mdi mdi-chevron-up"></i>' : '<i class="mdi mdi-chevron-up"></i>'; ?></span>
             <?php endif; ?>
