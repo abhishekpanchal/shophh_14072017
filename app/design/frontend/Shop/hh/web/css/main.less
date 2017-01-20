@@ -1173,9 +1173,20 @@ Quick View
       background-color: transparent;
       border: none;
     }
+
+    .btn-view-list2 {
+      padding: 15px 20px;
+      color: #0000;
+      background-color: #EFEFEF;
+      border: none;
+      display: block;
+      width: 80%!important;
+      margin: 0 auto;
+    }
     .caret {
       color: #999;
     }
+
     .limiter-options {
       background-color: #E6E6E6;
       box-shadow: none;
@@ -1187,6 +1198,26 @@ Quick View
       min-width: 80px;
       left: auto;
       right: 0;
+
+      li {
+        padding: 5px 0;
+        padding-left: 10px;
+        font-size: 12px;
+      }
+    }
+
+
+    .limiter-options2 {
+      background-color: #E6E6E6;
+      box-shadow: none;
+      padding: 5px;
+      width: auto;
+      border-radius: 0;
+      margin-top: 14px;
+      border: 1px solid #b2b2b2;
+      min-width: 300px;
+      left: auto;
+      right: auto;
 
       li {
         padding: 5px 0;
@@ -2093,6 +2124,41 @@ Media Queries
   .c-sidebar {
     width: 100%;
   }
+
+
+  .page-products .product-item-info {
+    width: 80%!important;
+    margin: 0 auto!important;
+  }
+  .products-carousel {
+    .product-item-actions {
+      display: block!important;
+    }
+    .carousel-control.right, .carousel-control.left {
+      top: 30%;
+    }
+    .item {
+      margin-bottom: 50px;
+    }
+  }
+  .account {
+    .box {
+      margin-bottom: 30px;
+    }
+    .page-title {
+      font-size: 25px;
+      max-width: 300px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .form-edit-account input {
+    width: 100%!important;
+  }
+  .page-products .sorter {
+    display: none;
+  }
 }
 
 
@@ -2110,3 +2176,32 @@ Media Queries
   max-width: 800px!important;
 }
 
+.quickview-qty {
+  margin: 20px auto;
+  display: block;
+}
+
+#upsellCarousel {
+  max-width: 80%:
+  margin: 0 auto;
+}
+
+.password-strength-meter {
+  background-color: transparent!important;
+}
+
+.action.back {
+  display: none;
+}
+
+.action.save.primary {
+  font-size: 15px!important;
+  text-transform: capitalize!important;
+}
+
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
