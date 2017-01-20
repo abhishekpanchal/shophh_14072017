@@ -34,15 +34,15 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
     ?>
     <label class="sorter-label" for="sorter"><?php echo __('Sort By:') ?></label>
     <a title="<?php echo __('Latest') ?>" href="<?php echo $latest ?>">
-        <?php if($order == 'position') $active = 'active'; ?> 
+        <?php if($order == 'position') { $active = 'active'; }else{$active = '';} ?> 
         <span class="<?php echo $active ?>"><?php echo __('Latest') ?></span>
     </a>
     <a title="<?php echo __('Price (Low to High)') ?>" href="<?php echo $priceLH ?>">
-        <?php if($order == 'price' && $dir=='asc') $active = 'active'; ?> 
+        <?php if($order == 'price' && $dir=='asc') { $active = 'active';}else{$active='';} ?> 
         <span class="<?php echo $active ?>"><?php echo __('Price (Low to High)') ?></span>
     </a>
     <a title="<?php echo __('Price (High to Low)') ?>" href="<?php echo $priceHL ?>">
-        <?php if($order == 'price' && $dir=='desc') $active = 'active'; ?> 
+        <?php if($order == 'price' && $dir=='desc'){$active = 'active';}else{$active='';} ?> 
         <span class="<?php echo $active ?>"><?php echo __('Price (High to Low)') ?></span>
     </a>
     <?php /*    

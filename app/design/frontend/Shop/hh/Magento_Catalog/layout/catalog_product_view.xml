@@ -51,6 +51,10 @@
       </action>
     </referenceBlock>
 
+    <referenceBlock name="product.info.main">
+      <block class="Magento\Catalog\Block\Product\View" name="batch" before="product.info" template="product/view/batch.phtml" />
+    </referenceBlock>
+
     <referenceBlock name="product.info.details">
       <block class="Magento\Catalog\Block\Product\View" name="shipping.delivery" template="product/view/shipping_delivery.phtml" group="detailed_info" >
         <arguments>
