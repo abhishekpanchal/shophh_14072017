@@ -1096,7 +1096,6 @@ Quick View
     margin-top: 50px;
   }
 }
-
 .page-products {
   .product-item-inner {
     display: inline-block;
@@ -1173,16 +1172,6 @@ Quick View
       background-color: transparent;
       border: none;
     }
-
-    .btn-view-list2 {
-      padding: 15px 20px;
-      color: #0000;
-      background-color: #EFEFEF;
-      border: none;
-      display: block;
-      width: 80%!important;
-      margin: 0 auto;
-    }
     .caret {
       color: #999;
     }
@@ -1206,18 +1195,47 @@ Quick View
       }
     }
 
+  }
+}
+
+
+
+    .category-dropdown {
+      .btn-view-list2 {
+        padding: 15px 20px;
+        color: #0000;
+        background-color: #EFEFEF;
+        border: none;
+        display: block;
+        width: 80%!important;
+        margin: 0 auto;
+        background: #e6e6e6;
+        width: 100%;
+        padding: 12px;
+        font-size: 14px!important;
+        text-transform: uppercase;
+        text-align: left;
+        font-family: @headlineFont;
+        border: 1px solid #b2b2b2;
+      }
+      .caret {
+        float: right;
+        margin-top: 10px;
+      }
+    }
 
     .limiter-options2 {
       background-color: #E6E6E6;
       box-shadow: none;
       padding: 5px;
       width: auto;
-      border-radius: 0;
-      margin-top: 14px;
+      margin-top: 2px;
       border: 1px solid #b2b2b2;
-      min-width: 300px;
+      min-width: 295px;
       left: auto;
       right: auto;
+      margin-left: 10%;
+      border-radius: 3px;
 
       li {
         padding: 5px 0;
@@ -1225,10 +1243,6 @@ Quick View
         font-size: 12px;
       }
     }
-  }
-}
-
-
 
 .mfp-preloader {animation: none!important;}
 
@@ -1536,7 +1550,7 @@ Flexbox - Rows
 }
 
 .product-qty .label {
-  font-size: 18px!important;
+  font-size: 15px!important;
   font-weight: normal!important;
   text-transform: capitalize;
   font-weight: normal;
@@ -1853,6 +1867,7 @@ Products
       .swatch-attribute-label {
         min-width: 65px;
         .inline-block;
+        font-size: 15px!important;
       }
       .swatch-option {
         .relative;
@@ -2102,6 +2117,7 @@ Media Queries
   .product-info-main .name .value {
     font-size: 28px;
     text-align: center;
+    margin-left: -20px;
   }
   .product-info-main {
     .product-info-price .price-box {
@@ -2119,6 +2135,9 @@ Media Queries
       margin-top: -90px;
       right: 15px;
       position: absolute;
+    }
+    .product-info-price {
+      margin-left: -20px;
     }
   }
   .c-sidebar {
@@ -2159,6 +2178,15 @@ Media Queries
   .page-products .sorter {
     display: none;
   }
+  .page-products .toolbar .limiter {
+    display: none!important;
+  }
+  .page-products .toolbar-products {
+    border-top: none!important;
+    border-bottom: none!important;
+  }
+  .c-sidebar {display: none!important;}
+  .category-image {display: none!important;}
 }
 
 
@@ -2182,7 +2210,7 @@ Media Queries
 }
 
 #upsellCarousel {
-  max-width: 80%:
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -2204,4 +2232,7 @@ Media Queries
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.page-products .columns {
+  margin-left: 0!important;
 }
