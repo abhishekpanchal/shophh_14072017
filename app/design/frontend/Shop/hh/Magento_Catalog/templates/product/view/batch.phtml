@@ -1,0 +1,5 @@
+<?php $_product = $block->getProduct(); ?>
+<?php $newProduct = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+<?php if($newProduct->isProductNew($_product)): ?>
+    <div class="new-product"><?php echo __('New'); ?></div>
+<?php endif; ?>
