@@ -1,9 +1,35 @@
-
 <?php
 //$helper = $this->helper('Altima\Lookbookslider\Helper\Data');
 //if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
 ?>
-    <?php echo $block->getChildHtml(); ?>
+<?php //echo $block->getChildHtml(); ?>
+<div style="clear:both; height:10px;"></div>
+<?php //endif; ?>
+<?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
+<?php $sliderCollection = $this->getCollection('content-top'); ?>
+<?php 
+	foreach($sliderCollection as $slider):
+		$sliderId = $slider->getSliderId();
+		break;
+ 	endforeach; 
+?>
+<?php 
+$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+$shotCollection =  $blockObj->getShotCollection($sliderId);
+?>
+<?php foreach($shotCollection as $shot): ?>
+	<?php $slideId = $shot->getSlideId(); ?> 
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
+	<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
+		<img src=<?php echo $imagePath; ?> />
+		<span class="title"><?php echo $shot->getTitle(); ?></span>
+	</a>
+<?php endforeach; ?>
 
- <div style="clear:both; height:10px;"></div>
- <?php //endif; ?>
+
+<?php 
+echo "<pre>";
+//print_r($abc->getData());
+print_r($shotCollection->getData());
+echo "</pre>";
+ ?>

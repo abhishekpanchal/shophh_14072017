@@ -116,4 +116,13 @@ class Lookbookslider extends \Magento\Framework\View\Element\Template {
         return $this;
     }
 
+    public function getCollection($position){
+        $sliderCollection = $this->_sliderCollectionFactory
+                ->create()
+                ->addFieldToFilter('position', $position)
+                ->addFieldToFilter('is_active', Status::STATUS_ENABLED);
+                
+        return $sliderCollection;
+    }
+
 }

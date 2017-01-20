@@ -1,15 +1,15 @@
 <?php
+$sliderId = $this->getRequest()->getParam('slider_id');
+$slideId =$this->getRequest()->getParam('slide_id');
+$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
 $helper = $this->helper('Altima\Lookbookslider\Helper\Data');
 if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
-
-    $slideCollection = $block->getSlideCollection();
-
+    $slideCollection = $blockObj->getShotCollection($sliderId);
     if (!empty($slideCollection) && $slideCollection->getSize()) :
-
-        $currentUrl = $block->getUrl();
-        $styleSlide = $block->getSlider()->getStyleSlide();
-        $slider = $block->getSlider();
-        $htmlId = $block->getFlexsliderHtmlId();
+        $currentUrl = $blockObj->getUrl();
+        $styleSlide = $blockObj->getSlider()->getStyleSlide();
+        $slider = $blockObj->getSlider();
+        $htmlId = $blockObj->getFlexsliderHtmlId();
         $navigation = ($slider->getNavigation() == 1) ? TRUE : FALSE;
         $navigationHover = ($slider->getNavigationHover() == 1) ? TRUE : FALSE;
         $thumbnails = ($slider->getThumbnails() == 1) ? TRUE : FALSE;
@@ -38,13 +38,13 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         $time = $slider->getTime();
         $trans_period = $slider->getTransPeriod();
         $thumb = TRUE;
-        if (count($slideCollection) <= 1):
+        if (count($slideCollection) <= 1){
             $navigation = FALSE;
             $thumbnails = FALSE;
             $thumb = FALSE;
-        endif;
+        }
         ?>
-        <link rel="stylesheet" type="text/css" href="<?php echo $block->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo $blockObj->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
 
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
@@ -82,7 +82,8 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                          data-cycle-speed="<?php echo $trans_period; ?>"
                          <?php
                      endif;
-                     ?>            
+                     ?>   
+
         <?php if (!$thumbnails && $thumb): ?>
                          data-cycle-pager="#pagernav_<?php echo $slider->getId() ?> .cycle"
                          data-cycle-pager-template="<li><span> {{slideNum}} </span></li>"
@@ -97,6 +98,8 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                      style="max-width:<?php echo $slider->getWidth(); ?>px; max-height:<?php echo $slider->getHeight(); ?>px; display: block;"
 
                      >
+
+
                     <?php if ($navigation): ?>
                         <div class="slide_commands <?php
                         if ($navigationHover) {
@@ -122,6 +125,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                     <?php $slide_ind = 1; ?>
 
                     <?php foreach ($slideCollection as $slide): ?>
+                        <?php if($slide->getId() == $slideId): ?>
                         <div class="slide"
                         <?php
                         if ($effect_arr):
@@ -142,7 +146,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                                 <a href="<?php echo $link; ?>">
             <?php endif; ?>                    
 
-                                <img alt="Slide <?php echo $slide->getId(); ?>"  src="<?php echo $block->getSlideImageUrl($slide) ?>"/>
+                                <img alt="Slide <?php echo $slide->getId(); ?>"  src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
 
                                     <?php if ($slide->getCaption() != '' && $slider->getShowslidenames() == 1) : ?>
                                     <div class="cycle-overlay">
@@ -154,25 +158,25 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                                 </a>
                             <?php endif; ?>
             <?php if ($helper->canShowPinitButton()): ?>
-                                <!------------ Pin It Button ------------------->
+                               
                                 <div class="pinit_button">
-                                    <a target="_blank" href="//www.pinterest.com/pin/create/button/?url=<?php echo $currentUrl . '?slide=' . $slide_ind ?>&media=<?php echo $block->getSlideImageUrl($slide); ?>"
+                                    <a target="_blank" href="//www.pinterest.com/pin/create/button/?url=<?php echo $currentUrl . '?slide=' . $slide_ind ?>&media=<?php echo $blockObj->getSlideImageUrl($slide); ?>"
                                        data-pin-do="buttonPin" 
                                        data-pin-config="above" >
                                         <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
                                     </a>
                                 </div>
-                                <!------------ Pin It Button ------------------->
+
             <?php endif; ?>
 
                         </div>
-                        <?php $hotspots[] = $block->getHotspotsWithProductDetails($slide); ?>
+                        <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
                         <?php $slide_ind++; ?>
-
+            <?php endif; ?>
         <?php endforeach ?>
                     <div id="progress"></div>
                 </div>
-                <!---------------------------------------->
+
                 <?php if ($thumbnails && $thumb): ?>
                     <?php $count_pager = 5; ?>
                     <?php
@@ -192,7 +196,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                              >
             <?php foreach ($slideCollection as $slide): ?>
                                 <li class="thumb">
-                                    <img src='<?php echo $block->getSlideThumbUrl($slide); ?>'/>
+                                    <img src='<?php echo $blockObj->getSlideThumbUrl($slide); ?>'/>
                                 </li>
             <?php endforeach; ?>
                         </ul>
@@ -204,7 +208,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                         </ul>
                     </div>
         <?php endif; ?>
-                <!----------------------------------------->
+                
 
             </div>    
             <?php if ($contentAfter): ?>
