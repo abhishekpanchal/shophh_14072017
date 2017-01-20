@@ -133,6 +133,19 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         return $slideCollection;
     }
 
+    public function getShotCollection($sliderId) {
+        $storeViewId     = $this->_storeManager->getStore()->getId();
+        $dateTimeNow     = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
+        $shotCollection = $this->_slideCollectionFactory->create()
+                ->setStoreViewId($storeViewId)
+                ->addFieldToFilter('slider_id', $sliderId)
+                ->addFieldToFilter('is_active', Status::STATUS_ENABLED)
+                ->setOrder('position', 'ASC');
+        return $shotCollection;
+    }
+
+
+
     public function getFirstSlideItem() {
         $sliderItem = $this->getSlideCollection()
                 ->setPageSize(1)
@@ -156,8 +169,10 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
 
     public function getSlideImageUrl(\Altima\Lookbookslider\Model\Slide $slide) {
         $srcImg = $this->_lookbooksliderHelper->getBaseUrlMedia($slide->getImage_path());
-        $width  = $this->_slider->getWidth();
-        $height = $this->_slider->getHeight();
+        //$width  = $this->_slider->getWidth();
+        //$height = $this->_slider->getHeight();
+        $width = 600;
+        $height = 250;
         return $this->_lookbooksliderHelper->getResizedUrl($slide->getImage_path(), $width, $height);
     }
 
