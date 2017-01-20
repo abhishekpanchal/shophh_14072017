@@ -33,9 +33,9 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 
 <div class="category-dropdown hidden-lg hidden-md hidden-sm visible-xs">
     <div class="dropdown">
-      <button class="btn dropdown-toggle btn-view-list2 type="button" data-toggle="dropdown">View
+      <button class="btn dropdown-toggle btn-view-list2" type="button" data-toggle="dropdown">View
       <span class="caret"></span></button>
-        <ul id="limiter" data-role="limiter" class="dropdown-menu limiter-options ">
+        <ul id="limiter" data-role="limiter" class="dropdown-menu limiter-options2">
             <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
                 <li value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
                     selected="selected"<?php endif ?>>
