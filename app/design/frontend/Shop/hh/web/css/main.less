@@ -975,7 +975,6 @@ Dashboard Fixes
     text-transform: uppercase;
     font-weight: bold;
     font-family: @headlineFont;
-    padding: 10px 0;
     border-bottom: 1px solid rgba(0,0,0,0.1);
   }
 }
@@ -1676,53 +1675,74 @@ Flexbox - Rows
   }
 }
 
-.form-edit-account {
-  margin-bottom: 40px;
+.page-layout-1column {
+  margin-bottom: 50px;
+}
 
-  .fieldset > .field:not(.choice) > .label {
-    float: none!important;
-    text-align: left!important;
-    display: block!important;
-    font-family: Montserrat-Light!important;
-    text-transform: capitalize!important;
-    font-size: 15px;
-    font-weight: normal !important;
-  }
+.account, .contact-index-index {
 
-  input {
-    background-color: #f0f0f0;
-    display: block;
-    text-align: left;
-    border-radius: 8px;
-    padding: 0;
-    height: auto;
-    padding: 11px 16px;
-    width: 80%;
-    margin: 0;
-    margin-top: 15px;
-    font-size: 15px!important;
-  }
+  .main-content, .form {
 
-  .field-name-firstname  {
-    margin-top: 20px;
-    display: block;
-  }
+    .fieldset > .field:not(.choice) > .label {
+      float: none!important;
+      text-align: left!important;
+      display: block!important;
+      font-family: Montserrat-Light!important;
+      text-transform: capitalize!important;
+      font-size: 15px;
+      font-weight: normal !important;
+      margin: 0;
+      margin-bottom: 0!important;
+    }
+    textarea {
+      margin-top: 15px;
+      background-color: #f0f0f0;
+      padding: 11px 16px;
+      width: 80%;
+      border-radius: 8px;
+    }
+    input {
+      background-color: #f0f0f0;
+      display: block;
+      text-align: left;
+      border-radius: 8px;
+      padding: 0;
+      height: auto;
+      padding: 11px 16px;
+      width: 80%;
+      margin: 0;
+      margin-top: 15px;
+      font-size: 15px!important;
+    }
 
-  .checkbox {
-    float: left!important;
-    width: auto!important;
-    margin-top: 4px;
-    margin-right: 20px;
-  }
+    .field-name-firstname  {
+      margin-top: 20px;
+      display: block;
+    }
 
-  .label {
-    text-transform: capitalize!important;
-  }
+    .checkbox {
+      float: left!important;
+      width: auto!important;
+      margin-top: 4px;
+      margin-right: 20px;
+    }
 
-  .action.primary {
-    font-family: @fancyFont!important;
-    font-style: italic!important;
-    font-weight: normal!important;
+    .label {
+      text-transform: capitalize!important;
+    }
+
+    .action.primary {
+      font-family: @fancyFont!important;
+      font-style: italic!important;
+      font-weight: normal!important;
+    }
+    .action {
+      margin-right: 10px!important;
+    }
+    select {
+      width: 80%;
+      margin-top: 15px
+    }
   }
 }
 
@@ -1963,6 +1983,12 @@ Gallery
 Sidebar
 ============================================================ */
 .c-sidebar {
+  a {
+    padding: 10px 0;
+  }
+  li {
+    padding-bottom: 0!important;
+  }
   h3 {
     text-transform: uppercase;;
     padding: 15px 0;
@@ -1976,13 +2002,13 @@ Sidebar
 
     li {
       padding: 0;
-      padding: 10px 0;
       border-bottom: 1px solid #c4c4c4!important;
       transition: 0.2s all;
 
       a.active {
         font-family: @headlineFont;
         font-weight: bold;
+        display: block;
       }
     }
     .level0 {
@@ -2005,7 +2031,7 @@ Sidebar
           cursor: pointer;
         }
         &:last-child {
-          padding-bottom: 10px!important;
+
         }
         a {
           text-transform: capitalize;
@@ -2019,7 +2045,7 @@ Sidebar
           cursor: pointer;
         }
         ul li:last-of-type {
-          padding-bottom: 5px;
+
         }
       }
       .level2 {
@@ -2043,6 +2069,7 @@ Sidebar
 
 .c-sidebar .expand, .c-sidebar .expanded {
   margin-right: 10px!important;
+  margin-top: 10px!important;
 }
 
 /* ==========================================================================
@@ -2168,8 +2195,11 @@ Media Queries
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    .action {
+      margin-right: 10px;
+    }
   }
-  .form-edit-account input {
+  .account input {
     width: 100%!important;
   }
   .page-products .sorter {
@@ -2185,15 +2215,21 @@ Media Queries
 
   .category-image {display: none!important;}
 
+  .product-add-form {
+    margin-left: 20px;
+  }
 
+  .page-products .quickview-main-btn {
+    display: none!important;
+  }
 
-.product-add-form {
-  margin-left: 20px;
-}
+  .footer-col {
+    margin-bottom: 30px;
+  }
 
-.page-products .quickview-main-btn {
-  display: none!important;
-}
+  .border-left {
+    margin-left: 15px;
+  }
 }
 
 
@@ -2388,5 +2424,15 @@ Checkout
       font-family: @headlineFont;
       text-transform: uppercase;
     }
+  }
+}
+
+.footer-bottom {
+  margin-top: 20px;
+}
+
+.account {
+  .account-nav a {
+    padding: 15px;
   }
 }

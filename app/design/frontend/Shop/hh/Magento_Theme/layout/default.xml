@@ -7,7 +7,6 @@
         <referenceContainer name="skip_to_content" remove="true" />
 
         <move element="top.links" destination="header.toplinks"/>
-        <!-- <move element="top.search" destination="header.topsearch" /> -->
 
         <referenceContainer name="header-wrapper">
             <container name="headertop.wrap" htmlTag="div" htmlClass="header-top">
@@ -78,18 +77,18 @@
                     </container>
                 </container>
             </container>
-            <container name="footer-wrap2" htmlTag="div" htmlClass="container">
-                <container name="footer-row-2" htmlTag="div" htmlClass="row">
-                    <container name="footer-logo" htmlTag="div" htmlClass="col-xs-12 footer-logo col-md-2">
+            <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
+                <container name="footer-row-2" htmlTag="div" htmlClass="row vcenter">
+                    <container name="footer-logo" htmlTag="div" htmlClass="footer-logo col-md-2 col-xs-12">
                         <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-logo</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer-legal-container" htmlTag="div" htmlClass="col-xs-12 footer-legal col-md-6">
+                    <container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal col-md-7 col-xs-12">
                     </container>
-                    <container name="footer-social" htmlTag="div" htmlClass="col-xs-12 footer-social col-md-4">
+                    <container name="footer-social" htmlTag="div" htmlClass="footer-social col-md-3 col-xs-12">
                         <block name="social-block" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
                     </container>
                 </container>
@@ -97,11 +96,9 @@
         </referenceContainer>
 
         <move element="form.subscribe" destination="footer_col_5" />
-        <move element="store_switcher" destination="footer-tools-container" />
-        <move element="copyright" destination="footer-legal-container" />
-        <move element="report.bugs" destination="footer-legal-container" />
+
         <move element="footer-row-2" destination="footer-wrap2" after="-" />
-        <move element="footer-logo" destination="footer-row-2" after="-" />
+        <move element="copyright" destination="footer-legal-container" />
 
         <referenceBlock name="advanced-search-link" remove="true"/>
         <referenceBlock name="top.links.wrapper" remove="true"/>
@@ -109,6 +106,7 @@
         <referenceBlock name="my-account-link" remove="true"/>
         <referenceBlock name="report.bugs" remove="true" />
         <referenceBlock name="footer_links" remove="true" />
+        <referenceBlock name="store_switcher" remove="true" />
 
         <move element="breadcrumbs" destination="page.main.title" after="-"/>]
 
