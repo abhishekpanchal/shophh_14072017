@@ -2,56 +2,29 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceContainer name="header-wrapper">
-            <container name="top.links.wrapper" htmlTag="div" htmlClass="top-links-wrapper clearfix hidden-sm hidden-xs" before="-">
-                <referenceBlock name="top.links">
-                    <arguments>
-                        <argument name="css_class" xsi:type="string">list-inline pull-right</argument>
-                    </arguments>
-                </referenceBlock>
-            </container>
-        </referenceContainer>
 
-        <move element="top.links" destination="top.links.wrapper" before="-" />
-        <move element="skip_to_content" destination="top.links.wrapper" after="top.links" />
         <referenceContainer name="header.panel.wrapper" remove="true" />
+        <referenceContainer name="skip_to_content" remove="true" />
+
+        <move element="top.links" destination="header.toplinks"/>
+        <!-- <move element="top.search" destination="header.topsearch" /> -->
 
         <referenceContainer name="header-wrapper">
-            <container name="header.mainwrap" htmlTag="div" htmlClass="header-wrap">
-                <container name="headertop.wrap" htmlTag="div" htmlClass="header-top">
-                    <container name="headertop.innerwrap" htmlTag="div" htmlClass="container">
-                        <container name="header.row" htmlTag="div" htmlClass="row vcenter">
-                            <!-- Social Icons -->
-                            <container name="header.social" htmlTag="div" htmlClass="col-md-3 hidden-xs header-social">
-                                <block name="social-block" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
-                            </container>
-                            <!-- Logo -->
-                            <container name="header.mid" htmlTag="div" htmlClass="col-md-6 header-logo">
-                                <container name="navbar-wrapper" htmlTag="nav" htmlClass="navbar navbar-default" after="top.links.wrapper">
-                                    <container name="navbar-container" htmlTag="div" htmlClass="navbar-container">
-                                        <container name="navbar-header" htmlTag="div" htmlClass="navbar-header">
-                                            <block class="Magento\Framework\View\Element\Template" name="nav.toggle"
-                                                   template="Magento_Theme::html/header/nav.toggle.phtml" before="-">
-                                                <arguments>
-                                                    <argument name="toggle_id" xsi:type="string">wg-navbar-collapse</argument>
-                                                </arguments>
-                                            </block>
-                                            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
-                                                <arguments>
-                                                    <argument name="logo_img_width" xsi:type="number">499</argument>
-                                                    <argument name="logo_img_height" xsi:type="number">57</argument>
-                                                </arguments>
-                                            </block>
-                                        </container>
-                                    </container>
-
-                                </container>
-                            </container>
-                            <!-- Search -->
-                            <container name="header.search" htmlTag="div" htmlClass="col-md-3 hidden-xs header-search">
-                                <block name="header-top-nav" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-nav.phtml"/>
-                            </container>
+            <container name="headertop.wrap" htmlTag="div" htmlClass="header-top">
+                <container name="headertop.innerwrap" htmlTag="div" htmlClass="container">
+                    <container name="header.row" htmlTag="div" htmlClass="row">
+                        <container name="header.topsearch" htmlTag="div" htmlClass="main-header vcenter" before="-">
+                            <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
                         </container>
+                        <container name="header.mid" htmlTag="div" htmlClass="col-md-6 header-logo" after="-">
+                            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                                <arguments>
+                                    <argument name="logo_img_width" xsi:type="number">499</argument>
+                                    <argument name="logo_img_height" xsi:type="number">57</argument>
+                                </arguments>
+                            </block>
+                        </container>
+                        <container name="header.toplinks" htmlTag="div" htmlClass="col-md-3 hidden-xs header-toplinks" after="-"></container>
                     </container>
                 </container>
             </container>
@@ -60,16 +33,8 @@
                 <container name="navigation.wrap" htmlTag="div" htmlClass="container">
                     <container name="nav.row" htmlTag="div" htmlClass="row main-navigation">
                         <container name="nav.left" htmlTag="div" htmlClass="col-md-6 nav-left">
-                            <container name="navbar-collapse" htmlTag="div" htmlClass="collapse navbar-collapse"
-                                       htmlId="wg-navbar-collapse">
-                                <block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav"
-                                       template="html/topmenu.phtml" ttl="3600" before="-">
-                                    <arguments>
-                                        <argument name="parent_item_class" xsi:type="string">dropdown</argument>
-                                        <argument name="submenu_class" xsi:type="string">dropdown-menu</argument>
-                                    </arguments>
-                                </block>
-                            </container>
+                            <block class="Magento\Theme\Block\Html\Topmenu" name="catalog.topnav" template="html/topmenu.phtml" before="-">
+                            </block>
                         </container>
                         <container name="nav.right" htmlTag="div" htmlClass="col-md-6">
                         </container>
@@ -81,61 +46,71 @@
         <referenceContainer name="footer-container" htmlClass="page-footer">
             <container name="footer-wrap" htmlTag="div" htmlClass="container">
                 <container name="footer-row-1" htmlTag="div" htmlClass="row is-flex footer-links">
-                    <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 hidden-xs col-md-2 border-left">
+                    <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-1</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 hidden-xs col-md-2 border-left">
+                    <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-2</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 hidden-xs col-md-2 border-left">
+                    <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-3</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 hidden-xs col-md-2 border-left">
+                    <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
                         <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-col-4</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 hidden-xs col-md-4">
+                    <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-4">
                     </container>
                 </container>
+            </container>
+            <container name="footer-wrap2" htmlTag="div" htmlClass="container">
                 <container name="footer-row-2" htmlTag="div" htmlClass="row">
-                    <container name="footer-legal-container" htmlTag="div" htmlClass="col-xs-12 text-right">
+                    <container name="footer-logo" htmlTag="div" htmlClass="col-xs-12 footer-logo col-md-2">
+                        <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
+                          <arguments>
+                             <argument name="block_id" xsi:type="string">footer-logo</argument>
+                          </arguments>
+                        </block>
+                    </container>
+                    <container name="footer-legal-container" htmlTag="div" htmlClass="col-xs-12 footer-legal col-md-6">
+                    </container>
+                    <container name="footer-social" htmlTag="div" htmlClass="col-xs-12 footer-social col-md-4">
+                        <block name="social-block" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
                     </container>
                 </container>
             </container>
         </referenceContainer>
 
-        <move element="top.links" destination="nav.right"/>
-        <move element="top.search" destination="header.search" after="-"/>
-        <move element="header.social" destination="header.row" before="header.mid" />
-        <move element="cms_footer_links_container" destination="footer-links-container" />
-        <move element="footer_links" destination="footer-links-container" />
         <move element="form.subscribe" destination="footer_col_5" />
         <move element="store_switcher" destination="footer-tools-container" />
         <move element="copyright" destination="footer-legal-container" />
         <move element="report.bugs" destination="footer-legal-container" />
+        <move element="footer-row-2" destination="footer-wrap2" after="-" />
+        <move element="footer-logo" destination="footer-row-2" after="-" />
 
         <referenceBlock name="advanced-search-link" remove="true"/>
         <referenceBlock name="top.links.wrapper" remove="true"/>
         <referenceBlock name="navigation.sections" remove="true" />
         <referenceBlock name="my-account-link" remove="true"/>
         <referenceBlock name="report.bugs" remove="true" />
+        <referenceBlock name="footer_links" remove="true" />
 
-        <move element="breadcrumbs" destination="page.main.title" after="-"/>
+        <move element="breadcrumbs" destination="page.main.title" after="-"/>]
 
     </body>
 </page>
