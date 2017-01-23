@@ -1,0 +1,30 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$model = $objectManager->create('\Fc\Faqs\Model\Faq');
+$identifier = $model->getIdentifier();
+foreach ($identifier as $key => $value):
+    if($key != ''):
+    $faqs = $block->getFaqs($key);
+    if(count($faqs) > 0):
+?>
+    <h1><span class="identifier"><?php echo $value ?></span></h1>
+    <ul class="faqs-faq-list">
+    <?php foreach ($faqs as $faq): ?>
+        <li class="faq-list-item">
+            <h3 class="faqs-faq-item-title">
+                <?php echo $faq->getTitle() ?>
+            </h3>
+            <div class="faq-item-content">
+                <?php echo $faq->getContent(); ?>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+<?php
+    endif;
+    endif;
+endforeach; 
+?>
+<p>
+Don't see the answer to your question above? <a href="<?php echo $this->getUrl('contact') ?>">Contact Us</a> at Shop H&H with any questions you may have.
+</p>
