@@ -1,0 +1,1 @@
+[{\"xtype\":\"tabs\",\"config\":{\"width\":\"\",\"height\":\"\",\"class\":\"\",\"layout\":\"root\"},\"items\":[]}]
