@@ -79,16 +79,16 @@
             </container>
             <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
                 <container name="footer-row-2" htmlTag="div" htmlClass="row vcenter">
-                    <container name="footer-logo" htmlTag="div" htmlClass="footer-logo col-md-2 col-xs-12">
+                    <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-2 col-xs-12">
                         <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
                           <arguments>
                              <argument name="block_id" xsi:type="string">footer-logo</argument>
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal col-md-7 col-xs-12">
+                    <container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal footer-col col-md-7 col-xs-12">
                     </container>
-                    <container name="footer-social" htmlTag="div" htmlClass="footer-social col-md-3 col-xs-12">
+                    <container name="footer-social" htmlTag="div" htmlClass="footer-social footer-col col-md-3 col-xs-12">
                         <block name="social-block" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
                     </container>
                 </container>
