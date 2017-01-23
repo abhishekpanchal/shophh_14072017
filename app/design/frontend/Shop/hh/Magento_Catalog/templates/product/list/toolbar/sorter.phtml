@@ -45,7 +45,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
         <?php if($order == 'price' && $dir=='desc'){$active = 'active';}else{$active='';} ?> 
         <span class="<?php echo $active ?>"><?php echo __('Price (High to Low)') ?></span>
     </a>
-    <?php /*    
+       
     <select id="sorter" data-role="sorter" class="sorter-options">
         <?php foreach ($block->getAvailableOrders() as $_key => $_order): ?>
             <option value="<?php echo $_key; ?>"
@@ -66,5 +66,5 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
             <span><?php echo __('Set Descending Direction') ?></span>
         </a>
     <?php endif; ?>
-    */ ?>
+    
 </div>

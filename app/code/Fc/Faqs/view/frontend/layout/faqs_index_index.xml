@@ -1,8 +1,22 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>FAQS</title>
+    </head>
     <body>
+    	<referenceBlock name="category-sidebar" remove="true" />
         <referenceContainer name="content">
             <block class="Fc\Faqs\Block\FaqsList" name="faqs.list" template="Fc_Faqs::list.phtml" />
         </referenceContainer>
+        <referenceBlock name="faqs.list">
+        	<action method="setPageTitle">
+        		<argument translate="true" name="title" xsi:type="string">FAQS</argument>
+      		</action>
+      	</referenceBlock>
+      	<referenceContainer name="columns">
+	        <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar bg-grey col-md-3" before="-">
+	            <block class="Sebwite\Sidebar\Block\Sidebar" name="cms-sidebar" template="Magento_Cms::sidebar.phtml"/>
+	        </container>
+	    </referenceContainer>
     </body>
 </page>
