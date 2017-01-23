@@ -5,6 +5,7 @@ return array (
     'Altima_Lookbookslider' => 1,
     'Customweb_Base' => 1,
     'Magento_Store' => 1,
+    'Fc_Faqs' => 1,
     'Hhmedia_Productpage' => 1,
     'Magento_Directory' => 1,
     'Magento_AdvancedPricingImportExport' => 1,
