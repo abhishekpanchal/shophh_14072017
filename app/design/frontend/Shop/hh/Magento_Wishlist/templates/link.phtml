@@ -13,8 +13,8 @@ $obj = \Magento\Framework\App\ObjectManager::getInstance();
 $customerSession = $obj->get('Magento\Customer\Model\Session'); 
 if($customerSession->isLoggedIn()):
 ?>
-<li class="link wishlist" data-bind="scope: 'wishlist'">
-    <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes() ?>><?php echo $block->escapeHtml($block->getLabel()) ?>
+<li class="link wishlist wishlist-top" data-bind="scope: 'wishlist'">
+    <a class="wishlist-top" <?php /* @escapeNotVerified */ echo $block->getLinkAttributes() ?>><?php echo $block->escapeHtml($block->getLabel()) ?>
         <!-- ko if: wishlist().counter -->
         <span data-bind="text: wishlist().counter" class="counter qty"></span>
         <!-- /ko -->
