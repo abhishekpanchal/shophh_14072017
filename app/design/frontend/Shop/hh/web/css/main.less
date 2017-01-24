@@ -277,6 +277,16 @@ Social
 Main Navigation
  ========================================================================== */
 
+.main-nav {
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  border-top: 2px solid #ccc;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+/*
 .navbar-default {
   background-color: transparent;
   border: none;
@@ -287,22 +297,13 @@ Main Navigation
   line-height: normal;
   color: #000;
 }
-.main-nav {
-  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 40px;
-  border-top: 2px solid #ccc;
-  margin-top: -2px;
-  position: relative;
-  z-index: 1;
-}
 .main-nav a {
   display: block;
   font: normal 12px/12px 'Montserrat', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   color: #8d8d8d;
   padding: 25px 0;
-}
+}*/
 
 .customer-name {
   color: #000!important;
@@ -331,6 +332,11 @@ Buttons
   font-weight: normal;
 }
 
+.action.primary:hover {
+  background: #1a1a1a;
+  border-color: #1a1a1a;
+  cursor: pointer;
+}
 
 
 /* ==========================================================================
@@ -357,10 +363,10 @@ Content
   min-height: auto!important;
 }
 
-.minicart-wrapper .action.showcart {
+/*.minicart-wrapper .action.showcart {
   padding: 0!important;
   margin-top: 14px;
-}
+}*/
 
 .columns .column.main {
   padding-bottom: 0;
@@ -368,7 +374,7 @@ Content
 
 /* ==========================================================================
 Reviews
- ========================================================================== */
+ ========================================================================== 
 .review-body {
   border-top: 1px solid #ababab;
   border-bottom: 1px solid #ababab;
@@ -1148,6 +1154,7 @@ Quick View
     border-top: 1px solid #b2b2b2;
     border-bottom: 1px solid #b2b2b2;
     padding: 10px 0!important;
+    max-height: 46px;
   }
   .toolbar-sorter {
     display: block;
@@ -1286,7 +1293,7 @@ Quick View
     }
 
 
-.page-products .sorter a:hover span.active:after{
+.page-products .sorter a:after span.active:after{
   left: 47%;
 }
 
@@ -2419,7 +2426,8 @@ Media Queries
     text-rendering: auto;
     content: "\F415";
     position: absolute;
-    right: 10px; font-size: 20px;
+    right: 10px;
+    font-size: 20px;
   }
 
 
@@ -2666,18 +2674,6 @@ Media Queries
   width: 20%!important;
 }
 
-.main-navigation {
-  .wishlist {
-    a {
-      display: inline-block;
-      padding: 10px 0;
-    }
-  }
-}
-
-.search.advanced {
-
-}
 
 .main-content {
   margin-bottom: 50px;
@@ -2828,5 +2824,235 @@ Media Queries
   }
 }
 
+.wishlist {
+  display: inline-block;
+
+  .wishlist-top {
+    .relative;
+    padding: 10px 0;
+    padding-left: 20px!important;
+    font-size: 12px;
+    color: #8d8d8d;
+    text-transform: uppercase;
+    top: 5px;
+
+    &:before {
+      font: normal normal normal 24px/1 "Material Design Icons" !important;
+      content: "\F2D5";
+      font-size: 15px!important;
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+  }
+}
+
+.minicart-items-wrapper {
+  .product {
+    margin-bottom: 0!important;
+    padding-bottom: 0!important;
+
+    .product-item-photo {
+      img {
+        width: 80px!important;
+        height: 80px!important;
+      }
+    }
+    .product-item-details {
+      padding-left: 100px!important;
+
+      .product-item-name {
+        text-align: left;
+        margin: 0;
+
+        a {
+          font-size: 14px;
+          color: #000;
+        }
+      }
+
+      .price-container {
+        margin: 0;
+        .price-excluding-tax {
+          padding: 0;
+          margin: 0;
+          text-align: left;
+          margin-top: -5px;
+
+          .minicart-price {
+            padding: 0;
+            margin: 0;
+            height: auto;
+            font-size: 14px;
+            color: #666;
+          }
+        }
+      }
+
+      .details-qty {
+        margin: 0;
+        text-align: left;
+
+        label {
+          width: auto;
+          font-size: 15px;
+          text-transform: capitalize;
+        }
+
+        .item-qty {
+          margin-right: 10px;
+          background-color: #f0f0f0;
+          display: inline-block;
+          text-align: center;
+          border-radius: 3px;
+          height: auto;
+          padding: 6px 10px;
+          width: 40px;
+          margin-left: 10px;
+          margin-top: 10px;
+        }
+      }
+
+      .actions {
+        border-color: blue;
+        margin: 0;
+        margin-top: -95px;
+
+        .edit {
+          display: none;
+        }
+
+        .delete:before {
+          content: "\F156";
+          margin: 0;
+          font: normal normal normal 24px/1 "Material Design Icons";
+          font-size: inherit;
+          text-rendering: auto;
+          position: absolute;
+          right: 10px;
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
+.block-minicart {
+  .items-total {
+    font-family: @fancyFont;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    float: none;
+  }
+  .subtotal {
+    padding: 10px 0;
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    margin: 0;
+
+    .label {
+      display: inline-block;
+      text-align: left;
+      margin: 0;
+      text-transform: capitalize;
+
+      span {
+        font-size: 13px;
+      }
+    }
+    .amount {
+      display: inline-block;
+
+      .price {
+        font-size: 13px!important;
+        font-family: @headlineFont;
+      }
+    }
+  }
+}
 
 
+.minicart-wrapper .action.close {
+  display: none;
+}
+
+.minicart-wrapper .minicart-widgets {
+  display: none;
+}
+
+#top-cart-btn-checkout {
+  background-color: #000;
+  color: #FFF;
+  border-radius: 0;
+  font-family: @fancyFont!important;
+  text-transform: capitalize!important;
+  font-style: italic;
+  font-size: 14px;
+  line-height: normal;
+  padding: 8px 22px;
+}
+
+.minicart-wrapper {
+  float: none;
+  margin-left: 15px;
+
+  .action.showcart .counter.qty {
+    background: transparent;
+    color: #000;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    display: inline-block;
+    top: -2px;
+    .relative;
+
+    &:before {
+      content: '( ';
+    }
+
+    &:after {
+      content: ')';
+    }
+  }
+  .action.showcart .text {
+    position: relative;
+    margin: 0;
+    height: 0;
+    overflow: visible;
+    clip: none;
+    font-size: 12px;
+    color: #8d8d8d;
+    text-transform: uppercase;
+  }
+  .action.showcart {
+    .relative;
+    padding-left: 25px;
+    top: 15px;
+  }
+  .action.showcart:before,
+  .action.showcart.active:before {
+    content: "\F111";
+    margin: 0;
+    font: normal normal normal 24px/1 "Material Design Icons";
+    font-size: inherit;
+    text-rendering: auto;
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+    text-align: left;
+    display: block;
+  }
+  .action.showcart:before {
+    left: 0;
+  }
+}
+
+.nav-right {
+  text-align: right;
+}
+
+.minicart-wrapper.active .block-minicart {
+  margin-top: 43px;
+}
