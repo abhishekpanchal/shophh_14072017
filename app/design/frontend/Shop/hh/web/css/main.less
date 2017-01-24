@@ -1399,17 +1399,17 @@ Flexbox - Rows
     float: none!important;
   }
 
-  .facebook-login button {
+  .facebook-login button, #btn_facebook_signup {
     background: none;
-    background-color: #3b5998;
+    background-color: #3b5998!important;
   }
-  .google-login button {
+  .google-login button, #btn_google_signup {
     background: none;
-    background-color: #dd4b39;
+    background-color: #dd4b39!important;
   }
-  .twitter-login button {
+  .twitter-login button, #btn_twitter_signup {
     background: none;
-    background-color: #28bceb;
+    background-color: #28bceb!important;
   }
 
   .social-login-authentication-channel {
@@ -2585,16 +2585,31 @@ Media Queries
   .footer-legal, .footer-social, .footer-logo {
     text-align: center;
   }
+
+  .navigation {
+    display: none;
+  }
 }
 
 
 /* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
 @media only screen and (max-width: 767px) {
 
+  .products-grid {
+    
+    .modes {
+      display: none!important;
+    }
+    .sorter-mobile {
+      display: none!important;
+    }
+  }
 }
 
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
 @media only screen and (max-width: 600px) {
+
+
   .product-item-name, .product.name a {
     font-size: 14px!important;
   }
@@ -3067,10 +3082,15 @@ Media Queries
   .action.showcart:before {
     left: 0;
   }
+
 }
 
 .nav-right {
   text-align: right;
+
+  .minicart-wrapper {
+    margin-top: 15px;
+  }
 }
 
 .minicart-wrapper.active .block-minicart {
@@ -3454,4 +3474,8 @@ Products
 .modal-content {
   box-shadow: none!important;
   border: none!important;
+}
+
+#social-login-popup .block-container .field.password.required.margintop-20 {
+  margin-top: 20px!important;
 }

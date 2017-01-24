@@ -19,7 +19,6 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
     <div class="modes pull-right hidden-sm hidden-md hidden-lg visible-xs">
         <?php $_modes = $block->getModes(); ?>
         <?php if ($_modes && count($_modes) > 1): ?>
-            <strong class="modes-label" id="modes-label"><?php /* @escapeNotVerified */ echo __('View as') ?></strong>
             &nbsp;
             <div class="btn-group btn-group-sm" role="group">
                 <?php foreach ($block->getModes() as $_code => $_label): ?>
