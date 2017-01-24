@@ -18,14 +18,10 @@
     <div class="tabs-replica">
         <ul>
             <li><a href="#" class="btn-login-form">Login</a></li>
-            <li><a href="#" class="btn-register-form">Register</a></li>
+            <li><a href="#" class="btn-register-form">Sign Up</a></li>
         </ul>
     </div>
-    <div class="block social-login-customer-authentication col-md-7">
-        <div class="block-title">
-            <span id="block-customer-login-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */
-                echo __('Registered Customers') ?></span>
-        </div>
+    <div class="block social-login-customer-authentication">
         <div class="block-content" aria-labelledby="block-customer-login-heading">
             <form class="form-customer-login"
                   id="social-form-login"
@@ -34,23 +30,17 @@
                 <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */
                 echo __('* Required Fields') ?>">
                     <div class="field email required">
-                        <label class="label" for="email"><span><?php /* @escapeNotVerified */
-                                echo __('Email') ?></span></label>
-
                         <div class="control">
                             <input name="username"
-                                   value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) : ?> autocomplete="off"<?php endif; ?>
+                                   value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) : ?> placeholder="Email *" autocomplete="off"<?php endif; ?>
                                    id="email" type="email" class="input-text" title="<?php /* @escapeNotVerified */
                             echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
                         </div>
                     </div>
-                    <div class="field password required">
-                        <label for="pass" class="label"><span><?php /* @escapeNotVerified */
-                                echo __('Password') ?></span></label>
-
+                    <div class="field password required margintop-20">
                         <div class="control">
                             <input name="password"
-                                   type="password" <?php if ($block->isAutocompleteDisabled()) : ?> autocomplete="off"<?php endif; ?>
+                                   type="password" <?php if ($block->isAutocompleteDisabled()) : ?> placeholder="Password *" autocomplete="off"<?php endif; ?>
                                    class="input-text" id="pass" title="<?php /* @escapeNotVerified */
                             echo __('Password') ?>" data-validate="{required:true, 'validate-password':true}">
                         </div>
@@ -63,23 +53,19 @@
                             <span><?php /* @escapeNotVerified */
                                 echo __('Login') ?></span></button>
                         </div>
-                        <div class="secondary"><a class="action remind" href="#"><span><?php /* @escapeNotVerified */
-                                    echo __('Forgot Your Password?') ?></span></a></div>
+                        <a class="action remind" href="#"><span><?php /* @escapeNotVerified */
+                                    echo __('Forgot Your Password?') ?></span></a>
                     </div>
-                    <div class="actions-toolbar">
-                        <div class="primary">
-                          <a class="action create" href="#"><span><?php /* @escapeNotVerified */
-                                    echo __('Create New Account?') ?></span></a>
-                          <a class="create-btn" href="#"><span><?php /* @escapeNotVerified */
-                                    echo __('zzzz') ?></span></a>
-                        </div>
-                    </div>
-
-
                 </fieldset>
             </form>
         </div>
     </div>
     <?php echo $block->getChildHtml('popup.authentication.social') ?>
+    <div class="bottom-register">
+        <div class="primary popup-register-bottom">
+          <a class="action create" href="#">Want to create an account ? <span><?php /* @escapeNotVerified */
+                    echo __('Sign up now?') ?></span></a>
+        </div>
+    </div>
 </div>
 

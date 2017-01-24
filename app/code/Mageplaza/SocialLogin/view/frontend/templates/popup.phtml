@@ -38,7 +38,8 @@
                 loginForm: '#social-form-login',
                 loginBtn: '#bnt-social-login-authentication',
                 forgotBtn: '#social-form-login .action.remind',
-                createBtn: '#social-form-login .action.create, .btn-register-form',
+                createBtn: '.btn-register-form, .popup-register-bottom.action.create',
+                // createBtn: '#social-form-login .action.create, .register-url, .btn-register-form',
                 formLoginUrl: '<?php echo $block->getFormLoginUrl();?>',
                 /*Forgot*/
                 forgotFormContainer: '.social-login.forgot',
@@ -52,7 +53,7 @@
                 createFormContent: '.social-login.create .block-content',
                 createForm: '#social-form-create',
                 createAccBtn: '#social-form-create .action.create',
-                createBackBtn: '#social-form-create .action.back',
+                createBackBtn: '#social-form-create .action.back, .btn-goback',
                 createFormUrl: '<?php echo $block->getCreateFormUrl();?>',
                 /*Captcha*/
                 loginCaptchaImg: '.authentication .captcha-img',

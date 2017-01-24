@@ -14,15 +14,18 @@
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  */
 ?>
-<div class="social-login block-container create">
-
-    <div class="social-login-title">
-        <h2 class="create-account-title">
-            <?php echo __('Create New Account') ?>
-        </h2>
+<div class="social-login block-container create" style="display: none">
+    <div class="register-container">
+        <div class="tabs-replica">
+            <ul>
+                <li><a href="#" class="btn-goback">Login</a></li>
+                <li><a href="#" class="btn-register-form">Sign Up</a></li>
+            </ul>
+        </div>
     </div>
 
-    <div class="block col-mg mg-12">
+
+    <div class="block">
         <div class="block-content">
             <?php echo $block->getChildHtml('form_fields_before') ?>
             <?php /* Extensions placeholder */ ?>
@@ -37,44 +40,15 @@
                     echo $block->getErrorUrl() ?>">
                     <?php echo $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Name')->setObject($block->getFormData())->setForceUseCustomerAttributes(true)->toHtml() ?>
                     <div class="field required">
-                        <label for="email_address" class="label"><span><?php /* @escapeNotVerified */
-                                echo __('Email') ?></span></label>
-
                         <div class="control">
                             <input type="email" name="email" id="email_address"
-                                   value="<?php echo $block->escapeHtml($block->getFormData()->getEmail()) ?>"
+                                   placeholder="Email Address *" value="<?php echo $block->escapeHtml($block->getFormData()->getEmail()) ?>"
                                    title="<?php /* @escapeNotVerified */
                                    echo __('Email') ?>" class="input-text"
                                    data-validate="{required:true, 'validate-email':true}">
                         </div>
                     </div>
-                    <?php if ($block->isNewsletterEnabled()): ?>
-                        <div class="field choice newsletter">
-                            <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */
-                            echo __('Sign Up for Newsletter') ?>" value="1"
-                                   id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?>
-                                   class="checkbox">
-                            <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */
-                                    echo __('Sign Up for Newsletter') ?></span></label>
-                        </div>
-                        <?php /* Extensions placeholder */ ?>
-                        <?php echo $block->getChildHtml('customer.form.register.newsletter') ?>
-                    <?php endif ?>
-
-                    <?php $_dob = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Dob') ?>
-                    <?php if ($_dob->isEnabled()): ?>
-                        <?php echo $_dob->setDate($block->getFormData()->getDob())->toHtml() ?>
-                    <?php endif ?>
-
-                    <?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
-                    <?php if ($_taxvat->isEnabled()): ?>
-                        <?php echo $_taxvat->setTaxvat($block->getFormData()->getTaxvat())->toHtml() ?>
-                    <?php endif ?>
-
-                    <?php $_gender = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Gender') ?>
-                    <?php if ($_gender->isEnabled()): ?>
-                        <?php echo $_gender->setGender($block->getFormData()->getGender())->toHtml() ?>
-                    <?php endif ?>
+                    
                 </fieldset>
                 <?php if ($block->getShowAddressFields()): ?>
                     <fieldset class="fieldset address">
@@ -214,14 +188,15 @@
                     </fieldset>
 
                 <?php endif; ?>
+
+
+
+
                 <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */
                 echo __('* Required Fields') ?>">
                     <div class="field password required" data-container="new-password" data-mage-init='{"passwordStrengthIndicator": {}}'>
-                        <label for="password" class="label"><span><?php /* @escapeNotVerified */
-                                echo __('Password') ?></span></label>
-
                         <div class="control">
-                            <input type="password" name="password" id="password-social" title="<?php /* @escapeNotVerified */
+                            <input placeholder="Password *" type="password" name="password" id="password-social" title="<?php /* @escapeNotVerified */
                             echo __('Password') ?>" class="input-text"
                             data-password-min-length="<?php echo $block->escapeHtml($block->getMinimumPasswordLength()) ?>"
                             data-password-min-character-sets="<?php echo $block->escapeHtml($block->getRequiredCharacterClassesNumber()) ?>"
@@ -238,11 +213,8 @@
                         </div>
                     </div>
                     <div class="field confirmation required">
-                        <label for="password-confirmation" class="label"><span><?php /* @escapeNotVerified */
-                                echo __('Confirm Password') ?></span></label>
-
                         <div class="control">
-                            <input type="password" name="password_confirmation" title="<?php /* @escapeNotVerified */
+                            <input placeholder="Confirm Password" type="password" name="password_confirmation" title="<?php /* @escapeNotVerified */
                             echo __('Confirm Password') ?>" id="password-confirmation-social" class="input-text"
                                    data-validate="{required:true, equalTo:'#password-social'}" autocomplete="off">
                         </div>
@@ -250,16 +222,45 @@
                     <?php echo $block->getChildHtml('form_additional_info'); ?>
                     <?php echo $block->getChildHtml('create.captcha'); ?>
                 </fieldset>
-                <div class="actions-toolbar">
+
+
+
+<?php if ($block->isNewsletterEnabled()): ?>
+                        <div class="field choice newsletter">
+                            <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */
+                            echo __('Sign Up for Newsletter') ?>" value="1"
+                                   id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?>
+                                   class="checkbox">
+                            <label for="is_subscribed" class="label">
+                                <span><?php echo __('Please add me to the Shop H&H enewsletter list.') ?></span>
+                                <span>(You may unsubscribe at any time).</span>
+                            </label>
+                        </div>
+                        <?php /* Extensions placeholder */ ?>
+                        <?php echo $block->getChildHtml('customer.form.register.newsletter') ?>
+                    <?php endif ?>
+
+                    <?php $_dob = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Dob') ?>
+                    <?php if ($_dob->isEnabled()): ?>
+                        <?php echo $_dob->setDate($block->getFormData()->getDob())->toHtml() ?>
+                    <?php endif ?>
+
+                    <?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
+                    <?php if ($_taxvat->isEnabled()): ?>
+                        <?php echo $_taxvat->setTaxvat($block->getFormData()->getTaxvat())->toHtml() ?>
+                    <?php endif ?>
+
+                    <?php $_gender = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Gender') ?>
+                    <?php if ($_gender->isEnabled()): ?>
+                        <?php echo $_gender->setGender($block->getFormData()->getGender())->toHtml() ?>
+                    <?php endif ?>
+
+
+                <div class="actions-toolbar popup-btn marginbottom-30">
                     <div class="primary">
-                        <button type="button" class="action create primary" title="<?php /* @escapeNotVerified */
+                        <button type="button" class="action create" title="<?php /* @escapeNotVerified */
                         echo __('Sign Up') ?>"><span><?php /* @escapeNotVerified */
                                 echo __('Sign Up') ?></span></button>
-                    </div>
-                    <div class="secondary">
-                        <a class="action back"
-                           href="javascript:void(0);"><span><?php /* @escapeNotVerified */
-                                echo __('Login') ?></span></a>
                     </div>
                 </div>
             </form>
@@ -322,4 +323,5 @@
         </div>
     </div>
     <?php echo $block->getChildHtml('popup.create.social') ?>
+    <p class="privacy-popup">By creating an account, you agree to Shop H&amp;H's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
 </div>
