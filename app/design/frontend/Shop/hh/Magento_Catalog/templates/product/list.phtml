@@ -94,6 +94,11 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 
                         <div class="product-item-inner">
                             <div class="product actions product-item-actions"<?php echo strpos($pos, $viewMode . '-actions') ? $position : ''; ?>>
+                                <div data-role="add-to-links" class="actions-secondary wishlist-btn"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
+                                    <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
+                                        <?php echo $addToBlock->setProduct($_product)->getChildHtml(); ?>
+                                    <?php endif; ?>
+                                </div>
                                 <div class="primary-cart-btn"<?php echo strpos($pos, $viewMode . '-primary') ? $position : ''; ?>>
                                     <?php if ($_product->isSaleable()): ?>
                                         <?php $postParams = $block->getAddToCartPostParams($_product); ?>
@@ -113,11 +118,6 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                         <?php else: ?>
                                             <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
                                         <?php endif; ?>
-                                    <?php endif; ?>
-                                </div>
-                                <div data-role="add-to-links" class="actions-secondary wishlist-btn"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
-                                    <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
-                                        <?php echo $addToBlock->setProduct($_product)->getChildHtml(); ?>
                                     <?php endif; ?>
                                 </div>
                             </div>

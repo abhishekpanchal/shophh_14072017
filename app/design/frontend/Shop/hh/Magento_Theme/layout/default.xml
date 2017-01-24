@@ -9,8 +9,9 @@
         <move element="top.links" destination="header.toplinks"/>
 
         <referenceContainer name="header-wrapper">
-            <container name="headertop.wrap" htmlTag="div" htmlClass="header-top">
-                <container name="headertop.innerwrap" htmlTag="div" htmlClass="container">
+            <container name="headertop.wrap" htmlTag="div" htmlClass="header-wrap">
+                <container name="headertop.innerwrap" htmlTag="div" htmlClass="header-top">
+                <container name="headertop.innerwrap3" htmlTag="div" htmlClass="container">
                     <container name="header.row" htmlTag="div" htmlClass="row">
                         <container name="header.topsearch" htmlTag="div" htmlClass="main-header vcenter" before="-">
                             <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml" />
@@ -25,6 +26,7 @@
                         </container>
                         <container name="header.toplinks" htmlTag="div" htmlClass="col-md-3 hidden-xs header-toplinks" after="-"></container>
                     </container>
+                </container>
                 </container>
             </container>
 
@@ -73,7 +75,7 @@
                           </arguments>
                         </block>
                     </container>
-                    <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-4">
+                    <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-3 col-md-offset-1">
                     </container>
                 </container>
             </container>

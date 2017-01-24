@@ -8,11 +8,12 @@
 
 ?>
 <div class="block newsletter-footer">
-  <h4 class="title text-right">
-    <?php /* @escapeNotVerified */ echo __('Sign Up for Our Newsletter') ?>
-    </h4>
+  <h4 class="title">
+    <?php /* @escapeNotVerified */ echo __('Enewsletter Signup') ?>
+  </h4>
+  <p>Sign up to receive emails from Shop H&amp;H on the newest products and offers. You may unsubscribe at any time.</p>
   <div class="content text-right">
-    <form class="form subscribe form-inline"
+    <form class="form subscribe-bottom-form"
     novalidate
     action="<?php /* @escapeNotVerified */ echo $block->getFormActionUrl() ?>"
     method="post"
