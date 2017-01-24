@@ -29,7 +29,7 @@
                 /*General*/
                 popup: '#social-login-popup',
                 popupEffect: '<?php echo $block->getPopupEffect()?>',
-                headerLink:  '.top-headerlinks',
+                headerLink:  '.header.links',
                 sectionLink: '.section-item-content .header.links',
                 ajaxLoading: '#social-login-popup .ajax-loading',
                 /*Login*/
@@ -37,10 +37,9 @@
                 loginFormContent: '.social-login.authentication .block-content',
                 loginForm: '#social-form-login',
                 loginBtn: '#bnt-social-login-authentication',
-                // loginBtn: '.btn-login',
                 forgotBtn: '#social-form-login .action.remind',
-                createBtn: '#social-form-login .action.create',
-                // createBtn: '.btn-create',
+                createBtn: '.btn-register-form, .popup-register-bottom.action.create',
+                // createBtn: '#social-form-login .action.create, .register-url, .btn-register-form',
                 formLoginUrl: '<?php echo $block->getFormLoginUrl();?>',
                 /*Forgot*/
                 forgotFormContainer: '.social-login.forgot',
@@ -54,9 +53,7 @@
                 createFormContent: '.social-login.create .block-content',
                 createForm: '#social-form-create',
                 createAccBtn: '#social-form-create .action.create',
-                // createAccBtn: '.btn-test',
-                createBackBtn: '#social-form-create .action.back',
-                // createBackBtn: '.btn-back',
+                createBackBtn: '#social-form-create .action.back, .btn-goback',
                 createFormUrl: '<?php echo $block->getCreateFormUrl();?>',
                 /*Captcha*/
                 loginCaptchaImg: '.authentication .captcha-img',
@@ -67,7 +64,7 @@
             new SocialLoginForm(config);
         });
         require(['jquery', 'mageplaza/core/jquery/popup'], function ($) {
-            var headerLink = $('.list-inline');
+            var headerLink = $('.header.links');
             if(headerLink.length) {
                 headerLink.magnificPopup({
                     delegate: 'a.social-login',
