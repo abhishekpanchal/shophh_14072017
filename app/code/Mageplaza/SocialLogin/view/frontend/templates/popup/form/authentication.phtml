@@ -15,12 +15,13 @@
  */
 ?>
 <div class="social-login block-container authentication">
-    <div class="social-login-title">
-        <h2 class="login-title">
-            <?php echo __('Sign In') ?>
-        </h2>
+    <div class="tabs-replica">
+        <ul>
+            <li><a href="#" class="btn-login-form">Login</a></li>
+            <li><a href="#" class="btn-register-form">Register</a></li>
+        </ul>
     </div>
-    <div class="block social-login-customer-authentication col-mg mg-7">
+    <div class="block social-login-customer-authentication col-md-7">
         <div class="block-title">
             <span id="block-customer-login-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */
                 echo __('Registered Customers') ?></span>
@@ -82,38 +83,3 @@
     <?php echo $block->getChildHtml('popup.authentication.social') ?>
 </div>
 
-
-
-
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-</ul>
-
-<div class="tab-content">
-  <div id="home" class="tab-pane fade in active">
-    <h3>HOME</h3>
-
-    <a class="btn-create" href="#">Create Btn</a>
-    <br/>
-    <a class="btn-login" href="#">Login Btn</a> <!-- Login button processes form -->
-    <br/>
-    <a class="btn-back" href="#">Login Btn</a>
-    <br/>
-    <a class="btn-test" href="#">test</a>
-    <br/>
-  </div>
-  <div id="menu1" class="tab-pane fade">
-    <h3>Menu 1</h3>
-    <p>Some content in menu 1.</p>
-    
-    <a class="btn-create" href="#">Create Btn</a>
-    <br/>
-    <a class="btn-login" href="#">Login Btn</a> <!-- Login button processes form -->
-    <br/>
-    <a class="btn-back" href="#">Login Btn</a>
-    <br/>
-    <a class="btn-test" href="#">test</a>
-    <br/>
-  </div>
-</div>

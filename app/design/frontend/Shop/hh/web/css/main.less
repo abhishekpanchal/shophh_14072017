@@ -1293,8 +1293,9 @@ Quick View
     }
 
 
-.page-products .sorter a:after span.active:after{
-  left: 47%;
+.page-products .sorter a:hover span.active:after{
+  left: 53%;
+  border-width: 0;
 }
 
 .mfp-preloader {animation: none!important;}
@@ -2197,10 +2198,6 @@ Sidebar
   background-color: transparent!important;
 }
 
-.action.back {
-  display: none;
-}
-
 .action.save.primary {
   font-size: 15px!important;
   text-transform: capitalize!important;
@@ -2344,11 +2341,6 @@ Checkout
     display: none;
   }
 }
-
-.action.back {
-  display: none!important;
-}
-
 
 .main-header {
   width: 100%;
@@ -2945,12 +2937,15 @@ Media Queries
     font-style: italic;
     text-decoration: underline;
     float: none;
+    text-align: left!important;
+    margin-bottom: 10px;
   }
   .subtotal {
     padding: 10px 0;
     border-top: 1px solid #DDD;
     border-bottom: 1px solid #DDD;
     margin: 0;
+    text-align: left;
 
     .label {
       display: inline-block;
@@ -3025,6 +3020,10 @@ Media Queries
     font-size: 12px;
     color: #8d8d8d;
     text-transform: uppercase;
+    top: -9px;
+  }
+
+  .action.showcart.active .text {
   }
   .action.showcart {
     .relative;
@@ -3044,6 +3043,9 @@ Media Queries
     text-align: left;
     display: block;
   }
+  .action.showcart.active:before {
+    margin-top: -9px;
+  }
   .action.showcart:before {
     left: 0;
   }
@@ -3055,4 +3057,39 @@ Media Queries
 
 .minicart-wrapper.active .block-minicart {
   margin-top: 43px;
+}
+
+.customer-account-forgotpassword {
+
+}
+
+#password-strength-meter-container {
+  max-width: 80%;
+  margin: 5px 0;
+}
+
+.password-strength-meter-1 .password-strength-meter:before {
+  width: 100%;
+}
+
+#password-error {
+  font-size: 12px;
+  max-width: 80%;
+}
+
+.minicart-wrapper .action.showcart:before {
+  top: 0;
+  margin-top: -8px;
+}
+
+
+.sidebar {
+  .swatch-attribute-options {
+    position: relative;
+  }
+}
+
+
+.catalogsearch-result-index {
+
 }
