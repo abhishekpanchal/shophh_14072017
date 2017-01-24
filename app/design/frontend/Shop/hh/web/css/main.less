@@ -1286,7 +1286,7 @@ Quick View
     }
 
 
-.page-products .sorter a:hover:after {
+.page-products .sorter a:hover span.active:after{
   left: 47%;
 }
 
@@ -2589,6 +2589,7 @@ Media Queries
   .catalog-category-view .special-price {
     width: 100%;
     display: block;
+    text-align: center!important;
   }
 }
 
@@ -2644,12 +2645,16 @@ Media Queries
 .inner-content {
   margin-bottom: 60px;
 }
-.cms-page-view {
+
+.cms-page-view, .faqs-index-index, .contact-index-index, .cms-privacy-policy, .cms-terms-conditions {
   .inner-content {
     padding-left: 70px;
   }
   .main-breadcrumb {
     display: none;
+  }
+  .page-title {
+    margin-bottom: 40px;
   }
 }
 
@@ -2734,50 +2739,55 @@ Media Queries
 
 
 
-
-
-
 .panel-group {
-  margin-bottom: 0;
+  margin-bottom: 30px;
   .panel {
     border-radius: 0;
     box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #C0C0C0;
+
     .panel-heading {
       padding: 0;
-      h4 a {
-        background: #f8f8f8;
-        display: block;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 15px;
-        text-decoration: none;
-        transition: 0.15s all ease-in-out;
-        &:hover,
-        &:not(.collapsed) {
-          background: #fff;
+      background-color: transparent;
+      border: none;
+
+      h4 {
+        a {
+          background: transparent;
+          display: block;
+          font-size: 14px;
+          font-weight: bold;
+          padding: 15px;
+          text-decoration: none;
           transition: 0.15s all ease-in-out;
+          text-transform: uppercase;
+          font-family: @baseFont;
+          .relative;
+
+          &:after {
+            font: normal normal normal 24px/1 "Material Design Icons";
+            font-size: inherit;
+            text-rendering: auto;
+            content: "\F374";
+            position: absolute;
+            right: 10px;
+            font-size: 20px;
+          }
         }
-        &:not(.collapsed) i:before {
-          content: "\f068";
+
+        a.collapsed {
+          &:after {
+            content: "\F415";
+          }
         }
-        i {
-          color: #999;
-        }
+
       }
     }
-    .panel-body {
-      padding-top: 0;
-    }
-    .panel-heading+.panel-collapse>.list-group,
-    .panel-heading+.panel-collapse>.panel-body {
-      border-top: none;
-    }
-    + .panel {
-      border-top: none;
-      margin-top: 0;
-    }
+
   }
 }
+
 
 .faq-list-item {
   padding: 15px;
@@ -2786,17 +2796,24 @@ Media Queries
 .faq-title {
   font-family: @fancyFont;
   font-weight: normal;
-  text-align: center;
   font-style: italic;
   font-size: 18px;
 }
 
 .faq-sidebar {
+  border-top: 1px solid #c4c4c4;
+  margin-top: 10px;
+
   li {
     border-bottom: 1px solid #c4c4c4;
 
     a {
-      padding: 10px 25px;
+      padding: 12px 25px;
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: @headlineFont;
 
       &:hover {
         background-color: #FFF;
@@ -2804,6 +2821,10 @@ Media Queries
         cursor: pointer;
       }
     }
+  }
+  .faq.active-sidebar a {
+    color: #707070;
+    background-color: #FFF;
   }
 }
 
