@@ -2577,7 +2577,7 @@ Media Queries
 }
 
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 600px) {
   .product-item-name, .product.name a {
     font-size: 14px!important;
   }
@@ -2585,10 +2585,10 @@ Media Queries
     .old-price {
       display: none;
     }
-    .special-price {
-      width: 100;
-      display: block;
-    }
+  }
+  .catalog-category-view .special-price {
+    width: 100%;
+    display: block;
   }
 }
 
@@ -2676,10 +2676,6 @@ Media Queries
 
 .main-content {
   margin-bottom: 50px;
-
-  .page-title {
-    margin-bottom: 30px;
-  }
 }
 
 
@@ -2735,3 +2731,81 @@ Media Queries
 .display-block {
   display: block!important;
 }
+
+
+
+
+
+
+.panel-group {
+  margin-bottom: 0;
+  .panel {
+    border-radius: 0;
+    box-shadow: none;
+    .panel-heading {
+      padding: 0;
+      h4 a {
+        background: #f8f8f8;
+        display: block;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 15px;
+        text-decoration: none;
+        transition: 0.15s all ease-in-out;
+        &:hover,
+        &:not(.collapsed) {
+          background: #fff;
+          transition: 0.15s all ease-in-out;
+        }
+        &:not(.collapsed) i:before {
+          content: "\f068";
+        }
+        i {
+          color: #999;
+        }
+      }
+    }
+    .panel-body {
+      padding-top: 0;
+    }
+    .panel-heading+.panel-collapse>.list-group,
+    .panel-heading+.panel-collapse>.panel-body {
+      border-top: none;
+    }
+    + .panel {
+      border-top: none;
+      margin-top: 0;
+    }
+  }
+}
+
+.faq-list-item {
+  padding: 15px;
+}
+
+.faq-title {
+  font-family: @fancyFont;
+  font-weight: normal;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.faq-sidebar {
+  li {
+    border-bottom: 1px solid #c4c4c4;
+
+    a {
+      padding: 10px 25px;
+
+      &:hover {
+        background-color: #FFF;
+        color: #707070;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+

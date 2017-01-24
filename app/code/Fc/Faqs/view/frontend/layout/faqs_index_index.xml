@@ -14,7 +14,7 @@
       		</action>
       	</referenceBlock>
       	<referenceContainer name="columns">
-	        <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar bg-grey col-md-3" before="-">
+	        <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar bg-grey col-md-3 faq-sidebar-wrap" before="-">
 	            <block class="Sebwite\Sidebar\Block\Sidebar" name="cms-sidebar" template="Magento_Cms::sidebar.phtml"/>
 	        </container>
 	    </referenceContainer>
