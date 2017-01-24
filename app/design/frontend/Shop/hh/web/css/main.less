@@ -1194,9 +1194,6 @@ Quick View
           left: 50%;
           right: 50%;
           margin: 0 auto;
-            &:hover {
-              left: 47%;
-            }
         }
       }
     }
@@ -1287,6 +1284,11 @@ Quick View
         font-size: 12px;
       }
     }
+
+
+.page-products .sorter a:hover span.active:after{
+  left: 47%;
+}
 
 .mfp-preloader {animation: none!important;}
 
@@ -2152,6 +2154,7 @@ Sidebar
   }
 }
 
+
 .c-sidebar .expand, .c-sidebar .expanded {
   margin-right: 10px!important;
 }
@@ -2574,7 +2577,7 @@ Media Queries
 }
 
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 600px) {
   .product-item-name, .product.name a {
     font-size: 14px!important;
   }
@@ -2582,10 +2585,11 @@ Media Queries
     .old-price {
       display: none;
     }
-    .special-price {
-      width: 100;
-      display: block;
-    }
+  }
+  .catalog-category-view .special-price {
+    width: 100%;
+    display: block;
+    text-align: center!important;
   }
 }
 
@@ -2641,12 +2645,16 @@ Media Queries
 .inner-content {
   margin-bottom: 60px;
 }
-.cms-page-view {
+
+.cms-page-view, .faqs-index-index, .contact-index-index, .cms-privacy-policy, .cms-terms-conditions {
   .inner-content {
     padding-left: 70px;
   }
   .main-breadcrumb {
     display: none;
+  }
+  .page-title {
+    margin-bottom: 40px;
   }
 }
 
@@ -2668,5 +2676,157 @@ Media Queries
 }
 
 .search.advanced {
-  
+
 }
+
+.main-content {
+  margin-bottom: 50px;
+}
+
+
+.faq-item {
+  .relative;
+
+  .faq-heading {
+    a {
+
+    }
+  }
+
+}
+
+.accordion-toggle {
+  position: relative;
+}
+.accordion-toggle::before,
+.accordion-toggle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: -22px;
+  width: 14px;
+  height: 4px;
+  margin-top: -2px;
+  background-color: #000;
+  -webkit-transform-origin: 50% 50%;
+  -ms-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.accordion-toggle::before {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  opacity: 0;
+}
+.accordion-toggle.collapsed::before {
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  opacity: 1;
+}
+.accordion-toggle.collapsed::after {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.display-block {
+  display: block!important;
+}
+
+
+
+.panel-group {
+  margin-bottom: 30px;
+  .panel {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #C0C0C0;
+
+    .panel-heading {
+      padding: 0;
+      background-color: transparent;
+      border: none;
+
+      h4 {
+        a {
+          background: transparent;
+          display: block;
+          font-size: 14px;
+          font-weight: bold;
+          padding: 15px;
+          text-decoration: none;
+          transition: 0.15s all ease-in-out;
+          text-transform: uppercase;
+          font-family: @baseFont;
+          .relative;
+
+          &:after {
+            font: normal normal normal 24px/1 "Material Design Icons";
+            font-size: inherit;
+            text-rendering: auto;
+            content: "\F374";
+            position: absolute;
+            right: 10px;
+            font-size: 20px;
+          }
+        }
+
+        a.collapsed {
+          &:after {
+            content: "\F415";
+          }
+        }
+
+      }
+    }
+
+  }
+}
+
+
+.faq-list-item {
+  padding: 15px;
+}
+
+.faq-title {
+  font-family: @fancyFont;
+  font-weight: normal;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.faq-sidebar {
+  border-top: 1px solid #c4c4c4;
+  margin-top: 10px;
+
+  li {
+    border-bottom: 1px solid #c4c4c4;
+
+    a {
+      padding: 12px 25px;
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-family: @headlineFont;
+
+      &:hover {
+        background-color: #FFF;
+        color: #707070;
+        cursor: pointer;
+      }
+    }
+  }
+  .faq.active-sidebar a {
+    color: #707070;
+    background-color: #FFF;
+  }
+}
+
+
+
