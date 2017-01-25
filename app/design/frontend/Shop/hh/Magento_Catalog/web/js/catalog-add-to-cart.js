@@ -66,7 +66,7 @@ define([
         ajaxSubmit: function(form) {
             var self = this;
             $(self.options.minicartSelector).trigger('contentLoading');
-            //self.disableAddToCartButton(form);
+            self.disableAddToCartButton(form);
             console.log('Adding to Cart');
 
             $.ajax({
@@ -102,18 +102,18 @@ define([
                             .find('span')
                             .html(res.product.statusText);
                     }
-                    //self.enableAddToCartButton(form);
+                    self.enableAddToCartButton(form);
                     console.log('Added to Cart');
                 }
             });
         },
 
         disableAddToCartButton: function(form) {
-            var addToCartButtonTextWhileAdding = this.options.addToCartButtonTextWhileAdding || $t('<i class="mdi mdi-cart-outline"></i>');
+            var addToCartButtonTextWhileAdding = this.options.addToCartButtonTextWhileAdding || $t('<i class="spinner-cart"></i>');
             var addToCartButton = $(form).find(this.options.addToCartButtonSelector);
             addToCartButton.addClass(this.options.addToCartButtonDisabledClass);
-            addToCartButton.find('span').text(addToCartButtonTextWhileAdding);
-            addToCartButton.attr('title', addToCartButtonTextWhileAdding);
+            addToCartButton.find('span').html(addToCartButtonTextWhileAdding);
+            //addToCartButton.attr('title', addToCartButtonTextWhileAdding);
         },
 
         enableAddToCartButton: function(form) {
@@ -127,8 +127,8 @@ define([
             setTimeout(function() {
                 var addToCartButtonTextDefault = self.options.addToCartButtonTextDefault || $t('<i class="mdi mdi-cart-outline"></i>');
                 addToCartButton.removeClass(self.options.addToCartButtonDisabledClass);
-                addToCartButton.find('span').text(addToCartButtonTextDefault);
-                addToCartButton.attr('title', addToCartButtonTextDefault);
+                addToCartButton.find('span').html(addToCartButtonTextDefault);
+                //addToCartButton.attr('title', addToCartButtonTextDefault);
             }, 1000);
         }
     });

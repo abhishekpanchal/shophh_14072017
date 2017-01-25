@@ -19,5 +19,11 @@ require(['jquery', 'jquery.bootstrap'], function($){
     else if ($('body').hasClass('cms-terms-conditions')) {
     	$('.faq-sidebar li.terms').addClass('active-sidebar');
     }
+    else if ($('body').hasClass('cms-shipping-information')) {
+        $('.faq-sidebar li.shipping').addClass('active-sidebar');
+    }
+    else if ($('body').hasClass('cms-returns')) {
+        $('.faq-sidebar li.returns').addClass('active-sidebar');
+    }
   });
 });
