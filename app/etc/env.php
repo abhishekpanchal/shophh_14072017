@@ -20,7 +20,7 @@ return array (
       'default' => 
       array (
         'host' => 'chp-rds.crfjybhiwfvf.us-east-1.rds.amazonaws.com',
-        'dbname' => 'shophh',
+        'dbname' => 'shophh_dev',
         'username' => 'chp_dbuser',
         'password' => 'a3c3804ed2',
         'active' => '1',
