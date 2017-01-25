@@ -115,14 +115,14 @@ switch ($type = $block->getType()) {
             $class = $type;
 
             $image = 'cart_cross_sell_products';
-            $title = __('More Choices:');
+            $title = __('You Might Also Like');
             $items = $block->getItems();
 
             $showAddTo = true;
             $showCart = true;
             $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
             $description = false;
-            $canItemsAddToCart = false;
+            $canItemsAddToCart = true;
         }
     break;
 
@@ -170,102 +170,100 @@ switch ($type = $block->getType()) {
 
 
     <div class="row mobile-upsell-carousel hidden-sm hidden-md hidden-lg">
+        <div id="upsellCarousel" class="carousel slide" data-ride="carousel">
+             <div class="carousel-inner" role="listbox">
+                <?php $iterator = 1; ?>
+                <?php foreach ($items as $_item): ?>
+                <?php $available = ''; ?>
+                <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
+                    <?php if (!$_item->getRequiredOptions()): ?>
+                        <?php $available = 'related-available'; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <div class="item <?php if($iterator == 1) echo 'active'; ?>">
+                <div class="product-item-details <?php echo $available; ?>">
+                <?php echo '<!-- ' . $image . '-->' ?>
+                <a href="<?php echo $block->getProductUrl($_item) ?>" class="product photo product-item-photo">
+                    <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                </a>
+                <div class="product details product-item-details carousel-caption">
+                    <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php echo $block->getProductUrl($_item) ?>">
+                        <?php echo $block->escapeHtml($_item->getName()) ?></a>
+                    </strong>
+                    <?php if ($description):?>
+                        <?php
+                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                            $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
+                            echo $product->getShortDescription();
+                        ?>
+                    <?php endif; ?>
+                    <?php echo $block->getProductPrice($_item); ?>
 
+                    <?php if ($templateType): ?>
+                        <?php echo $block->getReviewsSummaryHtml($_item, $templateType) ?>
+                    <?php endif; ?>
 
-                <div id="upsellCarousel" class="carousel slide" data-ride="carousel">
-                     <div class="carousel-inner" role="listbox">
-                        <?php $iterator = 1; ?>
-                        <?php foreach ($items as $_item): ?>
-                        <?php $available = ''; ?>
-                        <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
-                            <?php if (!$_item->getRequiredOptions()): ?>
-                                <?php $available = 'related-available'; ?>
-                            <?php endif; ?>
+                    <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
+                        <?php if (!$_item->getRequiredOptions()): ?>
+                            <div class="field choice related">
+                                <input type="checkbox" class="checkbox related" id="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>" name="related_products[]" value="<?php /* @escapeNotVerified */ echo $_item->getId() ?>" />
+                                <label class="label" for="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>"><span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span></label>
+                            </div>
                         <?php endif; ?>
-                    <div class="item <?php if($iterator == 1) echo 'active'; ?>">
-                        <div class="product-item-details <?php echo $available; ?>">
-                        <?php echo '<!-- ' . $image . '-->' ?>
-                        <a href="<?php echo $block->getProductUrl($_item) ?>" class="product photo product-item-photo">
-                            <?php echo $block->getImage($_item, $image)->toHtml(); ?>
-                        </a>
-                        <div class="product details product-item-details carousel-caption">
-                            <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php echo $block->getProductUrl($_item) ?>">
-                                <?php echo $block->escapeHtml($_item->getName()) ?></a>
-                            </strong>
-                            <?php if ($description):?>
-                                <?php
-                                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                                    $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
-                                    echo $product->getShortDescription();
-                                ?>
-                            <?php endif; ?>
-                            <?php echo $block->getProductPrice($_item); ?>
+                    <?php endif; ?>
 
-                            <?php if ($templateType): ?>
-                                <?php echo $block->getReviewsSummaryHtml($_item, $templateType) ?>
-                            <?php endif; ?>
+                        <ul class="product actions product-item-actions visible">
 
-                            <?php if (!$_item->isComposite() && $_item->isSaleable() && $type == 'related'): ?>
-                                <?php if (!$_item->getRequiredOptions()): ?>
-                                    <div class="field choice related">
-                                        <input type="checkbox" class="checkbox related" id="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>" name="related_products[]" value="<?php /* @escapeNotVerified */ echo $_item->getId() ?>" />
-                                        <label class="label" for="related-checkbox<?php /* @escapeNotVerified */ echo $_item->getId() ?>"><span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span></label>
-                                    </div>
+                            <li class="secondary-addto-links actions-secondary product-meta-wishlist" data-role="add-to-links">
+                                <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
+                                    <?php echo $addToBlock->setProduct($_item)->getChildHtml(); ?>
                                 <?php endif; ?>
-                            <?php endif; ?>
-
-                                <ul class="product actions product-item-actions visible">
-
-                                    <li class="secondary-addto-links actions-secondary product-meta-wishlist" data-role="add-to-links">
-                                        <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
-                                            <?php echo $addToBlock->setProduct($_item)->getChildHtml(); ?>
-                                        <?php endif; ?>
-                                    </li>
+                            </li>
 
 
-                                    <li class="product-meta-cart">
-                                        <?php if ($_item->isSaleable()): ?>
-                                            <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
-                                                <button class="action icon-cart" data-mage-init='{"redirectUrl": {"url": "<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_item) ?>"}}' type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
-                                                        <i class="mdi mdi-cart-outline"></i>
-                                                </button>
-                                            <?php else: ?>
-                                                <?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
-                                                $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
-                                                ?>
-                                                <button class="action icon-cart"
-                                                        data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
-                                                        type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
-                                                        <i class="mdi mdi-cart-outline"></i>
-                                                </button>
-                                            <?php endif; ?>
-                                        <?php else: ?>
-                                            <?php if ($_item->getIsSalable()): ?>
-                                                <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
-                                            <?php else: ?>
-                                                <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
-                                            <?php endif; ?>
-                                        <?php endif; ?>
-                                    </li>
-                                </ul>
+                            <li class="product-meta-cart">
+                                <?php if ($_item->isSaleable()): ?>
+                                    <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)): ?>
+                                        <button class="action icon-cart" data-mage-init='{"redirectUrl": {"url": "<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_item) ?>"}}' type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                <i class="mdi mdi-cart-outline"></i>
+                                        </button>
+                                    <?php else: ?>
+                                        <?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                        $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+                                        ?>
+                                        <button class="action icon-cart"
+                                                data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+                                                type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                <i class="mdi mdi-cart-outline"></i>
+                                        </button>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php if ($_item->getIsSalable()): ?>
+                                        <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                    <?php else: ?>
+                                        <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                            </li>
+                        </ul>
 
-                        </div>
-                    </div>
                 </div>
-                        <?php $iterator++; ?>
-                        <?php //echo($iterator == count($items)+1) ? '</li>' : '' ?>
-                    <?php endforeach ?>
-                    </div>
-                <!--</ol>-->
-                <a class="left carousel-control" href="#upsellCarousel" role="button" data-slide="prev">
-                    <span class="left carousel-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                  <a class="right carousel-control" href="#upsellCarousel" role="button" data-slide="next">
-                    <span class="carousel-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                  </a>
             </div>
+        </div>
+                <?php $iterator++; ?>
+                <?php //echo($iterator == count($items)+1) ? '</li>' : '' ?>
+            <?php endforeach ?>
+            </div>
+        <!--</ol>-->
+        <a class="left carousel-control" href="#upsellCarousel" role="button" data-slide="prev">
+            <span class="left carousel-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#upsellCarousel" role="button" data-slide="next">
+            <span class="carousel-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
     </div>
 
 
