@@ -1597,7 +1597,7 @@ Flexbox - Rows
 .swatch-option-tooltip {
     max-width: 0px !important;
     max-height: 0px !important;
-    overflow:hidden;
+    overflow:hidden!important;
     min-height: 0px !important;
     min-width: 0px !important; 
 }
@@ -1990,6 +1990,7 @@ Products
 
 .swatch-option.image:not(.disabled):hover, .swatch-option.color:not(.disabled):hover {
   border: 1px solid rgba(14, 13, 13, 0.23)!important;
+  outline: none!important;
 }
 .product-info-main {
   .product-options-wrapper {
@@ -2915,7 +2916,6 @@ Media Queries
     font-size: 12px;
     color: #8d8d8d;
     text-transform: uppercase;
-    top: 5px;
 
     &:before {
       font: normal normal normal 24px/1 "Material Design Icons" !important;
@@ -3187,9 +3187,16 @@ Media Queries
 .sidebar {
   .swatch-attribute-options {
     position: relative;
+    a {
+      display: inline-block!important;
+    }
+    .color {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+    }
   }
 }
-
 
 .catalogsearch-result-index {
 
@@ -3203,6 +3210,7 @@ Media Queries
   width: 100%!important;
   float: none!important;
 }
+
 
 /* =========================================================
 Products
@@ -3577,4 +3585,43 @@ Products
 
 .action.tocart.cart-circle.disabled {
   position: relative;
+}
+
+/* =========================================================
+Cart Page
+============================================================ */
+.checkout-cart-index {
+  .cart {
+    .table-wrapper .items > .item {
+      border: none;
+    }
+    .table-wrapper .item .col.item {
+      padding: 10px 0!important;
+    }
+    .price-including-tax .price, .price-excluding-tax .price {
+      font-size: 14px;
+      font-weight: normal
+    }
+    .product-item-details {
+
+      .product-item-name {
+        text-align: left;
+        display: block;
+        margin-top: 10px;
+      }
+    }
+  }
+  .table > tbody + tbody {
+    border: none!important;
+  }
+  .cart.table-wrapper .product-item-photo {
+    width: 40%;
+
+    img {
+      width: 100%!important;
+    }
+  }
+  .cart.table-wrapper .col.price, .order-items.table-wrapper .col.price, .cart.table-wrapper .col.qty, .order-items.table-wrapper .col.qty, .cart.table-wrapper .col.subtotal, .order-items.table-wrapper .col.subtotal, .cart.table-wrapper .col.msrp, .order-items.table-wrapper .col.msrp {
+    text-align: left;
+  }
 }
