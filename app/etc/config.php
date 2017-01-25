@@ -6,6 +6,7 @@ return array (
     'Customweb_Base' => 1,
     'Magento_Store' => 1,
     'Fc_Faqs' => 1,
+    'Hhmedia_Override' => 1,
     'Hhmedia_Productpage' => 1,
     'Magento_Directory' => 1,
     'Magento_Eav' => 1,
