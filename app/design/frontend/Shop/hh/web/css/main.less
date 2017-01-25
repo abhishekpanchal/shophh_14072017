@@ -161,6 +161,14 @@ Classes
   margin-top: 20px!important;
 }
 
+
+/* ==========================================================================
+Icon Font
+ ========================================================================== */
+.mdi {
+  font-size: 20px;
+}
+
 /* ==========================================================================
 buttons
 ========================================================================== */
@@ -176,6 +184,7 @@ buttons
 
   i {
     margin-right: 10px;
+    font-size: 15px;
   }
 }
 
@@ -1029,13 +1038,6 @@ Dashboard Fixes
     padding-bottom: 20px;
     border-bottom: 1px solid #e6e6e7;
   }
-}
-
-/* ==========================================================================
-Icon Font
- ========================================================================== */
-.mdi {
-  font-size: 20px;
 }
 
 /* ==========================================================================
@@ -2298,6 +2300,20 @@ Sidebar
   box-sizing: border-box;
 }
 
+.spinner-cart {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border: 2px solid #FFF;
+  border-top-color: transparent;
+  animation: lai-spinnair 1s linear infinite;
+  box-sizing: border-box;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
 @keyframes lai-spinnair {
   0% {
     transform: rotateZ(0);
@@ -2636,9 +2652,14 @@ Media Queries
 
 /* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
 
+
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
 @media only screen and (max-width: 600px) {
 
+  
+.reviews-headline {
+  padding: 0;
+}
 
   .product-item-name, .product.name a {
     font-size: 14px!important;
@@ -2721,7 +2742,8 @@ Media Queries
 }
 
 .MagicScroll.MagicScroll-horizontal {
-  min-width: 450px!important;
+  /*min-width: 450px!important;*/
+  min-width: 100%!important;
 }
 
 .mcs-item {
@@ -2872,7 +2894,12 @@ Media Queries
       }
     }
   }
-  .faq.active-sidebar a {
+  .faq.active-sidebar a,
+  .contact.active-sidebar a,
+  .shipping.active-sidebar a,
+  .returns.active-sidebar a,
+  .privacy.active-sidebar a,
+  .terms.active-sidebar a{
     color: #707070;
     background-color: #FFF;
   }
@@ -3533,6 +3560,21 @@ Products
   }
 
   .MagicScroll.MagicScroll-horizontal {
-    min-width: 370px!important;
+    /*min-width: 320px!important;*/
+    min-width: 100%!important;
   }
+}
+
+
+.modes {
+  .btn-sm, .btn-group-sm > .btn {
+    background-color: transparent!important;
+    border: none!important;
+    box-shadow: none!important;
+  }
+}
+
+
+.action.tocart.cart-circle.disabled {
+  position: relative;
 }
