@@ -2210,6 +2210,7 @@ Sidebar
         }
         ul li:last-of-type {
           padding-bottom: 5px;
+          border-bottom: 10px solid #e6e6e7!important;
         }
       }
       .level2 {
@@ -2443,6 +2444,27 @@ Checkout
       font-family: @baseFont;
     }
   }
+
+  .customer-welcome {
+    display: block;
+  }
+
+  .customer-name {
+    color: #000;
+    padding-left: 22px;
+    font-weight: bold;
+    text-align: right;
+    .relative;
+    top: -5px;
+
+    &:before {
+      content: "\f3a0";
+      font-family: "Ionicons";
+      position: absolute;
+      left: 0;
+      font-size: 15px;
+    }
+  }
 }
 
 .footer-bottom {
@@ -2454,8 +2476,6 @@ Checkout
     padding: 15px;
   }
 }
-
-
 
 
 /* ==========================================================================
@@ -3367,8 +3387,8 @@ Products
     li {
       display: inline-block;
       font-family: @fancyFont;
-      font-size: 25px;
-      padding: 25px;
+      font-size: 20px;
+      padding: 15px 25px;
       font-style: italic;
       width: 49.6%;
 
@@ -3715,5 +3735,33 @@ Cart Page
   .old-price span span{
     font-size: 11px!important;
   }
+}
+
+
+
+
+
+
+.customer-account-login {
+
+    .fieldset > .field:not(.choice) > .label {
+      float: none!important;
+      width: 100%;
+      text-align: left;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      background-color: #f0f0f0;
+      display: block;
+      text-align: left;
+      border-radius: 8px;
+      padding: 0;
+      height: auto;
+      padding: 11px 16px;
+      width: 80%;
+      margin: 0;
+      margin-top: 15px;
+      font-size: 15px !important;
+    }
+
 }
 

@@ -25,5 +25,11 @@ require(['jquery', 'jquery.bootstrap'], function($){
     else if ($('body').hasClass('cms-returns')) {
         $('.faq-sidebar li.returns').addClass('active-sidebar');
     }
+
+    $('.review-add a').click(function() {
+        console.log('clicked review!');
+        $('.mfp-wrap').addClass('mpf-ready');
+    });
+
   });
 });
