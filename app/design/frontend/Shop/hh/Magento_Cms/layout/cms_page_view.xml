@@ -9,7 +9,7 @@
     <body>
         <referenceBlock name="category-sidebar" remove="true" />
         <referenceContainer name="columns">
-	        <container name="div.sidebar.main" htmlTag="div" htmlClass="col-md-3" before="-">
+	        <container name="div.sidebar.main" htmlTag="div" htmlClass="sidebar bg-grey col-md-3" before="-">
 	            <block class="Sebwite\Sidebar\Block\Sidebar" name="cms-sidebar" template="Magento_Cms::sidebar.phtml"/>
 	        </container>
 	    </referenceContainer>

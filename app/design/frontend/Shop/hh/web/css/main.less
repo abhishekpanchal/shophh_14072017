@@ -1402,14 +1402,56 @@ Flexbox - Rows
   .facebook-login button, #btn_facebook_signup {
     background: none;
     background-color: #3b5998!important;
+    position: relative;
+    padding-left: 50px;
+
+    &:before {
+      content: "\f231";
+      display: inline-block;
+      font-family: "Ionicons";
+      speak: none;
+      font-style: normal;
+      color: #FFF;
+      font-size: 30px;
+      position: absolute;
+      margin-left: -5px;
+    }
   }
   .google-login button, #btn_google_signup {
     background: none;
     background-color: #dd4b39!important;
+    position: relative;
+    padding-left: 50px;
+
+    &:before {
+      content: "\f34e";
+      display: inline-block;
+      font-family: "Ionicons";
+      speak: none;
+      font-style: normal;
+      color: #FFF;
+      font-size: 30px;
+      position: absolute;
+      margin-left: -5px;
+    }
   }
   .twitter-login button, #btn_twitter_signup {
     background: none;
     background-color: #28bceb!important;
+    position: relative;
+    padding-left: 50px;
+
+    &:before {
+      content: "\f243";
+      display: inline-block;
+      font-family: "Ionicons";
+      speak: none;
+      font-style: normal;
+      color: #FFF;
+      font-size: 30px;
+      position: absolute;
+      margin-left: -5px;
+    }
   }
 
   .social-login-authentication-channel {
@@ -2593,18 +2635,6 @@ Media Queries
 
 
 /* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
-@media only screen and (max-width: 767px) {
-
-  .products-grid {
-    
-    .modes {
-      display: none!important;
-    }
-    .sorter-mobile {
-      display: none!important;
-    }
-  }
-}
 
 /* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
 @media only screen and (max-width: 600px) {
@@ -3027,14 +3057,19 @@ Media Queries
   margin-left: 15px;
 
   .action.showcart .counter.qty {
-    background: transparent;
+    background: #FFF;
     color: #000;
-    padding: 0;
-    margin: 0;
     height: auto;
+    line-height: auto;
+    border-radius: 0;
     display: inline-block;
-    top: -2px;
-    .relative;
+    margin: 0;
+    min-width: auto;
+    overflow: visible;
+    padding: 0;
+    text-align: center;
+    white-space: normal;
+    margin-left: 5px;
 
     &:before {
       content: '( ';
@@ -3053,15 +3088,16 @@ Media Queries
     font-size: 12px;
     color: #8d8d8d;
     text-transform: uppercase;
-    top: -9px;
+    /*top: -9px;*/
   }
 
   .action.showcart.active .text {
   }
+
   .action.showcart {
     .relative;
     padding-left: 25px;
-    top: 15px;
+    /*top: 15px;*/
   }
   .action.showcart:before,
   .action.showcart.active:before {
@@ -3117,7 +3153,7 @@ Media Queries
 
 .minicart-wrapper .action.showcart:before {
   top: 0;
-  margin-top: -8px;
+  /*margin-top: -8px;*/
 }
 
 
@@ -3478,4 +3514,25 @@ Products
 
 #social-login-popup .block-container .field.password.required.margintop-20 {
   margin-top: 20px!important;
+}
+
+.mfp-preloader {
+  display: none!important;
+}
+
+
+@media only screen and (max-width: 767px) {
+
+  .products-grid {
+    .modes {
+      display: none!important;
+    }
+    .sorter-mobile {
+      display: none!important;
+    }
+  }
+
+  .MagicScroll.MagicScroll-horizontal {
+    min-width: 370px!important;
+  }
 }
