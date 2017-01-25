@@ -1308,8 +1308,8 @@ Quick View
 
 
 .page-products .sorter a:hover span.active:after{
-  left: 53%;
-  border-width: 0;
+  left: 50%;
+  border-width: 0!important;
 }
 
 .mfp-preloader {animation: none!important;}
@@ -3670,3 +3670,50 @@ Cart Page
       margin-left: -30px;
     }
 }
+
+.catalogsearch-result-index {
+  .item.search {
+    strong {
+      font-weight: normal!important;
+      font-family: @baseFont;
+      font-size: 18px;
+      margin-top: 10px;
+      text-transform: capitalize;
+      color: #666;
+    }
+  }
+  .page-products {
+    .product-item-info {
+      max-width: 100%!important;
+    }
+  }
+  .product-item-photo img {
+    width: 100%!important;
+  }
+  .product-reviews-summary {
+    display: none;
+  }
+  .special-price {
+    width: 40%;
+    display: inline-block;
+    text-align: right;
+  }
+  .old-price {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .product-item-details .price-container {
+      padding: 0!important;
+  }
+
+  .special-price .price-container .price {
+      color: #b13301;
+      font-weight: 700;
+  }
+
+  .old-price span span{
+    font-size: 11px!important;
+  }
+}
+
