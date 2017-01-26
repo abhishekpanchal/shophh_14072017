@@ -13,7 +13,7 @@ require(['jquery'], function ($) {
                 element.removeClass('active');
                 element.find('li').removeClass('active');
 
-                element.find('i').removeClass('fmdi mdi-chevron-up').addClass('mdi mdi-chevron-down');
+                element.find('i').removeClass('ion-android-arrow-dropdown').addClass('ion-android-arrow-dropup');
             }
 
             else {
