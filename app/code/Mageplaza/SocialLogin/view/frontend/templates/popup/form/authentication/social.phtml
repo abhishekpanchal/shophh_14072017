@@ -12,7 +12,7 @@
                 <div class="primary">
                     <button class="action btn_<?= $key ?>_login" id="btn_<?= $key ?>_login" type="button">
                         <span>
-                            <span><?php echo __('Login with %1', $social->getLabel()) ?></span>
+                            <span><?php echo __('%1 Login', $social->getLabel()) ?></span>
                         </span>
                     </button>
                 </div>
@@ -21,7 +21,7 @@
                 require(['jquery', 'Mageplaza_SocialLogin/js/sociallogin'], function ($, SocialLoginPopup) {
 					$('#btn_<?= $key ?>_login').click(function () {
 						var popup = new SocialLoginPopup();
-						popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('Login By %1', $social->getLabel())?>');
+						popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('%1 Login', $social->getLabel())?>');
 					});
 				});
             </script>
