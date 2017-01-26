@@ -5,7 +5,9 @@
         <span><?php echo __('Or') ?></span>
     </div>
     <div class="block-content">
+        <ul>
         <?php foreach ($availableSocials as $key => $social): ?>
+            <li>
 			<div class="actions-toolbar social-btn <?= $key ?>-login">
                 <div class="primary">
                     <button class="action btn_<?= $key ?>_login" id="btn_<?= $key ?>_login" type="button">
@@ -23,7 +25,9 @@
 					});
 				});
             </script>
+            </li>
 		<?php endforeach; ?>
+        </ul>
     </div>
 </div>
 <?php endif; ?>
