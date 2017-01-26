@@ -10,7 +10,7 @@
         <div data-bind="scope: 'messages'">
             <div data-bind="foreach: { data: cookieMessages, as: 'message' }" class="messages">
                 <div role="alert" data-bind="attr: {
-                    class: 'alert-' + message.type + ' ' + message.type + ' alert',
+                    class: 'default-alert alert-' + message.type + ' ' + message.type + ' alert',
                     'data-ui-id': 'message-' + message.type
                 }">
                     <span data-bind="html: message.text"></span>
