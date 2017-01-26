@@ -15,7 +15,7 @@
             $firstName = $customerSession->getCustomer()->getFirstname();
             $lastName = $customerSession->getCustomer()->getLastname();
         ?>
-        <a href="<?php echo $this->getUrl('customer/account'); ?>"
+        <a href="<?php echo $this->getUrl('customer/account'); ?>">
         	<span class="customer-name"><?php echo $firstName.' '.$lastName[0]; ?></span>
     	</a>
     </li>

@@ -2151,7 +2151,7 @@ Sidebar
         font-family: @headlineFont;
         font-weight: bold;
         background-color: #FFF;
-        color: #707070;
+        color: #000;
         cursor: pointer;
 
         &:hover {
@@ -2175,6 +2175,10 @@ Sidebar
       }
       .expand:first-child {
         float: left;
+
+        i {
+          font-size: 18px!important;
+        }
       }
     }
 
@@ -3215,6 +3219,8 @@ Media Queries
 .sidebar {
   .swatch-attribute-options {
     position: relative;
+    margin-left: 20px;
+
     a {
       display: inline-block!important;
     }
@@ -3742,8 +3748,9 @@ Cart Page
 
 
 
-.customer-account-login {
+.customer-account-login, .customer-account-create {
 
+  .main {
     .fieldset > .field:not(.choice) > .label {
       float: none!important;
       width: 100%;
@@ -3762,6 +3769,11 @@ Cart Page
       margin-top: 15px;
       font-size: 15px !important;
     }
+
+    .newsletter, .back {
+      display: none;
+    }
+  }
 
 }
 
@@ -3943,7 +3955,7 @@ Cart Page
 
 .shop-menu {
   margin-left: 9px;
-  
+
   .fa {
     margin-left: 10px;
     float: right;
@@ -3955,6 +3967,16 @@ Cart Page
 .shop-menu.am-tab-hover {
   .fa:before {
     content: "\f0d8"!important;
+    font-family: FontAwesome;
   }
+}
 
+.wishlist-top span, .greet {
+  display: none!important;
+}
+
+.catalogsearch-result-index {
+  .new-product {
+    display: none!important;
+  }
 }
