@@ -1308,8 +1308,8 @@ Quick View
 
 
 .page-products .sorter a:hover span.active:after{
-  left: 53%;
-  border-width: 0;
+  left: 50%;
+  border-width: 0!important;
 }
 
 .mfp-preloader {animation: none!important;}
@@ -1599,7 +1599,8 @@ Flexbox - Rows
     max-height: 0px !important;
     overflow:hidden!important;
     min-height: 0px !important;
-    min-width: 0px !important; 
+    min-width: 0px !important;
+    display: none!important;
 }
 
 
@@ -2044,6 +2045,13 @@ Products
         }
       }
       .swatch-option.text.selected {
+        outline: none;
+
+        &:after {
+          content: none;
+        }
+      }
+      .swatch-option.text.selected {
         &after {
           content: none;
         }
@@ -2202,6 +2210,7 @@ Sidebar
         }
         ul li:last-of-type {
           padding-bottom: 5px;
+          border-bottom: 10px solid #e6e6e7!important;
         }
       }
       .level2 {
@@ -2435,6 +2444,27 @@ Checkout
       font-family: @baseFont;
     }
   }
+
+  .customer-welcome {
+    display: block;
+  }
+
+  .customer-name {
+    color: #000;
+    padding-left: 22px;
+    font-weight: bold;
+    text-align: right;
+    .relative;
+    top: -5px;
+
+    &:before {
+      content: "\f3a0";
+      font-family: "Ionicons";
+      position: absolute;
+      left: 0;
+      font-size: 15px;
+    }
+  }
 }
 
 .footer-bottom {
@@ -2446,8 +2476,6 @@ Checkout
     padding: 15px;
   }
 }
-
-
 
 
 /* ==========================================================================
@@ -3359,8 +3387,8 @@ Products
     li {
       display: inline-block;
       font-family: @fancyFont;
-      font-size: 25px;
-      padding: 25px;
+      font-size: 20px;
+      padding: 15px 25px;
       font-style: italic;
       width: 49.6%;
 
@@ -3455,90 +3483,96 @@ Products
 
 
 .checkout-index-index {
-  .fieldset > .field:not(.choice) > .label {
-    float: none!important;
-    width: 100%;
-    text-align: left;
+  .authorization-link {
+    display: none;
   }
-  input[type="text"], input[type="email"] {
-    background-color: #f0f0f0;
-    display: block;
-    text-align: left;
-    border-radius: 8px;
-    padding: 0;
-    height: auto;
-    padding: 11px 16px;
-    width: 80%;
-    margin: 0;
-    margin-top: 15px;
-    font-size: 15px !important;
-  }
-
-  select {
-    max-width: 80%!important;
-  }
-
-  .opc-wrapper .step-title, .opc-block-shipping-information .shipping-information-title, .opc-block-summary > .title, .checkout-agreements-items .checkout-agreements-item-title {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    color: #333;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: @headlineFont;
-  }
-
-  .opc-progress-bar-item {
-    width: 50%!important;
-  }
-  .opc-progress-bar-item > span {
-    font-size: 14px;
-    margin-bottom: 40px;
-  }
-  .opc-progress-bar-item > span:after {
-    top: 6px;
-    font-size: 16px;
-    line-height: 26px;
-  }
-  .opc-block-summary .items-in-cart > .title strong {
-    span {
-      font-size: 14px!important;
-      font-family: @headlineFont!important;
+  .main {
+    .fieldset > .field:not(.choice) > .label {
+      float: none!important;
+      width: 100%;
+      text-align: left;
     }
-  }
-  .opc-block-summary .product-item .product-item-name-block {
-    display: block!important;
-    text-align: left!important;
-  }
-  .opc-block-summary .product-item .subtotal {
-    display: block!important;
-    text-align: left!important;
-    color: #666!important;
-  }
-  .opc-block-summary .product-item .price {
-    font-size: 14px!important;
-    display: block;
-    font-family: @headlineFont;
-    margin-top: 10px!important;
-  }
-  .minicart-items-wrapper .product .product-item-details .details-qty {
-    margin-top: 5px;
-  }
-  .opc-block-summary {
-    margin-bottom: 0;
-  }
-  .table-checkout-shipping-method {
-    width: 100%!important;
-  }
-  .table-checkout-shipping-method tbody td:first-child {
-    width: auto!important;
-  }
-  input[type="radio"] {
-    margin: 0;
-  }
-  .methods-shipping .actions-toolbar .action.primary {
-    font-family: @fancyFont!important;
-    text-transform: capitalize!important;
+    input[type="text"], input[type="email"] {
+      background-color: #f0f0f0;
+      display: block;
+      text-align: left;
+      border-radius: 8px;
+      padding: 0;
+      height: auto;
+      padding: 11px 16px;
+      width: 80%;
+      margin: 0;
+      margin-top: 15px;
+      font-size: 15px !important;
+    }
+
+    select {
+      max-width: 80%!important;
+    }
+
+    .opc-wrapper .step-title, .opc-block-shipping-information .shipping-information-title, .opc-block-summary > .title, .checkout-agreements-items .checkout-agreements-item-title {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+      color: #333;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-family: @headlineFont;
+    }
+
+    .opc-progress-bar-item {
+      width: 50%!important;
+    }
+    .opc-progress-bar-item > span {
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+    .opc-progress-bar-item > span:after {
+      top: 6px;
+      font-size: 16px;
+      line-height: 26px;
+    }
+    .opc-block-summary .items-in-cart > .title strong {
+      span {
+        font-size: 14px!important;
+        font-family: @headlineFont!important;
+      }
+    }
+    .opc-block-summary .product-item .product-item-name-block {
+      display: block!important;
+      text-align: left!important;
+    }
+    .opc-block-summary .product-item .subtotal {
+      display: block!important;
+      text-align: left!important;
+      color: #666!important;
+    }
+    .opc-block-summary .product-item .price {
+      font-size: 14px!important;
+      display: block;
+      font-family: @headlineFont;
+      margin-top: 10px!important;
+    }
+    .minicart-items-wrapper .product .product-item-details .details-qty {
+      margin-top: 5px;
+    }
+    .opc-block-summary {
+      margin-bottom: 0;
+    }
+    .table-checkout-shipping-method {
+      width: 100%!important;
+    }
+    .table-checkout-shipping-method tbody td:first-child {
+      width: auto!important;
+    }
+    input[type="radio"] {
+      margin: 0;
+    }
+    .methods-shipping .actions-toolbar .action.primary {
+      font-family: @fancyFont!important;
+      text-transform: capitalize!important;
+    }
+
   }
 }
 
@@ -3625,3 +3659,109 @@ Cart Page
     text-align: left;
   }
 }
+
+
+.minicart-items .update-cart-item {
+  position: relative;
+  top: 9px;
+  padding: 5px 20px;
+  background: #000;
+  color: #FFF;
+  border-color: #000;
+}
+
+.products-upsell {
+  .product-item-actions li:first-child {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.btn-cart-single:hover,
+.btn-cart-single:focus {
+  background-color: #000!important;
+}
+
+.btn-cart-single.btn-main.disabled {
+    padding: 10px 40px;
+
+    i {
+      margin-top: -3px;
+      margin-left: -30px;
+    }
+}
+
+.catalogsearch-result-index {
+  .item.search {
+    strong {
+      font-weight: normal!important;
+      font-family: @baseFont;
+      font-size: 18px;
+      margin-top: 10px;
+      text-transform: capitalize;
+      color: #666;
+    }
+  }
+  .page-products {
+    .product-item-info {
+      max-width: 100%!important;
+    }
+  }
+  .product-item-photo img {
+    width: 100%!important;
+  }
+  .product-reviews-summary {
+    display: none;
+  }
+  .special-price {
+    width: 40%;
+    display: inline-block;
+    text-align: right;
+  }
+  .old-price {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .product-item-details .price-container {
+      padding: 0!important;
+  }
+
+  .special-price .price-container .price {
+      color: #b13301;
+      font-weight: 700;
+  }
+
+  .old-price span span{
+    font-size: 11px!important;
+  }
+}
+
+
+
+
+
+
+.customer-account-login {
+
+    .fieldset > .field:not(.choice) > .label {
+      float: none!important;
+      width: 100%;
+      text-align: left;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      background-color: #f0f0f0;
+      display: block;
+      text-align: left;
+      border-radius: 8px;
+      padding: 0;
+      height: auto;
+      padding: 11px 16px;
+      width: 80%;
+      margin: 0;
+      margin-top: 15px;
+      font-size: 15px !important;
+    }
+
+}
+
