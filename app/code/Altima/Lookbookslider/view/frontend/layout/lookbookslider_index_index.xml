@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Shop the Shot</title>
+    </head>
     <body>
         <referenceContainer name="content">
        		<!--<block class="Altima\Lookbookslider\Block\Lookbookslider" name="shot.list" template="Altima_Lookbookslider::shot.phtml" />-->
@@ -9,5 +12,10 @@
                 </action>
             </block>
         </referenceContainer>
+        <referenceBlock name="lookbookslider.content.top">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Shop the Shot</argument>
+            </action>
+        </referenceBlock>
     </body>
 </page>

@@ -28,7 +28,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
     if ($block->getMode() == 'grid') {
         $viewMode = 'grid';
         $image = 'category_page_grid';
-        $showDescription = false;
+        $showDescription = true;
         $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     } else {
         $viewMode = 'list';
