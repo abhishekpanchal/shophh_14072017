@@ -57,21 +57,17 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                      data-cycle-slides="> div.slide"
                      data-cycle-auto-height="container"
                      data-cycle-log="false"
-                     
                      <?php
-                     /*                      * ** effect options ********* */
-
+                     /** ** effect options ********* */
                      if ($effect_opt) {
                          echo $effect_opt;
                      }
                      if ($effect_arr === FALSE):
-                         ?>
+                    ?>
                          data-cycle-fx="<?php echo $effect; ?>"
                      <?php
                      endif;
-
-
-                     /*                      * ***** end effect options ******** */
+                     /** ***** end effect options ******** */
                      ?>
                      <?php
                      if (count($slideCollection) > 1):
@@ -148,7 +144,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
                                 <img alt="Slide <?php echo $slide->getId(); ?>"  src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
 
-                                    <?php if ($slide->getCaption() != '' && $slider->getShowslidenames() == 1) : ?>
+                                    <?php if ($slide->getCaption() != '') : ?>
                                     <div class="cycle-overlay">
                                     <?php echo $slide->getCaption(); ?>
                                     </div>
@@ -157,18 +153,6 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                             <?php if ($slide->getLink()): ?>
                                 </a>
                             <?php endif; ?>
-            <?php if ($helper->canShowPinitButton()): ?>
-                               
-                                <div class="pinit_button">
-                                    <a target="_blank" href="//www.pinterest.com/pin/create/button/?url=<?php echo $currentUrl . '?slide=' . $slide_ind ?>&media=<?php echo $blockObj->getSlideImageUrl($slide); ?>"
-                                       data-pin-do="buttonPin" 
-                                       data-pin-config="above" >
-                                        <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
-                                    </a>
-                                </div>
-
-            <?php endif; ?>
-
                         </div>
                         <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
                         <?php $slide_ind++; ?>
@@ -216,6 +200,29 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         <?php endif; ?>    
         </div>
 
+        <div class="shot-products">
+            <div class="page-title"><?php echo __("In This Shot") ?></div>
+            <?php foreach ($slideCollection as $slide): ?>
+                <?php if($slide->getId() == $slideId): ?>
+                    <?php $products = $blockObj->getProductCollection($slide); ?>
+                    <?php foreach($products as $_product): ?>
+                        <?php echo $_product['text']; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+        <div class="more-shots">
+            <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
+            <?php foreach($shotCollection as $shot): ?>
+                <?php if($slideId != $shot->getSlideId()): ?> 
+                    <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
+                    <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
+                        <img src=<?php echo $imagePath; ?> />
+                        <span class="title"><?php echo $shot->getTitle(); ?></span>
+                    </a>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
         <script type="text/javascript">
 
             (function () {

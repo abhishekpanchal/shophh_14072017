@@ -1,10 +1,3 @@
-<?php
-//$helper = $this->helper('Altima\Lookbookslider\Helper\Data');
-//if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
-?>
-<?php //echo $block->getChildHtml(); ?>
-<div style="clear:both; height:10px;"></div>
-<?php //endif; ?>
 <?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
 <?php $sliderCollection = $this->getCollection('content-top'); ?>
 <?php 
@@ -25,11 +18,3 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 		<span class="title"><?php echo $shot->getTitle(); ?></span>
 	</a>
 <?php endforeach; ?>
-
-
-<?php 
-echo "<pre>";
-//print_r($abc->getData());
-print_r($shotCollection->getData());
-echo "</pre>";
- ?>
