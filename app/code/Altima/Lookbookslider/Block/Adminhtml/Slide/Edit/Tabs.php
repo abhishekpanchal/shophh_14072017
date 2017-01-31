@@ -27,7 +27,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs {
         parent::_construct();
         $this->setId('slide_tabs');
         $this->setDestElementId('edit_form');
-        $this->setTitle(__('Slide Information'));
+        $this->setTitle(__('Shot Information'));
     }
 
 }

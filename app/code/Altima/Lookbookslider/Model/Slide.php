@@ -183,7 +183,7 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
     }
 
     public function getOwnTitle($plural = false) {
-        return $plural ? 'Slide' : 'Slides';
+        return $plural ? 'Shot' : 'Shots';
     }
 
     public function isActive() {

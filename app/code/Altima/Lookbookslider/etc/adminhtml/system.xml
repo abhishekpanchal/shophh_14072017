@@ -6,7 +6,7 @@
         </tab>
         <section id="lookbookslider" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>LookBook Slider</label>
+            <label>Shop the Shot</label>
             <tab>altima</tab>
             <resource>Altima_Lookbookslider::config_lookbookslider</resource>
             <group id="info" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">

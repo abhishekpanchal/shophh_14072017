@@ -27,17 +27,17 @@ class Slide extends \Magento\Backend\Block\Widget\Grid\Container {
         $slider_id         = $this->getRequest()->getParam('slider_id');
         $this->_controller = 'adminhtml';
         $this->_blockGroup = 'Altima_Lookbookslider';
-        $this->_headerText = __('Slide');
+        $this->_headerText = __('Shot');
         parent::_construct();
 
-        $this->addButton('back', array(
-            'label'   => __("Back to slider list"),
-            'onclick' => 'setLocation(\'' . $this->getUrl('*/slider/index/') . '\')',
-            'class'   => 'back',
-        ));
+        //$this->addButton('back', array(
+        //    'label'   => __("Back to slider list"),
+        //    'onclick' => 'setLocation(\'' . $this->getUrl('*/slider/index/') . '\')',
+        //    'class'   => 'back',
+        //));
 
         $this->addButton('add', array(
-            'label'   => __('Add Slide'),
+            'label'   => __('Add New Shot'),
             'onclick' => 'setLocation(\'' . $this->getUrl('*/*/new/', array('slider_id' => $slider_id)) . '\')',
             'class'   => 'add',
         ));
