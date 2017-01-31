@@ -212,12 +212,14 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
             <?php endforeach; ?>
         </div>
         <div class="more-shots">
+            <div class="page-title"><?php echo __("Shop MORE SHOTS") ?></div>
+            <div><span><?php echo __('Inspriration for every room in the house') ?></span></div>
             <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
             <?php foreach($shotCollection as $shot): ?>
                 <?php if($slideId != $shot->getSlideId()): ?> 
                     <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
-                    <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
-                        <img src=<?php echo $imagePath; ?> />
+                    <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$shot->getSlideId(); ?>">
+                        <img src="<?php echo $imagePath; ?>" />
                         <span class="title"><?php echo $shot->getTitle(); ?></span>
                     </a>
                 <?php endif; ?>

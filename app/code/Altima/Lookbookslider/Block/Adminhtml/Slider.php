@@ -26,9 +26,8 @@ class Slider extends \Magento\Backend\Block\Widget\Grid\Container {
     protected function _construct() {
         $this->_controller     = 'adminhtml';
         $this->_blockGroup     = 'Altima_Lookbookslider';
-        $this->_headerText     = __('Slider');
+        $this->_headerText     = __('Shot');
         $this->_addButtonLabel = __('Add New Slider');
         parent::_construct();
     }
-
 }

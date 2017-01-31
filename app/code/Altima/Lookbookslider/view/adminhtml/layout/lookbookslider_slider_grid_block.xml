@@ -59,7 +59,7 @@
                             <argument name="column_css_class" xsi:type="string">col-title</argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="dimensions">
+                    <!--<block class="Magento\Backend\Block\Widget\Grid\Column" as="dimensions">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Slider Size</argument>
                             <argument name="index" xsi:type="string">dimensions</argument>
@@ -85,7 +85,7 @@
                             <argument name="header" xsi:type="string" translate="true">Position</argument>
                             <argument name="index" xsi:type="string">position</argument>
                         </arguments>
-                    </block>
+                    </block>-->
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="action_manage">
                         <arguments>
                             <argument name="id" xsi:type="string">action_manage</argument>
@@ -101,7 +101,7 @@
                             <argument name="actions" xsi:type="array">
                                 <item name="view_action" xsi:type="array">
                                     <item name="caption" xsi:type="string" translate="true">
-                                        Manage Slides
+                                        Manage Shots
                                     </item>
                                     <item name="url" xsi:type="array">
                                         <item name="base" xsi:type="string">*/slide/index/</item>
