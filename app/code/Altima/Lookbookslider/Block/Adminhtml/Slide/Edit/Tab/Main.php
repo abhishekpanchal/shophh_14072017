@@ -64,6 +64,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addType('image', '\Altima\Lookbookslider\Block\Adminhtml\Slide\Helper\Image');
+        $fieldset->addType('image', '\Altima\Lookbookslider\Block\Adminhtml\Slide\Helper\Bgimage');
 
         if ($model->getId()) {
             $fieldset->addField('slide_id', 'hidden', ['name' => 'id']);
@@ -97,12 +98,28 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'name'     => 'slide[position]',
                 ]
         );
+
         /*$fieldset->addField('link', 'text', [
             'label'    => __('Link'),
             'required' => false,
             'name'     => 'slide[link]',
                 ]
         );*/
+
+        $fieldset->addField('sharetwitter', 'text', [
+            'label'    => __('Share Copy (Twitter)'),
+            'required' => false,
+            'name'     => 'slide[sharetwitter]',
+                ]
+        );
+
+        $fieldset->addField('shareother', 'text', [
+            'label'    => __('Share Copy (Others)'),
+            'required' => false,
+            'name'     => 'slide[shareother]',
+                ]
+        );
+
         $fieldset->addField(
                 'is_active', 'select', [
             'label'    => __('Status'),
@@ -113,6 +130,17 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'disabled' => $isElementDisabled
                 ]
         );
+
+    $fieldset->addField(
+        'bg_image',
+        'image',
+        [
+            'name'        => 'slide[bg_image]',
+            'label'       => __('Background Image'),
+            'title'       => __('Background Image'),
+        ]
+    );
+
 
         $field_hotspots    = $fieldset->addField(
                 'hotspots', 'hidden', [

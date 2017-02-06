@@ -161,6 +161,11 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                     <div id="progress"></div>
                 </div>
 
+                <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58939f9f70524f36"></script> 
+                <div class="addthis_inline_share_toolbox" data-url="http://www.google.com" data-title="Shop The Shot" data-media="http://hhshop.hhmedia.com:8888/shophh/pub/media/lookbookslider/600X250/bedroom.jpeg">
+                </div>
+                
                 <?php if ($thumbnails && $thumb): ?>
                     <?php $count_pager = 5; ?>
                     <?php
@@ -287,7 +292,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         var hops = opts.nextSlide - opts.currSlide;
         var vert = opts.carouselVertical;
         var speed = opts.speed;
-	var offset = 2; //Number of slides to offset
+        var offset = 2; //Number of slides to offset
         if ( opts.allowWrap === false ) {
         fwd = hops > 0;
         var currSlide = opts._currSlide;
