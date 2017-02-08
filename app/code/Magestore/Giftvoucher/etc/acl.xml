@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magestore_Giftvoucher::giftcard" title="Gift Card" sortOrder="30">
+                    <resource id="Magestore_Giftvoucher::giftproduct" title="Manage Gift Card Products" sortOrder="10"/>                                         
+                    <resource id="Magestore_Giftvoucher::giftvoucher" title="Manage Gift Codes" sortOrder="20"/>                       
+                    <resource id="Magestore_Giftvoucher::giftcodesets" title="Manage Gift Code Sets" sortOrder="30"/>                        
+                    <resource id="Magestore_Giftvoucher::generategiftcard" title="Manage Gift Code Patterns" sortOrder="40"/>                                          
+                    <resource id="Magestore_Giftvoucher::gifttemplate" title="Manage Gift Card Templates" sortOrder="50"/>                       
+                    <resource id="Magestore_Giftvoucher::gifthistory" title="History" sortOrder="60"/>                                           
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Magestore_Giftvoucher::settings" title="Gift Card Settings" />
+                        </resource>
+                    </resource>
+                </resource>                   
+            </resource>                 
+        </resources>
+    </acl>
+</config>

@@ -117,6 +117,7 @@ return array (
     'Magento_Wishlist' => 1,
     'Mageplaza_Core' => 1,
     'Mageplaza_SocialLogin' => 1,
+    'Magestore_Giftvoucher' => 1,
     'MagicToolbox_MagicZoomPlus' => 1,
     'MagicToolbox_MagicScroll' => 1,
     'Sebwite_Sidebar' => 1,
