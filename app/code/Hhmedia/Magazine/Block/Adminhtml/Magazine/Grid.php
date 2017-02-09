@@ -76,9 +76,10 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         ]);
         
         $this->addColumn('title', ['header' => __('Title'), 'index' => 'title']);
-        $this->addColumn('author', ['header' => __('Author'), 'index' => 'author']);
+        $this->addColumn('volume_name', ['header' => __('Volume Name'), 'index' => 'volume_name']);
+        $this->addColumn('sort_order', ['header' => __('Sort Order'), 'index' => 'sort_order']);
         
-        $this->addColumn(
+        /*$this->addColumn(
             'published_at',
             [
                 'header' => __('Published On'),
@@ -87,9 +88,9 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header_css_class' => 'col-date',
                 'column_css_class' => 'col-date'
             ]
-        );
+        );*/
         
-        $this->addColumn(
+        /*$this->addColumn(
             'created_at',
             [
                 'header' => __('Created'),
@@ -98,7 +99,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header_css_class' => 'col-date',
                 'column_css_class' => 'col-date'
             ]
-        );
+        );*/
         
         $this->addColumn(
             'action',

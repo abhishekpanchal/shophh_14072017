@@ -12,12 +12,18 @@ class Save extends \Magento\Backend\App\Action
     protected $dataProcessor;
 
     /**
+     * @var \Magento\Backend\Helper\Js
+     */
+    protected $_jsHelper;
+
+    /**
      * @param Action\Context $context
      * @param PostDataProcessor $dataProcessor
      */
-    public function __construct(Action\Context $context, PostDataProcessor $dataProcessor)
+    public function __construct(Action\Context $context, \Magento\Backend\Helper\Js $jsHelper, PostDataProcessor $dataProcessor)
     {
         $this->dataProcessor = $dataProcessor;
+        $this->_jsHelper = $jsHelper;
         parent::__construct($context);
     }
 
@@ -75,6 +81,7 @@ class Save extends \Magento\Backend\App\Action
                 }
                 
                 $model->save();
+                $this->saveProducts($model, $data);
                 $this->messageManager->addSuccess(__('The Data has been saved.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
                 if ($this->getRequest()->getParam('back')) {
@@ -97,4 +104,38 @@ class Save extends \Magento\Backend\App\Action
         }
         $this->_redirect('*/*/');
     }
+
+    public function saveProducts($model, $post)
+    {
+        if (isset($post['products'])) {
+            $productIds = $this->_jsHelper->decodeGridSerializedInput($post['products']);
+            try {
+                $oldProducts = (array) $model->getProducts($model);
+                $newProducts = (array) $productIds;
+
+                $this->_resources = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\ResourceConnection');
+                $connection = $this->_resources->getConnection();
+
+                $table = $this->_resources->getTableName(\Hhmedia\Magazine\Model\ResourceModel\Magazine::TBL_ATT_PRODUCT);
+                $insert = array_diff($newProducts, $oldProducts);
+                $delete = array_diff($oldProducts, $newProducts);
+
+                if ($delete) {
+                    $where = ['magazine_id = ?' => (int)$model->getId(), 'product_id IN (?)' => $delete];
+                    $connection->delete($table, $where);
+                }
+
+                if ($insert) {
+                    $data = [];
+                    foreach ($insert as $product_id) {
+                        $data[] = ['magazine_id' => (int)$model->getId(), 'product_id' => (int)$product_id];
+                    }
+                    $connection->insertMultiple($table, $data);
+                }
+            } catch (Exception $e) {
+                $this->messageManager->addException($e, __('Something went wrong while saving the contact.'));
+            }
+        }
+    }   
+
 }
