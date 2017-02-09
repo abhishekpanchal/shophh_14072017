@@ -28,6 +28,41 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Shot Description'
                 ]);
         }
+        if (version_compare($context->getVersion(), '2.0.3', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'sharetwitter',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 500,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Share Copy(Twitter)'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'shareother',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => Table::MAX_TEXT_SIZE,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Share Copy(Other)'
+                ]);
+        }
+        if (version_compare($context->getVersion(), '2.0.4', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'bg_image',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Background Image'
+                ]);
+        }
+
         $installer->endSetup();
     }
 }

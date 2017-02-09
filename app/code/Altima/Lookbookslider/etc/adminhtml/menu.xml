@@ -2,7 +2,8 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Altima_Lookbookslider::elements" title="Shop the Shot" module="Altima_Lookbookslider" parent="Magento_Backend::content" sortOrder="10"  resource="Altima_Lookbookslider::elements"/>
-        <add id="Altima_Lookbookslider::slider" title="Shot Manager" module="Altima_Lookbookslider" parent="Altima_Lookbookslider::elements" sortOrder="10" action="lookbookslider/slider/" resource="Altima_Lookbookslider::slider"/>
+        <add id="Altima_Lookbookslider::slider" title="Shot Manager" module="Altima_Lookbookslider" parent="Altima_Lookbookslider::elements" sortOrder="10" action="lookbookslider/slide/index/slider_id/1" resource="Altima_Lookbookslider::slider"/>
+        <!--<add id="Altima_Lookbookslider::slider" title="Shot Manager" module="Altima_Lookbookslider" parent="Altima_Lookbookslider::elements" sortOrder="10" action="lookbookslider/slider/" resource="Altima_Lookbookslider::slider"/>-->
         <!--<add id="Altima_Lookbookslider::settings" title="Configuration" module="Altima_Lookbookslider" sortOrder="20" parent="Altima_Lookbookslider::elements" action="adminhtml/system_config/edit/section/lookbookslider" resource="Altima_Lookbookslider::config_lookbookslider"/>-->
     </menu>
 </config>

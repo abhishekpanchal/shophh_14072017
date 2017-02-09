@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Hhmedia_Adminhtml::admin">
+                <resource id="Hhmedia_Magazine::magazine" title="Magazine" sortOrder="40">
+                    <resource id="Hhmedia_Magazine::manage" title="Magazine Module" sortOrder="10">
+						<resource id="Hhmedia_Magazine::save" title="Save Magazine" sortOrder="10" />
+                        <resource id="Hhmedia_Magazine::news_delete" title="Delete Magazine" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Hhmedia_Adminhtml::stores">
+                    <resource id="Hhmedia_Adminhtml::stores_settings">
+                        <resource id="Hhmedia_Adminhtml::config">
+                            <resource id="Hhmedia_Magazine::config_magazine" title="Magazine Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

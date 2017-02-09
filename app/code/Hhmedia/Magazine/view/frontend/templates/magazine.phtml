@@ -1,0 +1,26 @@
+<?php $_magazine = $this->getCollection(); ?>
+<?php if ($_magazine->getSize()): ?>
+<div class="magazine_list_view">
+    <?php foreach ($_magazine as $magazineItem): ?>
+        <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($magazineItem) ?>">
+                    <?php echo $this->escapeHtml($magazineItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="magazine_item_subtitle">
+                <?php echo $this->formatDate($magazineItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($magazineItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($magazineItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($magazineItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Magazine.'); ?></span></div>
+<?php endif ?>
