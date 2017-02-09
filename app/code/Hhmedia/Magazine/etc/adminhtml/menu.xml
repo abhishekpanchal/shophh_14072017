@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hhmedia_Magazine::magazine" title="Magazine" module="Hhmedia_Magazine" sortOrder="30" resource="Hhmedia_Magazine::magazine"/>
+        <add id="Hhmedia_Magazine::magazine_manage" title="All Items" module="Hhmedia_Magazine" sortOrder="10" parent="Hhmedia_Magazine::magazine" action="magazine/index/" resource="Hhmedia_Magazine::manage"/>
+    </menu>
+</config>
