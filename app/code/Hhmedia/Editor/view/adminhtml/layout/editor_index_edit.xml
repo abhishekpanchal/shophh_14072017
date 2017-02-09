@@ -7,36 +7,32 @@
     <update handle="editor"/>
     <body>
         <referenceContainer name="content">
-            <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit" name="magazine_edit"/>
+            <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit" name="editor_edit"/>
         </referenceContainer>
         <referenceContainer name="left">
-            <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tabs" name="magazine_edit_tabs">
-                <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab\Main" name="magazine_edit_tab_main"/>
-                <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab\Content" name="magazine_edit_tab_content"/>
-                <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab\Image" name="magazine_edit_tab_image"/>
-                <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab\Products" name="magazine_edit_tab_products"/>
+            <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tabs" name="editor_edit_tabs">
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Main" name="editor_edit_tab_main"/>
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Content" name="editor_edit_tab_content"/>
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Image" name="editor_edit_tab_image"/>
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Products" name="editor_edit_tab_products"/>
                 <action method="addTab">
                     <argument name="name" xsi:type="string">main_section</argument>
-                    <argument name="block" xsi:type="string">magazine_edit_tab_main</argument>
+                    <argument name="block" xsi:type="string">editor_edit_tab_main</argument>
                 </action>
                 <action method="addTab">
                     <argument name="name" xsi:type="string">content_section</argument>
-                    <argument name="block" xsi:type="string">magazine_edit_tab_content</argument>
+                    <argument name="block" xsi:type="string">editor_edit_tab_content</argument>
                 </action>
                 <action method="addTab">
                     <argument name="name" xsi:type="string">image_section</argument>
-                    <argument name="block" xsi:type="string">magazine_edit_tab_image</argument>
-                </action>
-                <action method="addTab">
-                    <argument name="name" xsi:type="string">image_section</argument>
-                    <argument name="block" xsi:type="string">magazine_edit_tab_image</argument>
+                    <argument name="block" xsi:type="string">editor_edit_tab_image</argument>
                 </action>
                 <action method="addTab">
                     <argument name="name" xsi:type="string">products_section</argument>
                     <argument name="block" xsi:type="array">
                         <item name="label" xsi:type="string">Select Products</item>
                         <item name="title" xsi:type="string">Select Products</item>
-                        <item name="url" xsi:type="helper" helper="Hhmedia\Magazine\Helper\Data::getProductsGridUrl"></item>
+                        <item name="url" xsi:type="helper" helper="Hhmedia\Editor\Helper\Data::getProductsGridUrl"></item>
                         <item name="class" xsi:type="string">ajax</item>
                     </argument>
                 </action>

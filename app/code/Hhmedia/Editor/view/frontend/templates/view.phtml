@@ -1,0 +1,30 @@
+<?php
+/**
+ * Editor template for separate item
+ *
+ */
+
+/**
+ * @var $this Hhmedia\Editor\Block\View
+ * @see Hhmedia\Editor\Block\View
+ */
+?>
+<?php $_editorItem = $this->getEditor(); ?>
+    <div class="editor_item_subtitle">
+        <?php echo $this->formatDate($_editorItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_editorItem->getAuthor()) ?>
+    </div>
+
+<div class="editor_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_editorItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_editorItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="editor_item_content"><?php echo $_editorItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

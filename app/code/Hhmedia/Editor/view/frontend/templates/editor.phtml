@@ -1,0 +1,26 @@
+<?php $_editor = $this->getCollection(); ?>
+<?php if ($_editor->getSize()): ?>
+<div class="editor_list_view">
+    <?php foreach ($_editor as $editorItem): ?>
+        <div id="item_<?php echo $editorItem->getId() ?>" class="editor_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($editorItem) ?>">
+                    <?php echo $this->escapeHtml($editorItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="editor_item_subtitle">
+                <?php echo $this->formatDate($editorItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($editorItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($editorItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($editorItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Editor.'); ?></span></div>
+<?php endif ?>

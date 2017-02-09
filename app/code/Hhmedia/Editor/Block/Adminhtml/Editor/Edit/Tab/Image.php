@@ -1,5 +1,5 @@
 <?php
-namespace Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab;
+namespace Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab;
 
 /**
  * @SuppressWarnings(PHPMD.DepthOfInheritance)
@@ -32,14 +32,14 @@ class Image extends \Magento\Backend\Block\Widget\Form\Generic implements
     protected function _prepareForm()
     {
         /** @var \Magento\Framework\Data\Form $form */
-        $form = $this->_formFactory->create(['data' => ['html_id_prefix' => 'magazine_image_']]);
+        $form = $this->_formFactory->create(['data' => ['html_id_prefix' => 'editor_image_']]);
 
-        $model = $this->_coreRegistry->registry('magazine');
+        $model = $this->_coreRegistry->registry('editor');
 
         /*
          * Checking if user have permissions to save information
          */
-        if ($this->_isAllowedAction('Hhmedia_Magazine::save')) {
+        if ($this->_isAllowedAction('Hhmedia_Editor::save')) {
             $isElementDisabled = false;
         } else {
             $isElementDisabled = true;
@@ -47,7 +47,7 @@ class Image extends \Magento\Backend\Block\Widget\Form\Generic implements
         
         $layoutFieldset = $form->addFieldset(
             'image_fieldset',
-            ['legend' => __('Cover Image'), 'class' => 'fieldset-wide', 'disabled' => $isElementDisabled]
+            ['legend' => __('Editor Image'), 'class' => 'fieldset-wide', 'disabled' => $isElementDisabled]
         );
 
         $layoutFieldset->addField(
@@ -62,7 +62,7 @@ class Image extends \Magento\Backend\Block\Widget\Form\Generic implements
             ]
         );
 
-        $this->_eventManager->dispatch('adminhtml_magazine_edit_tab_image_prepare_form', ['form' => $form]);
+        $this->_eventManager->dispatch('adminhtml_editor_edit_tab_image_prepare_form', ['form' => $form]);
 
         $form->setValues($model->getData());
 
@@ -78,7 +78,7 @@ class Image extends \Magento\Backend\Block\Widget\Form\Generic implements
      */
     public function getTabLabel()
     {
-        return __('Cover Image');
+        return __('Editor Image');
     }
 
     /**
@@ -88,7 +88,7 @@ class Image extends \Magento\Backend\Block\Widget\Form\Generic implements
      */
     public function getTabTitle()
     {
-        return __('Cover Image');
+        return __('Editor Image');
     }
 
     /**
@@ -125,6 +125,6 @@ class Image extends \Magento\Backend\Block\Widget\Form\Generic implements
      */
     protected function _getAdditionalElementTypes()
     {
-        return ['image' => 'Hhmedia\Magazine\Block\Adminhtml\Form\Element\Image'];
+        return ['image' => 'Hhmedia\Editor\Block\Adminhtml\Form\Element\Image'];
     }
 }

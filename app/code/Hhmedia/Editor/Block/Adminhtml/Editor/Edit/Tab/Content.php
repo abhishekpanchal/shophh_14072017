@@ -1,8 +1,8 @@
 <?php
-namespace Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab;
+namespace Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab;
 
 /**
- * magazine edit form main tab
+ * editor edit form main tab
  */
 class Content extends \Magento\Backend\Block\Widget\Form\Generic implements
     \Magento\Backend\Block\Widget\Tab\TabInterface
@@ -37,13 +37,13 @@ class Content extends \Magento\Backend\Block\Widget\Form\Generic implements
      */
     protected function _prepareForm()
     {
-        /** @var $model Hhmedia\MagazineModel\Magazine */
-        $model = $this->_coreRegistry->registry('magazine');
+        /** @var $model Hhmedia\EditorModel\Editor */
+        $model = $this->_coreRegistry->registry('editor');
 
         /*
          * Checking if user have permissions to save information
          */
-        if ($this->_isAllowedAction('Hhmedia_Magazine::save')) {
+        if ($this->_isAllowedAction('Hhmedia_Editor::save')) {
             $isElementDisabled = false;
         } else {
             $isElementDisabled = true;
@@ -52,7 +52,7 @@ class Content extends \Magento\Backend\Block\Widget\Form\Generic implements
         /** @var \Magento\Framework\Data\Form $form */
         $form = $this->_formFactory->create();
 
-        $form->setHtmlIdPrefix('magazine_content_');
+        $form->setHtmlIdPrefix('editor_content_');
 
         $fieldset = $form->addFieldset(
             'content_fieldset',
@@ -81,7 +81,7 @@ class Content extends \Magento\Backend\Block\Widget\Form\Generic implements
         );
         $contentField->setRenderer($renderer);
 
-        $this->_eventManager->dispatch('adminhtml_magazine_edit_tab_content_prepare_form', ['form' => $form]);
+        $this->_eventManager->dispatch('adminhtml_editor_edit_tab_content_prepare_form', ['form' => $form]);
         $form->setValues($model->getData());
         $this->setForm($form);
 
