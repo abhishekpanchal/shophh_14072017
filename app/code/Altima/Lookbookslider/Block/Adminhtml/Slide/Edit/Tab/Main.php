@@ -64,7 +64,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addType('image', '\Altima\Lookbookslider\Block\Adminhtml\Slide\Helper\Image');
-        $fieldset->addType('image', '\Altima\Lookbookslider\Block\Adminhtml\Slide\Helper\Bgimage');
 
         if ($model->getId()) {
             $fieldset->addField('slide_id', 'hidden', ['name' => 'id']);
@@ -135,7 +134,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         'bg_image',
         'image',
         [
-            'name'        => 'slide[bg_image]',
+            'name'        => 'bg_image',
             'label'       => __('Background Image'),
             'title'       => __('Background Image'),
         ]

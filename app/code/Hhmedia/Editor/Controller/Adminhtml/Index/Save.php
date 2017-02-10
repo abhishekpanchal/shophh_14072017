@@ -3,6 +3,7 @@
 namespace Hhmedia\Editor\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Save extends \Magento\Backend\App\Action
 {
@@ -72,6 +73,13 @@ class Save extends \Magento\Backend\App\Action
                 $imageData = array();
             }
 
+            if (isset($data['signature'])) {
+                $signatureData = $data['signature'];
+                unset($data['signature']);
+            } else {
+                $signatureData = array();
+            }
+
             $model->addData($data);
 
             if (!$this->dataProcessor->validate($data)) {
@@ -79,9 +87,47 @@ class Save extends \Magento\Backend\App\Action
                 return;
             }
 
-            try {
-                $imageHelper = $this->_objectManager->get('Hhmedia\Editor\Helper\Data');
+            $imageHelper = $this->_objectManager->get('Hhmedia\Editor\Helper\Data');
 
+            $signatureImage = $this->getRequest()->getFiles('signature');
+            $fileName = ($signatureImage && array_key_exists('name', $signatureImage)) ? $signatureImage['name'] : null;
+            if ($signatureImage && $fileName) {
+                try {
+                    /** @var \Magento\Framework\ObjectManagerInterface $uploader */
+                    $uploader = $this->_objectManager->create(
+                        'Magento\MediaStorage\Model\File\Uploader',
+                        ['fileId' => 'signature']
+                    );
+
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
+
+                    /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapterFactory */
+                    $imageAdapterFactory = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')
+                        ->create();
+
+                    $uploader->setAllowRenameFiles(true);
+                    $uploader->setFilesDispersion(true);
+                    $uploader->setAllowCreateFolders(true);
+
+                    /** @var \Magento\Framework\Filesystem\Directory\Read $mediaDirectory */
+                    $mediaDirectory = $this->_objectManager->get('Magento\Framework\Filesystem')
+                        ->getDirectoryRead(DirectoryList::MEDIA);
+                     
+                    $result = $uploader->save(
+                        $mediaDirectory
+                            ->getAbsolutePath('Editor/Signature')
+                    );
+                    //$data['signature'] = 'Editor/Signature/'. $result['file'];
+                    $model->setSignature('Editor/Signature'.$result['file']);
+                } catch (\Exception $e) {
+                    if ($e->getCode() == 0) {
+                        $this->messageManager->addError($e->getMessage());
+                    }
+                }
+            }
+            
+            try {
+  
                 if (isset($imageData['delete']) && $model->getImage()) {
                     $imageHelper->removeImage($model->getImage());
                     $model->setImage(null);
@@ -89,7 +135,7 @@ class Save extends \Magento\Backend\App\Action
                 
                 $imageFile = $imageHelper->uploadImage('image');
                 if ($imageFile) {
-                    $model->setImage($imageFile);
+                    $model->setImage('Editor/'.$imageFile);
                 }
                 
                 $model->save();
