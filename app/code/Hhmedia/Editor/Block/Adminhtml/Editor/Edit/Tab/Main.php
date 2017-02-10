@@ -150,19 +150,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
-        //$fieldset->addType('color', 'Hhmedia\Editor\Block\Adminhtml\Color');
-        $fieldset->addField(
-            'color',
-            'text',
-            [
-                'name' => 'color',
-                'label' => __('Color'),
-                'title' => __('Color')
-            ]
-        );
-        //$renderer = $this->getLayout()->createBlock('Hhmedia\Editor\Block\Adminhtml\Color');
-        //$field->setRenderer($renderer);
-
         $fieldset->addField(
             'guest',
             'checkbox',
@@ -197,6 +184,17 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
         
+        $field = $fieldset->addField(
+            'color',
+            'text',
+            [
+                'name' => 'color',
+                'label' => __('Color'),
+                'title' => __('Color')
+            ]
+        );
+        $renderer = $this->getLayout()->createBlock('Hhmedia\Editor\Block\Adminhtml\Color');
+        $field->setRenderer($renderer);
         /*$dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
         $fieldset->addField('published_at', 'date', [
             'name'     => 'published_at',
