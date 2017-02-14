@@ -1,0 +1,11 @@
+<?php 
+if($block->checksupportlink()):
+?>
+<li>
+<a href="<?php echo $block->getdomain(); ?>" target="_blank">
+<?php echo $block->escapeHtml($block->getLabel())?>
+</a>
+</li>
+<?php 
+endif;
+?>

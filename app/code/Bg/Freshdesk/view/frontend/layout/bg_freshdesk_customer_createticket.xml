@@ -1,0 +1,14 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<update handle="customer_account"/>
+<body>
+    <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Create Tickets</argument>
+            </action>
+     </referenceBlock>
+     <referenceContainer name="content">
+        <block class="Bg\Freshdesk\Block\ViewTickets" name="my_ticket_details" template="Bg_Freshdesk::createticket.phtml">
+        </block>
+    </referenceContainer>
+</body>
+</page>
