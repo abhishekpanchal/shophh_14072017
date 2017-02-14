@@ -10,6 +10,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
      * @var \Magento\Store\Model\System\Store
      */
     protected $_systemStore;
+    protected $bioWysiwyg;
+    protected $quoteWysiwyg;
 
     /**
      * @param \Magento\Backend\Block\Template\Context $context
@@ -23,9 +25,13 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Store\Model\System\Store $systemStore,
+        \Magento\Cms\Model\Wysiwyg\Config $bioWysiwyg, 
+        \Magento\Cms\Model\Wysiwyg\Config $quoteWysiwyg, 
         array $data = []
     ) {
         $this->_systemStore = $systemStore;
+        $this->bioWysiwyg = $bioWysiwyg;
+        $this->quoteWysiwyg = $quoteWysiwyg;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -109,26 +115,26 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'quote',
-            'textarea',
-            [
-                'name' => 'quote',
-                'label' => __('Quote'),
-                'title' => __('Quote'),
-                'required' => true,
-                'disabled' => $isElementDisabled
-            ]
-        );
-
-        $fieldset->addField(
             'bio',
-            'textarea',
+            'editor',
             [
                 'name' => 'bio',
                 'label' => __('Bio'),
                 'title' => __('Bio'),
-                'required' => true,
-                'disabled' => $isElementDisabled
+                 'config'    => $this->bioWysiwyg->getConfig(),
+                'wysiwyg'   => true
+            ]
+        );
+
+        $fieldset->addField(
+            'quote',
+            'editor',
+            [
+                'name' => 'quote',
+                'label' => __('Quote'),
+                'title' => __('Quote'),
+                 'config'    => $this->quoteWysiwyg->getConfig(),
+                'wysiwyg'   => true
             ]
         );
 
@@ -139,18 +145,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'subtitle',
                 'label' => __('Subtitle'),
                 'title' => __('Subtitle'),
-                'required' => true,
-                'disabled' => $isElementDisabled
-            ]
-        );
-
-        $fieldset->addField(
-            'color',
-            'text',
-            [
-                'name' => 'color',
-                'label' => __('Color'),
-                'title' => __('Color'),
                 'required' => true,
                 'disabled' => $isElementDisabled
             ]
@@ -177,7 +171,30 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'onchange' => 'this.value = this.checked;'
             ]
         );
+
+        $fieldset->addField(
+            'signature',
+            'image',
+            [
+                'name' => 'signature',
+                'label' => __('Signature'),
+                'title' => __('Signature'),
+                'required'  => false,
+                'disabled' => $isElementDisabled
+            ]
+        );
         
+        $field = $fieldset->addField(
+            'color',
+            'text',
+            [
+                'name' => 'color',
+                'label' => __('Color'),
+                'title' => __('Color')
+            ]
+        );
+        $renderer = $this->getLayout()->createBlock('Hhmedia\Editor\Block\Adminhtml\Color');
+        $field->setRenderer($renderer);
         /*$dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
         $fieldset->addField('published_at', 'date', [
             'name'     => 'published_at',
@@ -190,7 +207,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         ]);*/
         
         $this->_eventManager->dispatch('adminhtml_editor_edit_tab_main_prepare_form', ['form' => $form]);
-
+        $form->getElement('guest')->setIsChecked('1');
+        $form->getElement('past')->setIsChecked('1');
         $form->setValues($model->getData());
         $this->setForm($form);
 
@@ -243,4 +261,10 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     {
         return $this->_authorization->isAllowed($resourceId);
     }
+
+    protected function _getAdditionalElementTypes()
+    {
+        return ['signature' => 'Hhmedia\Editor\Block\Adminhtml\Form\Element\Signature'];
+    }
+
 }

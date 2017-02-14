@@ -3,6 +3,7 @@ return array (
   'modules' => 
   array (
     'Altima_Lookbookslider' => 1,
+    'Bg_Freshdesk' => 1,
     'Customweb_Base' => 1,
     'Magento_Store' => 1,
     'Magento_Directory' => 1,

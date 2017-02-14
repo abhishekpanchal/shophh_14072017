@@ -80,7 +80,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         $this->addColumn('subtitle', ['header' => __('Subtitle'), 'index' => 'subtitle']);
         $this->addColumn('sort_order', ['header' => __('Sort Order'), 'index' => 'sort_order']);
         
-        $this->addColumn(
+        /*$this->addColumn(
             'published_at',
             [
                 'header' => __('Published On'),
@@ -100,7 +100,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
                 'header_css_class' => 'col-date',
                 'column_css_class' => 'col-date'
             ]
-        );
+        );*/
         
         $this->addColumn(
             'action',

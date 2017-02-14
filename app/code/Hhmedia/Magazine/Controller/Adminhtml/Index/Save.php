@@ -77,7 +77,7 @@ class Save extends \Magento\Backend\App\Action
                 
                 $imageFile = $imageHelper->uploadImage('image');
                 if ($imageFile) {
-                    $model->setImage($imageFile);
+                    $model->setImage('Magazine/'.$imageFile);
                 }
                 
                 $model->save();

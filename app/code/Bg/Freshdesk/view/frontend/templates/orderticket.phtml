@@ -1,0 +1,211 @@
+<?php
+if($block->checkcustomerticket()):
+ 
+$domain=$block->getdomain();
+
+$viewticketurl=$block->getmyticketurl();
+$ticketsaveurl=$block->getsaveticketurl();
+$orderid=$block->getOrderId();
+$orderurl=$block->getorderurl();
+
+$orderfield=$block->getfdorder();
+$fieldset=$block->ticketfields();
+
+?>
+<script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
+<script>
+Freshdesk = Class.create();
+Freshdesk.Fields = {};
+Freshdesk.Fields.Nested = Class.create();
+Freshdesk.Fields.Nested.prototype = {
+	id: '',
+	mainSelect: null,
+	level1Select: null,
+	level2Select: null,
+	level1block: null,
+	level2block: null,
+	options: [],
+
+	initialize: function (id, options) {
+		this.id = id;
+		this.mainSelect = $(this.id);
+
+		this.level1block = $(this.id + '_level1_block');
+		this.level1Select = $(this.id + '_level1_block').select('select').first();
+
+		this.level2block = $(this.id + '_level2_block');
+		if (this.hasLevel2()) {
+			this.level2Select = $(this.id + '_level2_block').select('select').first();
+		}
+
+		this.options = options;
+	},
+
+	optionChanged: function (el) {
+		if (Object.isUndefined(el)) {
+			return;
+		}
+
+		var mainValue = this.mainSelect.options[this.mainSelect.selectedIndex].value;
+
+		if (this.isLevel2(el)) {
+			return;
+		} else if (this.isLevel1(el)) {
+			if (!this.hasLevel2()) {
+				return;
+			}
+
+			this.hideLevel2();
+
+			var level1Value = this.level1Select.options[this.level1Select.selectedIndex].value;
+			if (level1Value == '') {
+				return;
+			}
+
+			var level2Options = [];
+			for (var i = 0; i < this.options.length; i++) {
+				if (this.options[i].value == mainValue) {
+					var level1Options = this.options[i].children;
+					for (var j = 0; j < level1Options.length; j++) {
+						if (level1Options[j].value == level1Value) {
+							level2Options = level1Options[j].children;
+							break;
+						}
+					}
+					break;
+				}
+			}
+
+			if (level2Options.length > 0) {
+				this.showLevel2(level2Options);
+			}
+
+
+		} else {
+			this.hideLevel1();
+			this.hideLevel2();
+
+			if (mainValue == '') {
+				return;
+			}
+
+			var level1Options = [];
+			for (var i = 0; i < this.options.length; i++) {
+				if (this.options[i].value == mainValue) {
+					level1Options = this.options[i].children;
+					break;
+				}
+			}
+
+			if (level1Options.length > 0) {
+				this.showLevel1(level1Options);
+			}
+		}
+	},
+
+	isMain: function (el) {
+		return el.id == this.id;
+	},
+
+	isLevel1: function (el) {
+		return el.id == this.level1Select.id;
+	},
+
+	isLevel2: function (el) {
+		return this.hasLevel2() && el.id == this.level2Select.id;
+	},
+
+	hasLevel2: function () {
+		return Object.isElement(this.level2block);
+	},
+
+	showLevel1: function (level1options) {
+		for (var i = 0; i < level1options.length; i++) {
+			this.level1Select.insert('<option value="' + level1options[i].value + '">' + level1options[i].label + '</option>');
+		}
+
+		this.level1Select.selectedIndex = 0;
+		this.level1Select.className = this.mainSelect.className;
+
+		this.level1block.show();
+	},
+
+	hideLevel1: function () {
+		this.level1block.hide();
+
+		this.level1Select.select('option').each(Element.remove);
+		this.level1Select.className = '';
+	},
+
+	showLevel2: function (level2options) {
+		if (!this.hasLevel2()) {
+			return;
+		}
+
+		for (var i = 0; i < level2options.length; i++) {
+			this.level2Select.insert('<option value="' + level2options[i].value + '">' + level2options[i].label + '</option>');
+		}
+
+		this.level2Select.selectedIndex = 0;
+		this.level2Select.className = this.mainSelect.className;
+
+		this.level2block.show();
+	},
+
+	hideLevel2: function () {
+		if (!this.hasLevel2()) {
+			return;
+		}
+
+		this.level2block.hide();
+
+		this.level2Select.select('option').each(Element.remove);
+		this.level2Select.className = '';
+	}
+};
+
+    if (Object.isUndefined(fdNestedOptions)) {
+        var fdNestedOptions = [];
+    }
+    
+</script>
+<form data-hasrequired="* Required Fields" method="post" id="ticket-form" action="<?php echo $ticketsaveurl; ?>" class="form">
+    <fieldset class="fieldset">
+    <legend class="legend"><span>Write Us</span></legend><br>        
+        
+         <?php
+         if(!empty($orderfield)): 
+	         if(array_key_exists($orderfield, $fieldset)){	        
+		       		$fieldset[$orderfield]['options']['value']=$orderid;	       	
+	         }
+         endif;
+         
+         $fieldset['subject']['options']['value']="Order Id: ".$orderid;
+       foreach($fieldset as $k=>$v){  
+      
+       	echo $block->frmfield($v['type'],$k,$v['options']);
+       
+       }
+       ?>
+       
+            </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+           
+            <button class="action submit primary" title="Create Ticket" type="submit">
+                <span>Save</span>
+            </button>
+            
+            <button class="action primary" title="Cancel" type="button" onclick="location.href='<?php echo $orderurl; ?>'">
+                            <span>Cancel</span>
+			</button>
+
+        </div>
+    </div>
+</form>
+
+<?php 
+endif;
+?>
+
+
