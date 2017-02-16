@@ -2,13 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
   <body>
 
-    <referenceContainer name="header.panel.wrapper" remove="true" />
-    <referenceContainer name="skip_to_content" remove="true" />
-
-    <move element="top.links" destination="header.toplinks"/>
-    <move element="header.top" destination="header-wrapper" before="-"/>
-
-
+    <!-- Header -->
     <referenceContainer name="header-wrapper">
       <container name="header.wrap" htmlTag="div" htmlClass="header-wrap">
         <!-- Top Header -->
@@ -16,7 +10,7 @@
           <container name="header.top.container" htmlTag="div" htmlClass="container">
             <container name="header.top.row" htmlTag="div" htmlClass="row">
               <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3">
-
+                <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-left-link.phtml"/>
               </container>
               <container name="header.top.right" htmlTag="div" htmlClass="header-top-right col-md-9">
                 <container name="header.toplinks"></container>
@@ -28,11 +22,11 @@
         <!-- Main Header -->
         <container name="header.main" htmlTag="header" htmlClass="header-main">
           <container name="header.main.container" htmlTag="div" htmlClass="container">
-            <container name="header.main.row" htmlTag="div" htmlClass="row">
-              <container name="header.main.social" htmlTag="div" htmlClass="col-md-3 header-social" before="-">
+            <container name="header.main.row" htmlTag="div" htmlClass="row vcenter">
+              <container name="header.main.social" htmlTag="div" htmlClass="col-md-2 header-social" before="-">
                 <block name="header.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
               </container>
-              <container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 header-logo">
+              <container name="header.main.logo" htmlTag="div" htmlClass="col-md-7 header-logo">
                 <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
                   <arguments>
                     <argument name="logo_img_width" xsi:type="number">499</argument>
@@ -47,8 +41,21 @@
           </container>
         </container>
         <!-- End Main Header -->
+        <!-- Navigation -->
+        <container name="navigation.outerwrap" htmlTag="nav" htmlClass="main-nav">
+          <container name="navigation.wrap" htmlTag="div" htmlClass="container">
+            <container name="nav.row" htmlTag="div" htmlClass="row main-navigation">
+              <container name="nav.left" htmlTag="div" htmlClass="col-md-12">
+                <block class="Kahanit\AweMenu\Block\AweMenuFront" name="catalog.topnav" template="Kahanit_AweMenu::menu.phtml" ttl="3600"/>
+              </container>
+            </container>
+          </container>
+        </container>
+        <!-- End Navigation -->
       </container>
     </referenceContainer>
+    <!-- End Header -->
+
 
 
 
@@ -104,10 +111,6 @@
             </container>
         </referenceContainer>
 
-        <move element="form.subscribe" destination="footer_col_5" />
-        <move element="footer-row-2" destination="footer-wrap2" after="-" />
-        <move element="copyright" destination="footer-legal-container" />
-
         <referenceBlock name="advanced-search-link" remove="true"/>
         <referenceBlock name="advanced.search" remove="true"/>
         <referenceBlock name="top.links.wrapper" remove="true"/>
@@ -116,9 +119,17 @@
         <referenceBlock name="report.bugs" remove="true" />
         <referenceBlock name="footer_links" remove="true" />
         <referenceBlock name="store_switcher" remove="true" />
-
-        <move element="breadcrumbs" destination="page.main.title" after="-"/>
+        <referenceContainer name="header.panel.wrapper" remove="true" />
+        <referenceContainer name="skip_to_content" remove="true" />
         <referenceBlock name="top.search" remove="true" />
+
+        <move element="form.subscribe" destination="footer_col_5" />
+        <move element="footer-row-2" destination="footer-wrap2" after="-" />
+        <move element="copyright" destination="footer-legal-container" />
+        <move element="top.links" destination="header.toplinks"/>
+        <move element="header.top" destination="header-wrapper" before="-"/>
+        <move element="breadcrumbs" destination="page.main.title" after="-"/>
+        <move element="navigation.sections" destination="nav.left"/>
 
 
     </body>
