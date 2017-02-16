@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Hhmedia_Adminhtml::admin">
+                <resource id="Hhmedia_Formula::formula" title="Formula" sortOrder="40">
+                    <resource id="Hhmedia_Formula::manage" title="Formula Module" sortOrder="10">
+						<resource id="Hhmedia_Formula::save" title="Save Formula" sortOrder="10" />
+                        <resource id="Hhmedia_Formula::news_delete" title="Delete Formula" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Hhmedia_Adminhtml::stores">
+                    <resource id="Hhmedia_Adminhtml::stores_settings">
+                        <resource id="Hhmedia_Adminhtml::config">
+                            <resource id="Hhmedia_Formula::config_formula" title="Formula Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

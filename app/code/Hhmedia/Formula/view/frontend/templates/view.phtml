@@ -1,0 +1,30 @@
+<?php
+/**
+ * Formula template for separate item
+ *
+ */
+
+/**
+ * @var $this Hhmedia\Formula\Block\View
+ * @see Hhmedia\Formula\Block\View
+ */
+?>
+<?php $_formulaItem = $this->getFormula(); ?>
+    <div class="formula_item_subtitle">
+        <?php echo $this->formatDate($_formulaItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_formulaItem->getAuthor()) ?>
+    </div>
+
+<div class="formula_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_formulaItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_formulaItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="formula_item_content"><?php echo $_formulaItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

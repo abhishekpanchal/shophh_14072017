@@ -12,6 +12,7 @@ return array (
     'Ebizmarts_Mandrill' => 1,
     'Fc_Faqs' => 1,
     'Hhmedia_Editor' => 1,
+    'Hhmedia_Formula' => 1,
     'Hhmedia_Magazine' => 1,
     'Hhmedia_Override' => 1,
     'Hhmedia_Productpage' => 1,
