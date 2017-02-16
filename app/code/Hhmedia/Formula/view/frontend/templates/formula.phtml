@@ -1,0 +1,26 @@
+<?php $_formula = $this->getCollection(); ?>
+<?php if ($_formula->getSize()): ?>
+<div class="formula_list_view">
+    <?php foreach ($_formula as $formulaItem): ?>
+        <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($formulaItem) ?>">
+                    <?php echo $this->escapeHtml($formulaItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="formula_item_subtitle">
+                <?php echo $this->formatDate($formulaItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($formulaItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($formulaItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($formulaItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Formula.'); ?></span></div>
+<?php endif ?>

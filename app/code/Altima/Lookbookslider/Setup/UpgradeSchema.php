@@ -62,6 +62,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Background Image'
                 ]);
         }
+        if (version_compare($context->getVersion(), '2.0.5', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'display_home',
+                [
+                    'type'     => Table::TYPE_SMALLINT,
+                    'length'   => 5,
+                    'nullable' => true,
+                    'default'  => 1,
+                    'comment'  => 'Display on Home'
+                ]);
+        }
 
         $installer->endSetup();
     }
