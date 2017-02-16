@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hhmedia_Formula::formula_manage" title="Formulas" module="Hhmedia_Formula" sortOrder="30" action="formula/index/" resource="Hhmedia_Formula::manage" />
+    </menu>
+</config>
