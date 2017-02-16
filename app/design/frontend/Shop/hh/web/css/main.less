@@ -10,7 +10,15 @@
 @baseFontSize : 12px;
 @baseLineHeight: 20px;
 
-//@import "partials/header.less";
+@import "partials/header.less";
+@import "partials/navigation.less";
+@import "partials/social.less";
+@import "partials/social-login.less";
+@import "partials/footer.less";
+@import "partials/product-details.less";
+@import "partials/product-listing.less";
+@import "partials/cms-page.less";
+
 
 /* ==========================================================================
 HTML5 display-role reset for older browsers
@@ -4385,4 +4393,68 @@ font-family: FontAwesome;
     visibility: visible;
     width: 100%;
   }
+}
+
+
+
+/* ==========================================================================
+Shot
+========================================================================== */
+
+.shot-thumb {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 220px;
+  max-width: 310px;
+  width: 100%;
+  background: #000000;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.shot-thumb * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease-in-out;
+  transition: all 0.35s ease-in-out;
+}
+.shot-thumb img {
+  max-width: 100%;
+  vertical-align: top;
+}
+.shot-thumb .shot-thumb-meta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  font-size: 34px;
+  color: #000000;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  background: #ffffff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 300ms 0ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+.shot-thumb a {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+}
+.shot-thumb:hover img,
+.shot-thumb.hover img {
+  opacity: 0.3;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+.shot-thumb:hover .shot-thumb-meta,
+.shot-thumb.hover. shot-thumb-meta {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+  transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }

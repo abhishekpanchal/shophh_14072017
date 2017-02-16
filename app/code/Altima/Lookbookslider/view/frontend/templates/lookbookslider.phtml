@@ -1,20 +1,29 @@
 <?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
 <?php $sliderCollection = $this->getCollection('content-top'); ?>
-<?php 
+<?php
 	foreach($sliderCollection as $slider):
 		$sliderId = $slider->getSliderId();
 		break;
- 	endforeach; 
+ 	endforeach;
 ?>
-<?php 
-$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
-$shotCollection =  $blockObj->getShotCollection($sliderId);
+<?php
+	$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+	$shotCollection =  $blockObj->getShotCollection($sliderId);
 ?>
+
+<div class="row no-gutter">
 <?php foreach($shotCollection as $shot): ?>
-	<?php $slideId = $shot->getSlideId(); ?> 
-	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
-	<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
-		<img src="<?php echo $imagePath; ?>" />
-		<span class="title"><?php echo $shot->getTitle(); ?></span>
-	</a>
+	<?php $slideId = $shot->getSlideId(); ?>
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'300','300'); ?>
+	<div class="col-md-3">
+		<div class="shot-thumb">
+			<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
+				<img src="<?php echo $imagePath; ?>" />
+				<div class="shot-thumb-meta">
+					<span class="title"><?php echo $shot->getTitle(); ?></span>
+				</div>
+			</a>
+		</div>
+	</div>
 <?php endforeach; ?>
+</div>
