@@ -2,6 +2,8 @@
 
 namespace Hhmedia\Formula\Block;
 
+use Hhmedia\Formula\Model\FormulaFactory;
+
 /**
  * Formula content block
  */
@@ -14,6 +16,9 @@ class Formula extends \Magento\Framework\View\Element\Template
      */
     protected $_formulaCollection = null;
     
+    protected $_productRepository;
+
+    protected $formulaFactory;
     /**
      * Formula factory
      *
@@ -31,11 +36,15 @@ class Formula extends \Magento\Framework\View\Element\Template
      */
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Formula\Model\ResourceModel\Formula\CollectionFactory $formulaCollectionFactory,
+        FormulaFactory $formulaFactory,
         \Hhmedia\Formula\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_formulaCollectionFactory = $formulaCollectionFactory;
+        $this->_productRepository = $productRepository;
+        $this->formulaFactory = $formulaFactory;
         $this->_dataHelper = $dataHelper;
         parent::__construct(
             $context,
@@ -54,6 +63,24 @@ class Formula extends \Magento\Framework\View\Element\Template
         return $collection;
     }
     
+
+    public function getProductById($id)
+    {
+        return $this->_productRepository->getById($id);
+    }
+
+    public function getFormula($formulaId)
+    {
+        $formula   = $this->formulaFactory->create();
+        if ($formulaId) {
+            $formula->load($formulaId);
+        }
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $model = $objectManager->create('\Hhmedia\Formula\Model\Formula');
+        $products  =  $model->getProducts($formula);
+        return $products;
+    }
+
     /**
      * Retrieve prepared formula collection
      *
@@ -65,7 +92,7 @@ class Formula extends \Magento\Framework\View\Element\Template
             $this->_formulaCollection = $this->_getCollection();
             $this->_formulaCollection->setCurPage($this->getCurrentPage());
             $this->_formulaCollection->setPageSize($this->_dataHelper->getFormulaPerPage());
-            $this->_formulaCollection->setOrder('published_at','asc');
+            $this->_formulaCollection->setOrder('sort_order','asc');
         }
 
         return $this->_formulaCollection;
