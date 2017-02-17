@@ -42,14 +42,38 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
     			$priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
     			$price = $proFormula->getFinalPrice();
     			echo $formattedPrice = $priceHelper->currency($price, true, false);
-    			$proImage = $proFormula->getData('small_image');
+    			$fImage = $proFormula->getData('small_image');
 			?>
-			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$proImage ?>" />
+			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" />
     	<?php endforeach; ?>
     <?php endforeach; ?>
 </div>
 <?php endif ?>
 <!-- Decorating Formula End -->
+
+<!-- Shop the Issue Start -->
+<?php $objMagazine = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
+<?php $_magazine = $objMagazine->getCollection(); ?>
+<?php if ($_magazine->getSize()): ?>
+<div class="magazine_list_view">
+	<?php foreach ($_magazine as $magazineItem): ?>
+		<?php $magazineProduct = $objMagazine->getMagazine($magazineItem->getMagazineId()); ?>
+        <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
+        	<img src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
+        	<?php $title = $magazineItem->getTitle(); ?>
+        	<?php $name =  $magazineItem->getVolumeName(); ?>
+        	<span><?php echo $title.' : '.$name; ?></span>
+        	<?php echo $magazineItem->getContent() ?>
+        </div>
+        <?php foreach($magazineProduct as $mPro): ?>
+        	<?php $proMagazine = $objMagazine->getProductById($mPro); ?>
+        	<?php $mImage = $proMagazine->getData('small_image'); ?>
+        	<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+</div>
+<?php endif; ?>
+<!-- Shop the Issue End -->
 
 <!-- Shop MORE Shots Start -->
 <?php foreach($shotCollection as $shot): ?>
