@@ -36,7 +36,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
       //var hotspotId = el.attr('id');
 
       var hotspotDesc = $(el).find( ".product-info" ).html();
-      $('.page-title').html(hotspotDesc)
+      $('.hotspot-details').html(hotspotDesc)
     });
   });
 

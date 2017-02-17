@@ -14,13 +14,14 @@
 <div class="row no-gutter">
 <?php foreach($shotCollection as $shot): ?>
 	<?php $slideId = $shot->getSlideId(); ?>
-	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'300','300'); ?>
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
 	<div class="col-md-3">
 		<div class="shot-thumb">
 			<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
 				<img src="<?php echo $imagePath; ?>" />
 				<div class="shot-thumb-meta">
-					<span class="title"><?php echo $shot->getTitle(); ?></span>
+					<h4><span>Shop</span></h4>
+					<span class="title green"><?php echo $shot->getTitle(); ?></span>
 				</div>
 			</a>
 		</div>
