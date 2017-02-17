@@ -111,8 +111,29 @@ Shot Thumbs
 /* ==========================================================================
 Shot Slider
 ========================================================================== */
-.hotspot-details {
+.hotspot-placeholder {
   background-color: #EFEFEF;
+}
+.hotspot-details {
+  background-color: #FFF;
+  margin: 40px;
+  padding: 40px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+  h2 {
+    font-size: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 15px auto;
+  }
+
+  .desc {
+
+    img {
+      max-width: 300px;
+      display: block;
+    }
+  }
 }
 
 .cycle-overlay,
@@ -158,7 +179,7 @@ Products
     font-weight: 700;
     font-family: @headlineFont;
     text-align: center;
-    margin: 10px auto;
+    margin: 20px auto;
 
     .old-price {
       color: #b13301;
@@ -171,6 +192,10 @@ Products
   }
 }
 
+.shot-products {
+  margin-bottom: 50px;
+}
+
 
 .lookbookslider-index-index {
   .page-title {
@@ -179,6 +204,64 @@ Products
 }
 
 .lookbookslider-index-view {
+  .page-title-wrapper {
+    display: none;
+  }
+  .main-nav {
+    margin-bottom: 0;
+  }
+  .lookbookslider-top {
+    margin-top: -10px;
+  }
+  #progress {
+    display: none;
+  }
+  .loobook-container {
+    background-color: #f8f8f8;
+  }
+  .product-item-info {
+    width: auto;
+  }
+  .old-price {
+    display: none!important;
+  }
+  .main-content {
+    margin-bottom: 5px;
+  }
 
+  .quickview-btn {
+    display: inline-block;
+    background-color: #666;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #FFF;
+    margin: 0 2px;
+    transition: 0.3s all;
+    position: relative;
+    top: 3px;
+    text-align: center;
+  }
+  .cart-rounded {
+    display: inline-block;
+    background-color: #666;
+    height: 40px;
+    width: 40px;
+    line-height: 20px;
+    border-radius: 50%;
+    color: #FFF;
+    margin: 0 2px;
+    transition: 0.3s all;
+    position: relative;
+    top: 0;
+    text-align: center;
 
+    i {
+      margin-left: -5px;
+    }
+  }
+  .actions-primary {
+    text-align: center;
+  }
 }

@@ -47,7 +47,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         <link rel="stylesheet" type="text/css" href="<?php echo $blockObj->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
 
 
-<div class="row no-gutters vcenter marginbottom-40">
+<div class="row no-gutters lookbook-container vcenter marginbottom-40">
 <div class="col-md-8">
 
         <div class="lookbookslider-top">
@@ -210,26 +210,31 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 
 </div>
-    <div class="col-md-4 hotspot-details">
-    <h2>zzz</h2>
+    <div class="col-md-4 hotspot-placeholder">
+        <div class="hotspot-details">
+            <h1>Mood Indigo</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula id justo id dapibus. Suspendisse lacus dui, dignissim eget malesuada vel, pharetra sit amet felis. Nunc a blandit lectus. Ut in sem est. Phasellus quis at malesuada vel, pharetra sit amet felis. Nunc a blandit lectus.</p>
+            <p>Rhoncus tellus. Phasellus fringilla urna odio lobortis purus,  Ut in sem est. Phasellus quis auctor quam. Curabiturquis.</p>
+            <a href="#" class="btn-fullscreen">View Full Screen</a>
+        </div>
     </div>
 
 </div>
 
         <div class="container">
-        <div class="shot-products row">
-            <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
-            <?php foreach ($slideCollection as $slide): ?>
-                <?php if($slide->getId() == $slideId): ?>
-                    <?php $products = $blockObj->getProductCollection($slide); ?>
-                    <?php foreach($products as $_product): ?>
-                        <div class="col-md-3 product-item-info">
-                            <?php echo $_product['text']; ?>
-                        </div>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
+            <div class="shot-products row">
+                <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
+                <?php foreach ($slideCollection as $slide): ?>
+                    <?php if($slide->getId() == $slideId): ?>
+                        <?php $products = $blockObj->getProductCollection($slide); ?>
+                        <?php foreach($products as $_product): ?>
+                            <div class="col-md-3">
+                                <?php echo $_product['text']; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
 
         <div class="more-shots row no-gutters">
