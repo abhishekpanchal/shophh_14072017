@@ -11,7 +11,9 @@
 	$shotCollection =  $blockObj->getShotCollection($sliderId);
 ?>
 
-<div class="row no-gutter">
+<h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+
+<div class="row no-gutters">
 <?php foreach($shotCollection as $shot): ?>
 	<?php $slideId = $shot->getSlideId(); ?>
 	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
