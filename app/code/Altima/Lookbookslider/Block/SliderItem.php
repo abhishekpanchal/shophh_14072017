@@ -204,8 +204,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             }
             $html_content = '';
             $html_content .= '<div class="product-info-main" style="';
-            $html_content .= 'left:' . round($value['width'] / 2) . 'px;';
-            $html_content .= 'top:' . round($value['height'] / 2) . 'px;';
+            //$html_content .= 'left:' . round($value['width'] / 2) . 'px;';
+            //$html_content .= 'top:' . round($value['height'] / 2) . 'px;';
 
             if ($product_details) {
                 $_p_name = $product_details->getName();
@@ -219,9 +219,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $_p_shrt_desc  = $_p_shrt_desc . '...';
                     $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(50, 50)->getUrl();
                 }
-                $html_content .= 'width: ' . strlen($_p_name) * 8 . 'px;';
+                //$html_content .= 'width: ' . strlen($_p_name) * 8 . 'px;';
             } else {
-                $html_content .= 'width: ' . strlen($decoded_array[$key]['text']) * 8 . 'px;';
+                //$html_content .= 'width: ' . strlen($decoded_array[$key]['text']) * 8 . 'px;';
             }
             $html_content .= '"><div class="pro-detail-div">';
 

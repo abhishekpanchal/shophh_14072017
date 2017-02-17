@@ -47,7 +47,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         <link rel="stylesheet" type="text/css" href="<?php echo $blockObj->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
 
 
-<div class="row">
+<div class="row no-gutters vcenter marginbottom-40">
 <div class="col-md-8">
 
         <div class="lookbookslider-top">
@@ -216,6 +216,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 </div>
 
+        <div class="container">
         <div class="shot-products row">
             <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
             <?php foreach ($slideCollection as $slide): ?>
@@ -229,9 +230,10 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
+        </div>
 
-        <div class="more-shots row no-gutter">
-            <h2 class="page-title marginbottom-40"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
+        <div class="more-shots row no-gutters">
+            <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
             <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
             <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
             <?php foreach($shotCollection as $shot): ?>
