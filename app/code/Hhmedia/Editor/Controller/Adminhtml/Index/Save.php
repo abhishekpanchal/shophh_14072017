@@ -44,6 +44,7 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
+
         if ($data) {
             $data = $this->dataProcessor->filter($data);
             $model = $this->_objectManager->create('Hhmedia\Editor\Model\Editor');
@@ -52,14 +53,15 @@ class Save extends \Magento\Backend\App\Action
             if ($id) {
                 $model->load($id);
             }
-
-            if($data['guest'] == true){
+            $guest = $this->getRequest()->getParam('guest');
+            $past = $this->getRequest()->getParam('past');
+            if(isset($guest)){
                $data['guest'] = 1; 
             }else{
                 $data['guest'] = 0; 
             }
 
-            if($data['past'] == true){
+            if(isset($past)){
                 $data['past'] = 1;
             }else{
                 $data['past'] = 0; 

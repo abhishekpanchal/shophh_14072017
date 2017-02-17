@@ -1,0 +1,69 @@
+<!-- Shop the Shot Start -->
+
+<?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
+<?php 
+$sliderId = '1';
+$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+$shotCollection =  $blockObj->getShotCollection($sliderId);
+?>
+<?php foreach($shotCollection as $shot): ?>
+	<?php $slideId = $shot->getSlideId(); ?> 
+	<?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
+	<?php if($shot->getDisplayHome() == 1): ?>
+		<a href="<?php echo $shotUrl ?>">
+			<img src="<?php echo $imagePath ?>" />
+		</a>
+		<?php echo $shot->getTitle(); ?>
+		<?php echo $shot->getCaption(); ?>
+		<img src="<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>" />
+		<a href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
+	<?php endif; ?>
+<?php endforeach; ?>
+
+<!-- Shop the Shot End -->
+
+<!-- Decorating Formula Start -->
+<?php $objFormula = $block->getLayout()->createBlock('Hhmedia\Formula\Block\Formula'); ?>
+<?php $_formula = $objFormula->getCollection(); ?>
+<?php if ($_formula->getSize()): ?>
+<div class="formula_list_view">
+    <?php foreach ($_formula as $formulaItem): ?>
+    	<?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
+        <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
+           <?php echo $formulaItem->getTitle(); ?>
+           <?php echo $formulaItem->getSubtitle(); ?>
+        </div>
+        <?php foreach($formulaProduct as $fPro): ?>
+        	<?php $proFormula = $objFormula->getProductById($fPro); ?>
+        	<?php echo $productName = $proFormula->getName(); ?>
+        	<?php
+    			$objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+    			$priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+    			$price = $proFormula->getFinalPrice();
+    			echo $formattedPrice = $priceHelper->currency($price, true, false);
+    			$proImage = $proFormula->getData('small_image');
+			?>
+			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$proImage ?>" />
+    	<?php endforeach; ?>
+    <?php endforeach; ?>
+</div>
+<?php endif ?>
+<!-- Decorating Formula End -->
+
+<!-- Shop MORE Shots Start -->
+<?php foreach($shotCollection as $shot): ?>
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
+	<div class="col-md-3">
+		<div class="shot-thumb">
+			<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
+				<img src="<?php echo $imagePath; ?>" />
+				<div class="shot-thumb-meta">
+					<h4><span>Shop</span></h4>
+					<span class="title green"><?php echo $shot->getTitle(); ?></span>
+				</div>
+			</a>
+		</div>
+	</div>
+<?php endforeach; ?>
+<!-- Shop MORE Shots End -->
