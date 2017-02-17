@@ -2,6 +2,8 @@
 
 namespace Hhmedia\Magazine\Block;
 
+use Hhmedia\Magazine\Model\MagazineFactory;
+
 /**
  * Magazine content block
  */
@@ -13,6 +15,10 @@ class Magazine extends \Magento\Framework\View\Element\Template
      * @var Hhmedia\Magazine\Model\ResourceModel\Magazine\Collection
      */
     protected $_magazineCollection = null;
+
+    protected $_productRepository;
+
+    protected $magazineFactory;
     
     /**
      * Magazine factory
@@ -32,10 +38,14 @@ class Magazine extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Hhmedia\Magazine\Model\ResourceModel\Magazine\CollectionFactory $magazineCollectionFactory,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
+        MagazineFactory $magazineFactory,
         \Hhmedia\Magazine\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_magazineCollectionFactory = $magazineCollectionFactory;
+        $this->_productRepository = $productRepository;
+        $this->magazineFactory = $magazineFactory;
         $this->_dataHelper = $dataHelper;
         parent::__construct(
             $context,
@@ -102,6 +112,23 @@ class Magazine extends \Magento\Framework\View\Element\Template
     public function getImageUrl($item, $width)
     {
         return $this->_dataHelper->resize($item, $width);
+    }
+
+    public function getProductById($id)
+    {
+        return $this->_productRepository->getById($id);
+    }
+
+    public function getMagazine($magazineId)
+    {
+        $magazine   = $this->magazineFactory->create();
+        if ($magazineId) {
+            $magazine->load($magazineId);
+        }
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $model = $objectManager->create('\Hhmedia\Magazine\Model\Magazine');
+        $products  =  $model->getProducts($magazine);
+        return $products;
     }
     
     /**
