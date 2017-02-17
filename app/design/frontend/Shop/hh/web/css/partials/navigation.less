@@ -1,0 +1,21 @@
+
+.am-link-text {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    bottom: 0;
+    background: #333;
+    border-bottom: 2px solid #222;
+    visibility: hidden;
+    transition: all .3s ease-in-out 0s;
+  }
+
+
+  &:hover:before {
+    visibility: visible;
+    width: 100%;
+  }
+}
