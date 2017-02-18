@@ -1,4 +1,30 @@
+/* ==========================================================================
+Main Navigation
+ ========================================================================== */
 
+.main-nav {
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  border-top: 2px solid #ccc;
+  margin-top: -2px;
+  position: relative;
+  z-index: 1;
+}
+
+.customer-name {
+  color: #000!important;
+  font-weight: bold!important;
+}
+
+.navigation {
+  background: transparent!important;
+}
+
+
+/* ==========================================================================
+Awe Menu
+ ========================================================================== */
 #awemenu {
   margin: 0!important;
 
@@ -20,7 +46,16 @@
 
   .level-one {
     background-color: #F0F0F0;
-    padding: 20px 0;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  }
+  .level-one {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
   }
 }
 
@@ -30,6 +65,11 @@
 
 .inspiration-board {
   float: right!important;
+
+  a {
+    padding-right: 10px!important;
+    padding-left: 10px!important;
+  }
 }
 
 #awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-item {
@@ -38,6 +78,12 @@
 
 .menu-one {
   border-right: 1px solid rgba(0,0,0,0.1);
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.menu-two {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .menu-three {
@@ -51,7 +97,7 @@
     content: '';
     position: absolute;
     width: 0;
-    bottom: 0;
+    bottom: -3px;
     background: #333;
     border-bottom: 2px solid #222;
     visibility: hidden;
@@ -63,4 +109,63 @@
     visibility: visible;
     width: 100%;
   }
+}
+
+#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-html .am-item-pad {
+  padding: 0!important;
+}
+
+.menu-three {
+  padding:0 !important;
+
+  .am-item-pad {
+    width: 100%;
+
+    a {
+      padding: 0;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+#awemenu .am-tabs.am-tabs-root > .am-sortable > .am-tab > .am-dropdown {
+  margin-top: 0;
+  padding-top: 3px;
+  padding-left: 15px;
+}
+
+.menu-img a {
+  padding: 0!important;
+  width: 100%;
+}
+
+.menu-img-meta {
+  padding: 20px;
+
+  h4 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-family: @baseFont;
+  }
+
+  h3 {
+    font-weight: normal;
+
+    a {
+      font-size: 20px!important;
+      text-transform: capitalize!important;
+      color: #8d8d8d;
+      padding: 0!important;
+      font-family: @baseFont;
+    }
+  }
+
+}
+
+#awemenu .am-tabs .am-tab .am-dropdown {
+  //display: block!important;
 }

@@ -116,15 +116,26 @@ Shot Slider
 }
 .hotspot-details {
   background-color: #FFF;
-  margin: 40px;
-  padding: 40px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  margin: 20px;
+  padding: 30px;
+  box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
 
+  h1 {
+    color: #27577b;
+    text-transform: uppercase;
+    font-family: @baseFont;
+    font-weight: normal;
+    text-align: center;
+  }
   h2 {
     font-size: 16px;
     text-transform: uppercase;
     text-align: center;
     margin: 15px auto;
+  }
+
+  p {
+    font-size: 13px;
   }
 
   .desc {
@@ -134,7 +145,27 @@ Shot Slider
       display: block;
     }
   }
+
+  .btn-fullscreen {
+    font-size: 16px;
+    display: block;
+    padding: 15px 25px;
+    background-color: #000;
+    color: #FFF;
+    text-align: center;
+    font-family: @fancyFont;
+  }
+
+  .social {
+    margin: 20px auto;
+    text-align: center;
+
+    li i {
+      background: #666!important;
+    }
+  }
 }
+
 
 .cycle-overlay,
 #pagernav_ {
@@ -264,4 +295,18 @@ Products
   .actions-primary {
     text-align: center;
   }
+}
+
+.lookbookslider-index-index {
+  .page-title {
+    margin-bottom: 0;
+  }
+  .main-content {
+    margin-bottom: 5px;
+  }
+}
+
+.lookbookslider-container {
+  position: relative;
+  z-index: 1;
 }
