@@ -146,7 +146,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                                 <a href="<?php echo $link; ?>">
             <?php endif; ?>                    
 
-                                <img alt="Slide <?php echo $slide->getId(); ?>"  src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
+                                <img alt="Slide <?php echo $slide->getId(); ?>" class="shoptheshot-img" src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
 
                                     <?php if ($slide->getCaption() != '') : ?>
                                     <div class="cycle-overlay">
@@ -210,8 +210,8 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 
 </div>
-    <div class="col-md-4 hotspot-placeholder">
-        <div class="hotspot-details">
+    <div class="col-md-4 hotspot-placeholder vcenter">
+        <div class="hotspot-details vcenter">
             <h1>Mood Indigo</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula id justo id dapibus. Suspendisse lacus dui, dignissim eget malesuada vel, pharetra sit amet felis. Nunc a blandit lectus. Ut in sem est. Phasellus quis at malesuada vel, pharetra sit amet felis. Nunc a blandit lectus.</p>
             <p>Rhoncus tellus. Phasellus fringilla urna odio lobortis purus,  Ut in sem est. Phasellus quis auctor quam. Curabiturquis.</p>
@@ -403,9 +403,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
             speed = (moveBy / $(opts.slides[0])[vert ? 'height' : 'width']() ) * opts.speed;
 
         opts._carouselWrap.animate( props, speed, opts.easing, callback );
-    }            
-                        
-                        
+    }
                     });
 
 
