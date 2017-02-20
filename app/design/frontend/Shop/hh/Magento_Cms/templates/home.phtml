@@ -24,39 +24,55 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 <!-- Shop the Shot End -->
 
 <!-- Decorating Formula Start -->
-
-
-
-
-
-
-<div class="more-shots row no-gutters">
+<div class="decorating-formula">
     <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
     <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
     <?php $objFormula = $block->getLayout()->createBlock('Hhmedia\Formula\Block\Formula'); ?>
     <?php $_formula = $objFormula->getCollection(); ?>
     <?php if ($_formula->getSize()): ?>
+
+
     <div class="formula_list_view">
-        <?php foreach ($_formula as $formulaItem): ?>
-        	<?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
-            <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
-               <?php echo $formulaItem->getTitle(); ?>
-               <?php echo $formulaItem->getSubtitle(); ?>
+        <?php $iterator2 = 1; ?>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="container">
+            <div class="carousel-inner" role="listbox">
+            <?php foreach ($_formula as $formulaItem): ?>
+                <div class="item <?php if($iterator2 == 1) echo 'active'; ?>">
+            	   <?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
+                    <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
+                       <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
+                       <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
+                        <?php foreach($formulaProduct as $fPro): ?>
+                            <?php $proFormula = $objFormula->getProductById($fPro); ?>
+                            <h4 class="decorating-formula-product"><?php echo $productName = $proFormula->getName(); ?></h4>
+                            <?php
+                                $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+                                $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+                                $price = $proFormula->getFinalPrice();
+                                $fImage = $proFormula->getData('small_image');
+                            ?>
+                            <h4 class="decorating-formula-price">
+                                <?php echo $formattedPrice = $priceHelper->currency($price, true, false); ?>
+                            </h4>
+                            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php $iterator2++; ?>
+            <?php endforeach; ?>
             </div>
-            <?php foreach($formulaProduct as $fPro): ?>
-            	<?php $proFormula = $objFormula->getProductById($fPro); ?>
-            	<?php echo $productName = $proFormula->getName(); ?>
-            	<?php
-        			$objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
-        			$priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
-        			$price = $proFormula->getFinalPrice();
-        			echo $formattedPrice = $priceHelper->currency($price, true, false);
-        			$fImage = $proFormula->getData('small_image');
-    			?>
-    			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" />
-        	<?php endforeach; ?>
-        <?php endforeach; ?>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
+
+
     <?php endif ?>
 </div>
 <!-- Decorating Formula End -->
@@ -79,13 +95,14 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
                     <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
+                                <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
                             </div>
                             <div class="col-md-8">
-                                <?php $title = $magazineItem->getTitle(); ?>
+                                <h4 class="issue-date"><?php $title = $magazineItem->getTitle(); ?></h4>
                                 <?php $name =  $magazineItem->getVolumeName(); ?>
-                                <span><?php echo $title.' : '.$name; ?></span>
-                                <?php echo $magazineItem->getContent() ?>
+                                <h4 class="issue-date"><?php echo $title ?></h4>
+                                <h3 class="issue-title"><?php echo $name; ?></h3>
+                                <div class="issue-desc"><?php echo $magazineItem->getContent() ?></div>
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
