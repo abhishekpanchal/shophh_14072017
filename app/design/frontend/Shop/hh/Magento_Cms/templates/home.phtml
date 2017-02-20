@@ -8,15 +8,21 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 <?php foreach($shotCollection as $shot): ?>
 	<?php $slideId = $shot->getSlideId(); ?> 
 	<?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
-	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
 	<?php if($shot->getDisplayHome() == 1): ?>
-		<a href="<?php echo $shotUrl ?>">
-			<img src="<?php echo $imagePath ?>" />
-		</a>
-		<?php echo $shot->getTitle(); ?>
-		<?php echo $shot->getCaption(); ?>
-		<img src="<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>" />
-		<a href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
+        <div class="row no-gutters">
+            <div class="col-md-8 homepage-hero">
+                <a href="<?php echo $shotUrl ?>">
+                    <img src="<?php echo $imagePath ?>" />
+                </a>
+            </div>
+            <div class="col-md-4 homepage-hero-details">
+                <img src="<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>" />
+                <?php echo $shot->getTitle(); ?>
+                <?php echo $shot->getCaption(); ?>
+                <a href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
+            </div>
+        </div>
 	<?php endif; ?>
 <?php endforeach; ?>
 <!-- Shop the Shot End -->
@@ -75,7 +81,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 
 <div class="row editors-area">
     <div class="editors-area-wrap">
-    <div class="col-md-4 editors-pick">
+    <div class="col-md-4 editors-pick vcenter">
         <div class="editors-pick-title">
             <h4>Editors Picks</h4>
             <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
@@ -92,7 +98,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
     <div class="col-md-5 editor-guest-image">
 
     </div>
-    <div class="col-md-3 guest-editor">
+    <div class="col-md-3 guest-editor vcenter">
         <div class="guest-editor-details">
             <h4>Guest Editor</h4>
             <h3>Aerin Lauder</h3>
