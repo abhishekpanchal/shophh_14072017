@@ -292,6 +292,20 @@ Page Title
   }
 }
 
+.dietdidot {
+  font-family: 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif!important;
+  font-weight: normal;
+}
+
+.basefont {
+  font-family: @baseFont!important;
+  font-weight: normal;
+
+  span {
+    font-style: normal;
+  }
+}
+
 
 /* ==========================================================================
 Breadcrumb
@@ -4831,6 +4845,9 @@ Awe Menu
 Home Page
  ========================================================================== */
 .cms-home {
+  .main-nav {
+    margin-bottom: 0;
+  }
   .magazine_list_view {
     margin: 40px auto;
   }
@@ -4856,11 +4873,23 @@ Home Page
         font-size: 13px;
       }
     }
+    .issues-thumb-list {
+      li {
+        display: inline-block;
+        width: 20%;
+      }
+    }
     .carousel-control.right, .carousel-control.left {
       top: 35%;
     }
     .issue-img {
       width: 100%;
+    }
+    .carousel-control.left {
+      left: -7%;
+    }
+    .carousel-control.right {
+      right: -7%;
     }
   }
   .formula_list_view {
@@ -4880,7 +4909,7 @@ Home Page
       margin-bottom: 5px;
       color: #000!important;
       line-height: 40px;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
     }
     .decorating-formula-main-title {
 
@@ -4906,9 +4935,40 @@ Home Page
       font-size: 14px;
     }
     .decorating-formula-thumb {
-      width: 100%;
+      width: 85%;
       margin: 20px auto;
       display: block;
+    }
+    .decorating-formula-product:nth-of-type(2) {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        height: 42px;
+        width: 43px;
+        left: -23px;
+        top: 40%;
+        background: url(../images/icon-plus.png) no-repeat right center;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        height: 42px;
+        width: 43px;
+        right: -23px;
+        top: 40%;
+        background: url(../images/icon-plus.png) no-repeat left center;
+      }
+    }
+    .carousel-control.left {
+      left: -7%;
+      top: 50%;
+    }
+    .carousel-control.right {
+      right: -7%;
+      top: 50%;
     }
   }
 }

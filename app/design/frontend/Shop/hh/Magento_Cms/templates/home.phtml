@@ -28,11 +28,10 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
     <?php $_formula = $objFormula->getCollection(); ?>
     <?php if ($_formula->getSize()): ?>
 
-
+    <div class="container">
     <div class="formula_list_view">
         <?php $iterator2 = 1; ?>
         <div id="formula-slider" class="carousel slide" data-ride="carousel" data-interval="false">
-            <div class="container">
             <div class="carousel-inner" role="listbox">
             <?php foreach ($_formula as $formulaItem): ?>
                 <div class="item <?php if($iterator2 == 1) echo 'active'; ?>">
@@ -61,7 +60,6 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
             <?php $iterator2++; ?>
             <?php endforeach; ?>
             </div>
-            </div>
             <a class="left carousel-control" href="#formula-slider" role="button" data-slide="prev">
                 <span class="sr-only">Previous</span>
             </a>
@@ -70,23 +68,22 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
             </a>
         </div>
     </div>
-
-
+    </div>
     <?php endif ?>
 </div>
 <!-- Decorating Formula End -->
 
 <!-- Shop the Issue Start -->
 <div class="more-shots">
-    <h2 class="page-title"><span><?php echo __("Shop THE ISSUE") ?></span></h2>
+    <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> THE ISSUE</span></h2>
     <?php $objMagazine = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
     <?php $_magazine = $objMagazine->getCollection(); ?>
     <?php if ($_magazine->getSize()): ?>
 
+    <div class="container">
     <div class="magazine_list_view">
         <?php $iterator = 1; ?>
         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-            <div class="container">
             <div class="carousel-inner" role="listbox">
         	<?php foreach ($_magazine as $magazineItem): ?>
                 <div class="item <?php if($iterator == 1) echo 'active'; ?>">
@@ -102,18 +99,19 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
                                 <h4 class="issue-date"><?php echo $title ?></h4>
                                 <h3 class="issue-title"><?php echo $name; ?></h3>
                                 <div class="issue-desc"><?php echo $magazineItem->getContent() ?></div>
+                                <ul class="issues-thumb-list">
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
-                                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+                                    <li><img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" /></li>
                                 <?php endforeach; ?>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php $iterator++; ?>
             <?php endforeach; ?>
-            </div>
             </div>
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="sr-only">Previous</span>
@@ -122,7 +120,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
+    </div>
     </div>
     <?php endif; ?>
 </div>
@@ -131,7 +129,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 
 <!-- Shop MORE Shots Start -->
 <div class="more-shots row no-gutters">
-    <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
+    <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
     <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
