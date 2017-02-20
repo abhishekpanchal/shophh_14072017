@@ -24,70 +24,112 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 <!-- Shop the Shot End -->
 
 <!-- Decorating Formula Start -->
-<?php $objFormula = $block->getLayout()->createBlock('Hhmedia\Formula\Block\Formula'); ?>
-<?php $_formula = $objFormula->getCollection(); ?>
-<?php if ($_formula->getSize()): ?>
-<div class="formula_list_view">
-    <?php foreach ($_formula as $formulaItem): ?>
-    	<?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
-        <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
-           <?php echo $formulaItem->getTitle(); ?>
-           <?php echo $formulaItem->getSubtitle(); ?>
-        </div>
-        <?php foreach($formulaProduct as $fPro): ?>
-        	<?php $proFormula = $objFormula->getProductById($fPro); ?>
-        	<?php echo $productName = $proFormula->getName(); ?>
-        	<?php
-    			$objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
-    			$priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
-    			$price = $proFormula->getFinalPrice();
-    			echo $formattedPrice = $priceHelper->currency($price, true, false);
-    			$fImage = $proFormula->getData('small_image');
-			?>
-			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" />
-    	<?php endforeach; ?>
-    <?php endforeach; ?>
+
+
+
+
+
+
+<div class="more-shots row no-gutters">
+    <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
+    <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+    <?php $objFormula = $block->getLayout()->createBlock('Hhmedia\Formula\Block\Formula'); ?>
+    <?php $_formula = $objFormula->getCollection(); ?>
+    <?php if ($_formula->getSize()): ?>
+    <div class="formula_list_view">
+        <?php foreach ($_formula as $formulaItem): ?>
+        	<?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
+            <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
+               <?php echo $formulaItem->getTitle(); ?>
+               <?php echo $formulaItem->getSubtitle(); ?>
+            </div>
+            <?php foreach($formulaProduct as $fPro): ?>
+            	<?php $proFormula = $objFormula->getProductById($fPro); ?>
+            	<?php echo $productName = $proFormula->getName(); ?>
+            	<?php
+        			$objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+        			$priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+        			$price = $proFormula->getFinalPrice();
+        			echo $formattedPrice = $priceHelper->currency($price, true, false);
+        			$fImage = $proFormula->getData('small_image');
+    			?>
+    			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" />
+        	<?php endforeach; ?>
+        <?php endforeach; ?>
+    </div>
+    <?php endif ?>
 </div>
-<?php endif ?>
 <!-- Decorating Formula End -->
 
 <!-- Shop the Issue Start -->
-<?php $objMagazine = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
-<?php $_magazine = $objMagazine->getCollection(); ?>
-<?php if ($_magazine->getSize()): ?>
-<div class="magazine_list_view">
-	<?php foreach ($_magazine as $magazineItem): ?>
-		<?php $magazineProduct = $objMagazine->getMagazine($magazineItem->getMagazineId()); ?>
-        <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
-        	<img src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
-        	<?php $title = $magazineItem->getTitle(); ?>
-        	<?php $name =  $magazineItem->getVolumeName(); ?>
-        	<span><?php echo $title.' : '.$name; ?></span>
-        	<?php echo $magazineItem->getContent() ?>
+<div class="more-shots">
+    <h2 class="page-title"><span><?php echo __("Shop THE ISSUE") ?></span></h2>
+    <?php $objMagazine = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
+    <?php $_magazine = $objMagazine->getCollection(); ?>
+    <?php if ($_magazine->getSize()): ?>
+
+    <div class="magazine_list_view">
+        <?php $iterator = 1; ?>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="container">
+            <div class="carousel-inner" role="listbox">
+        	<?php foreach ($_magazine as $magazineItem): ?>
+                <div class="item <?php if($iterator == 1) echo 'active'; ?>">
+                    <?php $magazineProduct = $objMagazine->getMagazine($magazineItem->getMagazineId()); ?>
+                    <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
+                            </div>
+                            <div class="col-md-8">
+                                <?php $title = $magazineItem->getTitle(); ?>
+                                <?php $name =  $magazineItem->getVolumeName(); ?>
+                                <span><?php echo $title.' : '.$name; ?></span>
+                                <?php echo $magazineItem->getContent() ?>
+                                <?php foreach($magazineProduct as $mPro): ?>
+                                    <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
+                                    <?php $mImage = $proMagazine->getData('small_image'); ?>
+                                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php $iterator++; ?>
+            <?php endforeach; ?>
+            </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <?php foreach($magazineProduct as $mPro): ?>
-        	<?php $proMagazine = $objMagazine->getProductById($mPro); ?>
-        	<?php $mImage = $proMagazine->getData('small_image'); ?>
-        	<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
-        <?php endforeach; ?>
-    <?php endforeach; ?>
+
+    </div>
+    <?php endif; ?>
 </div>
-<?php endif; ?>
 <!-- Shop the Issue End -->
 
+
 <!-- Shop MORE Shots Start -->
-<?php foreach($shotCollection as $shot): ?>
-	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
-	<div class="col-md-3">
-		<div class="shot-thumb">
-			<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
-				<img src="<?php echo $imagePath; ?>" />
-				<div class="shot-thumb-meta">
-					<h4><span>Shop</span></h4>
-					<span class="title green"><?php echo $shot->getTitle(); ?></span>
-				</div>
-			</a>
-		</div>
-	</div>
-<?php endforeach; ?>
+<div class="more-shots row no-gutters">
+    <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
+    <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+    <?php foreach($shotCollection as $shot): ?>
+        <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
+        <div class="col-md-3">
+            <div class="shot-thumb">
+                <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
+                    <img src="<?php echo $imagePath; ?>" />
+                    <div class="shot-thumb-meta">
+                        <h4><span>Shop</span></h4>
+                        <span class="title green"><?php echo $shot->getTitle(); ?></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
 <!-- Shop MORE Shots End -->
