@@ -1,7 +1,6 @@
 <!-- Shop the Shot Start -->
-
 <?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
-<?php 
+<?php
 $sliderId = '1';
 $blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
 $shotCollection =  $blockObj->getShotCollection($sliderId);
@@ -20,22 +19,19 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 		<a href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
 	<?php endif; ?>
 <?php endforeach; ?>
-
 <!-- Shop the Shot End -->
 
 <!-- Decorating Formula Start -->
 <div class="decorating-formula">
-    <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
-    <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+    <h2 class="page-title-small"><span><?php echo __("Decorating Formulas") ?></span></h2>
     <?php $objFormula = $block->getLayout()->createBlock('Hhmedia\Formula\Block\Formula'); ?>
     <?php $_formula = $objFormula->getCollection(); ?>
     <?php if ($_formula->getSize()): ?>
 
-
+    <div class="container">
     <div class="formula_list_view">
         <?php $iterator2 = 1; ?>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="container">
+        <div id="formula-slider" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner" role="listbox">
             <?php foreach ($_formula as $formulaItem): ?>
                 <div class="item <?php if($iterator2 == 1) echo 'active'; ?>">
@@ -44,50 +40,85 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
                        <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                        <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
                         <?php foreach($formulaProduct as $fPro): ?>
+                            <div class="decorating-formula-product col-md-4">
                             <?php $proFormula = $objFormula->getProductById($fPro); ?>
-                            <h4 class="decorating-formula-product"><?php echo $productName = $proFormula->getName(); ?></h4>
                             <?php
                                 $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                                 $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
                                 $price = $proFormula->getFinalPrice();
                                 $fImage = $proFormula->getData('small_image');
                             ?>
+                            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                            <h4 class="decorating-formula-product-title"><?php echo $productName = $proFormula->getName(); ?></h4>
                             <h4 class="decorating-formula-price">
                                 <?php echo $formattedPrice = $priceHelper->currency($price, true, false); ?>
                             </h4>
-                            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                            </div>
                         <?php endforeach; ?>
                     </div>
                 </div>
             <?php $iterator2++; ?>
             <?php endforeach; ?>
             </div>
-            </div>
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <a class="left carousel-control" href="#formula-slider" role="button" data-slide="prev">
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <a class="right carousel-control" href="#formula-slider" role="button" data-slide="next">
                 <span class="sr-only">Next</span>
             </a>
         </div>
     </div>
-
-
+    </div>
     <?php endif ?>
 </div>
 <!-- Decorating Formula End -->
 
+<div class="row editors-area">
+    <div class="editors-area-wrap">
+    <div class="col-md-4 editors-pick">
+        <div class="editors-pick-title">
+            <h4>Editors Picks</h4>
+            <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
+        </div>
+        <div class="editors-thumbs">
+            <ul>
+                <li><img src="http://placehold.it/200x200" alt=""></li>
+                <li><img src="http://placehold.it/200x200" alt=""></li>
+                <li><img src="http://placehold.it/200x200" alt=""></li>
+                <li><img src="http://placehold.it/200x200" alt=""></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-5 editor-guest-image">
+
+    </div>
+    <div class="col-md-3 guest-editor">
+        <div class="guest-editor-details">
+            <h4>Guest Editor</h4>
+            <h3>Aerin Lauder</h3>
+            <div class="editor-blurb">
+                The beauty heiress's favourite picks from her home line, Aerin
+            </div>
+            <div class="editor-quote">
+                I think gold is a wonderful neutral; it immediately conveys luxary and warmth.<span></span>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
 <!-- Shop the Issue Start -->
 <div class="more-shots">
-    <h2 class="page-title"><span><?php echo __("Shop THE ISSUE") ?></span></h2>
+    <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> THE ISSUE</span></h2>
     <?php $objMagazine = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
     <?php $_magazine = $objMagazine->getCollection(); ?>
     <?php if ($_magazine->getSize()): ?>
 
+    <div class="container">
     <div class="magazine_list_view">
         <?php $iterator = 1; ?>
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <div class="container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner" role="listbox">
         	<?php foreach ($_magazine as $magazineItem): ?>
                 <div class="item <?php if($iterator == 1) echo 'active'; ?>">
@@ -103,18 +134,19 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
                                 <h4 class="issue-date"><?php echo $title ?></h4>
                                 <h3 class="issue-title"><?php echo $name; ?></h3>
                                 <div class="issue-desc"><?php echo $magazineItem->getContent() ?></div>
+                                <ul class="issues-thumb-list">
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
-                                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+                                    <li><img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" /></li>
                                 <?php endforeach; ?>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             <?php $iterator++; ?>
             <?php endforeach; ?>
-            </div>
             </div>
             <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="sr-only">Previous</span>
@@ -123,7 +155,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
                 <span class="sr-only">Next</span>
             </a>
         </div>
-
+    </div>
     </div>
     <?php endif; ?>
 </div>
@@ -132,7 +164,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
 
 <!-- Shop MORE Shots Start -->
 <div class="more-shots row no-gutters">
-    <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
+    <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
     <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>

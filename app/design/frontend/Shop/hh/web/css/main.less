@@ -258,7 +258,8 @@ Reviews
 /* ==========================================================================
 Page Title
  ========================================================================== */
-.page-title {
+.page-title,
+.page-title-small {
   background: url(../images/shop-keyline-faded-center.png) no-repeat center;
   font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
   font-family: @fancyFont;
@@ -277,6 +278,31 @@ Page Title
     background: #FFF;
     padding: 0 30px;
     font-style: italic;
+  }
+}
+
+.page-title-small {
+  font-family: @baseFont;
+  font-weight: normal;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  span {
+    font-style: normal;
+  }
+}
+
+.dietdidot {
+  font-family: 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif!important;
+  font-weight: normal;
+}
+
+.basefont {
+  font-family: @baseFont!important;
+  font-weight: normal;
+
+  span {
+    font-style: normal;
   }
 }
 
@@ -4815,10 +4841,50 @@ Awe Menu
 }
 
 
+
+
+
+.row.is-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.is-table-row {
+  display: table;
+}
+.is-table-row [class*="col-"] {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}
+
+
+
+
 /* ==========================================================================
 Home Page
  ========================================================================== */
 .cms-home {
+  .main-nav {
+    margin-bottom: 0;
+  }
   .magazine_list_view {
     margin: 40px auto;
   }
@@ -4844,11 +4910,186 @@ Home Page
         font-size: 13px;
       }
     }
+    .issues-thumb-list {
+      li {
+        display: inline-block;
+        width: 20%;
+      }
+    }
     .carousel-control.right, .carousel-control.left {
       top: 35%;
     }
     .issue-img {
       width: 100%;
+    }
+    .carousel-control.left {
+      left: -7%;
+    }
+    .carousel-control.right {
+      right: -7%;
+    }
+  }
+  .editors-area {
+    margin-bottom: 50px;
+
+    .editors-pick {
+      background-color: #bd9c1b;
+      text-align: center;
+
+      .editors-pick-title {
+        padding: 20px 50px;
+        margin: 15px 0;
+        border: 1px solid #0a0a0a;
+
+        h4 {
+          font-size: 18px;
+          display: block;
+          text-transform: uppercase;
+          font: normal 18px/18px  @baseFont;
+        }
+        h3 {
+          font-size: 33px;
+          font-family: 'Droid Serif', Georgia, serif;
+          margin-bottom: 10px;
+          font-weight: normal;
+        }
+      }
+      .editors-thumbs {
+        li {
+          display: inline-block;
+          margin: 10px;
+          margin-top: 0;
+        }
+      }
+    }
+
+    .editor-guest-image {
+      background: url(../images/guest-editor.jpg) no-repeat left top;
+      background-size: cover;
+    }
+    .guest-editor {
+      background-color: #344a6a;
+
+      .guest-editor-details {
+        padding: 20px;
+        margin: 15px 0;
+        border: 1px solid #FFF;
+        color: #FFF;
+        text-align: center;
+
+        h4 {
+          font-size: 18px;
+          display: block;
+          text-transform: uppercase;
+          font: normal 18px/18px  @baseFont;
+          margin-top: 50px;
+        }
+        h3 {
+          font-size: 33px;
+          font-family: 'Droid Serif', Georgia, serif;
+          margin-bottom: 30px;
+          font-weight: normal;
+        }
+        .editor-blurb {
+          font: normal 15px/22px @baseFont;
+          padding: 30px 0;
+          border-top: 1px solid #889dbb;
+          border-bottom: 1px solid #889dbb;
+        }
+        .editor-quote {
+          font: italic 18px/30px @fancyFont;
+          background: url(../images/quote-open.png) no-repeat 0 20px;
+          padding: 25px 34px;
+          position: relative;
+          margin-bottom: 40px;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .editors-pick,
+    .editor-guest-image,
+    .guest-editor {
+      min-height: 615px;
+    }
+
+  }
+  .formula_list_view {
+    margin-bottom: 60px;
+    margin-top: 20px;
+
+    .decorating-formula-title {
+      font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
+      font-family: @fancyFont;
+      font-size: 34px;
+      font-style: italic;
+      text-transform: none;
+      display: inline;
+      margin-top: 0;
+      display: block;
+      text-align: center;
+      margin-bottom: 5px;
+      color: #000!important;
+      line-height: 40px;
+      margin-bottom: 10px;
+    }
+    .decorating-formula-main-title {
+
+    }
+    .decorating-formula-sub {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: normal;
+      font-family: @baseFont;
+      text-align: center;
+    }
+    .decorating-formula-product {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .decorating-formula-product-title {
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .decorating-formula-price {
+      color: #666;
+      font-size: 14px;
+    }
+    .decorating-formula-thumb {
+      width: 85%;
+      margin: 20px auto;
+      display: block;
+    }
+    .decorating-formula-product:nth-of-type(2) {
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        height: 42px;
+        width: 43px;
+        left: -23px;
+        top: 40%;
+        background: url(../images/icon-plus.png) no-repeat right center;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        height: 42px;
+        width: 43px;
+        right: -23px;
+        top: 40%;
+        background: url(../images/icon-plus.png) no-repeat left center;
+      }
+    }
+    .carousel-control.left {
+      left: -7%;
+      top: 50%;
+    }
+    .carousel-control.right {
+      right: -7%;
+      top: 50%;
     }
   }
 }

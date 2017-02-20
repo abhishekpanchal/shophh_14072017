@@ -9,10 +9,10 @@
         <container name="header.top" htmlTag="div" htmlClass="header-top">
           <container name="header.top.container" htmlTag="div" htmlClass="container">
             <container name="header.top.row" htmlTag="div" htmlClass="row">
-              <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3">
+              <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3 hidden-xs">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-left-link.phtml"/>
               </container>
-              <container name="header.top.right" htmlTag="div" htmlClass="header-top-right col-md-9">
+              <container name="header.top.right" htmlTag="div" htmlClass="header-top-right col-md-9 hidden-xs">
                 <container name="header.toplinks"></container>
               </container>
             </container>
@@ -23,7 +23,7 @@
         <container name="header.main" htmlTag="header" htmlClass="header-main">
           <container name="header.main.container" htmlTag="div" htmlClass="container">
             <container name="header.main.row" htmlTag="div" htmlClass="row vcenter">
-              <container name="header.main.social" htmlTag="div" htmlClass="col-md-2 header-social" before="-">
+              <container name="header.main.social" htmlTag="div" htmlClass="col-md-2 hidden-xs header-social" before="-">
                 <block name="header.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
               </container>
               <container name="header.main.logo" htmlTag="div" htmlClass="col-md-7 header-logo">
