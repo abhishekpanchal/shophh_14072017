@@ -4841,6 +4841,43 @@ Awe Menu
 }
 
 
+
+
+
+.row.is-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.row.is-flex > [class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.is-table-row {
+  display: table;
+}
+.is-table-row [class*="col-"] {
+  float: none;
+  display: table-cell;
+  vertical-align: top;
+}
+
+
+
+
 /* ==========================================================================
 Home Page
  ========================================================================== */
@@ -4892,6 +4929,91 @@ Home Page
       right: -7%;
     }
   }
+  .editors-area {
+    margin-bottom: 50px;
+
+    .editors-pick {
+      background-color: #bd9c1b;
+      text-align: center;
+
+      .editors-pick-title {
+        padding: 20px 50px;
+        margin: 15px 0;
+        border: 1px solid #0a0a0a;
+
+        h4 {
+          font-size: 18px;
+          display: block;
+          text-transform: uppercase;
+          font: normal 18px/18px  @baseFont;
+        }
+        h3 {
+          font-size: 33px;
+          font-family: 'Droid Serif', Georgia, serif;
+          margin-bottom: 10px;
+          font-weight: normal;
+        }
+      }
+      .editors-thumbs {
+        li {
+          display: inline-block;
+          margin: 10px;
+          margin-top: 0;
+        }
+      }
+    }
+
+    .editor-guest-image {
+      background: url(../images/guest-editor.jpg) no-repeat left top;
+      background-size: cover;
+    }
+    .guest-editor {
+      background-color: #344a6a;
+
+      .guest-editor-details {
+        padding: 20px;
+        margin: 15px 0;
+        border: 1px solid #FFF;
+        color: #FFF;
+        text-align: center;
+
+        h4 {
+          font-size: 18px;
+          display: block;
+          text-transform: uppercase;
+          font: normal 18px/18px  @baseFont;
+          margin-top: 50px;
+        }
+        h3 {
+          font-size: 33px;
+          font-family: 'Droid Serif', Georgia, serif;
+          margin-bottom: 30px;
+          font-weight: normal;
+        }
+        .editor-blurb {
+          font: normal 15px/22px @baseFont;
+          padding: 30px 0;
+          border-top: 1px solid #889dbb;
+          border-bottom: 1px solid #889dbb;
+        }
+        .editor-quote {
+          font: italic 18px/30px @fancyFont;
+          background: url(../images/quote-open.png) no-repeat 0 20px;
+          padding: 25px 34px;
+          position: relative;
+          margin-bottom: 40px;
+          font-weight: normal;
+        }
+      }
+    }
+
+    .editors-pick,
+    .editor-guest-image,
+    .guest-editor {
+      min-height: 615px;
+    }
+
+  }
   .formula_list_view {
     margin-bottom: 60px;
     margin-top: 20px;
@@ -4913,7 +5035,6 @@ Home Page
     }
     .decorating-formula-main-title {
 
-      border: 2px solid red!important
     }
     .decorating-formula-sub {
       font-size: 16px;
