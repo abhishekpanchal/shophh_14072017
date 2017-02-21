@@ -6,7 +6,7 @@
 @baseFont     : 'Montserrat-Light', Helvetica, Arial, sans-serif;
 @headlineFont : 'Montserrat', Helvetica, Arial, sans-serif;
 @fancyFont    : 'Droid Serif';
-@fancyFront2  : 'DietDidot-BoldItalic';
+@dietDidot    : 'DietDidot-BoldItalic';
 @baseFontSize : 12px;
 @baseLineHeight: 20px;
 
@@ -4157,6 +4157,13 @@ Classes
   align-items: center;
 }
 
+.vcenter-flex {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+
 .border-left {
   border-left: 1px solid rgba(0, 0, 0, 0.25);
 }
@@ -4368,8 +4375,8 @@ Shot Thumbs
 
   h4 {
     position: relative;
-    font-family: @fancyFont;
-    font-size: 18px;
+    font-family: @dietDidot;
+    font-size: 28px;
     font-style: italic;
     margin-top: 45%;
 
@@ -4451,8 +4458,53 @@ Shot Thumbs
 Shot Slider
 ========================================================================== */
 .hotspot-placeholder {
+  background: url(../images/mood-bg.jpg) no-repeat left top;
   background-color: #EFEFEF;
 }
+.hotspot:hover {
+  cursor: pointer;
+}
+
+.hotspot {
+  width: 39px!important;
+  height: 39px!important;
+  border-radius: 50%;
+  background:  rgba(28, 180, 105, 0.8);
+  box-shadow: 0 0 0 rgba(28, 180, 105, 0.4);
+  animation: incomingPulse 1.7s infinite;
+}
+
+@-webkit-keyframes incomingPulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
+  }
+}
+
+@keyframes incomingPulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
+    box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
+    box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
+    box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
+  }
+}
+
+.cycle-paused:after {
+  display: none!important;
+}
+
 .hotspot-details {
   background-color: #FFF;
   margin: 20px;
@@ -4479,6 +4531,7 @@ Shot Slider
   }
 
   .desc {
+    font-size: 13px;
 
     img {
       max-width: 280px;
@@ -4573,6 +4626,12 @@ Products
   .page-title {
     margin-bottom: 15px;
   }
+}
+
+
+.cycle-slide-active {
+  width: 100%!important;
+  margin-left: 0!important;
 }
 
 .lookbookslider-index-view {
@@ -4840,9 +4899,17 @@ Awe Menu
 
 }
 
+.am-tab-hover {
+  background-color: #F0F0F0;
+}
 
 
-
+.shop-menu.am-tab-hover {
+  .fa:before {
+    content: "\f0d8"!important;
+    font-family: FontAwesome;
+  }
+}
 
 .row.is-flex {
   display: -webkit-box;
@@ -4881,7 +4948,12 @@ Awe Menu
 /* ==========================================================================
 Home Page
  ========================================================================== */
+
 .cms-home {
+  .container-fluid {
+    padding: 0;
+    width: 100%;
+  }
   .main-nav {
     margin-bottom: 0;
   }
@@ -4911,9 +4983,20 @@ Home Page
       }
     }
     .issues-thumb-list {
+      border: 1px solid #e6e6e6;;
+      text-align: center;
+
       li {
         display: inline-block;
-        width: 20%;
+        width: 19.5%;
+
+        &:nth-child(even) {
+          background-color: #e6e6e6;
+        }
+
+        img {
+          max-height: 120px;
+        }
       }
     }
     .carousel-control.right, .carousel-control.left {
@@ -4939,6 +5022,7 @@ Home Page
       .editors-pick-title {
         padding: 20px 50px;
         margin: 15px 0;
+        margin-left: 15px;
         border: 1px solid #0a0a0a;
 
         h4 {
@@ -4955,10 +5039,17 @@ Home Page
         }
       }
       .editors-thumbs {
+        text-align: left;
+        margin-left:10px;
+
         li {
           display: inline-block;
           margin: 10px;
           margin-top: 0;
+
+          img {
+            width: 100%;
+          }
         }
       }
     }
@@ -4973,6 +5064,7 @@ Home Page
       .guest-editor-details {
         padding: 20px;
         margin: 15px 0;
+        margin-right: 15px;
         border: 1px solid #FFF;
         color: #FFF;
         text-align: center;
@@ -5004,6 +5096,11 @@ Home Page
           margin-bottom: 40px;
           font-weight: normal;
         }
+        .btn-picks {
+          font-size: 16px!important;
+          line-height: normal;
+          padding: 15px 25px;
+        }
       }
     }
 
@@ -5016,7 +5113,7 @@ Home Page
   }
   .formula_list_view {
     margin-bottom: 60px;
-    margin-top: 20px;
+    margin-top: 10px;
 
     .decorating-formula-title {
       font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
@@ -5090,6 +5187,60 @@ Home Page
     .carousel-control.right {
       right: -7%;
       top: 50%;
+    }
+  }
+
+  .home-slider {
+    margin-top: -20px;
+    margin-bottom: 50px;
+
+    .homepage-hero {
+      img {
+        width: 100%;
+      }
+    }
+    .hero-bg-img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+    .homepage-hero-details {
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      height: 400px;
+      width: 400px;
+      margin: 10% auto;
+      position: relative;
+      z-index: 4;
+
+      h4 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 40px;
+        font-family: @baseFont;
+        font-weight: normal;
+      }
+
+      p {
+        font-size: 14px;
+        margin: 20px auto;
+      }
+      .hero-details-inner {
+        position: relative;
+        padding: 15% 12%;
+        text-align: center;
+      }
+      .homepage-hero-btn {
+        display: inline-block;
+        margin: 0 auto;
+        font-size: 16px;
+        font-style: italic;
+        background-color: #000;
+        color: #EFEFEF;
+        padding: 10px 25px;
+        font-family: @fancyFont;
+      }
     }
   }
 }

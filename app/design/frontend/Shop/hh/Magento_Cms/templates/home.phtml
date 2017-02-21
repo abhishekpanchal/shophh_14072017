@@ -1,25 +1,51 @@
 <!-- Shop the Shot Start -->
 <?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
 <?php
-$sliderId = '1';
-$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
-$shotCollection =  $blockObj->getShotCollection($sliderId);
+    $sliderId = '1';
+    $blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+    $shotCollection =  $blockObj->getShotCollection($sliderId);
 ?>
-<?php foreach($shotCollection as $shot): ?>
-	<?php $slideId = $shot->getSlideId(); ?> 
-	<?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
-	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
-	<?php if($shot->getDisplayHome() == 1): ?>
-		<a href="<?php echo $shotUrl ?>">
-			<img src="<?php echo $imagePath ?>" />
-		</a>
-		<?php echo $shot->getTitle(); ?>
-		<?php echo $shot->getCaption(); ?>
-		<img src="<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>" />
-		<a href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
-	<?php endif; ?>
-<?php endforeach; ?>
+
+<?php $iterator3 = 1; ?>
+<div id="home-slider" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+        <?php foreach($shotCollection as $shot): ?>
+            <div class="item <?php if($iterator3 == 1) echo 'active'; ?>">
+                <?php $slideId = $shot->getSlideId(); ?>
+                <?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
+                <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
+                <?php if($shot->getDisplayHome() == 1): ?>
+                    <div class="row home-slider vcenter-flex no-gutters">
+                        <div class="col-md-8 homepage-hero">
+                            <a href="<?php echo $shotUrl ?>">
+                                <img src="<?php echo $imagePath ?>" />
+                            </a>
+                        </div>
+                        <div class="col-md-4 bg-grey">
+                            <img class="hero-bg-img" src="<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>" />
+                            <div class="homepage-hero-details">
+                            <div class="hero-details-inner">
+                                <h4><?php echo $shot->getTitle(); ?></h4>
+                                <p><?php echo $shot->getCaption(); ?></p>
+                                <a class="homepage-hero-btn" href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php $iterator3++; ?>
+        <?php endforeach; ?>
+        <a class="left carousel-control" href="#home-slider" role="button" data-slide="prev">
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#home-slider" role="button" data-slide="next">
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
 <!-- Shop the Shot End -->
+
 
 <!-- Decorating Formula Start -->
 <div class="decorating-formula">
@@ -92,7 +118,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
     <div class="col-md-5 editor-guest-image">
 
     </div>
-    <div class="col-md-3 guest-editor">
+    <div class="col-md-3 guest-editor vcenter-flex">
         <div class="guest-editor-details">
             <h4>Guest Editor</h4>
             <h3>Aerin Lauder</h3>
@@ -102,6 +128,7 @@ $shotCollection =  $blockObj->getShotCollection($sliderId);
             <div class="editor-quote">
                 I think gold is a wonderful neutral; it immediately conveys luxary and warmth.<span></span>
             </div>
+            <button class="btn btn-main btn-picks">See picks</button>
         </div>
     </div>
     </div>
