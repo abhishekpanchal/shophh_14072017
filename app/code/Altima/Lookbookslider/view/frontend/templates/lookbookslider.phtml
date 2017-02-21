@@ -17,7 +17,7 @@
 <?php foreach($shotCollection as $shot): ?>
 	<?php $slideId = $shot->getSlideId(); ?>
 	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
-	<div class="col-md-3">
+	<div class="col-md-3 col-sm-6 col-xs-6">
 		<div class="shot-thumb">
 			<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
 				<img src="<?php echo $imagePath; ?>" />
