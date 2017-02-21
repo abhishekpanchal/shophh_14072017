@@ -47,13 +47,13 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         <link rel="stylesheet" type="text/css" href="<?php echo $blockObj->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
 
 
-<div class="row no-gutters lookbook-container vcenter marginbottom-40">
-<div class="col-md-8">
+<div class="row no-gutters lookbook-container vcenter-flex marginbottom-40">
+<div class="col-md-8 col-sm-12 col-xs-12">
 
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
                 <div class="content-before"><?php echo $contentBefore; ?></div>
-            <?php endif; ?>    
+            <?php endif; ?>
             <div id="lookbookslider_container_<?php echo $slider->getId() ?>"  class="lookbookslider-container">
                 <div class="cycle-slideshow1" id="lookbookslider_<?php echo $slider->getId() ?>"
                      data-cycle-center-horz="true"
@@ -210,8 +210,8 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 
 </div>
-    <div class="col-md-4 hotspot-placeholder vcenter">
-        <div class="hotspot-details">
+    <div class="col-md-4 col-sm-12 col-xs-12 hotspot-placeholder vcenter">
+        <div class="hotspot-details vcenter">
             <h1>Mood Indigo</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula id justo id dapibus. Suspendisse lacus dui, dignissim eget malesuada vel, pharetra sit amet felis. Nunc a blandit lectus. Ut in sem est. Phasellus quis at malesuada vel, pharetra sit amet felis. Nunc a blandit lectus.</p>
             <p>Rhoncus tellus. Phasellus fringilla urna odio lobortis purus,  Ut in sem est. Phasellus quis auctor quam. Curabiturquis.</p>
