@@ -4458,11 +4458,49 @@ Shot Thumbs
 Shot Slider
 ========================================================================== */
 .hotspot-placeholder {
+  background: url(../images/mood-bg.jpg) no-repeat left top;
   background-color: #EFEFEF;
 }
 .hotspot:hover {
   cursor: pointer;
 }
+
+.hotspot {
+  width: 39px!important;
+  height: 39px!important;
+  border-radius: 50%;
+  background:  rgba(28, 180, 105, 0.8);
+  box-shadow: 0 0 0 rgba(28, 180, 105, 0.4);
+  animation: incomingPulse 1.7s infinite;
+}
+
+@-webkit-keyframes incomingPulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
+  }
+}
+
+@keyframes incomingPulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
+    box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
+    box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
+    box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
+  }
+}
+
 .cycle-paused:after {
   display: none!important;
 }
@@ -4861,9 +4899,17 @@ Awe Menu
 
 }
 
+.am-tab-hover {
+  background-color: #F0F0F0;
+}
 
 
-
+.shop-menu.am-tab-hover {
+  .fa:before {
+    content: "\f0d8"!important;
+    font-family: FontAwesome;
+  }
+}
 
 .row.is-flex {
   display: -webkit-box;
@@ -4902,6 +4948,7 @@ Awe Menu
 /* ==========================================================================
 Home Page
  ========================================================================== */
+
 .cms-home {
   .container-fluid {
     padding: 0;
@@ -4936,9 +4983,20 @@ Home Page
       }
     }
     .issues-thumb-list {
+      border: 1px solid #e6e6e6;;
+      text-align: center;
+
       li {
         display: inline-block;
-        width: 20%;
+        width: 19.5%;
+
+        &:nth-child(even) {
+          background-color: #e6e6e6;
+        }
+
+        img {
+          max-height: 120px;
+        }
       }
     }
     .carousel-control.right, .carousel-control.left {
@@ -5185,8 +5243,4 @@ Home Page
       }
     }
   }
-}
-
-body {
-  background-color: red!important;
 }
