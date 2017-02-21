@@ -53,19 +53,6 @@ class Save extends \Magento\Backend\App\Action
             if ($id) {
                 $model->load($id);
             }
-            $guest = $this->getRequest()->getParam('guest');
-            $past = $this->getRequest()->getParam('past');
-            if(isset($guest)){
-               $data['guest'] = 1; 
-            }else{
-                $data['guest'] = 0; 
-            }
-
-            if(isset($past)){
-                $data['past'] = 1;
-            }else{
-                $data['past'] = 0; 
-            }
 
             // save image data and remove from data array
             if (isset($data['image'])) {
