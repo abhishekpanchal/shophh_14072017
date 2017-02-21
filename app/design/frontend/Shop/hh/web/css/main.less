@@ -4157,6 +4157,12 @@ Classes
   align-items: center;
 }
 
+.vcenter-col {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .vcenter-flex {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -4205,20 +4211,6 @@ Classes
 
 .margintop-20 {
   margin-top: 20px!important;
-}
-
-/* ==========================================================================
-No margin hack
-========================================================================== */
-.row.no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.row.no-gutters > [class^="col-"],
-.row.no-gutters > [class*=" col-"] {
-  padding-right: 0;
-  padding-left: 0;
 }
 
 
@@ -5001,6 +4993,7 @@ Home Page
 
         img {
           max-height: 120px;
+          padding: 5px;
         }
       }
     }
@@ -5049,7 +5042,7 @@ Home Page
 
         li {
           display: inline-block;
-          margin: 10px;
+          margin-bottom: 10px;
           margin-top: 0;
 
           img {
@@ -5060,8 +5053,9 @@ Home Page
     }
 
     .editor-guest-image {
-      background: url(../images/guest-editor.jpg) no-repeat left top;
-      background-size: cover;
+      background: url(../images/guest-editor.jpg);
+      background-repeat: no-repeat;
+      background-size: cover!important;
     }
     .guest-editor {
       background-color: #344a6a;
@@ -5197,6 +5191,7 @@ Home Page
 
   .homeslider {
     margin-top: -20px;
+    margin-bottom: -80px;
 
     .homepage-controls {
       width: 200px;
@@ -5209,7 +5204,6 @@ Home Page
   }
 
   .home-slider {
-    margin-bottom: 50px;
 
     .homepage-hero {
       padding: 0;
