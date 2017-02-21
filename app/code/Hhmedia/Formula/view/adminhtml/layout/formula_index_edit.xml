@@ -12,21 +12,21 @@
         <referenceContainer name="left">
             <block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tabs" name="formula_edit_tabs">
                 <block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tab\Main" name="formula_edit_tab_main"/>
-                <!-- <block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tab\Content" name="formula_edit_tab_content"/>
-                <block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tab\Image" name="formula_edit_tab_image"/> -->
+                <block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tab\Content" name="formula_edit_tab_content"/>
+                <!--<block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tab\Image" name="formula_edit_tab_image"/>-->
                 <block class="Hhmedia\Formula\Block\Adminhtml\Formula\Edit\Tab\Products" name="formula_edit_tab_products"/>
                 <action method="addTab">
                     <argument name="name" xsi:type="string">main_section</argument>
                     <argument name="block" xsi:type="string">formula_edit_tab_main</argument>
                 </action>
-                <!-- <action method="addTab">
+                <action method="addTab">
                     <argument name="name" xsi:type="string">content_section</argument>
                     <argument name="block" xsi:type="string">formula_edit_tab_content</argument>
                 </action>
-                <action method="addTab">
+                <!--<action method="addTab">
                     <argument name="name" xsi:type="string">image_section</argument>
                     <argument name="block" xsi:type="string">formula_edit_tab_image</argument>
-                </action> -->
+                </action>-->
                 <action method="addTab">
                     <argument name="name" xsi:type="string">products_section</argument>
                     <argument name="block" xsi:type="array">

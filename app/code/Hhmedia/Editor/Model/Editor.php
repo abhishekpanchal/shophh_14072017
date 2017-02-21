@@ -25,6 +25,12 @@ class Editor extends \Magento\Framework\Model\AbstractModel implements IdentityI
 
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
+    const PAST_YES = 1;
+    const PAST_NO = 0;
+    const GUEST_YES = 1;
+    const GUEST_NO = 0;
+    const HOME_YES = 1;
+    const HOME_NO = 0;    
 
     protected function _construct()
     {
@@ -33,6 +39,18 @@ class Editor extends \Magento\Framework\Model\AbstractModel implements IdentityI
 
     public function getAvailableStatuses() {
         return [self::STATUS_DISABLED => __('Disabled'), self::STATUS_ENABLED => __('Enabled')];
+    }
+
+    public function getAvailablePast() {
+        return [self::PAST_NO => __('No'), self::PAST_YES => __('Yes')];
+    }
+
+    public function getAvailableGuest() {
+        return [self::GUEST_NO => __('No'), self::GUEST_YES => __('Yes')];
+    }
+
+    public function getDisplayHome(){
+        return [self::HOME_NO => __('No'), self::HOME_YES => __('Yes')];
     }
 
     public function getIdentities()

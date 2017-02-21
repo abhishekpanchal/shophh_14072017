@@ -140,6 +140,19 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         ]
     );
 
+    $fieldset->addField(
+            'display_home', 
+            'select', 
+            [
+                'label'    => __('Display on Home'),
+                'title'    => __('Display on Home'),
+                'name'     => 'display_home',
+                'required' => true,
+                'options'  => $model->getDisplayHome(),
+                'disabled' => $isElementDisabled
+            ]
+        );
+
 
         $field_hotspots    = $fieldset->addField(
                 'hotspots', 'hidden', [

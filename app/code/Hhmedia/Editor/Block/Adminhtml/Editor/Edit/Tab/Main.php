@@ -151,24 +151,41 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
-            'guest',
-            'checkbox',
+            'guest', 
+            'select', 
             [
-                'label' => __('Guest Editor'),
-                'name' => 'guest',
-                'data-form-part' => $this->getData('target_form'),
-                'onchange' => 'this.value = this.checked;'
+                'label'    => __('Guest Editor'),
+                'title'    => __('Guest Editor'),
+                'name'     => 'guest',
+                'required' => true,
+                'options'  => $model->getAvailableGuest(),
+                'disabled' => $isElementDisabled
             ]
         );
 
         $fieldset->addField(
-            'past',
-            'checkbox',
+            'past', 
+            'select', 
             [
-                'label' => __('Past Editor'),
-                'name' => 'past',
-                'data-form-part' => $this->getData('target_form'),
-                'onchange' => 'this.value = this.checked;'
+                'label'    => __('Past Editor'),
+                'title'    => __('Past Editor'),
+                'name'     => 'past',
+                'required' => true,
+                'options'  => $model->getAvailablePast(),
+                'disabled' => $isElementDisabled
+            ]
+        );
+
+        $fieldset->addField(
+            'display_home', 
+            'select', 
+            [
+                'label'    => __('Display on Home'),
+                'title'    => __('Display on Home'),
+                'name'     => 'display_home',
+                'required' => true,
+                'options'  => $model->getDisplayHome(),
+                'disabled' => $isElementDisabled
             ]
         );
 
@@ -207,8 +224,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         ]);*/
         
         $this->_eventManager->dispatch('adminhtml_editor_edit_tab_main_prepare_form', ['form' => $form]);
-        $form->getElement('guest')->setIsChecked('1');
-        $form->getElement('past')->setIsChecked('1');
+
         $form->setValues($model->getData());
         $this->setForm($form);
 
