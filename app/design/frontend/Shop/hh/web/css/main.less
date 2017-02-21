@@ -4457,8 +4457,10 @@ Shot Thumbs
 /* ==========================================================================
 Shot Slider
 ========================================================================== */
-.hotspot-placeholder {
+.hotspot-placeholder,
+.mood-bg {
   background: url(../images/mood-bg.jpg) no-repeat left top;
+  background-size: cover;
   background-color: #EFEFEF;
 }
 .hotspot:hover {
@@ -4983,12 +4985,12 @@ Home Page
       }
     }
     .issues-thumb-list {
-      border: 1px solid #e6e6e6;;
-      text-align: center;
+      border: 1px solid #e6e6e6;
 
       li {
         display: inline-block;
         width: 19.5%;
+        text-align: center;
 
         &:nth-child(even) {
           background-color: #e6e6e6;
@@ -5190,11 +5192,15 @@ Home Page
     }
   }
 
-  .home-slider {
+  .homeslider {
     margin-top: -20px;
+  }
+
+  .home-slider {
     margin-bottom: 50px;
 
     .homepage-hero {
+      padding: 0;
       img {
         width: 100%;
       }
