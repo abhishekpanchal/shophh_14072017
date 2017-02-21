@@ -10,13 +10,11 @@
 <div id="home-slider" class="carousel slide homeslider" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
         <?php foreach($shotCollection as $shot): ?>
-            
             <?php if($shot['display_home'] == 1): ?>
             <div class="item <?php if($iterator3 == 1){ echo 'active'; } ?>">
                 <?php $slideId = $shot->getSlideId(); ?>
                 <?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
                 <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
-                
                     <div class="row no-gutters home-slider ">
                         <div class="vcenter-flex">
                             <div class="col-md-8 col-sm-12 col-xs-12 homepage-hero">
@@ -34,7 +32,6 @@
                             </div>
                         </div>
                     </div>
-                
             </div>
         <?php $iterator3++; ?>
         <?php endif; ?>
@@ -106,7 +103,7 @@
 
 <!-- Editors Pick Start -->
 <div class="row editors-area">
-    <div class="editors-area-wrap">
+    <div class="editors-area-wrap vcenter-flex">
     <div class="col-md-4 editors-pick">
         <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
         <?php $_editor = $objEditor->getCollection(); ?>
@@ -116,10 +113,10 @@
             <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
         </div>
         <div class="editors-thumbs">
-            <ul><?php $i=0; ?>
+            <ul class="row"><?php $i=0; ?>
                 <?php foreach ($_editor as $editorItem): ?>
                     <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
-                        <li> <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
+                        <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
                         <?php if($i++ == 3){break;} ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -127,15 +124,14 @@
         </div>
         <?php endif; ?>
     </div>
-    <div class="col-md-5 editor-guest-image">
-        <?php foreach ($_editor as $editorItem): ?>
-            <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
-                <img class="editor-img" src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" />
-            <?php endif; ?>
-        <?php break; endforeach; ?>
-    </div>
+    <?php foreach ($_editor as $editorItem): ?>
+        <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
+            <div class="col-md-5 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
+            </div>
+        <?php endif; ?>
+    <?php break; endforeach; ?>
     <div class="col-md-3 guest-editor vcenter-flex">
-        <div class="guest-editor-details">
+        <div class="guest-editor-details vcenter vcenter-col">
             <?php foreach ($_editor as $editorItem): ?>
             <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
                 <h4>Guest Editor</h4>
