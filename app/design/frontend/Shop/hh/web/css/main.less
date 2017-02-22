@@ -4359,7 +4359,7 @@ Shot Thumbs
   position: relative;
   float: left;
   overflow: hidden;
-  width: 98%;
+  width: 99%;
   margin-bottom: 2px;
   background: #000000;
   text-align: center;
@@ -4452,7 +4452,8 @@ Shot Slider
 .hotspot-placeholder,
 .mood-bg {
   background: url(../images/mood-bg.jpg) no-repeat left top;
-  background-size: cover;
+  background-repeat: no-repeat!important;
+  background-size: cover!important;
   background-color: #EFEFEF;
 }
 .hotspot:hover {
@@ -5139,6 +5140,11 @@ Home Page
       font-family: @baseFont;
       text-align: center;
     }
+    .decorating-formula-text {
+      text-align: center;
+      font-weight: normal;
+      font-family: @baseFont;
+    }
     .decorating-formula-product {
       margin-top: 40px;
       text-align: center;
@@ -5191,15 +5197,16 @@ Home Page
 
   .homeslider {
     margin-top: -20px;
-    margin-bottom: -80px;
+    margin-bottom: -50px;
 
     .homepage-controls {
       width: 200px;
-      height: 100px;
-      position: relative;
-      float: right;
-      right: 10%;
-      top: -190px;
+    height: 100px;
+    position: relative;
+    float: right;
+    right: 10%;
+    top: -130px;
+    display: block;
     }
   }
 
@@ -5221,11 +5228,22 @@ Home Page
     .homepage-hero-details {
       background: rgba(255,255,255,0.8);
       border-radius: 50%;
-      height: 400px;
-      width: 400px;
+      height: 380px;
+      width: 380px;
       margin: 10% auto;
       position: relative;
       z-index: 4;
+
+      .hero-details-title {
+        font-size: 20px;
+        font-family: @baseFont;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding-bottom: 10px;
+
+        strong {
+          font-size: 24px;
+        }
+      }
 
       h4 {
         text-align: center;
@@ -5233,6 +5251,8 @@ Home Page
         font-size: 40px;
         font-family: @baseFont;
         font-weight: normal;
+        margin-top: 20px;
+        color: #27577b;
       }
 
       p {

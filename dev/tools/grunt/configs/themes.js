@@ -25,6 +25,7 @@ module.exports = {
         locale: 'en_US',
         files: [
             'css/bootstrap',
+            'css/responsive',
             'css/main'
         ],
         dsl: 'less'
