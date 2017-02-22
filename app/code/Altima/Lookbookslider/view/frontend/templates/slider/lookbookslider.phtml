@@ -208,27 +208,29 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 </div>
 
 
-    <div class="col-md-4 col-sm-12 col-xs-12 hotspot-placeholder vcenter">
 
 <?php foreach ($slideCollection as $slide): ?>
-<?php if($slide->getId() == $slideId): ?>
-
-        <div class="hotspot-details vcenter" style="background:url(<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$slide->getBgImage() ?>);">
-            <h1></h1>
-            <p><?php echo $slide->getCaption(); ?></p>
-            <ul class="social">
-                <li><a href="https://houseandhome.com/twitter" target="_blank"><i class="icon ion-social-twitter"></i></a></li>
-                <li><a href="https://houseandhome.com/facebook" target="_blank"><i class="icon ion-social-facebook"></i></a></li>
-                <li><a href="https://houseandhome.com/instagram" target="_blank"><i class="icon ion-social-instagram"></i></a></li>
-                <li><a href="https://houseandhome.com/pinterest" target="_blank"><i class="icon ion-social-pinterest"></i></a></li>
-            </ul>
-            <a href="#" class="btn-fullscreen">View Full Screen</a>
+    <?php if($slide->getId() == $slideId): ?>
+        <div class="col-md-4 col-sm-12 col-xs-12 hotspot-placeholder vcenter" style="background:url(<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$slide->getBgImage() ?>);">
+            <div class="hotspot-details vcenter">
+                <div class="hotspot-default visible">
+                    <h1><?php echo $slide->getTitle(); ?></h1>
+                    <p><?php echo $slide->getCaption(); ?></p>
+                    <ul class="social">
+                        <li><a href="https://houseandhome.com/twitter" target="_blank"><i class="icon ion-social-twitter"></i></a></li>
+                        <li><a href="https://houseandhome.com/facebook" target="_blank"><i class="icon ion-social-facebook"></i></a></li>
+                        <li><a href="https://houseandhome.com/instagram" target="_blank"><i class="icon ion-social-instagram"></i></a></li>
+                        <li><a href="https://houseandhome.com/pinterest" target="_blank"><i class="icon ion-social-pinterest"></i></a></li>
+                    </ul>
+                    <a href="#" class="btn-fullscreen">View Full Screen</a>
+                </div>
+                <div class="hotspot-details-placeholder hidden"></div>
+            </div>
         </div>
-<?php endif; ?>
+    <?php endif; ?>
 <?php endforeach ?>
 
 
-    </div>
 
 </div>
 
