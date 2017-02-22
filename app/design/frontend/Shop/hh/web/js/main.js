@@ -35,9 +35,9 @@ require(['jquery', 'jquery.bootstrap'], function($){
       var el = jQuery(this);
 
       var hotspotDesc = $(el).find( ".product-info" ).html();
-
-      var defaultHotspotIcon = $(this).children('img').attr('src');
-      console.log('de', defaultHotspotIcon)
+      var defaultHotspotIcon = $(el).children('i');
+      // $(defaultHotspotIcon).removeClass('ion-android-search hotspot-inactive');
+      // $(defaultHotspotIcon).addClass('ion-android-close hotspot-active');
 
       // $('.hotspot-details-placeholder').toggleClass('hidden');
       // $('.hotspot-details-placeholder').html(hotspotDesc);
@@ -48,6 +48,23 @@ require(['jquery', 'jquery.bootstrap'], function($){
       //   $('.hotspot-default').removeClass('visible').addClass('hidden');
       //   $('.hotspot-details-placeholder').removeClass('hidden').addClass('visible').html(hotspotDesc);
       // }
+
+      if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
+        if ($('.ion-android-close').hasClass('hotspot-active')) {
+          $('.ion-android-close').removeClass().addClass('ion-android-search hotspot-inactive');
+        }
+
+        $('.hotspot-details-placeholder').empty().removeClass('hidden').addClass('visible');
+        $('.hotspot-details-placeholder').html(hotspotDesc);
+        $('.hotspot-default').removeClass('visible').addClass('hidden');
+        $(defaultHotspotIcon).removeClass().addClass('ion-android-close hotspot-active');
+        console.log('a');
+      } else if($(defaultHotspotIcon).hasClass('ion-android-close hotspot-active')) {
+        $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
+        $('.hotspot-default').removeClass('hidden').addClass('visible');
+        $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
+        console.log('b');
+      }
 
     });
   });

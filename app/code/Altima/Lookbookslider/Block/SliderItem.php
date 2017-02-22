@@ -298,10 +298,14 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             }
             $html_content = '';
             if (!isset($icon_dimensions['error'])) {
-                $html_content .= '<img class="hotspot-icon" src="' . $hotspot_icon . '" alt="" style="
+                $html_content .= '<i class="ion-android-search hotspot-inactive" style="
                         left:' . (round($value['width'] / 2) - round($icon_dimensions['width'] / 2)) . 'px; 
                         top:' . (round($value['height'] / 2) - round($icon_dimensions['height'] / 2)) . 'px;
-                        "/>';
+                        "/></i>';
+                // $html_content .= '<img class="hotspot-icon" src="' . $hotspot_icon . '" alt="" style="
+                //         left:' . (round($value['width'] / 2) - round($icon_dimensions['width'] / 2)) . 'px; 
+                //         top:' . (round($value['height'] / 2) - round($icon_dimensions['height'] / 2)) . 'px;
+                //         "/>';
                 $decoded_array[$key]['icon_width']  = $icon_dimensions['width'];
                 $decoded_array[$key]['icon_height'] = $icon_dimensions['height'];
             }
