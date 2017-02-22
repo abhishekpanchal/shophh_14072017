@@ -6,6 +6,14 @@
     $shotCollection =  $blockObj->getShotCollection($sliderId);
 ?>
 
+<?php
+    function truncate($string, $word_limit)
+    {
+        $words = explode(" ",$string);
+        return implode(" ",array_splice($words,0,$word_limit));
+    }
+?>
+
 <?php $iterator3 = 1; ?>
 <div id="home-slider" class="carousel slide homeslider" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
@@ -20,12 +28,12 @@
                             <div class="col-md-8 col-sm-12 col-xs-12 homepage-hero">
                                 <img src="<?php echo $imagePath ?>" />
                             </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12 mood-bg vcenter">
-                                <img class="hero-bg-img" src="<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>" />
+                            <div class="col-md-4 col-sm-12 col-xs-12 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>);">
                                 <div class="homepage-hero-details">
                                 <div class="hero-details-inner">
+                                    <h3 class="hero-details-title"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h3>
                                     <h4><?php echo $shot->getTitle(); ?></h4>
-                                    <p><?php echo $shot->getCaption(); ?></p>
+                                    <p><?php echo truncate(($shot->getCaption()),20) ?></p>
                                     <a class="homepage-hero-btn" href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
                                 </div>
                                 </div>
@@ -43,7 +51,14 @@
             <a class="right carousel-control" href="#home-slider" role="button" data-slide="next">
                 <span class="sr-only">Next</span>
             </a>
+
+      <ol class="carousel-indicators">
+        <li data-target="#home-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#home-slider" data-slide-to="1"></li>
+        <li data-target="#home-slider" data-slide-to="2"></li>
+      </ol>
         </div>
+
     </div>
 </div>
 <!-- Shop the Shot End -->
@@ -67,6 +82,7 @@
                     <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
                        <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                        <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
+                       <p class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></p>
                         <?php foreach($formulaProduct as $fPro): ?>
                             <div class="decorating-formula-product col-md-4">
                             <?php $proFormula = $objFormula->getProductById($fPro); ?>

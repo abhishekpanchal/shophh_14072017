@@ -217,7 +217,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $_p_shrt_desc  = rtrim($_p_shrt_desc, "!,.-");
                     $_p_shrt_desc  = substr($_p_shrt_desc, 0, strrpos($_p_shrt_desc, ' '));
                     $_p_shrt_desc  = $_p_shrt_desc . '...';
-                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(50, 50)->getUrl();
+                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(400, 400)->getUrl();
                 }
                 //$html_content .= 'width: ' . strlen($_p_name) * 8 . 'px;';
             } else {
@@ -319,7 +319,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $_p_shrt_desc  = rtrim($_p_shrt_desc, "!,.-");
                     $_p_shrt_desc  = substr($_p_shrt_desc, 0, strrpos($_p_shrt_desc, ' '));
                     $_p_shrt_desc  = $_p_shrt_desc . '...';
-                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(50, 50)->getUrl();
+                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(400, 400)->getUrl();
                 }
                 $html_content .= 'width: ' . strlen($_p_name) * 8 . 'px;';
             } else {
