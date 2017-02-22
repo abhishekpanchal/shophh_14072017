@@ -82,7 +82,7 @@
                     <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
                        <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                        <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
-                       <div class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></div>
+                       <p class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></p>
                         <?php foreach($formulaProduct as $fPro): ?>
                             <div class="decorating-formula-product col-md-4">
                             <?php $proFormula = $objFormula->getProductById($fPro); ?>
