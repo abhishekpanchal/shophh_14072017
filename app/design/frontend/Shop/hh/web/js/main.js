@@ -33,9 +33,22 @@ require(['jquery', 'jquery.bootstrap'], function($){
       event.preventDefault();
       event.stopPropagation();
       var el = jQuery(this);
-      //var hotspotId = el.attr('id');
+
       var hotspotDesc = $(el).find( ".product-info" ).html();
-      $('.hotspot-details').html(hotspotDesc)
+
+      var defaultHotspotIcon = $(this).children('img').attr('src');
+      console.log('de', defaultHotspotIcon)
+
+      // $('.hotspot-details-placeholder').toggleClass('hidden');
+      // $('.hotspot-details-placeholder').html(hotspotDesc);
+      // if ($('.hotspot-details-placeholder').hasClass('visible')) {
+      //   $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
+      //   $('.hotspot-default').removeClass('hidden').addClass('visible');
+      // } else {
+      //   $('.hotspot-default').removeClass('visible').addClass('hidden');
+      //   $('.hotspot-details-placeholder').removeClass('hidden').addClass('visible').html(hotspotDesc);
+      // }
+
     });
   });
 
