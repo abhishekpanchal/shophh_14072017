@@ -16,6 +16,7 @@ return array (
     'Hhmedia_Magazine' => 1,
     'Hhmedia_Override' => 1,
     'Hhmedia_Productpage' => 1,
+    'Hhmedia_Topbar' => 1,
     'Magento_Theme' => 1,
     'Magento_Customer' => 1,
     'Magento_AdvancedPricingImportExport' => 1,

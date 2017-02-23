@@ -139,6 +139,18 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
+            'short_quote',
+            'textarea',
+            [
+                'name' => 'short_quote',
+                'label' => __('Short Quote for Home'),
+                'title' => __('Short Quote for Home'),
+                'required' => true,
+                'disabled' => $isElementDisabled
+            ]
+        );
+
+        $fieldset->addField(
             'subtitle',
             'text',
             [
