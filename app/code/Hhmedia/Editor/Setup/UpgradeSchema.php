@@ -27,6 +27,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Display on Home'
                 ]);
         }
+        if (version_compare($context->getVersion(), '1.0.2', '<')) {
+            $connection->addColumn(
+                $installer->getTable('hhmedia_editor'),
+                'short_quote',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => '2M',
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Short Quote for Home'
+                ]);
+        }
 
         $installer->endSetup();
     }

@@ -51,18 +51,19 @@
             <a class="right carousel-control" href="#home-slider" role="button" data-slide="next">
                 <span class="sr-only">Next</span>
             </a>
-
-      <ol class="carousel-indicators">
-        <li data-target="#home-slider" data-slide-to="0" class="active"></li>
-        <li data-target="#home-slider" data-slide-to="1"></li>
-        <li data-target="#home-slider" data-slide-to="2"></li>
-      </ol>
+            <ol class="carousel-indicators">
+                <?php $x = 0; ?>
+                <?php foreach($shotCollection as $shot): ?>
+                    <?php if($shot['display_home'] == 1): ?>
+                        <li data-target="#home-slider" data-slide-to="<?php echo $x ?>" class="<?php if($x == 0){ echo 'active'; } ?>"></li>
+                        <?php $x++; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ol>
         </div>
-
     </div>
 </div>
 <!-- Shop the Shot End -->
-
 
 <!-- Decorating Formula Start -->
 <div class="decorating-formula">
@@ -92,8 +93,10 @@
                                 $price = $proFormula->getFinalPrice();
                                 $fImage = $proFormula->getData('small_image');
                             ?>
-                            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
-                            <h4 class="decorating-formula-product-title"><?php echo $productName = $proFormula->getName(); ?></h4>
+                            <a href="<?php echo $proFormula->getProductUrl() ?>">
+                                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                                <h4 class="decorating-formula-product-title"><?php echo $productName = $proFormula->getName(); ?></h4>
+                            </a>
                             <h4 class="decorating-formula-price">
                                 <?php echo $formattedPrice = $priceHelper->currency($price, true, false); ?>
                             </h4>
@@ -133,7 +136,7 @@
                 <?php foreach ($_editor as $editorItem): ?>
                     <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
                         <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
-                        <?php if($i++ == 3){break;} ?>
+                        <?php $i++; if($i == 3){break;} ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -156,7 +159,10 @@
                 <?php echo $editorItem->getSubtitle(); ?>
             </div>
             <div class="editor-quote">
-                <?php echo $editorItem->getQuote(); ?>
+                <?php $shortQuote = $editorItem->getShortQuote(); ?>
+                <?php if(isset($shortQuote)): ?>
+                    <?php echo $shortQuote; ?>
+                <?php endif; ?>
             </div>
             <button class="btn btn-main btn-picks">See picks</button>
             <?php endif; ?>
@@ -196,7 +202,11 @@
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
-                                    <li><img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" /></li>
+                                    <li>
+                                        <a href="<?php echo $proMagazine->getProductUrl() ?>">
+                                            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+                                        </a>
+                                    </li>
                                 <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -219,11 +229,11 @@
 </div>
 <!-- Shop the Issue End -->
 
-
 <!-- Shop MORE Shots Start -->
 <div class="more-shots row no-gutters">
     <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
     <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+    <?php $j=0; ?>
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
         <?php $slideId = $shot->getSlideId(); ?>
@@ -238,6 +248,7 @@
                 </a>
             </div>
         </div>
+        <?php $j++; if($j==7){ break; } ?>
     <?php endforeach; ?>
 </div>
 <!-- Shop MORE Shots End -->
