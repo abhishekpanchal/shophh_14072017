@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="udropship.content">
+            <block class="Magento\Framework\View\Element\Template"
+                   template="Unirgy_DropshipVendorPromotions::unirgy/udpromo/vendor/rules/wrapper.phtml" name="wrapper" cacheable="false">
+                <block class="Unirgy\DropshipVendorPromotions\Block\Vendor\Rules"
+                       template="Unirgy_DropshipVendorPromotions::unirgy/udpromo/vendor/rules/grid.phtml" as="rules"
+                       name="udpromo.rules.grid" cacheable="false">
+                    <block class="Magento\Theme\Block\Html\Pager" as="toolbar" name="udpromo.grid.toolbar"/>
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+    <update handle="udropship_vendor"/>
+</page>

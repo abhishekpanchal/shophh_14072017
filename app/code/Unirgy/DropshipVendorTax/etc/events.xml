@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="udropship_vendor_save_commit_after">
+        <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipVendorSaveCommitAfter"/>
+    </event>
+    <event name="controller_front_init_before">
+        <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\ControllerFrontInitBefore"/>
+    </event>
+    <event name="udropship_init_config_rewrites">
+        <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipInitConfigRewrites"/>
+    </event>
+    <event name="udropship_quote_item_setUdropshipVendor">
+        <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipQuoteItemSetUdropshipVendor"/>
+    </event>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="udropship_process_vendor_carrier_single_rate_result">
+        <observer name="udminamount"
+                  instance="Unirgy\VendorMinAmounts\Observer\UdropshipProcessVendorCarrierSingleRateResult"/>
+    </event>
+    <event name="controller_action_predispatch_checkout_cart_add">
+        <observer name="udminamount"
+                  instance="Unirgy\VendorMinAmounts\Observer\ControllerActionPredispatchCheckoutCartAdd"/>
+    </event>
+    <event name="controller_action_predispatch_checkout_cart_updatePost">
+        <observer name="udminamount"
+                  instance="Unirgy\VendorMinAmounts\Observer\ControllerActionPredispatchCheckoutCartUpdatePost"/>
+    </event>
+    <event name="sales_quote_load_after">
+        <observer name="udminamount" instance="Unirgy\VendorMinAmounts\Observer\SalesQuoteLoadAfter"/>
+    </event>
+</config>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <Unirgy_VendorMinAmounts>
+            <usimpleup>
+                <remote>http://download.unirgy.com/simple/client_api/version/</remote>
+                <changelog>http://unirgy.com/support/portal/announcements</changelog>
+            </usimpleup>
+        </Unirgy_VendorMinAmounts>
+        <carriers>
+            <udropship>
+                <minimum_vendor_order_amount_quote_message>Minimum amount for "%s" vendor part of order is %s
+                </minimum_vendor_order_amount_quote_message>
+                <minimum_vendor_order_amount_message>Minimum amount for this vendor part of order is %s
+                </minimum_vendor_order_amount_message>
+            </udropship>
+        </carriers>
+    </default>
+</config>

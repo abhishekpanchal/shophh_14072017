@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\SalesRule\Model\Rule\Condition\Address"
+                type="Unirgy\DropshipVendorPromotions\Model\RuleConditionAddress"/>
+    <preference for="Magento\SalesRule\Model\Rule\Condition\Product"
+                type="Unirgy\DropshipVendorPromotions\Model\RuleConditionProduct"/>
+    <preference for="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Grid"
+                type="Unirgy\DropshipVendorPromotions\Block\Adminhtml\PromoGrid"/>
+    <preference for="Magento\SalesRule\Model\Rule\Condition\Product\Combine"
+                type="Unirgy\DropshipVendorPromotions\Model\RuleConditionProductCombine"/>
+</config>

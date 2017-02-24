@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_promo_quote_edit_tab_main_prepare_form">
+        <observer name="udpromo"
+                  instance="Unirgy\DropshipVendorPromotions\Observer\AdminhtmlPromoQuoteEditTabMainPrepareForm"/>
+    </event>
+</config>

@@ -1,0 +1,94 @@
+<?php
+/** @var \Unirgy\Dropship\Helper\Data $_hlp */
+$_hlp = \Magento\Framework\App\ObjectManager::getInstance()->get('Unirgy\Dropship\Helper\Data');
+$_v = $this->getVendor();
+?>
+
+<?php switch ($this->getPart()): case 'header': ?>
+
+<tr class="udropship-cart-vendor-header">
+    <td colspan="10" style="padding-top:5px; padding-bottom:0">
+        <?php if ($_v->getId()): ?>
+            <h3><?php echo $_v->getVendorName() ?> - <?php echo $_v->getFormatedAddress('text_small') ?></h3>
+        <?php else: ?>
+            <h3>Unknown vendor</h3>
+        <?php endif ?>
+        <?php $vendorErrors = $this->getQuote1()->getMinVendorOrderAmountErrors(); ?>
+        <?php if (!empty($vendorErrors) && !empty($vendorErrors[$_v->getId()])): ?>
+            <p class="item-msg error">* <?php echo $this->escapeHtml($vendorErrors[$_v->getId()]) ?></p>
+        <?php endif ?>
+    </td>
+</tr>
+
+<?php break; case 'footer': ?>
+
+<tr class="udropship-cart-vendor-footer">
+    <td colspan="10">
+        <div style="float:right">
+            <?php echo __('Subtotal:')?>
+            <strong><?php echo $_hlp->formatPrice($this->getSubtotal()) ?></strong>
+        </div>
+        <?php if (!$this->isVirtual()): ?>
+            <?php if ($this->getErrorsOnly()): ?>
+                <?php echo htmlspecialchars(\Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\Config\ScopeConfigInterface')->getValue('carriers/udsplit/specificerrmsg', \Magento\Store\Model\ScopeInterface::SCOPE_STORE)) ?>
+            <?php else: ?>
+                <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
+                    <?php echo __('Select Shipping:')?>
+        <form method="post" id="shipping_method_form-<?php echo $_v->getId()?>" action="<?php echo $this->escapeHtml($this->getShippingMethodSubmitUrl()) ?>">
+                    <select id="shipping_method_<?php echo $_v->getId()?>" name="shipping_method[<?php echo $_v->getId()?>]" class="shipment-methods" style="width:auto">
+                        <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
+                            <optgroup label="<?php echo $this->getCarrierName($code) ?>">
+                                <?php foreach ($_rates as $_rate): ?>
+                                    <?php if ($_rate->getErrorMessage()): ?>
+                                        <?php //echo $_rate->getErrorMessage() ?>
+                                    <?php else:
+                                        $_price = $this->getShippingPrice($_rate->getPrice(), \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Tax\Helper\Data')->displayShippingPriceIncludingTax());
+                                        $_incl = $this->getShippingPrice($_rate->getPrice(), true);
+                                        if (\Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Tax\Helper\Data')->displayShippingBothPrices() && $_incl != $_price) {
+                                            $_price .= ' ('.__('Incl. Tax ').$_incl.')';
+                                        }
+                                        ?>
+                                        <option value="<?php echo $this->escapeHtml($_rate->getCode()) ?>" <?php if($_rate->getCode()===$this->getShippingMethod('code')) echo ' selected="selected"' ?>>
+                                            <?php echo $_rate->getMethodTitle() ?> - <?php echo $_price ?>
+                                        </option>
+                                    <?php endif ?>
+                                <?php endforeach; ?>
+                            </optgroup>
+                        <?php endforeach; ?>
+                    </select>
+            </form>
+<script>
+require(["jquery", "prototype"], function(jQuery) {
+
+$('shipping_method_form') && $('shipping_method_form').up('.box') && $('shipping_method_form').up('.box').update('');
+$('shipping_method_<?php echo $_v->getId()?>').observe(
+    'change',
+    function () {
+        PayPalExpressAjax._updateOrderSubmit(true);
+        if (PayPalExpressAjax._pleaseWait) {
+            PayPalExpressAjax._pleaseWait.show();
+        }
+        if ('' != $('shipping_method_<?php echo $_v->getId()?>').value) {
+            new Ajax.Updater('details-reload', $('shipping_method_form-<?php echo $_v->getId()?>').action, {
+                parameters: {isAjax:true, 'shipping_method[<?php echo $_v->getId()?>]':$('shipping_method_<?php echo $_v->getId()?>').value},
+                onComplete: function() {
+                    if (PayPalExpressAjax._pleaseWait) {
+                        PayPalExpressAjax._pleaseWait.hide();
+                    }
+                }.bind(PayPalExpressAjax),
+                onSuccess: PayPalExpressAjax._onSubmitShippingSuccess.bind(PayPalExpressAjax),
+                evalScripts: true
+            });
+        }
+    }
+);
+
+});
+</script>
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endif; ?>
+    </td>
+</tr>
+
+<?php endswitch ?>

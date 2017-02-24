@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
+        <plugin name="udtaxSetVendorTax" type="Unirgy\DropshipVendorTax\Plugin\CommonTaxCollector" />
+    </type>
+    <preference for="Magento\Tax\Block\Adminhtml\Rule\Edit\Form"
+                type="Unirgy\DropshipVendorTax\Block\Adminhtml\TaxRuleEditForm" />
+    <preference for="Magento\Tax\Model\TaxClass\Repository"
+                type="Unirgy\DropshipVendorTax\Model\TaxClassRepository" />
+    <preference for="Magento\Tax\Model\Calculation\Rule"
+                type="Unirgy\DropshipVendorTax\Model\CalculationRule" />
+    <preference for="Magento\Tax\Api\Data\TaxRuleInterface"
+                type="Unirgy\DropshipVendorTax\Model\CalculationRule" />
+    <preference for="Magento\Tax\Model\TaxRuleCollection"
+                type="Unirgy\DropshipVendorTax\Model\TaxRuleCollection" />
+    <preference for="Magento\Tax\Model\ResourceModel\Calculation\Rule\Collection"
+                type="Unirgy\DropshipVendorTax\Model\ResourceModel\CalculationRuleCollection" />
+    <preference for="Magento\Tax\Model\Calculation"
+                type="Unirgy\DropshipVendorTax\Model\Calculation" />
+    <preference for="Magento\Tax\Model\ResourceModel\Calculation"
+                type="Unirgy\DropshipVendorTax\Model\ResourceModel\Calculation" />
+    <preference for="Magento\Tax\Model\Calculation\TotalBaseCalculator"
+                type="Unirgy\DropshipVendorTax\Model\Calculation\TotalBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\RowBaseCalculator"
+                type="Unirgy\DropshipVendorTax\Model\Calculation\RowBaseCalculator" />
+    <preference for="Magento\Tax\Model\Calculation\UnitBaseCalculator"
+                type="Unirgy\DropshipVendorTax\Model\Calculation\UnitBaseCalculator" />
+    <preference for="Magento\Tax\Model\Sales\Total\Quote\Shipping"
+                type="Unirgy\DropshipVendorTax\Model\TotalQuoteShipping" />
+    <preference for="Magento\Tax\Model\Sales\Total\Quote\Tax"
+                type="Unirgy\DropshipVendorTax\Model\TotalQuoteTax" />
+    <preference for="Magento\Tax\Model\TaxClass\Factory"
+                type="Unirgy\DropshipVendorTax\Model\TaxClassFactory" />
+</config>

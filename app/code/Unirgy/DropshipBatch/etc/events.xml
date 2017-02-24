@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="udropship_order_save_after">
+        <observer name="udbatch" instance="Unirgy\DropshipBatch\Observer\UdropshipOrderSaveAfter"/>
+    </event>
+    <event name="udpo_order_save_after">
+        <observer name="udbatch" instance="Unirgy\DropshipBatch\Observer\UdpoOrderSaveAfter"/>
+    </event>
+    <event name="udpo_po_save_commit_after">
+        <observer name="udbatch" instance="Unirgy\DropshipBatch\Observer\UdpoPoSaveAfter"/>
+    </event>
+    <event name="udpo_po_status_save_after">
+        <observer name="udbatch" instance="Unirgy\DropshipBatch\Observer\UdpoPoStatusSaveAfter"/>
+    </event>
+    <event name="sales_order_shipment_save_commit_after">
+        <observer name="udbatch" instance="Unirgy\DropshipBatch\Observer\SalesOrderShipmentSaveAfter"/>
+    </event>
+    <event name="udropship_shipment_status_save_after">
+        <observer name="udbatch" instance="Unirgy\DropshipBatch\Observer\UdropshipShipmentStatusSaveAfter"/>
+    </event>
+</config>

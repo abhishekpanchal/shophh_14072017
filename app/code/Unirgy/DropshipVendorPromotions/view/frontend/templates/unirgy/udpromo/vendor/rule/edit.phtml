@@ -1,0 +1,50 @@
+
+
+<?php
+$_hlp = \Magento\Framework\App\ObjectManager::getInstance()->get('Unirgy\Dropship\Helper\Data');
+$_prHlp = \Magento\Framework\App\ObjectManager::getInstance()->get('Unirgy\DropshipVendorPromotions\Helper\Data');
+$_session = \Magento\Framework\App\ObjectManager::getInstance()->get('Unirgy\Dropship\Model\Session');
+$_vendor = \Magento\Framework\App\ObjectManager::getInstance()->get('Unirgy\Dropship\Model\Session')->getVendor();
+$_rule = $this->getRule();
+?>
+
+<div class="page-title">
+<h1>
+<?php echo __('Promotion #%1 "%2"', $_rule->getId(), $_rule->getData('name')) ?>
+</h1>
+<span class="required"><?php echo __('* Indicated Required Fields') ?></span>
+</div>
+<?php echo $this->getLayout()->getMessagesBlock()->getGroupedHtml() ?>
+<form action="<?php echo $this->getUrl('udpromo/vendor/rulePost', ['_current'=>true])?>" method="post" id="rule-edit-form">
+<input type="hidden" name="id" value="<?php echo $_rule->getId() ?>" />
+<?php foreach ($this->getForm()->getElements() as $element) {
+    echo $element->toHtml();
+} ?>
+
+<div class="buttons-set">
+    <span class="rule-edit-form-loader" style="display:none" id="rule-edit-form-loader"><?php echo __('Please wait, submitting...')?></span>
+    <button class="form-button" type="button" onclick="udpromoEditFormSubmit(this, false)" name="send"><span><?php echo __('Save') ?></span></button>
+    <div class="clearer"></div><br/>
+    <p><a href="<?php echo $this->getUrl('udpromo/vendor/rules')?>">&laquo; <?php echo __('Return to rules list')?></a></p></p>
+</div>
+</form>
+
+<script type="text/javascript">
+require(["jquery", "prototype", 'varien/form'], function(jQuery) {
+var udpromoEditForm = new VarienForm('rule-edit-form', true);
+window.udpromoEditFormSubmit = function (elem) {
+    $(elem).up().select('button').invoke('hide');
+    $('rule-edit-form-loader').show();
+    var res = false;
+    if (udpromoEditForm.validator && udpromoEditForm.validator.validate()) {
+        res = true;
+        udpromoEditForm.form.submit();
+    } else {
+        $(elem).up().select('button').invoke('show');
+        $('rule-edit-form-loader').hide();
+    }
+    return res;
+}
+
+});
+</script>

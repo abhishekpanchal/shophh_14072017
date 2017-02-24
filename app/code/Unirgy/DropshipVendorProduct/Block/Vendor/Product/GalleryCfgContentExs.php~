@@ -1,0 +1,149 @@
+<?php
+
+namespace Unirgy\DropshipVendorProduct\Block\Vendor\Product;
+
+use Magento\Catalog\Model\Product\Media\Config;
+use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\Registry;
+use Unirgy\DropshipVendorProduct\Helper\Data as HelperData;
+use Unirgy\DropshipVendorProduct\Model\Source;
+
+class GalleryCfgContentExs extends GalleryContent
+{
+    /**
+     * @var Registry
+     */
+    protected $_frameworkRegistry;
+
+    /**
+     * @var HelperData
+     */
+    protected $_helperData;
+
+    /**
+     * @var EncoderInterface
+     */
+    protected $_jsonEncoderInterface;
+
+    /**
+     * @var Source
+     */
+    protected $_modelSource;
+
+    /**
+     * @var Config
+     */
+    protected $_mediaConfig;
+
+    public function __construct(Registry $frameworkRegistry, 
+        HelperData $helperData, 
+        EncoderInterface $jsonEncoderInterface, 
+        Source $modelSource, 
+        Config $mediaConfig)
+    {
+        $this->_frameworkRegistry = $frameworkRegistry;
+        $this->_helperData = $helperData;
+        $this->_jsonEncoderInterface = $jsonEncoderInterface;
+        $this->_modelSource = $modelSource;
+        $this->_mediaConfig = $mediaConfig;
+
+        parent::__construct();
+        $this->setTemplate('Unirgy_DropshipVendorProduct::unirgy/udprod/vendor/product/cfg_gallery_exs.phtml');
+    }
+    public function getProduct()
+    {
+        return $this->_frameworkRegistry->registry('product')
+            ? $this->_frameworkRegistry->registry('product')
+            : $this->_frameworkRegistry->registry('current_product');
+    }
+
+    public function getCfgAttribute()
+    {
+        return $this->_helperData->getCfgFirstAttribute($this->getProduct());
+    }
+
+    public function getCfgFirstAttributeOptions()
+    {
+        $values = [];
+        $_values = $this->_helperData->getCfgFirstAttributeValues(
+            $this->getProduct(),
+            true
+        );
+        foreach ($_values as $_val) {
+            $values[] = $_val['value'];
+        }
+        return $values;
+    }
+
+    protected $_iiAttrs;
+    public function getIdentifyImageAttributes()
+    {
+        if (is_null($this->_iiAttrs)) {
+            $this->_iiAttrs = [];
+            $p = $this->getProduct();
+            foreach ($p->getTypeInstance(true)->getConfigurableAttributes($p) as $cfgAttr) {
+                if ($cfgAttr->getIdentifyImage()) {
+                    $this->_iiAttrs[] = $cfgAttr;
+                    $availableValues = [];
+                    $cPrices = $cfgAttr->getPrices();
+                    if (!empty($cPrices)) {
+                        foreach ($cfgAttr->getPrices() as $prEntry) {
+                            $availableValues[$prEntry['value_index']] = $prEntry['label'];
+                        }
+                    }
+                    $cfgAttr->setAvailableValues($availableValues);
+                }
+            }
+        }
+        return $this->_iiAttrs;
+    }
+
+    public function getIdentifyImageAttributesJson()
+    {
+        $iiAttrs = [];
+        $p = $this->getProduct();
+        foreach ($p->getTypeInstance()->getConfigurableAttributesAsArray($p) as $cfgAttr) {
+            if ($cfgAttr['identify_image']) {
+                $iiAttrs[] = $cfgAttr;
+            }
+        }
+        return $this->_jsonEncoderInterface->jsonEncode($iiAttrs);
+    }
+
+    public function getImagesData()
+    {
+        $perOptionHidden = $this->_modelSource->isMediaCfgPerOptionHidden();
+        if(is_array($this->getProduct()->getMediaGallery())) {
+            $value = $this->getProduct()->getMediaGallery();
+            if(count($value['images'])>0) {
+                $images = [];
+                $_images = $value['images'];
+                try {
+                    $usedValues = $this->getCfgFirstAttributeOptions();
+                    $cfgAttrId = $this->getCfgAttribute()->getId();
+                    foreach ($_images as $image) {
+                        if ($perOptionHidden
+                            || !isset($image['super_attribute'])
+                            || !isset($image['super_attribute'][$cfgAttrId])
+                            || !in_array($image['super_attribute'][$cfgAttrId], $usedValues)
+                        ) {
+                            $image['url'] = $this->_mediaConfig->getMediaUrl($image['file']);
+                            $image['main'] = @$image['super_attribute']['main'];
+                            $images[] = $image;
+                        }
+                    }
+                } catch (\Exception $e) {
+                    var_dump($value);
+                    die("$e");
+                }
+                return $images;
+            }
+        }
+        return [];
+    }
+
+    public function getImagesJson()
+    {
+        return $this->_jsonEncoderInterface->jsonEncode($this->getImagesData());
+    }
+}
