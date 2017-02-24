@@ -15,7 +15,7 @@
  */
 use Magento\Catalog\Model\Product\ProductList\Toolbar;
 ?>
-<div class="toolbar-sorter sorter hidden-xs">
+<div class="toolbar-sorter sorter col-md-2 hidden-xs">
     <?php
         $active = '';
         $currentUrl = strtok($block->getPagerUrl(), '?');
@@ -30,23 +30,9 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
             $latest = $currentUrl.'?product_list_dir=desc'.'&product_list_order=position';
             $priceLH = $currentUrl.'?product_list_dir=asc'.'&product_list_order=price';
             $priceHL = $currentUrl.'?product_list_dir=desc'.'&product_list_order=price';
-        }  
+        }
     ?>
-    <label class="sorter-label" for="sorter"><?php echo __('Sort By:') ?></label>
-    <a title="<?php echo __('Latest') ?>" href="<?php echo $latest ?>">
-        <?php if($order == 'position') { $active = 'active'; }else{$active = 'active';} ?> 
-        <span class="<?php echo $active ?>"><?php echo __('Latest') ?></span>
-    </a>
-    <a title="<?php echo __('Price (Low to High)') ?>" href="<?php echo $priceLH ?>">
-        <?php if($order == 'price' && $dir=='asc') { $active = 'active';}else{$active='';} ?> 
-        <span class="<?php echo $active ?>"><?php echo __('Price (Low to High)') ?></span>
-    </a>
-    <a title="<?php echo __('Price (High to Low)') ?>" href="<?php echo $priceHL ?>">
-        <?php if($order == 'price' && $dir=='desc'){$active = 'active';}else{$active='';} ?>
-        <span class="<?php echo $active ?>"><?php echo __('Price (High to Low)') ?></span>
-    </a>
-</div>
-<div class="sorter-mobile pull-left hidden-lg hidden-md hidden-sm visible-xs">
+    <label class="sorter-label" for="sorter"><?php echo __('Sort') ?></label>
     <select onchange="setLocation(this.value)">
         <?php foreach ($block->getAvailableOrders() as $_key => $_order): ?>
             <?php if ($_order != 'Price'): ?>
