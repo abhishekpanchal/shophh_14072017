@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+  <menu>
+    <add id="Unirgy_DropshipBatch::batch" resource="Unirgy_DropshipBatch::batch" module="Unirgy_DropshipBatch" title="Batch Import/Export" sortOrder="10000" parent="Unirgy_Dropship::udropship"/>
+    <add id="Unirgy_DropshipBatch::batches" resource="Unirgy_DropshipBatch::batches" module="Unirgy_DropshipBatch" title="Batches" sortOrder="10" action="udbatch/batch" parent="Unirgy_DropshipBatch::batch"/>
+    <add id="Unirgy_DropshipBatch::dists" resource="Unirgy_DropshipBatch::dists" module="Unirgy_DropshipBatch" title="Action History" sortOrder="20" action="udbatch/dist" parent="Unirgy_DropshipBatch::batch"/>
+  </menu>
+</config>

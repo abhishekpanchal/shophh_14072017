@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <update handle="formkey"/>
+    <container name="root">
+        <block class="Magento\Backend\Block\Widget\Grid\Container" name="udbatch.batch.importrowgrid.container" template="Magento_Backend::widget/grid/container/empty.phtml">
+            <block class="Unirgy\DropshipBatch\Block\Adminhtml\Vendor\Batch\Grid" name="udbatch.batch.vendorbatchgrid" as="grid" />
+        </block>
+    </container>
+</layout>

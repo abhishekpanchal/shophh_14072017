@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <Unirgy_DropshipBatch>
+            <usimpleup>
+                <remote>http://download.unirgy.com/simple/client_api/version/</remote>
+                <changelog>http://unirgy.com/support/portal/announcements</changelog>
+            </usimpleup>
+        </Unirgy_DropshipBatch>
+        <udropship>
+            <batch>
+                <default_email_sender>sample@server.com</default_email_sender>
+                <default_email_subject>New orders export</default_email_subject>
+                <export_on_po_status>3</export_on_po_status>
+                <save_inventory_import_data>1</save_inventory_import_data>
+                <replace_nl2customchar>0</replace_nl2customchar>
+                <replace_nl2customchar_value/>
+                <invimport_vsku_multipid>0</invimport_vsku_multipid>
+                <statement_export_template>Statement Export</statement_export_template>
+                <manual_export_templates>[{"title":"Statement Export","sort_order":"0","template":"\"{{var order_id}}\",\"{{var order.getCreatedAtFormated('long')}}\",\"{{var po_id}}\",\"[po_status]\",\"[shipping.firstname]\",\"[shipping.lastname]\",\"[order.customer_email]\",\"[shipping.telephone]\",\"{{var shipping.getStreetLine(1)}}\",\"{{var shipping.getStreetLine(2)}}\",\"[shipping.city]\",\"{{var shipping.region_code}}\",\"{{var shipping.getPostcode()}}\",\"[shipping.country_id]\",[item.qty],\"[item.vendor_sku]\",\"[item.name]\",\"{{var product.getProductUrl()}}\",[item_totals.price],[item_totals.row_total],[item_totals.com_percent],[po_totals.subtotal],[po_totals.com_amount],[po_totals.trans_fee],[po_totals.shipping],[po_totals.tax],[po_totals.discount],[po_totals.adj_amount],[po_totals.total_payout]","header":"Order#,Order Date,PO#,PO Status,Firstname,Lastname,Email,Phone,Address 1,Address 2,City,State,Zip Code,Country,Qty,Sku,Product Name,Product URL,Price,Row Total,Item Commission Percent,Subtotal,Commission Amount,Transaction Fee,Shipping Amount,Tax,Discount,Adjustment,Total Payout","use_item_template":"0","item_template":"","footer_template":"","totals_template":",,,,,,,,,,,,,,,,,,,,Totals,[grand_totals.subtotal],[grand_totals.com_amount],[grand_totals.trans_fee],[grand_totals.shipping],[grand_totals.tax],[grand_totals.discount],[grand_totals.adj_amount],[grand_totals.total_payout]"}]</manual_export_templates>
+                <allow_all_vendors_import>0</allow_all_vendors_import>
+            </batch>
+        </udropship>
+    </default>
+</config>

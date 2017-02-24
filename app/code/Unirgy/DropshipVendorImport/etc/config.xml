@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <Unirgy_DropshipVendorImport>
+            <usimpleup>
+                <remote>http://download.unirgy.com/simple/client_api/version/</remote>
+                <changelog>http://unirgy.com/support/portal/announcements</changelog>
+            </usimpleup>
+        </Unirgy_DropshipVendorImport>
+        <uvimport>
+            <import>
+                <import_fields>[{"field":"payout_schedule_type","sort_order":"0"},{"field":"payout_method","sort_order":"10"},{"field":"uvimport_dummy","sort_order":"20"},{"field":"vendor_name","sort_order":"30"},{"field":"payout_paypal_email","sort_order":"35"},{"field":"email","sort_order":"40"},{"field":"telephone","sort_order":"50"},{"field":"street1","sort_order":"90"},{"field":"city","sort_order":"100"},{"field":"region_id","sort_order":"110"},{"field":"country_id","sort_order":"120"},{"field":"zip","sort_order":"130"},{"field":"uvimport_dummy","sort_order":"140"},{"field":"logo","sort_order":"150"},{"field":"uvimport_dummy","sort_order":"160"}]</import_fields>
+                <reinit_shipping_methods>0</reinit_shipping_methods>
+                <multivalue_separator>;</multivalue_separator>
+            </import>
+        </uvimport>
+    </default>
+</config>

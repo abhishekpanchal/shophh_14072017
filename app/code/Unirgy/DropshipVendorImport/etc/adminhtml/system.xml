@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="uvimport" sortOrder="332" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Dropship Vendors Import</label>
+            <tab>sales</tab>
+            <resource>Unirgy_DropshipVendorImport::system_config</resource>
+            <group id="import" sortOrder="100" type="text" showInDefault="1">
+                <label>Import Vendors</label>
+                <field id="template_vendor" sortOrder="20" type="select" showInDefault="1">
+                    <label>Use this vendor as a template for import</label>
+                    <source_model>Unirgy\DropshipVendorImport\Model\Source</source_model>
+                </field>
+                <field id="import_fields" translate="label" sortOrder="50" type="select" showInDefault="1">
+                    <label>Import Fields</label>
+                    <frontend_model>Unirgy\DropshipVendorImport\Block\Adminhtml\SystemConfigField\ImportFields</frontend_model>
+                    <backend_model>Unirgy\Dropship\Model\SystemConfig\Backend\RowsSortable</backend_model>
+                </field>
+                <field id="skip_header" translate="label" sortOrder="60" type="select" showInDefault="1">
+                    <label>Skip first row in import file</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="reinit_shipping_methods" translate="label" sortOrder="70" type="select" showInDefault="1">
+                    <label>Reinit shipping methods for existing vendors</label>
+                    <comment>If yes existing vendors shipping methods will be reset to the configuration of template
+                        vendor
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="multivalue_separator" translate="label" sortOrder="80" type="text" showInDefault="1">
+                    <label>Values separator for multiselect fields</label>
+                </field>
+                <field id="import" translate="label" sortOrder="100" type="\Magento\Framework\Data\Form\Element\File" showInDefault="1">
+                    <label>Import</label>
+                    <backend_model>Unirgy\DropshipVendorImport\Model\SystemConfig\Backend\Import</backend_model>
+                </field>
+            </group>
+            <group id="import_rates" sortOrder="100" type="text" showInDefault="1">
+                <label>Import Tiershipping Rates</label>
+                <field id="import_columns" translate="label" sortOrder="50" type="select" showInDefault="1">
+                    <label>Import Columns</label>
+                    <frontend_model>Unirgy\DropshipVendorImport\Block\Adminhtml\SystemConfigField\Rates\ImportColumns</frontend_model>
+                    <backend_model>Unirgy\Dropship\Model\SystemConfig\Backend\RowsSortable</backend_model>
+                </field>
+                <field id="skip_header" translate="label" sortOrder="60" type="select" showInDefault="1">
+                    <label>Skip first row in import file</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="multiply_input" translate="label" sortOrder="70" type="text" showInDefault="1">
+                    <label>Proportionally produce multiple rates from each input (number of duplicates)</label>
+                </field>
+                <field id="import" translate="label" sortOrder="100" type="\Magento\Framework\Data\Form\Element\File" showInDefault="1">
+                    <label>Import</label>
+                    <backend_model>Unirgy\DropshipVendorImport\Model\SystemConfig\Backend\ImportRates</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

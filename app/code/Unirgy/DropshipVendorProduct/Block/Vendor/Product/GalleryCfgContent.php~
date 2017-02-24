@@ -1,0 +1,290 @@
+<?php
+
+namespace Unirgy\DropshipVendorProduct\Block\Vendor\Product;
+
+use Magento\Catalog\Model\Product\Media\Config;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\Json\EncoderInterface;
+use Magento\Framework\Model\UrlFactory;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\View\LayoutFactory;
+use Unirgy\DropshipVendorProduct\Helper\Data as HelperData;
+use Unirgy\DropshipVendorProduct\Model\Source;
+
+class GalleryCfgContent extends Template
+{
+    /**
+     * @var AbstractHelper
+     */
+    protected $_helperAbstractHelper;
+
+    /**
+     * @var UrlFactory
+     */
+    protected $_modelUrlFactory;
+
+    /**
+     * @var LayoutFactory
+     */
+    protected $_viewLayoutFactory;
+
+    /**
+     * @var EncoderInterface
+     */
+    protected $_jsonEncoderInterface;
+
+    /**
+     * @var Config
+     */
+    protected $_mediaConfig;
+
+    /**
+     * @var HelperData
+     */
+    protected $_helperData;
+
+    /**
+     * @var Source
+     */
+    protected $_modelSource;
+
+    public function __construct(Context $context, 
+        AbstractHelper $helperAbstractHelper, 
+        UrlFactory $modelUrlFactory, 
+        LayoutFactory $viewLayoutFactory, 
+        EncoderInterface $jsonEncoderInterface, 
+        Config $mediaConfig, 
+        HelperData $helperData, 
+        Source $modelSource, 
+        array $data = [])
+    {
+        $this->_helperAbstractHelper = $helperAbstractHelper;
+        $this->_modelUrlFactory = $modelUrlFactory;
+        $this->_viewLayoutFactory = $viewLayoutFactory;
+        $this->_jsonEncoderInterface = $jsonEncoderInterface;
+        $this->_mediaConfig = $mediaConfig;
+        $this->_helperData = $helperData;
+        $this->_modelSource = $modelSource;
+
+        parent::__construct($context, $data);
+    }
+
+    public function getId()
+    {
+        if ($this->getData('id')===null) {
+            $this->setData('id', $this->_helperAbstractHelper->uniqHash('id_'));
+        }
+        return $this->getData('id');
+    }
+
+    public function getHtmlId()
+    {
+        return $this->getId();
+    }
+    protected function _beforeToHtml()
+    {
+        $this->setTemplate('Unirgy_DropshipVendorProduct::unirgy/udprod/vendor/product/config_gallery.phtml');
+        return parent::_beforeToHtml();
+    }
+    protected function _idKey($separator='_')
+    {
+        $cfgAttrs = $this->getCfgAttributes();
+        $cfgAttrIds = [];
+        foreach ($cfgAttrs as $__ca) {
+            $cfgAttrIds[] = $__ca->getAttributeId();
+        }
+        $cfgAttrVals = $this->getCfgAttributeValueTuple();
+        $cfgIdKey = '';
+        foreach ($cfgAttrs as $__i=>$__ca) {
+            $cfgIdKey .= $cfgAttrIds[$__i].$separator.$cfgAttrVals[$__i].$separator;
+        }
+        $cfgIdKey = substr($cfgIdKey, 0, -1*strlen($separator));
+        return $cfgIdKey;
+    }
+    public function doSuffix($prefix='')
+    {
+        return $prefix.$this->_idKey('_');
+    }
+    protected $_uploader;
+    public function getUploader()
+    {
+        if (null === $this->_uploader) {
+            $url = $this->_modelUrlFactory->create()->addSessionParam()
+                ->getUrl('udprod/vendor/upload', ['image_field'=>$this->doSuffix('image')]);
+            $this->_uploader = $this->_viewLayoutFactory->create()->createBlock('Unirgy\DropshipVendorProduct\Block\Vendor\Product\Cfguploader');
+            $this->_uploader->getConfig()
+                ->setUrl($url)
+                ->setFileField($this->doSuffix('image'))
+                ->setFilters([
+                    'images' => [
+                        'label' => __('Images (.gif, .jpg, .png)'),
+                        'files' => ['*.gif', '*.jpg','*.jpeg', '*.png']
+                    ]
+                ]);
+        }
+        return $this->_uploader;
+    }
+
+    public function getUploaderHtml()
+    {
+        return $this->getUploader()->toHtml();
+    }
+
+    public function getMediaAttributes()
+    {
+        return $this->getProduct()->getMediaAttributes();
+    }
+
+    public function getImageTypes()
+    {
+        $imageTypes = [];
+        foreach ($this->getMediaAttributes() as $attribute) {
+            /* @var $attribute \Magento\Eav\Model\Entity\Attribute */
+            $imageTypes[$attribute->getAttributeCode()] = [
+                'label' => $attribute->getFrontend()->getLabel(),
+                'field' => $this->getAttributeFieldName($attribute)
+            ];
+        }
+        return $imageTypes;
+    }
+
+    public function getAttributeFieldName($attribute)
+    {
+        $name = $attribute->getAttributeCode();
+        $name = sprintf("media_gallery[cfg_attributes][%s][%s]",
+            $this->_idKey('-'),
+            $name
+        );
+        if ($suffix = $this->getForm()->getFieldNameSuffix()) {
+            $name = $this->getForm()->addSuffixToName($name, $suffix);
+        }
+        return $name;
+    }
+
+    public function getImageTypesJson()
+    {
+        return $this->_jsonEncoderInterface->jsonEncode($this->getImageTypes());
+    }
+
+    public function getImagesValuesJson()
+    {
+        $values = [];
+        foreach ($this->getMediaAttributes() as $attribute) {
+            /* @var $attribute \Magento\Eav\Model\Entity\Attribute */
+            $values[$attribute->getAttributeCode()] = $this->getProduct()->getData(
+                $attribute->getAttributeCode()
+            );
+        }
+        return $this->_jsonEncoderInterface->jsonEncode($values);
+    }
+
+    public function getMainImageData()
+    {
+        $mainImgData = [];
+        $imgData = $this->getImagesData();
+        foreach ($imgData as $img) {
+            if (empty($mainImgData)) {
+                $mainImgData = $img;
+            }
+            if (!empty($img['main'])) {
+                $mainImgData = $img;
+                break;
+            }
+        }
+        return $mainImgData;
+    }
+    public function getImagesData()
+    {
+        if(is_array($this->getProduct()->getMediaGallery())) {
+            $value = $this->getProduct()->getMediaGallery();
+            if(count($value['images'])>0) {
+                $images = [];
+                $_images = $value['images'];
+                try {
+                $cfgAttrs = $this->getCfgAttributes();
+                $cfgAttrIds = [];
+                foreach ($cfgAttrs as $__ca) {
+                    $cfgAttrIds[] = $__ca->getAttributeId();
+                }
+                $cfgAttrVals = $this->getCfgAttributeValueTuple();
+                foreach ($_images as $image) {
+                    $allow = true;
+                    foreach ($cfgAttrs as $__i=>$__ca) {
+                        $cfgAttrId = $cfgAttrIds[$__i];
+                        $cfgAttrVal = $cfgAttrVals[$__i];
+                        $allow = $allow && (isset($image['super_attribute'])
+                            && isset($image['super_attribute'][$cfgAttrId])
+                            && $image['super_attribute'][$cfgAttrId] == $cfgAttrVal
+                        );
+                    }
+                    if ($this->isCfgUploadImagesSimple() || $allow) {
+                        $image['url'] = $this->_mediaConfig->getMediaUrl($image['file']);
+                        $image['main'] = @$image['super_attribute']['main'];
+                        $images[] = $image;
+                    }
+                }
+                } catch (\Exception $e) {
+                    var_dump($value);
+                    die("$e");
+                }
+                return $images;
+            }
+        }
+        return [];
+    }
+
+    public function getImagesJson()
+    {
+        return $this->_jsonEncoderInterface->jsonEncode($this->getImagesData());
+    }
+
+    public function getJsObjectName()
+    {
+        return $this->getId() . 'JsObject';
+    }
+
+    public function hasUseDefault()
+    {
+        return false;
+    }
+
+    protected $_product;
+    public function setProduct($product)
+    {
+        if ($this->isCfgUploadImagesSimple()) {
+            $cfgAttrs = $this->getCfgAttributes();
+            $filter = [];
+            $tuple = $this->getCfgAttributeValueTuple();
+            foreach ($cfgAttrs as $__i => $__ca) {
+                $filter[$__ca->getAttributeCode()] = $tuple[$__i];
+            }
+            $simples = $this->_helperData->getFilteredSimpleProductData($product, $filter);
+            if (empty($simples)) {
+                $this->_product = $this->_helperData->initProductEdit([
+                    'id' => false,
+                    'type_id' => 'simple',
+                    'template_id' => $product->getId(),
+                    'data' => []
+                ]);
+            } else {
+                foreach ($simples as $simple) {
+                    $this->_product = $simple['product'];
+                    break;
+                }
+            }
+            $this->_product->getResource()->getAttribute('media_gallery')->getBackend()->afterLoad($this->_product);
+        } else {
+            $this->_product = $product;
+        }
+        return $this;
+    }
+    public function getProduct()
+    {
+        return $this->_product;
+    }
+    public function isCfgUploadImagesSimple()
+    {
+        return $this->_modelSource->isCfgUploadImagesSimple();
+    }
+}

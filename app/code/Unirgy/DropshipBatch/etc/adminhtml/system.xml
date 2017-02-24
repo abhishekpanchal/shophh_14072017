@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="udropship">
+            <group id="batch" translate="label" sortOrder="100" type="text" showInDefault="1" showInWebsite="1">
+                <label>Orders Batch Options</label>
+                <field id="default_email_sender" translate="label" sortOrder="10" type="text" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Default Email Sender</label>
+                </field>
+                <field id="default_email_subject" translate="label" sortOrder="20" type="text" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Default Email Subject</label>
+                </field>
+                <field id="default_export_orders_filename" translate="label" sortOrder="30" type="text"
+                       showInDefault="1" showInWebsite="1">
+                    <label>Default Export Orders Filename</label>
+                </field>
+                <field id="export_on_po_status" translate="label" sortOrder="40" type="multiselect" showInDefault="1">
+                    <label>Export On Po Statuses</label>
+                    <source_model>Unirgy\Dropship\Model\Source</source_model>
+                </field>
+                <field id="save_inventory_import_data" translate="label" sortOrder="50" type="select" showInDefault="1">
+                    <label>Save inventory import data in batch</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="invimport_allow_new_association" translate="label comment" sortOrder="55" type="select"
+                       showInDefault="1">
+                    <label>Allow import new vendor/product association with inventory import</label>
+                    <comment>This option applicable to multivendor add-on</comment>
+                    <source_model>Unirgy\DropshipBatch\Model\Source</source_model>
+                </field>
+                <field id="invimport_vsku_multipid" translate="label comment" sortOrder="55" type="select"
+                       showInDefault="1">
+                    <label>If import by vendor sku and it maps to multiple products</label>
+                    <comment>This option applicable to multivendor add-on</comment>
+                    <source_model>Unirgy\DropshipBatch\Model\Source</source_model>
+                </field>
+                <field id="replace_nl2customchar" translate="label comment" sortOrder="60" type="select"
+                       showInDefault="1">
+                    <label>Replace new line with custom char in fields during export</label>
+                    <comment>This supports only fields with simple format [var.name] (Magento CMS templating conventions
+                        {{var var.name}} not supported)
+                    </comment>
+                    <frontend_model>Unirgy\Dropship\Block\Adminhtml\SystemConfigFormField\DependSelect</frontend_model>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="replace_nl2customchar_value" translate="label" sortOrder="70" type="text" showInDefault="1">
+                    <label>Custom char to replace new line in fields during export</label>
+                </field>
+                <field id="manual_import_templates" translate="label" sortOrder="100" type="select" showInDefault="1">
+                    <label>Custom templates for manual import</label>
+                    <frontend_model>Unirgy\DropshipBatch\Block\Adminhtml\SystemConfigFormField\ImportTemplates</frontend_model>
+                    <backend_model>Unirgy\Dropship\Model\SystemConfig\Backend\RowsSortable</backend_model>
+                </field>
+                <field id="manual_export_templates" translate="label" sortOrder="110" type="select" showInDefault="1">
+                    <label>Custom templates for manual export</label>
+                    <frontend_model>Unirgy\DropshipBatch\Block\Adminhtml\SystemConfigFormField\ExportTemplates</frontend_model>
+                    <backend_model>Unirgy\Dropship\Model\SystemConfig\Backend\RowsSortable</backend_model>
+                </field>
+                <field id="statement_export_template" translate="label" sortOrder="115" type="select" showInDefault="1">
+                    <label>Statement Export Template</label>
+                    <source_model>Unirgy\DropshipBatch\Model\Source</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

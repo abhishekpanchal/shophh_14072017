@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="udropship">
+                <field id="vendor_free_shipping_subtotal" translate="label" sortOrder="55" type="text" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Default Minimum Order Amount for Vendor Specific Free Shipping</label>
+                </field>
+                <field id="minimum_vendor_order_amount" sortOrder="200" type="text" showInDefault="1" showInWebsite="1">
+                    <label>Default minimum vendor order amount</label>
+                </field>
+                <field id="minimum_vendor_order_amount_message" sortOrder="210" type="textarea" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Minimum vendor order amount error message</label>
+                </field>
+                <field id="minimum_vendor_order_amount_quote_message" sortOrder="211" type="textarea" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Minimum vendor order amount quote error message</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
