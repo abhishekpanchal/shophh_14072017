@@ -5,11 +5,19 @@
     <!-- Header -->
     <referenceContainer name="header-wrapper">
       <container name="header.wrap" htmlTag="div" htmlClass="header-wrap">
-        <!-- Top Header -->
-        <container name="header.main.topbar" htmlTag="div" htmlClass="header-topbar" before="header.top">
-          <block name="header.topbar" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/topbar.phtml"/>
-        </container>
         <container name="header.top" htmlTag="div" htmlClass="header-top">
+          <!-- Top Bar -->
+          <container name="header.topbar.wrap" htmlTag="div" htmlClass="top-bar">
+            <container name="header.topbar.container" htmlTag="div" htmlClass="container">
+              <container name="header.topbar.row" htmlTag="div" htmlClass="row">
+                <container name="header.main.topbar" htmlTag="div" htmlClass="header-topbar" before="-">
+                  <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/topbar.phtml"/>
+                </container>
+              </container>
+            </container>
+          </container>
+          <!-- End Top Bar -->
+          <!-- Top Header -->
           <container name="header.top.container" htmlTag="div" htmlClass="container">
             <container name="header.top.row" htmlTag="div" htmlClass="row">
               <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3 hidden-xs">
@@ -60,81 +68,78 @@
     <!-- End Header -->
 
 
-
-
-        <referenceContainer name="footer-container" htmlClass="page-footer">
-            <container name="footer-wrap" htmlTag="div" htmlClass="container">
-                <container name="footer-row-1" htmlTag="div" htmlClass="row is-flex footer-links">
-                    <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
-                        <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
-                          <arguments>
-                             <argument name="block_id" xsi:type="string">footer-col-1</argument>
-                          </arguments>
-                        </block>
-                    </container>
-                    <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
-                        <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
-                          <arguments>
-                             <argument name="block_id" xsi:type="string">footer-col-2</argument>
-                          </arguments>
-                        </block>
-                    </container>
-                    <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
-                        <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
-                          <arguments>
-                             <argument name="block_id" xsi:type="string">footer-col-3</argument>
-                          </arguments>
-                        </block>
-                    </container>
-                    <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
-                        <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
-                          <arguments>
-                             <argument name="block_id" xsi:type="string">footer-col-4</argument>
-                          </arguments>
-                        </block>
-                    </container>
-                    <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-3 col-md-offset-1">
-                    </container>
+    <referenceContainer name="footer-container" htmlClass="page-footer">
+        <container name="footer-wrap" htmlTag="div" htmlClass="container">
+            <container name="footer-row-1" htmlTag="div" htmlClass="row is-flex footer-links">
+                <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                    <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
+                      <arguments>
+                         <argument name="block_id" xsi:type="string">footer-col-1</argument>
+                      </arguments>
+                    </block>
+                </container>
+                <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                    <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
+                      <arguments>
+                         <argument name="block_id" xsi:type="string">footer-col-2</argument>
+                      </arguments>
+                    </block>
+                </container>
+                <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                    <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
+                      <arguments>
+                         <argument name="block_id" xsi:type="string">footer-col-3</argument>
+                      </arguments>
+                    </block>
+                </container>
+                <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                    <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
+                      <arguments>
+                         <argument name="block_id" xsi:type="string">footer-col-4</argument>
+                      </arguments>
+                    </block>
+                </container>
+                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-3 col-md-offset-1">
                 </container>
             </container>
-            <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
-                <container name="footer-row-2" htmlTag="div" htmlClass="row vcenter">
-                    <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-2 col-xs-12">
-                        <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
-                          <arguments>
-                             <argument name="block_id" xsi:type="string">footer-logo</argument>
-                          </arguments>
-                        </block>
-                    </container>
-                    <container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal footer-col col-md-7 col-xs-12">
-                    </container>
-                    <container name="footer-social" htmlTag="div" htmlClass="footer-social footer-col col-md-3 col-xs-12">
-                    </container>
+        </container>
+        <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
+            <container name="footer-row-2" htmlTag="div" htmlClass="row vcenter">
+                <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-2 col-xs-12">
+                    <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
+                      <arguments>
+                         <argument name="block_id" xsi:type="string">footer-logo</argument>
+                      </arguments>
+                    </block>
+                </container>
+                <container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal footer-col col-md-7 col-xs-12">
+                </container>
+                <container name="footer-social" htmlTag="div" htmlClass="footer-social footer-col col-md-3 col-xs-12">
                 </container>
             </container>
-        </referenceContainer>
+        </container>
+    </referenceContainer>
 
-        <referenceBlock name="advanced-search-link" remove="true"/>
-        <referenceBlock name="advanced.search" remove="true"/>
-        <referenceBlock name="top.links.wrapper" remove="true"/>
-        <referenceBlock name="navigation.sections" remove="true" />
-        <referenceBlock name="my-account-link" remove="true"/>
-        <referenceBlock name="report.bugs" remove="true" />
-        <referenceBlock name="footer_links" remove="true" />
-        <referenceBlock name="store_switcher" remove="true" />
-        <referenceContainer name="header.panel.wrapper" remove="true" />
-        <referenceContainer name="skip_to_content" remove="true" />
-        <referenceBlock name="top.search" remove="true" />
+    <referenceBlock name="advanced-search-link" remove="true"/>
+    <referenceBlock name="advanced.search" remove="true"/>
+    <referenceBlock name="top.links.wrapper" remove="true"/>
+    <referenceBlock name="navigation.sections" remove="true" />
+    <referenceBlock name="my-account-link" remove="true"/>
+    <referenceBlock name="report.bugs" remove="true" />
+    <referenceBlock name="footer_links" remove="true" />
+    <referenceBlock name="store_switcher" remove="true" />
+    <referenceContainer name="header.panel.wrapper" remove="true" />
+    <referenceContainer name="skip_to_content" remove="true" />
+    <referenceBlock name="top.search" remove="true" />
 
-        <move element="header.main.topbar" destination="header.wrap" before="header.top" />
-        <move element="form.subscribe" destination="footer_col_5" />
-        <move element="footer-row-2" destination="footer-wrap2" after="-" />
-        <move element="copyright" destination="footer-legal-container" />
-        <move element="top.links" destination="header.toplinks"/>
-        <move element="header.top" destination="header-wrapper" before="-"/>
-        <move element="breadcrumbs" destination="page.main.title" after="-"/>
-        <move element="navigation.sections" destination="nav.left"/>
+    <move element="form.subscribe" destination="footer_col_5" />
+    <move element="footer-row-2" destination="footer-wrap2" after="-" />
+    <move element="copyright" destination="footer-legal-container" />
+    <move element="top.links" destination="header.toplinks"/>
+    <move element="header.top" destination="header-wrapper" before="-"/>
+    <move element="breadcrumbs" destination="page.main.title" after="-"/>
+    <move element="navigation.sections" destination="nav.left"/>
+    <move element="header.topbar.wrap" destination="header.top" before="-" />
 
-
-    </body>
+  </body>
 </page>

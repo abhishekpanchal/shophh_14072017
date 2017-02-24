@@ -57,4 +57,14 @@ require(['jquery', 'jquery.bootstrap'], function($){
     });
   });
 
+  $(window).scroll(function() {
+    "use strict";
+    var scroll = $(window).scrollTop();
+    if (scroll >= 180) {
+      $(".main-nav").addClass("fixed-navbar");
+    } else {
+      $(".main-nav").removeClass("fixed-navbar");
+    }
+  });
+
 });
