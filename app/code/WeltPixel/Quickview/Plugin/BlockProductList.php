@@ -41,9 +41,8 @@ class BlockProductList
         if ($isEnabled) {
             $buttonStyle =  'weltpixel_quickview_button_' . $this->scopeConfig->getValue(self::XML_PATH_QUICKVIEW_BUTTONSTYLE,  \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
             $productUrl = $this->urlInterface->getUrl('weltpixel_quickview/catalog_product/view', array('id' => $product->getId()));
-            return $result . '<a title="Quick View" class="weltpixel-quickview '.$buttonStyle.' quickview-main-btn" data-quickview-url=' . $productUrl . ' href="javascript:void(0);"><span><i class="mdi mdi-magnify"></i></span></a>';
+            return $result . '<a title="Quick View" class="weltpixel-quickview quickview-bar" data-quickview-url=' . $productUrl . ' href="javascript:void(0);">Quick Look</span></a>';
         }
-        
         return $result;
     }
 }

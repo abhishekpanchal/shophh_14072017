@@ -36,18 +36,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
       var hotspotDesc = $(el).find( ".product-info" ).html();
       var defaultHotspotIcon = $(el).children('i');
-      // $(defaultHotspotIcon).removeClass('ion-android-search hotspot-inactive');
-      // $(defaultHotspotIcon).addClass('ion-android-close hotspot-active');
-
-      // $('.hotspot-details-placeholder').toggleClass('hidden');
-      // $('.hotspot-details-placeholder').html(hotspotDesc);
-      // if ($('.hotspot-details-placeholder').hasClass('visible')) {
-      //   $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
-      //   $('.hotspot-default').removeClass('hidden').addClass('visible');
-      // } else {
-      //   $('.hotspot-default').removeClass('visible').addClass('hidden');
-      //   $('.hotspot-details-placeholder').removeClass('hidden').addClass('visible').html(hotspotDesc);
-      // }
 
       if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
         if ($('.ion-android-close').hasClass('hotspot-active')) {
