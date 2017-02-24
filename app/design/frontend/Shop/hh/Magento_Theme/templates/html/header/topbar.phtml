@@ -1,1 +1,6 @@
-Topbar
+<?php 
+$helper = $this->helper('Hhmedia\Topbar\Helper\Data');
+if($helper->getEnabled() == 1):
+	echo $helper->getText();
+endif;
+?>
