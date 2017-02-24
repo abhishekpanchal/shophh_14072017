@@ -6,6 +6,9 @@
     <referenceContainer name="header-wrapper">
       <container name="header.wrap" htmlTag="div" htmlClass="header-wrap">
         <!-- Top Header -->
+        <container name="header.main.topbar" htmlTag="div" htmlClass="header-topbar" before="header.top">
+          <block name="header.topbar" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/topbar.phtml"/>
+        </container>
         <container name="header.top" htmlTag="div" htmlClass="header-top">
           <container name="header.top.container" htmlTag="div" htmlClass="container">
             <container name="header.top.row" htmlTag="div" htmlClass="row">
@@ -123,6 +126,7 @@
         <referenceContainer name="skip_to_content" remove="true" />
         <referenceBlock name="top.search" remove="true" />
 
+        <move element="header.main.topbar" destination="header.wrap" before="header.top" />
         <move element="form.subscribe" destination="footer_col_5" />
         <move element="footer-row-2" destination="footer-wrap2" after="-" />
         <move element="copyright" destination="footer-legal-container" />
