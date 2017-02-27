@@ -6,8 +6,12 @@
 use Magento\Framework\App\Action\Action;
 
 // @codingStandardsIgnoreFile
-
 ?>
+
+<div class="container">
+    <div class="row">
+
+
 <?php
 /**
  * Product list template
@@ -28,7 +32,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
     if ($block->getMode() == 'grid') {
         $viewMode = 'grid';
         $image = 'category_page_grid';
-        $showDescription = false;
+        $showDescription = true;
         $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     } else {
         $viewMode = 'list';
@@ -42,25 +46,18 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
     $pos = $block->getPositioned();
     ?>
 
-
-
-
     <div class="products wrapper <?php /* @escapeNotVerified */ echo $viewMode; ?> products-<?php /* @escapeNotVerified */ echo $viewMode; ?>">
         <?php $iterator = 1; ?>
         <div class="products list items product-items row">
             <?php /** @var $_product \Magento\Catalog\Model\Product */ ?>
             <?php foreach ($_productCollection as $_product): ?>
-                
 
-
-
-                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item-listing col-xs-6 col-sm-4 col-md-4">' : '</div><div class="item product product-item-listing col-xs-6 col-sm-4 col-md-4">' ?>
+                <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">' : '</div><div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">' ?>
 
                 <?php $newProduct = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                <?php if($newProduct->isProductNew($_product)): ?>
-                <div class="new-product"><?php echo __('New'); ?></div>
-                <?php endif; ?>
-                
+
+
+
                 <div class="product-item-info" data-container="product-grid">
                     <?php
                     $productImage = $block->getImage($_product, $image);
@@ -85,43 +82,19 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                         </strong>
                          <?php if ($showDescription):?>
                                 <div class="product description product-item-description">
-                                    <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+                <?php if($newProduct->isProductNew($_product)): ?>
+                    <div class="new-product"><?php echo __('New'); ?></div>
+                <?php endif; ?>
+                                    <?php
+                                        echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')
+                                    ?>
                                 </div>
                             <?php endif; ?>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
                         <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
                         <?php echo $block->getProductDetailsHtml($_product); ?>
 
-                        <div class="product-item-inner">
-                            <div class="product actions product-item-actions"<?php echo strpos($pos, $viewMode . '-actions') ? $position : ''; ?>>
-                                <div data-role="add-to-links" class="actions-secondary wishlist-btn"<?php echo strpos($pos, $viewMode . '-secondary') ? $position : ''; ?>>
-                                    <?php if ($addToBlock = $block->getChildBlock('addto')): ?>
-                                        <?php echo $addToBlock->setProduct($_product)->getChildHtml(); ?>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="primary-cart-btn"<?php echo strpos($pos, $viewMode . '-primary') ? $position : ''; ?>>
-                                    <?php if ($_product->isSaleable()): ?>
-                                        <?php $postParams = $block->getAddToCartPostParams($_product); ?>
-                                        <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
-                                            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
-                                            <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
-                                            <?php echo $block->getBlockHtml('formkey')?>
-                                            <button type="submit"
-                                                    title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
-                                                    class="action tocart cart-circle">
-                                                <span><i class="mdi mdi-cart-outline"></i></span>
-                                            </button>
-                                        </form>
-                                    <?php else: ?>
-                                        <?php if ($_product->getIsSalable()): ?>
-                                            <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
-                                        <?php else: ?>
-                                            <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <?php echo($iterator == count($_productCollection)+1) ? '</li>' : '' ?>
@@ -139,3 +112,6 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
         </script>
     <?php endif; ?>
 <?php endif; ?>
+
+</div>
+</div>

@@ -31,6 +31,8 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
     const SLIDE_TARGET_BLANK = 2;
     const STATUS_ENABLED = 1;
     const STATUS_DISABLED = 0;
+    const HOME_YES = 1;
+    const HOME_NO = 0; 
 
     protected $_sliderCollectionFactory;
     protected $_storeViewId = null;
@@ -183,7 +185,7 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
     }
 
     public function getOwnTitle($plural = false) {
-        return $plural ? 'Slide' : 'Slides';
+        return $plural ? 'Shot' : 'Shots';
     }
 
     public function isActive() {
@@ -280,6 +282,10 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
 
     public function getSlideUrl() {
         return $this->_url->getUrl($this, URL::CONTROLLER_CATEGORY);
+    }
+
+    public function getDisplayHome(){
+        return [self::HOME_NO => __('No'), self::HOME_YES => __('Yes')];
     }
 
 }

@@ -171,8 +171,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         $srcImg = $this->_lookbooksliderHelper->getBaseUrlMedia($slide->getImage_path());
         //$width  = $this->_slider->getWidth();
         //$height = $this->_slider->getHeight();
-        $width = 600;
-        $height = 250;
+        $width = 1170;
+        $height = 500;
         return $this->_lookbooksliderHelper->getResizedUrl($slide->getImage_path(), $width, $height);
     }
 
@@ -186,6 +186,86 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
 
     public function getFlexsliderHtmlId() {
         return 'altima-lookbookslider-slider-' . $this->getSlider()->getId() . $this->_stdlibDateTime->gmtTimestamp();
+    }
+
+    public function getProductCollection($slide) {
+        $hotspots          = $slide->getHotspots();
+        if ($hotspots == '')
+            return '';
+        $decoded_array     = json_decode($hotspots, true);
+        foreach ($decoded_array as $key => $value) {
+            $product_details = null;
+            if ($decoded_array[$key]['sku'] != '') {
+                $product         = $this->_productFactory->create();
+                $product_details = $product->loadByAttribute('sku', $decoded_array[$key]['sku']);
+                if ($product_details) {
+                    $product_details_full = $product->load($product_details->getId());
+                }
+            }
+            $html_content = '';
+            $html_content .= '<div class="product-info-main" style="';
+            //$html_content .= 'left:' . round($value['width'] / 2) . 'px;';
+            //$html_content .= 'top:' . round($value['height'] / 2) . 'px;';
+
+            if ($product_details) {
+                $_p_name = $product_details->getName();
+
+                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
+                    $_p_shrt_desc  = $product_details_full->getDescription();
+                    $_p_shrt_desc  = strip_tags($_p_shrt_desc);
+                    $_p_shrt_desc  = substr($_p_shrt_desc, 0, 120);
+                    $_p_shrt_desc  = rtrim($_p_shrt_desc, "!,.-");
+                    $_p_shrt_desc  = substr($_p_shrt_desc, 0, strrpos($_p_shrt_desc, ' '));
+                    $_p_shrt_desc  = $_p_shrt_desc . '...';
+                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(400, 400)->getUrl();
+                }
+                //$html_content .= 'width: ' . strlen($_p_name) * 8 . 'px;';
+            } else {
+                //$html_content .= 'width: ' . strlen($decoded_array[$key]['text']) * 8 . 'px;';
+            }
+            $html_content .= '"><div class="pro-detail-div">';
+
+            if ($product_details) {
+                $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+                $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+                $_p_price      = $product_details->getFinalPrice();
+                $_p_price      = $priceHelper->currency($_p_price, true, false);
+                $html_content .= '<div class="left-detail">';
+                if ($product_details->isAvailable()) {
+                    if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {
+                        $_p_url = $product_details->getProductUrl();
+                    } else {
+                        $_p_url = $product_details->getProductUrl();
+                    }
+                    $html_content .= '<div class="product attribute name"><a href=\'' . $_p_url . '\' target="_blank">' . $_p_name . '</a></div>';
+                } else {
+                    $html_content .= '<h2>' . $_p_name . '</h2>';
+                    $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
+                }
+                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
+                    $html_content .= '<div class="desc"><img src="' . $_p_shrt_image . '" alt="product image"/>' . $_p_shrt_desc . '</div>';
+                }
+
+                if ($product_details->getFinalPrice()) {
+                    if ($product_details->getPrice() > $product_details->getFinalPrice()) {
+                        $regular_price = $product_details->getPrice();
+                        $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+                        $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+                        $regular_price = $priceHelper->currency($regular_price, true, false);
+                        $_p_price      = '<div class="old-price">' . $regular_price . '</div>' . $_p_price;
+                    }
+                    $html_content .= '<div class="price">' . $_p_price . '</div>';
+                }
+                if ($this->_lookbooksliderHelper->canShowAddToCart()) {
+                    $html_content .= $this->getAddToCartHtml($product_details_full);
+                }
+                $html_content .= '</div>';
+            }
+            $html_content .= '</div></div>';
+            $decoded_array[$key]['text'] = $html_content;
+        }
+        $result = $decoded_array;
+        return $result;
     }
 
     public function getHotspotsWithProductDetails($slide) {
@@ -218,10 +298,14 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             }
             $html_content = '';
             if (!isset($icon_dimensions['error'])) {
-                $html_content .= '<img class="hotspot-icon" src="' . $hotspot_icon . '" alt="" style="
+                $html_content .= '<i class="ion-android-search hotspot-inactive" style="
                         left:' . (round($value['width'] / 2) - round($icon_dimensions['width'] / 2)) . 'px; 
                         top:' . (round($value['height'] / 2) - round($icon_dimensions['height'] / 2)) . 'px;
-                        "/>';
+                        "/></i>';
+                // $html_content .= '<img class="hotspot-icon" src="' . $hotspot_icon . '" alt="" style="
+                //         left:' . (round($value['width'] / 2) - round($icon_dimensions['width'] / 2)) . 'px; 
+                //         top:' . (round($value['height'] / 2) - round($icon_dimensions['height'] / 2)) . 'px;
+                //         "/>';
                 $decoded_array[$key]['icon_width']  = $icon_dimensions['width'];
                 $decoded_array[$key]['icon_height'] = $icon_dimensions['height'];
             }
@@ -239,7 +323,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $_p_shrt_desc  = rtrim($_p_shrt_desc, "!,.-");
                     $_p_shrt_desc  = substr($_p_shrt_desc, 0, strrpos($_p_shrt_desc, ' '));
                     $_p_shrt_desc  = $_p_shrt_desc . '...';
-                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(50, 50)->getUrl();
+                    $_p_shrt_image = $this->imageHelper->init($product, 'product_small_image')->keepAspectRatio(true)->resize(400, 400)->getUrl();
                 }
                 $html_content .= 'width: ' . strlen($_p_name) * 8 . 'px;';
             } else {

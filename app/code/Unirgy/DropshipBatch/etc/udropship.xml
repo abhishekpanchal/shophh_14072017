@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<config>
+    <vendor>
+        <fieldsets>
+            <batch_export translate="legend">
+                <legend>Batch Orders Export</legend>
+                <position>1</position>
+            </batch_export>
+            <batch_import translate="legend">
+                <legend>Batch Orders Import</legend>
+                <position>2</position>
+            </batch_import>
+            <!-- <inventory_export>
+                <legend>Inventory Export</legend>
+                <position>3</position>
+            </inventory_export> -->
+            <inventory_import translate="legend">
+                <legend>Inventory Import</legend>
+                <position>4</position>
+            </inventory_import>
+        </fieldsets>
+
+        <fields>
+            <batch_export_orders_adapter translate="label">
+                <label>Export Orders Adapter</label>
+                <type>select</type>
+                <fieldset>batch_export</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>10</position>
+            </batch_export_orders_adapter>
+
+            <batch_export_orders_method translate="label">
+                <label>Export Orders Method</label>
+                <type>select</type>
+                <fieldset>batch_export</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>10</position>
+            </batch_export_orders_method>
+
+            <batch_export_orders_schedule translate="label note">
+                <label>Export Orders Schedule</label>
+                <type>text</type>
+                <fieldset>batch_export</fieldset>
+                <position>20</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for schedule format]]></note>
+            </batch_export_orders_schedule>
+
+            <batch_export_orders_locations translate="label note">
+                <label>Export Orders Destination Locations</label>
+                <type>textarea</type>
+                <fieldset>batch_export</fieldset>
+                <position>30</position>
+                <class>nowrap</class>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for location format, separate multiple locations with new line]]></note>
+            </batch_export_orders_locations>
+
+            <batch_export_orders_use_wildcard translate="label">
+                <label>Export Per PO</label>
+                <type>select</type>
+                <fieldset>batch_export</fieldset>
+                <source>yesno</source>
+                <position>32</position>
+                <default>0</default>
+            </batch_export_orders_use_wildcard>
+
+            <batch_export_orders_header translate="label note">
+                <label>Export Orders Header</label>
+                <type>textarea</type>
+                <fieldset>batch_export</fieldset>
+                <position>40</position>
+                <note><![CDATA[Empty for no header in export file]]></note>
+            </batch_export_orders_header>
+
+            <batch_export_orders_template translate="label note">
+                <label>Export Orders Template</label>
+                <type>textarea</type>
+                <fieldset>batch_export</fieldset>
+                <position>50</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for import template]]></note>
+            </batch_export_orders_template>
+
+            <batch_export_orders_totals_template translate="label note">
+                <label>Export Orders Totals Template</label>
+                <type>textarea</type>
+                <fieldset>batch_export</fieldset>
+                <position>51</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for import template]]></note>
+            </batch_export_orders_totals_template>
+
+            <batch_export_orders_use_item_template translate="label">
+                <label>Use Order Items Separate Template</label>
+                <type>select</type>
+                <source>yesno</source>
+                <frontend_model>\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect</frontend_model>
+                <depend_fields>
+                    <batch_export_orders_item_template>1</batch_export_orders_item_template>
+                    <batch_export_orders_item_footer_template>1</batch_export_orders_item_footer_template>
+                </depend_fields>
+                <fieldset>batch_export</fieldset>
+                <position>55</position>
+            </batch_export_orders_use_item_template>
+
+            <batch_export_orders_item_template translate="label">
+                <label>Order Items Separate Template</label>
+                <type>textarea</type>
+                <fieldset>batch_export</fieldset>
+                <position>56</position>
+            </batch_export_orders_item_template>
+
+            <batch_export_orders_item_footer_template translate="label">
+                <label>Order Items Footer Template</label>
+                <type>textarea</type>
+                <fieldset>batch_export</fieldset>
+                <position>57</position>
+            </batch_export_orders_item_footer_template>
+
+            <batch_export_orders_export_on_po_status translate="label">
+                <label>Export On Po Statuses</label>
+                <type>multiselect</type>
+                <fieldset>batch_export</fieldset>
+                <position>59</position>
+                <default>999</default>
+            </batch_export_orders_export_on_po_status>
+
+            <batch_export_orders_po_status translate="label">
+                <label>Change PO status on export</label>
+                <type>select</type>
+                <fieldset>batch_export</fieldset>
+                <source>shipment_statuses</source>
+                <position>60</position>
+                <default>10</default>
+            </batch_export_orders_po_status>
+
+            <batch_import_orders_adapter translate="label">
+                <label>Import Orders Adapter</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>100</position>
+            </batch_import_orders_adapter>
+
+            <batch_import_orders_method translate="label">
+                <label>Import Orders Method</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>110</position>
+            </batch_import_orders_method>
+
+            <batch_import_orders_schedule translate="label note">
+                <label>Import Orders Schedule</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>120</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for schedule format]]></note>
+            </batch_import_orders_schedule>
+
+            <batch_import_orders_locations translate="label note">
+                <label>Import Orders Source Location</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>130</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for location format]]></note>
+            </batch_import_orders_locations>
+
+            <batch_import_orders_use_wildcard translate="label">
+                <label>Use wildcard in source location</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <source>yesno</source>
+                <position>132</position>
+                <default>0</default>
+            </batch_import_orders_use_wildcard>
+
+            <batch_import_orders_track_dist_ts translate="label">
+                <label>Import only recent files (track location files timestamps)</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <frontend_model>\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect</frontend_model>
+                <depend_fields>
+                    <batch_import_orders_dist_tz>1</batch_import_orders_dist_tz>
+                </depend_fields>
+                <source>yesno</source>
+                <position>134</position>
+                <default>0</default>
+            </batch_import_orders_track_dist_ts>
+
+            <batch_import_orders_dist_tz translate="label">
+                <label>Source Location Timezone</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <source_model>\Magento\Config\Model\Config\Source\Locale\Timezone</source_model>
+                <source>yesno</source>
+                <position>136</position>
+            </batch_import_orders_dist_tz>
+
+            <batch_import_orders_file_action translate="label">
+                <label>Action on imported file</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <frontend_model>\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect</frontend_model>
+                <depend_fields>
+                    <batch_import_orders_rename_prefix>rename,rename_move</batch_import_orders_rename_prefix>
+                    <batch_import_orders_rename_suffix>rename,rename_move</batch_import_orders_rename_suffix>
+                    <batch_import_orders_move_folder>move,rename_move</batch_import_orders_move_folder>
+                </depend_fields>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <source>batch_imported_file_action</source>
+                <position>140</position>
+            </batch_import_orders_file_action>
+
+            <batch_import_orders_move_folder translate="label">
+                <label>Destination folder for imported file</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>141</position>
+            </batch_import_orders_move_folder>
+
+            <batch_import_orders_rename_prefix translate="label">
+                <label>Filename prefix for rename</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>142</position>
+            </batch_import_orders_rename_prefix>
+
+            <batch_import_orders_rename_suffix translate="label">
+                <label>Filename suffix for rename</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>143</position>
+            </batch_import_orders_rename_suffix>
+
+            <batch_import_orders_template translate="label note">
+                <label>Import Orders Template</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>145</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for import template]]></note>
+            </batch_import_orders_template>
+
+            <batch_import_orders_field_delimiter translate="label">
+                <label>Import Orders Field Delimiter</label>
+                <type>text</type>
+                <fieldset>batch_import</fieldset>
+                <position>146</position>
+                <default>,</default>
+            </batch_import_orders_field_delimiter>
+
+            <batch_import_orders_po_status translate="label">
+                <label>Change PO status on import</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <source>shipment_statuses</source>
+                <position>150</position>
+                <default>1</default>
+            </batch_import_orders_po_status>
+
+            <batch_import_orders_skip_header translate="label">
+                <label>Skip first row in import file</label>
+                <type>select</type>
+                <fieldset>batch_import</fieldset>
+                <source>yesno</source>
+                <position>160</position>
+                <default>0</default>
+            </batch_import_orders_skip_header>
+
+            <batch_import_inventory_adapter translate="label">
+                <label>Import Inventory Adapter</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>100</position>
+            </batch_import_inventory_adapter>
+
+            <batch_import_inventory_method translate="label">
+                <label>Import Inventory Method</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>110</position>
+            </batch_import_inventory_method>
+
+            <batch_import_inventory_schedule translate="label note">
+                <label>Import Inventory Schedule</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>120</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for schedule format]]></note>
+            </batch_import_inventory_schedule>
+
+            <batch_import_inventory_locations translate="label note">
+                <label>Import Inventory Source Location</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>130</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for location format]]></note>
+            </batch_import_inventory_locations>
+
+            <batch_import_inventory_use_wildcard translate="label">
+                <label>Use wildcard in source location</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <source>yesno</source>
+                <position>132</position>
+                <default>0</default>
+            </batch_import_inventory_use_wildcard>
+
+            <batch_import_inventory_reindex translate="label">
+                <label>Reindex Type</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <position>135</position>
+                <default>realtime</default>
+            </batch_import_inventory_reindex>
+
+            <batch_import_inventory_track_dist_ts translate="label">
+                <label>Import only recent files (track location files timestamps)</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <frontend_model>\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect</frontend_model>
+                <depend_fields>
+                    <batch_import_inventory_dist_tz>1</batch_import_inventory_dist_tz>
+                </depend_fields>
+                <source>yesno</source>
+                <position>134</position>
+                <default>0</default>
+            </batch_import_inventory_track_dist_ts>
+
+            <batch_import_inventory_dist_tz translate="label">
+                <label>Source Location Timezone</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <source_model>\Magento\Config\Model\Config\Source\Locale\Timezone</source_model>
+                <source>yesno</source>
+                <position>136</position>
+            </batch_import_inventory_dist_tz>
+
+            <batch_import_inventory_file_action translate="label">
+                <label>Action on imported file</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <frontend_model>\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect</frontend_model>
+                <depend_fields>
+                    <batch_import_inventory_rename_prefix>rename,rename_move</batch_import_inventory_rename_prefix>
+                    <batch_import_inventory_rename_suffix>rename,rename_move</batch_import_inventory_rename_suffix>
+                    <batch_import_inventory_move_folder>move,rename_move</batch_import_inventory_move_folder>
+                </depend_fields>
+                <source_model>\Unirgy\DropshipBatch\Model\Source</source_model>
+                <source>batch_imported_file_action</source>
+                <position>140</position>
+            </batch_import_inventory_file_action>
+
+            <batch_import_inventory_move_folder translate="label">
+                <label>Destination folder for imported file</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>141</position>
+            </batch_import_inventory_move_folder>
+
+            <batch_import_inventory_rename_prefix translate="label">
+                <label>Filename prefix for rename</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>142</position>
+            </batch_import_inventory_rename_prefix>
+
+            <batch_import_inventory_rename_suffix translate="label">
+                <label>Filename suffix for rename</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>143</position>
+            </batch_import_inventory_rename_suffix>
+
+            <batch_import_inventory_template translate="label note">
+                <label>Import Inventory Template</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>145</position>
+                <note><![CDATA[Use <a href="http://unirgy.com/wiki/udropship/batch/reference" target="udbatch_reference">reference</a> for import template]]></note>
+            </batch_import_inventory_template>
+
+            <batch_import_inventory_field_delimiter translate="label">
+                <label>Import Inventory Field Delimiter</label>
+                <type>text</type>
+                <fieldset>inventory_import</fieldset>
+                <position>146</position>
+                <default>,</default>
+            </batch_import_inventory_field_delimiter>
+
+            <batch_import_inventory_skip_header translate="label">
+                <label>Skip first row in import file</label>
+                <type>select</type>
+                <fieldset>inventory_import</fieldset>
+                <source>yesno</source>
+                <position>160</position>
+                <default>0</default>
+            </batch_import_inventory_skip_header>
+
+        </fields>
+    </vendor>
+    <batch_adapters>
+        <export_orders>
+            <default>
+                <label>* Default Adapter</label>
+                <model>\Unirgy\DropshipBatch\Model\Adapter\DefaultAdapter</model>
+            </default>
+        </export_orders>
+        <import_orders>
+            <default>
+                <label>* Default Adapter</label>
+                <model>\Unirgy\DropshipBatch\Model\Adapter\ImportOrders\DefaultImportOrders</model>
+            </default>
+        </import_orders>
+        <import_inventory>
+            <default>
+                <label>* Default Adapter</label>
+                <model>\Unirgy\DropshipBatch\Model\Adapter\ImportInventory\DefaultImportInventory</model>
+            </default>
+        </import_inventory>
+        <export_stockpo>
+            <default>
+                <label>* Default Adapter</label>
+                <model>\Unirgy\DropshipBatch\Model\Adapter\ExportStockpo\DefaultExportStockpo</model>
+            </default>
+        </export_stockpo>
+        <import_stockpo>
+            <default>
+                <label>* Default Adapter</label>
+                <model>\Unirgy\DropshipBatch\Model\Adapter\ImportStockpo\DefaultImportStockpo</model>
+            </default>
+        </import_stockpo>
+    </batch_adapters>
+</config>

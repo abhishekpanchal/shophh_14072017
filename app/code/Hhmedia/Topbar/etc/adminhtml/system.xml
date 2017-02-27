@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="hhmedia" translate="label" sortOrder="400">
+            <label>HH Shop</label>
+        </tab>
+        <section id="topbar" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Topbar</label>
+            <tab>hhmedia</tab>
+            <resource>Hhmedia_Topbar::config_topbar</resource>
+            <group id="info" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Topbar Information</label>
+               	<field id="enabled" translate="label comment" type="select" sortOrder="0"  showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable frontend</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="text" translate="label comment" type="editor" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text</label>
+                    <comment><![CDATA[Topbar Text - You can apply Text & Background Color.]]></comment>
+                    <frontend_model>Hhmedia\Topbar\Block\Editor</frontend_model>
+                </field>
+                <!-- Color Picker Code -->
+				<!--<field id="text" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text</label>
+                    <comment><![CDATA[Topbar Text]]></comment>
+                </field>
+                <field id="textcolor" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                	<label>Text Color</label>
+                	<comment><![CDATA[Text Color]]></comment>
+                	<frontend_model>Hhmedia\Topbar\Block\Textcolor</frontend_model>
+            	</field>
+            	<field id="bgcolor" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                	<label>Background Color</label>
+                	<comment><![CDATA[Background Color]]></comment>
+                	<frontend_model>Hhmedia\Topbar\Block\Bgcolor</frontend_model>
+            	</field>-->
+            </group>
+        </section>
+    </system>
+</config>

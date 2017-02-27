@@ -8,10 +8,8 @@
     <css src="css/materialdesignicons.css" />
     <css src="css/fonts.css" />
     <css src="css/main.css" />
-    <css src="css/style.css" />
-
+    <css src="css/responsive.css"/>
     <script src="js/main.js"/>
-
   </head>
 </page>
 

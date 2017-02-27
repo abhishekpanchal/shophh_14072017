@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.promo.quote.grid.columnSet">
+            <block class="Magento\Backend\Block\Widget\Grid\Column" as="udropship_vendor">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Dropship Vendor</argument>
+                    <argument name="index" xsi:type="string">udropship_vendor</argument>
+                    <argument name="type" xsi:type="string">options</argument>
+                    <argument name="sortable" xsi:type="string">0</argument>
+                    <argument name="options" xsi:type="options" model="\Unirgy\Dropship\Ui\Component\Listing\Column\Vendor\Options"/>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

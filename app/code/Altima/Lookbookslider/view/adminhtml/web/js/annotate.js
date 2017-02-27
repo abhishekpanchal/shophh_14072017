@@ -19,10 +19,10 @@
 (function($) {
 
     $.fn.annotateImage = function(options) {
-        ///	<summary>
-        ///		Creates annotations on the given image.
+        /// <summary>
+        ///     Creates annotations on the given image.
         ///     Images are loaded from the "getUrl" propety passed into the options.
-        ///	</summary>
+        /// </summary>
         var opts = $.extend({}, $.fn.annotateImage.defaults, options);
         var image = this;
 
@@ -105,9 +105,9 @@
     };
 
     $.fn.annotateImage.clear = function(image) {
-        ///	<summary>
-        ///		Clears all existing annotations from the image.
-        ///	</summary>    
+        /// <summary>
+        ///     Clears all existing annotations from the image.
+        /// </summary>    
         for (var i = 0; i < image.notes.length; i++) {
             image.notes[image.notes[i]].destroy();
         }
@@ -115,10 +115,10 @@
     };
 
     $.fn.annotateImage.ajaxLoad = function(image) {
-        ///	<summary>
-        ///		Loads the annotations from the "getUrl" property passed in on the
+        /// <summary>
+        ///     Loads the annotations from the "getUrl" property passed in on the
         ///     options object.
-        ///	</summary>
+        /// </summary>
         $.getJSON(image.getUrl + '?ticks=' + $.fn.annotateImage.getTicks(), function(data) {
             image.notes = data;
             $.fn.annotateImage.load(image);
@@ -126,10 +126,10 @@
     };
 
     $.fn.annotateImage.load = function(image) {
-        ///	<summary>
-        ///		Loads the annotations from the notes property passed in on the
+        /// <summary>
+        ///     Loads the annotations from the notes property passed in on the
         ///     options object.
-        ///	</summary>
+        /// </summary>
         for (var i = 0; i < image.notes.length; i++) {
             console.log(image.canvas[0].clientHeight); //clientWidth, clientHeight
             console.log(image.notes[i].imgW); //top, left, width, height, imgH, imgW
@@ -146,18 +146,18 @@
     };
 
     $.fn.annotateImage.getTicks = function() {
-        ///	<summary>
-        ///		Gets a count og the ticks for the current date.
+        /// <summary>
+        ///     Gets a count og the ticks for the current date.
         ///     This is used to ensure that URLs are always unique and not cached by the browser.
-        ///	</summary>        
+        /// </summary>        
         var now = new Date();
         return now.getTime();
     };
 
     $.fn.annotateImage.add = function(image) {
-        ///	<summary>
-        ///		Adds a note to the image.
-        ///	</summary>        
+        /// <summary>
+        ///     Adds a note to the image.
+        /// </summary>        
         if (image.mode == 'view') {
             image.mode = 'edit';
 
@@ -173,9 +173,9 @@
     };
 
     $.fn.annotateImage.createSaveButton = function(editable, image, note) {
-        ///	<summary>
-        ///		Creates a Save button on the editable note.
-        ///	</summary>
+        /// <summary>
+        ///     Creates a Save button on the editable note.
+        /// </summary>
         var ok = $('<button class="image-annotate-edit-ok" id="image-annotate-edit-ok" onclick="javascript: return false;"><span>OK</span></button>');
 
         ok.click(function() {
@@ -201,10 +201,10 @@
                     data: form.serialize(),
                     error: function(e) { alert(image.captions.note_saving_err) },
                     success: function(data) {
-				if (data.annotation_id != undefined) {
-					editable.note.id = data.annotation_id;
-				}
-		    },
+                if (data.annotation_id != undefined) {
+                    editable.note.id = data.annotation_id;
+                }
+            },
                     dataType: "json"
                 });
             }
@@ -216,7 +216,7 @@
                  test_area.width = editable.area.width();
                  test_area.left = editable.area.position().left;
                  test_area.top = editable.area.position().top;
-		 var notes_obj = jQuery.parseJSON(JSON.stringify(image.notes));
+         var notes_obj = jQuery.parseJSON(JSON.stringify(image.notes));
 
                 if (notes_obj && !CheckPosition(test_area, notes_obj)) {
                     alert(image.captions.note_overlap_err);
@@ -273,9 +273,9 @@
     };
 
     $.fn.annotateImage.createCancelButton = function(editable, image) {
-        ///	<summary>
-        ///		Creates a Cancel button on the editable note.
-        ///	</summary>
+        /// <summary>
+        ///     Creates a Cancel button on the editable note.
+        /// </summary>
         var cancel = $('<button class="image-annotate-edit-close" onclick="javascript: return false;"><span>'+image.captions.cancel_btn+'</span></button>');
         cancel.click(function() {
             editable.destroy();
@@ -304,9 +304,9 @@
     };
 
     $.fn.annotateEdit = function(image, note) {
-        ///	<summary>
-        ///		Defines an editable annotation area.
-        ///	</summary>
+        /// <summary>
+        ///     Defines an editable annotation area.
+        /// </summary>
         this.image = image;
 
         if (note) {
@@ -340,27 +340,23 @@
         image.canvas.children('.image-annotate-edit').show();
 
         // Add the note (which we'll load with the form afterwards)
-        var p_link_selected = '';
-        var p_show = '';
-        if (this.note.sku!=''){ 
+        var p_link_selected = 'checked="checked"';
+        var p_show = 'style="display:block"'; 
+        /*if (this.note.sku!=''){ 
            p_link_selected = 'checked="checked"';
            p_show = 'style="display:block"'; 
-        }
+        }*/
         
-        var o_link_selected = '';
+        /*var o_link_selected = '';
         var o_show = '';
         if (this.note.text!='' && this.note.href!='') {
             this.note.text = this.note.text.replace(/"/g, '&quot;');
-           o_link_selected = 'checked="checked"'; 
-           o_show = 'style="display:block"';
-        }
+            o_link_selected = 'checked="checked"'; 
+            o_show = 'style="display:block"';
+        }*/
         var form_str = '<div id="image-annotate-edit-form"><form id="annotate-edit-form"><h4>'+image.captions.link_type+'</h4>'
                     +'<div id="radio-buttons"><span><input id="data-type-sku" type="radio" name="data-type" value="sku" '+p_link_selected+'">'+image.captions.product_page+'</span>'
-                    +'<span><input id="data-type-link" type="radio" name="data-type" value="link"  '+o_link_selected+'>'+image.captions.other_page+'</span></div>'
-                    +'<div id="link-data" '+o_show+'><p><label for="image-annotate-text">'+image.captions.link_text+' </label>'
-                    +'<input id="image-annotate-text" value="'+this.note.text+'" name="text" type="text"/></p>'
-                    +'<p><label for="image-annotate-href">'+image.captions.link_href+' </label>&nbsp;'
-                    +'<input id="image-annotate-href" value="'+this.note.href+'" name="href" type="text"/></p></div>'
+                    +'</div>'
                     +'<div id="product-data" '+p_show+'><p><label for="image-annotate-sku">'+image.captions.prod_sku+' </label>'
                     +'<input id="image-annotate-sku" value="'+this.note.sku+'" name="sku" type="text"/></p></div>'                    
                     +'</form></div>'
@@ -372,17 +368,17 @@
         this.form.css('top', (parseInt(this.area.offset().top) + parseInt(this.area.height()) + 7) + 'px');
 
 
-        $("#data-type-link").click(function(){
-                if ($(this).attr('checked')=='checked') {
-                    $("#link-data").show();
-                    $("#product-data").hide();  
-                }
-                else
-                {
-                    $("#link-data").hide();
-                    $("#product-data").show();
-                }
-        });                       
+        /*$("#data-type-link").click(function(){
+            if ($(this).attr('checked')=='checked') {
+                $("#link-data").show();
+                $("#product-data").hide();  
+            }
+            else
+            {
+                $("#link-data").hide();
+                $("#product-data").show();
+            }
+        }); */                  
         $("#data-type-sku").click(function(){
                 if ($(this).attr('checked')=='checked') {
                     $("#product-data").show();
@@ -422,9 +418,9 @@
     };
 
     $.fn.annotateEdit.prototype.destroy = function() {
-        ///	<summary>
-        ///		Destroys an editable annotation area.
-        ///	</summary>        
+        /// <summary>
+        ///     Destroys an editable annotation area.
+        /// </summary>        
         this.image.canvas.children('.image-annotate-edit').hide();
         this.area.resizable('destroy');
         this.area.draggable('destroy');
@@ -437,9 +433,9 @@
     }
 
     $.fn.annotateView = function(image, note) {
-        ///	<summary>
-        ///		Defines a annotation area.
-        ///	</summary>
+        /// <summary>
+        ///     Defines a annotation area.
+        /// </summary>
         this.image = image;
 
         this.note = note;
@@ -479,9 +475,9 @@
     };
 
     $.fn.annotateView.prototype.setPosition = function() {
-        ///	<summary>
-        ///		Sets the position of an annotation.
-        ///	</summary>
+        /// <summary>
+        ///     Sets the position of an annotation.
+        /// </summary>
         //console.log(this.image[0].naturalHeight/this.image.canvas[0].clientHeight);
         //console.log(this.image[0].naturalWidth/this.image.canvas[0].clientWidth);
         
@@ -494,9 +490,9 @@
     };
 
     $.fn.annotateView.prototype.show = function() {
-        ///	<summary>
-        ///		Highlights the annotation
-        ///	</summary>
+        /// <summary>
+        ///     Highlights the annotation
+        /// </summary>
         this.form.fadeIn(250);
         if (!this.editable) {
             this.area.addClass('image-annotate-area-hover');
@@ -506,26 +502,26 @@
     };
 
     $.fn.annotateView.prototype.hide = function() {
-        ///	<summary>
-        ///		Removes the highlight from the annotation.
-        ///	</summary>      
+        /// <summary>
+        ///     Removes the highlight from the annotation.
+        /// </summary>      
         this.form.fadeOut(250);
         this.area.removeClass('image-annotate-area-hover');
         this.area.removeClass('image-annotate-area-editable-hover');
     };
 
     $.fn.annotateView.prototype.destroy = function() {
-        ///	<summary>
-        ///		Destroys the annotation.
-        ///	</summary>
+        /// <summary>
+        ///     Destroys the annotation.
+        /// </summary>
         this.area.remove();
         this.form.remove();
     }
 
     $.fn.annotateView.prototype.edit = function() {
-        ///	<summary>
-        ///		Edits the annotation.
-        ///	</summary>      
+        /// <summary>
+        ///     Edits the annotation.
+        /// </summary>      
         if (this.image.mode == 'view') {
             this.image.mode = 'edit';
             var annotation = this;
@@ -569,9 +565,9 @@
     };
 
     $.fn.annotateImage.appendPosition = function(form, editable) {
-        ///	<summary>
-        ///		Appends the annotations coordinates to the given form that is posted to the server.
-        ///	</summary>
+        /// <summary>
+        ///     Appends the annotations coordinates to the given form that is posted to the server.
+        /// </summary>
         //console.log(editable.area.height());
         //console.log(this.image[0].naturalHeight/this.image.canvas[0].clientHeight);
         var areaFields = $('<input type="hidden" value="' + editable.area.height() + '" name="height"/>' +
@@ -583,9 +579,9 @@
     }
 
     $.fn.annotateView.prototype.resetPosition = function(editable, text, href, sku) {
-        ///	<summary>
-        ///		Sets the position of an annotation.
-        ///	</summary>
+        /// <summary>
+        ///     Sets the position of an annotation.
+        /// </summary>
         if (sku!=''){
             this.form.html(sku);
         }
@@ -696,7 +692,7 @@ request = new Ajax.Request(
                     data: jQuery(elem).serialize(),
                     error: function(e) { alert(image.captions.note_saving_err) },
                     success: function(transport) {
-			if (200 == transport.status) {
+            if (200 == transport.status) {
                             result = transport.responseText;
                             return result;
                         }
@@ -704,7 +700,7 @@ request = new Ajax.Request(
                         alert("Unable to check product SKU.");
                                 return result;
                         }
-		    }
+            }
                     
                 });*/
          

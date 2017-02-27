@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+  <event name="udropship_vendor_front_preferences">
+    <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipVendorFrontPreferences"/>
+  </event>
+  <event name="udropship_vendor_preferences_save_before">
+    <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipVendorPreferencesSaveBefore"/>
+  </event>
+</config>

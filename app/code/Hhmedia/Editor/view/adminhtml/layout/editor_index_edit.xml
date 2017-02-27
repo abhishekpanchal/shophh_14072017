@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <css src="jquery/colorpicker/css/colorpicker.css"/>
+        <link src="jquery/fileUploader/bootstrap.js"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit" name="editor_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tabs" name="editor_edit_tabs">
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Main" name="editor_edit_tab_main"/>
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Content" name="editor_edit_tab_content"/>
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Image" name="editor_edit_tab_image"/>
+                <block class="Hhmedia\Editor\Block\Adminhtml\Editor\Edit\Tab\Products" name="editor_edit_tab_products"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">editor_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">content_section</argument>
+                    <argument name="block" xsi:type="string">editor_edit_tab_content</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">image_section</argument>
+                    <argument name="block" xsi:type="string">editor_edit_tab_image</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">products_section</argument>
+                    <argument name="block" xsi:type="array">
+                        <item name="label" xsi:type="string">Select Products</item>
+                        <item name="title" xsi:type="string">Select Products</item>
+                        <item name="url" xsi:type="helper" helper="Hhmedia\Editor\Helper\Data::getProductsGridUrl"></item>
+                        <item name="class" xsi:type="string">ajax</item>
+                    </argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

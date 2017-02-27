@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="adminhtml.block.tax.rule.columnSet">
+            <block class="Magento\Backend\Block\Widget\Grid\Column" as="vendor_tax_classes">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Vendor Tax Class</argument>
+                    <argument name="sortable" xsi:type="string">0</argument>
+                    <argument name="index" xsi:type="string">vendor_tax_classes</argument>
+                    <argument name="filter_index" xsi:type="string">vtc.vendor_tax_class_id</argument>
+                    <argument name="show_missing_option_values" xsi:type="string">1</argument>
+                    <argument name="type" xsi:type="string">options</argument>
+                    <argument name="options" xsi:type="options" model="Unirgy\DropshipVendorTax\Model\VendorTaxClassSource"/>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

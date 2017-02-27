@@ -1,0 +1,20 @@
+===== 3.1.2 =====
+  * Fixed save transaction
+
+===== 3.0.9 =====
+  * Fixed js error on vendors import configuration
+
+===== 2.4.0 =====
+  * CE 1.9.2.2 compatibility
+
+===== 2.0.0 =====
+  * Major release
+  * Added compatibility with bare udropship
+
+===== 1.0.2 =====
+  * Added usage of either label or value when import select fields
+
+===== 1.0.1 =====
+  * Added Import shipping methods
+
+===== 1.0 - Initial release =====

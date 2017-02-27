@@ -1,0 +1,41 @@
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form id="co-shipping-method-form" data-bind="blockLoader: isLoading, visible: isVisible()">
+    <p class="field note" data-bind="visible: (shippingRates().length <= 0)">
+        <!-- ko text: $t('Sorry, no quotes are available for this order at this time')--><!-- /ko -->
+    </p>
+    <fieldset class="fieldset rate" data-bind="visible: (shippingRates().length > 0)">
+        <dl class="items methods" data-bind="foreach: {data: shippingRateGroups, as: 'vId'}">
+            <dt class="item-title"><span data-bind="text: $parent.getGroupName(vId)"></span> - <span data-bind="text: $parent.getGroupAddress(vId)"></span></dt>
+            <dd class="item-options" data-bind="foreach: $parent.getRatesForGroup(vId)">
+                <div data-bind="css: {'field choice item': available, 'message error': !available} ">
+                    <!-- ko ifnot: (available) -->
+                    <div data-bind="text: error_message"></div>
+                    <!-- /ko -->
+                    <!-- ko if: (available) -->
+                    <input type="radio"
+                           class="radio"
+                           data-bind="
+                                click: $parents[1].selectShippingMethod,
+                                checked: $parents[1].selectedShippingMethod(udropship_vendor),
+                                attr: {
+                                        name: 'estimate_method'+udropship_vendor,
+                                        value: udropship_vendor + '_' + carrier_code + '_' + method_code,
+                                        id: udropship_vendor + 's_method_' + method_code
+                                        }
+                                "/>
+                    <label class="label" data-bind="attr: {for: udropship_vendor + 's_method_' + method_code}">
+                        <!-- ko text: carrier_title --><!-- /ko --> -
+                        <!-- ko text: method_title --><!-- /ko -->
+                        <!-- ko text: $parents[1].getFormattedPrice(amount) --><!-- /ko -->
+                    </label>
+                    <!-- /ko -->
+                </div>
+            </dd>
+        </dl>
+    </fieldset>
+</form>

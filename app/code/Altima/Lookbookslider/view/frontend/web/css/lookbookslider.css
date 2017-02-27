@@ -245,7 +245,8 @@
 
 .hotspot:hover .product-info,
 .hotspot.hover .product-info{
-    visibility: visible;
+    visibility: hidden;
+    cursor: pointer;
 }
 
 .hotspot:hover .hotspot-icon,

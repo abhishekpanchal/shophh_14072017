@@ -1,0 +1,116 @@
+<?php 
+$st=$block->getfdstatus();
+
+$allpriority=$st['priority'];
+$allstatus=$st['status'];
+
+$allagent = $block->getAvailableAgent();
+
+$allcontacts = $block->getAvailableContacts();
+
+$domain=$block->getdomain();
+
+$orderst=$block->checkfdorderid();
+
+$nextlink = $block->nextlink();
+
+$prevlink= $block->prevlink();
+
+$page=$block->getpage();
+if(empty($page)){ $page=1; }
+
+$ticketsres=$block->getTickets();
+if($ticketsres['nextlink']==0){
+	$nextlink='';
+}
+?>
+<div class="container">
+   
+    <div class="row">
+    
+    <div class="admin__data-grid-header-row">
+    <div class="admin__data-grid-pager-wrap">
+                   <!--   <select class="admin__control-select" onchange="" id="freshdesk_page-limit" name="limit">
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                    </select> -->
+                    
+                    <label class="admin__control-support-text" for="sliderGridsliderGrid_page-limit">30 per page</label>
+
+                    <div class="admin__data-grid-pager">
+                     
+                     <button class="action-previous <?php if(empty($prevlink)){ ?>disabled <?php } ?>" onclick="javascript:document.location='<?php echo $prevlink; ?>'" type="button"><span>Previous page</span></button>
+
+<label class="admin__control-support-text" for="freshdesk_page-current">
+<span><?php echo $page; ?></span>
+</label>
+                     <button class="action-next <?php if(empty($nextlink)){ ?>disabled <?php } ?>" type="button" onclick="javascript:document.location='<?php echo $nextlink; ?>'"><span>Next page</span></button>
+                     </div>
+                </div>
+                
+         </div>
+                
+
+        
+        <table id="ticketGrid_table" class="data-grid">
+            <thead>
+           
+                <tr>
+                    <th class="data-grid-th">Ticket #</th>
+                    <th class="data-grid-th">Subject</th>
+                    <th class="data-grid-th">Date Created</th>
+ <th class="data-grid-th">Request Name</th>
+                    <th class="data-grid-th">Due By</th>
+                    <th class="data-grid-th">Priority</th>
+ <th class="data-grid-th">Status</th>
+                    <th class="data-grid-th">Agent</th>
+<?php if($orderst){ ?>
+                    <th class="data-grid-th">Order ID</th>
+<?php } ?>
+ 
+                    <th class="data-grid-th">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+
+$tickets = $ticketsres['tickets'];
+
+if(count($tickets)==0){
+?>
+<tr>
+<td colspan="10">No Tickets</td>
+</tr>
+<?php
+}
+else
+{
+	
+foreach ($tickets as $k=>$ticket): ?>
+            <tr>
+                <td><?php echo $k ?></td>
+                <td><?php echo $ticket['subject']; ?></td>
+                <td><?php echo date('Y-m-d H:i:s',strtotime($ticket['created_at'])) ?></td>
+<td><?php if(array_key_exists($ticket['requester_id'], $allcontacts)){ echo $allcontacts[$ticket['requester_id']]; } ?></td>
+<td><?php echo date('Y-m-d H:i:s',strtotime($ticket['due_by'])) ?></td>
+<td><?php if(array_key_exists($ticket['priority'], $allpriority)){ echo $allpriority[$ticket['priority']]; } ?></td>
+<td><?php if(array_key_exists($ticket['status'], $allstatus)){ echo $allstatus[$ticket['status']]; } ?></td>
+<td><?php if(array_key_exists($ticket['responder_id'], $allagent)){ echo $allagent[$ticket['responder_id']]; } ?></td>
+<?php if($orderst){ ?>
+<td><a href="<?php echo $ticket['orderurl'] ?>"><?php echo $ticket['order_id'] ?></a></td>
+<?php } ?>
+<td><a href="<?php echo $ticket['url']; ?>" target="_blank"><?php echo "View" ?></a></td>
+            </tr>
+            <?php endforeach;
+            
+
+}  ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

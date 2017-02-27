@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/resources.xsd">
+    <resource name="udsplit_setup" extends="core_setup"/>
+    <resource name="udsplit_write" extends="core_write"/>
+    <resource name="udsplit_read" extends="core_read"/>
+</config>

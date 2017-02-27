@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+    </head>
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Bg\Freshdesk\Block\Ticketslink" name="freshdesk_myticket" template="Bg_Freshdesk::ticketslink.phtml" after="customer-account-navigation-orders-link" >
+
+<arguments>
+                    <argument name="path" xsi:type="string">freshdesk/customer/index</argument>
+                    <argument name="label" xsi:type="string"> My Tickets</argument>
+                </arguments>
+
+</block>
+        </referenceBlock>
+
+
+<customer_account_index>
+<reference name="my.account.wrappers">
+	<block class="Bg\Freshdesk\Block\Ticketslink" name="customer_account_dashboard_freshdesk_tickets_recent"
+				   as="freshdesk_tickets_recent" template="Bg_Freshdesk::ticketslink.phtml" after="-" />
+</reference>
+</customer_account_index>
+
+
+    </body>
+
+</page>
+
+

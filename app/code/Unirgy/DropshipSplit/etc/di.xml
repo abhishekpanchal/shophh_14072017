@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Quote\Model\Quote\Address"
+                type="Unirgy\DropshipSplit\Model\Quote\Address"/>
+    <preference for="Magento\Quote\Model\Quote\Address\Rate"
+                type="Unirgy\DropshipSplit\Model\Quote\Rate"/>
+    <preference for="Magento\Sales\Block\Adminhtml\Order\Create\Shipping\Method\Form"
+                type="Unirgy\DropshipSplit\Block\Adminhtml\Order\ShippingMethod"/>
+    <preference for="Magento\Paypal\Block\Express\Review\Details"
+                type="Unirgy\DropshipSplit\Block\PaypalExpress\ReviewDetails"/>
+    <preference for="Magento\Quote\Api\ShippingMethodManagementInterface"
+                type="Unirgy\DropshipSplit\Model\ShippingMethodManagement"/>
+    <preference for="Magento\Quote\Api\Data\ShippingMethodInterface"
+                type="Unirgy\DropshipSplit\Model\ShippingMethod"/>
+    <preference for="Unirgy\DropshipSplit\Api\ShippingMethodInterface"
+                type="Unirgy\DropshipSplit\Model\ShippingMethod"/>
+    <preference for="Magento\Checkout\Model\ConfigProviderInterface"
+                type="Unirgy\DropshipSplit\Model\DefaultConfigProvider"/>
+    <preference for="Magento\Checkout\Model\DefaultConfigProvider"
+                type="Unirgy\DropshipSplit\Model\DefaultConfigProvider"/>
+
+    <preference for="Unirgy\DropshipSplit\Api\ShippingInformationInterface" type="Unirgy\DropshipSplit\Model\ShippingInformation" />
+    <preference for="Unirgy\DropshipSplit\Api\ShippingInformationManagementInterface" type="Unirgy\DropshipSplit\Model\ShippingInformationManagement" />
+    <preference for="Unirgy\DropshipSplit\Api\GuestShippingInformationManagementInterface" type="Unirgy\DropshipSplit\Model\GuestShippingInformationManagement" />
+
+    <preference for="Unirgy\DropshipSplit\Api\TotalsInformationInterface" type="Unirgy\DropshipSplit\Model\TotalsInformation" />
+    <preference for="Unirgy\DropshipSplit\Api\TotalsInformationManagementInterface" type="Unirgy\DropshipSplit\Model\TotalsInformationManagement" />
+    <preference for="Unirgy\DropshipSplit\Api\GuestTotalsInformationManagementInterface" type="Unirgy\DropshipSplit\Model\GuestTotalsInformationManagement" />
+    <preference for="Unirgy\DropshipSplit\Api\GuestShippingMethodManagementInterface" type="Unirgy\DropshipSplit\Model\GuestShippingMethodManagement" />
+    <preference for="Unirgy\DropshipSplit\Api\ShippingMethodManagementInterface" type="Unirgy\DropshipSplit\Model\ShippingMethodManagement"/>
+
+    <type name="Magento\Checkout\Block\Cart">
+        <plugin name="udsplitFrontCart" type="Unirgy\DropshipSplit\Plugin\CheckoutCart" />
+    </type>
+</config>

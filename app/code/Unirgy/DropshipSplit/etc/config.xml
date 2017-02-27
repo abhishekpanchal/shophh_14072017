@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <Unirgy_DropshipSplit>
+            <usimpleup>
+                <remote>http://download.unirgy.com/simple/client_api/version/</remote>
+                <changelog>http://unirgy.com/support/portal/announcements</changelog>
+            </usimpleup>
+        </Unirgy_DropshipSplit>
+        <carriers>
+            <udsplit>
+                <active>0</active>
+                <model>Unirgy\DropshipSplit\Model\Carrier</model>
+                <title>Drop Shipping (Split)</title>
+                <handling_type>F</handling_type>
+                <free_method>total</free_method>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this
+                    shipping method, please contact us.
+                </specificerrmsg>
+                <hide_vendor_name>0</hide_vendor_name>
+                <sm_hide_amounts>0</sm_hide_amounts>
+                <extco_check>1</extco_check>
+                <extco_dispatch_events>0</extco_dispatch_events>
+                <use_dropship_titles>0</use_dropship_titles>
+            </udsplit>
+        </carriers>
+    </default>
+</config>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+    <vendor>
+        <fields>
+            <minimum_order_amount translate="label note">
+                <label>Minimum Order Amount</label>
+                <fieldset>integration</fieldset>
+                <position>6</position>
+                <note><![CDATA[Leave empty to use global configuration in "configuration > shipping methods > Drop Shipping  > Default minimum vendor order amount"]]></note>
+            </minimum_order_amount>
+            <free_shipping_subtotal translate="label note">
+                <label>Minimum Order Amount for Vendor Specific Free Shipping</label>
+                <fieldset>integration</fieldset>
+                <position>6.5</position>
+                <note><![CDATA[Leave empty to use global configuration in "configuration > shipping methods > Drop Shipping > Default Minimum Order Amount for Vendor Specific Free Shipping"]]></note>
+            </free_shipping_subtotal>
+        </fields>
+    </vendor>
+</config>

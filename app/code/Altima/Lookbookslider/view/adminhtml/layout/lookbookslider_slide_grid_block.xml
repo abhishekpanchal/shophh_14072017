@@ -44,7 +44,7 @@
                             </item>
                         </argument>
                     </arguments>
-                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="slide_id">
+                    <!--<block class="Magento\Backend\Block\Widget\Grid\Column" as="slide_id">
                         <arguments>
                             <argument name="type" xsi:type="string">number</argument>
                             <argument name="id" xsi:type="string">slide_id</argument>
@@ -52,12 +52,11 @@
                             <argument name="index" xsi:type="string">slide_id</argument>
                             <argument name="header_css_class" xsi:type="string">col-id</argument>
                             <argument name="column_css_class" xsi:type="string">col-id</argument>
-                            
                         </arguments>
-                    </block>
+                    </block>-->
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="image">
                         <arguments>
-                            <argument name="header" xsi:type="string" translate="true">Slide Image</argument>
+                            <argument name="header" xsi:type="string" translate="true">Shot Image</argument>
                             <argument name="index" xsi:type="string">image</argument>
                             <argument name="filter" xsi:type="boolean">false</argument>
                             <argument name="sortable" xsi:type="boolean">false</argument>
@@ -74,10 +73,15 @@
                             <argument name="column_css_class" xsi:type="string">col-title</argument>
                         </arguments>
                     </block>
-                 
+                    <block class="Magento\Backend\Block\Widget\Grid\Column" as="caption">
+                        <arguments>
+                            <argument name="header" xsi:type="string" translate="true">Description</argument>
+                            <argument name="index" xsi:type="string">caption</argument>
+                        </arguments>
+                    </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" as="position">
                         <arguments>
-                            <argument name="header" xsi:type="string" translate="true">Order</argument>
+                            <argument name="header" xsi:type="string" translate="true">Sort Order</argument>
                             <argument name="index" xsi:type="string">position</argument>
                         </arguments>
                     </block>
@@ -96,7 +100,7 @@
                             <argument name="actions" xsi:type="array">
                                 <item name="view_action" xsi:type="array">
                                     <item name="caption" xsi:type="string" translate="true">
-                                        Edit Slide
+                                        Edit Shot
                                     </item>
                                     <item name="url" xsi:type="array">
                                         <item name="base" xsi:type="string">*/*/edit</item>

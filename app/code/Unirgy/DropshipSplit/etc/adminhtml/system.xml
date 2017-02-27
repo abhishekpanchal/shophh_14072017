@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="udsplit" translate="label" sortOrder="110" type="text" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Drop Shipping (Split Rates)</label>
+                <field id="active" translate="label" sortOrder="10" type="select" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="handling_type" translate="label" sortOrder="60" type="select" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Calculate Handling Fee</label>
+                    <source_model>Magento\Shipping\Model\Source\Handlingtype</source_model>
+                </field>
+                <field id="handling_fee" translate="label" sortOrder="61" type="text" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Handling Fee</label>
+                </field>
+                <field id="sallowspecific" translate="label" sortOrder="70" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Ship to applicable countries</label>
+                    <frontend_class>shipping-applicable-country</frontend_class>
+                    <source_model>Magento\Shipping\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" translate="label" sortOrder="71" type="multiselect" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Ship to Specific countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field>
+                <field id="showmethod" translate="label" sortOrder="72" type="select" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Show Method if Not Applicable</label>
+                    <frontend_class>shipping-skip-hide</frontend_class>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="specificerrmsg" translate="label" sortOrder="73" type="textarea" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Displayed Error Message</label>
+                </field>
+                <field id="sort_order" translate="label" sortOrder="100" type="text" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Sort order</label>
+                </field>
+                <field id="hide_vendor_name" translate="label" sortOrder="150" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Hide vendor names on checkout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="sm_hide_amounts" translate="label" sortOrder="160" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Hide items amounts and subtotal on shipping method page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="extco_check" translate="label" sortOrder="170" type="select" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Check for external checkout usage</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="extco_dispatch_events" translate="label comment" sortOrder="180" type="select"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dispatch external checkout check events</label>
+                    <comment>'Yes' will dispatch events that should do extra check of external checkout usage. &lt;br&gt;
+                        Events: udsplit_check_is_external_checkout, udsplit_check_is_paypal_express,
+                        udsplit_check_is_google_checkout
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

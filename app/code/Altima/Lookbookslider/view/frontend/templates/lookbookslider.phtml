@@ -1,35 +1,32 @@
-<?php
-//$helper = $this->helper('Altima\Lookbookslider\Helper\Data');
-//if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
-?>
-<?php //echo $block->getChildHtml(); ?>
-<div style="clear:both; height:10px;"></div>
-<?php //endif; ?>
 <?php $helper = $this->helper('Altima\Lookbookslider\Helper\Data'); ?>
 <?php $sliderCollection = $this->getCollection('content-top'); ?>
-<?php 
+<?php
 	foreach($sliderCollection as $slider):
 		$sliderId = $slider->getSliderId();
 		break;
- 	endforeach; 
+ 	endforeach;
 ?>
-<?php 
-$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
-$shotCollection =  $blockObj->getShotCollection($sliderId);
+<?php
+	$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+	$shotCollection =  $blockObj->getShotCollection($sliderId);
 ?>
+
+<h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+
+<div class="row no-gutters">
 <?php foreach($shotCollection as $shot): ?>
-	<?php $slideId = $shot->getSlideId(); ?> 
-	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'600','250'); ?>
-	<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
-		<img src=<?php echo $imagePath; ?> />
-		<span class="title"><?php echo $shot->getTitle(); ?></span>
-	</a>
+	<?php $slideId = $shot->getSlideId(); ?>
+	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
+	<div class="col-md-3 col-sm-6 col-xs-6">
+		<div class="shot-thumb">
+			<a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
+				<img src="<?php echo $imagePath; ?>" />
+				<div class="shot-thumb-meta">
+					<h4><span>Shop</span></h4>
+					<span class="title green"><?php echo $shot->getTitle(); ?></span>
+				</div>
+			</a>
+		</div>
+	</div>
 <?php endforeach; ?>
-
-
-<?php 
-echo "<pre>";
-//print_r($abc->getData());
-print_r($shotCollection->getData());
-echo "</pre>";
- ?>
+</div>

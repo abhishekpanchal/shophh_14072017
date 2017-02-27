@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="udropship_adminhtml_vendor_edit_prepare_form">
+        <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipAdminhtmlVendorEditPrepareForm"/>
+    </event>
+    <event name="udropship_adminhtml_vendor_grid_prepare_columns">
+        <observer name="udtax" instance="Unirgy\DropshipVendorTax\Observer\UdropshipAdminhtmlVendorGridPrepareColumns"/>
+    </event>
+    <event name="udropship_adminhtml_vendor_grid_prepare_massaction">
+        <observer name="udtax"
+                  instance="Unirgy\DropshipVendorTax\Observer\UdropshipAdminhtmlVendorGridPrepareMassaction"/>
+    </event>
+</config>

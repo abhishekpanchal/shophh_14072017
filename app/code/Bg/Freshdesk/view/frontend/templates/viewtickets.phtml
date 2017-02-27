@@ -1,0 +1,145 @@
+<?php 
+if($block->checkcustomerticket()):
+
+
+$st=$block->getfdstatus();
+
+$allpriority=$st['priority'];
+$allstatus=$st['status'];
+
+$allagent = $block->getAvailableAgent();
+
+$ticketid=$block->getTicketid();
+
+$td = $block->getTicketDetails();
+
+$ticketdetails=$td['output'];
+
+$name= $block->getCustomerName();
+
+$cid=$block->getCustomerId();
+
+$createticketurl=$block->getcreateurl();
+$replyurl=$block->getreplyticketurl();
+$myticketurl=$block->getmyticketurl();
+?>
+
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <span data-ui-id="page-title-wrapper" class="base">Ticket # <?php  echo $ticketid; ?></span>    </h1>
+    
+<span class="order-status"><?php echo $allstatus[$ticketdetails['status']]; ?></span>
+
+<div class="order-date">
+    <span class="label">Create Date:</span> <date><?php echo date('M d, Y',strtotime($block->datetimeconvert($ticketdetails['created_at']))); ?></date></div>
+<div class="actions-toolbar order-actions-toolbar"><div class="actions">
+                
+<button onclick="location.href='#ticket_reply_message'" class="button btn-create-ticket" title="Reply" type="button">
+                <span><span>Reply</span></span>
+            </button>
+
+<button onclick="location.href='<?php echo $createticketurl; ?>'" class="button btn-create-ticket" title="Create a New Ticket" type="button">
+                <span><span>Create a New Ticket</span></span>
+            </button>
+
+
+    </div>
+</div></div>
+
+
+<ul class="items order-links"><li class="nav item current"><strong>Ticket Information</strong></li></ul>
+
+<div class="order-details-items ordered">
+    
+    <div class="order-title">
+        <strong>Ticket Information</strong>
+            </div>
+
+<div class="table-wrapper order-items">
+<h3><?php echo $ticketdetails['subject']; ?></h3>
+
+<b><?php echo $name; ?></b>
+<span style="font-size:10px">Reported
+<?php 
+echo date('M d, Y h:i a',strtotime($block->datetimeconvert($ticketdetails['created_at'])));
+?>
+</span>
+
+<div style="padding:10px 10px";>
+<?php echo $ticketdetails['description']; ?>
+</div>
+<hr>
+
+<?php 
+foreach($ticketdetails['conversations'] as $cv){
+if($cv['private']==''){
+?>
+<b><?php if(array_key_exists($cv['user_id'],$allagent)){ echo $allagent[$cv['user_id']]; }else{ echo $name; }
+ ?>
+</b>
+<span style="font-size:10px">Replied
+<?php 
+echo date('M d, Y h:i a',strtotime($block->datetimeconvert($cv['created_at'])));
+?>
+</span>
+
+<div style="padding:10px 10px";>
+<?php echo $cv['body']; ?>
+</div>
+<hr>
+<?php
+}
+}
+?>
+
+
+
+   
+</div>
+
+
+<div>
+        <form id="ticket-validate-detail" method="post" action="<?php  echo $replyurl; ?>" class="form">
+            <div class="field">
+                <label for="ticket_reply_message" class="label"><span>Reply Message:</span></label>
+                <div class="control">
+                    <input type="text" required="" placeholder="Click here to reply to this ticket" id="ticket_reply_message" name="ticket_reply_message">
+<input type="hidden" name="ticketid" value="<?php echo $ticketid; ?>">
+<input type="hidden" name="userid" value="<?php echo $cid; ?>">
+                </div>
+            </div>
+            <div class="actions">
+                <button type="submit" title="Subscribe" class="action primary">
+                    <span>Send</span>
+                </button>
+            </div>
+        </form>
+
+ 	
+
+
+    
+   
+        
+    </div>
+</div>
+
+<div class="actions-toolbar">
+	<div class="buttons-set row">
+        <p class="back-link">
+            <a href="<?php echo $myticketurl; ?>">
+                <small>« </small>Back to My Tickets            </a>
+        </p>
+    	</div>
+
+    	</div>
+
+
+
+
+
+<?php 
+endif;
+?>
+
+

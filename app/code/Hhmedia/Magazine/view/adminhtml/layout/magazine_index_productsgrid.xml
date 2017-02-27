@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root" label="Root">
+        <block class="Hhmedia\Magazine\Block\Adminhtml\Magazine\Edit\Tab\Products" name="magazine.edit.tab.products"/>
+    </container>
+</layout>

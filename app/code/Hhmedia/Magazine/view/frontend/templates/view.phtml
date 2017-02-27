@@ -1,0 +1,30 @@
+<?php
+/**
+ * Magazine template for separate item
+ *
+ */
+
+/**
+ * @var $this Hhmedia\Magazine\Block\View
+ * @see Hhmedia\Magazine\Block\View
+ */
+?>
+<?php $_magazineItem = $this->getMagazine(); ?>
+    <div class="magazine_item_subtitle">
+        <?php echo $this->formatDate($_magazineItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_magazineItem->getAuthor()) ?>
+    </div>
+
+<div class="magazine_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_magazineItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_magazineItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="magazine_item_content"><?php echo $_magazineItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "name": "bg/freshdesk",
+  "description": "Freshdesk Magento2 extension",
+  "keywords": ["magento2", "freshdesk", "customer support","helpdesk"],
+  "type": "magento2-module",
+  "version": "1.0.2",
+  "authors": [
+    {
+      "name": "Brokenglass Designs",
+      "email": "magento@brokenglass.in",
+      "homepage": "http://www.brokenglass.in/"
+    },
+    {
+      "name": "Freshdesk",
+      "email": "integration@freshdesk.com",
+      "homepage": "https://www.freshdesk.com/"
+    }
+  ],
+ "support": {
+        "email": "integration@freshdesk.com",
+        "forum": "https://support.freshdesk.com/"
+    },
+  "require": {
+    "php": "~5.5.0|~5.6.0|~7.0.0"
+  },
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "Bg\\Freshdesk\\": ""
+    }
+  }
+}

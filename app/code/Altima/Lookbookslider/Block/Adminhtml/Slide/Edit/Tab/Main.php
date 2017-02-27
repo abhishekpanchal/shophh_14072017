@@ -58,7 +58,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         $form->setHtmlIdPrefix('slide_');
 
         $fieldset = $form->addFieldset('base_fieldset', [
-            'legend' => __('Slide Information'),
+            'legend' => __('Shot Information'),
             'class'  => 'fieldset-wide'
                 ]
         );
@@ -70,49 +70,89 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         }
 
         $fieldset->addField(
-                'title', 'text', [
+            'title', 'text', [
             'name'     => 'slide[title]',
-            'label'    => __('Slide Title'),
-            'title'    => __('Slide Title'),
+            'label'    => __('Shot Title'),
+            'title'    => __('Shot Title'),
             'required' => true,
             'disabled' => $isElementDisabled
-                ]
+            ]
         );
 
         $fieldset->addField(
-                'slider_id', 'hidden', [
+            'slider_id', 'hidden', [
             'name' => 'slide[slider_id]',
                 ]
         );
         $fieldset->addField(
-                'caption', 'textarea', [
-            'label'    => __('Caption'),
+            'caption', 'textarea', [
+            'label'    => __('Description'),
             'name'     => 'slide[caption]',
-            'required' => false
+            'required' => true,
                 ]
         );
         $fieldset->addField('position', 'text', [
-            'label'    => __('Order'),
+            'label'    => __('Sort Order'),
             'required' => false,
             'name'     => 'slide[position]',
                 ]
         );
-        $fieldset->addField('link', 'text', [
+
+        /*$fieldset->addField('link', 'text', [
             'label'    => __('Link'),
             'required' => false,
             'name'     => 'slide[link]',
                 ]
+        );*/
+
+        $fieldset->addField('sharetwitter', 'text', [
+            'label'    => __('Share Copy (Twitter)'),
+            'required' => false,
+            'name'     => 'slide[sharetwitter]',
+                ]
         );
+
+        $fieldset->addField('shareother', 'text', [
+            'label'    => __('Share Copy (Others)'),
+            'required' => false,
+            'name'     => 'slide[shareother]',
+                ]
+        );
+
         $fieldset->addField(
                 'is_active', 'select', [
             'label'    => __('Status'),
-            'title'    => __('Slide Status'),
+            'title'    => __('Shot Status'),
             'name'     => 'slide[is_active]',
             'required' => true,
             'options'  => $model->getAvailableStatuses(),
             'disabled' => $isElementDisabled
                 ]
         );
+
+    $fieldset->addField(
+        'bg_image',
+        'image',
+        [
+            'name'        => 'bg_image',
+            'label'       => __('Background Image'),
+            'title'       => __('Background Image'),
+        ]
+    );
+
+    $fieldset->addField(
+            'display_home', 
+            'select', 
+            [
+                'label'    => __('Display on Home'),
+                'title'    => __('Display on Home'),
+                'name'     => 'display_home',
+                'required' => true,
+                'options'  => $model->getDisplayHome(),
+                'disabled' => $isElementDisabled
+            ]
+        );
+
 
         $field_hotspots    = $fieldset->addField(
                 'hotspots', 'hidden', [
@@ -158,11 +198,11 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     }
 
     public function getTabLabel() {
-        return __('Slide Information');
+        return __('Shot Information');
     }
 
     public function getTabTitle() {
-        return __('Slide Information');
+        return __('Shot Information');
     }
 
     public function canShowTab() {

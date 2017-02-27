@@ -46,10 +46,14 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         ?>
         <link rel="stylesheet" type="text/css" href="<?php echo $blockObj->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
 
+
+<div class="row no-gutters lookbook-container vcenter-flex marginbottom-40">
+<div class="col-md-8 col-lg-9 col-sm-12 col-xs-12">
+
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
                 <div class="content-before"><?php echo $contentBefore; ?></div>
-            <?php endif; ?>    
+            <?php endif; ?>
             <div id="lookbookslider_container_<?php echo $slider->getId() ?>"  class="lookbookslider-container">
                 <div class="cycle-slideshow1" id="lookbookslider_<?php echo $slider->getId() ?>"
                      data-cycle-center-horz="true"
@@ -57,21 +61,17 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                      data-cycle-slides="> div.slide"
                      data-cycle-auto-height="container"
                      data-cycle-log="false"
-                     
                      <?php
-                     /*                      * ** effect options ********* */
-
+                     /** ** effect options ********* */
                      if ($effect_opt) {
                          echo $effect_opt;
                      }
                      if ($effect_arr === FALSE):
-                         ?>
+                    ?>
                          data-cycle-fx="<?php echo $effect; ?>"
                      <?php
                      endif;
-
-
-                     /*                      * ***** end effect options ******** */
+                     /** ***** end effect options ******** */
                      ?>
                      <?php
                      if (count($slideCollection) > 1):
@@ -144,31 +144,15 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                                      }
                                      ?>
                                 <a href="<?php echo $link; ?>">
-            <?php endif; ?>                    
+            <?php endif; ?>
+    
+                                <img alt="Slide <?php echo $slide->getId(); ?>" class="shoptheshot-img" src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
 
-                                <img alt="Slide <?php echo $slide->getId(); ?>"  src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
-
-                                    <?php if ($slide->getCaption() != '' && $slider->getShowslidenames() == 1) : ?>
-                                    <div class="cycle-overlay">
-                                    <?php echo $slide->getCaption(); ?>
-                                    </div>
-                                <?php endif; ?>
+                                    
 
                             <?php if ($slide->getLink()): ?>
                                 </a>
                             <?php endif; ?>
-            <?php if ($helper->canShowPinitButton()): ?>
-                               
-                                <div class="pinit_button">
-                                    <a target="_blank" href="//www.pinterest.com/pin/create/button/?url=<?php echo $currentUrl . '?slide=' . $slide_ind ?>&media=<?php echo $blockObj->getSlideImageUrl($slide); ?>"
-                                       data-pin-do="buttonPin" 
-                                       data-pin-config="above" >
-                                        <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
-                                    </a>
-                                </div>
-
-            <?php endif; ?>
-
                         </div>
                         <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
                         <?php $slide_ind++; ?>
@@ -177,6 +161,11 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                     <div id="progress"></div>
                 </div>
 
+                <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58939f9f70524f36"></script> 
+                <div class="addthis_inline_share_toolbox" data-url="http://www.google.com" data-title="Shop The Shot" data-media="http://hhshop.hhmedia.com:8888/shophh/pub/media/lookbookslider/600X250/bedroom.jpeg">
+                </div>
+                
                 <?php if ($thumbnails && $thumb): ?>
                     <?php $count_pager = 5; ?>
                     <?php
@@ -208,13 +197,82 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                         </ul>
                     </div>
         <?php endif; ?>
-                
 
-            </div>    
+            </div>
             <?php if ($contentAfter): ?>
                 <div class="content-after"><?php echo $contentAfter; ?></div>
-        <?php endif; ?>    
+        <?php endif; ?>
         </div>
+
+
+</div>
+
+
+
+<?php foreach ($slideCollection as $slide): ?>
+    <?php if($slide->getId() == $slideId): ?>
+        <div class="col-md-4 col-lg-3 col-sm-12 col-xs-12 hotspot-placeholder vcenter" style="background:url(<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$slide->getBgImage() ?>);">
+            <div class="hotspot-details vcenter">
+                <div class="hotspot-default visible">
+                    <h1><?php echo $slide->getTitle(); ?></h1>
+                    <p><?php echo $slide->getCaption(); ?></p>
+                    <ul class="social">
+                        <li><a href="https://houseandhome.com/twitter" target="_blank"><i class="icon ion-social-twitter"></i></a></li>
+                        <li><a href="https://houseandhome.com/facebook" target="_blank"><i class="icon ion-social-facebook"></i></a></li>
+                        <li><a href="https://houseandhome.com/instagram" target="_blank"><i class="icon ion-social-instagram"></i></a></li>
+                        <li><a href="https://houseandhome.com/pinterest" target="_blank"><i class="icon ion-social-pinterest"></i></a></li>
+                    </ul>
+                    <a href="#" class="btn-fullscreen">View Full Screen</a>
+                </div>
+                <div class="hotspot-details-placeholder hidden"></div>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endforeach ?>
+
+
+
+</div>
+
+        <div class="container">
+            <div class="shot-products row">
+                <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
+                <?php foreach ($slideCollection as $slide): ?>
+                    <?php if($slide->getId() == $slideId): ?>
+                        <?php $products = $blockObj->getProductCollection($slide); ?>
+                        <?php foreach($products as $_product): ?>
+                            <div class="col-md-3">
+                                <?php echo $_product['text']; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+
+        <div class="more-shots row no-gutters">
+            <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
+            <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+            <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
+            <?php foreach($shotCollection as $shot): ?>
+                <?php if($slideId != $shot->getSlideId()): ?> 
+                    <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
+                    <div class="col-md-3">
+                        <div class="shot-thumb">
+                            <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$shot->getSlideId(); ?>">
+                                <img src="<?php echo $imagePath; ?>" />
+                                <div class="shot-thumb-meta">
+                                    <h4><span>Shop</span></h4>
+                                    <span class="title green"><?php echo $shot->getTitle(); ?></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </div>
+
+
 
         <script type="text/javascript">
 
@@ -278,7 +336,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         var hops = opts.nextSlide - opts.currSlide;
         var vert = opts.carouselVertical;
         var speed = opts.speed;
-	var offset = 2; //Number of slides to offset
+        var offset = 2; //Number of slides to offset
         if ( opts.allowWrap === false ) {
         fwd = hops > 0;
         var currSlide = opts._currSlide;
@@ -352,9 +410,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
             speed = (moveBy / $(opts.slides[0])[vert ? 'height' : 'width']() ) * opts.speed;
 
         opts._carouselWrap.animate( props, speed, opts.easing, callback );
-    }            
-                        
-                        
+    }
                     });
 
 

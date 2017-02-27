@@ -1,0 +1,83 @@
+<?php
+
+if($block->checkcustomerticket()):
+
+$st=$block->getfdstatus();
+
+$allpriority=$st['priority'];
+$allstatus=$st['status'];
+
+$allagent = $block->getAvailableAgent();
+
+
+$domain=$block->getdomain();
+
+$createticketurl=$block->getcreateurl();
+$orderst=$block->checkfdorderid();
+
+ ?>
+<div class="container">
+
+<div class="actions">
+ 
+<button onclick="location.href='<?php echo $createticketurl; ?>'" class="button btn-create-ticket" title="Create a New Ticket" type="button">
+                <span><span>Create a New Ticket</span></span>
+            </button>
+
+</div>
+
+
+    <div class="row">
+        <table id="ticketGrid_table" class="data table">
+            <thead>
+                <tr>
+ <th class="col">Subject</th>
+                    <th class="col">Ticket #</th>
+                   
+                    <th class="col">Date Created</th>                    
+ 		    <th class="col">Status</th>
+                    <th class="col">Agent</th>
+<?php if($orderst): ?>
+                    <th class="col">Order ID</th>
+<?php endif; ?> 
+                    <th class="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
+$tickets=$block->getTickets();
+if(count($tickets)==0){
+?>
+<tr>
+<td colspan="7" align="center"><b>No Tickets</b></td>
+</tr>
+<?php
+}
+else{
+foreach ($tickets as $k=>$ticket): ?>
+            <tr>
+<td><?php echo $ticket['subject']; ?></td>
+                <td><?php echo $k ?></td>
+                
+                <td><?php echo date('Y-m-d H:i:s',strtotime($ticket['created_at'])) ?></td>
+<td><?php echo $allstatus[$ticket['status']] ?></td>
+<td><?php if(array_key_exists($ticket['responder_id'],$allagent)){ echo $allagent[$ticket['responder_id']]; }else{ echo "No Agent"; } ?></td>
+<?php if($orderst): ?>
+<td><a href="<?php echo $ticket['orderurl'] ?>"><?php echo $ticket['order_id'] ?></a></td>
+<?php endif; ?>
+                <td>
+<a href="<?php echo $ticket['url'] ?>"><?php echo "View" ?></a>
+</td>
+            </tr>
+            <?php endforeach;
+}   ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php
+endif;
+?>
+
+

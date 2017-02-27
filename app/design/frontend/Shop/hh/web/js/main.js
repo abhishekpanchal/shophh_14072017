@@ -8,22 +8,63 @@ require(['jquery', 'jquery.bootstrap'], function($){
     $('.level2.active').parent().addClass('display-block');
 
     if ($('body').hasClass('faqs-index-index')) {
-    	$('.faq-sidebar li.faq').addClass('active-sidebar');
+      $('.faq-sidebar li.faq').addClass('active-sidebar');
+      $('.shop-menu').addClass('active-menu');
     }
     else if ($('body').hasClass('contact-index-index')) {
-    	$('.faq-sidebar li.contact').addClass('active-sidebar');
+      $('.faq-sidebar li.contact').addClass('active-sidebar');
     }
     else if ($('body').hasClass('cms-privacy-policy')) {
-    	$('.faq-sidebar li.privacy').addClass('active-sidebar');
+      $('.faq-sidebar li.privacy').addClass('active-sidebar');
     }
     else if ($('body').hasClass('cms-terms-conditions')) {
-    	$('.faq-sidebar li.terms').addClass('active-sidebar');
+      $('.faq-sidebar li.terms').addClass('active-sidebar');
     }
     else if ($('body').hasClass('cms-shipping-information')) {
-        $('.faq-sidebar li.shipping').addClass('active-sidebar');
+      $('.faq-sidebar li.shipping').addClass('active-sidebar');
     }
     else if ($('body').hasClass('cms-returns')) {
-        $('.faq-sidebar li.returns').addClass('active-sidebar');
+      $('.faq-sidebar li.returns').addClass('active-sidebar');
     }
   });
+
+  jQuery(document).ready(function () {
+    jQuery(document).on('click', '.hotspot', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      var el = jQuery(this);
+
+      var hotspotDesc = $(el).find( ".product-info" ).html();
+      var defaultHotspotIcon = $(el).children('i');
+
+      if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
+        if ($('.ion-android-close').hasClass('hotspot-active')) {
+          $('.ion-android-close').removeClass().addClass('ion-android-search hotspot-inactive');
+        }
+
+        $('.hotspot-details-placeholder').empty().removeClass('hidden').addClass('visible');
+        $('.hotspot-details-placeholder').html(hotspotDesc);
+        $('.hotspot-default').removeClass('visible').addClass('hidden');
+        $(defaultHotspotIcon).removeClass().addClass('ion-android-close hotspot-active');
+        console.log('a');
+      } else if($(defaultHotspotIcon).hasClass('ion-android-close hotspot-active')) {
+        $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
+        $('.hotspot-default').removeClass('hidden').addClass('visible');
+        $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
+        console.log('b');
+      }
+
+    });
+  });
+
+  $(window).scroll(function() {
+    "use strict";
+    var scroll = $(window).scrollTop();
+    if (scroll >= 180) {
+      $(".main-nav").addClass("fixed-navbar");
+    } else {
+      $(".main-nav").removeClass("fixed-navbar");
+    }
+  });
+
 });
