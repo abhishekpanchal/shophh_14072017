@@ -1,6 +1,16 @@
-<?php 
-$helper = $this->helper('Hhmedia\Topbar\Helper\Data');
-if($helper->getEnabled() == 1):
-	echo $helper->getText();
-endif;
+<?php
+	$helper = $this->helper('Hhmedia\Topbar\Helper\Data');
+	$bgColor = $helper->getBgcolor();
 ?>
+<?php if($helper->getEnabled() == 1): ?>
+	<div style="background: <?php echo $bgColor ?>">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<?php echo $helper->getText(); ?>
+				</div>
+			</div>
+		</div>
+		<a class="close-topbar" href="#"><i class="ion-android-close"></i></a>
+	</div>
+<?php endif; ?>
