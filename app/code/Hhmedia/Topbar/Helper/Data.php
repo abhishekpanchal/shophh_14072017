@@ -23,4 +23,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper {
         $text = $this->_scopeConfig->getValue('topbar/info/text', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
         return $text;
     }
+    public function getBgcolor()
+    {
+        $text = $this->_scopeConfig->getValue('topbar/info/bgcolor', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+        return $text;
+    }
 }
