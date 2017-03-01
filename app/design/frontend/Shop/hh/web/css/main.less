@@ -374,7 +374,6 @@ Product Description
 .product-item-name, .product.name a {
   font-family: @headlineFont;
   font-weight: 700;
-  text-transform: uppercase;
   font-size: 16px;
 }
 
@@ -914,10 +913,7 @@ Quick View
   height: 35px;
   width: 35px!important;
   display: block;
-  border-radius: 50%;
-  background-color: #FFF;
   color: #000;
-  right: -40px!important;
   line-height: 35px;
 }
 
@@ -4170,7 +4166,6 @@ Header
 
 .header-topbar {
   text-align: center;
-  margin-bottom: 10px;
 
   p {
     margin-bottom: 0;
@@ -4201,6 +4196,7 @@ Header Top Right
 ========================================================================== */
 .header-top-right {
   font-size: 12px;
+  margin-top: 10px;
   text-transform: uppercase;
   text-align: right;
 
@@ -4221,6 +4217,10 @@ Header Top Right
 /* ==========================================================================
 Header Top Left
 ========================================================================== */
+.header-top-left {
+  margin-top: 10px;
+}
+
 .header-top-left-link {
   font-size: 12px;
   line-height: 16px;
@@ -4264,7 +4264,7 @@ Shot Thumbs
     font-family: @dietDidot;
     font-size: 28px;
     font-style: italic;
-    margin-top: 35%;
+    margin-top: 42%;
 
     span {
       background-color: #FFF;
@@ -4705,7 +4705,15 @@ Awe Menu
   a {
     padding-right: 10px!important;
     padding-left: 10px!important;
+
+    i {
+      float: right;
+      margin-left: 5px;
+      margin-top: 3px;
+    }
   }
+
+
 }
 
 #awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-item {
@@ -5272,6 +5280,7 @@ Select
   border-bottom: 1px solid #000;
   text-align: left;
   position: relative;
+  font-family: @headlineFont;
 
   &:after {
     content: "\f104";
@@ -5307,7 +5316,6 @@ Select
       box-shadow: none;
     }
   }
-
   select {
     appearance: none;
     -webkit-appearance: none;
@@ -5334,6 +5342,25 @@ Catalog View
 .catalog-category-view {
   .main-nav {
     margin-bottom: 0;
+  }
+  .filters {
+    display: none;
+  }
+  .sorter {
+    padding: 0;
+    margin: 0;
+  }
+  .toolbar-products {
+    .main-pagination {
+      display: none;
+    }
+  }
+  .products-grid {
+    .toolbar-products {
+      .main-pagination {
+        display: block;
+      }
+    }
   }
   .product-item-info {
     position: relative;
@@ -5370,6 +5397,7 @@ Catalog View
     .old-price {
       display: inline-block;
       margin-left: 5px;
+      text-decoration: line-through;
     }
   }
   .quickview-bar {
@@ -5384,7 +5412,7 @@ Catalog View
     display: block;
     width: 100%;
     position: absolute;
-    top: 65%;
+    top: 220px;
     transition: 1s all;
     opacity: 0;
   }
@@ -5409,3 +5437,16 @@ Catalog View
   }
 }
 
+
+/* ==========================================================================
+Limiter
+========================================================================== */
+.limiter-container {
+  max-width: 105px;
+  float: right;
+  margin-left: 60px;
+}
+.limiter-option {
+  width: 40%!important;
+  padding-left: 0;
+}

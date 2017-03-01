@@ -83,7 +83,7 @@
                     <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
                        <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                        <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
-                       <p class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></p>
+                       <div class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></div>
                         <?php foreach($formulaProduct as $fPro): ?>
                             <div class="decorating-formula-product col-md-4">
                             <?php $proFormula = $objFormula->getProductById($fPro); ?>
@@ -232,7 +232,7 @@
 <!-- Shop MORE Shots Start -->
 <div class="more-shots row no-gutters">
     <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
-    <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+    <h4 class="subtitle"><?php echo __('Inspiration for every room in the house') ?></h4>
     <?php $j=0; ?>
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
