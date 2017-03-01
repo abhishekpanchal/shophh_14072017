@@ -28,7 +28,7 @@
                             <div class="col-md-8 col-sm-12 col-xs-12 homepage-hero">
                                 <img src="<?php echo $imagePath ?>" />
                             </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$shot->getBgImage() ?>);">
+                            <div class="col-md-4 col-sm-12 col-xs-12 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
                                 <div class="homepage-hero-details">
                                 <div class="hero-details-inner">
                                     <h3 class="hero-details-title"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h3>
@@ -81,9 +81,10 @@
                 <div class="item <?php if($iterator2 == 1) echo 'active'; ?>">
             	   <?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
                     <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
-                       <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
-                       <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
-                       <p class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></p>
+                        <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
+                        <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
+                        <p class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></p>
+                        <?php $d = 1; ?>
                         <?php foreach($formulaProduct as $fPro): ?>
                             <div class="decorating-formula-product col-md-4">
                             <?php $proFormula = $objFormula->getProductById($fPro); ?>
@@ -101,6 +102,7 @@
                                 <?php echo $formattedPrice = $priceHelper->currency($price, true, false); ?>
                             </h4>
                             </div>
+                             <?php $d++; if($d==3){ break; } ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -136,7 +138,7 @@
                 <?php foreach ($_editor as $editorItem): ?>
                     <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
                         <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
-                        <?php $i++; if($i == 3){break;} ?>
+                        <?php $i++; if($i == 4){break;} ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -199,6 +201,7 @@
                                 <h3 class="issue-title"><?php echo $name; ?></h3>
                                 <div class="issue-desc"><?php echo $magazineItem->getContent() ?></div>
                                 <ul class="issues-thumb-list row">
+                                <?php $m = 1; ?>
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
@@ -207,6 +210,7 @@
                                             <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
                                         </a>
                                     </li>
+                                     <?php $m++; if($m==10){ break; } ?>
                                 <?php endforeach; ?>
                                 </ul>
                             </div>
@@ -233,7 +237,7 @@
 <div class="more-shots row no-gutters">
     <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
     <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
-    <?php $j=0; ?>
+    <?php $j=1; ?>
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
         <?php $slideId = $shot->getSlideId(); ?>
@@ -248,7 +252,7 @@
                 </a>
             </div>
         </div>
-        <?php $j++; if($j==7){ break; } ?>
+        <?php $j++; if($j==8){ break; } ?>
     <?php endforeach; ?>
 </div>
 <!-- Shop MORE Shots End -->

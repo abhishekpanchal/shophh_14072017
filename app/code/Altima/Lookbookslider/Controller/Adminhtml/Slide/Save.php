@@ -31,6 +31,10 @@ class Save extends \Altima\Lookbookslider\Controller\Adminhtml\Slide {
 		
     	$bgImage = $this->getRequest()->getFiles('bg_image');
         $fileName = ($bgImage && array_key_exists('name', $bgImage)) ? $bgImage['name'] : null;
+
+        $color = $this->getRequest()->getParam('color');
+        $model->setColor($color);
+        
         if ($bgImage && $fileName) {
             try {
                 /** @var \Magento\Framework\ObjectManagerInterface $uploader */

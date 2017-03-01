@@ -145,7 +145,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'short_quote',
                 'label' => __('Short Quote for Home'),
                 'title' => __('Short Quote for Home'),
-                'required' => true,
                 'disabled' => $isElementDisabled
             ]
         );
