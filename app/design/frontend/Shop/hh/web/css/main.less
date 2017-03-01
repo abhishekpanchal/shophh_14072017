@@ -95,9 +95,22 @@ h4 {
 }
 
 select {
-   -webkit-appearance: menulist;
+ -webkit-appearance: menulist;
 }
-select::-ms-expand { display: block; }
+select::-ms-expand {
+  display: block;
+}
+
+textarea:focus, input:focus, select:focus,
+textarea, input, select {
+  outline: none;
+  outline: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
 
 /* ==========================================================================
 Forms
@@ -348,7 +361,6 @@ Product Description
  ========================================================================== */
 .description {
   p {
-    text-align: justify;
     margin-bottom: 10px;
 
     strong {
@@ -467,6 +479,7 @@ Products
 
 .old-price span.price-wrapper:after {
   content: ')';
+  margin-left: -3px;
 }
 
 /* ==========================================================================
@@ -484,7 +497,6 @@ Products Tabs
 }
 
 .description {
-  text-align: justify;
 }
 
 .product.data.items > .item.title.active > .switch, .product.data.items > .item.title.active > .switch:focus, .product.data.items > .item.title.active > .switch:hover {
@@ -538,7 +550,6 @@ Products Buttons
 .product-item-details {
   .price-container {
     display: block;
-    margin-bottom: 20px;
     padding: 0;
 
     .price {
@@ -1015,8 +1026,6 @@ Quick View
 
 
   .limiter {
-    font-size: 12px;
-    font-family: @headlineFont;
 
     .btn-view-list {
       padding: 0;
@@ -1285,42 +1294,6 @@ Flexbox - Rows
   border: none!important;
 }
 
-.pagination-sm > li > a, .pagination-sm > li > span {
-    font-size: 12px;
-    height: 35px;
-    width: 35px;
-    text-align: center;
-    padding: 0;
-    line-height: 35px;
-    border-radius: 50%;
-    color: #666!important;
-    border: none;
-}
-
-.pagination-sm > li:last-child > a,
-.pagination-sm > li:first-child > a,
-.pagination-sm > li:last-child > span,
-.pagination-sm > li:first-child > span  {
-  border-radius: 50%!important;
-  background-color: #666;
-  border: none;
-}
-
-.pages .action.next:before,
-.pages .action.previous:before {
-  color: #FFF!important;
-  font-size: 25px!important;
-  margin: 0!important;
-}
-
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-  background-color: transparent!important;
-  border-color: none!important;
-  color: #000!important;
-  font-weight: 700!important;
-  font-family: @headlineFont!important;
-}
-
 
 .cms-page-view {
   .main-content {
@@ -1440,11 +1413,6 @@ Flexbox - Rows
   }
 }
 
-.product-item-photo{
-  img {
-    width: 60%!important;
-  }
-}
 
 .new-product {
   text-transform: uppercase;
@@ -1540,9 +1508,6 @@ Flexbox - Rows
   display: none!important;
 }
 
-.product-item-photo {
-  margin-bottom: 20px;
-}
 
 .account-nav .item.current a, .account-nav .item.current strong {
   border-color: transparent;
@@ -2188,14 +2153,6 @@ Checkout
 
 #Overall_rating_label {
   display: none;
-}
-
-.catalog-category-view {
-  .product-item-photo{
-    img {
-      width: 100%!important;
-    }
-  }
 }
 
 .account {
@@ -2928,24 +2885,10 @@ Media Queries
 
   .action.showcart {
     .relative;
-    padding-left: 25px;
-    /*top: 15px;*/
   }
   .action.showcart:before,
   .action.showcart.active:before {
-    content: "\F111";
-    margin: 0;
-    font: normal normal normal 24px/1 "Material Design Icons";
-    font-size: inherit;
-    text-rendering: auto;
-    position: absolute;
-    right: 10px;
-    font-size: 18px;
-    text-align: left;
-    display: block;
-  }
-  .action.showcart.active:before {
-   
+    content: none;
   }
   .action.showcart:before {
     left: 0;
@@ -4204,8 +4147,9 @@ Header
 }
 
 #search_mini_form {
-  width: 100%;
+  width: 70%;
   position: relative;
+  float: right;
 }
 
 .search-input {
@@ -4224,11 +4168,32 @@ Header
 
 }
 
-.top-bar {
-  background-color: #6a2d44;
-  color: #FFF;
-  padding: 10px 0;
+.header-topbar {
+  text-align: center;
   margin-bottom: 10px;
+
+  p {
+    margin-bottom: 0;
+    font-family: @baseFont;
+
+    span {
+      width: 100%;
+      padding: 5px 0;
+      display: block;
+      font-weight: normal;
+      position: relative;
+    }
+  }
+  .close-topbar {
+    position: absolute;
+    right: 20px;
+    top: 5px;
+
+    i {
+      font-size: 20px;
+      color: #FFF;
+    }
+  }
 }
 
 /* ==========================================================================
@@ -4263,9 +4228,6 @@ Header Top Left
   color: #8d8d8d;
 }
 
-
-
-
 /* ==========================================================================
 Layout
 ========================================================================== */
@@ -4282,6 +4244,7 @@ Layout
   margin-top: 15px;
   margin-bottom: 35px;
 }
+
 
 /* ==========================================================================
 Shot Thumbs
@@ -4301,7 +4264,7 @@ Shot Thumbs
     font-family: @dietDidot;
     font-size: 28px;
     font-style: italic;
-    margin-top: 45%;
+    margin-top: 35%;
 
     span {
       background-color: #FFF;
@@ -4764,6 +4727,10 @@ Awe Menu
   min-height: 380px;
 }
 
+.am-html a:hover {
+  text-decoration: underline;
+}
+
 .am-link-text {
   position: relative;
 
@@ -4880,6 +4847,7 @@ Awe Menu
 
 #awemenu .am-tabs .am-tab.shop-menu {
   float: left!important;
+  margin-left: -15px;
 }
 #awemenu .am-tabs .am-tab.inspiration-board {
   float: right!important;
@@ -5256,63 +5224,9 @@ Home Page
   }
 }
 
-
-
-
 /* ==========================================================================
-Catalog View
+Navigation
 ========================================================================== */
-.catalog-category-view {
-  .main-nav {
-    margin-bottom: 0;
-  }
-  .product-item-details {
-    text-align: center;
-    display: block;
-
-    .product-item-link {
-      font-family: @fancyFont;
-      font-size: 16px;
-      font-weight: normal;
-    }
-    .product-item-description {
-      margin: 0;
-
-      p  {
-        text-align: center;
-        margin-bottom: 5px;
-      }
-    }
-    .price {
-      color: #8d8d8d;
-    }
-    .special-price {
-      display: inline-block;
-      color: #b13301;
-    }
-    .old-price {
-      display: inline-block;
-    }
-  }
-  .quickview-bar {
-    border: 1px solid #b0b7b8;
-    font-size: 15px;
-    text-transform: uppercase;
-    font-family: @baseFont;
-    padding: 10px 30px;
-    text-align: center;
-    color: #000;
-    background-color: rgba(255,255,255,0.8);
-    display: block;
-    width: 100%;
-  }
-  .product-item-photo,
-  .product-item-info {
-    width: 100%;
-    display: block;
-  }
-}
-
 .main-nav {
   height: 54px;
 }
@@ -5326,3 +5240,172 @@ Catalog View
   height: 56px;
   background-color: #FFF;
 }
+
+
+
+/* ==========================================================================
+Pagination
+========================================================================== */
+.main-pagination {
+  li {
+    display: inline-block;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  li.active {
+    border-bottom: 1px solid #000;
+    font-weight: bold;
+  }
+}
+
+
+/* ==========================================================================
+Select
+========================================================================== */
+.styled-select {
+  width: 100%;
+}
+
+
+.styled-select {
+  border-bottom: 1px solid #000;
+  text-align: left;
+  position: relative;
+
+  &:after {
+    content: "\f104";
+    font-family: "Ionicons";
+    position: absolute;
+    pointer-events: none;
+    right: 2px;
+    top: 0;
+    z-index: 1;
+  }
+
+  .sort-label {
+    text-transform: uppercase;
+    .relative;
+
+    &:after {
+      content: ':';
+      margin-left: 5px;
+    }
+  }
+
+  .sorter-options {
+    margin: 0;
+    width: 72%;
+    padding: 0;
+    height: auto;
+    color: #959595;
+    padding-left: 10px;
+    border: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    z-index: 1;
+    text-transform: uppercase;
+    background-color: transparent;
+  }
+
+  select::-ms-expand{
+    display: none;
+  }
+
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select {padding-right: 5px}
+}
+
+
+/* ==========================================================================
+Catalog View
+========================================================================== */
+.catalog-category-view {
+  .main-nav {
+    margin-bottom: 0;
+  }
+  .product-item-info {
+    position: relative;
+    overflow-y: hidden;
+  }
+  .product-item-details {
+    text-align: center;
+    display: block;
+
+    .product-item-link {
+      font-family: @fancyFont;
+      font-size: 16px;
+      font-weight: normal;
+    }
+    .product-item-description {
+      margin: 0;
+
+      .new-product {
+        display: inline-block
+      }
+      p  {
+        display: inline;
+        text-align: center;
+        margin-bottom: 5px;
+      }
+    }
+    .price {
+      color: #8d8d8d;
+    }
+    .special-price {
+      display: inline-block;
+      color: #b13301;
+    }
+    .old-price {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+  .quickview-bar {
+    border: 1px solid #b0b7b8;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: @baseFont;
+    padding: 10px 30px;
+    text-align: center;
+    color: #000;
+    background-color: rgba(255,255,255,0.8);
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 65%;
+    transition: 1s all;
+    opacity: 0;
+  }
+  .product-item-photo,
+  .product-item-info {
+    width: 100%;
+    display: block;
+  }
+  .product-item-photo {
+    max-height: 260px;
+    margin-bottom: 20px;
+
+    .image {
+      width: 100%;
+    }
+  }
+  .product-item-info:hover .quickview-bar {
+    opacity: 1;
+  }
+  .price-container {
+    margin-top: 5px;
+  }
+}
+

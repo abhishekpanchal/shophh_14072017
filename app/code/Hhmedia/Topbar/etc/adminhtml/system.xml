@@ -30,12 +30,12 @@
                 	<label>Text Color</label>
                 	<comment><![CDATA[Text Color]]></comment>
                 	<frontend_model>Hhmedia\Topbar\Block\Textcolor</frontend_model>
-            	</field>
+            	</field>-->
             	<field id="bgcolor" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
                 	<label>Background Color</label>
                 	<comment><![CDATA[Background Color]]></comment>
                 	<frontend_model>Hhmedia\Topbar\Block\Bgcolor</frontend_model>
-            	</field>-->
+            	</field>
             </group>
         </section>
     </system>
