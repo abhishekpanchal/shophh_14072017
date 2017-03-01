@@ -6,6 +6,7 @@
         <link src="Altima_Lookbookslider::css/fileuploader.css"/>
         <link src="Altima_Lookbookslider::css/jquery.fileupload.css"/>
         <link src="Altima_Lookbookslider::css/jquery.fileupload-ui.css"/>
+        <css src="jquery/colorpicker/css/colorpicker.css"/>
     </head>
 
     <update handle="editor"/>

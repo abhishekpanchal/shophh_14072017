@@ -79,6 +79,18 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldColor = $fieldset->addField(
+            'color',
+            'text',
+            [
+                'name' => 'color',
+                'label' => __('Title Color'),
+                'title' => __('Title Color')
+            ]
+        );
+        $renderer_color = $this->getLayout()->createBlock('Altima\Lookbookslider\Block\Adminhtml\Color');
+        $fieldColor->setRenderer($renderer_color);
+
         $fieldset->addField(
             'slider_id', 'hidden', [
             'name' => 'slide[slider_id]',
@@ -152,7 +164,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'disabled' => $isElementDisabled
             ]
         );
-
 
         $field_hotspots    = $fieldset->addField(
                 'hotspots', 'hidden', [
