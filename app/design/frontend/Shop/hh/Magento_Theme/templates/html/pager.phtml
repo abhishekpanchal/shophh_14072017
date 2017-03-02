@@ -38,6 +38,8 @@
         <nav class="main-pagination" aria-label="<?php /* @escapeNotVerified */ echo __('Page navigation') ?>">
             <ul class="items pages-items" aria-labelledby="paging-label" style="margin: 0;">
 
+
+             <?php if($block->getFirstNum() != 1): ?>
                 <li class="item pages-item-previous">
                     <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
                     <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'actions ' ?> previous"
@@ -48,6 +50,7 @@
                         <span class="pagination-text">Previous</span>
                     </a>
                 </li>
+            <?php endif; ?>
                 
 
             <?php if ($block->canShowFirst()): ?>
@@ -94,6 +97,7 @@
               </li>
             <?php endif;?>
 
+            <?php if($block->getLastNum() != $block->getTotalNum()): ?>
                 <li class="item pages-item-next">
                     <?php $text = $block->getAnchorTextForNext() ? $block->getAnchorTextForNext() : '';?>
                     <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'actions '?> next"
@@ -104,6 +108,7 @@
                         <span class="pagination-arrow" aria-hidden="true">&gt;</span>
                     </a>
                 </li>
+            <?php endif; ?>
 
             </ul>
         </nav>
