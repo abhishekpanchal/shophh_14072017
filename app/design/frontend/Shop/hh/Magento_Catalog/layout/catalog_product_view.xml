@@ -21,7 +21,7 @@
             <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image" template="product/view/gallery.phtml"/>
           </container>
         </container>
-        <container name="product.details" htmlTag="div" htmlClass="col-lg-7 col-md-7 col-sm-7 col-cs-7"></container>
+        <container name="product.details" htmlTag="div" htmlClass="col-lg-7 col-md-7 col-sm-7"></container>
       </container>
       <container name="product.reviews.row" htmlTag="section" htmlClass="row margin20">
         <container name="product.reviews" htmlTag="div" htmlClass="col-md-12"></container>

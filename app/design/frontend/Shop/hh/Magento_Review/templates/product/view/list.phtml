@@ -28,31 +28,30 @@
         </div>
         <ol class="items review-items row">
         <?php foreach ($_items as $_review):?>
-            <li class="item review-item" itemscope itemprop="review" itemtype="http://schema.org/Review">
-                <div class="review-body col-md-8 col-md-offset-2">
+            <li class="item review-item col-md-4" itemscope itemprop="review" itemtype="http://schema.org/Review">
+                <div class="review-body">
+                    <?php if (count($_review->getRatingVotes())): ?>
+                        <div class="review-ratings">
+                        <?php foreach ($_review->getRatingVotes() as $_vote): ?>
+                        <div class="rating-summary item" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                            <div class="rating-result" title="<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
+                                <meta itemprop="worstRating" content = "1"/>
+                                <meta itemprop="bestRating" content = "100"/>
+                                <span style="width:<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
+                                    <span itemprop="ratingValue"><?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%</span>
+                                </span>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="review-contents" itemprop="description">
+                        <?php echo nl2br($block->escapeHtml($_review->getDetail())) ?>
+                    </div>
                     <div class="review-meta ">
                         <span class="review-author" itemprop="author"><?php echo $block->escapeHtml($_review->getNickname()) ?></span>
                         <span class="review-dash"><?php /* @escapeNotVerified */ echo __('-') ?></span>
                         <time class="review-date" itemprop="datePublished" datetime="<?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?>"><?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?></time>
-
-                        <?php if (count($_review->getRatingVotes())): ?>
-                            <div class="review-ratings pull-right">
-                            <?php foreach ($_review->getRatingVotes() as $_vote): ?>
-                            <div class="rating-summary item" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
-                                <div class="rating-result" title="<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
-                                    <meta itemprop="worstRating" content = "1"/>
-                                    <meta itemprop="bestRating" content = "100"/>
-                                    <span style="width:<?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%">
-                                        <span itemprop="ratingValue"><?php /* @escapeNotVerified */ echo $_vote->getPercent() ?>%</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <?php endforeach; ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-                    <div class="review-content" itemprop="description">
-                        <?php echo nl2br($block->escapeHtml($_review->getDetail())) ?>
                     </div>
                 </div>
             </li>

@@ -67,4 +67,10 @@ require(['jquery', 'jquery.bootstrap'], function($){
     }
   });
 
+  $('.close-topbar').click(function(e) {
+    e.preventDefault();
+    console.log('clicked');
+    $('.header-topbar').fadeOut( "slow" );
+  });
+
 });
