@@ -1451,6 +1451,14 @@ Flexbox - Rows
     font-size: 30px;
     display: block;
     margin: 0 auto;
+
+    span {
+      display: block;
+      font-size: 18px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      font-family: @headlineFont;
+    }
   }
 }
 
@@ -5054,6 +5062,12 @@ Magic Scroll
 .MagicScroll > .mcs-button-arrow {
   border-radius: 50%!important;
   background: #a5a5a5!important;
+  width: 26px!important;
+  height: 26px!important;
+}
+
+.MagicScroll > .mcs-button-arrow:hover {
+  background-color: #000!important;
 }
 
 .MagicScroll-horizontal .mcs-button-arrow-prev:before, .MagicScroll-horizontal .mcs-button-arrow-next:before, .MagicScroll-vertical .mcs-button-arrow-prev:before, .MagicScroll-vertical .mcs-button-arrow-next:before {
@@ -5068,5 +5082,17 @@ Magic Scroll
 }
 
 .mcs-item {
+  border-right: 1px solid #d3d3d3;
+}
+
+.mcs-wrapper {
   border: 1px solid #d3d3d3;
+}
+
+.MagicScroll-horizontal .mcs-button-arrow-next:before{
+  left: 45%!important;
+}
+
+.MagicScroll-horizontal .mcs-button-arrow-prev:before{
+  left: 57%!important;
 }

@@ -10,6 +10,7 @@
     <move element="name.info.product" destination="product.info.main" before="product.info.price"/>
     <move element="product.info.addto" destination="product.info.main" after="product.info" />
     <move element="batch" destination="product.info.main" before="product.info.price" />
+    <move element="share" destination="product.info.main" after="product.info.addto" />
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
@@ -56,6 +57,10 @@
 
     <referenceBlock name="product.info.main">
       <block class="Magento\Catalog\Block\Product\View" name="batch" template="product/view/batch.phtml" />
+    </referenceBlock>
+
+    <referenceBlock name="product.info.main">
+      <block class="Magento\Catalog\Block\Product\View" name="share" template="product/view/share.phtml" />
     </referenceBlock>
 
     <referenceBlock name="product.info.details">
