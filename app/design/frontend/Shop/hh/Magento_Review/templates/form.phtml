@@ -11,7 +11,7 @@
  */
 ?>
 <div class="block review-add row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-3">
         <div class="block-content">
         <?php if ($block->getAllowWriteReviewFlag()): ?>
         <form action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" class="review-form" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
@@ -95,11 +95,15 @@
         }
         </script>
         <?php else: ?>
-            <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
-            <p><?php echo __('You must log in or create an acoount to review this product.') ?></p>
-            <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main"><?php echo __('Login / Sign Up') ?></a>
+            <!-- <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
+            <p><?php echo __('You must log in or create an acoount to review this product.') ?></p> -->
+            <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main"><?php echo __('Write a Review') ?></a>
             <!-- <a href="<?php echo $block->getRegisterUrl() ?>" class="btn btn-main"><?php echo __('Sign Up') ?></a> -->
         <?php endif ?>
         </div>
     </div>
+    <div class="col-md-3 pull-right read-all-reviews text-right">
+        <a href="#" class="btn-reviews display-none">Read all reviews <span></span></a>
+    </div>
+    <div class="clearfix"></div>
 </div>
