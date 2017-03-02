@@ -5,7 +5,6 @@
     <move element="reviews.tab" destination="product.reviews"/>
     <move element="product.info.details" destination="product.info.main" after="product.info.addto"/>
     <move element="product.info.main" destination="product.details"/>
-    <move element="product.info.social" destination="product.info.price" after="-"/>
     <move element="product.name" destination="product.info.main" before="product.info.price"/>
     <move element="name.info.product" destination="product.info.main" before="product.info.price"/>
     <move element="product.info.addto" destination="product.info.main" after="product.info" />
