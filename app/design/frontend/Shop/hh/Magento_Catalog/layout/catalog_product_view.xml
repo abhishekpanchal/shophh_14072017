@@ -3,16 +3,19 @@
   <body>
 
     <move element="reviews.tab" destination="product.reviews"/>
-    <move element="product.info.details" destination="product.info.main" after="product.info"/>
+    <move element="product.info.details" destination="product.info.main" after="product.info.addto"/>
     <move element="product.info.main" destination="product.details"/>
     <move element="product.info.social" destination="product.info.price" after="-"/>
     <move element="product.name" destination="product.info.main" before="product.info.price"/>
     <move element="name.info.product" destination="product.info.main" before="product.info.price"/>
+    <move element="product.info.addto" destination="product.info.main" after="product.info" />
+    <move element="batch" destination="product.info.main" before="product.info.price" />
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
     <referenceBlock name="product.info.review" remove="true"/>
     <referenceBlock name="product.info.name" remove="true" />
+    <referenceBlock name="page.main.title" remove="true" />
 
     <referenceContainer name="content">
       <container name="product.details.row" htmlTag="section" htmlClass="row">
@@ -52,7 +55,7 @@
     </referenceBlock>
 
     <referenceBlock name="product.info.main">
-      <block class="Magento\Catalog\Block\Product\View" name="batch" before="product.info" template="product/view/batch.phtml" />
+      <block class="Magento\Catalog\Block\Product\View" name="batch" template="product/view/batch.phtml" />
     </referenceBlock>
 
     <referenceBlock name="product.info.details">
@@ -63,7 +66,7 @@
       </block>
     </referenceBlock>
 
-    <referenceBlock name="page.main.title">
+  <referenceBlock name="page.main.title">
       <action method="setPageTitle">
         <argument translate="true" name="title" xsi:type="string">Shop</argument>
       </action>

@@ -77,16 +77,16 @@ switch ($type = $block->getType()) {
             $class = $type;
 
             $image = 'upsell_products_list';
-            $title = __('You May Also Like...');
+            $title = __('Our Designers Would Pair This With...');
             $items = $block->getItemCollection()->getItems();
             $limit = $block->getItemLimit('upsell');
             $shuffle = 0;
 
-            $showAddTo = true;
-            $showCart = true;
+            $showAddTo = false;
+            $showCart = false;
             $templateType = null;
-            $description = false;
-            $canItemsAddToCart = true;
+            $description = true;
+            $canItemsAddToCart = false;
         }
     break;
 
@@ -194,7 +194,15 @@ switch ($type = $block->getType()) {
                         <?php
                             $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
                             $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
-                            echo $product->getShortDescription();
+                            $shortDescription = $product->getShortDescription();
+                            if (str_word_count($shortDescription, 0) > 10) {
+                                $words = str_word_count($shortDescription, 2);
+                                $pos = array_keys($words);
+                                $text = substr($shortDescription, 0, $pos[10]) . '...';
+                                echo $text;
+                            }else{
+                                echo $shortDescription;
+                            }
                         ?>
                     <?php endif; ?>
                     <?php echo $block->getProductPrice($_item); ?>
