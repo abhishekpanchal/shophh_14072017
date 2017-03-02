@@ -49,7 +49,19 @@
                         <?php echo nl2br($block->escapeHtml($_review->getDetail())) ?>
                     </div>
                     <div class="review-meta ">
-                        <span class="review-author" itemprop="author"><?php echo $block->escapeHtml($_review->getNickname()) ?></span>
+                    <?php
+                       $customerId = $_review->getCustomerId();
+                       if($customerId){
+                           $obj = \Magento\Framework\App\ObjectManager::getInstance();
+                           $customerFactory = $obj->get('\Magento\Customer\Model\CustomerFactory');
+                           $customer = $customerFactory->create();
+                           $customer->load($customerId)->getData();
+                           $customerName = $customer->getFirstname();
+                       }else{
+                           $customerName = $_review->getNickname();
+                       }
+                       ?>
+                        <span class="review-author" itemprop="author"><?php echo $block->escapeHtml($customerName) ?></span>
                         <span class="review-dash"><?php /* @escapeNotVerified */ echo __('-') ?></span>
                         <time class="review-date" itemprop="datePublished" datetime="<?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?>"><?php /* @escapeNotVerified */ echo $block->formatDate($_review->getCreatedAt(), $format) ?></time>
                     </div>

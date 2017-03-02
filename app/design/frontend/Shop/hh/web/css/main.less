@@ -241,6 +241,7 @@ Content
 Reviews
  ========================================================================== */
 .review-body {
+  margin-bottom: 30px;
 }
 
 .review-toolbar {
@@ -251,7 +252,7 @@ Reviews
 
 .review-meta {
   color: #8f8f8f;
-  font-size: 12px;
+  font-size: 11px;
   text-transform: uppercase;
   margin-top: 10px;
 }
@@ -262,18 +263,19 @@ Reviews
   max-width: auto;
 }
 .review-author {
-  font-weight: 700;
+  font-weight: bold;
   font-family: @headlineFont;
 }
 
 .review-contents {
-  margin-top: 20px;
+  margin-top: 5px;
   font-size: 13px;
-  line-height: 27px;
+  line-height: 22px;
 }
 
 .review-item {
   border: none;
+  padding-top: 0;
 }
 
 .btn-reviews {
@@ -284,6 +286,7 @@ Reviews
   padding-top: 10px;
   display: block;
 }
+
 
 /* ==========================================================================
 Page Title
@@ -469,8 +472,8 @@ Products
     }
   }
   .product.info.detailed {
-    font-size: 13px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 22px;
     margin-top: 40px;
   }
 }
@@ -1817,6 +1820,7 @@ Products
   border: none!important;
   text-transform: uppercase;
   font-family: @baseFont;
+  font-weight: normal!important;
 }
 
 
@@ -2462,10 +2466,6 @@ Media Queries
     margin-top: 15px;
     float: left;
   }
-}
-
-.product.media {
-  border: 1px solid #DDD;
 }
 
 .inner-content {
@@ -5046,4 +5046,27 @@ Limiter
 .limiter-option {
   width: 40%!important;
   padding-left: 0;
+}
+
+/* ==========================================================================
+Magic Scroll
+========================================================================== */
+.MagicScroll > .mcs-button-arrow {
+  border-radius: 50%!important;
+  background: #a5a5a5!important;
+}
+
+.MagicScroll-horizontal .mcs-button-arrow-prev:before, .MagicScroll-horizontal .mcs-button-arrow-next:before, .MagicScroll-vertical .mcs-button-arrow-prev:before, .MagicScroll-vertical .mcs-button-arrow-next:before {
+  width: 8px!important;
+  height: 8px!important;
+  border-color: #FFF!important;
+  border-width: 2px!important;
+}
+
+.active-selector {
+  border: 2px solid #000!important;
+}
+
+.mcs-item {
+  border: 1px solid #d3d3d3;
 }
