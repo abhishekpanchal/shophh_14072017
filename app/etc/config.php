@@ -124,7 +124,6 @@ return array (
     'Mageplaza_SocialLogin' => 1,
     'Magestore_Giftvoucher' => 1,
     'MagicToolbox_MagicZoomPlus' => 1,
-    'MagicToolbox_MagicScroll' => 1,
     'Sebwite_Sidebar' => 1,
     'Unirgy_Dropship' => 1,
     'Unirgy_DropshipBatch' => 1,
