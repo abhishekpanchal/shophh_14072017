@@ -11,7 +11,7 @@
  */
 ?>
 <div class="block review-add row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-3">
         <div class="block-content">
         <?php if ($block->getAllowWriteReviewFlag()): ?>
         <form action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" class="review-form" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
@@ -102,4 +102,8 @@
         <?php endif ?>
         </div>
     </div>
+    <div class="col-md-3 pull-right read-all-reviews text-right">
+        <a href="#" class="btn-reviews display-none">Read all reviews <span></span></a>
+    </div>
+    <div class="clearfix"></div>
 </div>
