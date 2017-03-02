@@ -38,7 +38,6 @@
         <nav class="main-pagination" aria-label="<?php /* @escapeNotVerified */ echo __('Page navigation') ?>">
             <ul class="items pages-items" aria-labelledby="paging-label" style="margin: 0;">
 
-
              <?php if($block->getFirstNum() != 1): ?>
                 <li class="item pages-item-previous">
                     <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
@@ -51,7 +50,7 @@
                     </a>
                 </li>
             <?php endif; ?>
-                
+
 
             <?php if ($block->canShowFirst()): ?>
                 <li class="item">
@@ -109,7 +108,6 @@
                     </a>
                 </li>
             <?php endif; ?>
-
             </ul>
         </nav>
         <?php endif; ?>
