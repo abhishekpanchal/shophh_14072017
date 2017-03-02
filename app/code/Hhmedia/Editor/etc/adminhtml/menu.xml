@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="Hhmedia_Editor::editor_manage" title="Editor" module="Hhmedia_Editor" sortOrder="30" action="editor/index/" resource="Hhmedia_Editor::manage" />
+    	<add id="Hhmedia_Editor::editor" title="Shop HH" module="Hhmedia_Editor" sortOrder="30" resource="Hhmedia_Editor::editor"/>
+        <add id="Hhmedia_Editor::editor_manage" title="Editors Picks" module="Hhmedia_Editor" sortOrder="20" parent="Hhmedia_Editor::editor" action="editor/index/" resource="Hhmedia_Editor::manage" />
     </menu>
 </config>
