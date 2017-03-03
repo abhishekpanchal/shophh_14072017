@@ -17,7 +17,9 @@
         <referenceBlock name="page.main.title" remove="true" />
 
         <move element="product.info.description" destination="product.info.main" after="product.info.price"/>
-        <move element="product.info.social" destination="product.info.price" after="product.price.tier" />
+        <move element="share" destination="product.info.main" after="product.info.addto" />
+        <move element="full.detail" destination="product.info.main" after="product.info.description" />
+        <move element="product.price.final" destination="product.info.form.content" before="goto.product" />
 
         <!--remove the short description-->
         <referenceBlock name="product.info.overview">
@@ -33,7 +35,7 @@
         </referenceBlock>
 
         <referenceBlock name="product.info.form.content">
-            <block ifconfig="weltpixel_quickview/general/enable_goto_product_button" class="Magento\Catalog\Block\Product\View" after="product.info.addtocart" name="goto.product" as="goto.product" template="WeltPixel_Quickview::gotoproduct.phtml"/>
+            <block ifconfig="weltpixel_quickview/general/enable_goto_product_button" class="Magento\Catalog\Block\Product\View" name="goto.product" as="goto.product" template="WeltPixel_Quickview::gotoproduct.phtml"/>
         </referenceBlock>
 
         <referenceContainer name="before.body.end">
@@ -52,5 +54,11 @@
             </action>
         </referenceBlock>
         <!-- for 2.1 -->
+        <referenceBlock name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="share" template="product/view/share.phtml" />
+        </referenceBlock>
+        <referenceBlock name="product.info.main">
+            <block class="Magento\Catalog\Block\Product\View" name="full.detail" template="WeltPixel_Quickview::product/seefulldetail.phtml" />
+        </referenceBlock>
     </body>
 </page>

@@ -114,6 +114,14 @@
         </container>
     </referenceContainer>
 
+    <referenceContainer name="before.body.end">
+      <block class="Magento\Framework\View\Element\Text" name="addthis">
+        <arguments>
+          <argument name="text" xsi:type="string"><![CDATA[<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b882118f288fc8"></script>]]></argument>
+        </arguments>
+      </block>
+    </referenceContainer>
+
     <referenceBlock name="advanced-search-link" remove="true"/>
     <referenceBlock name="advanced.search" remove="true"/>
     <referenceBlock name="top.links.wrapper" remove="true"/>

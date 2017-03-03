@@ -7,13 +7,8 @@
 							title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
 							class="action btn-main"
 							id="product-addtocart-button">
-							<span><i class="mdi mdi-cart-outline"></i> Add To Cart</span>
+							<span><?php echo __('Add To Cart') ?></span>
 			</button>
 			<?php echo $block->getChildHtml('', true) ?>
-	</div>
-	<div class="view-full">
-		<a target="_parent" href="<?php echo $this->getProduct()->getProductUrl() ?>" title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>" class="action btn-view-full" id="product-gotoproduct-button">
-			<span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span>
-		</a>
 	</div>
 </div>

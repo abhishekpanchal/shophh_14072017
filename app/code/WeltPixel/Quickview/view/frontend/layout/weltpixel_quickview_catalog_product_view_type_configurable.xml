@@ -5,5 +5,6 @@
         <referenceBlock name="product.info.options.wrapper.bottom">
             <block ifconfig="weltpixel_quickview/general/enable_goto_product_button" class="Magento\Catalog\Block\Product\View" after="product.info.addtocart" name="goto.product.configurable" as="goto.product.configurable" template="WeltPixel_Quickview::gotoproduct.phtml"/>
         </referenceBlock>
+        <move element="product.price.final" destination="product.info.options.wrapper.bottom" before="product.info.addtocart" />
     </body>
 </page>

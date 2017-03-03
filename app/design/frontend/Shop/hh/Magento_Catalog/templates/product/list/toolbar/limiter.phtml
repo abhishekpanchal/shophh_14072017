@@ -29,20 +29,19 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 </div>
  -->
 
- <div class="field limiter col-md-2 hidden-xs">
-    <div class="styled-select">
+ <div class="field limiter hidden-xs">
+    <div class="styled-select limiter-container ">
         <label class="sort-label" for="limiter">
             <span><?php /* @escapeNotVerified */ echo __('Show') ?></span>
         </label>
-        <div class="control">
-            <select id="limiter" data-role="limiter" class="sorter-options">
-                <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
-                    <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
-                        selected="selected"<?php endif ?>>
-                        <?php /* @escapeNotVerified */ echo $_limit ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
+
+        <select id="limiter" data-role="limiter" class="sorter-options limiter-option">
+            <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+                <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+                    selected="selected"<?php endif ?>>
+                    <?php /* @escapeNotVerified */ echo $_limit ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
    </div>
 </div>

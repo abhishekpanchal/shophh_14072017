@@ -11,34 +11,41 @@
  */
 ?>
 <div class="block review-add row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="review-details-div">
+        <div class="col-md-3 pull-right read-all-reviews text-right">
+            <a href="#" class="btn-reviews display-none">Read all reviews <span></span></a>
+        </div>
         <div class="block-content">
         <?php if ($block->getAllowWriteReviewFlag()): ?>
-        <form action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" class="review-form" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
-            <?php echo $block->getBlockHtml('formkey'); ?>
-            <?php echo $block->getChildHtml('form_fields_before')?>
-            <fieldset class="fieldset review-fieldset" data-hasrequired="<?php __('* Required Fields'); ?>">
-                <div class="field review-field-nickname required hidden">
-                    <label for="nickname_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Nicknames') ?></span></label>
-                    <div class="control">
-                        <input type="text" name="nickname" id="nickname_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" />
-                    </div>
-                </div>
-                <div class="field review-field-summary required hidden">
-                    <label for="summary_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Summary') ?></span></label>
-                    <div class="control">
-                        <input type="text" name="title" id="summary_field" class="input-text" data-validate="{required:false}" data-bind="value: review().title" value="summary" />
-                    </div>
-                </div>
-                <div class="field review-field-text required">
-                    <label for="review_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Write a Review') ?></span></label>
-                    <div class="control">
-                        <textarea name="detail" class="review-text" id="review_field" cols="5" rows="3" data-validate="{required:true}" data-bind="value: review().detail"></textarea>
-                    </div>
-                </div>
-            </fieldset>
+
+<div class="col-md-3">
+  <a href="#" class="btn btn-main btn-toggle-form">Write a Review</a>
+</div>
 
 
+            <form action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" class="col-md-8 col-md-offset-2 review-form display-none" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
+                <?php echo $block->getBlockHtml('formkey'); ?>
+                <?php echo $block->getChildHtml('form_fields_before')?>
+                <fieldset class="fieldset review-fieldset" data-hasrequired="<?php __('* Required Fields'); ?>">
+                    <div class="field review-field-nickname required hidden">
+                        <label for="nickname_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Nicknames') ?></span></label>
+                        <div class="control">
+                            <input type="text" name="nickname" id="nickname_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" />
+                        </div>
+                    </div>
+                    <div class="field review-field-summary required hidden">
+                        <label for="summary_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Summary') ?></span></label>
+                        <div class="control">
+                            <input type="text" name="title" id="summary_field" class="input-text" data-validate="{required:false}" data-bind="value: review().title" value="summary" />
+                        </div>
+                    </div>
+                    <div class="field review-field-text required">
+                        <label for="review_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Write a Review') ?></span></label>
+                        <div class="control">
+                            <textarea name="detail" class="review-text" id="review_field" cols="5" rows="3" data-validate="{required:true}" data-bind="value: review().detail"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
 
                 <?php if ($block->getRatings() && $block->getRatings()->getSize()): ?>
                 <span id="input-message-box"></span>
@@ -80,10 +87,12 @@
 
             <div class="actions-toolbar review-form-actions">
                 <div class="primary actions-primary">
-                    <button type="submit" class="btn-main review-btn"><span><?php /* @escapeNotVerified */ echo __('Submit') ?></span></button>
+                    <button type="submit" class="btn-main review-btn"><span><?php /* @escapeNotVerified */ echo __('Submit Review') ?></span></button>
                 </div>
             </div>
         </form>
+
+
         <script type="text/x-magento-init">
         {
             "[data-role=product-review-form]": {
@@ -95,11 +104,14 @@
         }
         </script>
         <?php else: ?>
-            <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
-            <p><?php echo __('You must log in or create an acoount to review this product.') ?></p>
-            <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main"><?php echo __('Login / Sign Up') ?></a>
-            <!-- <a href="<?php echo $block->getRegisterUrl() ?>" class="btn btn-main"><?php echo __('Sign Up') ?></a> -->
+            <div class="col-md-3">
+            <!-- <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
+                <p><?php echo __('You must log in or create an acoount to review this product.') ?></p> -->
+                <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main"><?php echo __('Write a Review') ?></a>
+                <!-- <a href="<?php echo $block->getRegisterUrl() ?>" class="btn btn-main"><?php echo __('Sign Up') ?></a> -->
+            </div>
         <?php endif ?>
         </div>
     </div>
+    <div class="clearfix"></div>
 </div>
