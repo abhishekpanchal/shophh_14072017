@@ -191,19 +191,7 @@ switch ($type = $block->getType()) {
                         <?php echo $block->escapeHtml($_item->getName()) ?></a>
                     </strong>
                     <?php if ($description):?>
-                        <?php
-                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                            $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
-                            $shortDescription = $product->getShortDescription();
-                            if (str_word_count($shortDescription, 0) > 10) {
-                                $words = str_word_count($shortDescription, 2);
-                                $pos = array_keys($words);
-                                $text = substr($shortDescription, 0, $pos[10]) . '...';
-                                echo $text;
-                            }else{
-                                echo $shortDescription;
-                            }
-                        ?>
+                        <?php echo $_item->getShortDescription(); ?>
                     <?php endif; ?>
                     <?php echo $block->getProductPrice($_item); ?>
 
@@ -308,11 +296,12 @@ switch ($type = $block->getType()) {
                                 <?php echo $block->escapeHtml($_item->getName()) ?></a>
                             </strong>
                             <?php if ($description):?>
-                                <?php 
-                                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                                    $product = $objectManager->get('Magento\Catalog\Model\Product')->load($_item->getEntityId()); 
-                                    echo $product->getShortDescription();
-                                ?>
+                                <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                                <?php $shortDescription = $_item->getShortDescription(); ?>
+                                 <?php if($customHelper->isProductNew($_item)): ?>
+                                    <div class="new-product"><?php echo __('New'); ?></div>
+                                <?php endif; ?>
+                                <?php echo $customHelper->limit_description($shortDescription, 10); ?>
                             <?php endif; ?>
                             <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
 
