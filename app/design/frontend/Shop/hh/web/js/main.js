@@ -89,4 +89,11 @@ require(['jquery', 'jquery.bootstrap'], function($){
     });
   });
 
+
+  $('.btn-toggle-form').click(function(e) {
+    e.preventDefault();
+    $(this).addClass('display-none');
+    $('.review-form').fadeIn( "slow" );
+  });
+
 });

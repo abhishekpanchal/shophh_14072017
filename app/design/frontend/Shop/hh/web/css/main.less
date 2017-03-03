@@ -243,6 +243,9 @@ Reviews
 .review-body {
 
 }
+.review-list {
+  margin-bottom: 0;
+}
 
 .review-toolbar {
   margin: 0!important;
@@ -1641,6 +1644,7 @@ Flexbox - Rows
   width: 40px;
 }
 
+
 .carousel-control.right {
   background: url(../images/right-arrow.png) no-repeat center center;
 }
@@ -1648,6 +1652,17 @@ Flexbox - Rows
 .carousel-control.left {
   background: url(../images/left-arrow.png) no-repeat center center;
 }
+
+.homepage-controls {
+  .carousel-control.right {
+    background: url(../images/button-hero-next.png) no-repeat center center;
+  }
+
+  .carousel-control.left {
+    background: url(../images/button-hero-prev.png) no-repeat center center;
+  }
+}
+
 
 .carousel-control {
   color: #000!important;
@@ -1752,7 +1767,7 @@ Products
       }
       .swatch-option {
         .relative;
-        .circle-radius;
+
         overflow: visible;
         height: 24px;
         width: 24px;
@@ -1772,8 +1787,9 @@ Products
         margin-left: 0;
         font-family: @baseFont;
         font-size: 13px;
-        border: 1px solid #c2c2c2;
+        border: 1px solid #4c4c4c;
         width: auto;
+        color: #000;
       }
       .swatch-option.selected {
         outline: none;
@@ -1781,6 +1797,7 @@ Products
         &:after {
           content: '';
           border: 1px solid #a2aaab;
+          border: none;
           height: 30px;
           width: 30px;
           display: block;
@@ -2040,13 +2057,13 @@ Sidebar
   z-index: 15;
 }
 
-.mfp-iframe-scaler {
+.mfp-content {
   background-color: #FFF!important;
 }
 
-.mfp-iframe-scaler:after {
+.mfp-content:after {
   content: '';
-  position: absolute;
+  position: absolute; 
   height: 30px;
   width: 30px;
   top: 50%;
@@ -2058,6 +2075,14 @@ Sidebar
   /*animation: lai-spinnair 1.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;*/
   box-sizing: border-box;
 }
+
+
+
+
+
+
+
+
 
 .spinner-cart {
   content: '';
@@ -5066,6 +5091,7 @@ Catalog View
   .product-item-photo {
     max-height: 260px;
     margin-bottom: 20px;
+    overflow-y: hidden;
 
     .image {
       width: 100%;
@@ -5162,9 +5188,11 @@ Magic Scroll
   min-height: 500px;
   min-width: 500px;
 }
+
+
 .weltpixel-quickview-catalog-product-view {
   .main-content {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
   .description {
     margin-top: 20px;
@@ -5205,18 +5233,38 @@ Magic Scroll
     margin-bottom: 15px;
   }
   .swatch-attribute-label {
-    font-size: 13px;
+    font-size: 12px!important;
+    font-family: @headlineFont;
+    font-weight: normal!important;
     text-transform: uppercase;
+  }
+  .value {
+    margin-top: 0!important;
   }
 }
 
-.review_field {
-  span {
-    font-family: @fancyFont!important;
-    font-style: italic!important;
-    font-size: 18px!important;
+
+.product-info-main .product-options-wrapper .fieldset .swatch-option.text.selected {
+  background-color: #4c4c4c!important;
+  color: #FFF;
+}
+
+
+
+
+#review-form {
+  .review-field-text {
+    label {
+      font-family: @fancyFont!important;
+      font-style: italic!important;
+      font-size: 18px!important;
+    }
+  }
+  textarea {
+    margin-top: 5px;
   }
 }
+
 
 .review-control-vote label:before {
   color: #020202!important;
