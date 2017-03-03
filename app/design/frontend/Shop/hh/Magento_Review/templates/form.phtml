@@ -12,6 +12,9 @@
 ?>
 <div class="block review-add row">
     <div class="review-details-div">
+        <div class="col-md-3 pull-right read-all-reviews text-right">
+            <a href="#" class="btn-reviews display-none">Read all reviews <span></span></a>
+        </div>
         <div class="block-content">
         <?php if ($block->getAllowWriteReviewFlag()): ?>
             <form action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" class="col-md-8 col-md-offset-2 review-form" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
@@ -78,7 +81,7 @@
 
             <div class="actions-toolbar review-form-actions">
                 <div class="primary actions-primary">
-                    <button type="submit" class="btn-main review-btn"><span><?php /* @escapeNotVerified */ echo __('Submit') ?></span></button>
+                    <button type="submit" class="btn-main review-btn"><span><?php /* @escapeNotVerified */ echo __('Submit Review') ?></span></button>
                 </div>
             </div>
         </form>
@@ -103,9 +106,6 @@
             </div>
         <?php endif ?>
         </div>
-    </div>
-    <div class="col-md-3 pull-right read-all-reviews text-right">
-        <a href="#" class="btn-reviews display-none">Read all reviews <span></span></a>
     </div>
     <div class="clearfix"></div>
 </div>

@@ -144,7 +144,7 @@ buttons
   font-style: italic;
   font-size: 15px;
   line-height: normal;
-  padding: 10px 22px;
+  padding: 8px 35px;
   display: block;
   width: 100%;
   text-transform: capitalize;
@@ -241,7 +241,7 @@ Content
 Reviews
  ========================================================================== */
 .review-body {
-  margin-bottom: 30px;
+
 }
 
 .review-toolbar {
@@ -465,8 +465,7 @@ Products
     padding-left: 32px;
     .relative;
 
-    i {
-      font-size: 20px;
+    img {
       position: absolute;
       left: 0;
     }
@@ -1443,22 +1442,28 @@ Flexbox - Rows
   background-position: center center;
 
   h2 {
-    padding: 25px 45px;
+    padding: 25px 60px;
     text-align: center;
     background-color: rgba(255,255,255,0.8);
     font-family: @fancyFont;
     font-size: 30px;
     display: block;
     margin: 0 auto;
+    font-weight: normal!important;
+    font-style: italic;
 
     span {
       display: block;
       font-size: 18px;
-      margin-top: 15px;
-      margin-bottom: 20px;
+      margin-top: 8px;
       font-family: @headlineFont;
+      font-style: normal;
+
     }
   }
+    p {
+      margin-bottom: 0!important;
+    }
 }
 
 .catalog-category-view {
@@ -1757,7 +1762,7 @@ Products
       }
       .swatch-option.text {
         border-radius: 0;
-        background-color: #f0f0f0;
+        background-color: #FFF;
         display: inline-block;
         text-align: center;
         border-radius: 0;
@@ -2039,7 +2044,6 @@ Sidebar
   background-color: #FFF!important;
 }
 
-
 .mfp-iframe-scaler:after {
   content: '';
   position: absolute;
@@ -2122,10 +2126,13 @@ Checkout
 
   legend.label {
     display: inline-block;
-    width: 15%;
+    width: 12%;
     float: left;
     text-align: left;
     font-weight: normal!important;
+    position: relative;
+    top: -5px;
+    left: -5px;
   }
 
   .control {
@@ -4261,7 +4268,6 @@ Main Navigation
   background: transparent!important;
 }
 
-
 /* ==========================================================================
 Awe Menu
  ========================================================================== */
@@ -4271,9 +4277,8 @@ Awe Menu
   .am-tabs a {
     display: block;
     padding: 10px 15px;
-    font-size: 12px;
     line-height: 16px;
-    text-transform: uppercase;
+    text-transform: capitalize;
     position: relative;
     transition: 0.3s all;
 
@@ -4281,6 +4286,13 @@ Awe Menu
     &:hover {
     }
 
+  }
+
+  .am-tab-no-dropdown {
+    a {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
   }
 
   .level-one {
@@ -4296,6 +4308,8 @@ Awe Menu
     -webkit-align-items: center;
     -webkit-box-align: center;
     align-items: center;
+
+
   }
 }
 
@@ -4328,11 +4342,18 @@ Awe Menu
   border-right: 1px solid rgba(0,0,0,0.1);
   margin-top: 20px;
   margin-bottom: 20px;
+  a {
+    font-size: 14px;
+  }
 }
 .menu-two {
   margin-top: 20px;
   margin-bottom: 20px;
+  a {
+    font-size: 14px;
+  }
 }
+
 
 .menu-three {
   background-color: #FFF;
@@ -4464,6 +4485,8 @@ Awe Menu
 #awemenu .am-tabs .am-tab.inspiration-board {
   float: right!important;
 }
+
+
 
 
 
@@ -4653,6 +4676,15 @@ Home Page
           position: relative;
           margin-bottom: 40px;
           font-weight: normal;
+
+          &:after {
+            content: '';
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background: url(../images/quote-open.png) no-repeat 0 20px;
+            position: absolute;
+          }
         }
         .btn-picks {
           font-size: 16px!important;
@@ -4884,7 +4916,7 @@ Select
   border-bottom: 1px solid #000;
   text-align: left;
   position: relative;
-  font-family: @headlineFont;
+  font-family: @baseFont;
 
   &:after {
     content: "\f104";
@@ -4898,6 +4930,8 @@ Select
 
   .sort-label {
     text-transform: uppercase;
+    font-family: @headlineFont;
+    font-weight: normal;
     .relative;
 
     &:after {
@@ -4944,6 +4978,10 @@ Select
 Catalog View
 ========================================================================== */
 .catalog-category-view {
+  .new-product {
+    font-family: @headlineFont;
+    font-weight: normal;
+  }
   .main-nav {
     margin-bottom: 0;
   }
@@ -4981,6 +5019,7 @@ Catalog View
     }
     .product-item-description {
       margin: 0;
+      line-height: 18px;
 
       .new-product {
         display: inline-block
@@ -5001,7 +5040,6 @@ Catalog View
     .old-price {
       display: inline-block;
       margin-left: 5px;
-      text-decoration: line-through;
     }
   }
   .quickview-bar {
@@ -5101,8 +5139,14 @@ Magic Scroll
 Social Share
 ========================================================================== */
 .icon-share {
-  margin-top: -5px;
-  font-size: 18px;
+  text-transform: uppercase;
+  font-family: @baseFont;
+  font-size: 14px;
+  padding-left: 0;
+
+  img {
+    position: absolute;
+  }
 }
 
 
@@ -5139,6 +5183,7 @@ Magic Scroll
   .viewfull-details {
     display: block;
     text-transform: uppercase;
+    font-family: @headlineFont;
   }
   .product-info-main .product-options-wrapper .fieldset .swatch-attribute-label {
     width: auto;
@@ -5159,7 +5204,53 @@ Magic Scroll
   .add-to-cart {
     margin-bottom: 15px;
   }
-  .mfp-iframe-scaler {
-    height: 100%;
+  .swatch-attribute-label {
+    font-size: 13px;
+    text-transform: uppercase;
   }
+}
+
+.review_field {
+  span {
+    font-family: @fancyFont!important;
+    font-style: italic!important;
+    font-size: 18px!important;
+  }
+}
+
+.review-control-vote label:before {
+  color: #020202!important;
+}
+
+.review-btn {
+  padding: 8px 35px!important;
+  font-size: 14px!important;
+}
+
+.btn-cart-single {
+  padding: 10px 35px!important;
+}
+
+textarea {
+  background-color: #f6f6f6;
+}
+
+.addthis_toolbox {
+  position: relative;
+  padding-left: 30px;
+
+  img {
+    position: absolute;
+    left: 0;
+  }
+}
+.addthis_toolbox a {
+  line-height: initial;
+  font-size: 13px;
+  font-family: @headlineFont;
+  text-transform: uppercase;
+}
+
+.product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {
+  font-weight: normal!important;
 }
