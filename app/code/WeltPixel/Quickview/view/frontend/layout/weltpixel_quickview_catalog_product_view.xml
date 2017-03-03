@@ -19,9 +19,7 @@
         <move element="product.info.description" destination="product.info.main" after="product.info.price"/>
         <move element="share" destination="product.info.main" after="product.info.addto" />
         <move element="full.detail" destination="product.info.main" after="product.info.description" />
-        <move element="product.price.final" destination="product.info.main" before="goto.product" />
-    
-        <!--<move element="product.info.price" destination="product.info" before="product.info.addtocart" />-->
+        <move element="product.price.final" destination="product.info.form.content" before="goto.product" />
 
         <!--remove the short description-->
         <referenceBlock name="product.info.overview">
