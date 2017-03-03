@@ -978,10 +978,6 @@ Quick View
   }
 }
 
-.add-to-cart, .view-full {
-  display: inline-block;
-}
-
 .btn-view-full {
   border: 2px solid #000;
   border-radius: 0;
@@ -5115,12 +5111,55 @@ Magic Scroll
 ========================================================================== */
 .mfp-iframe-holder .mfp-close {
     top: 10px!important;
-    right: 10px;
+    right: 10px!important;
     font-size: 42px!important;
 }
-
+.mfp-content {
+  min-height: 500px;
+  min-width: 500px;
+}
 .weltpixel-quickview-catalog-product-view {
   .main-content {
     margin-bottom: 30px;
+  }
+  .description {
+    margin-top: 20px;
+  }
+  .product-add-form {
+    .swatch-attribute-label {
+      display: block;
+    }
+    .swatch-attribute-options {
+      margin: 10px 0!important;
+    }
+  }
+  .modal-btns {
+
+  }
+  .viewfull-details {
+    display: block;
+    text-transform: uppercase;
+  }
+  .product-info-main .product-options-wrapper .fieldset .swatch-attribute-label {
+    width: auto;
+    display: block;
+  }
+  .product-qty {
+    display: none;
+  }
+  .mcs-wrapper {
+    display: none!important;
+  }
+  .swatch-attribute-options {
+    position: inherit;
+  }
+  .swatch-attribute {
+    margin-bottom: 0;
+  }
+  .add-to-cart {
+    margin-bottom: 15px;
+  }
+  .mfp-iframe-scaler {
+    height: 100%;
   }
 }
