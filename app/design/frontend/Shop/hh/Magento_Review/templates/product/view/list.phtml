@@ -46,7 +46,9 @@
                         </div>
                     <?php endif; ?>
                     <div class="review-contents" itemprop="description">
-                        <?php echo nl2br($block->escapeHtml($_review->getDetail())) ?>
+                        <?php $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                        <?php $content = nl2br($block->escapeHtml($_review->getDetail())); ?>
+                        <?php echo $helper->limit_review($content,25); ?>
                     </div>
                     <div class="review-meta ">
                     <?php
