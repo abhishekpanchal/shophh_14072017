@@ -77,16 +77,18 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
   $(document).ajaxComplete(function() {
     var count = $('.review-items').children('li').length;
-    console.log('count', count)
-    $('.review-item').slice(3).hide()
-    $('.btn-reviews span').text('(' + count + ')');
-    $('.btn-reviews').removeClass('display-none');
-    $('.btn-reviews').click(function(e) {
-      e.preventDefault();
-      console.log('uhhh');
-      $('.review-item').slice(3).fadeIn(1000);
-      $('.btn-reviews').addClass('display-none');
-    });
+    if (count !== 0) {
+      console.log('count', count)
+      $('.review-item').slice(3).hide()
+      $('.btn-reviews span').text('(' + count + ')');
+      $('.btn-reviews').removeClass('display-none');
+      $('.btn-reviews').click(function(e) {
+        e.preventDefault();
+        console.log('uhhh');
+        $('.review-item').slice(3).fadeIn(1000);
+        $('.btn-reviews').addClass('display-none');
+      });
+    }
   });
 
 

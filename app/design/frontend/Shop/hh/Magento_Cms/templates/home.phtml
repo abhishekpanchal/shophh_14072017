@@ -15,7 +15,7 @@
 ?>
 
 <?php $iterator3 = 1; ?>
-<div id="home-slider" class="carousel slide homeslider" data-ride="carousel">
+<div id="home-slider" class="carousel slide homeslider" data-ride="carousel" data-interval="false">
     <div class="carousel-inner" role="listbox">
         <?php foreach($shotCollection as $shot): ?>
             <?php if($shot['display_home'] == 1): ?>
@@ -85,7 +85,7 @@
                         <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                         <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
                         <div class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></div>
-                        <?php $d = 1; ?>
+                        <?php $d = 0; ?>
 
                         <?php foreach($formulaProduct as $fPro): ?>
                             <div class="decorating-formula-product col-md-4">
