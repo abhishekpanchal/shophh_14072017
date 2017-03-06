@@ -65,28 +65,28 @@
     <referenceContainer name="footer-container" htmlClass="page-footer">
         <container name="footer-wrap" htmlTag="div" htmlClass="container">
             <container name="footer-row-1" htmlTag="div" htmlClass="row is-flex footer-links">
-                <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
+                <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 col-sm-3 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-1</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
+                <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 col-sm-3 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-2</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
+                <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 col-sm-3 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-3</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
+                <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 col-sm-3 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-4</argument>
