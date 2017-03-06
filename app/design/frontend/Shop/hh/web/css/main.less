@@ -166,6 +166,7 @@ buttons
 
 .btn-cart-single {
   margin: 20px auto;
+  margin-bottom: 15px;
 
   i {
     margin-right: 10px;
@@ -1362,7 +1363,7 @@ Flexbox - Rows
 }
 
 .swatch-attribute {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   position: relative;
 }
 .swatch-attribute-options {
@@ -1723,7 +1724,7 @@ Flexbox - Rows
 Products
 ============================================================ */
 .product-labels {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
   text-transform: capitalize;
   font-weight: normal;
@@ -1760,10 +1761,10 @@ Products
       .product-labels;
 
       .swatch-attribute-label {
-        min-width: 65px;
-        .inline-block;
-        font-size: 15px;
-        font-weight: normal!important;
+        text-transform: uppercase;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 5px;
       }
       .swatch-option {
         .relative;
@@ -1793,6 +1794,7 @@ Products
       }
       .swatch-option.selected {
         outline: none;
+        border: 1px solid #000;
 
         &:after {
           content: '';
@@ -4589,6 +4591,7 @@ Home Page
     .issues-thumb-list {
       border: 1px solid #e6e6e6;
       box-sizing: border-box;
+      margin-top: 20px;
       width: 100%;
 
       li {

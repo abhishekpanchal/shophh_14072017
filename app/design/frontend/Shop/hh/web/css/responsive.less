@@ -6,7 +6,7 @@
 	.clearfix {
 		clear: both;
 	}
-	.margintop-30sm {
+	.margintop-30xs {
 		margin-top: 30px;
 	}
 	body {
@@ -14,9 +14,12 @@
 	}
 
 	p {
-		font-size: 0.75em;
+		font-size: 0.65rem;
 	}
 
+	#awemenu .am-tabs a {
+		font-size: 0.65rem!important;
+	}
 	label,
 	select {
 		font-size: 0.75em;
@@ -26,17 +29,55 @@
 	}
 	.header-top-right,
 	.minicart-wrapper .action.showcart .text {
-		font-size: 0.85em;
+		font-size: 0.65rem;
 	}
 	.footer-col li strong {
 		font-size: 1em;
 	}
 
-	.page-title, .page-title-small {
-		font-size: 2em;
+	.page-title {
+		font-size: 1.5rem;
 	}
 
+	.page-title-small {
+		font-size: 0.85rem;
+		margin-bottom: 0;
+	}
+
+	.shot-thumb {
+		h4 {
+			font-size: 1.4rem;
+			margin-bottom: 0;
+		}
+		.title {
+			font-size: 1rem;
+		}
+	}
+	.quickview-bar2, .quickview-bar2 {
+		font-size: 0.75rem;
+	}
 	.cms-home {
+		.editors-area .editors-pick,
+		.editors-area .editor-guest-image,
+		.editors-area .guest-editor {
+			min-height: 480px;
+		}
+		.carousel-control.right,
+		.carousel-control.left,
+		.formula_list_view .decorating-formula-product:nth-of-type(3):before,
+		.formula_list_view .decorating-formula-product:nth-of-type(3):after  {
+			background-size: 50% 50%!important;
+			background-position: center center;
+		}
+		.editors-area .guest-editor .guest-editor-details .editor-quote {
+			margin-bottom: 0;
+		}
+		.editors-area .guest-editor .guest-editor-details .editor-blurb {
+			padding: 20px 0;
+		}
+		.editor-guest-image {
+			background-position: center!important;
+		}
 		.item {
 			padding: 0 30px;
 		}
@@ -81,6 +122,10 @@
 				left: -3%;
 			}
 		}
+		.subtitle {
+			margin-top: 0;
+			font-size: 0.9rem;
+		}
 	}
 
 	.catalog-category-view {
@@ -92,22 +137,64 @@
 		.limiter-option {
 			width: 32%!important;
 		}
+		.new-product {
+			font-size: 0.65rem;
+		}
+		.category-image p {
+			font-size: 1rem;
+		}
+		.price, .product-item-details .price-container .price {
+			font-size: 0.7rem;
+		}
 	}
 
 	.catalog-product-view {
 		.product.data.items > .item.title > .switch {
-			font-size: 0.75em!important;
+			font-size: 0.75rem!important;
 		}
 		.products-upsell .old-price,
 		.products-upsell .special-price {
 			width: auto;
 		}
 		.product-item-details .price-container .price {
-			font-size: 0.5em;
+			font-size: 0.75rem;
 		}
 		.old-price span span {
 			font-size: 11px!important;
 		}
+		.new-product {
+			font-size: 0.65rem;
+		}
+		.product.info.detailed .additional-attributes {
+			font-size: 0.75rem;
+		}
+		.label {
+			font-size: 0.7rem;
+		}
+		.product-info-main .name .value {
+			font-size: 1.7rem;
+		}
+		.product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {
+			font-size: 1.4rem;
+		}
+		.product-info-main .product-options-wrapper .fieldset .swatch-attribute-label, .product-qty label, .single-product-wishlist, .addthis_toolbox a {
+			font-size: 0.75rem;
+		}
+		.review-contents {
+			font-size: 0.7rem;
+			line-height: 1.3rem;
+		}
+		.products-upsell {
+			.product-item-details {
+				font-size: 0.65rem;
+    		line-height: 0.95rem;
+			}
+		}
+		.description {
+			p {
+				font-size: 0.7rem;
+				line-height: 1.3rem;
+			}
+		}
 	}
-
 }
