@@ -33,7 +33,7 @@
                                 <div class="hero-details-inner">
                                     <h3 class="hero-details-title"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h3>
                                     <h4 style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></h4>
-                                    <p><?php echo truncate(($shot->getCaption()),20) ?></p>
+                                    <p><?php echo truncate(($shot->getShortDescription()),20) ?></p>
                                     <a class="homepage-hero-btn" href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
                                 </div>
                                 </div>
