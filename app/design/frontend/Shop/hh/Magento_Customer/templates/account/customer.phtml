@@ -19,4 +19,8 @@
         	<span class="customer-name"><?php echo $firstName.' '.$lastName[0]; ?></span>
     	</a>
     </li>
+    <li>
+        <a href="<?php echo $this->getUrl('customer/account'); ?>">
+            <?php echo __('My Account') ?>
+        </a>
 <?php endif; ?>
