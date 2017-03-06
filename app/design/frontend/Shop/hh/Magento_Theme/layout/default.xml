@@ -14,10 +14,10 @@
           <!-- Top Header -->
           <container name="header.top.container" htmlTag="div" htmlClass="container">
             <container name="header.top.row" htmlTag="div" htmlClass="row">
-              <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3 hidden-xs">
+              <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3 col-sm-4 hidden-xs">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-left-link.phtml"/>
               </container>
-              <container name="header.top.right" htmlTag="div" htmlClass="header-top-right col-md-9 hidden-xs">
+              <container name="header.top.right" htmlTag="div" htmlClass="header-top-right col-md-9 col-sm-8 hidden-xs">
                 <container name="header.toplinks"></container>
               </container>
             </container>
@@ -28,10 +28,10 @@
         <container name="header.main" htmlTag="header" htmlClass="header-main">
           <container name="header.main.container" htmlTag="div" htmlClass="container">
             <container name="header.main.row" htmlTag="div" htmlClass="row vcenter">
-              <container name="header.main.social" htmlTag="div" htmlClass="col-md-3 hidden-xs header-social" before="-">
+              <container name="header.main.social" htmlTag="div" htmlClass="col-md-3 col-sm-3 hidden-xs header-social" before="-">
                 <block name="header.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
               </container>
-              <container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 header-logo">
+              <container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 col-sm-6 header-logo">
                 <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
                   <arguments>
                     <argument name="logo_img_width" xsi:type="number">499</argument>
@@ -39,7 +39,7 @@
                   </arguments>
                 </block>
               </container>
-              <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 header-search" after="-">
+              <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 col-sm-3 header-search" after="-">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Search::form.mini.phtml" />
               </container>
             </container>
@@ -65,35 +65,35 @@
     <referenceContainer name="footer-container" htmlClass="page-footer">
         <container name="footer-wrap" htmlTag="div" htmlClass="container">
             <container name="footer-row-1" htmlTag="div" htmlClass="row is-flex footer-links">
-                <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                <container name="footer_col_1" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_1_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-1</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                <container name="footer_col_2" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_2_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-2</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                <container name="footer_col_3" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_3_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-3</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-2 border-left">
+                <container name="footer_col_4" htmlTag="div" htmlClass="col-xs-12 col-sm-4 footer-col col-md-2 border-left">
                     <block class="Magento\Cms\Block\Block" name="footer_col_4_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-col-4</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 footer-col col-md-3 col-md-offset-1">
+                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 margintop-30sm footer-col col-md-3 col-md-offset-1">
                 </container>
             </container>
         </container>

@@ -1,6 +1,30 @@
 @media (max-width: 1024px) {
 
+	.display-block-xs {
+		display: block;
+	}
+	.clearfix {
+		clear: both;
+	}
+	.margintop-30sm {
+		margin-top: 30px;
+	}
+	body {
+		font-size: 16px;
+	}
+
+	p {
+		font-size: 0.65em;
+	}
 	.cms-home {
+		.item {
+			padding: 0 30px;
+		}
+		.homeslider {
+			.item {
+				padding: 0;
+			}
+		}
 		.home-slider {
 			.homepage-hero-details {
 				height: 300px;
@@ -24,14 +48,13 @@
 				}
 			}
 		}
-		.formula_list_view {
+		.formula_list_view, .magazine_list_view {
 			.carousel-control.right {
-				right: 0;
+				right: -3%;
 			}
 			.carousel-control.left {
-				left: 0;
+				left: -3%;
 			}
 		}
 	}
-
 }
