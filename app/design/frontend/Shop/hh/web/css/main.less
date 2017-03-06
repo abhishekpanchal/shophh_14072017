@@ -1640,7 +1640,7 @@ Flexbox - Rows
   background: transparent;
   padding: 0!important;
   top: 15%;
-  height: 100px;
+  height: 70px;
   width: 40px;
 }
 
@@ -4682,7 +4682,6 @@ Home Page
           display: block;
           text-transform: uppercase;
           font: normal 18px/18px  @baseFont;
-          margin-top: 50px;
         }
         h3 {
           font-size: 33px;
@@ -4707,10 +4706,12 @@ Home Page
           &:after {
             content: '';
             right: 0;
-            width: 20px;
-            height: 20px;
-            background: url(../images/quote-open.png) no-repeat 0 20px;
+            width: 26px;
+            height: 22px;
+            background: url(../images/quote-close.png);
             position: absolute;
+            z-index: 9999;
+            background-repeat: no-repeat;
           }
         }
         .btn-picks {
@@ -4767,11 +4768,12 @@ Home Page
       text-align: center;
     }
     .decorating-formula-product-title {
-      text-transform: uppercase;
+      font-family: @fancyFont;
       font-size: 16px;
     }
     .decorating-formula-price {
-      color: #666;
+      color: #8d8d8d;
+      font-weight: normal;
       font-size: 14px;
     }
     .decorating-formula-thumb {
@@ -4814,16 +4816,25 @@ Home Page
 
   .homeslider {
     margin-top: -20px;
-    margin-bottom: -50px;
+    margin-bottom: 50px;
 
     .homepage-controls {
+      clear: both;
+      position: absolute;
       width: 200px;
-    height: 100px;
-    position: relative;
-    float: right;
-    right: 10%;
-    top: -130px;
-    display: block;
+      height: 70px;
+      bottom: 20px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 100;
+
+      .carousel-indicators {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
     }
   }
 
@@ -5005,6 +5016,22 @@ Select
 /* ==========================================================================
 Catalog View
 ========================================================================== */
+
+.product-item-description {
+  margin: 0;
+  line-height: 18px;
+
+}
+
+.new-product {
+  display: inline-block
+}
+p  {
+  display: inline;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
 .catalog-category-view {
   .new-product {
     font-family: @headlineFont;
@@ -5044,19 +5071,6 @@ Catalog View
       font-family: @fancyFont;
       font-size: 16px;
       font-weight: normal;
-    }
-    .product-item-description {
-      margin: 0;
-      line-height: 18px;
-
-      .new-product {
-        display: inline-block
-      }
-      p  {
-        display: inline;
-        text-align: center;
-        margin-bottom: 5px;
-      }
     }
     .price {
       color: #8d8d8d;
@@ -5108,7 +5122,55 @@ Catalog View
   }
 }
 
+.product-qty {
+  .styled-select {
+    margin-top: 10px;
+    width: 15%;
+    border: 1px solid #000;
 
+    &:after {
+      top: 9px;
+      right: 9px;
+      content: '\f123';
+    }
+  }
+
+  select {
+    width: 100%;
+    border: none;
+    text-align: center;
+  }
+}
+
+
+/* ==========================================================================
+Limiter
+========================================================================== */
+.quickview-bar2 {
+  border: 1px solid #b0b7b8;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: @baseFont;
+  padding: 10px 30px;
+  text-align: center;
+  color: #000;
+  background-color: rgba(255,255,255,0.8);
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 200px;
+  transition: 1s all;
+  opacity: 0;
+}
+
+.product-item-details,
+.formula-thumb {
+  position: relative;
+}
+.product-item-details:hover .quickview-bar2,
+.formula-thumb:hover .quickview-bar2 {
+  opacity: 1;
+}
 
 /* ==========================================================================
 Limiter
@@ -5149,11 +5211,16 @@ Magic Scroll
 }
 
 .mcs-item {
-  border-right: 1px solid #d3d3d3;
+  border: 1px solid #d3d3d3;
+  border-right: none;
+
+  &:last-child {
+    border-right: 1px solid #d3d3d3;
+  }
 }
 
 .mcs-wrapper {
-  border: 1px solid #d3d3d3;
+
 }
 
 .MagicScroll-horizontal .mcs-button-arrow-next:before{
