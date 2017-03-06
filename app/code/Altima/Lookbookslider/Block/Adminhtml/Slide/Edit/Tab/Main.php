@@ -98,14 +98,14 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
         $fieldset->addField(
             'caption', 'textarea', [
-            'label'    => __('Description'),
+            'label'    => __('Long Description'),
             'name'     => 'slide[caption]',
             'required' => true,
                 ]
         );
 		$fieldset->addField(
             'short_description', 'textarea', [
-            'label'    => __('Description for Homepage'),
+            'label'    => __('Shor Description (Home)'),
             'name'     => 'slide[short_description]',
             'required' => true,
             ]
