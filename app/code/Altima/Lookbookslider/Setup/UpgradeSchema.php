@@ -87,6 +87,19 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Shot Title Color'
                 ]);
         }
+		
+		if (version_compare($context->getVersion(), '2.0.7', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'short_description',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => '2M',
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Description for Homepage'
+                ]);
+        }
 
         $installer->endSetup();
     }

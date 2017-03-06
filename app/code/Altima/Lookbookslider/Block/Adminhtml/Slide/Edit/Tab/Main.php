@@ -103,6 +103,13 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'required' => true,
                 ]
         );
+		$fieldset->addField(
+            'short_description', 'textarea', [
+            'label'    => __('Description for Homepage'),
+            'name'     => 'slide[short_description]',
+            'required' => true,
+            ]
+        );
         $fieldset->addField('position', 'text', [
             'label'    => __('Sort Order'),
             'required' => false,
