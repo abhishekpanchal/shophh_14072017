@@ -158,9 +158,10 @@
         <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
             <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
             </div>
+            <?php $bgColor = $editorItem->getColor(); ?>
         <?php endif; ?>
     <?php break; endforeach; ?>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 guest-editor vcenter-flex">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $bgColor ?>">
         <div class="guest-editor-details vcenter vcenter-col">
             <?php foreach ($_editor as $editorItem): ?>
             <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
