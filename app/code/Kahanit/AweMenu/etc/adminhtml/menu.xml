@@ -9,5 +9,6 @@
              dependsOnModule="Kahanit_AweMenu"
              action="awemenu/index/index"
              resource="Kahanit_AweMenu::awemenu"/>
+        <add id="Kahanit_AweMenu::promotions" title="Menu Promotions" module="Kahanit_AweMenu" sortOrder="80" parent="Hhmedia_Editor::editor" action="adminhtml/system_config/edit/section/awpromotions" resource="Hhmedia_Topbar::config_topbar"/>
     </menu>
 </config>
