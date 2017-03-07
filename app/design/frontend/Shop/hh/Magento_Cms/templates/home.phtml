@@ -24,7 +24,7 @@
                 <?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
                 <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
                     <div class="row no-gutters home-slider ">
-                        <div class="vcenter-flex">
+                        <div class="vcenter-flex display-block-xs">
                             <div class="col-md-8 col-sm-8 col-xs-12 homepage-hero">
                                 <img src="<?php echo $imagePath ?>" />
                             </div>
@@ -203,7 +203,7 @@
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 hidden-xs">
                                 <h4 class="issue-date"><?php $title = $magazineItem->getTitle(); ?></h4>
                                 <?php $name =  $magazineItem->getVolumeName(); ?>
                                 <h4 class="issue-date"><?php echo $title ?></h4>

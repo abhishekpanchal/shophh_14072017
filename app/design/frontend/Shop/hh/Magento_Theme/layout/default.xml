@@ -39,7 +39,7 @@
                   </arguments>
                 </block>
               </container>
-              <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 col-sm-3 header-search" after="-">
+              <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 col-sm-3 header-search hidden-xs" after="-">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Search::form.mini.phtml" />
               </container>
             </container>
@@ -60,7 +60,6 @@
       </container>
     </referenceContainer>
     <!-- End Header -->
-
 
     <referenceContainer name="footer-container" htmlClass="page-footer">
         <container name="footer-wrap" htmlTag="div" htmlClass="container">

@@ -86,9 +86,6 @@
 				padding: 0;
 			}
 		}
-		.cms-home .editors-area .editors-pick, .cms-home .editors-area .editor-guest-image, .cms-home .editors-area .guest-editor {
-			min-height: 535px;
-		}
 		.editors-area .editors-pick .editors-pick-title h3 {
 			font-size: 1.75em;
 		}
@@ -96,7 +93,7 @@
 			.homepage-hero-details {
 				height: 300px;
 				width: 300px;
-				margin: 0;
+				margin: 0 auto;
 
 				h4 {
 					font-size: 28px;
@@ -198,3 +195,71 @@
 		}
 	}
 }
+
+
+@media (max-width: 550px) {
+	.header-topbar p span {
+		padding: 5px 40px;
+	}
+	.page-title, .page-title-small {
+		font-size: 1.2rem;
+		text-align: center;
+		background: none;
+
+		span {
+			padding: 0;
+		}
+	}
+	.display-block-xs {
+		display: block!important;
+	}
+	.cms-home {
+		.carousel-control.right,
+		.carousel-control.left,
+		.formula_list_view .decorating-formula-product:nth-of-type(3):before,
+		.formula_list_view .decorating-formula-product:nth-of-type(3):after  {
+			background-size: 35% 35%!important;
+			background-position: center center;
+		}
+
+		.formula_list_view .decorating-formula-product:nth-of-type(3):before,
+		.formula_list_view .decorating-formula-product:nth-of-type(3):after {
+			top: 25%;
+		}
+		.item {
+			padding: 0 10px;
+		}
+		.formula_list_view {
+			.decorating-formula-title {
+				font-size: 2rem;
+			}
+		}
+
+		.editors-area .editors-pick,
+		.editors-area .editor-guest-image,
+		.editors-area .guest-editor {
+			min-height: 400px;
+		}
+		.magazine_list_item {
+			padding: 0 30px;
+		}
+		.decorating-formula-product {
+			padding: 0;
+		}
+	}
+	#awemenu .am-tabs.am-tabs-root {
+		text-align: left!important;
+	}
+	.catalog-product-view {
+		.upsell {
+			.item {
+				padding: 0 30px;
+			}
+		}
+	}
+}
+
+
+
+
+
