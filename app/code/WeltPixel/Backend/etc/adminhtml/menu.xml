@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
-    <menu>
+    <!--<menu>
         <add id="WeltPixel_Backend::WeltPixel" title="WeltPixel" module="WeltPixel_Backend" sortOrder="200" resource="WeltPixel_Backend::WeltPixel"/>
-    </menu>
+    </menu>-->
 </config>
