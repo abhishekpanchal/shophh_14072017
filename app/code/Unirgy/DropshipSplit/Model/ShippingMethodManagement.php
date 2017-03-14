@@ -122,11 +122,16 @@ class ShippingMethodManagement extends \Magento\Quote\Model\ShippingMethodManage
                 } else {
                     if (empty($outputByVendor[$vId])) {
                         $v = $this->_hlp->getVendor($vId);
+                        if($v->getHideVendorName() == 1):
+                            $vendorName = "House & Home Media";
+                        else:
+                            $vendorName = $v->getVendorName();
+                        endif;
                         $__outHeader = $this->_hlp->createObj('\Unirgy\DropshipSplit\Model\ShippingMethod');
                         $__outHeader->setCarrierCode(null);
                         $__outHeader->setMethodCode(null);
-                        $__outHeader->setCarrierTitle($v->getVendorName());
-                        $__outHeader->setMethodTitle($v->getFormatedAddress('text_small'));
+                        $__outHeader->setCarrierTitle($vendorName);
+                        $__outHeader->setMethodTitle(null);
                         $__outHeader->setUdropshipVendor(-1);
                         $outputByVendor[$vId][] = $__outHeader;
                     }
