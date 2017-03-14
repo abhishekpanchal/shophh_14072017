@@ -249,6 +249,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'label'     => __('Vendor Fax'),
         ));
 
+        $fieldset->addField(
+            'hide_vendor_name', 'select', array(
+            'label'    => __('Hide Vendor Name'),
+            'name'     => 'hide_vendor_name',
+            'options'  => array(0=>'No',1=>'Yes'),
+            'note'      => __('It will display House & Home Media instead of original Vendor Name'),
+        ));
+
         $templates = $this->_templatesFactory->create()->load()->toOptionArray();
         array_unshift($templates, ['value' => '', 'label' => __('Use Default Configuration')]);
         $fieldset->addField('email_template', 'select', array(
