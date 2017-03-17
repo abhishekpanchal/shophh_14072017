@@ -6,5 +6,10 @@
                 <block class="Magento\Theme\Block\Html\Pager" name="editor_list_pager" as="editor_list_pager"/>
             </block>
         </referenceContainer>
+        <referenceBlock name="page.main.title">
+      		<action method="setPageTitle">
+        		<argument translate="true" name="title" xsi:type="string">Featured Guest Editor</argument>
+      		</action>
+    	</referenceBlock>
     </body>
 </page>

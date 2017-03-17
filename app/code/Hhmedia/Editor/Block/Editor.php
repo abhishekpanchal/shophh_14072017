@@ -70,6 +70,14 @@ class Editor extends \Magento\Framework\View\Element\Template
 
         return $this->_editorCollection;
     }
+
+    public function getGuestEditor(){
+        $guestEditor = $this->_getCollection()
+                    ->addFieldToFilter('past', 0)
+                    ->addFieldToFilter('guest',1);
+        return $guestEditor;
+    }
+
     
     /**
      * Fetch the current page for the editor list

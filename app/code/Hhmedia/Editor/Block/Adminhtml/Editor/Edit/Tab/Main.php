@@ -90,6 +90,19 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         );
 
         $fieldset->addField(
+            'subtitle',
+            'text',
+            [
+                'name' => 'subtitle',
+                'label' => __('Subtitle for Guest Editor'),
+                'title' => __('Subtitle for Guest Editor'),
+                'required' => false,
+                'disabled' => $isElementDisabled,
+                'note' => ("e.g. April Guest Editor"),
+            ]
+        );
+
+        $fieldset->addField(
             'status', 
             'select', 
             [
@@ -145,18 +158,6 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'short_quote',
                 'label' => __('Short Quote for Home'),
                 'title' => __('Short Quote for Home'),
-                'disabled' => $isElementDisabled
-            ]
-        );
-
-        $fieldset->addField(
-            'subtitle',
-            'text',
-            [
-                'name' => 'subtitle',
-                'label' => __('Subtitle'),
-                'title' => __('Subtitle'),
-                'required' => true,
                 'disabled' => $isElementDisabled
             ]
         );

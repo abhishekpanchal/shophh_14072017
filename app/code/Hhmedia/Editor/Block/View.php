@@ -14,6 +14,8 @@ class View extends \Magento\Framework\View\Element\Template
 
     /** @var \Hhmedia\Editor\Helper\Data */
     protected $_dataHelper;
+
+    protected $_productRepository;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -26,11 +28,13 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\App\Http\Context $httpContext,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Editor\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
         $this->httpContext = $httpContext;
+        $this->_productRepository = $productRepository;
         $this->_dataHelper = $dataHelper;
         parent::__construct($context, $data);
     }
@@ -53,6 +57,19 @@ class View extends \Magento\Framework\View\Element\Template
         return $this->_coreRegistry->registry('current_editor');
     }
 
+    public function getProductData($id)
+    {
+        return $this->_productRepository->getById($id);
+    }
+
+    public function getProductCollection()
+    {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $model = $objectManager->create('\Hhmedia\Editor\Model\Editor');
+        $products  =  $model->getProducts($this->getEditor());
+        return $products;
+    }
+
     /**
      * Return back url for logged in and guest users
      *
@@ -60,7 +77,7 @@ class View extends \Magento\Framework\View\Element\Template
      */
     public function getBackUrl()
     {
-        return $this->getUrl('editor/index/index');
+        return $this->getUrl('editor');
     }
 
     /**
@@ -87,4 +104,12 @@ class View extends \Magento\Framework\View\Element\Template
     {
         return $this->_dataHelper->resize($item, $width);
     }
+
+    public function getProductPrice($price){
+        $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+        $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+        $formattedPrice = $priceHelper->currency($price, true, false);
+        return $formattedPrice ;
+    }
+
 }
