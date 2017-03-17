@@ -1,30 +1,43 @@
-<?php
-/**
- * Editor template for separate item
- *
- */
-
-/**
- * @var $this Hhmedia\Editor\Block\View
- * @see Hhmedia\Editor\Block\View
- */
-?>
+<a href="<?php echo $this->getBackUrl() ?>"><?php echo __('All Editors') ?></a>
 <?php $_editorItem = $this->getEditor(); ?>
-    <div class="editor_item_subtitle">
-        <?php echo $this->formatDate($_editorItem->getPublishedAt()) ?> |
-        <?php echo $this->escapeHtml($_editorItem->getAuthor()) ?>
-    </div>
-
 <div class="editor_item_view">
-    <?php if ($imageUrl = $this->getImageUrl($_editorItem, 400)): ?>
-       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_editorItem->getTitle()) ?>" /></p>
+    <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
+    <?php if($_editorItem->getSubtitle() != ''): ?>
+        <?php echo $_editorItem->getSubtitle(); ?>
     <?php endif; ?>
-
-    <div class="editor_item_content"><?php echo $_editorItem->getContent() ?></div>
-
-    <div class="pager">
-        <a href="<?php echo $this->getBackUrl() ?>">
-            <?php echo __('Return to list') ?>
-        </a>
+    <div class="name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
+    <div class="job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
+    <div class="quote"><?php echo $_editorItem->getQuote() ?></div>
+    <div class="bio"><?php echo $_editorItem->getBio() ?></div>
+    <div class="products">
+        <?php
+            $products = $this->getProductCollection();
+            foreach($products as $_product):
+            $pro = $this->getProductData($_product);
+            $image = $pro->getData('small_image');
+        ?>
+        <li>
+            <a href="<?php echo $pro->getProductUrl() ?>">
+                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+            </a>
+            <?php echo $pro->getName(); ?>
+            <?php echo $pro->getData('editors_quote'); ?>
+            <?php echo $this->getProductPrice($pro->getFinalPrice()); ?>
+        </li>
+        <?php endforeach; ?>
     </div>
+    <h2 class="page-title basefont"><span><?php echo __("More Editors") ?></span></h2>
+    <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
+    <?php $_editor = $objEditor->getCollection()->addFieldToFilter('past', 1)->addFieldToFilter('guest',0)->setPageSize(4); ?>
+    <?php $_editor->getSelect()->orderRand(); ?>
+    <?php foreach($_editor as $editor): ?>
+        <?php if($editor->getEditorId() != $this->getRequest()->getParam('id')): ?>
+            <a href="<?php echo $objEditor->getItemUrl($editor) ?>">
+                <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
+                <?php echo $this->escapeHtml($editor->getName()) ?>
+            </a>
+            <?php echo $this->escapeHtml($editor->getJobTitle()) ?> 
+        <?php endif; ?>
+    <?php endforeach; ?>
+    <a href="<?php echo $this->getBackUrl() ?>"><?php echo __('View All Editors') ?></a>
 </div>

@@ -1,22 +1,36 @@
-<?php $_editor = $this->getCollection(); ?>
-<?php if ($_editor->getSize()): ?>
+<span><?php echo __('Vancouver Design Star Curates her favorite items for spring - Just For Us'); ?></span>
+<?php if ($this->getGuestEditor()->getSize()): ?>
+<div class="guest-editor">
+<?php foreach($this->getGuestEditor() as $guest): ?>
+    <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
+        <h3 class="guest-name"><?php echo $guest->getName(); ?></h3>
+        <span class="guest-job"><?php echo $guest->getJobTitle(); ?></span>
+        <span class="guest-desc"><?php echo $guest->getContent(); ?></span>
+        <span class="guest-quote"><?php echo $guest->getShortQuote(); ?></span>
+        <a href="<?php echo $this->getItemUrl($guest) ?>">See Picks</a>
+    </div>
+<?php break; endforeach; ?>
+</div>
+<?php endif; ?>
+<?php 
+$pastEditor = $this->getCollection()
+            ->addFieldToFilter('past', 1)
+            ->addFieldToFilter('guest',0);   
+?>
+<?php if ($pastEditor->getSize()): ?>
 <div class="editor_list_view">
-    <?php foreach ($_editor as $editorItem): ?>
+    <h2 class="page-title basefont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
+    <span><?php echo __('See What your favorite have selected and why'); ?></span>
+    <?php foreach ($pastEditor as $editorItem): ?>
         <div id="item_<?php echo $editorItem->getId() ?>" class="editor_list_item">
             <h2>
                 <a href="<?php echo $this->getItemUrl($editorItem) ?>">
-                    <?php echo $this->escapeHtml($editorItem->getTitle()) ?>
+                    <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($editorItem->getName()); ?>" />
+                    <?php echo $this->escapeHtml($editorItem->getName()) ?>
                 </a>
             </h2>
-
-            <div class="editor_item_subtitle">
-                <?php echo $this->formatDate($editorItem->getPublishedAt()) ?> |
-                <?php echo $this->escapeHtml($editorItem->getAuthor()) ?>
-            </div>
-
-            <?php if ($imageUrl = $this->getImageUrl($editorItem, 100)): ?>
-               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($editorItem->getTitle()); ?>" /></p>
-            <?php endif; ?>
+            <span class="job-title"><?php echo $this->escapeHtml($editorItem->getJobTitle()) ?></span>
         </div>
     <?php endforeach; ?>
 </div>
