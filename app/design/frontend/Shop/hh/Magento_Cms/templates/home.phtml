@@ -26,7 +26,9 @@
                     <div class="row no-gutters home-slider ">
                         <div class="vcenter-flex display-block-xs">
                             <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
-                                <img src="<?php echo $imagePath ?>" />
+                                <a href="<?php echo $shotUrl ?>">
+                                    <img src="<?php echo $imagePath ?>" />
+                                </a>
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
                                 <div class="homepage-hero-details">
@@ -107,6 +109,8 @@
                                     <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
                                     <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $proFormula->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                                 </div>
+                            </a>
+                            <a href="<?php echo $proFormula->getProductUrl() ?>">
                                 <h4 class="decorating-formula-product-title"><?php echo $productName = $proFormula->getName(); ?></h4>
                             </a>
                             <h4 class="decorating-formula-price">
@@ -148,7 +152,9 @@
             <ul class="row"><?php $i=0; ?>
                 <?php foreach ($_editor as $editorItem): ?>
                     <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
-                        <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
+                        <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>">
+                            <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
+                        </a>
                         <?php $i++; if($i == 4){break;} ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -159,6 +165,7 @@
     <?php foreach ($_editor as $editorItem): ?>
         <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
             <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
+                 <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>"></a>
             </div>
             <?php $bgColor = $editorItem->getColor(); ?>
         <?php endif; ?>
@@ -178,7 +185,9 @@
                     <?php echo $shortQuote; ?>
                 <?php endif; ?>
             </div>
-            <button class="btn btn-main btn-picks">See picks</button>
+            <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>">
+                <button class="btn btn-main btn-picks">See picks</button>
+            </a>
             <?php endif; ?>
             <?php break; endforeach; ?>
         </div>

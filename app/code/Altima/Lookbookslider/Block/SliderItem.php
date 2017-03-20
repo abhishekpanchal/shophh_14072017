@@ -231,6 +231,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $_p_price      = $product_details->getFinalPrice();
                 $_p_price      = $priceHelper->currency($_p_price, true, false);
                 $html_content .= '<div class="left-detail">';
+                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
+                    $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+                }
                 if ($product_details->isAvailable()) {
                     if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {
                         $_p_url = $product_details->getProductUrl();
@@ -242,10 +245,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
-                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                    $html_content .= '<div class="desc"><img src="' . $_p_shrt_image . '" alt="product image"/>' . $_p_shrt_desc . '</div>';
-                }
-
+                $html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
                 if ($product_details->getFinalPrice()) {
                     if ($product_details->getPrice() > $product_details->getFinalPrice()) {
                         $regular_price = $product_details->getPrice();
@@ -256,9 +256,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     }
                     $html_content .= '<div class="price">' . $_p_price . '</div>';
                 }
-                if ($this->_lookbooksliderHelper->canShowAddToCart()) {
+                /*if ($this->_lookbooksliderHelper->canShowAddToCart()) {
                     $html_content .= $this->getAddToCartHtml($product_details_full);
-                }
+                }*/
                 $html_content .= '</div>';
             }
             $html_content .= '</div></div>';
