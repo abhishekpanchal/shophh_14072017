@@ -19,9 +19,10 @@
                     type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
                  <i class="mdi mdi-cart-outline"></i>
             </button>
-            <a href="javascript: void(0);" data-quickview-url="<?php echo $this->getUrl('')?>weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview quickview-btn" title="Quick View">
+            <!--<a href="javascript: void(0);" data-quickview-url="<?php echo $this->getUrl('')?>weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview quickview-btn" title="Quick View">
                 <i class="mdi mdi-magnify"></i>
-            </a>
+            </a>-->
+            <a class="viewfull-details" target="_parent" href="<?php echo $_item->getProductUrl() ?>" ><?php echo __('See Full Details') ?></a>
         <?php endif; ?>
     <?php else: ?>
         <?php if ($_item->getIsSalable()): ?>
