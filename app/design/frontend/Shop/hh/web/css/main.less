@@ -139,6 +139,7 @@ buttons
 .btn-main {
   background-color: #000;
   color: #FFF;
+  border: none;
   border-radius: 0;
   font-family: @fancyFont;
   font-style: italic;
@@ -146,8 +147,9 @@ buttons
   line-height: normal;
   padding: 8px 35px;
   display: block;
-  width: 100%;
+  width: auto;
   text-transform: capitalize;
+  transition: 0.3s all;
 
   i {
     margin-right: 10px;
@@ -156,7 +158,8 @@ buttons
 }
 
 .btn-main:hover {
-  background-color: #1a1a1a;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
   color: #FFF;
 }
 
@@ -3738,6 +3741,10 @@ Social
   }
   .icon{
     background: #707070;
+
+    &:hover {
+      background-color: #000!important;
+    }
   }
   .ion-social-twitter:hover {
     background: #00aced;
@@ -3838,7 +3845,11 @@ Header Top Right
   text-align: right;
 
   a {
-    color: #8d8d8d;;
+    color: #8d8d8d;
+
+    &:hover {
+      color: #000;
+    }
   }
 
   ul {
@@ -4052,7 +4063,6 @@ Shot Slider
   margin: 20px;
   padding: 30px;
   box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
-  min-height: 545px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -4259,17 +4269,12 @@ Products
   z-index: 1;
 }
 
-.shoptheshot-img {
-  // min-height: 600px;
-}
 .cycle-slideshow1 {
   margin-bottom: 0;
 }
 
 .lookbook-container {
-  max-height: 590px;
   background: #efefef;
-  overflow: hidden;
 }
 
 
@@ -4556,6 +4561,12 @@ Home Page
  ========================================================================== */
 
 .cms-home {
+  .quickview-bar2 {
+    width: 80%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
   .container-fluid {
     padding: 0;
     width: 100%;
@@ -4623,7 +4634,7 @@ Home Page
     }
   }
   .editors-area {
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 
     .editors-pick {
       background-color: #bd9c1b;
@@ -4721,6 +4732,7 @@ Home Page
           font-size: 16px!important;
           line-height: normal;
           padding: 15px 25px;
+          width: auto;
         }
       }
     }
@@ -4795,6 +4807,7 @@ Home Page
         left: -23px;
         top: 40%;
         background: url(../images/icon-plus.png) no-repeat right center;
+        opacity: 0.5;
       }
 
       &:before {
@@ -4805,6 +4818,7 @@ Home Page
         right: -23px;
         top: 40%;
         background: url(../images/icon-plus.png) no-repeat left center;
+        opacity: 0.5;
       }
     }
     .carousel-control.left {
@@ -4819,7 +4833,7 @@ Home Page
 
   .homeslider {
     margin-top: -20px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 
     .homepage-controls {
       clear: both;
@@ -4897,18 +4911,26 @@ Home Page
         text-align: center;
       }
       .homepage-hero-btn {
-        display: inline-block;
+        display: block;
         margin: 0 auto;
+        margin-top: 20px;
+        width: 50%;
         font-size: 16px;
         font-style: italic;
         background-color: #000;
         color: #EFEFEF;
         padding: 10px 25px;
         font-family: @fancyFont;
+        transition: 0.3s all;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7)
+        }
       }
     }
   }
 }
+
 
 /* ==========================================================================
 Navigation
@@ -5387,3 +5409,5 @@ textarea {
     top: 20px;
   }
 }
+
+

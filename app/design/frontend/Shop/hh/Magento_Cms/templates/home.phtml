@@ -25,16 +25,18 @@
                 <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
                     <div class="row no-gutters home-slider ">
                         <div class="vcenter-flex display-block-xs">
-                            <div class="col-md-8 col-sm-8 col-xs-12 homepage-hero">
+                            <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
                                 <img src="<?php echo $imagePath ?>" />
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
+                            <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
                                 <div class="homepage-hero-details">
                                 <div class="hero-details-inner">
+                                    <a href="<?php echo $shotUrl ?>">
                                     <h3 class="hero-details-title"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h3>
                                     <h4 style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></h4>
                                     <p><?php echo truncate(($shot->getShortDescription()),20) ?></p>
-                                    <a class="homepage-hero-btn" href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
+                                    <div class="homepage-hero-btn"><span><?php echo __('Shop This') ?></span></div>
+                                    </a>
                                 </div>
                                 </div>
 
@@ -204,7 +206,7 @@
                             <div class="col-md-4 col-sm-4 col-xs-12">
                                 <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
                             </div>
-                            <div class="col-md-8 hidden-xs">
+                            <div class="col-md-8 col-sm-8 hidden-xs">
                                 <h4 class="issue-date"><?php $title = $magazineItem->getTitle(); ?></h4>
                                 <?php $name =  $magazineItem->getVolumeName(); ?>
                                 <h4 class="issue-date"><?php echo $title ?></h4>
