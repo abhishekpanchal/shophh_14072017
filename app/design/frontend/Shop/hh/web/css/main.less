@@ -5411,3 +5411,91 @@ textarea {
 }
 
 
+.editor-index-index {
+  .editor-guest-image {
+    background: url(../images/guest-editor.jpg);
+    background-repeat: no-repeat;
+    min-height: 400px;
+    background-size: cover!important;
+  }
+  .guest-editor-top {
+    margin-bottom: 70px;
+  }
+  .guest-editor {
+    .guest-editor-details {
+      padding: 20px;
+      margin: 15px 0;
+      border: 1px solid #FFF;
+      color: #FFF;
+      text-align: center;
+
+      h4 {
+        font-size: 18px;
+        display: block;
+        text-transform: uppercase;
+        font: normal 18px/18px  @baseFont;
+      }
+      h3 {
+        font-size: 33px;
+        font-family: 'Droid Serif', Georgia, serif;
+        margin-bottom: 30px;
+        font-weight: normal;
+      }
+      .editor-blurb {
+        font: normal 15px/22px @baseFont;
+        padding: 30px 0;
+        border-top: 1px solid #889dbb;
+        border-bottom: 1px solid #889dbb;
+      }
+      .editor-quote {
+        font: italic 18px/30px @fancyFont;
+        background: url(../images/quote-open.png) no-repeat 0 20px;
+        padding: 25px 34px;
+        position: relative;
+        margin-bottom: 40px;
+        font-weight: normal;
+
+        &:after {
+          content: '';
+          right: 0;
+          width: 26px;
+          height: 22px;
+          background: url(../images/quote-close.png);
+          position: absolute;
+          z-index: 9999;
+          background-repeat: no-repeat;
+        }
+      }
+      .btn-picks {
+        font-size: 16px!important;
+        line-height: normal;
+        padding: 15px 25px;
+        width: auto;
+      }
+    }
+  }
+  .editor_list_view {
+    .editor_list_item {
+      text-align: center;
+      margin-top: 30px;
+
+      img {
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      h4 {
+        font-family: @fancyFont;
+        font-size: 22px;
+        font-weight: normal;
+      }
+      h5 {
+        font-family: @baseFont;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

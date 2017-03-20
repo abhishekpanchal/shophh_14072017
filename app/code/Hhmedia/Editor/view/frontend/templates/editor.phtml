@@ -1,16 +1,22 @@
-<span><?php echo __('Vancouver Design Star Curates her favorite items for spring - Just For Us'); ?></span>
+<h4 class="subtitle"><?php echo __('Vancouver Design Star Curates her favorite items for spring - Just For Us'); ?></h4>
 <?php if ($this->getGuestEditor()->getSize()): ?>
-<div class="guest-editor">
-<?php foreach($this->getGuestEditor() as $guest): ?>
-    <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
-    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
-        <h3 class="guest-name"><?php echo $guest->getName(); ?></h3>
-        <span class="guest-job"><?php echo $guest->getJobTitle(); ?></span>
-        <span class="guest-desc"><?php echo $guest->getContent(); ?></span>
-        <span class="guest-quote"><?php echo $guest->getShortQuote(); ?></span>
-        <a href="<?php echo $this->getItemUrl($guest) ?>">See Picks</a>
+<div class="guest-editor-top">
+    <div class="row">
+    <div class="vcenter-flex display-block-xs">
+    <?php foreach($this->getGuestEditor() as $guest): ?>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
+        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
+            <div class="guest-editor-details vcenter vcenter-col">
+                <h3 class="guest-name"><?php echo $guest->getName(); ?></h3>
+                <h4 class="guest-job"><?php echo $guest->getJobTitle(); ?></h4>
+                <div class="editor-blurb"><?php echo $guest->getContent(); ?></div>
+                <div class="editor-quote"><?php echo $guest->getShortQuote(); ?></div>
+                <a href="<?php echo $this->getItemUrl($guest) ?>" class="btn btn-main btn-picks">See Picks</a>
+            </div>
+        </div>
+    <?php break; endforeach; ?>
     </div>
-<?php break; endforeach; ?>
+    </div>
 </div>
 <?php endif; ?>
 <?php 
@@ -21,16 +27,14 @@ $pastEditor = $this->getCollection()
 <?php if ($pastEditor->getSize()): ?>
 <div class="editor_list_view">
     <h2 class="page-title basefont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
-    <span><?php echo __('See What your favorite have selected and why'); ?></span>
+    <h4 class="subtitle"><?php echo __('See What your favorite have selected and why'); ?></h4>
     <?php foreach ($pastEditor as $editorItem): ?>
-        <div id="item_<?php echo $editorItem->getId() ?>" class="editor_list_item">
-            <h2>
-                <a href="<?php echo $this->getItemUrl($editorItem) ?>">
-                    <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($editorItem->getName()); ?>" />
-                    <?php echo $this->escapeHtml($editorItem->getName()) ?>
-                </a>
-            </h2>
-            <span class="job-title"><?php echo $this->escapeHtml($editorItem->getJobTitle()) ?></span>
+        <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 editor_list_item">
+            <a href="<?php echo $this->getItemUrl($editorItem) ?>">
+                <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($editorItem->getName()); ?>" />
+                <h4><?php echo $this->escapeHtml($editorItem->getName()) ?></h4>
+                <h5><?php echo $this->escapeHtml($editorItem->getJobTitle()) ?></h5>
+            </a>
         </div>
     <?php endforeach; ?>
 </div>
