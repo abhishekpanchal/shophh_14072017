@@ -31,7 +31,7 @@ class FaqsList extends \Magento\Framework\View\Element\Template implements
     /**
      * @return \Fc\Faqs\Model\ResourceModel\Faq\Collection
      */
-    public function getFaqs($key)
+    public function getFaqs()
     {
         // Check if faqs has already been defined
         // makes our block nice and re-usable! We could
@@ -46,7 +46,6 @@ class FaqsList extends \Magento\Framework\View\Element\Template implements
             $faqs = $this->_faqCollectionFactory
                 ->create()
                 ->addFilter('is_active', 1)
-                ->addFilter('faq_identifier', $key)
                 ->addOrder(
                 FaqInterface::SORT_ORDER,
                 FaqCollection::SORT_ORDER_ASC
