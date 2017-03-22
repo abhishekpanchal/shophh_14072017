@@ -2597,14 +2597,28 @@ Media Queries
 }
 
 
-
 .panel-group {
   margin-bottom: 30px;
   .panel {
     border-radius: 0;
     box-shadow: none;
     border: none;
-    border-bottom: 1px solid #C0C0C0;
+    border-bottom: 1px solid #c4c4c4;
+    font-family: @baseFont;
+    font-size: 14px;
+    line-height: 23px;
+
+    p {
+      display: block;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+      h3 {
+        font-family: @fancyFont;
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
 
     .panel-heading {
       padding: 0;
@@ -2615,13 +2629,13 @@ Media Queries
         a {
           background: transparent;
           display: block;
-          font-size: 14px;
-          font-weight: bold;
+          font-size: 18px;
+          font-weight: normal;
           padding: 15px;
           text-decoration: none;
           transition: 0.15s all ease-in-out;
-          text-transform: uppercase;
-          font-family: @baseFont;
+          font-family: @fancyFont;
+          font-style: italic;
           .relative;
 
           &:after {
@@ -2631,7 +2645,9 @@ Media Queries
             content: "\F374";
             position: absolute;
             right: 10px;
-            font-size: 20px;
+            top: 10px;
+            color: #c4c4c4;
+            font-size: 28px;
           }
         }
 
@@ -2660,23 +2676,23 @@ Media Queries
 }
 
 .faq-sidebar {
-  border-top: 1px solid #c4c4c4;
+  border-top: 1px solid #CDCDCD;
   margin-top: 10px;
 
   li {
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid #CDCDCD;
 
     a {
-      padding: 12px 25px;
+      padding: 18px 25px;
       display: block;
-      font-weight: bold;
       text-transform: uppercase;
       font-size: 12px;
+      color: #8d8d8d;
       font-family: @headlineFont;
 
       &:hover {
         background-color: #FFF;
-        color: #707070;
+        color: #000;
         cursor: pointer;
       }
     }
@@ -2687,7 +2703,7 @@ Media Queries
   .returns.active-sidebar a,
   .privacy.active-sidebar a,
   .terms.active-sidebar a{
-    color: #707070;
+    color: #000;
     background-color: #FFF;
   }
 }
