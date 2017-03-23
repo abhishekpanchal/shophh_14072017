@@ -1,0 +1,14 @@
+<?php
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();        
+ 
+$categoryCollection = $objectManager->get('\Magento\Catalog\Model\ResourceModel\Category\CollectionFactory');
+$categories = $categoryCollection->create();
+$categories->addAttributeToSelect('*');
+$categories->addAttributeToFilter('page_not_found', 1);
+ ?>
+<?php foreach ($categories as $category): ?>
+    <a href="<?php echo $category->getUrl() ?>">
+    	<img src="<?php echo $category->getAdditionalImage() ?>" width="250" height="250" />
+    </a>
+    <a href="<?php echo $category->getUrl() ?>"><?php echo $category->getName() ?></a>
+<?php endforeach; ?>
