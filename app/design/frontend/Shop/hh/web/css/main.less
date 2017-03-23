@@ -117,7 +117,7 @@ Forms
 ========================================================================== */
 input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"], form {
   width: auto;
-  font-family: @headlineFont;
+  font-family: @baseFont;
 }
 
 .label {
@@ -627,10 +627,15 @@ Forms
   color: #000;
 }
 input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"] {
-  font-family: 'Montserrat'!important;
-  font-size: 12px!important;
+  font-family: @baseFont;
   font-weight: normal!important;
 }
+input:focus,
+input:active {
+  border-color: #53595a;
+  color: #000!important;
+}
+
 .fieldset > .legend {
   font-size: 14px;
   margin: 0!important;
@@ -860,6 +865,7 @@ Dashboard Fixes
     margin-bottom: 15px;
     margin: 10px 0;
     display: block;
+    text-transform: uppercase;
   }
   a {
     color: #848484;
@@ -869,29 +875,23 @@ Dashboard Fixes
 .block-main-title {
   margin-bottom: 20px;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #e6e6e7;
-
-  a {
-    font-size: 13px;
-    margin-left: 10px;
-  }
+  border-bottom: 1px solid #ababab;
 }
 .login-container {
   margin-top: 40px;
 }
 
 .login-container .block .block-title {
-    font-size: 20px;
-    font-family: @headlineFont;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 22px;
+    font-family: @fancyFont;
+    font-style: italic;
     .relative;
 }
 
 .login-container .block .block-title strong {
-  font-weight: 700;
+  font-weight: normal;
 }
 
 .login-container .fieldset:after {
@@ -1518,8 +1518,19 @@ Flexbox - Rows
 }
 
 
+.account-nav .item {
+  a {
+    padding: 18px 25px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #8d8d8d;
+    font-family: @baseFont;
+  }
+}
 .account-nav .item.current a, .account-nav .item.current strong {
   border-color: transparent;
+  color: #000;
 }
 
 .account-nav .item:hover {
@@ -1532,7 +1543,6 @@ Flexbox - Rows
 .account {
   .current {
     background-color: #FFF!important;
-    padding: 10px 0;
   }
   .current a {
     color: #707070!important
@@ -1544,31 +1554,86 @@ Flexbox - Rows
 }
 
 .customer-account-index {
-  font-size: 14px;
+
+  .block-main-title {
+    font-family: @fancyFont;
+    font-style: italic;
+    font-size: 22px;
+
+    a {
+      float: right;
+      font-family: @baseFont;
+      font-style: normal;
+      font-size: 18px;
+      color: #898989;
+      text-decoration: underline;
+    }
+  }
 
   .block-main-title strong {
-    font-weight: normal!important;
+    font-weight: normal;
+  }
+
+  .block-content {
+    margin-bottom: 50px;
+  }
+
+  .inner-content {
+    padding-left: 40px;
+  }
+
+  .block .box-actions {
+    margin-top: 20px;
   }
 }
+
+.customer-account-edit {
+  .legend {
+    font-family: @fancyFont;
+    font-style: italic;
+    font-size: 22px;
+  }
+}
+
+
 
 .page-layout-1column {
   margin-bottom: 50px;
 }
 
 .account, .contact-index-index {
+  font-size: 16px;
+
+
+  .legend {
+    font-family: @fancyFont;
+    font-style: italic;
+    font-size: 22px;
+  }
+
+  .back {
+    display: none!important;
+  }
+
+  .inner-content {
+    padding-left: 40px;
+  }
 
   .main-content {
 
+    button, .action {
+      border-radius: 0;
+      font-style: 16px!important;
+    }
+
     .fieldset > .field:not(.choice) > .label {
-      float: none!important;
-      text-align: left!important;
-      display: block!important;
-      font-family: Montserrat-Light!important;
-      text-transform: capitalize!important;
-      font-size: 15px;
-      font-weight: normal !important;
-      margin: 0;
-      margin-bottom: 0!important;
+      float: none;
+      text-align: left;
+      width: auto;
+      display: block;
+      font-weight: normal;
+      font-size: 16px;
+      font-family: @baseFont;
     }
     textarea {
       margin-top: 15px;
@@ -1588,7 +1653,8 @@ Flexbox - Rows
       width: 80%;
       margin: 0;
       margin-top: 15px;
-      font-size: 15px!important;
+      font-size: 16px;
+      color: #8d8d8d;
     }
 
     .field-name-firstname  {
@@ -1600,11 +1666,12 @@ Flexbox - Rows
       float: left!important;
       width: auto!important;
       margin-top: 4px;
-      margin-right: 20px;
+      margin-right: 5px;
     }
 
     .label {
       text-transform: capitalize!important;
+      font-size: 16px;
     }
 
     .action.primary {
@@ -2239,13 +2306,6 @@ Checkout
   margin-top: 20px;
 }
 
-.account {
-  .account-nav a {
-    padding: 15px;
-  }
-}
-
-
 /* ==========================================================================
 Media Queries
  ========================================================================== */
@@ -2639,21 +2699,25 @@ Media Queries
           .relative;
 
           &:after {
-            font: normal normal normal 24px/1 "Material Design Icons";
+            font-family: "Ionicons";
             font-size: inherit;
             text-rendering: auto;
-            content: "\F374";
+            content: "\f462";
             position: absolute;
             right: 10px;
             top: 10px;
             color: #c4c4c4;
             font-size: 28px;
+            font-style: normal;
+            color: #000;
           }
         }
 
         a.collapsed {
           &:after {
-            content: "\F415";
+            content: "\f489";
+            font-style: normal;
+            color: #8d8d8d;
           }
         }
 
@@ -2662,7 +2726,6 @@ Media Queries
 
   }
 }
-
 
 .faq-list-item {
   padding: 15px;
@@ -3501,9 +3564,6 @@ Cart Page
 
 
 
-
-
-
 .customer-account-login, .customer-account-create {
 
   .main {
@@ -3511,6 +3571,11 @@ Cart Page
       float: none!important;
       width: 100%;
       text-align: left;
+      font-family: @baseFont;
+      font-size: 16px;
+      text-transform: capitalize;
+      font-weight: normal
+
     }
     input[type="text"], input[type="email"], input[type="password"] {
       background-color: #f0f0f0;
@@ -3522,8 +3587,15 @@ Cart Page
       padding: 11px 16px;
       width: 80%;
       margin: 0;
-      margin-top: 15px;
-      font-size: 15px !important;
+      margin-top: 10px;
+      border: 1px solid #dddfdf;
+      color: #8d8d8d;
+    }
+
+    input:focus,
+    input:active {
+      border-color: #53595a;
+      color: #53595a;
     }
 
     .newsletter, .back {
@@ -3695,6 +3767,7 @@ Classes
 
 .bg-grey {
   background-color: #e6e6e7;
+  background-color: #f0f0f0;
 }
 
 .text-right {
@@ -4024,7 +4097,7 @@ Shot Slider
   margin: 0 auto;
   height: 34px;
   width: 34px;
-  background: #000;
+  background: rgba(0,0,0,0.7);
   display: block;
   border-radius: 50%;
   line-height: 32px;
@@ -4038,50 +4111,88 @@ Shot Slider
   width: 39px!important;
   height: 39px!important;
   border-radius: 50%;
-  background:  rgba(28, 180, 105, 0.8);
-  box-shadow: 0 0 0 rgba(28, 180, 105, 0.4);
-  animation: incomingPulse 1.7s infinite;
 }
 
-@-webkit-keyframes incomingPulse {
-  0% {
-    -webkit-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
-  }
-  70% {
-    -webkit-box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
-  }
-  100% {
-    -webkit-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
-  }
-}
-
-@keyframes incomingPulse {
-  0% {
-    -moz-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
-    box-shadow: 0 0 0 0 rgba(28, 180, 105, 0.4);
-  }
-  70% {
-    -moz-box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
-    box-shadow: 0 0 0 26px rgba(28, 180, 105, 0);
-  }
-  100% {
-    -moz-box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
-    box-shadow: 0 0 0 0 rgba(28, 180, 105, 0);
-  }
-}
 
 .cycle-paused:after {
   display: none!important;
 }
 
+
+
+.cycle-overlay,
+#pagernav_ {
+  display: none;
+}
+
+.marginbottom-40 {
+  margin-bottom: 40px!important;
+}
+
+.shot-products {
+  .product-item-info {
+    margin-bottom: 40px;
+  }
+  .product-info-main {
+    float: none;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+Products
+========================================================================== */
+
+.pro-detail-div {
+
+  .name {
+    display: block;
+    margin-bottom: 10px;
+  }
+  .name a {
+    font-family: @fancyFont;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 5px;
+  }
+  img {
+    float: none;
+    width: 100%;
+  }
+  .price {
+    font-size: 14px;
+    color: #8d8d8d;
+    font-weight: 700;
+    font-family: @headlineFont;
+    text-align: center;
+    font-weight: normal;
+    margin-top: 10px;
+
+    .old-price {
+      color: #b13301;
+      position: relative;
+      font-size: 11px;
+      display: inline-block;
+      margin-right: 20px;
+      float: right;
+    }
+  }
+}
+
+
+/* ==========================================================================
+Hotspot Details
+========================================================================== */
+
 .hotspot-details {
   background-color: #FFF;
-  margin: 20px;
-  padding: 30px;
+  margin: 25px;
+  padding: 45px;
   box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  text-align: center;
 
   h1 {
     color: #27577b;
@@ -4089,12 +4200,14 @@ Shot Slider
     font-family: @baseFont;
     font-weight: normal;
     text-align: center;
+    font-style: italic;
   }
-  h2 {
-    font-size: 16px;
-    text-transform: uppercase;
-    text-align: center;
-    margin: 15px auto;
+
+  h2 a {
+    font-family: @fancyFont;
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 5px;
   }
 
   p {
@@ -4129,62 +4242,43 @@ Shot Slider
       background: #666!important;
     }
   }
-}
 
-
-.cycle-overlay,
-#pagernav_ {
-  display: none;
-}
-
-.marginbottom-40 {
-  margin-bottom: 40px!important;
-}
-
-.shot-products {
-  .product-item-info {
-    margin-bottom: 40px;
-  }
-  .product-info-main {
-    float: none;
-  }
-}
-
-/* ==========================================================================
-Products
-========================================================================== */
-.pro-detail-div {
-
-  .name {
-    text-align: center;
-  }
-  .name a {
-    font-family: @headlineFont;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 16px;
-  }
-  img {
-    float: none!important;
-    width: 100%;
-    margin: 15px auto;
-  }
-  .price {
-    font-size: 14px;
-    color: #666;
-    font-weight: 700;
-    font-family: @headlineFont;
-    text-align: center;
-    margin: 20px auto;
-
-    .old-price {
-      color: #b13301;
-      position: relative;
-      font-size: 11px;
-      display: inline-block;
-      margin-right: 20px;
-      float: right;
+  .pro-detail-div {
+    .desc {
+      img {
+        float: none;
+        max-width: 400px;
+      }
     }
+    .actions-primary {
+      display: block;
+      margin-top: 40px;
+    }
+    .hotspot-btn {
+      background-color: #000;
+      color: #FFF;
+      font-family: @fancyFont;
+      font-style: italic;
+      width: auto;
+      text-transform: capitalize;
+      transition: 0.3s all;
+      font-size: 16px;
+      line-height: normal;
+      padding: 15px 25px;
+      border: 1px solid #000;
+      width: 42%;
+      border-radius: 0;
+      margin: 0;
+      margin-left: 5px;
+    }
+    .viewfull {
+      border-color: #a0a1a1;
+      background-color: transparent;
+      color: #000;
+      .relative;
+      top: 2px;
+    }
+
   }
 }
 
@@ -4291,6 +4385,7 @@ Products
 
 .lookbook-container {
   background: #efefef;
+  margin-bottom: 70px;
 }
 
 
@@ -4659,7 +4754,6 @@ Home Page
       .editors-pick-title {
         padding: 20px 50px;
         margin: 15px 0;
-        margin-left: 15px;
         border: 1px solid #0a0a0a;
 
         h4 {
@@ -4702,7 +4796,6 @@ Home Page
       .guest-editor-details {
         padding: 20px;
         margin: 15px 0;
-        margin-right: 15px;
         border: 1px solid #FFF;
         color: #FFF;
         text-align: center;
