@@ -1543,9 +1543,17 @@ Flexbox - Rows
 .account {
   .current {
     background-color: #FFF!important;
+    font-family: @baseFont;
+    font-weight: norma;
+    padding: 13px 10px;
+
+    strong {
+      font-weight: normal;
+    }
   }
   .current a {
-    color: #707070!important
+    color: #707070!important;
+    padding: 5px 18px;
   }
 }
 
@@ -2103,7 +2111,30 @@ Sidebar
 #upsellCarousel {
   max-width: 80%;
   margin: 0 auto;
+
+  .product-item-name {
+    font-weight: normal;
+
+    a {
+      font-family: @fancyFont;
+      font-size: 16px;
+    }
+  }
+  .price {
+    color: #8d8d8d;
+    font-size: 12px;
+  }
+  .photo {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+  .carousel-caption {
+    font-size: 0.65rem;
+    line-height: 0.95rem;
+  }
 }
+
 
 .password-strength-meter {
   background-color: transparent!important;
@@ -2147,14 +2178,6 @@ Sidebar
   /*animation: lai-spinnair 1.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;*/
   box-sizing: border-box;
 }
-
-
-
-
-
-
-
-
 
 .spinner-cart {
   content: '';
@@ -3504,7 +3527,7 @@ Cart Page
 
 .btn-cart-single:hover,
 .btn-cart-single:focus {
-  background-color: #000!important;
+  background-color: rgba(0,0,0,0.7)!important;
 }
 
 .btn-cart-single.btn-main.disabled {
@@ -4335,7 +4358,6 @@ Hotspot Details
     margin-bottom: 0;
   }
   .lookbookslider-top {
-    margin-top: -10px;
   }
   #progress {
     display: none;
@@ -4408,7 +4430,7 @@ Hotspot Details
 }
 
 .cycle-slideshow1 {
-  margin-bottom: 0;
+  margin: 0!important;
 }
 
 .lookbook-container {
@@ -4718,6 +4740,9 @@ Home Page
   }
   .main-content {
     margin-bottom: 0;
+  }
+  .shop-the-issue {
+    margin-bottom: 70px;
   }
   .more-shots {
     .issue-date {
@@ -5510,6 +5535,12 @@ Magic Scroll
 
 .btn-cart-single {
   padding: 10px 35px!important;
+}
+
+.product-add-form {
+  .btn-cart-single {
+    width: 100%;
+  }
 }
 
 textarea {

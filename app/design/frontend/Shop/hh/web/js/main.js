@@ -73,7 +73,21 @@ require(['jquery', 'jquery.bootstrap'], function($){
     $('.header-topbar').fadeOut( "slow" );
   });
 
+  // Check viewport width
+  var viewportWidth = $(window).width();
+  var viewportHeight = $(window).height();
 
+  var productTitle = $('.catalog-product-view .product-info-main .name')
+  var productType = $('.catalog-product-view .new-product');
+  var productPrice = $('.product-info-main .product-info-price');
+
+  $(window).resize(function() {
+    if (viewportWidth < 800) {
+      $(productPrice).prependTo('.catalog-product-view .product.media');
+      $(productType).prependTo('.catalog-product-view .product.media');
+      $(productTitle).prependTo('.catalog-product-view .product.media');
+    }
+  });
 
   $(document).ajaxComplete(function() {
     var count = $('.review-items').children('li').length;
