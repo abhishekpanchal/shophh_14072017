@@ -117,7 +117,7 @@ Forms
 ========================================================================== */
 input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"], form {
   width: auto;
-  font-family: @headlineFont;
+  font-family: @baseFont;
 }
 
 .label {
@@ -627,10 +627,15 @@ Forms
   color: #000;
 }
 input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"] {
-  font-family: 'Montserrat'!important;
-  font-size: 12px!important;
+  font-family: @baseFont;
   font-weight: normal!important;
 }
+input:focus,
+input:active {
+  border-color: #53595a;
+  color: #000!important;
+}
+
 .fieldset > .legend {
   font-size: 14px;
   margin: 0!important;
@@ -1514,7 +1519,7 @@ Flexbox - Rows
 
 
 .account-nav .item {
-  a, strong {
+  a {
     padding: 18px 25px;
     display: block;
     text-transform: uppercase;
@@ -1549,7 +1554,6 @@ Flexbox - Rows
 }
 
 .customer-account-index {
-  font-size: 16px;
 
   .block-main-title {
     font-family: @fancyFont;
@@ -1577,26 +1581,59 @@ Flexbox - Rows
   .inner-content {
     padding-left: 40px;
   }
+
+  .block .box-actions {
+    margin-top: 20px;
+  }
 }
+
+.customer-account-edit {
+  .legend {
+    font-family: @fancyFont;
+    font-style: italic;
+    font-size: 22px;
+  }
+}
+
+
 
 .page-layout-1column {
   margin-bottom: 50px;
 }
 
 .account, .contact-index-index {
+  font-size: 16px;
+
+
+  .legend {
+    font-family: @fancyFont;
+    font-style: italic;
+    font-size: 22px;
+  }
+
+  .back {
+    display: none!important;
+  }
+
+  .inner-content {
+    padding-left: 40px;
+  }
 
   .main-content {
 
+    button, .action {
+      border-radius: 0;
+      font-style: 16px!important;
+    }
+
     .fieldset > .field:not(.choice) > .label {
-      float: none!important;
-      text-align: left!important;
-      display: block!important;
-      font-family: Montserrat-Light!important;
-      text-transform: capitalize!important;
-      font-size: 15px;
-      font-weight: normal !important;
-      margin: 0;
-      margin-bottom: 0!important;
+      float: none;
+      text-align: left;
+      width: auto;
+      display: block;
+      font-weight: normal;
+      font-size: 16px;
+      font-family: @baseFont;
     }
     textarea {
       margin-top: 15px;
@@ -1616,7 +1653,8 @@ Flexbox - Rows
       width: 80%;
       margin: 0;
       margin-top: 15px;
-      font-size: 15px!important;
+      font-size: 16px;
+      color: #8d8d8d;
     }
 
     .field-name-firstname  {
@@ -1628,11 +1666,12 @@ Flexbox - Rows
       float: left!important;
       width: auto!important;
       margin-top: 4px;
-      margin-right: 20px;
+      margin-right: 5px;
     }
 
     .label {
       text-transform: capitalize!important;
+      font-size: 16px;
     }
 
     .action.primary {
