@@ -57,6 +57,10 @@
 		font-size: 0.75rem;
 	}
 	.cms-home {
+		.homeslider .homepage-controls {
+			bottom: 0;
+			top: -100px;
+		}
 		.editors-area .editors-pick,
 		.editors-area .editor-guest-image,
 		.editors-area .guest-editor {
@@ -146,12 +150,31 @@
 	}
 
 	.catalog-product-view {
+
+		.media {
+			text-align: center;
+
+			.value {
+				font-family: 'Droid Serif', Georgia, serif;
+				font-size: 25px;
+				font-style: italic;;
+			}
+		}
+
+		.price-container .price {
+			font-size: 0.65em;
+		}
+
 		.product.data.items > .item.title > .switch {
 			font-size: 0.75rem!important;
 		}
 		.products-upsell .old-price,
 		.products-upsell .special-price {
 			width: auto;
+		}
+		.new-product {
+			text-align: center;
+			margin-bottom: 5px;
 		}
 		.product-item-details .price-container .price {
 			font-size: 0.75rem;
@@ -191,13 +214,30 @@
 			p {
 				font-size: 0.7rem;
 				line-height: 1.3rem;
+				text-align: left;
+				display: block;
 			}
+		}
+	}
+	.catalog-product-view {
+		.new-product {
+			text-align: center;
+			display: block;
+		}
+	}
+	.catalog-product-view {
+		.single-product-wishlist {
+			margin-left: 20px;
+		}
+
+		.product-qty .styled-select {
+			clear: both;
 		}
 	}
 }
 
 
-@media (max-width: 650px) {
+@media (max-width: 800px) {
 	#awemenu {
 		.am-tabs {
 			.am-tab {
@@ -218,7 +258,7 @@
 	}
 
 	#awemenu .am-tabs .am-tab.shop-menu.am-tab-active {
-		
+
 	}
 
 	.main-nav {
@@ -251,7 +291,7 @@
 		padding: 5px 40px;
 	}
 	.page-title, .page-title-small {
-		font-size: 1.2rem;
+		font-size: 1.5rem;
 		text-align: center;
 		background: none;
 
@@ -296,6 +336,9 @@
 			}
 			.decorating-formula-product-title {
 				font-size: 1em;
+			}
+			.decorating-formula-price {
+				font-size: 0.75em;
 			}
 		}
 
@@ -344,6 +387,24 @@
 			}
 		}
 	}
+	.catalog-product-view .product-qty label {
+		display: none;
+	}
+	.review-details-div {
+		.btn-main {
+			clear: both;
+			margin-top: 20px;
+			width: 100%;
+		}
+		.read-all-reviews {
+			float: none;
+			clear: both;
+			display: block;
+			text-align: left;
+			width: 100%;
+			margin-bottom: 15px;
+		}
+	}
 }
 
 
@@ -351,4 +412,8 @@
 
 
 
-
+@media (max-width: 450px) {
+	.product-qty .styled-select {
+		width: auto;
+	}
+}

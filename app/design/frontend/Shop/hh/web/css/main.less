@@ -1543,9 +1543,17 @@ Flexbox - Rows
 .account {
   .current {
     background-color: #FFF!important;
+    font-family: @baseFont;
+    font-weight: norma;
+    padding: 13px 10px;
+
+    strong {
+      font-weight: normal;
+    }
   }
   .current a {
-    color: #707070!important
+    color: #707070!important;
+    padding: 5px 18px;
   }
 }
 
@@ -2103,7 +2111,30 @@ Sidebar
 #upsellCarousel {
   max-width: 80%;
   margin: 0 auto;
+
+  .product-item-name {
+    font-weight: normal;
+
+    a {
+      font-family: @fancyFont;
+      font-size: 16px;
+    }
+  }
+  .price {
+    color: #8d8d8d;
+    font-size: 12px;
+  }
+  .photo {
+    max-width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+  .carousel-caption {
+    font-size: 0.65rem;
+    line-height: 0.95rem;
+  }
 }
+
 
 .password-strength-meter {
   background-color: transparent!important;
@@ -2147,14 +2178,6 @@ Sidebar
   /*animation: lai-spinnair 1.3s cubic-bezier(0.680, -0.550, 0.265, 1.550) infinite;*/
   box-sizing: border-box;
 }
-
-
-
-
-
-
-
-
 
 .spinner-cart {
   content: '';
@@ -3504,7 +3527,7 @@ Cart Page
 
 .btn-cart-single:hover,
 .btn-cart-single:focus {
-  background-color: #000!important;
+  background-color: rgba(0,0,0,0.7)!important;
 }
 
 .btn-cart-single.btn-main.disabled {
@@ -3982,6 +4005,27 @@ Layout
   margin-bottom: 35px;
 }
 
+.quickview-lookbook {
+  border: 1px solid #b0b7b8;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: @baseFont;
+  padding: 10px 30px;
+  text-align: center;
+  color: #000;
+  background-color: rgba(255,255,255,0.8);
+  display: block;
+  width: 90%;
+  position: absolute;
+  top: 200px;
+  transition: 1s all;
+  opacity: 0;
+}
+.pro-detail-div:hover .quickview-lookbook {
+  opacity: 1;
+}
+
+
 
 /* ==========================================================================
 Shot Thumbs
@@ -3991,7 +4035,7 @@ Shot Thumbs
   float: left;
   overflow: hidden;
   width: 99%;
-  margin-bottom: 2px;
+  margin-bottom: -2px;
   background: #000000;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -4207,6 +4251,7 @@ Hotspot Details
     font-family: @fancyFont;
     font-size: 20px;
     font-weight: normal;
+    font-style: italic;
     margin-top: 5px;
   }
 
@@ -4221,6 +4266,10 @@ Hotspot Details
       max-width: 280px;
       display: block;
     }
+  }
+
+  .pro-detail-div img {
+    max-width: 280px;
   }
 
   .btn-fullscreen {
@@ -4247,7 +4296,9 @@ Hotspot Details
     .desc {
       img {
         float: none;
-        max-width: 400px;
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
       }
     }
     .actions-primary {
@@ -4307,7 +4358,6 @@ Hotspot Details
     margin-bottom: 0;
   }
   .lookbookslider-top {
-    margin-top: -10px;
   }
   #progress {
     display: none;
@@ -4380,7 +4430,7 @@ Hotspot Details
 }
 
 .cycle-slideshow1 {
-  margin-bottom: 0;
+  margin: 0!important;
 }
 
 .lookbook-container {
@@ -4690,6 +4740,9 @@ Home Page
   }
   .main-content {
     margin-bottom: 0;
+  }
+  .shop-the-issue {
+    margin-bottom: 70px;
   }
   .more-shots {
     .issue-date {
@@ -5482,6 +5535,12 @@ Magic Scroll
 
 .btn-cart-single {
   padding: 10px 35px!important;
+}
+
+.product-add-form {
+  .btn-cart-single {
+    width: 100%;
+  }
 }
 
 textarea {
