@@ -1,0 +1,30 @@
+<?php
+/**
+ * Tags template for separate item
+ *
+ */
+
+/**
+ * @var $this Hhmedia\Tags\Block\View
+ * @see Hhmedia\Tags\Block\View
+ */
+?>
+<?php $_tagsItem = $this->getTags(); ?>
+    <div class="tags_item_subtitle">
+        <?php echo $this->formatDate($_tagsItem->getPublishedAt()) ?> |
+        <?php echo $this->escapeHtml($_tagsItem->getAuthor()) ?>
+    </div>
+
+<div class="tags_item_view">
+    <?php if ($imageUrl = $this->getImageUrl($_tagsItem, 400)): ?>
+       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_tagsItem->getTitle()) ?>" /></p>
+    <?php endif; ?>
+
+    <div class="tags_item_content"><?php echo $_tagsItem->getContent() ?></div>
+
+    <div class="pager">
+        <a href="<?php echo $this->getBackUrl() ?>">
+            <?php echo __('Return to list') ?>
+        </a>
+    </div>
+</div>

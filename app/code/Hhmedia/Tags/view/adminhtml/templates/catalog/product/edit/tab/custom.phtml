@@ -1,0 +1,40 @@
+<div class="<?= /* @noEscape */ $block->getData('config/dataScope') ?>" data-role="step-wizard-dialog" data-bind="scope: '<?= /* @noEscape */ $block->getForm() ?>.<?= /* @noEscape */ $block->getModal() ?>'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<div class="<?= /* @noEscape */ $block->getData('config/dataScope') ?>" id="product-variations-matrix" data-role="product-variations-matrix">
+    <div data-bind="scope: 'configurableVariations'"></div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "<?= /* @noEscape */ $block->getData('config/form') ?>.<?= /* @noEscape */ $block->getModal() ?>": {
+                        "component": "Hhmedia_Tags/js/components/modal-custommodule",
+                        "options": {"type": "slide", "title": "<?php echo $block->escapeHtml(__('Your Title')); ?>"},
+                        "formName": "<?= /* @noEscape */ $block->getForm() ?>",
+                        "isTemplate": false,
+                        "stepWizard": "<?= /* @noEscape */ $block->getData('config/nameStepWizard') ?>",
+                        "children": {
+                            "wizard": {
+                                "url": "<?= /* @noEscape */ $block->getUrl($block->getData('config/urlWizard'), ['id' => $block->getProduct()->getId()]) ?>",
+                                "component": "Magento_Ui/js/form/components/html"
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+</script>
+
+<script>
+    require(['jquery', 'mage/apply/main'], function ($, main) {
+        main.apply();
+
+          $('.<?= /* @noEscape */ $block->getData('config/dataScope') ?>[data-role=step-wizard-dialog]').applyBindings();
+        $('.<?= /* @noEscape */ $block->getData('config/dataScope') ?>[data-role=product-variations-matrix]').applyBindings();
+
+    })
+</script>
