@@ -2639,21 +2639,25 @@ Media Queries
           .relative;
 
           &:after {
-            font: normal normal normal 24px/1 "Material Design Icons";
+            font-family: "Ionicons";
             font-size: inherit;
             text-rendering: auto;
-            content: "\F374";
+            content: "\f462";
             position: absolute;
             right: 10px;
             top: 10px;
             color: #c4c4c4;
             font-size: 28px;
+            font-style: normal;
+            color: #000;
           }
         }
 
         a.collapsed {
           &:after {
-            content: "\F415";
+            content: "\f489";
+            font-style: normal;
+            color: #8d8d8d;
           }
         }
 
@@ -2662,7 +2666,6 @@ Media Queries
 
   }
 }
-
 
 .faq-list-item {
   padding: 15px;
