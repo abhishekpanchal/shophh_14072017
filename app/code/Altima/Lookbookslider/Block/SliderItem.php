@@ -172,7 +172,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         //$width  = $this->_slider->getWidth();
         //$height = $this->_slider->getHeight();
         $width = 1100;
-        $height = 600;
+        $height = 640;
         return $this->_lookbooksliderHelper->getResizedUrl($slide->getImage_path(), $width, $height);
     }
 
@@ -235,8 +235,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
                 }
                 $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product_details->getId();
-                $html_content .= '<a href="javascript: void(0);" data-quickview-url="'.$quickViewUrl.'" class="weltpixel-quickview quickview-btn" title="Quick View">
-                <i class="mdi mdi-magnify"></i></a>';
+                
+                $html_content .= '<a href="javascript: void(0);" data-quickview-url="'.$quickViewUrl.'" class="weltpixel-quickview quickview-lookbook" title="Quick View">Quick Look</a>';
+
                 if ($product_details->isAvailable()) {
                     if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {
                         $_p_url = $product_details->getProductUrl();

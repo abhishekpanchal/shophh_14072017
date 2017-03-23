@@ -3982,6 +3982,27 @@ Layout
   margin-bottom: 35px;
 }
 
+.quickview-lookbook {
+  border: 1px solid #b0b7b8;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-family: @baseFont;
+  padding: 10px 30px;
+  text-align: center;
+  color: #000;
+  background-color: rgba(255,255,255,0.8);
+  display: block;
+  width: 90%;
+  position: absolute;
+  top: 200px;
+  transition: 1s all;
+  opacity: 0;
+}
+.pro-detail-div:hover .quickview-lookbook {
+  opacity: 1;
+}
+
+
 
 /* ==========================================================================
 Shot Thumbs
@@ -3991,7 +4012,7 @@ Shot Thumbs
   float: left;
   overflow: hidden;
   width: 99%;
-  margin-bottom: 2px;
+  margin-bottom: -2px;
   background: #000000;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -4207,6 +4228,7 @@ Hotspot Details
     font-family: @fancyFont;
     font-size: 20px;
     font-weight: normal;
+    font-style: italic;
     margin-top: 5px;
   }
 
@@ -4221,6 +4243,10 @@ Hotspot Details
       max-width: 280px;
       display: block;
     }
+  }
+
+  .pro-detail-div img {
+    max-width: 280px;
   }
 
   .btn-fullscreen {
@@ -4247,7 +4273,9 @@ Hotspot Details
     .desc {
       img {
         float: none;
-        max-width: 400px;
+        max-width: 280px;
+        margin: 0 auto;
+        display: block;
       }
     }
     .actions-primary {
