@@ -171,8 +171,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         $srcImg = $this->_lookbooksliderHelper->getBaseUrlMedia($slide->getImage_path());
         //$width  = $this->_slider->getWidth();
         //$height = $this->_slider->getHeight();
-        $width = 1170;
-        $height = 500;
+        $width = 1100;
+        $height = 600;
         return $this->_lookbooksliderHelper->getResizedUrl($slide->getImage_path(), $width, $height);
     }
 
