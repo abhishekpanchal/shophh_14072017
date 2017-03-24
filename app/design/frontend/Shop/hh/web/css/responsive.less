@@ -1,8 +1,5 @@
 @media (max-width: 1024px) {
 
-	.display-block-xs {
-		display: block;
-	}
 	.clearfix {
 		clear: both;
 	}
@@ -237,6 +234,28 @@
 }
 
 
+/* ------ Tablet Portrait size to standard 960 (devices and browsers) ------*/
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	.cms-home {
+		.homeslider {
+			margin-top: 0;
+
+			.homepage-hero-details {
+				margin: 20px auto;
+
+				.homepage-hero-btn {
+					padding: 10px 20px;
+					width: 80%;
+				}
+			}
+
+		}
+	}
+}
+
+
+
+
 @media (max-width: 800px) {
 	#awemenu {
 		.am-tabs {
@@ -275,6 +294,12 @@
 		left: 0;
 		background-color: rgba(255,255,255,0.95);
 		transition: 0.3s;
+
+		.am-tab-home {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
 	}
 
 	#awemenu .am-tabs.am-tabs-root > .am-sortable > .am-tab > .am-dropdown {
@@ -283,9 +308,6 @@
     position: absolute;
     top: 0;
 	}
-
-
-
 
 	.header-topbar p span {
 		padding: 5px 40px;
@@ -301,6 +323,15 @@
 	}
 	.display-block-xs {
 		display: block!important;
+	}
+
+	.lookbook-container {
+		.homepage-hero {
+			width: 100%;
+		}
+		.mood-bg {
+			width: 100%;
+		}
 	}
 	.cms-home {
 
@@ -405,6 +436,72 @@
 			margin-bottom: 15px;
 		}
 	}
+	.page-footer {
+		.border-left {
+			margin-left: 0;
+		}
+	}
+	.page-products {
+		.columns .column.main {
+			padding-top: 30px;
+		}
+		.product-item-photo {
+			height: auto;
+		}
+	}
+	.account {
+		.page-title-wrapper {
+			margin-bottom: 0;
+
+			.page-title {
+				margin-right: 0;
+			}
+		}
+		.page.messages {
+			margin-bottom: 10px;
+		}
+		.sidebar {
+			.block {
+				margin-bottom: 0;
+			}
+			.content {
+				padding: 0;
+			}
+			select {
+				margin-top: 0;
+				width: 100%;
+			}
+		}
+		p {
+			font-size: 1em;
+		}
+		.box-actions {
+			margin-bottom: 40px;
+		}
+		.box-title {
+			font-size: 21px;
+		}
+		.block-main-title {
+			font-size: 23px;
+
+			a {
+				font-size: 0.6em;
+			}
+		}
+	}
+  .header-topbar {
+    p {
+      font-size: 0.75em!important;
+    }
+  }
+  .page-footer {
+    .newsletter-footer {
+      text-align: center;
+    }
+  }
+  .mfp-content {
+  	min-width: 300px;
+  }
 }
 
 

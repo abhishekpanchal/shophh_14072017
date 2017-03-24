@@ -127,6 +127,33 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
 
 
 /* ==========================================================================
+Common LESS
+========================================================================== */
+
+/* Hover Effect */
+.hover-effect {
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    bottom: -3px;
+    border-bottom: 2px solid #222;
+    transition: width .3s;
+  }
+}
+
+.inline {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+
+
+
+/* ==========================================================================
 Icon Font
  ========================================================================== */
 .mdi {
@@ -2442,24 +2469,6 @@ Media Queries
       margin-bottom: 50px;
     }
   }
-  .account {
-    .box {
-      margin-bottom: 30px;
-    }
-    .page-title {
-      font-size: 25px;
-      max-width: 300px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .action {
-      margin-right: 10px;
-    }
-  }
-  .account input {
-    width: 100%!important;
-  }
   .page-products .sorter {
     display: none;
   }
@@ -2577,9 +2586,12 @@ Media Queries
   }
   input[type="email"] {
     border-radius: 20px!important;
-    padding: 3px 10px!important;
+    padding: 22px 10px!important;
     display: block;
     width: 100%!important;
+    background-color: #dededf;
+    margin-top: 10px;
+    color: #7a7a7a;
   }
   .btn-subscribe {
     background-color: #000;
@@ -4553,30 +4565,36 @@ Awe Menu
   min-height: 380px;
 }
 
-.am-html a:hover {
-  text-decoration: underline;
+
+
+
+
+
+
+
+.am-html h3 {
+  display: inline-block;
+  a {
+    .relative;
+    .hover-effect;
+
+    &:hover:before {
+      width: 100%;
+    }
+  }
 }
+
 
 .am-link-text {
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    bottom: -3px;
-    background: #333;
-    border-bottom: 2px solid #222;
-    visibility: hidden;
-    transition: all .3s ease-in-out 0s;
-  }
-
-
-  &:hover:before {
-    visibility: visible;
-    width: 100%;
-  }
+  .relative;
+  .hover-effect;
 }
+
+.am-link:hover .am-link-text:before {
+  width: 100%;
+}
+
+
 
 #awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-html .am-item-pad {
   padding: 0!important;
@@ -5489,6 +5507,10 @@ Magic Scroll
   }
   .add-to-cart {
     margin-bottom: 15px;
+
+    .btn-main {
+      width: 100%;
+    }
   }
   .swatch-attribute-label {
     font-size: 12px!important;
@@ -5498,6 +5520,15 @@ Magic Scroll
   }
   .value {
     margin-top: 0!important;
+  }
+  .MagicToolboxSelectorsContainer {
+    display: none;
+  }
+  .product.media {
+    margin-bottom: 0;
+  }
+  .quickview-qty {
+    display: none;
   }
 }
 

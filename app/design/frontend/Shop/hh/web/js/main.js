@@ -80,14 +80,32 @@ require(['jquery', 'jquery.bootstrap'], function($){
   var productTitle = $('.catalog-product-view .product-info-main .name')
   var productType = $('.catalog-product-view .new-product');
   var productPrice = $('.product-info-main .product-info-price');
+  var searchBox = $('.header-search');
 
   $(window).resize(function() {
-    if (viewportWidth < 800) {
+    if (viewportWidth < 600) {
       $(productPrice).prependTo('.catalog-product-view .product.media');
       $(productType).prependTo('.catalog-product-view .product.media');
       $(productTitle).prependTo('.catalog-product-view .product.media');
+      $(searchBox).prependTo('.mobile-full');
     }
   });
+
+if (viewportWidth < 600) {
+  $('ul.faq-sidebar, .sidebar ul').each(function() {
+    var $select = $('<select />');
+
+    $(this).find('a').each(function() {
+        var $option = $('<option />');
+        $option.attr('value', $(this).attr('href')).html($(this).html());
+        $select.append($option);
+    });
+
+    $(this).replaceWith($select);
+  });
+}
+
+
 
   $(document).ajaxComplete(function() {
     var count = $('.review-items').children('li').length;
