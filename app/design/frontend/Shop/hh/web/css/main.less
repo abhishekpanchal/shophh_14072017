@@ -140,6 +140,9 @@ Common LESS
     border-bottom: 2px solid #222;
     transition: width .3s;
   }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .inline {
@@ -4842,15 +4845,39 @@ Home Page
       }
       .editors-thumbs {
         text-align: left;
-        margin-left:10px;
+        margin-bottom: 20px;
 
         li {
-          display: inline-block;
-          margin-bottom: 10px;
-          margin-top: 0;
 
           img {
             width: 100%;
+            padding: 5px;
+            padding-bottom: 0;
+          }
+
+          .editor-link {
+            .relative;
+            .block;
+
+            &:after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              top: 0;
+              width: 97%;
+              height: 97%;
+              background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+              transition: 0.3s all;
+              opacity: 0;
+              margin: 5px;
+              margin-bottom: 0;
+            }
+
+            &:hover:after {
+              opacity: 1;
+            }
           }
         }
       }
@@ -4972,7 +4999,6 @@ Home Page
       font-size: 14px;
     }
     .decorating-formula-thumb {
-      width: 85%;
       margin: 20px auto;
       display: block;
     }
@@ -5363,7 +5389,7 @@ Limiter
   display: block;
   width: 100%;
   position: absolute;
-  top: 200px;
+  bottom: 0;
   transition: 1s all;
   opacity: 0;
 }
