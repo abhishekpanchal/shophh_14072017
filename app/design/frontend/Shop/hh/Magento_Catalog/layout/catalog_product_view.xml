@@ -10,6 +10,7 @@
     <move element="product.info.addto" destination="product.info.main" after="product.info" />
     <move element="batch" destination="product.info.main" before="product.info.price" />
     <move element="share" destination="product.info.main" after="product.info.addto" />
+    <move element="editors.pick" destination="product.info.main" after="product.info.price" />
 
     <referenceBlock name="product.info.stock.sku" remove="true" />
     <referenceBlock name="product.info.overview" remove="true" />
@@ -41,6 +42,7 @@
               </arguments>
           </block>
       </container>
+      <block class="Magento\Catalog\Block\Product\View" name="shot" template="product/view/shot.phtml" after="product.info.details" />
     </referenceContainer>
 
     <referenceBlock name="product.info.description">
@@ -50,7 +52,7 @@
     </referenceBlock>
     <referenceBlock name="product.attributes">
       <action method="setTitle">
-        <argument name="title" xsi:type="string">Specs &amp; Care</argument>
+        <argument name="title" xsi:type="string">Details</argument>
       </action>
     </referenceBlock>
 
@@ -60,6 +62,10 @@
 
     <referenceBlock name="product.info.main">
       <block class="Magento\Catalog\Block\Product\View" name="share" template="product/view/share.phtml" />
+    </referenceBlock>
+
+    <referenceBlock name="product.info.main">
+      <block class="Magento\Catalog\Block\Product\View" name="editors.pick" template="product/view/editors_pick.phtml" />
     </referenceBlock>
 
     <referenceBlock name="product.info.details">

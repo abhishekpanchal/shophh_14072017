@@ -188,6 +188,17 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         return 'altima-lookbookslider-slider-' . $this->getSlider()->getId() . $this->_stdlibDateTime->gmtTimestamp();
     }
 
+    public function getProducts($slide) {
+        $hotspots          = $slide->getHotspots();
+        if ($hotspots == '')
+            return '';
+        $decoded_array     = json_decode($hotspots, true);
+        foreach ($decoded_array as $key => $value) {
+            $sku[] = $decoded_array[$key]['sku'];
+        }
+        return $sku;
+    }
+
     public function getProductCollection($slide) {
         $hotspots          = $slide->getHotspots();
         if ($hotspots == '')

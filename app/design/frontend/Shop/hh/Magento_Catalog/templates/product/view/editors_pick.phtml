@@ -1,0 +1,15 @@
+<?php $_product = $block->getProduct(); ?>
+<?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
+<?php $_editors = $objEditor->getCollection(); ?>
+
+<?php foreach($_editors as $editor): ?>
+	<?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
+		<?php if(in_array($_product->getId(),$editorProduct)): ?>
+			<strong><?php echo ("Editor's Pick:") ?></strong>
+			<a href="<?php echo $objEditor->getItemUrl($editor) ?>">
+                <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
+                <?php echo $this->escapeHtml($editor->getName()) ?>
+            </a>
+			<?php break; ?>
+		<?php endif; ?>	
+<?php endforeach; ?>
