@@ -9,10 +9,10 @@
     <div class="col-md-8 col-md-offset-2">
         <div class="vcenter vcenter-column editor-intro">
             <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
-            <?php if($_editorItem->getSubtitle() != ''): ?>
-                <?php echo $_editorItem->getSubtitle(); ?>
-            <?php endif; ?>
             <div class="editor-details">
+                <?php if($_editorItem->getSubtitle() != ''): ?>
+                    <div class="editor-guest-title"><?php echo $_editorItem->getSubtitle(); ?></div>
+                <?php endif; ?>
                 <div class="editor-name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
                 <div class="editor-job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
             </div>
@@ -73,7 +73,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 text-center">
-            <a href="<?php echo $this->getBackUrl() ?>" class="editor-link view-all-editors">View All Editors &lt;</a>
+            <a href="<?php echo $this->getBackUrl() ?>" class="editor-link view-all-editors">View All Editors &gt;</a>
         </div>
     </div>
 </div>
