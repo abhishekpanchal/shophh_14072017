@@ -44,9 +44,9 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             $pos = array_keys($words);
             $shortReview = substr($text, 0, $pos[$limit]).'...';
             $fullReview = substr($text, $pos[$limit+1], end($pos));
-            return "<div class='short-review'>".$shortReview."</div><div class='full-review'>".$fullReview."</div>";
+            return "<span class='short-review'>".$shortReview."<a href='#' class='review-read-more'>Read More</a></span><span class='full-review'>".$fullReview."<a href='#' class='review-read-less'>Read Less</a></span>";
         }else{
-            return "<div class='short-review'>".$text."</div>";
+            return "<span class='short-review'>".$text."</span>";
         }
     }
 

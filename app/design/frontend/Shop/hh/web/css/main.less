@@ -127,6 +127,36 @@ input[type="text"], input[type="password"], input[type="url"], input[type="tel"]
 
 
 /* ==========================================================================
+Common LESS
+========================================================================== */
+
+/* Hover Effect */
+.hover-effect {
+  &:before {
+    content: '';
+    position: absolute;
+    width: 0;
+    bottom: -3px;
+    border-bottom: 2px solid #222;
+    transition: width .3s;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.inline {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+
+
+
+/* ==========================================================================
 Icon Font
  ========================================================================== */
 .mdi {
@@ -278,6 +308,10 @@ Reviews
   margin-top: 5px;
   font-size: 13px;
   line-height: 22px;
+
+  .full-review {
+    display: none;
+  }
 }
 
 .review-item {
@@ -2442,24 +2476,6 @@ Media Queries
       margin-bottom: 50px;
     }
   }
-  .account {
-    .box {
-      margin-bottom: 30px;
-    }
-    .page-title {
-      font-size: 25px;
-      max-width: 300px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .action {
-      margin-right: 10px;
-    }
-  }
-  .account input {
-    width: 100%!important;
-  }
   .page-products .sorter {
     display: none;
   }
@@ -2577,9 +2593,12 @@ Media Queries
   }
   input[type="email"] {
     border-radius: 20px!important;
-    padding: 3px 10px!important;
+    padding: 22px 10px!important;
     display: block;
     width: 100%!important;
+    background-color: #dededf;
+    margin-top: 10px;
+    color: #7a7a7a;
   }
   .btn-subscribe {
     background-color: #000;
@@ -4227,7 +4246,6 @@ Products
 /* ==========================================================================
 Hotspot Details
 ========================================================================== */
-
 .hotspot-details {
   background-color: #FFF;
   margin: 25px;
@@ -4237,6 +4255,7 @@ Hotspot Details
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  min-height: 90%;
 
   h1 {
     color: #27577b;
@@ -4553,30 +4572,36 @@ Awe Menu
   min-height: 380px;
 }
 
-.am-html a:hover {
-  text-decoration: underline;
+
+
+
+
+
+
+
+.am-html h3 {
+  display: inline-block;
+  a {
+    .relative;
+    .hover-effect;
+
+    &:hover:before {
+      width: 100%;
+    }
+  }
 }
+
 
 .am-link-text {
-  position: relative;
-
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    bottom: -3px;
-    background: #333;
-    border-bottom: 2px solid #222;
-    visibility: hidden;
-    transition: all .3s ease-in-out 0s;
-  }
-
-
-  &:hover:before {
-    visibility: visible;
-    width: 100%;
-  }
+  .relative;
+  .hover-effect;
 }
+
+.am-link:hover .am-link-text:before {
+  width: 100%;
+}
+
+
 
 #awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-html .am-item-pad {
   padding: 0!important;
@@ -4824,15 +4849,39 @@ Home Page
       }
       .editors-thumbs {
         text-align: left;
-        margin-left:10px;
+        margin-bottom: 20px;
 
         li {
-          display: inline-block;
-          margin-bottom: 10px;
-          margin-top: 0;
 
           img {
             width: 100%;
+            padding: 5px;
+            padding-bottom: 0;
+          }
+
+          .editor-link {
+            .relative;
+            .block;
+
+            &:after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              top: 0;
+              width: 97%;
+              height: 97%;
+              background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+              transition: 0.3s all;
+              opacity: 0;
+              margin: 5px;
+              margin-bottom: 0;
+            }
+
+            &:hover:after {
+              opacity: 1;
+            }
           }
         }
       }
@@ -4954,7 +5003,6 @@ Home Page
       font-size: 14px;
     }
     .decorating-formula-thumb {
-      width: 85%;
       margin: 20px auto;
       display: block;
     }
@@ -5213,11 +5261,6 @@ Catalog View
 .new-product {
   display: inline-block
 }
-p  {
-  display: inline;
-  text-align: center;
-  margin-bottom: 5px;
-}
 
 .catalog-category-view {
   .new-product {
@@ -5345,7 +5388,7 @@ Limiter
   display: block;
   width: 100%;
   position: absolute;
-  top: 200px;
+  bottom: 0;
   transition: 1s all;
   opacity: 0;
 }
@@ -5489,6 +5532,10 @@ Magic Scroll
   }
   .add-to-cart {
     margin-bottom: 15px;
+
+    .btn-main {
+      width: 100%;
+    }
   }
   .swatch-attribute-label {
     font-size: 12px!important;
@@ -5498,6 +5545,15 @@ Magic Scroll
   }
   .value {
     margin-top: 0!important;
+  }
+  .MagicToolboxSelectorsContainer {
+    display: none;
+  }
+  .product.media {
+    margin-bottom: 0;
+  }
+  .quickview-qty {
+    display: none;
   }
 }
 
@@ -5578,6 +5634,9 @@ textarea {
   }
 }
 
+/* ==========================================================================
+Editos Main Page
+========================================================================== */
 
 .editor-index-index {
   .editor-guest-image {
@@ -5665,5 +5724,129 @@ textarea {
         text-transform: uppercase;
       }
     }
+  }
+}
+
+
+/* ==========================================================================
+Editors Details
+========================================================================== */
+.editor-index-view {
+  .editor-intro {
+    img {
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-right: 30px;
+      .inline;
+    }
+    .editor-details {
+      .inline;
+    }
+    .editor-guest-title {
+      color: #8d8d8d;
+      font-family: @baseFont;
+      font-size: 15px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .editor-name {
+      font-family: @fancyFont;
+      font-size: 34px;
+      font-style: italic;
+      border-bottom: 1px solid #000;
+      padding-bottom: 20px;
+      margin-bottom: 15px;
+    }
+    .editor-job {
+      font-family: @baseFont;
+      text-transform: uppercase;
+      color: #5eb1ae;
+      font-size: 15px;
+    }
+  }
+  .editor-link {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: @headlineFont;
+    .block;
+  }
+  .editor-quote {
+    font: italic 26px/36px @fancyFont;
+    background: url(../images/quote-open.png) no-repeat 0 20px;
+    padding: 25px;
+    position: relative;
+    margin: 30px auto;
+    margin-top: 15px;
+    font-weight: normal;
+
+    &:after {
+      content: '';
+      right: 0;
+      width: 26px;
+      height: 22px;
+      background: url(../images/quote-close.png);
+      position: absolute;
+      z-index: 9999;
+      background-repeat: no-repeat;
+    }
+  }
+  .editor-bio {
+    font-size: .8rem;
+    line-height: 1.4rem;
+    margin-bottom: 40px;
+  }
+  .editor-products {
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    .editor-product {
+      list-style: none;
+      text-align: center;
+
+      img {
+        margin-bottom: 10px;
+      }
+
+      h4 {
+        font-family: @fancyFont;
+        font-size: 16px;
+      }
+      h5 {
+        color: #8d8d8d;
+        font-weight: normal;
+        font-size: 14px;
+      }
+      .editor-mini-quote {
+        font-family: @fancyFont;
+        font-style: italic;
+        font-size: 14px;
+        margin: 20px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .editor-single-thumb {
+    img {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+      margin: 20px;
+    }
+    h4 {
+      font-family: @fancyFont;
+      font-size: 22px;
+      font-weight: normal;
+    }
+    h5 {
+      font-family: @baseFont;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+  .view-all-editors {
+    margin-top: 40px;
   }
 }

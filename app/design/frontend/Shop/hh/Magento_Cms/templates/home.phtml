@@ -149,12 +149,14 @@
                 <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
             </div>
             <div class="editors-thumbs">
-                <ul class="row"><?php $i=0; ?>
+                <ul class="row no-gutters"><?php $i=0; ?>
                     <?php foreach ($_editor as $editorItem): ?>
                         <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
-                            <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>">
-                                <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
-                            </a>
+                            <li class="col-md-6 col-sm-6 col-xs-6">
+                                <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>" class="editor-link">
+                                    <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" />
+                                </a>
+                            </li>
                             <?php $i++; if($i == 4){break;} ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
