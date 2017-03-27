@@ -80,7 +80,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
   var productTitle = $('.catalog-product-view .product-info-main .name')
   var productType = $('.catalog-product-view .new-product');
   var productPrice = $('.product-info-main .product-info-price');
-  var searchBox = $('.header-search');
+  var searchBox = $('.minisearch');
 
   $(window).resize(function() {
     if (viewportWidth < 600) {
@@ -88,7 +88,20 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(productType).prependTo('.catalog-product-view .product.media');
       $(productTitle).prependTo('.catalog-product-view .product.media');
       $(searchBox).prependTo('.mobile-full');
+      console.log('search', searchBox);
+
+
+    $(searchBox).on('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    console.log('bbbb');
+  });
+
+
     }
+
+
+
   });
 
 if (viewportWidth < 600) {
@@ -118,10 +131,31 @@ if (viewportWidth < 600) {
         e.preventDefault();
         console.log('uhhh');
         $('.review-item').slice(3).fadeIn(1000);
-        $('.btn-reviews').addClass('display-none');
+        $('.btn-reviews').addClass('display-block');
       });
+
+
+      $('.review-read-more').click(function(e) {
+        // e.preventDefault();
+        // $('.review-read-more').addClass('display-none');
+        // $('.full-review').addClass('display-block');
+        console.log('aaaa');
+        e.preventDefault();
+        $('.full-review:visible').hide();
+        $(this).next('.full-review').show();
+      });
+
+      $('.review-read-less').click(function(e) {
+        e.preventDefault();
+        $('.review-read-less').addClass('display-none');
+        $('.full-review').addClass('display-none');
+      });
+
     }
   });
+
+
+
 
 
   $('.btn-toggle-form').click(function(e) {

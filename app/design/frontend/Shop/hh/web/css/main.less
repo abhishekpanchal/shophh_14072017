@@ -308,6 +308,10 @@ Reviews
   margin-top: 5px;
   font-size: 13px;
   line-height: 22px;
+
+  .full-review {
+    display: none;
+  }
 }
 
 .review-item {
@@ -4242,7 +4246,6 @@ Products
 /* ==========================================================================
 Hotspot Details
 ========================================================================== */
-
 .hotspot-details {
   background-color: #FFF;
   margin: 25px;
@@ -4252,6 +4255,7 @@ Hotspot Details
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  min-height: 90%;
 
   h1 {
     color: #27577b;
@@ -5635,6 +5639,9 @@ textarea {
   }
 }
 
+/* ==========================================================================
+Editos Main Page
+========================================================================== */
 
 .editor-index-index {
   .editor-guest-image {
@@ -5722,5 +5729,122 @@ textarea {
         text-transform: uppercase;
       }
     }
+  }
+}
+
+
+/* ==========================================================================
+Editors Details
+========================================================================== */
+.editor-index-view {
+  .editor-intro {
+    img {
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 50%;
+      margin: 0 auto;
+      margin-right: 30px;
+      .inline;
+    }
+    .editor-details {
+      .inline;
+    }
+    .editor-name {
+      font-family: @fancyFont;
+      font-size: 34px;
+      font-style: italic;
+      border-bottom: 1px solid #000;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .editor-job {
+      font-family: @baseFont;
+      text-transform: uppercase;
+      color: #5eb1ae;
+      font-size: 15px;
+    }
+  }
+  .editor-link {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: @headlineFont;
+    .block;
+  }
+  .editor-quote {
+    font: italic 26px/36px @fancyFont;
+    background: url(../images/quote-open.png) no-repeat 0 20px;
+    padding: 25px;
+    position: relative;
+    margin: 30px auto;
+    margin-top: 15px;
+    font-weight: normal;
+
+    &:after {
+      content: '';
+      right: 0;
+      width: 26px;
+      height: 22px;
+      background: url(../images/quote-close.png);
+      position: absolute;
+      z-index: 9999;
+      background-repeat: no-repeat;
+    }
+  }
+  .editor-bio {
+    font-size: .8rem;
+    line-height: 1.4rem;
+    margin-bottom: 40px;
+  }
+  .editor-products {
+    margin: 0 auto;
+    margin-bottom: 50px;
+
+    .editor-product {
+      list-style: none;
+      text-align: center;
+
+      img {
+        margin-bottom: 10px;
+      }
+
+      h4 {
+        font-family: @fancyFont;
+        font-size: 16px;
+      }
+      h5 {
+        color: #8d8d8d;
+        font-weight: normal;
+        font-size: 14px;
+      }
+      .editor-mini-quote {
+        font-family: @fancyFont;
+        font-style: italic;
+        font-size: 14px;
+        margin: 20px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .editor-single-thumb {
+    img {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      border-radius: 50%;
+      margin: 20px;
+    }
+    h4 {
+      font-family: @fancyFont;
+      font-size: 22px;
+      font-weight: normal;
+    }
+    h5 {
+      font-family: @baseFont;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+  .view-all-editors {
+    margin-top: 40px;
   }
 }

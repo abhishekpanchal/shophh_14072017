@@ -1,43 +1,79 @@
-<a href="<?php echo $this->getBackUrl() ?>"><?php echo __('All Editors') ?></a>
+<div class="row">
+    <div class="col-md-12">
+        <a href="<?php echo $this->getBackUrl() ?>" class="editor-link editor-back">&lt; All Editors</a>
+    </div>
+</div>
 <?php $_editorItem = $this->getEditor(); ?>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="vcenter vcenter-column editor-intro">
+            <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
+            <?php if($_editorItem->getSubtitle() != ''): ?>
+                <?php echo $_editorItem->getSubtitle(); ?>
+            <?php endif; ?>
+            <div class="editor-details">
+                <div class="editor-name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
+                <div class="editor-job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        <div class="text-center editor-quote">
+            <div class="quote"><?php echo $_editorItem->getQuote() ?></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-md-8 col-md-offset-2 editor-bio">
+        <?php echo $_editorItem->getBio() ?>
+    </div>
+</div>
+
+
 <div class="editor_item_view">
-    <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
-    <?php if($_editorItem->getSubtitle() != ''): ?>
-        <?php echo $_editorItem->getSubtitle(); ?>
-    <?php endif; ?>
-    <div class="name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
-    <div class="job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
-    <div class="quote"><?php echo $_editorItem->getQuote() ?></div>
-    <div class="bio"><?php echo $_editorItem->getBio() ?></div>
-    <div class="products">
+    <div class="row editor-products">
         <?php
             $products = $this->getProductCollection();
             foreach($products as $_product):
             $pro = $this->getProductData($_product);
             $image = $pro->getData('small_image');
         ?>
-        <li>
+        <li class="col-md-3 editor-product">
             <a href="<?php echo $pro->getProductUrl() ?>">
                 <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
             </a>
-            <?php echo $pro->getName(); ?>
-            <?php echo $pro->getData('editors_quote'); ?>
-            <?php echo $this->getProductPrice($pro->getFinalPrice()); ?>
+            <h4><?php echo $pro->getName(); ?></h4>
+            <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+            <div class="editor-mini-quote"><?php echo $pro->getData('editors_quote'); ?></div>
         </li>
         <?php endforeach; ?>
     </div>
-    <h2 class="page-title basefont"><span><?php echo __("More Editors") ?></span></h2>
+</div>
+
+<div class="editors-thumbs">
+    <h2 class="page-title marginbottom-40"><span><?php echo __("More Editors") ?></span></h2>
     <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
     <?php $_editor = $objEditor->getCollection()->addFieldToFilter('past', 1)->addFieldToFilter('guest',0)->setPageSize(4); ?>
     <?php $_editor->getSelect()->orderRand(); ?>
-    <?php foreach($_editor as $editor): ?>
-        <?php if($editor->getEditorId() != $this->getRequest()->getParam('id')): ?>
-            <a href="<?php echo $objEditor->getItemUrl($editor) ?>">
-                <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
-                <?php echo $this->escapeHtml($editor->getName()) ?>
-            </a>
-            <?php echo $this->escapeHtml($editor->getJobTitle()) ?> 
-        <?php endif; ?>
-    <?php endforeach; ?>
-    <a href="<?php echo $this->getBackUrl() ?>"><?php echo __('View All Editors') ?></a>
+    <div class="row">
+        <?php foreach($_editor as $editor): ?>
+            <?php if($editor->getEditorId() != $this->getRequest()->getParam('id')): ?>
+                <div class="col-md-3 editor-single-thumb text-center">
+                    <a href="<?php echo $objEditor->getItemUrl($editor) ?>">
+                        <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
+                        <h4><?php echo $this->escapeHtml($editor->getName()) ?></h4>
+                    <h5><?php echo $this->escapeHtml($editor->getJobTitle()) ?></h5>
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="<?php echo $this->getBackUrl() ?>" class="editor-link view-all-editors">View All Editors &lt;</a>
+        </div>
+    </div>
 </div>
