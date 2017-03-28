@@ -5,9 +5,9 @@
 
 @baseFont     : 'Montserrat-Light', Helvetica, Arial, sans-serif;
 @headlineFont : 'Montserrat', Helvetica, Arial, sans-serif;
-@fancyFont    : 'Droid Serif';
+@fancyFont    : 'Droid Serif', Georgia;
 @dietDidot    : 'DietDidot-BoldItalic';
-@baseFontSize : 12px;
+@baseFontSize : 13px;
 @baseLineHeight: 20px;
 
 /* ==========================================================================
@@ -519,6 +519,80 @@ Products
   .product-addto-links {
     display: inline-block;
   }
+
+  .product-editors-pick {
+    float: right;
+    margin-top: -85px;
+
+    img {
+      .inline;
+        max-width: 70px;
+        max-height: 70px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+    .product-editors-pick-details {
+      .inline;
+      right: 0;
+
+      h4 {
+        color: #009ba7;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-family: @headlineFont;
+        margin-bottom: 5px;
+      }
+      h5 {
+        color: #009ba7;
+        font-size: 16px;
+        font-family: @baseFont;
+        font-weight: normal;
+      }
+    }
+  }
+  .product-editors-pick-quote {
+    .what-editor-says {
+      font-family: @baseFont;
+      text-transform: uppercase;
+      color: #009ba7;
+      font-size: 14px;
+    }
+    .what-editor-say-quote {
+      font-family: @fancyFont;
+      font-size: 15px;
+      font-style: italic;
+    }
+  }
+  .product-shop-the-shot {
+    .relative;
+    max-width: 400px;
+    margin-top: -10px;
+
+    h4 {
+      font-family: @headlineFont;
+      font-style: 14px;
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+    .shop-the-shot-hover {
+      border: 1px solid #b0b7b8;
+      font-size: 15px;
+      text-transform: uppercase;
+      font-family: @baseFont;
+      padding: 10px 30px;
+      text-align: center;
+      color: #000;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: block;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      margin-top: -55px;
+      margin-bottom: 50px;
+      position: relative;
+    }
+  }
+
 }
 
 .product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {

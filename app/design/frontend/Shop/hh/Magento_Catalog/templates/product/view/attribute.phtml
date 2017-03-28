@@ -37,7 +37,9 @@
     <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
 </div>
 	<?php if($_code == 'description'): ?>
-		<strong><?php echo __('Editors Quote:') ?></strong>
-		<?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getEditorsQuote(), 'editors_quote') ?>
+		<div class="product-editors-pick-quote">
+			<span class="what-editor-says">What Editor's Say:</span>
+			<span class="what-editor-say-quote"><?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getEditorsQuote(), 'editors_quote') ?></span>
+		</div>
 	<?php endif; ?>
 <?php endif; ?>
