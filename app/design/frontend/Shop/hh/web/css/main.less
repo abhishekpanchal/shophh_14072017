@@ -5850,3 +5850,154 @@ Editors Details
     margin-top: 40px;
   }
 }
+
+
+
+
+/* ==========================================================================
+CMS Pages
+========================================================================== */
+.cms-page-view,
+.contact-index-index {
+  .inner-content {
+    font-size: 0.85rem;
+
+    p {
+      strong {
+        font-family: @headlineFont;
+      }
+    }
+
+    ul, ol {
+      margin-bottom: 30px;
+      margin-left: 15px;
+
+      li {
+        list-style-type: disc;
+        margin-bottom: 5px;
+
+        ul, ol {
+          margin: 5px 0;
+          margin-left: 30px;
+        }
+      }
+    }
+    ol {
+      li {
+        list-style: decimal;
+      }
+    }
+    blockquote {
+      padding: 15px;
+      margin-bottom: 40px;
+
+      p {
+        font-family: @fancyFont;
+        font-size: 18px;
+        line-height: 26px;
+      }
+    }
+    dl {
+      margin-bottom: 40px;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #000;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+    h2, h3 {
+      font-family: @fancyFont;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 38px;
+    }
+    h3 {
+      font-size: 24px;
+      line-height: 34px;
+    }
+    h4, h5, h6 {
+      font-family: @baseFont;
+      font-weight: 700;
+    }
+    h4 {
+      font-size: 16px;
+      line-height: 26px;
+      text-transform: uppercase;
+    }
+    table {
+      margin-bottom: 40px;
+
+      td {
+        border: 1px solid #DDD;
+      }
+    }
+    dt{
+      font-family: @headlineFont;
+      font-weight:bold;
+      float: left;
+      width: 10rem;
+      clear: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: .5rem;
+      border-top:1px solid #A8ADB4;
+    }
+    dd{
+      margin-left: 11rem;
+      padding: .5rem;
+      border-top:1px solid #A8ADB4;
+    }
+    dt:first-of-type, dd:first-of-type{
+      border-top-width:0;
+    }
+    dd + dd{
+      border-top-width:0;
+    }
+  }
+}
+
+/* ==========================================================================
+Contact Pages
+========================================================================== */
+.contact-index-index {
+  .main-content {
+    h3 {
+      border-bottom: 1px solid #ababab;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    input, textarea {
+      width: 100%;
+    }
+  }
+}
+
+/* ==========================================================================
+404 Page
+========================================================================== */
+.cms-no-route {
+  .main-content {
+    p {
+      font-family: @baseFont;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+    }
+    .product-404 {
+      font-family: @fancyFont;
+      font-size: 22px;
+      font-style: italic;
+      margin-bottom: 50px;
+      text-align: center;
+
+      img {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
