@@ -19,44 +19,55 @@ echo $this->getLayout()
       data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
       data-mage-init='{"validation":{}}'>
     <fieldset class="fieldset">
+
+
+
         <div class="field name required">
             <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Name') ?></span></label>
             <div class="control">
                 <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('name') ?: $this->helper('Magento\Contact\Helper\Data')->getUserName()) ?>" class="input-text" type="text" data-validate="{required:true}"/>
             </div>
         </div>
-        <div class="field email required">
-            <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
-            <div class="control">
-                <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+
+        <div class="row marginbottom-30">
+            <div class="field email col-md-6 required">
+                <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('email') ?: $this->helper('Magento\Contact\Helper\Data')->getUserEmail()) ?>" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field col-md-6 telephone">
+                <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number(not required)') ?></span></label>
+                <div class="control">
+                    <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('telephone')) ?>" class="input-text" type="text" />
+                </div>
             </div>
         </div>
-        <div class="field telephone">
-            <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number(not required)') ?></span></label>
-            <div class="control">
-                <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('telephone')) ?>" class="input-text" type="text" />
+
+        <div class="row marginbottom-30">
+            <div class="field subject col-md-6">
+                <label class="label" for="subject"><span><?php /* @escapeNotVerified */ echo __('Subject') ?></span></label>
+                <div class="control">
+                    <select name="subject" id="subject" data-validate="{required:true}">
+                        <option value="">Please choose one</option>
+                        <option value="product"><?php echo __('Product Information') ?></option>
+                        <option value="order"><?php echo __('Orders') ?></option>
+                        <option value="shipping"><?php echo __('Shipping & Delivery') ?></option>
+                        <option value="return"><?php echo __('Exchange & Returns') ?></option>
+                        <option value="feedback"><?php echo __('Feedback & Suggestions') ?></option>
+                        <option value="others"><?php echo __('Others') ?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="field order-number col-md-6">
+                <label class="label" for="order-number"><span><?php /* @escapeNotVerified */ echo __('Order Number(if applicable)') ?></span></label>
+                <div class="control">
+                    <input name="order-number" id="order-number" title="<?php /* @escapeNotVerified */ echo __('Order Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('order-number')) ?>" class="input-text" type="text" />
+                </div>
             </div>
         </div>
-        <div class="field subject">
-            <label class="label" for="subject"><span><?php /* @escapeNotVerified */ echo __('Subject') ?></span></label>
-            <div class="control">
-                <select name="subject" id="subject" data-validate="{required:true}">
-                    <option value="">Please choose one</option>
-                    <option value="product"><?php echo __('Product Information') ?></option>
-                    <option value="order"><?php echo __('Orders') ?></option>
-                    <option value="shipping"><?php echo __('Shipping & Delivery') ?></option>
-                    <option value="return"><?php echo __('Exchange & Returns') ?></option>
-                    <option value="feedback"><?php echo __('Feedback & Suggestions') ?></option>
-                    <option value="others"><?php echo __('Others') ?></option>
-                </select>
-            </div>
-        </div>
-        <div class="field order-number">
-            <label class="label" for="order-number"><span><?php /* @escapeNotVerified */ echo __('Order Number(if applicable)') ?></span></label>
-            <div class="control">
-                <input name="order-number" id="order-number" title="<?php /* @escapeNotVerified */ echo __('Order Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('order-number')) ?>" class="input-text" type="text" />
-            </div>
-        </div>
+
+
         <div class="field comment required">
             <label class="label" for="comment"><span><?php /* @escapeNotVerified */ echo __('Message') ?></span></label>
             <div class="control">

@@ -5857,9 +5857,10 @@ Editors Details
 /* ==========================================================================
 CMS Pages
 ========================================================================== */
-.cms-page-view {
+.cms-page-view,
+.contact-index-index {
   .inner-content {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 
     p {
       strong {
@@ -5902,6 +5903,7 @@ CMS Pages
     h1, h2, h3, h4, h5 {
       color: #000;
       margin-bottom: 20px;
+      font-weight: normal;
     }
     h2, h3 {
       font-family: @fancyFont;
@@ -5954,6 +5956,48 @@ CMS Pages
     }
     dd + dd{
       border-top-width:0;
+    }
+  }
+}
+
+/* ==========================================================================
+Contact Pages
+========================================================================== */
+.contact-index-index {
+  .main-content {
+    h3 {
+      border-bottom: 1px solid #ababab;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    input, textarea {
+      width: 100%;
+    }
+  }
+}
+
+/* ==========================================================================
+404 Page
+========================================================================== */
+.cms-no-route {
+  .main-content {
+    p {
+      font-family: @baseFont;
+      font-size: 20px;
+      line-height: 28px;
+      text-align: center;
+    }
+    .product-404 {
+      font-family: @fancyFont;
+      font-size: 22px;
+      font-style: italic;
+      margin-bottom: 50px;
+      text-align: center;
+
+      img {
+        width: 100%;
+        margin-bottom: 20px;
+      }
     }
   }
 }
