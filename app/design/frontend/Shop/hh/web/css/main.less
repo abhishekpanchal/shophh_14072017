@@ -251,8 +251,8 @@ Buttons
 Content
  ========================================================================== */
 .main-content {
-
 }
+
 
 .list-inline {
   margin: 0;
@@ -565,6 +565,8 @@ Products
     }
   }
   .product-editors-pick-quote {
+    margin-top: 10px;
+
     .what-editor-says {
       font-family: @baseFont;
       text-transform: uppercase;
@@ -584,19 +586,20 @@ Products
 
     h4 {
       font-family: @headlineFont;
-      font-style: 14px;
+      font-size: 14px;
+      text-transform: capitalize;
       font-weight: normal;
       margin-bottom: 15px;
     }
     .shop-the-shot-hover {
       border: 1px solid #b0b7b8;
       font-size: 15px;
-      text-transform: uppercase;
-      font-family: @baseFont;
+      font-family: @fancyFont;
+      font-style: italic;
       padding: 10px 30px;
       text-align: center;
       color: #000;
-      background-color: rgba(255, 255, 255, 0.8);
+      background-color: rgba(255, 255, 255, 0.65);
       display: block;
       width: 100%;
       max-width: 380px;
@@ -608,6 +611,7 @@ Products
   }
 
 }
+
 
 .product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {
   font-size: 26px;
@@ -1756,6 +1760,11 @@ Social Login
   }
 
   .main-content {
+
+    a {
+      border-bottom: 2px solid #000;
+      padding-bottom: 2px;
+    }
 
     button, .action {
       border-radius: 0;
