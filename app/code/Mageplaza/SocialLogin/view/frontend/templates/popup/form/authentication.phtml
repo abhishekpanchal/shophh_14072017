@@ -29,6 +29,7 @@
                 <?php echo $block->getBlockHtml('formkey'); ?>
                 <fieldset class="fieldset login" data-hasrequired="<?php /* @escapeNotVerified */
                 echo __('* Required Fields') ?>">
+                    <p class="login-text">Login now using your My House &amp; Home user account:</p>
                     <div class="field email required">
                         <div class="control">
                             <input name="username"
@@ -63,8 +64,8 @@
     <?php echo $block->getChildHtml('popup.authentication.social') ?>
     <div class="bottom-register">
         <div class="primary popup-register-bottom">
-          <a class="create1" href="#">Want to create an account ? <span><?php /* @escapeNotVerified */
-                    echo __('Sign up now?') ?></span></a>
+          <a class="create-btn" href="#">Want to create an account ? <span><?php /* @escapeNotVerified */
+                echo __('Sign up now') ?></span></a>
         </div>
     </div>
 </div>
