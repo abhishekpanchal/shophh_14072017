@@ -26,7 +26,7 @@ $pastEditor = $this->getCollection()
 ?>
 <?php if ($pastEditor->getSize()): ?>
 <div class="editor_list_view">
-    <h2 class="page-title basefont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
+    <h2 class="page-title fancyfont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
     <h4 class="subtitle"><?php echo __('See What your favorite have selected and why'); ?></h4>
     <?php foreach ($pastEditor as $editorItem): ?>
         <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 editor_list_item">
