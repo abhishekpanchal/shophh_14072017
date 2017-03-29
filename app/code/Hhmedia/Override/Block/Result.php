@@ -13,7 +13,12 @@ class Result extends \Magento\CatalogSearch\Block\Result
         $q = $this->getRequest()->getParam('q');
         // add Home breadcrumb
         $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
-        $text = "Showing ".$this->getResultCount()." Results for '".$q."'"; 
+        $count = $this->getResultCount();
+        if($count > 0){
+            $text = "Showing ".$this->getResultCount()." Results for '".$q."'"; 
+        }else{
+            $text = "There are no results for '".$q."'"; 
+        }
         if ($breadcrumbs) {
             $breadcrumbs->addCrumb(
                 'search',

@@ -20,15 +20,36 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
 </div>
 <?php else: ?>
 
-<div class="message notice">
-    <div>
-        <?php /* @escapeNotVerified */ echo($block->getNoResultText()) ? $block->getNoResultText() : __('Your search returned no results.') ?>
-        <?php echo $block->getAdditionalHtml() ?>
-        <?php if ($messages = $block->getNoteMessages()):?>
-            <?php foreach ($messages as $message):?>
-                <br /><?php /* @escapeNotVerified */ echo $message?>
-            <?php endforeach;?>
-        <?php endif; ?>
-    </div>
-</div>
+<?php echo __("View our product suggestions to find something else you may be interested in"); ?>
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
+$productCollection->addAttributeToSelect('*');
+$productCollection->addFieldToFilter('status',1);
+$productCollection->addFieldToFilter('visibility',4);
+$productCollection->setPageSize(10);
+$productCollection->getSelect()->orderRand();
+$productCollection->load();
+foreach($productCollection as $_product):
+    $helper = $this->helper('Hhmedia\Override\Helper\Override');
+    $product = $helper->getLoadProduct($_product->getEntityId());
+    $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); 
+    $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data');
+    $price = $product->getFinalPrice();
+    $image = $product->getData('small_image');
+?>
+    <a href="<?php echo $product->getProductUrl() ?>">
+        <div class="image">
+            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" class="image" />
+            <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $product->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+        </div>
+    </a>
+    <a href="<?php echo $product->getProductUrl() ?>">
+        <h4 class="decorating-formula-product-title"><?php echo $product->getName(); ?></h4>
+    </a>
+    <?php echo $product->getShortDescription(); ?>
+    <h4 class="decorating-formula-price">
+        <?php echo $priceHelper->currency($price, true, false); ?>
+    </h4>
+<?php endforeach; ?>
 <?php endif; ?>
