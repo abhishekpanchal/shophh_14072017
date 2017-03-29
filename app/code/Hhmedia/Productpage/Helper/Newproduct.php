@@ -37,4 +37,27 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             $newsToDate
         );
     }
+
+    function limit_review($text, $limit) {
+        if (str_word_count($text, 0) > $limit) {
+            $words = str_word_count($text, 2);
+            $pos = array_keys($words);
+            $shortReview = substr($text, 0, $pos[$limit]).'...';
+            $fullReview = substr($text, $pos[$limit+1], end($pos));
+            return "<span class='short-review'>".$shortReview."<a href='#' class='review-read-more'>Read More</a></span><span class='full-review'>".$fullReview."<a href='#' class='review-read-less'>Read Less</a></span>";
+        }else{
+            return "<span class='short-review'>".$text."</span>";
+        }
+    }
+
+    function limit_description($text, $limit) {
+        if (str_word_count($text, 0) > $limit) {
+            $words = str_word_count($text, 2);
+            $pos = array_keys($words);
+            $shortDescription = substr($text, 0, $pos[$limit]).'...';
+            return $shortDescription;
+        }else{
+            return $text;
+        }
+    }
 }

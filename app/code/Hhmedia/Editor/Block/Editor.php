@@ -2,6 +2,8 @@
 
 namespace Hhmedia\Editor\Block;
 
+use Hhmedia\Editor\Model\EditorFactory;
+
 /**
  * Editor content block
  */
@@ -23,6 +25,8 @@ class Editor extends \Magento\Framework\View\Element\Template
     
     /** @var \Hhmedia\Editor\Helper\Data */
     protected $_dataHelper;
+
+    protected $editorFactory;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -32,11 +36,13 @@ class Editor extends \Magento\Framework\View\Element\Template
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Hhmedia\Editor\Model\ResourceModel\Editor\CollectionFactory $editorCollectionFactory,
+        EditorFactory $editorFactory,
         \Hhmedia\Editor\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_editorCollectionFactory = $editorCollectionFactory;
         $this->_dataHelper = $dataHelper;
+        $this->editorFactory = $editorFactory;
         parent::__construct(
             $context,
             $data
@@ -70,6 +76,26 @@ class Editor extends \Magento\Framework\View\Element\Template
 
         return $this->_editorCollection;
     }
+
+    public function getGuestEditor(){
+        $guestEditor = $this->_getCollection()
+                    ->addFieldToFilter('past', 0)
+                    ->addFieldToFilter('guest',1);
+        return $guestEditor;
+    }
+
+    public function getEditor($editorId)
+    {
+        $editor   = $this->editorFactory->create();
+        if ($editorId) {
+            $editor->load($editorId);
+        }
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $model = $objectManager->create('\Hhmedia\Editor\Model\Editor');
+        $products  =  $model->getProducts($editor);
+        return $products;
+    }
+
     
     /**
      * Fetch the current page for the editor list

@@ -33,21 +33,21 @@
         <?php if ($block->isNewsletterEnabled()): ?>
             <div class="box box-newsletter col-md-6">
                 <strong class="box-title">
-                    <span><?php /* @escapeNotVerified */ echo __('Newsletters') ?></span>
+                    <span><?php /* @escapeNotVerified */ echo __('Email List') ?></span>
                 </strong>
                 <div class="box-content">
                     <p>
                         <?php if ($block->getIsSubscribed()): ?>
                             <?php /* @escapeNotVerified */ echo __('You subscribe to "General Subscription".') ?>
                         <?php else: ?>
-                            <?php /* @escapeNotVerified */ echo __('You don\'t subscribe to our newsletter.') ?>
+                            <?php /* @escapeNotVerified */ echo __('You are not subscribed to our mailing list') ?>
                         <?php endif; ?>
                     </p>
                     <?php /* Extensions placeholder */ ?>
                     <?php echo $block->getChildHtml('customer.account.dashboard.info.extra')?>
                 </div>
                 <div class="box-actions">
-                    <a class="action edit" href="<?php /* @escapeNotVerified */ echo $block->getUrl('newsletter/manage') ?>"><span><?php /* @escapeNotVerified */ echo __('Edit') ?></span></a>
+                    <a class="action edit" href="<?php /* @escapeNotVerified */ echo $block->getUrl('newsletter/manage') ?>"><span><?php /* @escapeNotVerified */ echo __('Edit Subscriptions') ?></span></a>
                 </div>
             </div>
         <?php endif; ?>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="awpromotions" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Menu Promotions</label>
+            <tab>hhmedia</tab>
+            <resource>Hhmedia_Topbar::config_topbar</resource>
+            <group id="general" translate="label comment" sortOrder="10" type="text" showInDefault="1">
+                <label>Menu Promotions</label>
+                <field id="upload_image_id" translate="label comment" type="image" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Pramotional Image</label>
+                    <backend_model>Kahanit\AweMenu\Model\Config\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">promotions</base_url>
+                </field>
+                <field id="link" translate="label" sortOrder="20" type="text" showInDefault="1">
+                    <label>Pramotional Link</label>
+                    <comment>Promotional Link for Image</comment>
+                </field>
+                <field id="title" translate="label" sortOrder="20" type="text" showInDefault="1">
+                    <label>Promotional Title</label>
+                    <comment>Promo Title</comment>
+                </field>
+                <field id="subtitle" translate="label" sortOrder="20" type="text" showInDefault="1">
+                    <label>Promotional Subtitle</label>
+                    <comment>Promo Subtitle</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

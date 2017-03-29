@@ -15,7 +15,7 @@
 ?>
 
 <?php $iterator3 = 1; ?>
-<div id="home-slider" class="carousel slide homeslider" data-ride="carousel">
+<div id="home-slider" class="carousel slide homeslider" data-ride="carousel" data-interval="false">
     <div class="carousel-inner" role="listbox">
         <?php foreach($shotCollection as $shot): ?>
             <?php if($shot['display_home'] == 1): ?>
@@ -24,19 +24,44 @@
                 <?php $shotUrl = $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>
                 <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
                     <div class="row no-gutters home-slider ">
-                        <div class="vcenter-flex">
-                            <div class="col-md-8 col-sm-12 col-xs-12 homepage-hero">
-                                <img src="<?php echo $imagePath ?>" />
+                        <div class="vcenter-flex display-block-xs">
+                            <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
+                                <a href="<?php echo $shotUrl ?>">
+                                    <img src="<?php echo $imagePath ?>" />
+                                </a>
                             </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
+                            <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
                                 <div class="homepage-hero-details">
                                 <div class="hero-details-inner">
+                                    <a href="<?php echo $shotUrl ?>">
                                     <h3 class="hero-details-title"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h3>
-                                    <h4><?php echo $shot->getTitle(); ?></h4>
-                                    <p><?php echo truncate(($shot->getCaption()),20) ?></p>
-                                    <a class="homepage-hero-btn" href="<?php echo $shotUrl ?>"><span><?php echo __('Shop This') ?></span></a>
+                                    <h4 style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></h4>
+                                    <p><?php echo truncate(($shot->getShortDescription()),20) ?></p>
+                                    <div class="homepage-hero-btn"><span><?php echo __('Shop This') ?></span></div>
+                                    </a>
                                 </div>
                                 </div>
+
+
+                                <div class="homepage-controls">
+                                    <a class="left carousel-control" href="#home-slider" role="button" data-slide="prev">
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#home-slider" role="button" data-slide="next">
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                    <ol class="carousel-indicators">
+                                        <?php $x = 0; ?>
+                                        <?php foreach($shotCollection as $shot): ?>
+                                            <?php if($shot['display_home'] == 1): ?>
+                                                <li data-target="#home-slider" data-slide-to="<?php echo $x ?>" class="<?php if($x == 0){ echo 'active'; } ?>"></li>
+                                                <?php $x++; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </ol>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -44,23 +69,6 @@
         <?php $iterator3++; ?>
         <?php endif; ?>
         <?php endforeach; ?>
-        <div class="homepage-controls">
-            <a class="left carousel-control" href="#home-slider" role="button" data-slide="prev">
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#home-slider" role="button" data-slide="next">
-                <span class="sr-only">Next</span>
-            </a>
-            <ol class="carousel-indicators">
-                <?php $x = 0; ?>
-                <?php foreach($shotCollection as $shot): ?>
-                    <?php if($shot['display_home'] == 1): ?>
-                        <li data-target="#home-slider" data-slide-to="<?php echo $x ?>" class="<?php if($x == 0){ echo 'active'; } ?>"></li>
-                        <?php $x++; ?>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </ol>
-        </div>
     </div>
 </div>
 <!-- Shop the Shot End -->
@@ -85,10 +93,10 @@
                         <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                         <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
                         <div class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></div>
-                        <?php $d = 1; ?>
+                        <?php $d = 0; ?>
 
                         <?php foreach($formulaProduct as $fPro): ?>
-                            <div class="decorating-formula-product col-md-4">
+                            <div class="decorating-formula-product col-md-4 col-sm-4 col-xs-4">
                             <?php $proFormula = $objFormula->getProductById($fPro); ?>
                             <?php
                                 $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
@@ -97,7 +105,12 @@
                                 $fImage = $proFormula->getData('small_image');
                             ?>
                             <a href="<?php echo $proFormula->getProductUrl() ?>">
-                                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                                <div class="formula-thumb">
+                                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                                    <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $proFormula->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                                </div>
+                            </a>
+                            <a href="<?php echo $proFormula->getProductUrl() ?>">
                                 <h4 class="decorating-formula-product-title"><?php echo $productName = $proFormula->getName(); ?></h4>
                             </a>
                             <h4 class="decorating-formula-price">
@@ -125,60 +138,69 @@
 <!-- Decorating Formula End -->
 
 <!-- Editors Pick Start -->
-<div class="row editors-area">
-    <div class="editors-area-wrap vcenter-flex">
-    <div class="col-md-4 editors-pick">
-        <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
-        <?php $_editor = $objEditor->getCollection(); ?>
-        <?php if ($_editor->getSize()): ?>
-        <div class="editors-pick-title">
-            <h4>Editors Picks</h4>
-            <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
-        </div>
-        <div class="editors-thumbs">
-            <ul class="row"><?php $i=0; ?>
-                <?php foreach ($_editor as $editorItem): ?>
-                    <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
-                        <li class="col-md-6 col-sm-6 col-xs-6"><img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" /></li>
-                        <?php $i++; if($i == 4){break;} ?>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-        <?php endif; ?>
-    </div>
-    <?php foreach ($_editor as $editorItem): ?>
-        <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
-            <div class="col-md-5 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
+<div class="editors-area">
+    <div class="editors-area-wrap vcenter-flex display-block-xs">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 editors-pick">
+            <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
+            <?php $_editor = $objEditor->getCollection(); ?>
+            <?php if ($_editor->getSize()): ?>
+            <div class="editors-pick-title">
+                <h4>Editors Picks</h4>
+                <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
             </div>
-        <?php endif; ?>
-    <?php break; endforeach; ?>
-    <div class="col-md-3 guest-editor vcenter-flex">
-        <div class="guest-editor-details vcenter vcenter-col">
-            <?php foreach ($_editor as $editorItem): ?>
-            <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
-                <h4>Guest Editor</h4>
-                <h3><?php echo $editorItem->getName(); ?></h3>
-            <div class="editor-blurb">
-                <?php echo $editorItem->getSubtitle(); ?>
+            <div class="editors-thumbs">
+                <ul class="row no-gutters"><?php $i=0; ?>
+                    <?php foreach ($_editor as $editorItem): ?>
+                        <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
+                            <li class="col-md-6 col-sm-6 col-xs-6">
+                                <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>" class="editor-link">
+                                    <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" />
+                                </a>
+                            </li>
+                            <?php $i++; if($i == 4){break;} ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
             </div>
-            <div class="editor-quote">
-                <?php $shortQuote = $editorItem->getShortQuote(); ?>
-                <?php if(isset($shortQuote)): ?>
-                    <?php echo $shortQuote; ?>
-                <?php endif; ?>
-            </div>
-            <button class="btn btn-main btn-picks">See picks</button>
             <?php endif; ?>
-            <?php break; endforeach; ?>
+        </div>
+        <?php foreach ($_editor as $editorItem): ?>
+            <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
+                <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
+                     <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>"></a>
+                </div>
+                <?php $bgColor = $editorItem->getColor(); ?>
+            <?php endif; ?>
+        <?php break; endforeach; ?>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $bgColor ?>">
+            <div class="guest-editor-details vcenter vcenter-col">
+                <?php foreach ($_editor as $editorItem): ?>
+                <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
+                    <h4>Guest Editor</h4>
+                    <h3><?php echo $editorItem->getName(); ?></h3>
+                <div class="editor-blurb">
+                    <?php echo $editorItem->getSubtitle(); ?>
+                </div>
+                <div class="editor-quote">
+                    <?php $shortQuote = $editorItem->getShortQuote(); ?>
+                    <?php if(isset($shortQuote)): ?>
+                        <?php echo $shortQuote; ?>
+                    <?php endif; ?>
+                </div>
+                <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>">
+                    <button class="btn btn-main btn-picks">See picks</button>
+                </a>
+                <?php endif; ?>
+                <?php break; endforeach; ?>
+            </div>
         </div>
     </div>
-    </div>
+    <div class="clearfix"></div>
 </div>
 <!-- Editors Pick End -->
 
 <!-- Shop the Issue Start -->
-<div class="more-shots">
+<div class="more-shots shop-the-issue">
     <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> THE ISSUE</span></h2>
     <?php $objMagazine = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
     <?php $_magazine = $objMagazine->getCollection(); ?>
@@ -193,16 +215,16 @@
                     <?php $magazineProduct = $objMagazine->getMagazine($magazineItem->getMagazineId()); ?>
                     <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4 col-sm-4 col-xs-12">
                                 <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 col-sm-8 hidden-xs">
                                 <h4 class="issue-date"><?php $title = $magazineItem->getTitle(); ?></h4>
                                 <?php $name =  $magazineItem->getVolumeName(); ?>
                                 <h4 class="issue-date"><?php echo $title ?></h4>
                                 <h3 class="issue-title"><?php echo $name; ?></h3>
                                 <div class="issue-desc"><?php echo $magazineItem->getContent() ?></div>
-                                <ul class="issues-thumb-list row">
+                                <ul class="issues-thumb-list clearfix">
                                 <?php $m = 1; ?>
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
@@ -243,13 +265,15 @@
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
         <?php $slideId = $shot->getSlideId(); ?>
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-12">
             <div class="shot-thumb">
                 <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
                     <img src="<?php echo $imagePath; ?>" />
                     <div class="shot-thumb-meta">
                         <h4><span>Shop</span></h4>
-                        <span class="title green"><?php echo $shot->getTitle(); ?></span>
+                        <span class="title" style="color:<?php echo $shot->getColor() ?>">
+                            <?php echo $shot->getTitle(); ?>
+                        </span>
                     </div>
                 </a>
             </div>

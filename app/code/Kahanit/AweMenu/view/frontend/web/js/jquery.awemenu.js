@@ -53,9 +53,9 @@
         amTabHome.parent().addClass('am-tabs-hidetabs');
         amTabHome.click(function () {
             if ($(this).parent().hasClass('am-tabs-hidetabs'))
-                $(this).parent().removeClass('am-tabs-hidetabs');
+                $(this).parent().removeClass('am-tabs-hidetabs').addClass('vcenter-flex vcenter-col mobile-full');
             else
-                $(this).parent().addClass('am-tabs-hidetabs');
+                $(this).parent().addClass('am-tabs-hidetabs').removeClass('vcenter-flex vcenter-col mobile-full');
         });
 
         /* tabs root event handler */

@@ -1,11 +1,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-<body>
-
-<referenceBlock name="content">
-<block class="Bg\Freshdesk\Block\Tickets" name="freshdesk_ticket_dashboard" template="Bg_Freshdesk::dashboard.phtml" after="customer_account_dashboard_top" ></block>
-</referenceBlock>
-
-
-   
-</body>
+	<body>
+		<referenceBlock name="content">
+			<block class="Bg\Freshdesk\Block\Tickets" name="freshdesk_ticket_dashboard" template="Bg_Freshdesk::dashboard.phtml" after="-" ></block>
+		</referenceBlock>
+	</body>
 </page>

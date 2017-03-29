@@ -8,16 +8,18 @@
 <?php if ($_product->isSaleable()): ?>
     <div class="single-product-cart quickview-qty">
         <?php if ($block->shouldRenderQuantity()): ?>
-        <div class="product-qty" style="margin-bottom: 20px;">
-            <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
-                <input type="number"
-                       name="qty"
-                       id="qty"
-                       maxlength="12"
-                       value="<?php /* @escapeNotVerified */ echo $block->getProductDefaultQty() * 1 ?>"
-                       title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
-                       data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
-                       />
+        <div class="styled-select">
+            <div class="product-qty">
+                <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
+                    <input type="number"
+                           name="qty"
+                           id="qty"
+                           maxlength="12"
+                           value="<?php /* @escapeNotVerified */ echo $block->getProductDefaultQty() * 1 ?>"
+                           title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
+                           data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                           />
+            </div>
         </div>
         <?php endif; ?>
 </div>

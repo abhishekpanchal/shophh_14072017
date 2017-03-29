@@ -47,12 +47,13 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         <link rel="stylesheet" type="text/css" href="<?php echo $blockObj->getViewFileUrl('Altima_Lookbookslider::css/lookbookslider.css') ?>">
 
 
-<div class="row no-gutters lookbook-container vcenter-flex marginbottom-40">
-<div class="col-md-8 col-lg-9 col-sm-12 col-xs-12">
+<div class="home-slider lookbook-container">
 
+  <div class="row no-gutters vcenter-flex display-block-xs">
+    <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
-                <div class="content-before"><?php echo $contentBefore; ?></div>
+              <div class="content-before"><?php echo $contentBefore; ?></div>
             <?php endif; ?>
             <div id="lookbookslider_container_<?php echo $slider->getId() ?>"  class="lookbookslider-container">
                 <div class="cycle-slideshow1" id="lookbookslider_<?php echo $slider->getId() ?>"
@@ -82,7 +83,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                          data-cycle-speed="<?php echo $trans_period; ?>"
                          <?php
                      endif;
-                     ?>   
+                     ?>
 
         <?php if (!$thumbnails && $thumb): ?>
                          data-cycle-pager="#pagernav_<?php echo $slider->getId() ?> .cycle"
@@ -162,9 +163,9 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                 </div>
 
                 <!-- Go to www.addthis.com/dashboard to customize your tools --> 
-                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58939f9f70524f36"></script> 
+               <!--  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58939f9f70524f36"></script> 
                 <div class="addthis_inline_share_toolbox" data-url="http://www.google.com" data-title="Shop The Shot" data-media="http://hhshop.hhmedia.com:8888/shophh/pub/media/lookbookslider/600X250/bedroom.jpeg">
-                </div>
+                </div> -->
                 
                 <?php if ($thumbnails && $thumb): ?>
                     <?php $count_pager = 5; ?>
@@ -211,10 +212,11 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 <?php foreach ($slideCollection as $slide): ?>
     <?php if($slide->getId() == $slideId): ?>
-        <div class="col-md-4 col-lg-3 col-sm-12 col-xs-12 hotspot-placeholder vcenter" style="background:url(<?php echo $this->getUrl('pub/media/lookbookslider').'background'.$slide->getBgImage() ?>);">
+        <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
+
             <div class="hotspot-details vcenter">
                 <div class="hotspot-default visible">
-                    <h1><?php echo $slide->getTitle(); ?></h1>
+                    <h1 style="color:<?php echo $slide->getColor() ?>"><?php echo $slide->getTitle(); ?></h1>
                     <p><?php echo $slide->getCaption(); ?></p>
                     <ul class="social">
                         <li><a href="https://houseandhome.com/twitter" target="_blank"><i class="icon ion-social-twitter"></i></a></li>
@@ -231,8 +233,11 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 <?php endforeach ?>
 
 
-
 </div>
+</div>
+
+
+
 
         <div class="container">
             <div class="shot-products row">
@@ -263,7 +268,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                                 <img src="<?php echo $imagePath; ?>" />
                                 <div class="shot-thumb-meta">
                                     <h4><span>Shop</span></h4>
-                                    <span class="title green"><?php echo $shot->getTitle(); ?></span>
+                                    <span class="title" style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></span>
                                 </div>
                             </a>
                         </div>

@@ -36,7 +36,7 @@
                     <div class="field review-field-summary required hidden">
                         <label for="summary_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Summary') ?></span></label>
                         <div class="control">
-                            <input type="text" name="title" id="summary_field" class="input-text" data-validate="{required:false}" data-bind="value: review().title" value="summary" />
+                            <input type="text" name="title" id="summary_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" />
                         </div>
                     </div>
                     <div class="field review-field-text required">

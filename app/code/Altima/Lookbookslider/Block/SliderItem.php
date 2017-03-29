@@ -171,8 +171,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         $srcImg = $this->_lookbooksliderHelper->getBaseUrlMedia($slide->getImage_path());
         //$width  = $this->_slider->getWidth();
         //$height = $this->_slider->getHeight();
-        $width = 1170;
-        $height = 500;
+        $width = 1100;
+        $height = 640;
         return $this->_lookbooksliderHelper->getResizedUrl($slide->getImage_path(), $width, $height);
     }
 
@@ -186,6 +186,17 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
 
     public function getFlexsliderHtmlId() {
         return 'altima-lookbookslider-slider-' . $this->getSlider()->getId() . $this->_stdlibDateTime->gmtTimestamp();
+    }
+
+    public function getProducts($slide) {
+        $hotspots          = $slide->getHotspots();
+        if ($hotspots == '')
+            return '';
+        $decoded_array     = json_decode($hotspots, true);
+        foreach ($decoded_array as $key => $value) {
+            $sku[] = $decoded_array[$key]['sku'];
+        }
+        return $sku;
     }
 
     public function getProductCollection($slide) {
@@ -231,6 +242,13 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $_p_price      = $product_details->getFinalPrice();
                 $_p_price      = $priceHelper->currency($_p_price, true, false);
                 $html_content .= '<div class="left-detail">';
+                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
+                    $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+                }
+                $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product_details->getId();
+                
+                $html_content .= '<a href="javascript: void(0);" data-quickview-url="'.$quickViewUrl.'" class="weltpixel-quickview quickview-lookbook" title="Quick View">Quick Look</a>';
+
                 if ($product_details->isAvailable()) {
                     if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {
                         $_p_url = $product_details->getProductUrl();
@@ -242,10 +260,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
-                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                    $html_content .= '<div class="desc"><img src="' . $_p_shrt_image . '" alt="product image"/>' . $_p_shrt_desc . '</div>';
-                }
-
+                //$html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
                 if ($product_details->getFinalPrice()) {
                     if ($product_details->getPrice() > $product_details->getFinalPrice()) {
                         $regular_price = $product_details->getPrice();
@@ -256,9 +271,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     }
                     $html_content .= '<div class="price">' . $_p_price . '</div>';
                 }
-                if ($this->_lookbooksliderHelper->canShowAddToCart()) {
+                /*if ($this->_lookbooksliderHelper->canShowAddToCart()) {
                     $html_content .= $this->getAddToCartHtml($product_details_full);
-                }
+                }*/
                 $html_content .= '</div>';
             }
             $html_content .= '</div></div>';
@@ -338,6 +353,10 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $_p_price      = $product_details->getFinalPrice();
                 $_p_price      = $priceHelper->currency($_p_price, true, false);
                 $html_content .= '<div class="left-detail">';
+                
+                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
+                     $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+                }
                 if ($product_details->isAvailable()) {
                     if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {
                         $_p_url = $product_details->getProductUrl();
@@ -349,10 +368,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
-                if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                    $html_content .= '<div class="desc"><img src="' . $_p_shrt_image . '" alt="product image"/>' . $_p_shrt_desc . '</div>';
-                }
-
+                $html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
                 if ($product_details->getFinalPrice()) {
                     if ($product_details->getPrice() > $product_details->getFinalPrice()) {
                         $regular_price = $product_details->getPrice();

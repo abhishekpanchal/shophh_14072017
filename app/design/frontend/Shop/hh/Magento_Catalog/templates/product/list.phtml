@@ -54,9 +54,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 
                 <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">' : '</div><div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">' ?>
 
-                <?php $newProduct = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-
-
+                <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 
                 <div class="product-item-info" data-container="product-grid">
                     <?php
@@ -82,12 +80,11 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                         </strong>
                          <?php if ($showDescription):?>
                                 <div class="product description product-item-description">
-                <?php if($newProduct->isProductNew($_product)): ?>
-                    <div class="new-product"><?php echo __('New'); ?></div>
-                <?php endif; ?>
-                                    <?php
-                                        echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description')
-                                    ?>
+                                    <?php if($customHelper->isProductNew($_product)): ?>
+                                        <div class="new-product"><?php echo __('New'); ?></div>
+                                    <?php endif; ?>
+                                    <?php $shortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+                                    <?php echo $customHelper->limit_description($shortDescription, 10); ?>
                                 </div>
                             <?php endif; ?>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>

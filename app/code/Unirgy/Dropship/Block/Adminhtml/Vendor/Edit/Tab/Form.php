@@ -90,6 +90,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'required'  => true,
         ));
 
+        $fieldset->addField('vendor_code', 'text', array(
+            'name'      => 'vendor_code',
+            'label'     => __('Vendor Code'),
+            'class'     => 'required-entry',
+            'required'  => true,
+        ));
+
         if ($this->_hlp->isModuleActive('Unirgy_DropshipMicrositePro')) {
             $fieldset->addType('udvendor_status', '\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect');
             $udVendorStatusType = 'udvendor_status';
@@ -247,6 +254,14 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         $fieldset->addField('fax', 'text', array(
             'name'      => 'fax',
             'label'     => __('Vendor Fax'),
+        ));
+
+        $fieldset->addField(
+            'hide_vendor_name', 'select', array(
+            'label'    => __('Hide Vendor Name'),
+            'name'     => 'hide_vendor_name',
+            'options'  => array(0=>'No',1=>'Yes'),
+            'note'      => __('It will display House & Home Media instead of original Vendor Name'),
         ));
 
         $templates = $this->_templatesFactory->create()->load()->toOptionArray();

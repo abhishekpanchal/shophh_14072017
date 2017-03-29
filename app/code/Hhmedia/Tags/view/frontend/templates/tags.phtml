@@ -1,0 +1,26 @@
+<?php $_tags = $this->getCollection(); ?>
+<?php if ($_tags->getSize()): ?>
+<div class="tags_list_view">
+    <?php foreach ($_tags as $tagsItem): ?>
+        <div id="item_<?php echo $tagsItem->getId() ?>" class="tags_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($tagsItem) ?>">
+                    <?php echo $this->escapeHtml($tagsItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="tags_item_subtitle">
+                <?php echo $this->formatDate($tagsItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($tagsItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($tagsItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($tagsItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Tags.'); ?></span></div>
+<?php endif ?>

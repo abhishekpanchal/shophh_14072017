@@ -12,6 +12,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      */
     protected $_systemStore;
 
+    protected $_wysiwygConfig;
+
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -24,10 +26,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
+        \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,
         \Magento\Store\Model\System\Store $systemStore,
         array $data = []
     ) {
         $this->_systemStore = $systemStore;
+        $this->_wysiwygConfig = $wysiwygConfig;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -78,17 +82,17 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ['name' => 'title', 'label' => __('Question'), 'title' => __('Question'), 'required' => true]
         );
 
-        $fieldset->addField(
+        /*$fieldset->addField(
             'faq_identifier',
             'select',
             [
                 'name' => 'faq_identifier',
                 'label' => __('Faq Identifier'),
                 'title' => __('Faq Identifier'),
-                'required' => true,
+                'required' => false,
                 'options' => $model->getIdentifier()
             ]
-        );
+        );*/
 
         $fieldset->addField(
             'is_active',
@@ -128,8 +132,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
                 'name' => 'content',
                 'label' => __('Answer'),
                 'title' => __('Answer'),
-                'style' => 'height:15em',
-                'required' => true
+                'required' => true,
+                'config'    => $this->_wysiwygConfig->getConfig(),
+                'wysiwyg'   => true
             ]
         );
 

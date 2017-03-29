@@ -26,7 +26,7 @@
             <block class="Magento\Framework\View\Element\Html\Link\Current" name="customer-account-navigation-giftvoucher-index-index" ifconfig="giftvoucher/general/active">
                 <arguments>
                     <argument name="path" xsi:type="string">giftvoucher</argument>
-                    <argument name="label" xsi:type="string">Gift Card</argument>
+                    <argument name="label" xsi:type="string">Manage Gift Cards</argument>
                 </arguments>
             </block>
         </referenceBlock>

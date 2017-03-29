@@ -1,45 +1,29 @@
- <div class="panel-group" id="accordion">
-<?php
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$model = $objectManager->create('\Fc\Faqs\Model\Faq');
-$identifier = $model->getIdentifier();
-$i=0;
-foreach ($identifier as $key => $value):
-    if($key != ''):
-    $faqs = $block->getFaqs($key);
-    if(count($faqs) > 0):
-    
-?>
-
-        <div class="panel panel-default">
+<div class="panel-group" id="accordion">
+<?php $i=1; ?>
+<?php $faqs = $block->getFaqs(); ?>
+<?php if(count($faqs) > 0): ?>
+<?php foreach ($faqs as $faq): ?>
+    <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $i ?>">
-                    <?php echo $value ?></a>
+                    <?php echo $i.'. '.$faq->getTitle() ?>
+                </a>
             </h4>
         </div>
         <div id="collapse<?php echo $i ?>" class="panel-collapse collapse">
-        <ul class="faqs-faq-list">
-        <?php foreach ($faqs as $faq): ?>
-            <li class="faq-list-item">
-                <h3 class="faqs-faq-item-title">
-                    <?php echo $faq->getTitle() ?>
-                </h3>
-                <div class="faq-item-content">
-                    <?php echo $faq->getContent(); ?>
-                </div>
-            </li>
-        <?php endforeach; ?>
-        </ul>
+            <ul class="faqs-faq-list">
+                <li class="faq-list-item">
+                    <div class="faq-item-content">
+                        <?php echo $faq->getContent(); ?>
+                    </div>
+                </li>
+            </ul>
         </div>
-        </div>
-    
-<?php
-    $i++;
-    endif;
-    endif;
-endforeach; 
-?>
+    </div>    
+<?php $i++; ?>
+<?php endforeach; ?>
+<?php endif; ?>
 </div>
 <p>
 Don't see the answer to your questions above? <a href="<?php echo $this->getUrl('contact') ?>">Contact Us</a> at Shop H&H with any questions you may have.

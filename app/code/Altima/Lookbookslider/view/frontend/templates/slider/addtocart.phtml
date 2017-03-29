@@ -14,14 +14,15 @@
                 $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
                 $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
             ?>
-            <button class="action tocart cart-rounded"
+            <button class="hotspot-btn cart"
                     data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
                     type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
-                 <i class="mdi mdi-cart-outline"></i>
+                    Add to Cart
             </button>
-            <a href="javascript: void(0);" data-quickview-url="<?php echo $this->getUrl('')?>weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview quickview-btn" title="Quick View">
+            <!--<a href="javascript: void(0);" data-quickview-url="<?php echo $this->getUrl('')?>weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview quickview-btn" title="Quick View">
                 <i class="mdi mdi-magnify"></i>
-            </a>
+            </a>-->
+            <a class="hotspot-btn viewfull" target="_parent" href="<?php echo $_item->getProductUrl() ?>" ><?php echo __('View Full Details') ?></a>
         <?php endif; ?>
     <?php else: ?>
         <?php if ($_item->getIsSalable()): ?>

@@ -1,0 +1,19 @@
+<?php $_product = $block->getProduct(); ?>
+<?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
+<?php $_editors = $objEditor->getCollection(); ?>
+
+<?php foreach($_editors as $editor): ?>
+	<?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
+		<?php if(in_array($_product->getId(),$editorProduct)): ?>
+			<div class="product-editors-pick hidden-xs">
+					<a href="<?php echo $objEditor->getItemUrl($editor) ?>" class="vcenter">
+            <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
+						<div class="product-editors-pick-details">
+							<h4><?php echo ("Editor's Pick:") ?></h4>
+              <h5><?php echo $this->escapeHtml($editor->getName()) ?></h5>
+            </div>
+       	 	</a>
+			</div>
+			<?php break; ?>
+		<?php endif; ?>
+<?php endforeach; ?>
