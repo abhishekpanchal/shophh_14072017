@@ -6,16 +6,17 @@
 <?php $_editorItem = $this->getEditor(); ?>
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="vcenter vcenter-column editor-intro">
+    <div class="vcenter vcenter-column editor-intro">
+        <div class="col-md-6 text-right">
             <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
-            <div class="editor-details">
-                <?php if($_editorItem->getSubtitle() != ''): ?>
-                    <div class="editor-guest-title"><?php echo $_editorItem->getSubtitle(); ?></div>
-                <?php endif; ?>
-                <div class="editor-name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
-                <div class="editor-job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
-            </div>
+        </div>
+        <div class="col-md-6 editor-details">
+            <?php if($_editorItem->getSubtitle() != ''): ?>
+                <div class="editor-guest-title"><?php echo $_editorItem->getSubtitle(); ?></div>
+            <?php endif; ?>
+            <div class="editor-name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
+            <div class="editor-job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
+        </div>
         </div>
     </div>
 </div>
@@ -27,7 +28,7 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-8 col-md-offset-2 editor-bio">
+    <div class="col-md-6 col-md-offset-3 editor-bio">
         <?php echo $_editorItem->getBio() ?>
     </div>
 </div>

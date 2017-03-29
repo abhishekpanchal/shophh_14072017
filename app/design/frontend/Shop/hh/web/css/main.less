@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 @import url('https://fonts.googleapis.com/css?family=Droid+Serif:400,400i');
 
-@black: #000;
-
 @baseFont     : 'Montserrat-Light', Helvetica, Arial, sans-serif;
 @headlineFont : 'Montserrat', Helvetica, Arial, sans-serif;
 @fancyFont    : 'Droid Serif', Georgia;
@@ -35,6 +33,7 @@ body {
   font-family: @baseFont;
   font-size: @baseFontSize;
   line-height: @baseLineHeight;
+  color: #000;
 }
 
 a,
@@ -43,8 +42,10 @@ button {
   color: #000;
 }
 
-a:hover, a:focus,
-a:visited, alink:visited {
+a:hover,
+a:focus,
+a:visited,
+a.link:visited {
   text-decoration: none;
   color: #1a1a1a;
   outline: none;
@@ -86,7 +87,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: @headlineFont;
-  font-weight: 700;
+  font-weight: normal;
   margin-bottom: 10px;
 }
 
@@ -161,7 +162,9 @@ Common LESS
   display: none;
 }
 
-
+.black {
+  color: #000;
+}
 
 /* ==========================================================================
 Icon Font
@@ -216,8 +219,6 @@ buttons
 button, .cart.table-wrapper .actions-toolbar > .action, .cart.table-wrapper .action-gift {
   font-family: @fancyFont!important;
 }
-
-
 
 
 /* ==========================================================================
@@ -352,7 +353,7 @@ Page Title
   margin-top: 0;
   display: block;
   text-align: center;
-  margin-bottom: 5px;
+  margin-bottom: 0;
   color: #000!important;
   line-height: 40px;
 
@@ -866,7 +867,7 @@ Footer
 
 .footer-links li {
   display: block;
-  padding: 6px 0;
+  padding: 5px 0;
   list-style: none;
 
   a {
@@ -875,7 +876,7 @@ Footer
 }
 
 .footer-links ul {
-  padding-left: 10px;
+
 }
 
 div.mage-error[generated] {
@@ -2686,12 +2687,13 @@ Media Queries
   }
   input[type="email"] {
     border-radius: 20px!important;
-    padding: 22px 10px!important;
+    padding: 18px 10px!important;
     display: block;
     width: 100%!important;
     background-color: #dededf;
     margin-top: 10px;
     color: #7a7a7a;
+    font-size: 12px;
   }
   .btn-subscribe {
     background-color: #000;
@@ -3920,8 +3922,8 @@ Layout
   text-transform: uppercase;
   font-size: 18px;
   font-family: @baseFont;
-  margin-top: 15px;
   margin-bottom: 35px;
+  margin-top: 10px;
 }
 
 .quickview-lookbook {
@@ -3963,7 +3965,6 @@ Shot Thumbs
     position: relative;
     font-family: @dietDidot;
     font-size: 28px;
-    font-style: italic;
     margin-top: 42%;
 
     span {
@@ -4646,6 +4647,10 @@ Awe Menu
 Home Page
  ========================================================================== */
 
+body {
+
+}
+
 .cms-home {
   .quickview-bar2 {
     width: 80%;
@@ -4667,7 +4672,7 @@ Home Page
     margin-bottom: 0;
   }
   .shop-the-issue {
-    margin-bottom: 70px;
+    margin-bottom: 35px;
   }
   .more-shots {
     .issue-date {
@@ -4678,8 +4683,9 @@ Home Page
       font-family: @baseFont;
     }
     .issue-title {
-      font-size: 16px;
-      text-transform: uppercase;
+      font-size: 22px;
+      font-family: @fancyFont;
+      font-style: italic;
     }
     .desc {
       margin-bottom: 40px;
@@ -4742,9 +4748,10 @@ Home Page
         }
         h3 {
           font-size: 33px;
-          font-family: 'Droid Serif', Georgia, serif;
+          font-family: @fancyFont;
           margin-bottom: 10px;
           font-weight: normal;
+          font-style: italic;
         }
       }
       .editors-thumbs {
@@ -4772,7 +4779,7 @@ Home Page
               top: 0;
               width: 97%;
               height: 97%;
-              background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.1));
+              background: rgba(255,255,255,0.4);
               transition: 0.3s all;
               opacity: 0;
               margin: 5px;
@@ -4810,7 +4817,8 @@ Home Page
         }
         h3 {
           font-size: 33px;
-          font-family: 'Droid Serif', Georgia, serif;
+          font-family: @fancyFont;
+          font-style: italic;
           margin-bottom: 30px;
           font-weight: normal;
         }
@@ -5003,12 +5011,12 @@ Home Page
 
       h4 {
         text-align: center;
-        text-transform: uppercase;
         font-size: 40px;
-        font-family: @baseFont;
+        font-family: @fancyFont;
         font-weight: normal;
         margin-top: 20px;
         color: #27577b;
+        font-style: italic;
       }
 
       p {
@@ -5561,12 +5569,14 @@ Editos Main Page
         display: block;
         text-transform: uppercase;
         font: normal 18px/18px  @baseFont;
+        margin-bottom: 25px;
       }
       h3 {
         font-size: 33px;
-        font-family: 'Droid Serif', Georgia, serif;
-        margin-bottom: 30px;
+        font-family: @fancyFont;
         font-weight: normal;
+        margin-bottom: 5px;
+        font-style: italic;
       }
       .editor-blurb {
         font: normal 15px/22px @baseFont;
@@ -5607,7 +5617,7 @@ Editos Main Page
       margin-top: 30px;
 
       img {
-        width: 100%;
+        width: 80%;
         display: block;
         margin: 0 auto;
         border-radius: 50%;
@@ -5615,6 +5625,7 @@ Editos Main Page
       }
       h4 {
         font-family: @fancyFont;
+        font-style: italic;
         font-size: 22px;
         font-weight: normal;
       }
@@ -5638,7 +5649,6 @@ Editors Details
       max-height: 300px;
       border-radius: 50%;
       margin: 0 auto;
-      margin-right: 30px;
       .inline;
     }
     .editor-details {
@@ -5658,9 +5668,10 @@ Editors Details
       border-bottom: 1px solid #000;
       padding-bottom: 20px;
       margin-bottom: 15px;
+      display: inline-block;
     }
     .editor-job {
-      font-family: @baseFont;
+      font-family: @headlineFont;
       text-transform: uppercase;
       color: #5eb1ae;
       font-size: 15px;
@@ -5690,6 +5701,11 @@ Editors Details
       position: absolute;
       z-index: 9999;
       background-repeat: no-repeat;
+      margin-top: -20px;
+    }
+
+    p {
+      margin-bottom: 0;
     }
   }
   .editor-bio {
@@ -5729,16 +5745,17 @@ Editors Details
   }
   .editor-single-thumb {
     img {
-      width: 100%;
+      width: 80%;
       display: block;
       margin: 0 auto;
       border-radius: 50%;
-      margin: 20px;
+      margin-bottom: 20px;
     }
     h4 {
       font-family: @fancyFont;
       font-size: 22px;
       font-weight: normal;
+      font-style: italic;
     }
     h5 {
       font-family: @baseFont;
