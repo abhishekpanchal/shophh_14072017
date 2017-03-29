@@ -90,6 +90,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'required'  => true,
         ));
 
+        $fieldset->addField('vendor_code', 'text', array(
+            'name'      => 'vendor_code',
+            'label'     => __('Vendor Code'),
+            'class'     => 'required-entry',
+            'required'  => true,
+        ));
+
         if ($this->_hlp->isModuleActive('Unirgy_DropshipMicrositePro')) {
             $fieldset->addType('udvendor_status', '\Unirgy\Dropship\Block\Adminhtml\Vendor\Helper\Form\DependSelect');
             $udVendorStatusType = 'udvendor_status';

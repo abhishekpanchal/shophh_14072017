@@ -27,6 +27,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Hide Vendor Name'
                 ]);
         }
+        if (version_compare($context->getVersion(), '3.1.38', '<')) {
+            $connection->addColumn(
+                $installer->getTable('udropship_vendor'),
+                'vendor_code',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => NULL,
+                    'comment'  => 'Vendor Code'
+                ]);
+        }
 
         $installer->endSetup();
     }
