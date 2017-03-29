@@ -2,7 +2,7 @@
 <?php if (sizeof($availableSocials)): ?>
 <div class="block social-login-authentication-channel">
     <div class="block-title or-separator">
-        <span><?php echo __('Or') ?></span>
+        <span><?php echo __('Or Login With:') ?></span>
     </div>
     <div class="block-content">
         <ul>
@@ -12,7 +12,7 @@
                 <div class="primary">
                     <button class="action btn_<?= $key ?>_login" id="btn_<?= $key ?>_login" type="button">
                         <span>
-                            <span><?php echo __('%1 Login', $social->getLabel()) ?></span>
+                            <span><?php echo __('%1', $social->getLabel()) ?></span>
                         </span>
                     </button>
                 </div>
@@ -21,7 +21,7 @@
                 require(['jquery', 'Mageplaza_SocialLogin/js/sociallogin'], function ($, SocialLoginPopup) {
 					$('#btn_<?= $key ?>_login').click(function () {
 						var popup = new SocialLoginPopup();
-						popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('%1 Login', $social->getLabel())?>');
+						popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('%1', $social->getLabel())?>');
 					});
 				});
             </script>
