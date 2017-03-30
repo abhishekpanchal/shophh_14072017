@@ -44,13 +44,13 @@ echo $this->getLayout()
 
     <div class="row marginbottom-30">
         <div class="field col-md-6 telephone">
-            <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number(not required)') ?></span></label>
+            <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number (not required)') ?></span></label>
             <div class="control">
                 <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('telephone')) ?>" class="input-text" type="text" />
             </div>
         </div>
         <div class="field order-number col-md-6">
-            <label class="label" for="order-number"><span><?php /* @escapeNotVerified */ echo __('Order Number(if applicable)') ?></span></label>
+            <label class="label" for="order-number"><span><?php /* @escapeNotVerified */ echo __('Order Number (if applicable)') ?></span></label>
             <div class="control">
                 <input name="order-number" id="order-number" title="<?php /* @escapeNotVerified */ echo __('Order Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('order-number')) ?>" class="input-text" type="text" />
             </div>

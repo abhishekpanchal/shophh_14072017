@@ -98,7 +98,7 @@
         </container>
         <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
             <container name="footer-row-2" htmlTag="div" htmlClass="row vcenter">
-                <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-2 col-xs-12">
+                <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-3 col-xs-12">
                     <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-logo</argument>
