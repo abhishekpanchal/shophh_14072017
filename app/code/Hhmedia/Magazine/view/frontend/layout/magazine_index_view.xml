@@ -4,5 +4,10 @@
         <referenceContainer name="content">
             <block class="Hhmedia\Magazine\Block\View" name="magazine.item" template="view.phtml" />
         </referenceContainer>
+        <referenceBlock name="page.main.title">
+    		<action method="setPageTitle">
+        		<argument translate="true" name="title" xsi:type="string">Shop The Issue</argument>
+      		</action>
+    	</referenceBlock>
     </body>
 </page>

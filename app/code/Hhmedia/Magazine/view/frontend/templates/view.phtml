@@ -1,30 +1,52 @@
-<?php
-/**
- * Magazine template for separate item
- *
- */
-
-/**
- * @var $this Hhmedia\Magazine\Block\View
- * @see Hhmedia\Magazine\Block\View
- */
-?>
+<?php echo "Look fir this icon in the magazine to lorem ipsum gravida nibh vel velit auctor aliquet quis auctor."; ?>
 <?php $_magazineItem = $this->getMagazine(); ?>
-    <div class="magazine_item_subtitle">
-        <?php echo $this->formatDate($_magazineItem->getPublishedAt()) ?> |
-        <?php echo $this->escapeHtml($_magazineItem->getAuthor()) ?>
-    </div>
+<div>
+    <img src="<?php echo $this->getUrl('pub/media').$_magazineItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_magazineItem->getTitle()); ?>" />
+    <div class="title"><?php echo $_magazineItem->getTitle(); ?></div>
+    <div class="volume-name"><?php echo $_magazineItem->getVolumeName() ?></div>
+    <div class="magazine-item-content"><?php echo $_magazineItem->getContent() ?></div>
+</div>
 
 <div class="magazine_item_view">
-    <?php if ($imageUrl = $this->getImageUrl($_magazineItem, 400)): ?>
-       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_magazineItem->getTitle()) ?>" /></p>
-    <?php endif; ?>
-
-    <div class="magazine_item_content"><?php echo $_magazineItem->getContent() ?></div>
-
-    <div class="pager">
-        <a href="<?php echo $this->getBackUrl() ?>">
-            <?php echo __('Return to list') ?>
-        </a>
+    <?php $products = $this->getProductCollection(); ?>
+    <?php echo count($products)." Items from Issue"; ?>
+    <div class="row magazine-products">
+        <?php
+            foreach($products as $_product):
+            $pro = $this->getProductData($_product);
+            $image = $pro->getData('small_image');
+        ?>
+        <li class="col-md-3 editor-product">
+            <a href="<?php echo $pro->getProductUrl() ?>">
+                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+            </a>
+            <?php $page = $pro->getData('issue_page_number'); ?>
+            <?php if($page != NULL): ?>
+                <div class="page-number"><span><?php echo __('Page ') ?></span><?php echo $page; ?></div>
+            <?php endif; ?>
+            <a href="<?php echo $pro->getProductUrl() ?>">
+                <h4><?php echo $pro->getName(); ?></h4>
+            </a>
+            <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+            <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+             <?php if($customHelper->isProductNew($pro)): ?>
+                <div class="new-product"><?php echo __('New'); ?></div>
+            <?php endif; ?>
+            <div class="editor-mini-quote"><?php echo $pro->getData('editors_quote'); ?></div>
+        </li>
+        <?php endforeach; ?>
     </div>
 </div>
+
+<h2 class="page-title"><span><?php echo __("Past H&H Issues") ?></span></h2>
+<?php $obj = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
+<?php $_magazine = $obj->getCollection()->setPageSize(4); ?>
+<?php foreach($_magazine as $magazine): ?>
+    <?php if($magazine->getMagazineId() != $this->getRequest()->getParam('id')): ?>
+            <a href="<?php echo $obj->getItemUrl($magazine) ?>">
+                <img src="<?php echo $this->getUrl('pub/media').$magazine->getImage() ?>" alt="<?php echo $this->escapeHtml($magazine->getTitle()); ?>" />
+                <h4><?php echo $this->escapeHtml($magazine->getTitle()) ?></h4>
+            </a>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>
