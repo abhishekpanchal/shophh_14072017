@@ -5098,10 +5098,13 @@ Pagination
 /* ==========================================================================
 Select
 ========================================================================== */
+.sorter {
+  padding: 0;
+}
+
 .styled-select {
   width: 100%;
 }
-
 
 .styled-select {
   border-bottom: 1px solid #000;
@@ -5219,7 +5222,7 @@ Catalog View
       font-size: 16px;
       font-weight: normal;
     }
-    .price {
+    /*.price {
       color: #8d8d8d;
     }
     .special-price {
@@ -5229,7 +5232,7 @@ Catalog View
     .old-price {
       display: inline-block;
       margin-left: 5px;
-    }
+    }*/
   }
   .quickview-bar {
     border: 1px solid #b0b7b8;
@@ -6168,9 +6171,65 @@ Mini Cart
 
 
 /* ==========================================================================
-Mini Cart
+Social Login
 ========================================================================== */
 
 .mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
   width: 500px!important;
+}
+
+
+
+/* ==========================================================================
+Search
+========================================================================== */
+.catalogsearch-result-index {
+  .product-item-details, .noresults-products {
+    text-align: center;
+    display: block;
+
+    .product-item-link, .product-title {
+      font-family: @fancyFont;
+      font-size: 16px;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+    .price {
+      color: #8d8d8d;
+    }
+    .special-price {
+      display: inline-block;
+      color: #b13301;
+    }
+    .old-price {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+  .noresults-products-text{
+    font-family: @baseFont;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .noresults-products {
+    margin-bottom: 40px;
+
+    .image {
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-family: @baseFont;
+      margin: 10px 0;
+      .block;
+    }
+    .image:hover .quickview-bar2 {
+      opacity: 1;
+    }
+  }
+}
+
+.main-breadcrumb {
+  margin-top: 10px;
 }
