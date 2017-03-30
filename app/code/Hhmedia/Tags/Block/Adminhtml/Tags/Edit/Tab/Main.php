@@ -105,7 +105,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('URL Key'),
                 'required' => true,
                 'disabled' => $isElementDisabled,
-                'note' => ("Enter SEO friendly TAG name. e.g. 'moon-indigo'")
+                'note' => ("Enter SEO friendly TAG name. e.g. 'mood-indigo'")
             ]
         );
         

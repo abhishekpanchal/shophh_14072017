@@ -11,16 +11,14 @@ class Save extends \Magento\Backend\App\Action
      */
     protected $dataProcessor;
 
-    protected $_urlRewriteFactory;
 
     /**
      * @param Action\Context $context
      * @param PostDataProcessor $dataProcessor
      */
-    public function __construct(Action\Context $context, PostDataProcessor $dataProcessor, \Magento\UrlRewrite\Model\ResourceModel\UrlRewriteFactory $urlRewriteFactory)
+    public function __construct(Action\Context $context, PostDataProcessor $dataProcessor)
     {
         $this->dataProcessor = $dataProcessor;
-        $this->_urlRewriteFactory = $urlRewriteFactory;
         parent::__construct($context);
     }
 
@@ -78,20 +76,6 @@ class Save extends \Magento\Backend\App\Action
                 }
                 
                 $model->save();
-
-                $urlRewriteModel = $this->_urlRewriteFactory->create();
-/* set current store id */
-$urlRewriteModel->setStoreId(1);
-/* this url is not created by system so set as 0 */
-$urlRewriteModel->setIsSystem(0);
-/* unique identifier - set random unique value to id path */
-$urlRewriteModel->setIdPath(rand(1, 100000));
-/* set actual url path to target path field */
-$urlRewriteModel->setTargetPath("www.example.com/customModule/customController/customAction");
-/* set requested path which you want to create */
-$urlRewriteModel->setRequestPath("www.example.com/xyz");
-/* set current store id */
-$urlRewriteModel->save();
 
                 $this->messageManager->addSuccess(__('The Data has been saved.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);

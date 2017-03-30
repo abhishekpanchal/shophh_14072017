@@ -106,6 +106,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
+
+    protected $_tagsCollectionFactory;
     
     /**
      * @param \Magento\Framework\App\Helper\Context $context
@@ -119,6 +121,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory,
         \Magento\Framework\Filesystem\Io\File $ioFile,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Hhmedia\Tags\Model\ResourceModel\Tags\CollectionFactory $tagsCollectionFactory,
         \Magento\Framework\Image\Factory $imageFactory
     ) {
         $this->_scopeConfig = $scopeConfig;
@@ -129,6 +132,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_ioFile = $ioFile;
         $this->_storeManager = $storeManager;
         $this->_imageFactory = $imageFactory;
+        $this->_tagsCollectionFactory = $tagsCollectionFactory;
         parent::__construct($context);
     }
     
@@ -156,6 +160,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @param integer $height
      * @return bool|string
      */
+
+    public function getCollection()
+    {
+        $collection = $this->_tagsCollectionFactory->create();
+        return $collection;
+    }
+
     public function resize(\Hhmedia\Tags\Model\Tags $item, $width, $height = null)
     {
         if (!$item->getImage()) {
