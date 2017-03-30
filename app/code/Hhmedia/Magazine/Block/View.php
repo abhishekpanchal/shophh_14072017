@@ -14,6 +14,8 @@ class View extends \Magento\Framework\View\Element\Template
 
     /** @var \Hhmedia\Magazine\Helper\Data */
     protected $_dataHelper;
+
+    protected $_productRepository;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -26,12 +28,14 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\App\Http\Context $httpContext,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Magazine\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
         $this->httpContext = $httpContext;
         $this->_dataHelper = $dataHelper;
+        $this->_productRepository = $productRepository;
         parent::__construct($context, $data);
     }
 
@@ -87,4 +91,25 @@ class View extends \Magento\Framework\View\Element\Template
     {
         return $this->_dataHelper->resize($item, $width);
     }
+
+    public function getProductData($id)
+    {
+        return $this->_productRepository->getById($id);
+    }
+    
+    public function getProductCollection()
+    {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $model = $objectManager->create('\Hhmedia\Magazine\Model\Magazine');
+        $products  =  $model->getProducts($this->getMagazine());
+        return $products;
+    }
+
+    public function getProductPrice($price){
+        $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
+        $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
+        $formattedPrice = $priceHelper->currency($price, true, false);
+        return $formattedPrice ;
+    }
+
 }
