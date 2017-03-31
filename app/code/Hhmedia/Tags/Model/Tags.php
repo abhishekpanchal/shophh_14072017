@@ -42,4 +42,18 @@ class Tags extends \Magento\Framework\Model\AbstractModel
         return $this->getResource()->getConnection()->fetchCol($select);
     }
 
+    public function getProducts(\Hhmedia\Tags\Model\Tags $object)
+    {
+        $tbl = $this->getResource()->getTable(\Hhmedia\Tags\Model\ResourceModel\Tags::TBL_ATT_PRODUCT);
+        $select = $this->getResource()->getConnection()->select()->from(
+            $tbl,
+            ['product_id']
+        )
+        ->where(
+            'tags_id = ?',
+            (int)$object->getId()
+        );
+        return $this->getResource()->getConnection()->fetchCol($select);
+    }
+
 }

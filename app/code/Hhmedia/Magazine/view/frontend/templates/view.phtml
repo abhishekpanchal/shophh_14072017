@@ -16,7 +16,7 @@
             $pro = $this->getProductData($_product);
             $image = $pro->getData('small_image');
         ?>
-        <li class="col-md-3 editor-product">
+        <li class="col-md-3 magazine-product">
             <a href="<?php echo $pro->getProductUrl() ?>">
                 <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
             </a>
