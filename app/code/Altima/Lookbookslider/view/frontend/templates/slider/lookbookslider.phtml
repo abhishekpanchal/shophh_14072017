@@ -50,7 +50,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 <div class="home-slider lookbook-container">
 
   <div class="row no-gutters vcenter-flex display-block-xs">
-    <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
+    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-7 homepage-hero">
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
               <div class="content-before"><?php echo $contentBefore; ?></div>
@@ -212,7 +212,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 <?php foreach ($slideCollection as $slide): ?>
     <?php if($slide->getId() == $slideId): ?>
-        <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
+        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
 
             <div class="hotspot-details vcenter">
                 <div class="hotspot-default visible">
@@ -256,8 +256,8 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         </div>
 
         <div class="more-shots row no-gutters">
-            <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
-            <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
+            <h2 class="page-title">Shop<span class="basefont">More Shots</span></h2>
+            <h4 class="subtitle"><?php echo __('Inspiration for every room in the house') ?></h4>
             <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
             <?php foreach($shotCollection as $shot): ?>
                 <?php if($slideId != $shot->getSlideId()): ?> 

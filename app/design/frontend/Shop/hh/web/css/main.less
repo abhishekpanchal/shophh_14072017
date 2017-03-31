@@ -452,6 +452,10 @@ Product Description
 Products
  ========================================================================== */
 
+.product-info-main .special-price, .product-options-bottom .special-price {
+  margin: 0;
+}
+
 .catalog-product-view {
   .product-qty {
 
@@ -478,11 +482,19 @@ Products
       font-size: 34px;
       font-family: @fancyFont;
       color: #000;
-      margin-top: 30px;
       font-style: italic;
     }
-    .price-box {
-      margin: 15px 0;
+    .product.attribute.name {
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .product-info-price {
+      margin-top: 5px;
+      margin-bottom: 15px;
+      float: left;
+    }
+    .product-add-form {
+      clear: both;
     }
   }
 
@@ -494,7 +506,7 @@ Products
   .new-product {
     font-size: 14px;
     color: #6f8169;
-    margin-top: 15px;
+    .block;
   }
   .product-item-details {
     .photo {
@@ -535,8 +547,8 @@ Products
   }
 
   .product-editors-pick {
-    float: right;
-    margin-top: -85px;
+    position: absolute;
+    right: 0;
 
     img {
       .inline;
@@ -577,6 +589,19 @@ Products
       font-family: @fancyFont;
       font-size: 15px;
       font-style: italic;
+      .relative;
+
+      &:before {
+        content: '"';
+        font-family: @fancyFont;
+        font-style: italic;
+      }
+
+      &:after {
+        content: '"';
+        font-family: @fancyFont;
+        font-style: italic;
+      }
     }
   }
   .product-shop-the-shot {
@@ -607,6 +632,12 @@ Products
       margin-top: -55px;
       margin-bottom: 50px;
       position: relative;
+      transition: 0.3s;
+    }
+
+    &:hover .shop-the-shot-hover {
+      background-color: #FFF;
+      cursor: pointer;
     }
   }
 
@@ -720,12 +751,13 @@ Products Buttons
 
 .product-item-details {
   .price-container {
-    display: block;
+    /* display: block; */
     padding: 0;
 
     .price {
       font-size: 14px;
       font-family: @headlineFont;
+      color: #666;
     }
   }
 }
@@ -883,6 +915,12 @@ Footer
 
 }
 
+.footer-logo {
+  p {
+    margin-bottom: 0;
+  }
+}
+
 div.mage-error[generated] {
   font-size: 14px;
 }
@@ -964,7 +1002,7 @@ fieldset {
 
 
 
-.product-item-listing:nth-child(n+4) {
+.product-item-listing:nth-child(5) {
   clear: both;
 }
 
@@ -1107,6 +1145,9 @@ Quick View
   }
   .page-title-wrapper {
     margin-bottom: 60px;
+  }
+  .upsell-img {
+    margin-bottom: 10px;
   }
 }
 
@@ -1607,7 +1648,7 @@ Social Login
 
 .catalog-category-view {
   .product-item-details .price-container  {
-    padding: 0!important;
+    /*padding: 0!important;*/
   }
 }
 
@@ -1757,14 +1798,15 @@ Social Login
 
   .inner-content {
     padding-left: 40px;
-  }
-
-  .main-content {
 
     a {
       border-bottom: 2px solid #000;
       padding-bottom: 2px;
     }
+  }
+
+  .main-content {
+
 
     button, .action {
       border-radius: 0;
@@ -2681,6 +2723,7 @@ Media Queries
   li strong {
     text-transform: uppercase;
     font-size: 13px;
+    font-weight: 300;
   }
 }
 
@@ -4169,8 +4212,7 @@ Hotspot Details
 
   h1 {
     color: #27577b;
-    text-transform: uppercase;
-    font-family: @baseFont;
+    font-family: @fancyFont;
     font-weight: normal;
     text-align: center;
     font-style: italic;
@@ -4746,7 +4788,7 @@ body {
 
       .editors-pick-title {
         padding: 20px 50px;
-        margin: 15px 0;
+        margin: 15px 5px;
         border: 1px solid #0a0a0a;
 
         h4 {
@@ -4830,12 +4872,17 @@ body {
           font-style: italic;
           margin-bottom: 30px;
           font-weight: normal;
+          margin-top: 10px;
         }
         .editor-blurb {
           font: normal 15px/22px @baseFont;
           padding: 30px 0;
           border-top: 1px solid #889dbb;
           border-bottom: 1px solid #889dbb;
+
+          p {
+            margin-bottom: 0;
+          }
         }
         .editor-quote {
           font: italic 18px/30px @fancyFont;
@@ -5098,10 +5145,13 @@ Pagination
 /* ==========================================================================
 Select
 ========================================================================== */
+.sorter {
+  padding: 0;
+}
+
 .styled-select {
   width: 100%;
 }
-
 
 .styled-select {
   border-bottom: 1px solid #000;
@@ -5172,7 +5222,9 @@ Catalog View
 .product-item-description {
   margin: 0;
   line-height: 18px;
-
+  p {
+    display: inline;
+  }
 }
 
 .new-product {
@@ -5180,6 +5232,9 @@ Catalog View
 }
 
 .catalog-category-view {
+  .product-item-listing {
+    margin-bottom: 30px;
+  }
   .new-product {
     font-family: @headlineFont;
     font-weight: normal;
@@ -5219,7 +5274,7 @@ Catalog View
       font-size: 16px;
       font-weight: normal;
     }
-    .price {
+    /*.price {
       color: #8d8d8d;
     }
     .special-price {
@@ -5229,7 +5284,7 @@ Catalog View
     .old-price {
       display: inline-block;
       margin-left: 5px;
-    }
+    }*/
   }
   .quickview-bar {
     border: 1px solid #b0b7b8;
@@ -5289,6 +5344,15 @@ Catalog View
   }
 }
 
+/* ==========================================================================
+Limiter
+========================================================================== */
+.action {
+  span {
+  font-size: 16px;
+  font-weight: normal;
+  }
+}
 
 /* ==========================================================================
 Limiter
@@ -5314,6 +5378,8 @@ Limiter
 .formula-thumb {
   position: relative;
 }
+
+.category-thumb:hover .quickview-bar2,
 .product-item-details:hover .quickview-bar2,
 .formula-thumb:hover .quickview-bar2 {
   opacity: 1;
@@ -5430,6 +5496,7 @@ Magic Scroll
     display: block;
     text-transform: uppercase;
     font-family: @headlineFont;
+    margin-top: 5px;
   }
   .product-info-main .product-options-wrapper .fieldset .swatch-attribute-label {
     width: auto;
@@ -5510,6 +5577,10 @@ Magic Scroll
   font-size: 14px!important;
 }
 
+.btn-no-review {
+  display: inline-block;
+}
+
 .btn-cart-single {
   padding: 10px 35px!important;
 }
@@ -5582,7 +5653,7 @@ Editos Main Page
         display: block;
         text-transform: uppercase;
         font: normal 18px/18px  @baseFont;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
       }
       h3 {
         font-size: 33px;
@@ -5590,12 +5661,16 @@ Editos Main Page
         font-weight: normal;
         margin-bottom: 5px;
         font-style: italic;
+        margin-top: 20px;
       }
       .editor-blurb {
         font: normal 15px/22px @baseFont;
         padding: 30px 0;
         border-top: 1px solid #889dbb;
         border-bottom: 1px solid #889dbb;
+        p {
+          margin-bottom: 0;
+        }
       }
       .editor-quote {
         font: italic 18px/30px @fancyFont;
@@ -5712,7 +5787,7 @@ Editors Details
       height: 22px;
       background: url(../images/quote-close.png);
       position: absolute;
-      z-index: 9999;
+      z-index: 2;
       background-repeat: no-repeat;
       margin-top: -20px;
     }
@@ -5722,9 +5797,16 @@ Editors Details
     }
   }
   .editor-bio {
-    font-size: .8rem;
+    font-size: 14px;
     line-height: 1.4rem;
     margin-bottom: 40px;
+
+    h4 {
+      font-family: @baseFont;
+      text-transform: uppercase;
+      color: #5eb1ae;
+      font-size: 14px;
+    }
   }
   .editor-products {
     margin: 0 auto;
@@ -5920,12 +6002,15 @@ Contact Pages
     .label {
       text-transform: uppercase!important;
       font-size: 14px;
+      padding: 0;
+      .relative
     }
     .required-msg {
       margin-top: 10px;
       color: #8d8d8d;
       .block;
       margin-bottom: 0;
+      margin-right: 5px;
     }
   }
 }
@@ -5959,6 +6044,20 @@ Contact Pages
         margin-bottom: 20px;
       }
     }
+    .page-title {
+      margin-bottom: 40px;
+    }
+    p {
+      width: 70%;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+    .listing-404 {
+      margin-top: 40px;
+    }
+  }
+  .sidebar {
+    display: none;
   }
 }
 
@@ -5974,6 +6073,22 @@ Mini Cart
       display: block;
       font-family: @baseFont;
       font-weight: normal;
+
+      .product {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+      }
+    }
+    .product-item {
+      padding: 5px 0;
+    }
+    .product-item:not(:first-child) {
+      border: none;
     }
     .product-item-details {
       .inline;
@@ -6004,7 +6119,7 @@ Mini Cart
     .price-excluding-tax {
       line-height: normal;
       font-size: inherit;
-      margin: 8px 0;
+      margin: 4px 0;
     }
     .label {
       padding: 0;
@@ -6040,7 +6155,6 @@ Mini Cart
         .none;
       }
       .delete {
-        margin-right: 25px;
 
         &:before {
           content: "\f2d7";
@@ -6050,6 +6164,10 @@ Mini Cart
       }
     }
   }
+}
+
+.minicart-wrapper.active .block-minicart {
+  border: 1px solid #000;
 }
 
 .block-minicart {
@@ -6074,11 +6192,10 @@ Mini Cart
 .block-minicart .amount .price-wrapper:first-child .price {
   font-size: 16px;
   font-family: @fancyFont;
-  font-weight: normal;  
+  font-weight: normal;
 }
 .block-minicart .block-content > .actions > .primary {
   margin: 0;
-  padding: 0 25px;
 }
 
 .minicart-wrapper {
@@ -6090,8 +6207,7 @@ Mini Cart
   }
 
   .action.showcart .counter.qty {
-    background: #FFF;
-    color: #000;
+    background: transparent;
     height: auto;
     line-height: auto;
     border-radius: 0;
@@ -6138,6 +6254,10 @@ Mini Cart
   }
 }
 
+.minicart-wrapper .action.showcart:hover {
+  color: #000;
+}
+
 .minicart-items-wrapper {
   padding: 0;
   border: none;
@@ -6168,9 +6288,65 @@ Mini Cart
 
 
 /* ==========================================================================
-Mini Cart
+Social Login
 ========================================================================== */
 
 .mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
   width: 500px!important;
+}
+
+
+
+/* ==========================================================================
+Search
+========================================================================== */
+.catalogsearch-result-index {
+  .product-item-details, .noresults-products {
+    text-align: center;
+    display: block;
+
+    .product-item-link, .product-title {
+      font-family: @fancyFont;
+      font-size: 16px;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+    .price {
+      color: #8d8d8d;
+    }
+    .special-price {
+      display: inline-block;
+      color: #b13301;
+    }
+    .old-price {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+  .noresults-products-text{
+    font-family: @baseFont;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 45px;
+  }
+  .noresults-products {
+    margin-bottom: 40px;
+
+    .image {
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-family: @baseFont;
+      margin: 10px 0;
+      .block;
+    }
+    .image:hover .quickview-bar2 {
+      opacity: 1;
+    }
+  }
+}
+
+.main-breadcrumb {
+  margin-top: 10px;
 }
