@@ -32,8 +32,13 @@ $pastEditor = $this->getCollection()
         <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 editor_list_item">
             <a href="<?php echo $this->getItemUrl($editorItem) ?>">
                 <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($editorItem->getName()); ?>" />
-                <h4><?php echo $this->escapeHtml($editorItem->getName()) ?></h4>
-                <h5><?php echo $this->escapeHtml($editorItem->getJobTitle()) ?></h5>
+            </a>
+            <h4>
+                <a href="<?php echo $this->getItemUrl($editorItem) ?>" class="hover-effect">
+                <?php echo $this->escapeHtml($editorItem->getName()) ?>
+                </a>
+            </h4>
+            <h5><?php echo $this->escapeHtml($editorItem->getJobTitle()) ?></h5>
             </a>
         </div>
     <?php endforeach; ?>

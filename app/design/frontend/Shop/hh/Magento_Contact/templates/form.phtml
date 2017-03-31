@@ -63,6 +63,7 @@ echo $this->getLayout()
             <span class="asterix">*</span>
             </label>
             <div class="control">
+                <div class="styled-select">
                 <select name="subject" id="subject" data-validate="{required:true}">
                     <option value="">Please choose one</option>
                     <option value="product"><?php echo __('Product Information') ?></option>
@@ -72,6 +73,7 @@ echo $this->getLayout()
                     <option value="feedback"><?php echo __('Feedback & Suggestions') ?></option>
                     <option value="others"><?php echo __('Others') ?></option>
                 </select>
+                </div>
             </div>
         </div>
         <div class="clearfix"></div>

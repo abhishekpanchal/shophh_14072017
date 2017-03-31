@@ -10,8 +10,8 @@
 		<div class="col-md-4 product-404">
 	    <a href="<?php echo $category->getUrl() ?>">
 	    	<img src="<?php echo $category->getAdditionalImage() ?>" width="400" height="400" />
-	    	<?php echo $category->getName() ?>
 	    </a>
+	    <a href="<?php echo $category->getUrl() ?>" class="hover-effect"><?php echo $category->getName() ?></a>
 	  </div>
 	<?php endforeach; ?>
 </div>
