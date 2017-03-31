@@ -12,6 +12,8 @@ class Tags extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      *
      * @return void
      */
+    const TBL_ATT_PRODUCT = 'hhmedia_tags_product';
+
     protected function _construct()
     {
         $this->_init('hhmedia_tags', 'tags_id');
