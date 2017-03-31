@@ -29,8 +29,8 @@ class UpgradeData implements UpgradeDataInterface
                 'product_tags',
                 [
                     'group' => 'Product Details',
-                    'type' => 'int',
-                    'backend' => '',
+                    'type' => 'varchar',
+                    'backend' => 'Magento\Eav\Model\Entity\Attribute\Backend\ArrayBackend',
                     'frontend' => '',
                     'label' => 'Product Tags', 
                     'input' => 'multiselect',
