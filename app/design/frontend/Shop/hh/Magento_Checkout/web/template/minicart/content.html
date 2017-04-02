@@ -83,7 +83,7 @@
                     <!-- ko i18n: 'Go to Checkout' --><!-- /ko -->
                 </button>
                 <div data-bind="html: getCartParam('extra_actions')"></div>
-                <a href="#" class="dropdown-viewcart">View Cart</a>
+                <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="dropdown-viewcart">View Cart</a>
             </div>
         </div>
         <!-- /ko -->

@@ -44,10 +44,15 @@
             $image = $pro->getData('small_image');
         ?>
         <li class="col-md-3 editor-product">
-            <a href="<?php echo $pro->getProductUrl() ?>">
-                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
-            </a>
-            <h4><?php echo $pro->getName(); ?></h4>
+            <div class="editor-product-img relative">
+                <a href="<?php echo $pro->getProductUrl() ?>">
+                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                </a>
+                <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+            </div>
+            <h4>
+                <a class="hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
+            </h4>
             <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
             <div class="editor-mini-quote"><?php echo $pro->getData('editors_quote'); ?></div>
         </li>
