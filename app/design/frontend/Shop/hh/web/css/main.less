@@ -223,14 +223,14 @@ buttons
   }
 }
 
-.btn {
+.btn, button {
   &:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
   }
 }
 
-.btn-main:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+.btn-main:hover, button:hover {
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   color: #FFF;
 }
@@ -273,7 +273,7 @@ Buttons
 }
 
 .action.primary:hover {
-  background: #1a1a1a;
+  background: rgba(0,0,0,0.8);
   border-color: #1a1a1a;
   cursor: pointer;
 }
@@ -3146,6 +3146,13 @@ Products
   font-weight: normal!important;
   margin: 0 auto!important;
   margin-bottom: 20px!important;
+}
+
+#social-login-popup .social-login #bnt-social-login-authentication:hover,
+#social-login-popup .create .primary button {
+  background-color: rgba(0,0,0,0.8)!important;
+  background: rgba(0,0,0,0.8)!important;
+  border-color: rgba(0,0,0,0.8)!important
 }
 
 
@@ -6198,6 +6205,7 @@ Mini Cart
   width: 100%;
 
   .minicart-items {
+
     li {
       display: block;
       font-family: @baseFont;
@@ -6212,6 +6220,10 @@ Mini Cart
         -webkit-box-align: center;
         align-items: center;
       }
+    }
+    li:last-child {
+        border-bottom: 1px solid #DDD;
+      
     }
     .product-item {
       padding: 5px 0;
@@ -6303,6 +6315,7 @@ Mini Cart
   font-size: 13px;
   text-align: center;
   padding: 5px 0;
+  text-transform: capitalize;
 }
 
 .minicart-wrapper.active .block-minicart {
