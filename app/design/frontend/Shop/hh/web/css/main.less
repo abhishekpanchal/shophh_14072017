@@ -191,6 +191,14 @@ Icon Font
   font-size: 20px;
 }
 
+
+.popup-goback {
+  .action {
+    span {
+      font-size: 12px!important;
+    }
+  }
+}
 /* ==========================================================================
 buttons
 ========================================================================== */
@@ -2908,7 +2916,31 @@ Media Queries
       padding: 0;
       background-color: transparent;
       border: none;
+      .relative;
 
+      &:after {
+        font-family: "Ionicons";
+        font-size: inherit;
+        text-rendering: auto;
+        content: "\f489";
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #c4c4c4;
+        font-size: 28px;
+        font-style: normal;
+      }
+
+      &.active {
+
+        &:after {
+          .ionicon;
+          content: "\f462";
+          font-style: normal;
+          color: #8d8d8d;
+        }
+
+      }
       h4 {
         a {
           background: transparent;
@@ -2921,30 +2953,7 @@ Media Queries
           font-family: @fancyFont;
           font-style: italic;
           .relative;
-
-          &:after {
-            font-family: "Ionicons";
-            font-size: inherit;
-            text-rendering: auto;
-            content: "\f462";
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            color: #c4c4c4;
-            font-size: 28px;
-            font-style: normal;
-            color: #000;
-          }
         }
-
-        .collapsed {
-          &:after {
-            content: "\f489";
-            font-style: normal;
-            color: #8d8d8d;
-          }
-        }
-
       }
     }
 
@@ -6349,6 +6358,7 @@ Mini Cart
     text-align: center;
     white-space: normal;
     margin-left: 5px;
+    color: inherit;
 
     &:before {
       content: '( ';

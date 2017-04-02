@@ -1,4 +1,7 @@
 require(['jquery', 'jquery.bootstrap'], function($){
+
+  jQuery.noConflict();
+
   // DOM ready
   $(function(){
     // This function is needed (even if empty) to force RequireJS to load Twitter Bootstrap and its Data API.
@@ -159,7 +162,16 @@ if (viewportWidth < 600) {
   });
 
 
+$(document).ready(function() {
+  $('.panel-collapse').on('show.bs.collapse', function () {
+    console.log('bxxx');
+    $(this).siblings('.panel-heading').addClass('active');
+  });
 
+  $('.panel-collapse').on('hide.bs.collapse', function () {
+    $(this).siblings('.panel-heading').removeClass('active');
+  });
+});
 
 
   $('.btn-toggle-form').click(function(e) {
