@@ -110,9 +110,9 @@
                                     <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $proFormula->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                                 </div>
                             </a>
-                            <a href="<?php echo $proFormula->getProductUrl() ?>">
-                                <h4 class="decorating-formula-product-title"><?php echo $productName = $proFormula->getName(); ?></h4>
-                            </a>
+                            <h4 class="decorating-formula-product-title">
+                                <a href="<?php echo $proFormula->getProductUrl() ?>" class="hover-effect"><?php echo $productName = $proFormula->getName(); ?></a>
+                            </h4>
                             <h4 class="decorating-formula-price">
                                 <?php echo $formattedPrice = $priceHelper->currency($price, true, false); ?>
                             </h4>

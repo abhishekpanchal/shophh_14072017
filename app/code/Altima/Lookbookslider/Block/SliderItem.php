@@ -243,7 +243,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $_p_price      = $priceHelper->currency($_p_price, true, false);
                 $html_content .= '<div class="left-detail">';
                 if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                    $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+
+                    $_p_url = $product_details->getProductUrl();
+                    $html_content .= '<div class="image"><a href=\'' . $_p_url . '\'><img src="' . $_p_shrt_image . '" alt="product image"/></a></div>';
                 }
                 $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product_details->getId();
                 
@@ -255,7 +257,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     } else {
                         $_p_url = $product_details->getProductUrl();
                     }
-                    $html_content .= '<div class="product attribute name"><a href=\'' . $_p_url . '\' target="_blank">' . $_p_name . '</a></div>';
+                    $html_content .= '<div class="product attribute name"><a href=\'' . $_p_url . '\' class="hover-effect" target="_blank">' . $_p_name . '</a></div>';
                 } else {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
@@ -355,7 +357,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $html_content .= '<div class="left-detail">';
                 
                 if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                     $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+                    $_p_url = $product_details->getProductUrl();
+                    $html_content .= '<div class="image"><a href=\'' . $_p_url . '\'><img src="' . $_p_shrt_image . '" alt="product image"/></a></div>';
                 }
                 if ($product_details->isAvailable()) {
                     if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {

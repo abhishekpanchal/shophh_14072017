@@ -47,7 +47,7 @@ switch ($type = $block->getType()) {
             $showAddTo = true;
             $showCart = false;
             $templateType = null;
-            $description = false;
+            $description = true;
         }
     break;
 
@@ -65,7 +65,7 @@ switch ($type = $block->getType()) {
             $showAddTo = false;
             $showCart = false;
             $templateType = null;
-            $description = false;
+            $description = true;
             $canItemsAddToCart = false;
         }
     break;
@@ -85,7 +85,7 @@ switch ($type = $block->getType()) {
             $showAddTo = false;
             $showCart = false;
             $templateType = null;
-            $description = false;
+            $description = true;
             $canItemsAddToCart = false;
         }
     break;
@@ -261,7 +261,7 @@ switch ($type = $block->getType()) {
                             <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $_item->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                         </div>
                         <div class="product details product-item-details">
-                            <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>">
+                            <strong class="product name product-item-name"><a class="product-item-link hover-effect" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>">
                                 <?php echo $block->escapeHtml($_item->getName()) ?></a>
                             </strong>
                             <?php if ($description):?>

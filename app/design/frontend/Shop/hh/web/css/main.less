@@ -133,16 +133,21 @@ Common LESS
 
 /* Hover Effect */
 .hover-effect {
+  .relative;
+
   &:before {
     content: '';
     position: absolute;
     width: 0;
     bottom: -3px;
-    border-bottom: 2px solid #222;
+    border-bottom: 2px solid rgba(0,0,0,0.7);
     transition: width .3s;
   }
   &:hover {
     cursor: pointer;
+  }
+  &:hover:before {
+    width: 100%;
   }
 }
 
@@ -166,6 +171,19 @@ Common LESS
   color: #000;
 }
 
+#maincontent {
+  a {
+    img:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+  }
+}
+
+.homepage-hero a img:hover {
+  opacity: 1!important;
+}
+
 /* ==========================================================================
 Icon Font
  ========================================================================== */
@@ -173,6 +191,14 @@ Icon Font
   font-size: 20px;
 }
 
+
+.popup-goback {
+  .action {
+    span {
+      font-size: 12px!important;
+    }
+  }
+}
 /* ==========================================================================
 buttons
 ========================================================================== */
@@ -197,8 +223,14 @@ buttons
   }
 }
 
-.btn-main:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+.btn, button {
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.btn-main:hover, button:hover {
+  background: rgba(0, 0, 0, 0.7);
   border: none;
   color: #FFF;
 }
@@ -241,7 +273,7 @@ Buttons
 }
 
 .action.primary:hover {
-  background: #1a1a1a;
+  background: rgba(0,0,0,0.8);
   border-color: #1a1a1a;
   cursor: pointer;
 }
@@ -520,6 +552,7 @@ Products
     .product.name a {
       font-family: @fancyFont;
       font-size: 16px;
+      margin-top: 15px;
     }
     .price-container .price {
       color: #8d8d8d;
@@ -1386,6 +1419,16 @@ Social Login
     float: none!important;
   }
 
+  .form-customer-create {
+
+    p {
+      font-family: @fancyFont;
+      font-style: italic;
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-weight: normal;
+    }
+  }
 
   .social-login-authentication-channel {
 
@@ -1510,7 +1553,7 @@ Social Login
     text-align: right;
 
     .price-container .price {
-      color: #b13301;
+
     }
   }
   .old-price {
@@ -2505,7 +2548,7 @@ Checkout
 }
 
 .footer-bottom {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 /* ==========================================================================
@@ -2873,7 +2916,31 @@ Media Queries
       padding: 0;
       background-color: transparent;
       border: none;
+      .relative;
 
+      &:after {
+        font-family: "Ionicons";
+        font-size: inherit;
+        text-rendering: auto;
+        content: "\f489";
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #c4c4c4;
+        font-size: 28px;
+        font-style: normal;
+      }
+
+      &.active {
+
+        &:after {
+          .ionicon;
+          content: "\f462";
+          font-style: normal;
+          color: #8d8d8d;
+        }
+
+      }
       h4 {
         a {
           background: transparent;
@@ -2886,30 +2953,7 @@ Media Queries
           font-family: @fancyFont;
           font-style: italic;
           .relative;
-
-          &:after {
-            font-family: "Ionicons";
-            font-size: inherit;
-            text-rendering: auto;
-            content: "\f462";
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            color: #c4c4c4;
-            font-size: 28px;
-            font-style: normal;
-            color: #000;
-          }
         }
-
-        a.collapsed {
-          &:after {
-            content: "\f489";
-            font-style: normal;
-            color: #8d8d8d;
-          }
-        }
-
       }
     }
 
@@ -3073,12 +3117,14 @@ Products
     }
   }
   .action.remind {
-    font-family: @baseFont;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #939393;
-    text-decoration: underline;
-    margin-top: 15px;
+    span {
+      font-family: @baseFont;
+      font-size: 12px;
+      text-transform: uppercase;
+      color: #939393;
+      text-decoration: underline;
+      margin-top: 15px;
+    }
   }
   .login-text {
     font-family: @fancyFont;
@@ -3102,6 +3148,13 @@ Products
   margin-bottom: 20px!important;
 }
 
+#social-login-popup .social-login #bnt-social-login-authentication:hover,
+#social-login-popup .create .primary button {
+  background-color: rgba(0,0,0,0.8)!important;
+  background: rgba(0,0,0,0.8)!important;
+  border-color: rgba(0,0,0,0.8)!important
+}
+
 
 .popup-register-bottom a {
   font-family: @fancyFont;
@@ -3123,7 +3176,7 @@ Products
   color: #000;
   font-family: @fancyFont;
   font-style: italic;
-  text-transform: lowercase;
+  text-transform: capitalize;
   font-size: 24px;
   border: none!important;
   .relative;
@@ -3211,7 +3264,7 @@ Products
       padding: 20px 30px;
       font-style: italic;
       font-weight: normal;
-      width: 49.6%;
+      width: 49.5%;
 
       &:last-child {
         background-color: #FFF;
@@ -3549,7 +3602,6 @@ Cart Page
   }
 
   .special-price .price-container .price {
-      color: #b13301;
       font-weight: 700;
   }
 
@@ -3558,7 +3610,9 @@ Cart Page
   }
 }
 
-
+.old-price {
+  display: none;
+}
 
 .customer-account-login, .customer-account-create {
 
@@ -3699,7 +3753,29 @@ Cart Page
     li {
       display: inline-block;
           font-size: 14px!important;
+          margin-right: 10px;
     }
+  }
+}
+
+.social-login {
+  color: #666;
+  font-weight: normal;
+
+  h2 {
+    color: #000;
+  }
+
+  .choice.newsletter, .privacy-popup {
+    color: #666;
+
+    span {
+      color: #666;
+      font-weight: normal;
+    }
+  }
+  .small-text {
+    font-size: 12px;
   }
 }
 
@@ -3899,6 +3975,7 @@ Header
   p {
     margin-bottom: 0;
     font-family: @baseFont;
+    font-size: 12px;
 
     span {
       width: 100%;
@@ -4185,7 +4262,6 @@ Products
     margin-top: 10px;
 
     .old-price {
-      color: #b13301;
       position: relative;
       font-size: 11px;
       display: inline-block;
@@ -4209,6 +4285,7 @@ Hotspot Details
   flex-direction: column;
   text-align: center;
   min-height: 90%;
+  width: 100%;
 
   h1 {
     color: #27577b;
@@ -4324,6 +4401,12 @@ Hotspot Details
 .lookbookslider-index-view {
   .page-title-wrapper {
     display: none;
+  }
+  .moreshots-title {
+    em {
+      font-style: normal;
+      font-family: @baseFont;
+    }
   }
   .main-nav {
     margin-bottom: 0;
@@ -5379,6 +5462,10 @@ Limiter
   position: relative;
 }
 
+.category-thumb {
+  margin-bottom: 15px;
+}
+
 .category-thumb:hover .quickview-bar2,
 .product-item-details:hover .quickview-bar2,
 .formula-thumb:hover .quickview-bar2 {
@@ -6012,6 +6099,50 @@ Contact Pages
       margin-bottom: 0;
       margin-right: 5px;
     }
+
+
+    .styled-select {
+      width: 100%;
+    }
+
+    .styled-select {
+      background-color: #f0f0f0;
+      border: 1px solid #c2c2c2;
+      border-radius: 8px;
+      text-align: left;
+      position: relative;
+      font-family: @baseFont;
+      margin-top: 15px;
+
+      &:after {
+        content: "\f104";
+        font-family: "Ionicons";
+        position: absolute;
+        pointer-events: none;
+        right: 10px;
+        top: 13px;
+        z-index: 1;
+      }
+      select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        z-index: 1;
+        text-transform: uppercase;
+        background-color: transparent;
+        width: 100%;
+        padding: 12px 20px;
+        height: auto;
+        margin: 0;
+        border: none;
+      }
+
+      select::-ms-expand{
+        display: none;
+      }
+    }
+
   }
 }
 
@@ -6061,6 +6192,11 @@ Contact Pages
   }
 }
 
+.product-404:nth-child(4) {
+  clear: both;
+}
+
+
 /* ==========================================================================
 Mini Cart
 ========================================================================== */
@@ -6069,6 +6205,7 @@ Mini Cart
   width: 100%;
 
   .minicart-items {
+
     li {
       display: block;
       font-family: @baseFont;
@@ -6083,6 +6220,10 @@ Mini Cart
         -webkit-box-align: center;
         align-items: center;
       }
+    }
+    li:last-child {
+        border-bottom: 1px solid #DDD;
+      
     }
     .product-item {
       padding: 5px 0;
@@ -6166,6 +6307,17 @@ Mini Cart
   }
 }
 
+.dropdown-viewcart {
+  display: block;
+  color: #8d8d8d;
+  font-family: @fancyFont;
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+  padding: 5px 0;
+  text-transform: capitalize;
+}
+
 .minicart-wrapper.active .block-minicart {
   border: 1px solid #000;
 }
@@ -6219,6 +6371,7 @@ Mini Cart
     text-align: center;
     white-space: normal;
     margin-left: 5px;
+    color: inherit;
 
     &:before {
       content: '( ';
@@ -6237,6 +6390,13 @@ Mini Cart
     font-size: 12px;
     color: #8d8d8d;
     text-transform: uppercase;
+    color: #8d8d8d;
+    font-size: 12px;
+  }
+  .counter-number {
+    font-family: @baseFont;
+    font-size: 12px;
+    font-weight: normal;
   }
 
   .action.showcart.active .text {
@@ -6293,6 +6453,7 @@ Social Login
 
 .mfp-inline-holder .mfp-content, .mfp-ajax-holder .mfp-content {
   width: 500px!important;
+  min-height: auto;
 }
 
 
@@ -6316,7 +6477,6 @@ Search
     }
     .special-price {
       display: inline-block;
-      color: #b13301;
     }
     .old-price {
       display: inline-block;
@@ -6349,4 +6509,27 @@ Search
 
 .main-breadcrumb {
   margin-top: 10px;
+}
+
+#at-expanded-menu-host #at-expanded-menu-hd,
+#at-expanded-menu-host .at-branding-info.at-expanded-menu-branding, #at-expanded-menu-host .at-branding-logo.at-expanded-menu-branding, .at-expanded-menu-top-services-header {
+  display: none!important;
+}
+
+.abs-product-link > a:hover, .product-item-name > a:hover, .product.name a > a:hover {
+  text-decoration: none;
+}
+
+
+/* ==========================================================================
+Mini Cart Fixes
+========================================================================== */
+// .minicart-wrapper .block-minicart:after {
+//   top: -14px;
+// }
+
+.minicart-wrapper .block-minicart:after {
+  border: 7px solid;
+  border-color: transparent transparent #000000 transparent;
+  z-index: 98;
 }

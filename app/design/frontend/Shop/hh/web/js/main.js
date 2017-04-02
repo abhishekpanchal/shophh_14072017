@@ -1,4 +1,7 @@
 require(['jquery', 'jquery.bootstrap'], function($){
+
+  jQuery.noConflict();
+
   // DOM ready
   $(function(){
     // This function is needed (even if empty) to force RequireJS to load Twitter Bootstrap and its Data API.
@@ -26,6 +29,12 @@ require(['jquery', 'jquery.bootstrap'], function($){
     else if ($('body').hasClass('cms-returns')) {
       $('.faq-sidebar li.returns').addClass('active-sidebar');
     }
+  });
+
+  $('p').each(function() {
+    var $this = $(this);
+    if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+    $this.remove();
   });
 
   jQuery(document).ready(function () {
@@ -123,15 +132,13 @@ if (viewportWidth < 600) {
   $(document).ajaxComplete(function() {
     var count = $('.review-items').children('li').length;
     if (count !== 0) {
-      console.log('count', count)
       $('.review-item').slice(3).hide()
       $('.btn-reviews span').text('(' + count + ')');
       $('.btn-reviews').removeClass('display-none');
       $('.btn-reviews').click(function(e) {
         e.preventDefault();
-        console.log('uhhh');
         $('.review-item').slice(3).fadeIn(1000);
-        $('.btn-reviews').addClass('display-block');
+        $('.btn-reviews').addClass('display-none');
       });
 
 
@@ -155,7 +162,16 @@ if (viewportWidth < 600) {
   });
 
 
+$(document).ready(function() {
+  $('.panel-collapse').on('show.bs.collapse', function () {
+    console.log('bxxx');
+    $(this).siblings('.panel-heading').addClass('active');
+  });
 
+  $('.panel-collapse').on('hide.bs.collapse', function () {
+    $(this).siblings('.panel-heading').removeClass('active');
+  });
+});
 
 
   $('.btn-toggle-form').click(function(e) {
