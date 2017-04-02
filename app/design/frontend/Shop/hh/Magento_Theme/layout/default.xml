@@ -93,7 +93,8 @@
                     </block>
                 </container>
                 <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 margintop-30sm footer-col col-md-3 col-md-offset-1">
-                </container>
+					<block name="footer.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/footer/social.phtml"/>
+				</container>
             </container>
         </container>
         <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
@@ -133,7 +134,7 @@
     <referenceContainer name="skip_to_content" remove="true" />
     <referenceBlock name="top.search" remove="true" />
 
-    <move element="form.subscribe" destination="footer_col_5" />
+    <move element="form.subscribe" destination="footer_col_5" before="footer.social" />
     <move element="footer-row-2" destination="footer-wrap2" after="-" />
     <move element="copyright" destination="footer-legal-container" />
     <move element="top.links" destination="header.toplinks"/>

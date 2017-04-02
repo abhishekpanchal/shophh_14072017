@@ -1,30 +1,32 @@
-<?php
-/**
- * Tags template for separate item
- *
- */
+<?php $tags = $this->getTags(); ?>
+<div>
+    <img src="<?php echo $this->getUrl('pub/media').'Tags/'.$tags->getImage() ?>" alt="<?php echo $this->escapeHtml($tags->getTitle()); ?>" />
+    <div class="title"><?php echo $tags->getTitle(); ?></div>
+    <div class="subtitle"><?php echo $tags->getSubtitle() ?></div>
+</div>
 
-/**
- * @var $this Hhmedia\Tags\Block\View
- * @see Hhmedia\Tags\Block\View
- */
-?>
-<?php $_tagsItem = $this->getTags(); ?>
-    <div class="tags_item_subtitle">
-        <?php echo $this->formatDate($_tagsItem->getPublishedAt()) ?> |
-        <?php echo $this->escapeHtml($_tagsItem->getAuthor()) ?>
-    </div>
-
-<div class="tags_item_view">
-    <?php if ($imageUrl = $this->getImageUrl($_tagsItem, 400)): ?>
-       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_tagsItem->getTitle()) ?>" /></p>
-    <?php endif; ?>
-
-    <div class="tags_item_content"><?php echo $_tagsItem->getContent() ?></div>
-
-    <div class="pager">
-        <a href="<?php echo $this->getBackUrl() ?>">
-            <?php echo __('Return to list') ?>
-        </a>
+<div class="tag_item_view">
+    <?php $products = $this->getProductCollection(); ?>
+    <div class="row tags-products">
+        <?php
+            foreach($products as $_product):
+            $pro = $this->getProductData($_product);
+            $image = $pro->getData('small_image');
+        ?>
+        <li class="col-md-3 tag-product">
+            <a href="<?php echo $pro->getProductUrl() ?>">
+                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+            </a>
+            <a href="<?php echo $pro->getProductUrl() ?>">
+                <h4><?php echo $pro->getName(); ?></h4>
+            </a>
+            <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+            <?php if($customHelper->isProductNew($pro)): ?>
+                <div class="new-product"><?php echo __('New'); ?></div>
+            <?php endif; ?>
+            <div class="editor-mini-quote"><?php echo $pro->getData('editors_quote'); ?></div>
+            <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+        </li>
+        <?php endforeach; ?>
     </div>
 </div>
