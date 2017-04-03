@@ -941,6 +941,11 @@ Footer
   padding-bottom: 30px;
   background: #e6e6e7;
   font: normal 11px/11px 'Montserrat', Helvetica, Arial, sans-serif;
+
+  a:hover {
+    text-decoration: underline;
+  }
+
 }
 
 .footer-links li {
@@ -954,12 +959,30 @@ Footer
 }
 
 .footer-links ul {
-
 }
 
 .footer-logo {
+  font-family: @baseFont;
   p {
     margin-bottom: 0;
+  }
+  .copyright {
+    .block;
+    margin-top: 10px;
+  }
+}
+
+.footer-social {
+  text-align: right;
+  font-size: 13px;
+  text-transform: uppercase;
+
+  a {
+    color: #6b6b6b;
+  }
+
+  ul {
+    margin-top: 10px;
   }
 }
 
@@ -2790,11 +2813,11 @@ Media Queries
     font-family: @baseFont;
   }
   input[type="email"] {
-    border-radius: 20px!important;
-    padding: 18px 10px!important;
+    border-radius: 15px!important;
+    padding: 18px 20px!important;
     display: block;
     width: 100%!important;
-    background-color: #dededf;
+    background-color: #FFF;
     margin-top: 10px;
     color: #7a7a7a;
     font-size: 12px;
@@ -2805,11 +2828,16 @@ Media Queries
     border-radius: 0;
     font-family: 'Droid Serif';
     font-style: italic;
-    font-size: 14px;
+    font-size: 15px;
     line-height: normal;
     padding: 8px 22px;
     margin-top: 15px;
     float: left;
+    border: 1px solid #000;
+
+    &:hover {
+      background-color: rgba(0,0,0,0.8)!important;
+    }
   }
 }
 
