@@ -33,7 +33,7 @@
 	}
 
 	.page-title {
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 	}
 
 	.page-title-small {
@@ -56,7 +56,6 @@
 	.cms-home {
 		.homeslider .homepage-controls {
 			bottom: 0;
-			top: -100px;
 		}
 		.editors-area .editors-pick,
 		.editors-area .editor-guest-image,
@@ -382,7 +381,6 @@
 	.cms-home {
 
 		.homeslider {
-			margin-top: 0;
 
 			.homepage-hero {
 				width: 100%;
@@ -409,7 +407,7 @@
 		}
 		.formula_list_view {
 			.decorating-formula-title {
-				font-size: 2rem;
+				font-size: 1.9rem;
 			}
 			.decorating-formula-product-title {
 				font-size: 1em;
@@ -451,7 +449,7 @@
 		 	}
 		}
 		.mood-bg {
-			border-bottom: 1px solid #DDD;
+			border-bottom: 1px solid #b2b2b2;
 		}
 	}
 	#awemenu .am-tabs.am-tabs-root {
@@ -562,10 +560,86 @@
 	.quickview-bar2 {
 		display: none;
 	}
+	.carousel-indicators li {
+		background-color: #CCC;
+		border-color: #CCC;
+		margin-right: 5px;
+	}
+	.carousel-indicators .active {
+		background-color: #000;
+		border: none;
+	}
 	.cms-home {
-		.home-slider {
-			margin: -20px;
+		.homeslider {
+
+			.homepage-controls {
+				bottom: 15px;
+			}
 		}
+		.mood-bg {
+			padding-bottom: 60px;
+		}
+		.home-slider {
+			.carousel-indicators .active {
+				margin: 0;
+				margin-right: 5px;
+				width: 11px;
+				height: 11px;
+			}
+
+			.homepage-hero-details {
+				background: #FFF;
+				p {
+					margin-right: -25%;
+					margin-left: -25%;
+				}
+				h4 {
+					margin-top: 30px;
+				}
+				.hero-details-title {
+			    width: 85%;
+			    margin: 0 auto;
+			    margin-top: 60px;
+				}
+			}
+		}
+		.formula_list_view {
+			.decorating-formula-thumb {
+				margin: 20px auto;
+				width: 90%;
+			}
+			.carousel-control.right {
+				top: 55%;
+			}
+			.carousel-control.left {
+				top: 55%;
+			}
+			.decorating-formula-product {
+				margin-top: 0;
+			}
+		}
+		.formula_list_view .decorating-formula-product:nth-of-type(3):before,
+		.formula_list_view .decorating-formula-product:nth-of-type(3):after {
+			top: 30%;
+		}
+		.carousel-control.right, .carousel-control.left {
+	    height: 50px;
+    	width: 30px;
+		}
+	}
+	.cms-page-view, .faqs-index-index, .contact-index-index, .cms-privacy-policy, .cms-terms-conditions {
+	  .inner-content {
+	    padding-left: 0;
+	  }
+	  .page-title {
+	    margin-bottom: 40px;
+	  }
+	}
+}
+
+
+@media only screen and (min-width: 300px) and (max-width: 400px) {
+	.cms-home {
 		.formula_list_view {
 			.decorating-formula-thumb {
 				margin: 20px auto;
@@ -575,17 +649,6 @@
 				top: 55%;
 				right: -6%;
 			}
-			.carousel-control.left {
-				top: 55%;
-				left: -6%;
-			}
-			.decorating-formula-product {
-				margin-top: 0;
-			}
-		}
-		.carousel-control.right, .carousel-control.left {
-	    height: 50px;
-    	width: 30px;
 		}
 	}
 }

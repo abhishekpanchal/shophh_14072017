@@ -83,8 +83,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
   // Check viewport width
-  var viewportWidth = $(window).width();
-  var viewportHeight = $(window).height();
 
   var productTitle = $('.catalog-product-view .product-info-main .name')
   var productType = $('.catalog-product-view .new-product');
@@ -92,6 +90,13 @@ require(['jquery', 'jquery.bootstrap'], function($){
   var searchBox = $('.minisearch');
 
   $(window).resize(function() {
+
+
+    var viewportWidth = $(window).width();
+    var viewportHeight = $(window).height();
+
+    console.log('viewport width', viewportWidth)
+
     if (viewportWidth < 600) {
       $(productPrice).prependTo('.catalog-product-view .product.media');
       $(productType).prependTo('.catalog-product-view .product.media');
@@ -100,34 +105,29 @@ require(['jquery', 'jquery.bootstrap'], function($){
       console.log('search', searchBox);
 
 
-    $(searchBox).on('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-    console.log('bbbb');
-  });
+      $(searchBox).on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
 
+
+      $('ul.faq-sidebar, .sidebar ul').each(function() {
+        var $select = $('<select />');
+
+        $(this).find('a').each(function() {
+            var $option = $('<option />');
+            $option.attr('value', $(this).attr('href')).html($(this).html());
+            $select.append($option);
+        });
+        $(this).replaceWith($select);
+      });
+
+      $('.sidebar select').change( function() {
+        location.href = $(this).val();
+      });
 
     }
-
-
-
   });
-
-if (viewportWidth < 600) {
-  $('ul.faq-sidebar, .sidebar ul').each(function() {
-    var $select = $('<select />');
-
-    $(this).find('a').each(function() {
-        var $option = $('<option />');
-        $option.attr('value', $(this).attr('href')).html($(this).html());
-        $select.append($option);
-    });
-
-    $(this).replaceWith($select);
-  });
-}
-
-
 
   $(document).ajaxComplete(function() {
     var count = $('.review-items').children('li').length;
@@ -171,7 +171,11 @@ if (viewportWidth < 600) {
 
     $('.review-read-less').on('click', function(e) {
       e.preventDefault();
+      //$(this).addClass('display-none');
       $(this).parent().addClass('display-none');
+      // console.log('ss', $(this).parent().prev().children())
+      // console.log('sss', $(this).parent().prev().children('.review-read-more'))
+      // console.log('sass', $(this).parent().prev().children().next())
       $(this).parent().prev().children().removeClass('display-none');
     });
 
