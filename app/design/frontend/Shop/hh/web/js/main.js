@@ -171,9 +171,8 @@ if (viewportWidth < 600) {
 
     $('.review-read-less').on('click', function(e) {
       e.preventDefault();
-      $(this).addClass('display-none');
       $(this).parent().addClass('display-none');
-      $(this).parent().prev().next('.review-read-more').removeClass('display-none');
+      $(this).parent().prev().children().removeClass('display-none');
     });
 
 
