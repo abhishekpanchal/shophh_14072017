@@ -351,7 +351,16 @@ Reviews
   line-height: 22px;
 
   .full-review {
-    display: none;
+
+  }
+  .review-read-more, .review-read-less {
+    text-decoration: underline;
+    padding-top: 10px;
+    font-weight: bold!important;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -3149,7 +3158,7 @@ Products
 }
 
 #social-login-popup .social-login #bnt-social-login-authentication:hover,
-#social-login-popup .create .primary button {
+#social-login-popup .create .primary button:hover {
   background-color: rgba(0,0,0,0.8)!important;
   background: rgba(0,0,0,0.8)!important;
   border-color: rgba(0,0,0,0.8)!important
@@ -5065,6 +5074,7 @@ body {
         top: 40%;
         background: url(../images/icon-plus.png) no-repeat right center;
         opacity: 0.5;
+        z-index: 3;
       }
 
       &:before {
@@ -5076,6 +5086,7 @@ body {
         top: 40%;
         background: url(../images/icon-plus.png) no-repeat left center;
         opacity: 0.5;
+        z-index: 3;
       }
     }
     .carousel-control.left {
@@ -5466,11 +5477,17 @@ Limiter
   margin-bottom: 15px;
 }
 
+.editor-product-img {
+  margin-bottom: 20px;
+}
+
 .category-thumb:hover .quickview-bar2,
 .product-item-details:hover .quickview-bar2,
-.formula-thumb:hover .quickview-bar2 {
+.formula-thumb:hover .quickview-bar2,
+.editor-product-img:hover .quickview-bar2 {
   opacity: 1;
 }
+
 
 /* ==========================================================================
 Limiter

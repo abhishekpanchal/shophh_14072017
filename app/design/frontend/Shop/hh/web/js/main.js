@@ -142,29 +142,47 @@ if (viewportWidth < 600) {
       });
 
 
-      $('.review-read-more').click(function(e) {
-        // e.preventDefault();
-        // $('.review-read-more').addClass('display-none');
-        // $('.full-review').addClass('display-block');
-        console.log('aaaa');
-        e.preventDefault();
-        $('.full-review:visible').hide();
-        $(this).next('.full-review').show();
-      });
+      // $('.review-read-more').click(function(e) {
+      //   // e.preventDefault();
+      //   // $('.review-read-more').addClass('display-none');
+      //   // $('.full-review').addClass('display-block');
+      //   console.log('aaaa');
+      //   e.preventDefault();
+      //   $('.full-review:visible').hide();
+      //   $(this).next('.full-review').show();
+      // });
 
-      $('.review-read-less').click(function(e) {
-        e.preventDefault();
-        $('.review-read-less').addClass('display-none');
-        $('.full-review').addClass('display-none');
-      });
+      // $('.review-read-less').click(function(e) {
+      //   e.preventDefault();
+      //   $('.review-read-less').addClass('display-none');
+      //   $('.full-review').addClass('display-none');
+      // });
 
     }
+
+    $('.full-review').addClass('display-none');
+
+    $('.review-read-more').on('click', function(e) {
+      e.preventDefault();
+      $(this).next('.full-review').removeClass('display-none');
+      $(this).addClass('display-none')
+      $(this).parent().next().removeClass('display-none');
+    });
+
+    $('.review-read-less').on('click', function(e) {
+      e.preventDefault();
+      $(this).parent().addClass('display-none');
+      $(this).parent().prev().children().removeClass('display-none');
+    });
+
+
+
+
   });
 
 
 $(document).ready(function() {
   $('.panel-collapse').on('show.bs.collapse', function () {
-    console.log('bxxx');
     $(this).siblings('.panel-heading').addClass('active');
   });
 
