@@ -28,20 +28,49 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
     </div>
 </div>
  -->
-
- <div class="field limiter hidden-xs">
-    <div class="styled-select limiter-container ">
-        <label class="sort-label" for="limiter">
-            <span><?php /* @escapeNotVerified */ echo __('Show') ?></span>
-        </label>
-
-        <select id="limiter" data-role="limiter" class="sorter-options limiter-option">
-            <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
-                <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
-                    selected="selected"<?php endif ?>>
-                    <?php /* @escapeNotVerified */ echo $_limit ?>
-                </option>
-            <?php endforeach; ?>
-        </select>
-   </div>
-</div>
+<?php $moduleName = $this->getRequest()->getModuleName();  ?>
+<?php if($moduleName == "catalog"): ?>
+    <div class="field limiter hidden-xs">
+        <div class="styled-select limiter-container ">
+            <label class="sort-label" for="limiter">
+                <span><?php /* @escapeNotVerified */ echo __('Show') ?></span>
+            </label>
+            <?php
+                $helper = $this->helper('Hhmedia\Override\Helper\Override'); 
+                $catId = $helper->getCurrentCategory()->getId();
+                $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); 
+                $cateinstance = $objectManager->create('Magento\Catalog\Model\CategoryFactory');
+                $allcategoryproduct = $cateinstance->create()->load($catId)->getProductCollection();
+                $count = count($allcategoryproduct);
+            ?>
+            <?php if($count > 20): ?>
+                <select id="limiter" data-role="limiter" class="sorter-options limiter-option">
+                    <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+                        <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+                            selected="selected"<?php endif ?>>
+                            <?php /* @escapeNotVerified */ echo $_limit ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            <?php else: ?>
+                <?php echo $count; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php else: ?>
+    <div class="field limiter hidden-xs">
+        <div class="styled-select limiter-container ">
+            <label class="sort-label" for="limiter">
+                <span><?php /* @escapeNotVerified */ echo __('Show') ?></span>
+            </label>
+            <select id="limiter" data-role="limiter" class="sorter-options limiter-option">
+                <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
+                    <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+                        selected="selected"<?php endif ?>>
+                        <?php /* @escapeNotVerified */ echo $_limit ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+       </div>
+    </div>
+<?php endif; ?>
