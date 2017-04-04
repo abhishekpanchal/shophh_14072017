@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+        <link src="jquery/fileUploader/bootstrap.js"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit" name="collection_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tabs" name="collection_edit_tabs">
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\Main" name="collection_edit_tab_main"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\Image" name="collection_edit_tab_image"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionOne" name="collection_edit_tab_section_one"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionTwo" name="collection_edit_tab_section_two"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionThree" name="collection_edit_tab_section_three"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionFour" name="collection_edit_tab_section_four"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionFive" name="collection_edit_tab_section_five"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionSix" name="collection_edit_tab_section_six"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionSeven" name="collection_edit_tab_section_seven"/>
+                <block class="Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\SectionEight" name="collection_edit_tab_section_eight"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">main_section</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_main</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">image_section</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_image</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_one</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_one</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_two</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_two</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_three</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_three</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_four</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_four</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_five</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_five</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_six</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_six</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_seven</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_seven</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_eight</argument>
+                    <argument name="block" xsi:type="string">collection_edit_tab_section_eight</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

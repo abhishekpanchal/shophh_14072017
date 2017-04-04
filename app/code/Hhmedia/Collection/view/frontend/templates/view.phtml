@@ -1,0 +1,16 @@
+<?php $collection = $this->getCollection(); ?>
+<div>
+    <img src="<?php echo $this->getUrl('pub/media').'Collection/'.$collection->getImage() ?>" alt="<?php echo $this->escapeHtml($collection->getCollectionTitle()); ?>" />
+    <div class="collection-title"><?php echo $collection->getCollectionTitle(); ?></div>
+    <div class="collection-subtitle"><?php echo $collection->getCollectionSubtitle() ?></div>
+    <a href="<?php echo $collection->getLinkUrl() ?>"><?php echo $collection->getLinkText() ?></a>
+</div>
+<div class="collection_item_view">
+
+<?php for($i=1; $i<=8; $i++): ?>
+
+<div class="title"><?php echo $collection['title_'.$i]; ?></div>
+<a href="<?php echo $collection['link_'.$i]; ?>">See Full Collection</a>
+<?php endfor; ?>
+
+</div>
