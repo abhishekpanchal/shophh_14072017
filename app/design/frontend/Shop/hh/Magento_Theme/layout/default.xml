@@ -92,7 +92,7 @@
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 margintop-30sm footer-col col-md-3 col-md-offset-1">
+                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 margintop-30sm footer-col footer-subscribe col-md-3 col-md-offset-1">
 				        </container>
             </container>
         </container>

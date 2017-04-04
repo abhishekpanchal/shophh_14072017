@@ -361,12 +361,20 @@ Reviews
     &:hover {
       text-decoration: none;
     }
+
+    span {
+      margin-bottom: 0;
+    }
   }
 }
 
 .review-item {
   border: none;
   padding-top: 0;
+}
+
+.review-item:nth-child(4) {
+  clear: left;
 }
 
 .btn-reviews {
@@ -2862,9 +2870,9 @@ Media Queries
   min-width: 100%!important;
 }
 
-.mcs-item {
+/*.mcs-item {
   width: 25%!important;
-}
+}*/
 
 
 .main-content {
@@ -2963,8 +2971,8 @@ Media Queries
         position: absolute;
         right: 10px;
         top: 10px;
-        color: #c4c4c4;
-        font-size: 28px;
+        color: #8d8d8d;
+        font-size: 30px;
         font-style: normal;
       }
 
@@ -2985,6 +2993,7 @@ Media Queries
           font-size: 18px;
           font-weight: normal;
           padding: 15px;
+          padding-right: 25px;
           text-decoration: none;
           transition: 0.15s all ease-in-out;
           font-family: @fancyFont;
@@ -4117,6 +4126,7 @@ Layout
 /* ==========================================================================
 Shot Thumbs
 ========================================================================== */
+
 .shot-thumb {
   position: relative;
   float: left;
@@ -4818,9 +4828,6 @@ Awe Menu
 Home Page
  ========================================================================== */
 
-body {
-
-}
 
 .cms-home {
   .quickview-bar2 {
@@ -4838,6 +4845,18 @@ body {
   }
   .magazine_list_view {
     margin: 40px auto;
+
+    .carousel-indicators {
+      .active {
+        margin: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+      }
+      li {
+        border-color: #000;
+      }
+    }
   }
   .main-content {
     margin-bottom: 0;
@@ -5540,6 +5559,10 @@ Magic Scroll
   height: 26px!important;
 }
 
+div.MagicToolboxSelectorsContainer a {
+  margin: 0;
+}
+
 .MagicScroll > .mcs-button-arrow:hover {
   background-color: #000!important;
 }
@@ -5552,16 +5575,22 @@ Magic Scroll
 }
 
 .active-selector {
-  border: 2px solid #000!important;
+  img {
+    border: 2px solid #000!important;
+  }
 }
 
 .mcs-item {
-  border: 1px solid #d3d3d3;
-  border-right: none;
+  /*border: 1px solid #d3d3d3;
+  border-right: none;*/
 
   &:last-child {
     border-right: 1px solid #d3d3d3;
   }
+}
+div.MagicToolboxSelectorsContainer img {
+  max-height: 125px;
+  min-width: 125px;
 }
 
 .mcs-wrapper {
@@ -6357,7 +6386,7 @@ Mini Cart
   color: #8d8d8d;
   font-family: @fancyFont;
   font-style: italic;
-  font-size: 13px;
+  font-size: 15px;
   text-align: center;
   padding: 5px 0;
   text-transform: capitalize;
@@ -6419,7 +6448,7 @@ Mini Cart
     color: inherit;
 
     &:before {
-      content: '( ';
+      content: '(';
     }
 
     &:after {
@@ -6483,12 +6512,14 @@ Mini Cart
 
 .block-minicart .block-content > .actions > .primary .action.primary {
     margin-bottom: 10px;
-    width: 95%;
-    margin-left: 10px;
+    width: 81%;
+    margin-left: 9%;
 }
 
 #btn-minicart-close {
-  display: none;
+  margin-right: 10px;
+  margin-top: 6px;
+  opacity: 0.7;
 }
 
 
@@ -6569,9 +6600,13 @@ Search
 /* ==========================================================================
 Mini Cart Fixes
 ========================================================================== */
-// .minicart-wrapper .block-minicart:after {
-//   top: -14px;
-// }
+/* .minicart-wrapper .block-minicart:after {
+  top: -14px;
+} */
+
+.minicart-wrapper .block-minicart {
+  padding-bottom: 10px;
+}
 
 .minicart-wrapper .block-minicart:after {
   border: 7px solid;
