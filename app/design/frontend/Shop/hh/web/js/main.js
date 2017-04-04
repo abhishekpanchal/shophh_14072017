@@ -95,22 +95,23 @@ require(['jquery', 'jquery.bootstrap'], function($){
     var viewportWidth = $(window).width();
     var viewportHeight = $(window).height();
 
-    console.log('viewport width', viewportWidth)
+    console.log('Viewport', viewportWidth)
 
     if (viewportWidth < 600) {
       $(productPrice).prependTo('.catalog-product-view .product.media');
       $(productType).prependTo('.catalog-product-view .product.media');
       $(productTitle).prependTo('.catalog-product-view .product.media');
+      $('.footer-subscribe').prependTo('.footer-links');
+      $('.footer-social').insertAfter('.footer-subscribe');
+
+      // Search Box
       $(searchBox).prependTo('.mobile-full');
-      console.log('search', searchBox);
-
-
       $(searchBox).on('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
       });
 
-
+      // Sidebar Navigation (CMS pages)
       $('ul.faq-sidebar, .sidebar ul').each(function() {
         var $select = $('<select />');
 
@@ -122,6 +123,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $(this).replaceWith($select);
       });
 
+      // Redirect on click - select (sidebar)
       $('.sidebar select').change( function() {
         location.href = $(this).val();
       });

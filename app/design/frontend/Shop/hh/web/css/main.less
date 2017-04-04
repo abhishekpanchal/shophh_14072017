@@ -4126,6 +4126,7 @@ Layout
 /* ==========================================================================
 Shot Thumbs
 ========================================================================== */
+
 .shot-thumb {
   position: relative;
   float: left;
@@ -4828,7 +4829,7 @@ Home Page
  ========================================================================== */
 
 body {
-
+  background-color: red!important
 }
 
 .cms-home {
@@ -4847,6 +4848,18 @@ body {
   }
   .magazine_list_view {
     margin: 40px auto;
+
+    .carousel-indicators {
+      .active {
+        margin: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #000;
+      }
+      li {
+        border-color: #000;
+      }
+    }
   }
   .main-content {
     margin-bottom: 0;

@@ -87,7 +87,7 @@
 			}
 		}
 		.editors-area .editors-pick .editors-pick-title h3 {
-			font-size: 1.75em;
+			font-size: 1.8em;
 		}
 		.home-slider {
 			.homepage-hero-details {
@@ -358,12 +358,16 @@
 		padding: 5px 40px;
 	}
 	.page-title, .page-title-small {
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		text-align: center;
-		background: none;
+		background-size: 100%;
 
 		span {
-			padding: 0;
+			padding: 0 20px;
+
+			strong {
+				font-size: 38px;
+			}
 		}
 	}
 	.display-block-xs {
@@ -410,10 +414,10 @@
 				font-size: 1.9rem;
 			}
 			.decorating-formula-product-title {
-				font-size: 1em;
+				font-size: 1rem;
 			}
 			.decorating-formula-price {
-				font-size: 0.75em;
+				font-size: 0.75rem;
 			}
 		}
 
@@ -569,11 +573,23 @@
 		background-color: #000;
 		border: none;
 	}
+
+	.more-shots-thumbs:nth-of-type(3) {
+		clear: both;
+	}
+
 	.cms-home {
 		.homeslider {
 
 			.homepage-controls {
 				bottom: 15px;
+
+				.carousel-control.right {
+			    right: -75%;
+				}
+				.carousel-control.left {
+			    left: -75%;
+				}
 			}
 		}
 		.mood-bg {
@@ -585,6 +601,15 @@
 				margin-right: 5px;
 				width: 11px;
 				height: 11px;
+			}
+
+			.carousel-control.right,
+			.carousel-control.left {
+				height: 70px;
+				width: 35px;
+				top: -400px;
+				background-size: 80% 80%!important;
+				opacity: 1;
 			}
 
 			.homepage-hero-details {
@@ -601,6 +626,11 @@
 			    margin: 0 auto;
 			    margin-top: 60px;
 				}
+			}
+		}
+		.decorating-formula {
+			.page-title-small {
+				font-size: 1.1rem;
 			}
 		}
 		.formula_list_view {
@@ -634,6 +664,25 @@
 	  .page-title {
 	    margin-bottom: 40px;
 	  }
+	}
+	.page-footer {
+		.newsletter-footer-inner {
+			text-align: center;
+
+			button {
+				float: none;
+			}
+		}
+		.footer-social {
+			margin-bottom: 50px;
+		}
+		.footer-col.border-left {
+			border-left: none;
+			ul {
+				border-left: 1px solid #000;
+				padding-left: 20px;
+			}
+		}
 	}
 }
 
