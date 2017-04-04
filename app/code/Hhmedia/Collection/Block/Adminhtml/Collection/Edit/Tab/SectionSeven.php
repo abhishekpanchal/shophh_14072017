@@ -40,7 +40,7 @@ class SectionSeven extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'name' => 'title_7',
                 'label' => __('Title'),
                 'title' => __('Title'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
             ]
         );
@@ -52,7 +52,7 @@ class SectionSeven extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'name' => 'link_7',
                 'label' => __('Link'),
                 'title' => __('Link'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
             ]
         );
@@ -64,7 +64,7 @@ class SectionSeven extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'name' => 'sku_one_7',
                 'label' => __('Sku 1'),
                 'title' => __('Sku 1'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
             ]
         );
@@ -76,7 +76,7 @@ class SectionSeven extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'name' => 'sku_two_7',
                 'label' => __('Sku 2'),
                 'title' => __('Sku 2'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
             ]
         );
@@ -88,7 +88,7 @@ class SectionSeven extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'name' => 'sku_three_7',
                 'label' => __('Sku 3'),
                 'title' => __('Sku 3'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
             ]
         );
@@ -100,7 +100,7 @@ class SectionSeven extends \Magento\Backend\Block\Widget\Form\Generic implements
                 'name' => 'sku_four_7',
                 'label' => __('Sku 4'),
                 'title' => __('Sku 4'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
             ]
         );
