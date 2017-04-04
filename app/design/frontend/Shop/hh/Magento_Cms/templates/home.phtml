@@ -217,11 +217,15 @@
                     <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-12">
+                                <div class="mobile-content hidden-lg hidden-md text-center">
+                                    <?php $title = $magazineItem->getTitle(); ?>
+                                    <?php $name =  $magazineItem->getVolumeName(); ?>
+                                    <h4 class="issue-date"><?php echo $title ?></h4>
+                                    <h3 class="issue-title"><?php echo $name; ?></h3>
+                                </div>
                                 <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
                             </div>
                             <div class="col-md-8 col-sm-8 hidden-xs">
-                                <h4 class="issue-date"><?php $title = $magazineItem->getTitle(); ?></h4>
-                                <?php $name =  $magazineItem->getVolumeName(); ?>
                                 <h4 class="issue-date"><?php echo $title ?></h4>
                                 <h3 class="issue-title"><?php echo $name; ?></h3>
                                 <div class="issue-desc"><?php echo $magazineItem->getContent() ?></div>
