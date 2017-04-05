@@ -6308,12 +6308,6 @@ Mini Cart
       .toggle {
         .none;
       }
-      .swatch-opt {
-        display: block;
-        .label {
-          .block;
-        }
-      }
     }
     li {
       display: block;
@@ -6328,6 +6322,18 @@ Mini Cart
         -webkit-align-items: center;
         -webkit-box-align: center;
         align-items: center;
+      }
+
+      .product.list {
+        display: block;
+
+        .attribute-details {
+          margin: 0;
+
+          .label, .values {
+            display: inline-block;
+          }
+        }
       }
     }
     li:last-child {
@@ -6813,4 +6819,9 @@ Product Meta Details (all pages)
   &:nth-child(5) {
     .clear;
   }
+}
+
+
+body {
+  background-color: red!important;
 }
