@@ -151,16 +151,20 @@ Common LESS
   }
 }
 
-.inline {
-  display: inline-block;
-}
-
 .center {
   text-align: center;
 }
 
+.inline {
+  display: inline-block;
+}
+
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .ionicon {
@@ -397,7 +401,6 @@ Page Title
 .page-title,
 .page-title-small {
   background: url(../images/shop-keyline-faded-center.png) no-repeat center;
-  font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
   font-family: @fancyFont;
   font-size: 34px;
   font-style: italic;
@@ -3941,6 +3944,9 @@ Classes
   margin-top: 50px;
 }
 
+.clear {
+  clear: both;
+}
 
 /* ==========================================================================
 Social
@@ -6298,7 +6304,17 @@ Mini Cart
   width: 100%;
 
   .minicart-items {
-
+    .product {
+      .toggle {
+        .none;
+      }
+      .swatch-opt {
+        display: block;
+        .label {
+          .block;
+        }
+      }
+    }
     li {
       display: block;
       font-family: @baseFont;
@@ -6696,13 +6712,105 @@ Tags View Page
 Shop the issue page
 ========================================================================== */
 .magazine-index-view {
+  .magazine-notice {
+    font-family: @baseFont;
+    font-size: 18px;
+  }
+  .magazine-hero {
+    background-color: #ececec;
+    padding: 40px 0;
+    margin: 40px auto;
+  }
+  .magazine_item_view {
+    .toolbar {
+      margin-bottom: 40px;
+      h4 {
+        font-family: @baseFont;
+        font-size: 12px;
+        font-weight: normal;
+        text-transform: uppercase;
+      }
+    }
+  }
+  .magazine-desc {
+    h4 {
+      font-family: @headlineFont;
+      text-transform: uppercase;
+      font-size: 15px;
+      color: #8d8d8d;
+    }
+    h3 {
+      font-family: @fancyFont;
+      font-size: 34px;
+      font-style: italic;
+      border-bottom: 1px solid #000;
+      padding: 15px 0;
+      margin-bottom: 15px;
+      .inline-block;
+    }
+    .magazine-content {
+      p {
+        font-size: 15px;
+        font-family: @baseFont;
 
-}
-body {
-  background-color: red!important;
-}
+        strong {
+          font-family: @headlineFont;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+  .past-issue-listing {
+    margin-bottom: 60px;
 
+    img {
+      margin: 0 auto;
+      margin-bottom: 15px;
+    }
+    h4 {
+      font-family: @fancyFont;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+}
 
 /* ==========================================================================
 Product Meta Details (all pages)
 ========================================================================== */
+.product-details-block {
+  margin-bottom: 50px;
+  .center;
+  h4 {
+    margin-bottom: 5px;
+
+    a {
+      font-family: @fancyFont;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+  p {
+    font-family: @baseFont;
+    font-size: 13px;
+    display: inline;
+  }
+  h5 {
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: @headlineFont;
+    color: #666;
+  }
+  .product-img {
+    margin-bottom: 10px;
+    .relative;
+
+    &:hover .quickview-bar2 {
+      opacity: 1;
+    }
+  }
+
+  &:nth-child(5) {
+    .clear;
+  }
+}
