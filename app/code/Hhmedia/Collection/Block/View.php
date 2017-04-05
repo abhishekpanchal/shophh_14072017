@@ -14,6 +14,8 @@ class View extends \Magento\Framework\View\Element\Template
 
     /** @var \Hhmedia\Collection\Helper\Data */
     protected $_dataHelper;
+
+    protected $_productRepository;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -26,12 +28,14 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\App\Http\Context $httpContext,
+        \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Collection\Helper\Data $dataHelper,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
         $this->httpContext = $httpContext;
         $this->_dataHelper = $dataHelper;
+        $this->_productRepository = $productRepository;
         parent::__construct($context, $data);
     }
 
@@ -87,4 +91,22 @@ class View extends \Magento\Framework\View\Element\Template
     {
         return $this->_dataHelper->resize($item, $width);
     }
+
+    public function getProductBySku($sku)
+    {
+        try{
+            $product = $this->_productRepository->get($sku);    
+        }catch (\Exception $exception) {
+            $product = null;
+        }
+        return $product;
+    }
+
+    public function getProductPrice($price){
+        $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); 
+        $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); 
+        $formattedPrice = $priceHelper->currency($price, true, false);
+        return $formattedPrice ;
+    }
+
 }

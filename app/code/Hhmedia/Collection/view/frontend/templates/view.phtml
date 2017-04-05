@@ -8,9 +8,33 @@
 <div class="collection_item_view">
 
 <?php for($i=1; $i<=8; $i++): ?>
-
-<div class="title"><?php echo $collection['title_'.$i]; ?></div>
-<a href="<?php echo $collection['link_'.$i]; ?>">See Full Collection</a>
+	<?php if(isset($collection['title_'.$i])): ?>
+		<div class="title"><?php echo $collection['title_'.$i] ?></div>
+	<?php endif; ?>
+		<div class="products">
+			<?php $skus = array(trim($collection['sku_one_'.$i]), trim($collection['sku_two_'.$i]), trim($collection['sku_three_'.$i]), trim($collection['sku_four_'.$i])); ?>
+			<?php foreach($skus as $sku): ?>
+				<?php $product = $this->getProductBySku($sku); ?>
+				<?php if($product != NULL): ?>
+					<?php $image = $product->getData('small_image'); ?>
+					<a href="<?php echo $product->getProductUrl() ?>">
+	                	<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+	            	</a>
+	            	<a href="<?php echo $product->getProductUrl() ?>">
+	                	<h4><?php echo $product->getName(); ?></h4>
+	            	</a>
+	            	<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+		            <?php if($customHelper->isProductNew($product)): ?>
+		                <div class="new-product"><?php echo __('New'); ?></div>
+		            <?php endif; ?>
+		            <div class="short-desc"><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></div>
+		            <h5><?php echo $this->getProductPrice($product->getFinalPrice()); ?></h5>
+	        	<?php endif; ?>
+			<?php endforeach; ?>
+		</div>
+	<?php if(isset($collection['link_'.$i])): ?>
+		<a href="<?php echo $collection['link_'.$i]; ?>"><?php echo __('See Full Collection') ?></a>
+	<?php endif; ?>
 <?php endfor; ?>
 
 </div>
