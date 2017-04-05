@@ -35,10 +35,11 @@
             <div class="product options active" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
                 <span data-role="title" class="toggle"><!-- ko i18n: 'See Details' --><!-- /ko --></span>
 
-                <div data-role="content" class="content">
+                <div data-role="contents" class="contents">
                     <strong class="subtitle"><!-- ko i18n: 'Options Details' --><!-- /ko --></strong>
                     <dl class="product options list">
                         <!-- ko foreach: { data: options, as: 'option' } -->
+                        <div class="swatch-opt">
                         <dt class="label"><!-- ko text: option.label --><!-- /ko --></dt>
                         <dd class="values">
                             <!-- ko if: Array.isArray(option.value) -->
@@ -48,6 +49,7 @@
                                 <span data-bind="html: option.value"></span>
                             <!-- /ko -->
                         </dd>
+                        </div>
                         <!-- /ko -->
                     </dl>
                 </div>

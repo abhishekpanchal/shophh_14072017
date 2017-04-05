@@ -1,65 +1,83 @@
-<h4 class="magazine-notice text-center">Look fir this icon in the magazine to lorem ipsum gravida nibh vel velit auctor aliquet quis auctor.</h4>
+
+<h1 class="page-title marginbottom-20"><span><strong class="dietdidot">Shop</strong> The Issue</span></h1>
+
+<h4 class="magazine-notice text-center">Look for this <i class="ion-android-close"></i> icon in the magazine to lorem ipsum gravida nibh vel velit auctor aliquet quis auctor.</h4>
 
 <?php $_magazineItem = $this->getMagazine(); ?>
 <div class="magazine-hero">
-<div class="row">
-    <div class="vcenter">
-        <div class="col-md-4 magazine-shot">
-            <img src="<?php echo $this->getUrl('pub/media').$_magazineItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_magazineItem->getTitle()); ?>" />
-        </div>
-        <div class="col-md-7 col-md-offset-1 magazine-desc">
-            <h4 class="title"><?php echo $_magazineItem->getTitle(); ?></h4>
-            <h3 class="volume-name"><?php echo $_magazineItem->getVolumeName() ?></h3>
-            <div class="magazine-item-content"><?php echo $_magazineItem->getContent() ?></div>
+    <div class="container">
+        <div class="row">
+            <div class="vcenter">
+                <div class="col-md-4 magazine-shot">
+                    <img src="<?php echo $this->getUrl('pub/media').$_magazineItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_magazineItem->getTitle()); ?>" class="img-responsive" />
+                </div>
+                <div class="col-md-7 col-md-offset-1 magazine-desc">
+                    <h4 class="title"><?php echo $_magazineItem->getTitle(); ?></h4>
+                    <h3 class="volume-name"><?php echo $_magazineItem->getVolumeName() ?></h3>
+                    <div class="magazine-content"><?php echo $_magazineItem->getContent() ?></div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="magazine_item_view">
-    <?php $products = $this->getProductCollection(); ?>
-    <?php echo count($products)." Items from Issue"; ?>
-    <div class="row magazine-products">
-        <?php
-            foreach($products as $_product):
-            $pro = $this->getProductData($_product);
-            $image = $pro->getData('small_image');
-        ?>
-        <div class="col-md-3 text-center magazine-product">
-            <div class="product-thumb relative">
-                <a href="<?php echo $pro->getProductUrl() ?>">
-                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
-                </a>
-                <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+    <div class="container">
+        <?php $products = $this->getProductCollection(); ?>
+
+        <div class="row toolbar">
+            <div class="col-md-6">
+                <h4><?php echo count($products)." Items from Issue"; ?></h4>
             </div>
-            <?php $page = $pro->getData('issue_page_number'); ?>
-            <?php if($page != NULL): ?>
-                <div class="page-number"><span><?php echo __('Page ') ?></span><?php echo $page; ?></div>
-            <?php endif; ?>
-            <h4><a href="<?php echo $pro->getProductUrl() ?>" class="hover-effect"><?php echo $pro->getName(); ?></a></h4>
-            <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-             <?php if($customHelper->isProductNew($pro)): ?>
-                <div class="new-product"><?php echo __('New'); ?></div>
-            <?php endif; ?>
-            <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
-            <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+            <div class="col-md-6 text-right">
+
+            </div>
         </div>
-        <?php endforeach; ?>
+
+        <div class="row magazine-products">
+            <?php
+                foreach($products as $_product):
+                $pro = $this->getProductData($_product);
+                $image = $pro->getData('small_image');
+            ?>
+            <div class="col-md-3 text-center magazine-product product-details-block">
+                <div class="product-img">
+                    <a href="<?php echo $pro->getProductUrl() ?>">
+                        <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                    </a>
+                    <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                </div>
+                <?php $page = $pro->getData('issue_page_number'); ?>
+                <?php if($page != NULL): ?>
+                    <div class="page-number"><span><?php echo __('Page ') ?></span><?php echo $page; ?></div>
+                <?php endif; ?>
+                <h4><a href="<?php echo $pro->getProductUrl() ?>" class="hover-effect"><?php echo $pro->getName(); ?></a></h4>
+                <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                 <?php if($customHelper->isProductNew($pro)): ?>
+                    <div class="new-product"><?php echo __('New'); ?></div>
+                <?php endif; ?>
+                <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
+                <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+            </div>
+            <?php endforeach; ?>
+        </div>
     </div>
 </div>
 
-<h2 class="page-title"><span><?php echo __("Past H&H Issues") ?></span></h2>
-<?php $obj = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
-<?php $_magazine = $obj->getCollection()->setPageSize(4); ?>
-<div class="past-issue-listing">
-<?php foreach($_magazine as $magazine): ?>
-    <?php if($magazine->getMagazineId() != $this->getRequest()->getParam('id')): ?>
-        <div class="past-issue text-center col-md-3">
-            <a href="<?php echo $obj->getItemUrl($magazine) ?>">
-                <img src="<?php echo $this->getUrl('pub/media').$magazine->getImage() ?>" alt="<?php echo $this->escapeHtml($magazine->getTitle()); ?>" />
-                <h4><?php echo $this->escapeHtml($magazine->getTitle()) ?></h4>
-            </a>
-        </div>
-    <?php endif; ?>
-<?php endforeach; ?>
+<div class="container">
+    <h1 class="page-title marginbottom-40"><span><?php echo __("Past H&H Issues") ?></span></h1>
+    <?php $obj = $block->getLayout()->createBlock('Hhmedia\Magazine\Block\Magazine'); ?>
+    <?php $_magazine = $obj->getCollection()->setPageSize(4); ?>
+    <div class="row past-issue-listing">
+    <?php foreach($_magazine as $magazine): ?>
+        <?php if($magazine->getMagazineId() != $this->getRequest()->getParam('id')): ?>
+            <div class="past-issue text-center col-md-3">
+                <a href="<?php echo $obj->getItemUrl($magazine) ?>">
+                    <img src="<?php echo $this->getUrl('pub/media').$magazine->getImage() ?>" alt="<?php echo $this->escapeHtml($magazine->getTitle()); ?>" />
+                    <h4><?php echo $this->escapeHtml($magazine->getTitle()) ?></h4>
+                </a>
+            </div>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    </div>
 </div>
