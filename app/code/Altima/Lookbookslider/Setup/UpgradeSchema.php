@@ -326,6 +326,18 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Collection Title'
                 ]);
         }
+        if (version_compare($context->getVersion(), '2.0.11', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'story_template',
+                [
+                    'type'     => Table::TYPE_SMALLINT,
+                    'length'   => 5,
+                    'nullable' => true,
+                    'default'  => 0,
+                    'comment'  => 'Product Story Template'
+                ]);
+        }
 
         $installer->endSetup();
     }
