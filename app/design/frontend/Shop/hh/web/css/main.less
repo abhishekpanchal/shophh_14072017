@@ -192,6 +192,18 @@ Common LESS
   opacity: 1!important;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
+.normal-case {
+  text-transform: normal;
+}
+
+.font40 {
+  font-size: 40px;
+}
+
 /* ==========================================================================
 Icon Font
  ========================================================================== */
@@ -260,6 +272,10 @@ button, .cart.table-wrapper .actions-toolbar > .action, .cart.table-wrapper .act
   font-family: @fancyFont!important;
 }
 
+.btn-center {
+  display: inline-block;
+  margin: 0 auto;
+}
 
 /* ==========================================================================
 Buttons
@@ -3928,6 +3944,10 @@ Classes
   margin-bottom: 50px;
 }
 
+.marginbottom-60 {
+  margin-bottom: 60px;
+}
+
 .hidden {
   display: none;
 }
@@ -6721,6 +6741,11 @@ Shop the issue page
   .magazine-notice {
     font-family: @baseFont;
     font-size: 18px;
+
+    i {
+      padding: 5px 10px;
+      background: #ececec;
+    }
   }
   .magazine-hero {
     background-color: #ececec;
@@ -6750,8 +6775,8 @@ Shop the issue page
       font-size: 34px;
       font-style: italic;
       border-bottom: 1px solid #000;
-      padding: 15px 0;
-      margin-bottom: 15px;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
       .inline-block;
     }
     .magazine-content {
@@ -6818,5 +6843,41 @@ Product Meta Details (all pages)
 
   &:nth-child(5) {
     .clear;
+  }
+}
+
+/* ==========================================================================
+Section Breadcrumb
+========================================================================== */
+.section-breadcrumb {
+  margin-bottom: 30px;
+
+  .section-back {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: @headlineFont;
+  }
+}
+
+/* ==========================================================================
+Collection Page
+========================================================================== */
+.collection-index-view {
+  .main-nav {
+    margin-bottom: 0;
+  }
+  .category-image h2 span {
+    font-family: @baseFont;
+    font-weight: normal;
+  }
+  .collection_item_view {
+    .page-title {
+      background: none;
+      margin-bottom: 25px;
+      font-size: 30px;
+    }
+  }
+  .product-details-block {
+    margin-bottom: 30px;
   }
 }
