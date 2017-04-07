@@ -356,6 +356,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $decoded_array[$key]['icon_width']  = $icon_dimensions['width'];
                 $decoded_array[$key]['icon_height'] = $icon_dimensions['height'];
             }
+            $decoded_array[$key]['number'] = $decoded_array[$key]['text'];
             $html_content .= '<div class="product-info" style="';
             $html_content .= 'left:' . round($value['width'] / 2) . 'px;';
             $html_content .= 'top:' . round($value['height'] / 2) . 'px;';
