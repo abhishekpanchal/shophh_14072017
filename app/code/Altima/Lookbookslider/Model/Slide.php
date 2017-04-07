@@ -33,6 +33,8 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
     const STATUS_DISABLED = 0;
     const HOME_YES = 1;
     const HOME_NO = 0; 
+    const STORY_TEMPLATE_YES = 1;
+    const STORY_TEMPLATE_NO = 0; 
 
     protected $_sliderCollectionFactory;
     protected $_storeViewId = null;
@@ -286,6 +288,10 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
 
     public function getDisplayHome(){
         return [self::HOME_NO => __('No'), self::HOME_YES => __('Yes')];
+    }
+
+    public function getStoryTemplate(){
+        return [self::STORY_TEMPLATE_NO => __('No'), self::STORY_TEMPLATE_YES => __('Yes')];
     }
 
 }
