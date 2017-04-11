@@ -4,7 +4,47 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <?php include ($block->getTemplateFile('Magento_Search::form.mini.phtml')) ?>
+        
+				<?php
+				/** @var $block \Magento\Framework\View\Element\Template */
+				/** @var $helper \Magento\Search\Helper\Data */
+				$helper = $this->helper('Magento\Search\Helper\Data');
+				?>
+				
+				<form class="form minisearch"
+				      role="search"
+				      id="search_mini_formm"
+				      action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>"
+				      method="get">
+				      <button type="submit" title="<?php echo $block->escapeHtml(__('Search')) ?>" class="search-btn">
+				        <img src="<?php echo $block->getViewFileUrl('images/icon-search.png'); ?>" />
+				      </button>
+				      <input  id="search"
+				        class="search-input"
+				        data-mage-init='{"quickSearch":{
+				          "formSelector":"#search_mini_form",
+				          "url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]); ?>",
+				          "destinationSelector":"#search_autocomplete",
+				          "responseFieldElements":"ul li",
+				          "selectClass": "active",
+				          "template": "<li class=\"<%- data.row_class %>\" id=\"qs-option-<%- data.index %>\" role=\"option\"><a href=\"#\" onclick=\"return false;\"><span class=\"qs-option-name\"><%- data.title %></span><span aria-hidden=\"true\" class=\"amount\"><%- data.num_results %></span></a></li>"
+				          }
+				        }'
+				        type="text"
+				        name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
+				        value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
+				        placeholder="<?php /* @escapeNotVerified */ echo __('Search ...'); ?>"
+				        class="form-control"
+				        maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
+				        role="combobox"
+				        aria-haspopup="false"
+				        aria-autocomplete="both"
+				        autocomplete="off">
+				      <div id="search_autocomplete" class="search-autocomplete"></div>
+				      <?php echo $block->getChildHtml() ?>
+				</form>
+				
+				<?php include ($block->getTemplateFile('Magento_Search::form.mini.phtml')) ?>
       </div>
       <div class="modal-body">
 				<ul class="nav nav-tabs nav-justified">

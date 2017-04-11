@@ -34,7 +34,7 @@
 					    <container name="mobile-toggle-wrapper" htmlTag="div" htmlClass="hidden-sm hidden-md hidden-lg col-xs-1">
 					        <block name="mobile-toggle" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/mobile-toggle.phtml"/>
 					    </container>
-							<container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 col-sm-6 col-xs-9 header-logo">
+							<container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 col-sm-6 col-xs-10 header-logo">
                 <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
                   <arguments>
                     <argument name="logo_img_width" xsi:type="number">499</argument>
@@ -42,6 +42,9 @@
                   </arguments>
                 </block>
               </container>
+					    <container name="shopping-cart-wrapper" htmlTag="div" htmlClass="hidden-sm hidden-md hidden-lg col-xs-1">
+					        <block name="shopping-cart" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/mobile-shopping-cart.phtml"/>
+					    </container>
               <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 col-sm-3 header-search hidden-xs" after="-">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Search::form.mini.phtml" />
               </container>
@@ -50,7 +53,7 @@
         </container>
         <!-- End Main Header -->
         <!-- Navigation -->
-        <container name="navigation.outerwrap" htmlTag="nav" htmlClass="main-nav">
+        <container name="navigation.outerwrap" htmlTag="nav" htmlClass="main-nav hidden-xs">
           <container name="navigation.wrap" htmlTag="div" htmlClass="container">
             <container name="nav.row" htmlTag="div" htmlClass="row main-navigation">
               <container name="nav.left" htmlTag="div" htmlClass="col-md-12">
