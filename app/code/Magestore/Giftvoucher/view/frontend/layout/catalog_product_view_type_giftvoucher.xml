@@ -31,10 +31,10 @@
     </head>
     <body>
         <referenceContainer name="product.info.form.content">
-            <block class="Magestore\Giftvoucher\Block\Product\View" name="product.info.giftvoucher" before="product.info.addtocart" template="giftvoucher/product/view.phtml">                
-                <block class="Magestore\Giftvoucher\Block\Product\View" name="giftcard.product.selecttemplate" template="giftvoucher/product/template.phtml" >
+            <block class="Magestore\Giftvoucher\Block\Product\View" name="product.info.giftvoucher" before="product.info.addtocart" template="giftvoucher/product/view.phtml">
+                <!--<block class="Magestore\Giftvoucher\Block\Product\View" name="giftcard.product.selecttemplate" template="giftvoucher/product/template.phtml" >
                     <block class="Magestore\Giftvoucher\Block\Product\Upload" name="giftcard.product.upload" template="giftvoucher/product/upload.phtml" as="giftcard.uploadimage" />
-                </block>
+                </block>-->
             </block>
         </referenceContainer>
         <referenceContainer name="product.info.type">
@@ -42,8 +42,9 @@
             <container name="product.info.giftvoucher.extra" after="product.info.giftvoucher" before="product.info.giftvoucher" as="product_type_data_extra" label="Product Extra Info"/>
         </referenceContainer>
         <referenceContainer name="content">
-            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
-                   template="Magento_Customer::js/section-config.phtml"/>
+            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig" template="Magento_Customer::js/section-config.phtml"/>
         </referenceContainer>
+        <referenceBlock name="product.reviews.row" remove="true"/>
+        <referenceBlock name="product.info.description" remove="true"/>
     </body>
 </page>

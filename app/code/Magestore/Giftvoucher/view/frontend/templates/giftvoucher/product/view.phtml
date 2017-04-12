@@ -80,6 +80,9 @@ $mageinit  = '{"calendar":{'
                     (<span class="price"><?php echo $_giftAmount['from_txt'] ?></span> - <span
                         class="price"><?php echo $_giftAmount['to_txt'] ?></span>)
                 </div>
+                <div class="description">
+                    <?php echo $_product->getDescription(); ?>
+                </div>
                 <script type="text/javascript">
                     require([
                         "jquery",
@@ -243,7 +246,7 @@ $mageinit  = '{"calendar":{'
     </div>
     <?php if ($card_type == 1) { ?>
         <div class="form-group">
-            <label class="message" for="message"><?php echo __('Custom message') ?></label><br/>
+            <label class="message" for="message"><?php echo __('Message') ?></label><br/>
             <textarea maxlength="<?php echo $block->messageMaxLen(); ?>" class="form-control" name="message"
                       id="message" class="giftvoucher_custom_option" onchange="changeRemaining(this);"
                       onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea>
@@ -254,7 +257,7 @@ $mageinit  = '{"calendar":{'
         <div class="giftvoucher-receiver form-group" id="giftvoucher-receiver"
              style="<?php if ($card_type != 2) echo 'display:none;' ?>">
             <div class="form-group">
-                <label for="customer_name"><?php echo __('Sender name (optional)') ?></label><br/>
+                <label for="customer_name"><?php echo __('Your Name:') ?></label><br/>
                 <input type="text" class="giftvoucher_custom_option input-text form-control" name="customer_name"
                        id="customer_name"
                        value="<?php if ($_formData->getCustomerName() == '' && isset($customerName)) {
@@ -264,14 +267,14 @@ $mageinit  = '{"calendar":{'
                        } ?>" onchange="changeSenderName(this);" maxlength="30"/>
             </div>
             <div class="form-group">
-                <label for="recipient_name"><?php echo __('Recipient name') ?><em>*</em></label><br/>
+                <label for="recipient_name"><?php echo __('To:') ?><em>*</em></label><br/>
                 <input type="text" data-validate="{required:true}"
                        class="giftvoucher_custom_option input-text required-entry form-control" name="recipient_name"
                        id="recipient_name" value="<?php echo $_formData->getRecipientName() ?>"
                        onchange="changeReceiverName(this);" maxlength="30"/>
             </div>
             <div class="form-group">
-                <label class="recipient_email" for="recipient_email"><?php echo __('Recipient email address') ?>
+                <label class="recipient_email" for="recipient_email"><?php echo __('To Email:') ?>
                     <em>*</em></label><br/>
                 <input type="text" data-validate="{required:true}"
                        class="giftvoucher_custom_option input-text required-entry validate-email validate-same-email form-control"
@@ -289,12 +292,13 @@ $mageinit  = '{"calendar":{'
                 ?>
             </div>
             <div class="form-group">
-                <label class="message" for="message"><?php echo __('Custom message') ?></label><br/>
+                <label class="message" for="message"><?php echo __('Message:') ?></label><br/>
                 <textarea maxlength="<?php echo $block->messageMaxLen(); ?>" class="form-control" name="message"
                           id="message" class="giftvoucher_custom_option" onchange="changeRemaining(this);"
                           onkeyup="changeRemaining(this);"><?php echo $_formData->getMessage() ?></textarea>
-                <small><?php echo __('Characters Remaining: ') ?><span
-                        id="giftvoucher_char_remaining"><?php echo $block->messageMaxLen() ?></span></small>
+                <small><?php echo __('Characters Remaining: ') ?>
+                    <span id="giftvoucher_char_remaining"><?php echo $block->messageMaxLen() ?></span>
+                </small>
             </div>
 
             <div class="form-group">
@@ -320,7 +324,7 @@ $mageinit  = '{"calendar":{'
             <?php if ($block->enableScheduleSend()): ?>
                 <?php echo $block->getLayout()->createBlock('Magento\Framework\View\Element\Html\Calendar')->setTemplate('Magento_Theme::js/calendar.phtml')->toHtml() ?>
                 <div class="giftcard-date-box form-group" style="width: 200px; float: left">
-                    <label for="day_to_send"><?php echo __('Day to send') ?><em>*</em></label>
+                    <label for="day_to_send"><?php echo __('Delivery Date:') ?><em>*</em></label>
                     <div class="row">
                         <div class="col-xs-12" style="padding-right: 25px;" id="day_to_send_content">
                             <input type="text"
