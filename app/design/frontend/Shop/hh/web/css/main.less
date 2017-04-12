@@ -6728,9 +6728,54 @@ Shop the issue page
   }
 }
 
+  
+  
+/* ==========================================================================
+Product Meta Details (all pages)
+========================================================================== */
+.product-details-block {
+  margin-bottom: 50px;
+  .center;
+  h4 {
+    margin-bottom: 5px;
+    a {
+      font-family: @fancyFont;
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+  p {
+    font-family: @baseFont;
+    font-size: 13px;
+    display: inline;
+  }
+  h5 {
+    margin-top: 10px;
+    font-size: 14px;
+    font-family: @headlineFont;
+    color: #666;
+  }
+  .product-img {
+    margin-bottom: 10px;
+    .relative;
+
+    &:hover .quickview-bar2 {
+      opacity: 1;
+    }
+  }
+
+  &:nth-child(5) {
+    .clear;
+  }
+} 
+  
+  
+  
+
 .mobile-nav .modal-content{
 	background-color: rgba(240,240,240, 0.95);
 }
+
 
 .mobile-nav .modal-dialog{
 	margin:0;
@@ -6747,6 +6792,7 @@ a.mobile-shopping-cart{
 	height:35px;
 	display:block;
 	background: url(../images/shopping-cart.png) no-repeat center;
+}
 /* ==========================================================================
 Section Breadcrumb
 ========================================================================== */

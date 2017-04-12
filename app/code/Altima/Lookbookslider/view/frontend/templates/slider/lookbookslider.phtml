@@ -3,6 +3,7 @@ $sliderId = $this->getRequest()->getParam('slider_id');
 $slideId =$this->getRequest()->getParam('slide_id');
 $blockObj = $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
 $helper = $this->helper('Altima\Lookbookslider\Helper\Data');
+
 if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
     $slideCollection = $blockObj->getShotCollection($sliderId);
     if (!empty($slideCollection) && $slideCollection->getSize()) :
@@ -50,7 +51,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 <div class="home-slider lookbook-container">
 
   <div class="row no-gutters vcenter-flex display-block-xs">
-    <div class="col-lg-8 col-md-7 col-sm-7 col-xs-7 homepage-hero">
+    <div class="col-lg-8 col-md-7 homepage-hero">
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
               <div class="content-before"><?php echo $contentBefore; ?></div>
@@ -212,7 +213,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 <?php foreach ($slideCollection as $slide): ?>
     <?php if($slide->getId() == $slideId): ?>
-        <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
+        <div class="col-lg-4 col-md-5 mood-bg vcenter display-block-xs" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
 
             <div class="hotspot-details vcenter">
                 <div class="hotspot-default visible">
@@ -247,13 +248,13 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
           </div>
         </div>
           <div class="row">
-            <div class="col-md-6 product-stories-desc">
+            <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
                 <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageOne() ?>" />
                 <h3><?php echo $cs->getTitleOne() ?></h3>
                 <p><?php echo $cs->getDescriptionOne() ?></p>
                 <a href="<?php echo $cs->getLinkOne() ?>" class="hover-effect"><?php echo __('shop collection >') ?></a>
             </div>
-            <div class="col-md-6 product-stories-desc">
+            <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
                 <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageTwo() ?>" />
                 <h3><?php echo $cs->getTitleTwo() ?></h3>
                 <p><?php echo $cs->getDescriptionTwo() ?></p>
@@ -273,7 +274,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
               <?php $product = $blockObj->getProductBySku($sku); ?>
               <?php if($product != NULL): ?>
                 <?php $image = $product->getData('small_image'); ?>
-                <div class="col-md-3 product-details-block">
+                <div class="col-md-3 col-sm-4 col-xs-6 product-details-block">
                   <div class="product-img">
                     <a href="<?php echo $product->getProductUrl() ?>">
                       <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
@@ -295,7 +296,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
         </div>
         <div class="row">
           <?php if($cs->getTitleThree() != ''): ?>
-            <div class="col-md-6 product-stories-desc">
+            <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
               <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageThree() ?>" />
               <h3><?php echo $cs->getTitleThree() ?></h3>
               <p><?php echo $cs->getDescriptionThree() ?></p>
@@ -303,7 +304,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
             </div>
           <?php endif;?>
           <?php if($cs->getTitleFour() != ''): ?>
-            <div class="col-md-6 product-stories-desc">
+            <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
               <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageFour() ?>" />
               <h3><?php echo $cs->getTitleFour() ?></h3>
               <p><?php echo $cs->getDescriptionFour() ?></p>

@@ -63,6 +63,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
       if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
         if ($('.ion-android-close').hasClass('hotspot-active')) {
           $('.ion-android-close').removeClass().addClass('ion-android-search hotspot-inactive');
+          $(numHotspot).addClass('visible').removeClass('hidden');
         }
         $('.hotspot-details-placeholder').empty().removeClass('hidden').addClass('visible');
         $('.hotspot-details-placeholder').html(hotspotDesc);
