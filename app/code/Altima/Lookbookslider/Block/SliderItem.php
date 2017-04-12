@@ -45,6 +45,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
     protected $imageHelper;
     protected $_cartHelper;
     protected $directory_list;
+    protected $_productRepository;
 
     public function __construct(
             \Magento\Framework\View\Element\Template\Context $context,
@@ -56,6 +57,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             \Altima\Lookbookslider\Helper\Data $lookbooksliderHelper,
             \Magento\Framework\Stdlib\DateTime\Timezone $_stdTimezone,
             \Magento\Catalog\Model\ProductFactory $productFactory,
+            \Magento\Catalog\Model\ProductRepository $productRepository,
             \Magento\Catalog\Helper\Image $imageHelper,
             array $data = []
     ) {
@@ -69,6 +71,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         $this->_scopeConfig            = $context->getScopeConfig();
         $this->_stdTimezone            = $_stdTimezone;
         $this->_productFactory         = $productFactory;
+        $this->_productRepository = $productRepository;
         $this->imageHelper             = $imageHelper;
         $this->directory_list          = $directory_list;
     }
@@ -133,6 +136,18 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         return $slideCollection;
     }
 
+    public function getSlide($sliderId,$slideId) {
+        $storeViewId     = $this->_storeManager->getStore()->getId();
+        $dateTimeNow     = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
+        $slide = $this->_slideCollectionFactory->create()
+                ->setStoreViewId($storeViewId)
+                ->addFieldToFilter('slider_id', $sliderId)
+                ->addFieldToFilter('slide_id', $slideId)
+                ->addFieldToFilter('is_active', Status::STATUS_ENABLED)
+                ->setOrder('position', 'ASC');
+        return $slide;
+    }
+
     public function getShotCollection($sliderId) {
         $storeViewId     = $this->_storeManager->getStore()->getId();
         $dateTimeNow     = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
@@ -144,7 +159,22 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         return $shotCollection;
     }
 
+    public function getProductBySku($sku)
+    {
+        try{
+            $product = $this->_productRepository->get($sku);    
+        }catch (\Exception $exception) {
+            $product = null;
+        }
+        return $product;
+    }
 
+    public function getProductPrice($price){
+        $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); 
+        $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); 
+        $formattedPrice = $priceHelper->currency($price, true, false);
+        return $formattedPrice ;
+    }
 
     public function getFirstSlideItem() {
         $sliderItem = $this->getSlideCollection()
@@ -326,6 +356,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $decoded_array[$key]['icon_width']  = $icon_dimensions['width'];
                 $decoded_array[$key]['icon_height'] = $icon_dimensions['height'];
             }
+            $decoded_array[$key]['number'] = $decoded_array[$key]['text'];
             $html_content .= '<div class="product-info" style="';
             $html_content .= 'left:' . round($value['width'] / 2) . 'px;';
             $html_content .= 'top:' . round($value['height'] / 2) . 'px;';

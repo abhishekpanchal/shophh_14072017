@@ -100,6 +100,244 @@ class UpgradeSchema implements UpgradeSchemaInterface
                     'comment'  => 'Description for Homepage'
                 ]);
         }
+        if (version_compare($context->getVersion(), '2.0.8', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'sku_one',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'SKU ONE'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'sku_two',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'SKU Two'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'sku_three',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'SKU Three'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'sku_four',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'SKU Four'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'collection_link',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Collection Link'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'image_one',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Image 1'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'title_one',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Title 1'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'description_one',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => '2M',
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Description 1'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'link_one',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Link 1'
+                ]);
+        }
+        if (version_compare($context->getVersion(), '2.0.9', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'image_two',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Image 2'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'title_two',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Title 2'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'description_two',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => '2M',
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Description 2'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'link_two',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Link 2'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'image_three',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Image 3'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'title_three',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Title 3'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'description_three',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => '2M',
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Description 3'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'link_three',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Link 3'
+                ]);  
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'image_four',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Image 4'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'title_four',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Title 4'
+                ]);
+        }
+        if (version_compare($context->getVersion(), '2.0.10', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'description_four',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => '2M',
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Description 4'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'link_four',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Link 4'
+                ]);
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'collection_title',
+                [
+                    'type'     => Table::TYPE_TEXT,
+                    'length'   => 255,
+                    'nullable' => true,
+                    'default'  => null,
+                    'comment'  => 'Collection Title'
+                ]);
+        }
+        if (version_compare($context->getVersion(), '2.0.11', '<')) {
+            $connection->addColumn(
+                $installer->getTable('altima_lookbookslider_slide'),
+                'story_template',
+                [
+                    'type'     => Table::TYPE_SMALLINT,
+                    'length'   => 5,
+                    'nullable' => true,
+                    'default'  => 0,
+                    'comment'  => 'Product Story Template'
+                ]);
+        }
 
         $installer->endSetup();
     }

@@ -1,7 +1,7 @@
 <?php
 $sliderId = $this->getRequest()->getParam('slider_id');
 $slideId =$this->getRequest()->getParam('slide_id');
-$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+$blockObj = $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
 $helper = $this->helper('Altima\Lookbookslider\Helper\Data');
 if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
     $slideCollection = $blockObj->getShotCollection($sliderId);
@@ -235,10 +235,60 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 </div>
 </div>
+      <?php $currentSlide = $blockObj->getSlide($sliderId, $slideId); ?>
+      <?php foreach($currentSlide as $cs): ?>
+          <div class="collectio-title"><?php echo $cs->getCollectionTitle() ?></div>
+          <div class="section-one">
+            <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageOne() ?>" />
+            <div class="title-one"><?php echo $cs->getTitleOne() ?></div>
+            <div class="description-one"><?php echo $cs->getDescriptionOne() ?></div>
+            <a href="<?php echo $cs->getLinkOne() ?>"><?php echo __('shop collection >') ?></a>
+          </div>
+          <div class="section-two">
+            <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageTwo() ?>" />
+            <div class="title-two"><?php echo $cs->getTitleTwo() ?></div>
+            <div class="description-two"><?php echo $cs->getDescriptionTwo() ?></div>
+            <a href="<?php echo $cs->getLinkTwo() ?>"><?php echo __('shop collection >') ?></a>
+          </div>
+          <?php $skus = array(trim($cs->getSkuOne()), trim($cs->getSkuTwo()), trim($cs->getSkuThree()), trim($cs->getSkuFour())); ?>
+          <?php foreach($skus as $sku): ?>
+          <?php $product = $blockObj->getProductBySku($sku); ?>
+          <?php if($product != NULL): ?>
+            <?php $image = $product->getData('small_image'); ?>
+            <a href="<?php echo $product->getProductUrl() ?>">
+                      <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                  </a>
+                  <a href="<?php echo $product->getProductUrl() ?>">
+                      <h4><?php echo $product->getName(); ?></h4>
+                  </a>
+                  <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                  <?php if($customHelper->isProductNew($product)): ?>
+                      <div class="new-product"><?php echo __('New'); ?></div>
+                  <?php endif; ?>
+                  <div class="short-desc"><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></div>
+                  <h5><?php echo $blockObj->getProductPrice($product->getFinalPrice()); ?></h5>
+              <?php endif; ?>
+        <?php endforeach; ?>
+          <?php if($cs->getTitleThree() != ''): ?>
+          <div class="section-three">
+            <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageThree() ?>" />
+            <div class="title-three"><?php echo $cs->getTitleThree() ?></div>
+            <div class="description-three"><?php echo $cs->getDescriptionThree() ?></div>
+            <a href="<?php echo $cs->getLinkThree() ?>"><?php echo __('shop collection >') ?></a>
+          </div>
+        <?php endif;?>
+        <?php if($cs->getTitleFour() != ''): ?>
+          <div class="section-four">
+            <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageFour() ?>" />
+            <div class="title-four"><?php echo $cs->getTitleFour() ?></div>
+            <div class="description-four"><?php echo $cs->getDescriptionFour() ?></div>
+            <a href="<?php echo $cs->getLinkFour() ?>"><?php echo __('shop collection >') ?></a>
+          </div>
+        <?php endif; ?>
+          <a href="<?php echo $cs->getCollectionLink() ?>"><?php echo __('See All Products In Collection') ?></a>
+        <?php break; endforeach; ?>
 
-
-
-
+      <?php /*
         <div class="container">
             <div class="shot-products row">
                 <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
@@ -276,8 +326,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                 <?php endif; ?>
             <?php endforeach; ?>
         </div>
-
-
+        */ ?>
 
         <script type="text/javascript">
 
