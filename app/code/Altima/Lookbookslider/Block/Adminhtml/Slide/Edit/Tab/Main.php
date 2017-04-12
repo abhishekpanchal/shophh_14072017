@@ -79,6 +79,19 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             ]
         );
 
+        $fieldset->addField(
+            'story_template', 
+            'select', 
+            [
+                'label'    => __('Product Story Template'),
+                'title'    => __('Product Story Template'),
+                'name'     => 'slide[story_template]',
+                'required' => true,
+                'options'  => $model->getStoryTemplate(),
+                'disabled' => $isElementDisabled
+            ]
+        );
+
         $fieldColor = $fieldset->addField(
             'color',
             'text',
@@ -165,7 +178,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             [
                 'label'    => __('Display on Home'),
                 'title'    => __('Display on Home'),
-                'name'     => 'display_home',
+                'name'     => 'slide[display_home]',
                 'required' => true,
                 'options'  => $model->getDisplayHome(),
                 'disabled' => $isElementDisabled
