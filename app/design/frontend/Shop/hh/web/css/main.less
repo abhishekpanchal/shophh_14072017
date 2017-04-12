@@ -151,20 +151,12 @@ Common LESS
   }
 }
 
-.center {
-  text-align: center;
-}
-
 .inline {
   display: inline-block;
 }
 
 .block {
   display: block;
-}
-
-.inline-block {
-  display: inline-block;
 }
 
 .ionicon {
@@ -417,6 +409,7 @@ Page Title
 .page-title,
 .page-title-small {
   background: url(../images/shop-keyline-faded-center.png) no-repeat center;
+  font: 300 40px/40px 'DietDidot-BoldItalic', Helvetica, Arial, sans-serif;
   font-family: @fancyFont;
   font-size: 34px;
   font-style: italic;
@@ -831,7 +824,6 @@ Products Buttons
       font-size: 14px;
       font-family: @headlineFont;
       color: #666;
-      margin-top: 5px;
     }
   }
 }
@@ -1281,11 +1273,6 @@ Quick View
   }
 }
 .page-products {
-  .price-box {
-    .block;
-    margin-top: 10px;
-  }
-
   .product-item-inner {
     display: inline-block;
   }
@@ -3554,6 +3541,7 @@ Products
     /*min-width: 320px!important;*/
     min-width: 100%!important;
   }
+	
 }
 
 
@@ -3956,17 +3944,6 @@ Classes
   margin-top: 20px!important;
 }
 
-.padding50 {
-  padding: 50px 0;
-}
-
-.margintop-50 {
-  margin-top: 50px;
-}
-
-.clear {
-  clear: both;
-}
 
 /* ==========================================================================
 Social
@@ -4384,6 +4361,7 @@ Hotspot Details
     font-weight: normal;
     text-align: center;
     font-style: italic;
+    margin-bottom: 25px;
   }
 
   h2 a {
@@ -4396,6 +4374,7 @@ Hotspot Details
 
   p {
     font-size: 13px;
+    margin-bottom: 25px;
   }
 
   .desc {
@@ -4452,14 +4431,19 @@ Hotspot Details
       width: auto;
       text-transform: capitalize;
       transition: 0.3s all;
-      font-size: 16px;
+      font-size: 14px;
       line-height: normal;
-      padding: 15px 25px;
+      padding: 9px 25px;
       border: 1px solid #000;
       width: 42%;
       border-radius: 0;
       margin: 0;
       margin-left: 5px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+      }
     }
     .viewfull {
       border-color: #a0a1a1;
@@ -4467,6 +4451,11 @@ Hotspot Details
       color: #000;
       .relative;
       top: 2px;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.7);
+        color: #FFF;
+      }
     }
 
   }
@@ -5575,8 +5564,7 @@ Limiter
 .category-thumb:hover .quickview-bar2,
 .product-item-details:hover .quickview-bar2,
 .formula-thumb:hover .quickview-bar2,
-.editor-product-img:hover .quickview-bar2,
-.product-img:hover .quickview-bar2 {
+.editor-product-img:hover .quickview-bar2 {
   opacity: 1;
 }
 
@@ -6324,11 +6312,7 @@ Mini Cart
   width: 100%;
 
   .minicart-items {
-    .product {
-      .toggle {
-        .none;
-      }
-    }
+
     li {
       display: block;
       font-family: @baseFont;
@@ -6343,21 +6327,10 @@ Mini Cart
         -webkit-box-align: center;
         align-items: center;
       }
-
-      .product.list {
-        display: block;
-
-        .attribute-details {
-          margin: 0;
-
-          .label, .values {
-            display: inline-block;
-          }
-        }
-      }
     }
     li:last-child {
         border-bottom: 1px solid #DDD;
+      
     }
     .product-item {
       padding: 5px 0;
@@ -6373,7 +6346,7 @@ Mini Cart
     }
     .product-item-photo {
       width: auto;
-      margin-right: 25px;
+      margin-right: 15px;
       margin-left: 25px;
       .relative;
       margin-top: 5px;
@@ -6674,65 +6647,14 @@ Mini Cart Fixes
   z-index: 98;
 }
 
-/* ==========================================================================
-Tags View Page
-========================================================================== */
-.tags-index-view {
-  .main-nav {
-    margin-bottom: 0;
-  }
-  .category-image {
-    background-color: #EFEFEF;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-bottom: 40px;
 
-    h2 {
-      font-size: 34px;
-      font-weight: normal;
+/* mkadis mobile nav */
 
-      span {
-        font-family: @baseFont;
-        margin-top: 10px;
-        text-transform: capitalize;
-        font-weight: normal;
-      }
-    }
-  }
-  .tags-toolbar {
-    a {
-      text-transform: uppercase;
-      font-size: 12px;
-      font-family: @baseFont;
-    }
-  }
-  .tag-product {
-    margin-bottom: 50px;
-    .center;
-    h4 {
-      a {
-        font-family: @fancyFont;
-        font-size: 16px;
-        font-weight: normal;
-      }
-    }
-    p {
-      font-family: @baseFont;
-      font-size: 13px;
-      display: inline;
-    }
-    h5 {
-      margin-top: 10px;
-      font-size: 14px;
-      font-family: @headlineFont;
-      color: #666;
-    }
-    .product-img {
-      margin-bottom: 10px;
-      .relative;
-    }
-  }
+.mobile-nav .minisearch button{	
 }
 
+.mobile-nav .close{
+	float:left;
 
 /* ==========================================================================
 Shop the issue page
@@ -6806,6 +6728,8 @@ Shop the issue page
   }
 }
 
+  
+  
 /* ==========================================================================
 Product Meta Details (all pages)
 ========================================================================== */
@@ -6814,7 +6738,6 @@ Product Meta Details (all pages)
   .center;
   h4 {
     margin-bottom: 5px;
-
     a {
       font-family: @fancyFont;
       font-size: 16px;
@@ -6844,8 +6767,32 @@ Product Meta Details (all pages)
   &:nth-child(5) {
     .clear;
   }
+} 
+  
+  
+  
+
+.mobile-nav .modal-content{
+	background-color: rgba(240,240,240, 0.95);
 }
 
+
+.mobile-nav .modal-dialog{
+	margin:0;
+}
+
+.mobile-nav .close{
+	font-size:46px;
+	font-weight:300;
+	color:#000000;
+}
+
+a.mobile-shopping-cart{
+	width:35px;
+	height:35px;
+	display:block;
+	background: url(../images/shopping-cart.png) no-repeat center;
+}
 /* ==========================================================================
 Section Breadcrumb
 ========================================================================== */
@@ -6879,5 +6826,80 @@ Collection Page
   }
   .product-details-block {
     margin-bottom: 30px;
+  }
+}
+
+/* ==========================================================================
+Collection Page
+========================================================================== */
+.lookbook-main {
+  .lookbook-container {
+    margin-bottom: 40px;
+  }
+  .num {
+    font-family: @fancyFont;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: normal;
+    color: #FFF;
+  }
+  .product-stories-desc {
+    margin-bottom: 40px;
+    p {
+      margin-bottom: 10px;
+    }
+    img {
+      margin-bottom: 25px;
+    }
+    h3 {
+      font-family: @fancyFont;
+      font-size: 22px;
+      font-weight: normal;
+      font-style: italic;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #000;
+      text-transform: capitalize;
+    }
+    a {
+      text-transform: uppercase;
+      font-family: @headlineFont;
+      font-size: 14px;
+    }
+  }
+  .highlighted-products-title {
+    font-family: @fancyFont;
+    font-style: italic;
+    font-size: 22px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+}
+
+.lookbook-main {
+  .ion-android-search {
+    display: none;
+  }
+  .ion-android-close {
+    background-color: #3e6585;
+    font-size: 25px;
+    height: 38px;
+    width: 38px;
+    line-height: 35px;
+  }
+  .num {
+    color: #FFF;
+    margin: 0 auto;
+    height: 34px;
+    width: 34px;
+    background: rgba(0, 0, 0, 0.7);
+    display: block;
+    border-radius: 50%;
+    line-height: 32px;
+    text-align: center;
+    margin-top: 2px;
+    border: 2px solid #FFF;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   }
 }

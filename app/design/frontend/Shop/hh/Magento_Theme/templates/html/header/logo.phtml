@@ -12,7 +12,7 @@
 ?>
 <?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
 <a href="<?php echo $block->getUrl(''); ?>" title="<?php /* @escapeNotVerified */ echo $storeName ?>">
-    <img src="<?php /* @escapeNotVerified */ echo $block->getLogoSrc() ?>"
+    <img class="img-responsive" src="<?php /* @escapeNotVerified */ echo $block->getLogoSrc() ?>"
          alt="<?php /* @escapeNotVerified */ echo $block->getLogoAlt() ?>"
          <?php echo $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
          <?php echo $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
