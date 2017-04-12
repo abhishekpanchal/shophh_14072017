@@ -31,7 +31,10 @@
               <container name="header.main.social" htmlTag="div" htmlClass="col-md-3 col-sm-3 hidden-xs header-social" before="-">
                 <block name="header.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/social.phtml"/>
               </container>
-              <container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 col-sm-6 header-logo">
+					    <container name="mobile-toggle-wrapper" htmlTag="div" htmlClass="hidden-sm hidden-md hidden-lg col-xs-1">
+					        <block name="mobile-toggle" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/mobile-toggle.phtml"/>
+					    </container>
+							<container name="header.main.logo" htmlTag="div" htmlClass="col-md-6 col-sm-6 col-xs-10 header-logo">
                 <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
                   <arguments>
                     <argument name="logo_img_width" xsi:type="number">499</argument>
@@ -39,6 +42,9 @@
                   </arguments>
                 </block>
               </container>
+					    <container name="shopping-cart-wrapper" htmlTag="div" htmlClass="hidden-sm hidden-md hidden-lg col-xs-1">
+					        <block name="shopping-cart" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/mobile-shopping-cart.phtml"/>
+					    </container>
               <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 col-sm-3 header-search hidden-xs" after="-">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Search::form.mini.phtml" />
               </container>
@@ -47,7 +53,7 @@
         </container>
         <!-- End Main Header -->
         <!-- Navigation -->
-        <container name="navigation.outerwrap" htmlTag="nav" htmlClass="main-nav">
+        <container name="navigation.outerwrap" htmlTag="nav" htmlClass="main-nav hidden-xs">
           <container name="navigation.wrap" htmlTag="div" htmlClass="container">
             <container name="nav.row" htmlTag="div" htmlClass="row main-navigation">
               <container name="nav.left" htmlTag="div" htmlClass="col-md-12">
@@ -92,22 +98,23 @@
                       </arguments>
                     </block>
                 </container>
-                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 margintop-30sm footer-col col-md-3 col-md-offset-1">
-                </container>
+                <container name="footer_col_5" htmlTag="div" htmlClass="col-xs-12 margintop-30sm footer-col footer-subscribe col-md-3 col-md-offset-1">
+				        </container>
             </container>
         </container>
         <container name="footer-wrap2" htmlTag="div" htmlClass="footer-bottom container">
             <container name="footer-row-2" htmlTag="div" htmlClass="row vcenter">
-                <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-2 col-xs-12">
+                <container name="footer-logo" htmlTag="div" htmlClass="footer-logo footer-col col-md-6 col-xs-12">
                     <block class="Magento\Cms\Block\Block" name="footer_logo_inner">
                       <arguments>
                          <argument name="block_id" xsi:type="string">footer-logo</argument>
                       </arguments>
                     </block>
                 </container>
-                <container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal footer-col col-md-7 col-xs-12">
-                </container>
-                <container name="footer-social" htmlTag="div" htmlClass="footer-social footer-col col-md-3 col-xs-12">
+                <!--<container name="footer-legal-container" htmlTag="div" htmlClass="footer-legal footer-col col-md-7 col-xs-12">
+                </container>-->
+                <container name="footer-social" htmlTag="div" htmlClass="footer-social footer-col col-md-6 col-xs-12">
+                    <block name="footer.social" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/footer/social.phtml"/>
                 </container>
             </container>
         </container>
@@ -120,6 +127,17 @@
         </arguments>
       </block>
     </referenceContainer>
+		
+		
+		
+		<container name="mobile-menu-container" htmlTag="div" htmlClass="row">
+	    <container name="mobile-menu-wrapper" htmlTag="div" htmlClass="hidden-sm hidden-md hidden-lg col-xs-12">
+	        <block name="mobile-menu" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/mobile-menu.phtml"/>
+	    </container>
+	</container>
+		
+		
+		
 
     <referenceBlock name="advanced-search-link" remove="true"/>
     <referenceBlock name="advanced.search" remove="true"/>
@@ -133,9 +151,9 @@
     <referenceContainer name="skip_to_content" remove="true" />
     <referenceBlock name="top.search" remove="true" />
 
-    <move element="form.subscribe" destination="footer_col_5" />
+    <move element="form.subscribe" destination="footer_col_5" after="-" />
     <move element="footer-row-2" destination="footer-wrap2" after="-" />
-    <move element="copyright" destination="footer-legal-container" />
+    <move element="copyright" destination="footer-logo" after="footer_logo_inner" />
     <move element="top.links" destination="header.toplinks"/>
     <move element="header.top" destination="header-wrapper" before="-"/>
     <move element="breadcrumbs" destination="page.main.title" after="-"/>

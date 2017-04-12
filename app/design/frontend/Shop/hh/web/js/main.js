@@ -1,4 +1,7 @@
 require(['jquery', 'jquery.bootstrap'], function($){
+
+  jQuery.noConflict();
+
   // DOM ready
   $(function(){
     // This function is needed (even if empty) to force RequireJS to load Twitter Bootstrap and its Data API.
@@ -28,7 +31,15 @@ require(['jquery', 'jquery.bootstrap'], function($){
     }
   });
 
+  $('p').each(function() {
+    var $this = $(this);
+    if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+    $this.remove();
+  });
+
   jQuery(document).ready(function () {
+
+
     jQuery(document).on('click', '.hotspot', function (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -36,22 +47,38 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
       var hotspotDesc = $(el).find( ".product-info" ).html();
       var defaultHotspotIcon = $(el).children('i');
+      var numHotspot = $(el).children('.num');
+      var numHotspotVal = numHotspot.text();
+      //console.log('aaa', numHotspotVal);
+
+      //var hotspotDesc = $(el).find( ".product-info" ).html();
+
+      $(numHotspotVal).appendTo('body');
+
+
+
+      $(numHotspot).addClass('hidden').removeClass('visible');
+
 
       if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
         if ($('.ion-android-close').hasClass('hotspot-active')) {
           $('.ion-android-close').removeClass().addClass('ion-android-search hotspot-inactive');
+          $(numHotspot).addClass('visible').removeClass('hidden');
         }
-
         $('.hotspot-details-placeholder').empty().removeClass('hidden').addClass('visible');
         $('.hotspot-details-placeholder').html(hotspotDesc);
+
+
+        $('.hotspot-details-placeholder h2 a').prepend('<span>' + numHotspotVal +'.<span> ');
+
         $('.hotspot-default').removeClass('visible').addClass('hidden');
         $(defaultHotspotIcon).removeClass().addClass('ion-android-close hotspot-active');
-        console.log('a');
+        $(numHotspot).addClass('hidden').removeClass('visible');
       } else if($(defaultHotspotIcon).hasClass('ion-android-close hotspot-active')) {
         $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
         $('.hotspot-default').removeClass('hidden').addClass('visible');
         $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
-        console.log('b');
+        $(numHotspot).addClass('visible').removeClass('hidden');
       }
 
     });
@@ -74,8 +101,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
   // Check viewport width
-  var viewportWidth = $(window).width();
-  var viewportHeight = $(window).height();
 
   var productTitle = $('.catalog-product-view .product-info-main .name')
   var productType = $('.catalog-product-view .new-product');
@@ -83,79 +108,95 @@ require(['jquery', 'jquery.bootstrap'], function($){
   var searchBox = $('.minisearch');
 
   $(window).resize(function() {
+
+
+    var viewportWidth = $(window).width();
+    var viewportHeight = $(window).height();
+
+    console.log('Viewport', viewportWidth)
+
     if (viewportWidth < 600) {
       $(productPrice).prependTo('.catalog-product-view .product.media');
       $(productType).prependTo('.catalog-product-view .product.media');
       $(productTitle).prependTo('.catalog-product-view .product.media');
+
+
+      $('.footer-subscribe').prependTo('.footer-links');
+      $('.footer-social').insertAfter('.footer-subscribe');
+      var mobileContent = $('.mobile-content').width();
+
+      // if (mobileContent < 600) {
+      //   $('.issue-date').prependTo('.mobile-content');
+      //   $('.issue-title').appendTo('.mobile-content');
+      // }
+
+      // Search Box
       $(searchBox).prependTo('.mobile-full');
-      console.log('search', searchBox);
+      $(searchBox).on('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
 
+      // Sidebar Navigation (CMS pages)
+      $('ul.faq-sidebar, .sidebar ul').each(function() {
+        var $select = $('<select />');
 
-    $(searchBox).on('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-    console.log('bbbb');
-  });
+        $(this).find('a').each(function() {
+            var $option = $('<option />');
+            $option.attr('value', $(this).attr('href')).html($(this).html());
+            $select.append($option);
+        });
+        $(this).replaceWith($select);
+      });
 
+      // Redirect on click - select (sidebar)
+      $('.sidebar select').change( function() {
+        location.href = $(this).val();
+      });
 
     }
-
-
-
   });
-
-if (viewportWidth < 600) {
-  $('ul.faq-sidebar, .sidebar ul').each(function() {
-    var $select = $('<select />');
-
-    $(this).find('a').each(function() {
-        var $option = $('<option />');
-        $option.attr('value', $(this).attr('href')).html($(this).html());
-        $select.append($option);
-    });
-
-    $(this).replaceWith($select);
-  });
-}
-
-
 
   $(document).ajaxComplete(function() {
     var count = $('.review-items').children('li').length;
     if (count !== 0) {
-      console.log('count', count)
       $('.review-item').slice(3).hide()
       $('.btn-reviews span').text('(' + count + ')');
       $('.btn-reviews').removeClass('display-none');
       $('.btn-reviews').click(function(e) {
         e.preventDefault();
-        console.log('uhhh');
         $('.review-item').slice(3).fadeIn(1000);
-        $('.btn-reviews').addClass('display-block');
+        $('.btn-reviews').addClass('display-none');
       });
-
-
-      $('.review-read-more').click(function(e) {
-        // e.preventDefault();
-        // $('.review-read-more').addClass('display-none');
-        // $('.full-review').addClass('display-block');
-        console.log('aaaa');
-        e.preventDefault();
-        $('.full-review:visible').hide();
-        $(this).next('.full-review').show();
-      });
-
-      $('.review-read-less').click(function(e) {
-        e.preventDefault();
-        $('.review-read-less').addClass('display-none');
-        $('.full-review').addClass('display-none');
-      });
-
     }
+
+    $('.full-review').addClass('display-none');
+
+    $('.review-read-more').on('click', function(e) {
+      e.preventDefault();
+      $(this).next('.full-review').removeClass('display-none');
+      $(this).addClass('display-none')
+      $(this).parent().next().removeClass('display-none');
+    });
+
+    $('.review-read-less').on('click', function(e) {
+      e.preventDefault();
+      $(this).parent().addClass('display-none');
+      $(this).parent().prev().children().removeClass('display-none');
+    });
+
   });
 
 
+  $(document).ready(function() {
+    $('.panel-collapse').on('show.bs.collapse', function () {
+      $(this).siblings('.panel-heading').addClass('active');
+    });
 
+    $('.panel-collapse').on('hide.bs.collapse', function () {
+      $(this).siblings('.panel-heading').removeClass('active');
+    });
+  });
 
 
   $('.btn-toggle-form').click(function(e) {

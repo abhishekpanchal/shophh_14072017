@@ -20,36 +20,45 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
 </div>
 <?php else: ?>
 
-<?php echo __("View our product suggestions to find something else you may be interested in"); ?>
+<h4 class="noresults-products-text">
+    <?php echo __("View our product suggestions to find something else you may be interested in"); ?>
+</h4>
+
 <?php
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
-$productCollection->addAttributeToSelect('*');
-$productCollection->addFieldToFilter('status',1);
-$productCollection->addFieldToFilter('visibility',4);
-$productCollection->setPageSize(10);
-$productCollection->getSelect()->orderRand();
-$productCollection->load();
-foreach($productCollection as $_product):
-    $helper = $this->helper('Hhmedia\Override\Helper\Override');
-    $product = $helper->getLoadProduct($_product->getEntityId());
-    $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); 
-    $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data');
-    $price = $product->getFinalPrice();
-    $image = $product->getData('small_image');
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
+    $productCollection->addAttributeToSelect('*');
+    $productCollection->addFieldToFilter('status',1);
+    $productCollection->addFieldToFilter('visibility',4);
+    $productCollection->setPageSize(10);
+    $productCollection->getSelect()->orderRand();
+    $productCollection->load();
+
+    foreach($productCollection as $_product):
+        $helper = $this->helper('Hhmedia\Override\Helper\Override');
+        $product = $helper->getLoadProduct($_product->getEntityId());
+        $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); 
+        $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data');
+        $price = $product->getFinalPrice();
+        $image = $product->getData('small_image');
 ?>
-    <a href="<?php echo $product->getProductUrl() ?>">
-        <div class="image">
+
+    <div class="noresults-products col-md-3">
+        <div class="image relative">
             <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" class="image" />
             <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $product->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
         </div>
-    </a>
-    <a href="<?php echo $product->getProductUrl() ?>">
-        <h4 class="decorating-formula-product-title"><?php echo $product->getName(); ?></h4>
-    </a>
-    <?php echo $product->getShortDescription(); ?>
-    <h4 class="decorating-formula-price">
-        <?php echo $priceHelper->currency($price, true, false); ?>
-    </h4>
+        <h4 class="product-title">
+            <a href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
+        </h4>
+        <?php $shortDescription = $product->getShortDescription(); ?>
+        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+        <p>
+            <?php echo $customHelper->limit_description($shortDescription, 10); ?>
+        </p>
+        <h4 class="price">
+            <?php echo $priceHelper->currency($price, true, false); ?>
+        </h4>
+    </div>
 <?php endforeach; ?>
 <?php endif; ?>

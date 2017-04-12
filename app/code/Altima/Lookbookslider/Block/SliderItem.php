@@ -45,6 +45,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
     protected $imageHelper;
     protected $_cartHelper;
     protected $directory_list;
+    protected $_productRepository;
 
     public function __construct(
             \Magento\Framework\View\Element\Template\Context $context,
@@ -56,6 +57,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             \Altima\Lookbookslider\Helper\Data $lookbooksliderHelper,
             \Magento\Framework\Stdlib\DateTime\Timezone $_stdTimezone,
             \Magento\Catalog\Model\ProductFactory $productFactory,
+            \Magento\Catalog\Model\ProductRepository $productRepository,
             \Magento\Catalog\Helper\Image $imageHelper,
             array $data = []
     ) {
@@ -69,6 +71,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         $this->_scopeConfig            = $context->getScopeConfig();
         $this->_stdTimezone            = $_stdTimezone;
         $this->_productFactory         = $productFactory;
+        $this->_productRepository = $productRepository;
         $this->imageHelper             = $imageHelper;
         $this->directory_list          = $directory_list;
     }
@@ -133,6 +136,18 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         return $slideCollection;
     }
 
+    public function getSlide($sliderId,$slideId) {
+        $storeViewId     = $this->_storeManager->getStore()->getId();
+        $dateTimeNow     = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
+        $slide = $this->_slideCollectionFactory->create()
+                ->setStoreViewId($storeViewId)
+                ->addFieldToFilter('slider_id', $sliderId)
+                ->addFieldToFilter('slide_id', $slideId)
+                ->addFieldToFilter('is_active', Status::STATUS_ENABLED)
+                ->setOrder('position', 'ASC');
+        return $slide;
+    }
+
     public function getShotCollection($sliderId) {
         $storeViewId     = $this->_storeManager->getStore()->getId();
         $dateTimeNow     = $this->_stdTimezone->date()->format('Y-m-d H:i:s');
@@ -144,7 +159,22 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         return $shotCollection;
     }
 
+    public function getProductBySku($sku)
+    {
+        try{
+            $product = $this->_productRepository->get($sku);    
+        }catch (\Exception $exception) {
+            $product = null;
+        }
+        return $product;
+    }
 
+    public function getProductPrice($price){
+        $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); 
+        $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); 
+        $formattedPrice = $priceHelper->currency($price, true, false);
+        return $formattedPrice ;
+    }
 
     public function getFirstSlideItem() {
         $sliderItem = $this->getSlideCollection()
@@ -243,7 +273,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $_p_price      = $priceHelper->currency($_p_price, true, false);
                 $html_content .= '<div class="left-detail">';
                 if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                    $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+
+                    $_p_url = $product_details->getProductUrl();
+                    $html_content .= '<div class="image"><a href=\'' . $_p_url . '\'><img src="' . $_p_shrt_image . '" alt="product image"/></a></div>';
                 }
                 $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product_details->getId();
                 
@@ -255,7 +287,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     } else {
                         $_p_url = $product_details->getProductUrl();
                     }
-                    $html_content .= '<div class="product attribute name"><a href=\'' . $_p_url . '\' target="_blank">' . $_p_name . '</a></div>';
+                    $html_content .= '<div class="product attribute name"><a href=\'' . $_p_url . '\' class="hover-effect" target="_blank">' . $_p_name . '</a></div>';
                 } else {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
@@ -324,6 +356,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $decoded_array[$key]['icon_width']  = $icon_dimensions['width'];
                 $decoded_array[$key]['icon_height'] = $icon_dimensions['height'];
             }
+            $decoded_array[$key]['number'] = $decoded_array[$key]['text'];
             $html_content .= '<div class="product-info" style="';
             $html_content .= 'left:' . round($value['width'] / 2) . 'px;';
             $html_content .= 'top:' . round($value['height'] / 2) . 'px;';
@@ -355,7 +388,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 $html_content .= '<div class="left-detail">';
                 
                 if ($this->_lookbooksliderHelper->canShowProductDescr()) {
-                     $html_content .= '<div class="image"><img src="' . $_p_shrt_image . '" alt="product image"/></div>';
+                    $_p_url = $product_details->getProductUrl();
+                    $html_content .= '<div class="image"><a href=\'' . $_p_url . '\'><img src="' . $_p_shrt_image . '" alt="product image"/></a></div>';
                 }
                 if ($product_details->isAvailable()) {
                     if ($this->_lookbooksliderHelper->getUseFullProdUrl()) {

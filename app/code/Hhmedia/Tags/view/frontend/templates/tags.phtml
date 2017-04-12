@@ -1,8 +1,8 @@
 <?php $_tags = $this->getCollection(); ?>
 <?php if ($_tags->getSize()): ?>
-<div class="tags_list_view">
+<div class="row tags_list_view">
     <?php foreach ($_tags as $tagsItem): ?>
-        <div id="item_<?php echo $tagsItem->getId() ?>" class="tags_list_item">
+        <div id="item_<?php echo $tagsItem->getId() ?>" class="col-md-3 tags_list_item">
             <h2>
                 <a href="<?php echo $this->getItemUrl($tagsItem) ?>">
                     <?php echo $this->escapeHtml($tagsItem->getTitle()) ?>

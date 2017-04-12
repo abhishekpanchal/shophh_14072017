@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hhmedia_Collection::collection_manage" title="Collection Landing" module="Hhmedia_Collection" sortOrder="10" parent="Hhmedia_Editor::editor" action="collection/index/" resource="Hhmedia_Collection::manage"/>
+    </menu>
+</config>

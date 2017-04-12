@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   RebelShipper
+ * @package    RebelShipper_Purolator
+ * @author     iam@rebelshipper.com
+ * @website    http://www.rebelshipper.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <rebelshipper_purolator>
+            <rspurolator>
+                <debug>0</debug>
+            </rspurolator>
+        </rebelshipper_purolator>
+
+        <carriers>
+            <rspurolator>
+                <active>0</active>
+                <sallowspecific>0</sallowspecific>
+                <model>RebelShipper\Purolator\Model\Carrier\Purolator</model>
+                <title>Purolator</title>
+                <handling_fee>0</handling_fee>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+                <widthattribute>width_attribute</widthattribute>
+                <defaultwidth></defaultwidth>
+                <lengthattribute>length_attribute</lengthattribute>
+                <defaultlength></defaultlength>
+                <heightattribute>height_attribute</heightattribute>
+                <defaultheight></defaultheight>
+                <locale_choose>en</locale_choose>
+                <convert_size>1</convert_size>
+                <max_package_weight>69</max_package_weight>
+            </rspurolator>
+        </carriers>
+
+    </default>
+</config>

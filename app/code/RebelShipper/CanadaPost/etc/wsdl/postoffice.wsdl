@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="postoffice" targetNamespace="http://www.canadapost.ca/ws/soap/postoffice" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.canadapost.ca/ws/soap/postoffice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.canadapost.ca/ws/soap/postoffice">
+
+			<xsd:element name="get-nearest-post-office-request">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element minOccurs="0" name="locale" type="tns:locale" />
+						<xsd:element name="platform-id" type="tns:PlatformIDType" minOccurs="0" />
+						<xsd:element minOccurs="0" name="maximum">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:int">
+									<xsd:maxInclusive value="50" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+						<xsd:element name="search-data">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element minOccurs="0" name="d2po" type="xsd:boolean" />
+									<xsd:element minOccurs="0" name="longitude"> <!-- West is negative -->
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:decimal">
+												<xsd:minInclusive value="-150" />
+												<xsd:maxInclusive value="-50" />
+												<xsd:fractionDigits value="5" />
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element minOccurs="0" name="latitude"> <!-- North -->
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:decimal">
+												<xsd:minInclusive value="40" />
+												<xsd:maxInclusive value="90" />
+												<xsd:fractionDigits value="5" />
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element minOccurs="0" name="postal-code">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:pattern value="[A-Z]\d[A-Z]\s?\d[A-Z]\d" />
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element minOccurs="0" name="city">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:normalizedString">
+												<xsd:minLength value="1" />
+												<xsd:maxLength value="40" />
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+									<xsd:element minOccurs="0" name="province" type="tns:ProvinceType" />
+									<xsd:element minOccurs="0" name="street-name">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:normalizedString">
+												<xsd:minLength value="1" />
+												<xsd:maxLength value="64" />
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-nearest-post-office-response">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="post-office-list">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="post-office" minOccurs="1" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:all>
+												<xsd:element name="address" type="tns:PostOfficeAddressType" />
+												<xsd:element name="distance">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:decimal">
+															<xsd:minInclusive value="0" />
+															<xsd:maxInclusive value="99999.99" />
+															<xsd:fractionDigits value="2" />
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="location" type="tns:LocationType" />
+												<xsd:element name="name" type="tns:NameType" />
+												<xsd:element name="office-id" type="tns:OfficeIdType" />
+												<xsd:element name="bilingual-designation" type="xsd:boolean" />
+											</xsd:all>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="messages" type="tns:messages" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-post-office-detail-request">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element minOccurs="0" name="locale" type="tns:locale" />
+						<xsd:element name="platform-id" type="tns:PlatformIDType" minOccurs="0" />
+						<xsd:element name="office-id">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:normalizedString">
+									<xsd:pattern value="\d{1,10}" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:element>
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-post-office-detail-response">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="post-office-detail">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="address" type="tns:PostOfficeAddressType" />
+									<xsd:element name="location" type="tns:LocationType" />
+									<xsd:element name="name" type="tns:NameType" />
+									<xsd:element name="office-id" type="tns:OfficeIdType" />
+									<xsd:element name="bilingual-designation" type="xsd:boolean" />
+									<xsd:element name="hours-list" minOccurs="1" maxOccurs="7">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="day">
+													<xsd:simpleType>
+														<xsd:restriction base="xsd:normalizedString">
+															<xsd:enumeration value="1" /><!--Sunday-->
+															<xsd:enumeration value="2" /><!--Monday-->
+															<xsd:enumeration value="3" /><!--Tuesday-->
+															<xsd:enumeration value="4" /><!--Wednesday-->
+															<xsd:enumeration value="5" /><!--Thursday-->
+															<xsd:enumeration value="6" /><!--Friday-->
+															<xsd:enumeration value="7" /><!--Saturday-->
+														</xsd:restriction>
+													</xsd:simpleType>
+												</xsd:element>
+												<xsd:element name="time" type="tns:Time24HoursType" minOccurs="1" maxOccurs="4" />
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="messages" type="tns:messages" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:complexType name="PostOfficeAddressType">
+				<xsd:all>
+					<xsd:element name="city">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:normalizedString">
+								<xsd:minLength value="1" />
+								<xsd:maxLength value="40" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="latitude"> <!-- North -->
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:decimal">
+								<xsd:minInclusive value="40" />
+								<xsd:maxInclusive value="90" />
+								<xsd:fractionDigits value="5" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="longitude"> <!-- West is negative -->
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:decimal">
+								<xsd:minInclusive value="-150" />
+								<xsd:maxInclusive value="-50" />
+								<xsd:fractionDigits value="5" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+					<xsd:element name="postal-code" type="tns:PostalCodeType" />
+					<xsd:element name="province" type="tns:ProvinceType" />
+					<xsd:element name="office-address">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:normalizedString">
+								<xsd:minLength value="1" />
+								<xsd:maxLength value="64" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:all>
+			</xsd:complexType>
+
+			<xsd:simpleType name="LocationType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:maxLength value="40" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="NameType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:maxLength value="40" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="OfficeIdType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:pattern value="\d{10}" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="PostalCodeType">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="[A-Z]\d[A-Z]\d[A-Z]\d" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="ProvinceType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:minLength value="1" />
+					<xsd:maxLength value="2" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="Time24HoursType">
+				<xsd:restriction base="xsd:normalizedString">
+					<xsd:pattern value="((0?\d)|(1\d)|(2[0-3])):[0-5]\d" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:complexType name="messages">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="message">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="code" type="xsd:string" />
+								<xsd:element name="description" type="xsd:string" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:simpleType name="locale">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="([eE][nN]|[fF][rR])" />
+				</xsd:restriction>
+			</xsd:simpleType>
+			
+			<xsd:simpleType name="PlatformIDType">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="\d{1,10}" />
+				</xsd:restriction>
+			</xsd:simpleType>			
+
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="GetNearestPostOfficeRequest">
+		<wsdl:part name="body" element="tns:get-nearest-post-office-request"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetNearestPostOfficeResponse">
+		<wsdl:part name="body" element="tns:get-nearest-post-office-response"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetPostOfficeDetailRequest">
+		<wsdl:part name="body" element="tns:get-post-office-detail-request"></wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="GetPostOfficeDetailResponse">
+		<wsdl:part name="body" element="tns:get-post-office-detail-response"></wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="PostOfficePortType">
+		<wsdl:operation name="GetNearestPostOffice">
+			<wsdl:input message="tns:GetNearestPostOfficeRequest"></wsdl:input>
+			<wsdl:output message="tns:GetNearestPostOfficeResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetPostOfficeDetail">
+			<wsdl:input message="tns:GetPostOfficeDetailRequest"></wsdl:input>
+			<wsdl:output message="tns:GetPostOfficeDetailResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="PostOffice" type="tns:PostOfficePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetNearestPostOffice">
+			<soap:operation soapAction="http://www.canadapost.ca/ws/soap/postoffice/GetNearestPostOffice" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetPostOfficeDetail">
+			<soap:operation soapAction="http://www.canadapost.ca/ws/soap/postoffice/GetPostOfficeDetail" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="PostOfficeService">
+		<wsdl:port name="PostOfficePort" binding="tns:PostOffice">
+			<soap:address location="https://ct.soa-gw.canadapost.ca/rs/soap/postoffice" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

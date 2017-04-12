@@ -1,8 +1,9 @@
 <?php
 $sliderId = $this->getRequest()->getParam('slider_id');
 $slideId =$this->getRequest()->getParam('slide_id');
-$blockObj= $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
+$blockObj = $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
 $helper = $this->helper('Altima\Lookbookslider\Helper\Data');
+
 if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
     $slideCollection = $blockObj->getShotCollection($sliderId);
     if (!empty($slideCollection) && $slideCollection->getSize()) :
@@ -50,7 +51,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 <div class="home-slider lookbook-container">
 
   <div class="row no-gutters vcenter-flex display-block-xs">
-    <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
+    <div class="col-lg-8 col-md-7 homepage-hero">
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
               <div class="content-before"><?php echo $contentBefore; ?></div>
@@ -212,7 +213,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 <?php foreach ($slideCollection as $slide): ?>
     <?php if($slide->getId() == $slideId): ?>
-        <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
+        <div class="col-lg-4 col-md-5 mood-bg vcenter display-block-xs" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
 
             <div class="hotspot-details vcenter">
                 <div class="hotspot-default visible">
@@ -236,47 +237,141 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 </div>
 </div>
 
-
-
-
+    
+      <?php $currentSlide = $blockObj->getSlide($sliderId, $slideId); ?>
+      
+            <?php foreach($currentSlide as $cs): ?>
+              
+      <?php if($cs['story_template'] == 1): ?>
         <div class="container">
-            <div class="shot-products row">
-                <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
-                <?php foreach ($slideCollection as $slide): ?>
-                    <?php if($slide->getId() == $slideId): ?>
-                        <?php $products = $blockObj->getProductCollection($slide); ?>
-                        <?php foreach($products as $_product): ?>
-                            <div class="col-md-3">
-                                <?php echo $_product['text']; ?>
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="page-title marginbottom-40">
+                    <span><?php echo $cs->getCollectionTitle() ?></span>
+                  </h2>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
+                      <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageOne() ?>" />
+                      <h3><?php echo $cs->getTitleOne() ?></h3>
+                      <p><?php echo $cs->getDescriptionOne() ?></p>
+                      <a href="<?php echo $cs->getLinkOne() ?>" class="hover-effect"><?php echo __('shop collection >') ?></a>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
+                      <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageTwo() ?>" />
+                      <h3><?php echo $cs->getTitleTwo() ?></h3>
+                      <p><?php echo $cs->getDescriptionTwo() ?></p>
+                      <a href="<?php echo $cs->getLinkTwo() ?>" class="hover-effect"><?php echo __('shop collection >') ?></a>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+                <?php $skus = array(trim($cs->getSkuOne()), trim($cs->getSkuTwo()), trim($cs->getSkuThree()), trim($cs->getSkuFour())); ?>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="highlighted-products-title"><span>Highlighted Products</h2>
+                  </div>
+                </div>
+                <div class="row product-stories-products">
+                  <?php foreach($skus as $sku): ?>
+                    <?php $product = $blockObj->getProductBySku($sku); ?>
+                    <?php if($product != NULL): ?>
+                      <?php $image = $product->getData('small_image'); ?>
+                      <div class="col-md-3 col-sm-4 col-xs-6 product-details-block">
+                        <div class="product-img">
+                          <a href="<?php echo $product->getProductUrl() ?>">
+                            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                          </a>
+                          <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $product->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                        </div>
+                        <h4>
+                          <a href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
+                        </h4>
+                        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                        <?php if($customHelper->isProductNew($product)): ?>
+                        <div class="new-product"><?php echo __('New'); ?></div>
+                        <?php endif; ?>
+                        <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
+                        <h5><?php echo $blockObj->getProductPrice($product->getFinalPrice()); ?></h5>
+                      </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+              </div>
+              <div class="row">
+                <?php if($cs->getTitleThree() != ''): ?>
+                  <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
+                    <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageThree() ?>" />
+                    <h3><?php echo $cs->getTitleThree() ?></h3>
+                    <p><?php echo $cs->getDescriptionThree() ?></p>
+                    <a href="<?php echo $cs->getLinkThree() ?>" class="hover-effect"><?php echo __('shop collection >') ?></a>
+                  </div>
+                <?php endif;?>
+                <?php if($cs->getTitleFour() != ''): ?>
+                  <div class="col-md-6 col-sm-6 col-xs-6 product-stories-desc">
+                    <img src="<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$cs->getImageFour() ?>" />
+                    <h3><?php echo $cs->getTitleFour() ?></h3>
+                    <p><?php echo $cs->getDescriptionFour() ?></p>
+                    <a href="<?php echo $cs->getLinkFour() ?>" class="hover-effect"><?php echo __('shop collection >') ?></a>
+                  </div>
+                <?php endif; ?>
+              </div>
+              <div class="row marginbottom-60">
+                <div class="col-md-12 text-center">
+                  <a href="<?php echo $cs->getCollectionLink() ?>" class="btn btn-main btn-center">
+                    <?php echo __('See All Products In Collection') ?>
+                  </a>
+                   </div>
+        </div>
+      </div>
+      <?php //endif; ?>
+
+    <?php else: ?>
+
+      <div class="container">
+                <div class="shot-products row">
+                    <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
+                    <?php foreach ($slideCollection as $slide): ?>
+                        <?php if($slide->getId() == $slideId): ?>
+                            <?php $products = $blockObj->getProductCollection($slide); ?>
+                            <?php foreach($products as $_product): ?>
+                                <div class="col-md-3">
+                                    <?php echo $_product['text']; ?>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <div class="more-shots row no-gutters">
+                <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
+                <h4 class="subtitle"><?php echo __('Inspiration for every room in the house') ?></h4>
+                <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
+                <?php foreach($shotCollection as $shot): ?>
+                    <?php if($slideId != $shot->getSlideId()): ?> 
+                        <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
+                        <div class="col-md-3">
+                            <div class="shot-thumb">
+                                <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$shot->getSlideId(); ?>">
+                                    <img src="<?php echo $imagePath; ?>" />
+                                    <div class="shot-thumb-meta">
+                                        <h4><span>Shop</span></h4>
+                                        <span class="title" style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></span>
+                                    </div>
+                                </a>
                             </div>
-                        <?php endforeach; ?>
+                        </div>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
-        </div>
 
-        <div class="more-shots row no-gutters">
-            <h2 class="page-title"><span><?php echo __("Shop MORE SHOTS") ?></span></h2>
-            <h4 class="subtitle"><?php echo __('Inspriration for every room in the house') ?></h4>
-            <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
-            <?php foreach($shotCollection as $shot): ?>
-                <?php if($slideId != $shot->getSlideId()): ?> 
-                    <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
-                    <div class="col-md-3">
-                        <div class="shot-thumb">
-                            <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$shot->getSlideId(); ?>">
-                                <img src="<?php echo $imagePath; ?>" />
-                                <div class="shot-thumb-meta">
-                                    <h4><span>Shop</span></h4>
-                                    <span class="title" style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
+    <?php endif; ?>
+          <?php break; endforeach; ?>
 
+
+              
+   
 
 
         <script type="text/javascript">

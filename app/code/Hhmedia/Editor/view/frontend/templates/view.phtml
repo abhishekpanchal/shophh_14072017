@@ -6,16 +6,17 @@
 <?php $_editorItem = $this->getEditor(); ?>
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <div class="vcenter vcenter-column editor-intro">
+    <div class="vcenter vcenter-column editor-intro">
+        <div class="col-md-6 text-right">
             <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
-            <div class="editor-details">
-                <?php if($_editorItem->getSubtitle() != ''): ?>
-                    <div class="editor-guest-title"><?php echo $_editorItem->getSubtitle(); ?></div>
-                <?php endif; ?>
-                <div class="editor-name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
-                <div class="editor-job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
-            </div>
+        </div>
+        <div class="col-md-6 editor-details">
+            <?php if($_editorItem->getSubtitle() != ''): ?>
+                <div class="editor-guest-title"><?php echo $_editorItem->getSubtitle(); ?></div>
+            <?php endif; ?>
+            <div class="editor-name"><?php echo $this->escapeHtml($_editorItem->getName()) ?></div>
+            <div class="editor-job"><?php echo $this->escapeHtml($_editorItem->getJobTitle()) ?></div>
+        </div>
         </div>
     </div>
 </div>
@@ -27,7 +28,8 @@
         </div>
     </div>
     <div class="clearfix"></div>
-    <div class="col-md-8 col-md-offset-2 editor-bio">
+    <div class="col-md-6 col-md-offset-3 editor-bio">
+        <h4>Biography</h4>
         <?php echo $_editorItem->getBio() ?>
     </div>
 </div>
@@ -42,10 +44,15 @@
             $image = $pro->getData('small_image');
         ?>
         <li class="col-md-3 editor-product">
-            <a href="<?php echo $pro->getProductUrl() ?>">
-                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
-            </a>
-            <h4><?php echo $pro->getName(); ?></h4>
+            <div class="editor-product-img relative">
+                <a href="<?php echo $pro->getProductUrl() ?>">
+                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                </a>
+                <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+            </div>
+            <h4>
+                <a class="hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
+            </h4>
             <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
             <div class="editor-mini-quote"><?php echo $pro->getData('editors_quote'); ?></div>
         </li>

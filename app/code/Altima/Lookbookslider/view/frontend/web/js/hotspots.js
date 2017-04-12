@@ -25,7 +25,7 @@ jQuery.extend({
         if (!hotspots)
             return;
         var i = 0;
-      //  console.log(hotspots);
+        //console.log(hotspots);
         jQuery(hotspots).each(function () {
             if (!document.getElementById(hotspots[i].id)) {
                 var imgwidth = slide.width();
@@ -39,7 +39,7 @@ jQuery.extend({
                 var top_pos = hotspots[i].top / (hotspots[i].imgH / 100);
                 var width_pos = hotspots[i].width / (hotspots[i].imgW / 100);
                 var height_pos = hotspots[i].height / (hotspots[i].imgH / 100);
-                slide.append('<div class="hotspot" id="' + hotspots[i].id + '" style="left:' + left_pos + '%; top:' + top_pos + '%; width:' + width_pos + '%; height:' + height_pos + '%;">' + hotspots[i].text + '</div>');
+                slide.append('<div class="hotspot" id="' + hotspots[i].id + '" style="left:' + left_pos + '%; top:' + top_pos + '%; width:' + width_pos + '%; height:' + height_pos + '%;">' + '<span class="num">' + hotspots[i].number + '</span>' + hotspots[i].text + '</div>');
                 var infoblock = slide.find('#' + hotspots[i].id + ' .product-info');
                 var infowidth = parseInt(infoblock.actual('outerWidth'));
                 var hspt_width_hf = parseInt(hotspots[i].width * scale / 2);

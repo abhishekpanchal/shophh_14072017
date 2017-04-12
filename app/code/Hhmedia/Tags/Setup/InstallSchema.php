@@ -92,6 +92,39 @@ class InstallSchema implements InstallSchemaInterface
 			'Tags item'
 		);
 		$installer->getConnection()->createTable($table);
+
+		//Product Tags Table
+		$table = $installer->getConnection()
+            ->newTable($installer->getTable('hhmedia_tags_product'))
+            ->addColumn('tags_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['nullable' => false, 'unsigned' => true])
+            ->addColumn('product_id', \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER, null, ['nullable' => false, 'unsigned' => true], 'Magento Product Id')
+            ->addForeignKey(
+                $installer->getFkName(
+                    'hhmedia_tags',
+                    'tags_id',
+                    'hhmedia_tags_product',
+                    'tags_id'
+                ),
+                'tags_id',
+                $installer->getTable('hhmedia_tags'),
+                'tags_id',
+                \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+            )
+            ->addForeignKey(
+                $installer->getFkName(
+                    'hhmedia_tags_product',
+                    'tags_id',
+                    'catalog_product_entity',
+                    'entity_id'
+                ),
+                'product_id',
+                $installer->getTable('catalog_product_entity'),
+                'entity_id',
+                \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
+            )
+            ->setComment('Tags Products');
+        $installer->getConnection()->createTable($table);
+
 		$installer->endSetup();
 	}
 }

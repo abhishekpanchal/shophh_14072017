@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-
     <head>
         <link src="Altima_Lookbookslider::css/annotation.css"/>
         <link src="Altima_Lookbookslider::css/fileuploader.css"/>
@@ -17,12 +16,36 @@
         <referenceContainer name="left">
             <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tabs" name="lookbookslider.slide.edit.tabs">
                 <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\Main" name="lookbookslider.slide.edit.tab.main"/>
+                <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\Products" name="lookbookslider.slide.edit.tab.products"/>
+                <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\SectionOne" name="lookbookslider.slide.edit.tab.one"/>
+                <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\SectionTwo" name="lookbookslider.slide.edit.tab.two"/>
+                <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\SectionThree" name="lookbookslider.slide.edit.tab.three"/>
+                <block class="Altima\Lookbookslider\Block\Adminhtml\Slide\Edit\Tab\SectionFour" name="lookbookslider.slide.edit.tab.four"/>
 
                 <action method="addTab">
                     <argument name="name" xsi:type="string">main_section</argument>
                     <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.main</argument>
                 </action>
-
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">products_section</argument>
+                    <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.products</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_one</argument>
+                    <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.one</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_two</argument>
+                    <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.two</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_three</argument>
+                    <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.three</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">section_four</argument>
+                    <argument name="block" xsi:type="string">lookbookslider.slide.edit.tab.four</argument>
+                </action>
             </block>
         </referenceContainer>
     </body>

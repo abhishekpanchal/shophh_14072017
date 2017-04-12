@@ -20,7 +20,7 @@ class Index extends \Magento\Newsletter\Controller\Manage
         if ($block = $this->_view->getLayout()->getBlock('customer_newsletter')) {
             $block->setRefererUrl($this->_redirect->getRefererUrl());
         }
-        $this->_view->getPage()->getConfig()->getTitle()->set(__('Newsletter Subscription'));
+        $this->_view->getPage()->getConfig()->getTitle()->set(__('Email Preferences'));
         $this->_view->renderLayout();
     }
 }

@@ -5,14 +5,12 @@
 				url('../fonts/dietdidot.woff2') format('woff2'),
 				url('../fonts/dietdidot.woff') format('woff'),
 				url('../fonts/dietdidot.ttf') format('truetype');
-		}
+}
 
 @font-face {
 	font-family: 'Montserrat-Light';
-	src: url('../fonts/Montserrat-Light.eot');
-	src: url('../fonts/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/Montserrat-Light.woff') format('woff'),
-		url('../fonts/Montserrat-Light.ttf') format('truetype');
-	font-weight: 300;
-	font-style: normal;
+	src: 	url('../fonts/Montserrat-Light.eot');
+	src: 	url('../fonts/Montserrat-Light.eot?#iefix') format('embedded-opentype'),
+				url('../fonts/Montserrat-Light.woff') format('woff'),
+				url('../fonts/Montserrat-Light.ttf') format('truetype');
 }

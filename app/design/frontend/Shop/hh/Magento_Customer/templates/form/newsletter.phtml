@@ -1,0 +1,41 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php echo $block->getChildHtml('form_before')?>
+    <form class="form form-newsletter-manage" action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" method="post" id="form-validate">
+    <?php echo $block->getBlockHtml('formkey')?>
+    <?php if ($block->getIsSubscribed()): ?>
+        <div>
+            <legend class="legend"><span><?php echo __('Shop H&H eNewsletter') ?></span></legend><br>
+            <p><?php echo __("You are subscribed to the Shop H&H eNewsletter list."); ?></p>
+            <div class="field choice">
+                <input type="checkbox" name="is_subscribed" id="subscription" value="0" title="<?php echo __('Unsubscribe') ?>" class="checkbox">
+                <label for="subscription" class="label"><span><?php echo __('Unsubscribe') ?></span></label>
+            </div>
+            <p><?php echo __("You will no longer receive email from Shop H&H except any order-related communications."); ?></p>
+            <?php echo $block->getChildHtml('customer.form.newsletter.extra')?>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary"><button type="submit" title="<?php echo __('Update Preferences') ?>" class="action save primary"><span><?php echo __('Update Preferences') ?></span></button></div>
+        </div>
+    <?php else: ?>
+        <div>
+            <legend class="legend"><span><?php echo __('Shop H&H eNewsletter') ?></span></legend><br>
+            <div class="field choice">
+                <input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo __('Sign Up') ?>"<?php if ($block->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+                <label for="subscription" class="label"><span><?php echo __('Sign up to receive lorem Ipsum gravida nibh vel velit auctor aliquet. Aenean sollicitudin. lorem uis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.') ?></span></label>
+            </div>
+            <?php echo $block->getChildHtml('customer.form.newsletter.extra')?>
+        </div>
+        <div class="actions-toolbar">
+            <div class="primary"><button type="submit" title="<?php echo __('Sign Up') ?>" class="action save primary"><span><?php /* @escapeNotVerified */ echo __('Sign Up') ?></span></button></div>
+        </div>
+    <?php endif; ?>
+    </form> 
+<?php echo $block->getChildHtml('customer.form.newsletter.extra2')?>

@@ -205,6 +205,12 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
             ['label' => __('Review'), 'required' => true, 'name' => 'detail', 'style' => 'height:24em;']
         );
 
+        $fieldset->addField(
+            'reason',
+            'textarea',
+            ['label' => __('Reason for Not Approved'), 'required' => false, 'name' => 'reason']
+        );
+
         $form->setUseContainer(true);
         $form->setValues($review->getData());
         $this->setForm($form);

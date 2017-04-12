@@ -105,20 +105,33 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('URL Key'),
                 'required' => true,
                 'disabled' => $isElementDisabled,
-                'note' => ("Enter SEO friendly TAG name. e.g. 'moon-indigo'")
+                'note' => ("Enter SEO friendly TAG name. e.g. 'mood-indigo'")
             ]
         );
-        
-        /*$dateFormat = $this->_localeDate->getDateFormat(\IntlDateFormatter::SHORT);
-        $fieldset->addField('published_at', 'date', [
-            'name'     => 'published_at',
-            'date_format' => $dateFormat,
-            'image'    => $this->getViewFileUrl('images/grid-cal.gif'),
-            'value' => $model->getPublishedAt(),
-            'label'    => __('Publishing Date'),
-            'title'    => __('Publishing Date'),
-            'required' => true
-        ]);*/
+
+        $fieldset->addField(
+            'link_text',
+            'text',
+            [
+                'name' => 'link_text',
+                'label' => __('Custom Link Text'),
+                'title' => __('Custom Link Text'),
+                'required' => true,
+                'disabled' => $isElementDisabled
+            ]
+        );
+
+        $fieldset->addField(
+            'link_url',
+            'text',
+            [
+                'name' => 'link_url',
+                'label' => __('Custom Link URL'),
+                'title' => __('Custom Link URL'),
+                'required' => true,
+                'disabled' => $isElementDisabled
+            ]
+        );
         
         $this->_eventManager->dispatch('adminhtml_tags_edit_tab_main_prepare_form', ['form' => $form]);
 

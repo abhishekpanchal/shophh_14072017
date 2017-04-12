@@ -1,30 +1,63 @@
-<?php
-/**
- * Tags template for separate item
- *
- */
+<?php $tags = $this->getTags(); ?>
 
-/**
- * @var $this Hhmedia\Tags\Block\View
- * @see Hhmedia\Tags\Block\View
- */
-?>
-<?php $_tagsItem = $this->getTags(); ?>
-    <div class="tags_item_subtitle">
-        <?php echo $this->formatDate($_tagsItem->getPublishedAt()) ?> |
-        <?php echo $this->escapeHtml($_tagsItem->getAuthor()) ?>
-    </div>
-
-<div class="tags_item_view">
-    <?php if ($imageUrl = $this->getImageUrl($_tagsItem, 400)): ?>
-       <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($_tagsItem->getTitle()) ?>" /></p>
-    <?php endif; ?>
-
-    <div class="tags_item_content"><?php echo $_tagsItem->getContent() ?></div>
-
-    <div class="pager">
-        <a href="<?php echo $this->getBackUrl() ?>">
-            <?php echo __('Return to list') ?>
-        </a>
+<div class="category-view">
+    <div class="category-image vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Tags/'.$tags->getImage() ?>)">
+        <h2><?php echo $tags->getTitle(); ?><span><?php echo $tags->getSubtitle() ?></span></h2>
     </div>
 </div>
+
+<div class="container marginbottom-50">
+
+    <div class="row tags-toolbar">
+        <div class="col-md-6">
+            <a href="<?php echo $tags->getLinkUrl() ?>" class="hover-effect">&lt; <?php echo $tags->getLinkText() ?></a>
+        </div>
+        <div class="col-md-6 text-right">
+            <div class="toolbar toolbar-products clearfix">
+                <div class="toolbar-sorter sorter col-md-4 hidden-xs">
+                    <div class="styled-select">
+                        <label class="sort-label" for="sorter">Sort</label>
+                        <select id="sorter" data-role="sorter" class="sorter-options">
+                            <option value="position" selected="selected">Position</option>
+                            <option value="price">Price</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 margintop-50">
+            <div class="tag_item_view">
+                <?php $products = $this->getProductCollection(); ?>
+                <div class="row tags-products">
+                    <?php
+                        foreach($products as $_product):
+                        $pro = $this->getProductData($_product);
+                        $image = $pro->getData('small_image');
+                    ?>
+                    <div class="col-md-3 tag-product">
+                        <div class="product-img">
+                            <a href="<?php echo $pro->getProductUrl() ?>">
+                                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                            </a>
+                            <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                        </div>
+                        <h4>
+                            <a href="<?php echo $pro->getProductUrl() ?>" class="hover-effect"><?php echo $pro->getName(); ?></a>
+                        </h4>
+                        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                        <?php if($customHelper->isProductNew($pro)): ?>
+                            <div class="new-product"><?php echo __('New'); ?></div>
+                        <?php endif; ?>
+                        <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
+                        <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

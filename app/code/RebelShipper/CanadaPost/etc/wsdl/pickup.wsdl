@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="pickup" targetNamespace="http://www.canadapost.ca/ws/soap/pickup/availability" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.canadapost.ca/ws/soap/pickup/availability" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.canadapost.ca/ws/soap/pickup/availability">
+
+			<xsd:element name="get-pickup-availability-request">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element minOccurs="0" name="locale" type="tns:locale" />
+						<xsd:element name="platform-id" type="tns:PlatformIDType" minOccurs="0" />
+						<xsd:element name="postal-code" type="tns:postal-code" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-pickup-availability-response">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="pickup-availability">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="postal-code" type="xsd:string" />
+									<xsd:element name="on-demand-cutoff" type="xsd:string" />
+									<xsd:element name="on-demand-tour" type="xsd:boolean" />
+									<xsd:element name="prority-world-cutoff" type="xsd:string" />
+									<xsd:element name="scheduled-pickups-available" type="xsd:boolean" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="messages" type="tns:messages" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:simpleType name="postal-code">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="[abceghjklmnprstvxyABCEGHJKLMNPRSTVXY][0-9][a-zA-Z]\s*[0-9][a-zA-Z][0-9]" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:complexType name="messages">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="message">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="code" type="xsd:string" />
+								<xsd:element name="description" type="xsd:string" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:simpleType name="locale">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="([eE][nN]|[fF][rR])" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+			<xsd:simpleType name="PlatformIDType">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="\d{1,10}" />
+				</xsd:restriction>
+			</xsd:simpleType>
+
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="GetPickupAvailabilityRequest">
+		<wsdl:part name="body" element="tns:get-pickup-availability-request"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GetPickupAvailabilityResponse">
+		<wsdl:part name="body" element="tns:get-pickup-availability-response"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="PickupDomainPortType">
+		<wsdl:operation name="GetPickupAvailability">
+			<wsdl:input message="tns:GetPickupAvailabilityRequest"></wsdl:input>
+			<wsdl:output message="tns:GetPickupAvailabilityResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="PickupDomain" type="tns:PickupDomainPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetPickupAvailability">
+			<soap:operation soapAction="http://www.canadapost.ca/ws/soap/pickup/availability/GetPickupAvailability" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="PickupDomainService">
+		<wsdl:port name="PickupDomainPort" binding="tns:PickupDomain">
+			<soap:address location="https://ct.soa-gw.canadapost.ca/ad/soap/pickup/availability" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

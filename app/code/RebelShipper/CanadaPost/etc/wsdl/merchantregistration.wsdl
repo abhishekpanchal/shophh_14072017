@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="postoffice" targetNamespace="http://www.canadapost.ca/ws/soap/merchant/registration" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.canadapost.ca/ws/soap/merchant/registration" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.canadapost.ca/ws/soap/merchant/registration">
+
+			<xsd:element name="get-merchant-registration-info-request">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element minOccurs="0" name="locale" type="tns:LocaleType" />
+			            <xsd:element name="token-id" type="tns:TokenIDType" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-merchant-registration-info-response">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="merchant-info">
+							<xsd:complexType>
+						        <xsd:sequence>
+						            <xsd:element minOccurs="0" name="customer-number" type="xsd:string"/>
+						            <xsd:element minOccurs="0" name="contract-number" type="xsd:string"/>
+						            <xsd:element minOccurs="0" name="merchant-username" type="xsd:string"/>
+						            <xsd:element minOccurs="0" name="merchant-password" type="xsd:string"/>
+						            <xsd:element minOccurs="0" name="has-default-credit-card" type="xsd:boolean"/>
+						        </xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="messages" type="tns:MessagesType" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-merchant-registration-token-request">
+				<xsd:complexType>
+					<xsd:all>
+						<xsd:element minOccurs="0" name="locale" type="tns:LocaleType" />
+					</xsd:all>
+				</xsd:complexType>
+			</xsd:element>
+
+			<xsd:element name="get-merchant-registration-token-response">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="token">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="token-id" type="tns:TokenIDType" />
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="messages" type="tns:MessagesType" />
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			
+			<xsd:simpleType name="TokenIDType">
+				<xsd:restriction base="xsd:string">
+					<xsd:minLength value="1"/>
+					<xsd:maxLength value="40"/>
+				</xsd:restriction>
+			</xsd:simpleType>			
+
+			<xsd:complexType name="MessagesType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" name="message">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="code" type="xsd:string" />
+								<xsd:element name="description" type="xsd:string" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xsd:simpleType name="LocaleType">
+				<xsd:restriction base="xsd:string">
+					<xsd:pattern value="([eE][nN]|[fF][rR])" />
+				</xsd:restriction>
+			</xsd:simpleType>	
+			
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="GetMerchantRegistrationInfoRequest">
+		<wsdl:part name="body" element="tns:get-merchant-registration-info-request"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GetMerchantRegistrationInfoResponse">
+		<wsdl:part name="body" element="tns:get-merchant-registration-info-response"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GetMerchantRegistrationTokenRequest">
+		<wsdl:part name="body" element="tns:get-merchant-registration-token-request"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:message name="GetMerchantRegistrationTokenResponse">
+		<wsdl:part name="body" element="tns:get-merchant-registration-token-response"></wsdl:part>
+	</wsdl:message>
+
+	<wsdl:portType name="MerchantRegistrationPortType">
+		<wsdl:operation name="GetMerchantRegistrationInfo">
+			<wsdl:input message="tns:GetMerchantRegistrationInfoRequest"></wsdl:input>
+			<wsdl:output message="tns:GetMerchantRegistrationInfoResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetMerchantRegistrationToken">
+			<wsdl:input message="tns:GetMerchantRegistrationTokenRequest"></wsdl:input>
+			<wsdl:output message="tns:GetMerchantRegistrationTokenResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="MerchantRegistration" type="tns:MerchantRegistrationPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="GetMerchantRegistrationInfo">
+			<soap:operation soapAction="http://www.canadapost.ca/ws/soap/merchant/registration/GetMerchantRegistrationInfo" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetMerchantRegistrationToken">
+			<soap:operation soapAction="http://www.canadapost.ca/ws/soap/merchant/registration/GetMerchantRegistrationToken" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="MerchantRegistrationService">
+		<wsdl:port name="MerchantRegistrationPort" binding="tns:MerchantRegistration">
+			<soap:address location="https://ct.soa-gw.canadapost.ca/ot/soap/merchant/registration" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>
