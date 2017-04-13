@@ -43,6 +43,7 @@ class Post extends ProductController
             $review->unsetData('review_id');
 
             $validate = $review->validate();
+
             if ($validate === true) {
                 try {
                     $review->setEntityId($review->getEntityIdByCode(Review::ENTITY_PRODUCT_CODE))
@@ -51,6 +52,8 @@ class Post extends ProductController
                         ->setCustomerId($this->customerSession->getCustomerId())
                         ->setStoreId($this->storeManager->getStore()->getId())
                         ->setStores([$this->storeManager->getStore()->getId()])
+                        ->setNickname($this->customerSession->getCustomer()->getName())
+                        ->setTitle('summary')
                         ->save();
 
                     foreach ($rating as $ratingId => $optionId) {
