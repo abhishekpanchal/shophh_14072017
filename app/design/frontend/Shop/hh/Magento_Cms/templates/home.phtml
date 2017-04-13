@@ -115,7 +115,7 @@
                                 <a href="<?php echo $proFormula->getProductUrl() ?>" class="hover-effect"><?php echo $productName = $proFormula->getName(); ?></a>
                             </h4>
                             <h4 class="decorating-formula-price">
-                                <?php echo $formattedPrice = $priceHelper->currency($price, true, false); ?>
+                                <?php echo '$'.number_format($price, 2, '.', ''); ?>
                             </h4>
                             </div>
                              <?php $d++; if($d==3){ break; } ?>
@@ -180,7 +180,7 @@
                     <h4>Guest Editor</h4>
                     <h3><?php echo $editorItem->getName(); ?></h3>
                 <div class="editor-blurb">
-                    <?php echo $editorItem->getSubtitle(); ?>
+                    <?php echo $editorItem->getContent(); ?>
                 </div>
                 <div class="editor-quote">
                     <?php $shortQuote = $editorItem->getShortQuote(); ?>
@@ -223,7 +223,9 @@
                                     <h4 class="issue-date"><?php echo $title ?></h4>
                                     <h3 class="issue-title"><?php echo $name; ?></h3>
                                 </div>
-                                <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
+                                <a href="<?php echo $this->getUrl('magazine').'index/view/id/'.$magazineItem->getId() ?>">
+                                    <img class="issue-img" src="<?php echo $this->getUrl('pub/media').$magazineItem->getImage() ?>" />
+                                </a>
                             </div>
                             <div class="col-md-8 col-sm-8 hidden-xs">
                                 <h4 class="issue-date"><?php echo $title ?></h4>

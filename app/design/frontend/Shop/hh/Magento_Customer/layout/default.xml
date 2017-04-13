@@ -14,5 +14,6 @@
             </block>
             <block class="Magento\Customer\Block\Account\Customer" name="customer" template="account/customer.phtml" before="-"/>
         </referenceBlock>
+        <referenceBlock name="register-link" remove="true"/>
     </body>
 </page>
