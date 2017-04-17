@@ -192,6 +192,10 @@ Common LESS
   opacity: 1!important;
 }
 
+.shot-thumb a img:hover {
+  opacity: 0.8!important;
+}
+
 .uppercase {
   text-transform: uppercase;
 }
@@ -439,7 +443,7 @@ Page Title
 .page-title-small {
   font-family: @baseFont;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 18px;
   text-transform: uppercase;
 
   span {
@@ -466,6 +470,11 @@ Page Title
   font-weight: normal;
 }
 
+.page-title {
+  strong {
+    font-size: 40px;
+  }
+}
 
 /* ==========================================================================
 Breadcrumb
@@ -1496,13 +1505,14 @@ Social Login
       font-size: 14px;
       margin-bottom: 10px;
       font-weight: normal;
+      color: #000;
     }
   }
 
   .social-login-authentication-channel {
 
     button {
-      padding: 15px;
+      padding: 11px 15px;
       padding-left: 25px;
       text-align: center;
       height: auto;
@@ -1578,6 +1588,11 @@ Social Login
   }
 }
 
+#social-login-popup .block-container .block .block-title {
+    padding-bottom: 0!important;
+    margin-bottom: 0!important;
+}
+
 #social-login-popup .mfp-close {
   border-radius: 50%;
   background-color: #FFF;
@@ -1594,6 +1609,10 @@ Social Login
   border: none!important;
 }
 
+
+#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-link > a {
+  padding: 4px 20px!important;
+}
 
 .cms-page-view {
   .main-content {
@@ -3171,6 +3190,7 @@ Products
 #social-login-popup {
   .relative;
   z-index: 99;
+  color: #000;
 
   .field-dob {
     display: none;
@@ -3205,6 +3225,7 @@ Products
     font-family: @fancyFont;
     font-style: italic;
     font-size: 15px;
+    color: #000;
   }
 }
 
@@ -3223,6 +3244,9 @@ Products
   margin-bottom: 20px!important;
 }
 
+#social-login-popup .block-container .block .block-title {
+  padding: 0;
+}
 #social-login-popup .social-login #bnt-social-login-authentication:hover,
 #social-login-popup .create .primary button:hover {
   background-color: rgba(0,0,0,0.8)!important;
@@ -3880,7 +3904,22 @@ Cart Page
 
 }
 
+/* ==========================================================================
+Placeholder fixes
+========================================================================== */
 
+::-webkit-input-placeholder {
+  color: #8d8d8d;
+}
+::-moz-placeholder {
+  color: #8d8d8d;
+}
+:-ms-input-placeholder {
+  color: #8d8d8d;
+}
+:-moz-placeholder {
+  color: #8d8d8d;
+}
 
 /* ==========================================================================
 Classes
@@ -4041,6 +4080,7 @@ Header
   width: 70%;
   position: relative;
   float: right;
+  margin-top: -10px;
 }
 
 .search-input {
@@ -4069,7 +4109,7 @@ Header
 
     span {
       width: 100%;
-      padding: 5px 0;
+      padding: 7px 0;
       display: block;
       font-weight: normal;
       position: relative;
@@ -4086,6 +4126,7 @@ Header
     }
   }
 }
+
 
 /* ==========================================================================
 Header Top Right
@@ -4112,6 +4153,10 @@ Header Top Right
   li {
     display: inline-block;
     margin-left: 10px;
+  }
+  li, a {
+    font-family: @headlineFont;
+    font-weight: normal;
   }
 }
 /* ==========================================================================
@@ -4173,13 +4218,12 @@ Shot Thumbs
 
 .shot-thumb {
   position: relative;
-  float: left;
   overflow: hidden;
-  width: 99%;
-  margin-bottom: -2px;
   background: #000000;
   text-align: center;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  margin: 10px 0;
+  margin-right: 10px;
 
   h4 {
     position: relative;
@@ -4207,7 +4251,7 @@ Shot Thumbs
   }
   .title {
     text-transform: uppercase;
-    font-size: 23px;
+    font-size: 24px;
   }
 }
 .shot-thumb * {
@@ -4631,7 +4675,7 @@ Awe Menu
     text-transform: capitalize;
     position: relative;
     transition: 0.3s all;
-
+    font-weight: normal; 
 
     &:hover {
     }
@@ -4704,27 +4748,18 @@ Awe Menu
   }
 }
 
-
 .menu-three {
   background-color: #FFF;
-  min-height: 380px;
 }
-
-
-
-
-
-
 
 
 .am-html h3 {
   display: inline-block;
   a {
     .relative;
-    .hover-effect;
 
-    &:hover:before {
-      width: 100%;
+    &:hover {
+      color: #000;
     }
   }
 }
@@ -4924,14 +4959,20 @@ Home Page
     .issue-date {
       color: #919191;
       text-transform: uppercase;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: normal;
-      font-family: @baseFont;
+      font-family: @headlineFont;
     }
     .issue-title {
       font-size: 22px;
       font-family: @fancyFont;
       font-style: italic;
+    }
+    .issue-desc {
+      p {
+        font-size: 14px;
+        line-height: 22px;
+      }
     }
     .desc {
       margin-bottom: 40px;
@@ -5010,6 +5051,9 @@ Home Page
             width: 100%;
             padding: 5px;
             padding-bottom: 0;
+            .relative;
+            .block;
+
           }
 
           .editor-link {
@@ -5020,15 +5064,12 @@ Home Page
               content: '';
               position: absolute;
               bottom: 0;
-              left: 0;
-              right: 0;
-              top: 0;
-              width: 97%;
-              height: 97%;
+              left: 5px;
+              right: 5px;
+              top: 5px;
               background: rgba(255,255,255,0.4);
               transition: 0.3s all;
               opacity: 0;
-              margin: 5px;
               margin-bottom: 0;
             }
 
@@ -5147,6 +5188,12 @@ Home Page
       text-align: center;
       font-weight: normal;
       font-family: @baseFont;
+
+      p {
+        font-size: 14px;
+        line-height: 22px;
+        margin-bottom: 0;
+      }
     }
     .decorating-formula-product {
       margin-top: 40px;
@@ -5193,18 +5240,18 @@ Home Page
       }
     }
     .carousel-control.left {
-      left: -7%;
+      left: -2%;
       top: 50%;
     }
     .carousel-control.right {
-      right: -7%;
+      right: -2%;
       top: 50%;
     }
   }
 
   .homeslider {
     margin-top: -20px;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 
     .homepage-controls {
       clear: both;
@@ -5252,13 +5299,12 @@ Home Page
       z-index: 4;
 
       .hero-details-title {
-        font-size: 20px;
+        font-size: 23px;
         font-family: @baseFont;
         border-bottom: 1px solid rgba(0,0,0,0.1);
-        padding-bottom: 10px;
 
         strong {
-          font-size: 24px;
+          font-size: 28px;
         }
       }
 
@@ -6970,6 +7016,5 @@ Collection Page
 }
 
 /* ==========================================================================
-Mobile Nav 
+Mobile Nav
 ========================================================================== */
-

@@ -33,7 +33,7 @@
                     <div class="field email required">
                         <div class="control">
                             <input name="username"
-                                   value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) : ?> placeholder="Email *" autocomplete="off"<?php endif; ?>
+                                   value="<?php echo $block->escapeHtml($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()) : ?> placeholder="Email" autocomplete="off"<?php endif; ?>
                                    id="email" type="email" class="input-text" title="<?php /* @escapeNotVerified */
                             echo __('Email') ?>" data-validate="{required:true, 'validate-email':true}">
                         </div>
@@ -41,7 +41,7 @@
                     <div class="field password required margintop-20">
                         <div class="control">
                             <input name="password"
-                                   type="password" <?php if ($block->isAutocompleteDisabled()) : ?> placeholder="Password *" autocomplete="off"<?php endif; ?>
+                                   type="password" <?php if ($block->isAutocompleteDisabled()) : ?> placeholder="Password" autocomplete="off"<?php endif; ?>
                                    class="input-text" id="pass" title="<?php /* @escapeNotVerified */
                             echo __('Password') ?>" data-validate="{required:true, 'validate-password':true}">
                         </div>
