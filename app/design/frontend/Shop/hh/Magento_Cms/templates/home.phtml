@@ -241,9 +241,12 @@
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
-                                    <li>
+                                    <li class="mag-hover-mini">
                                         <a href="<?php echo $proMagazine->getProductUrl() ?>">
                                             <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+                                            <div class="shot-thumb-meta">
+                                                <h4><span>Shop</span></h4>
+                                            </div>
                                         </a>
                                     </li>
                                      <?php $m++; if($m==10){ break; } ?>
