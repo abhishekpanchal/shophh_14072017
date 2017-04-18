@@ -488,7 +488,7 @@ Breadcrumb
   font-family: @headlineFont;
   text-transform: uppercase;
   font-size: 11px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 
   li {
     color: #8d8d8d;
@@ -3700,10 +3700,6 @@ Cart Page
       padding: 0!important;
   }
 
-  .special-price .price-container .price {
-      font-weight: 700;
-  }
-
   .old-price span span{
     font-size: 11px!important;
   }
@@ -5207,6 +5203,10 @@ Home Page
           margin-bottom: 30px;
           font-weight: normal;
           margin-top: 10px;
+
+          a {
+            color: #FFF;
+          }
         }
         .editor-blurb {
           font: normal 15px/22px @baseFont;
@@ -6175,6 +6175,11 @@ Editors Details
       color: #5eb1ae;
       font-size: 14px;
     }
+
+    a {
+      .inline-block;
+      font-weight: strong;
+    }
   }
   .editor-products {
     margin: 0 auto;
@@ -6782,6 +6787,8 @@ Search
     }
     .price {
       color: #8d8d8d;
+      font-size: 14px;
+      font-weight: normal;
     }
     .special-price {
       display: inline-block;
@@ -6813,7 +6820,9 @@ Search
       opacity: 1;
     }
   }
+
 }
+
 
 .main-breadcrumb {
   margin-top: 10px;
@@ -6874,7 +6883,7 @@ Tags View Page
     a {
       text-transform: uppercase;
       font-size: 12px;
-      font-family: @baseFont;
+      font-family: @headlineFont;
     }
   }
   .tag-product {
