@@ -1131,7 +1131,7 @@ Dashboard Fixes
 .block-dashboard-info,
 .block-dashboard-addresses {
   .box-title {
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 15px;
     margin: 10px 0;
     display: block;
@@ -1146,7 +1146,7 @@ Dashboard Fixes
   margin-bottom: 20px;
   font-size: 22px;
   margin-bottom: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #ababab;
 }
 .login-container {
@@ -1171,6 +1171,7 @@ Dashboard Fixes
 .account-nav {
   .content {
     background-color: transparent;
+    padding: 0;
   }
   .item {
     margin: 0;
@@ -1179,6 +1180,14 @@ Dashboard Fixes
     font-weight: bold;
     font-family: @headlineFont;
     border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  .item:first-child {
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+
+  ._has-datepicker ~ .ui-datepicker-trigger > span {
+    .none;
   }
 }
 
@@ -1866,6 +1875,13 @@ Social Login
 }
 
 .customer-account-index {
+  .block-reviews-dashboard {
+    display: none;
+  }
+
+  .block {
+    margin-bottom: 20px;
+  }
 
   .block-main-title {
     font-family: @fancyFont;
@@ -1929,11 +1945,6 @@ Social Login
 
   .inner-content {
     padding-left: 40px;
-
-    a {
-      border-bottom: 2px solid #000;
-      padding-bottom: 2px;
-    }
   }
 
   .main-content {
@@ -3348,6 +3359,11 @@ Products
     color: #939393;
     text-align: center;
     text-decoration: underline;
+    transition: 0.3s;
+
+    &:hover {
+      color: #000;
+    }
   }
 }
 
