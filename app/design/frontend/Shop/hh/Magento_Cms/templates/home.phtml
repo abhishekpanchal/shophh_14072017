@@ -93,7 +93,7 @@
 
                         <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                         <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
-                        <div class="decorating-formula-text"><?php echo $formulaItem->getContent(); ?></div>
+                        <div class="decorating-formula-text col-md-8 col-md-offset-2"><?php echo $formulaItem->getContent(); ?></div>
                         <?php $d = 0; ?>
 
                         <?php foreach($formulaProduct as $fPro): ?>
@@ -147,7 +147,10 @@
             <?php if ($_editor->getSize()): ?>
             <div class="editors-pick-title">
                 <h4>Editors Picks</h4>
-                <h3>See <em>H&amp;H</em> Editors Favourite Finds</h3>
+                <h3> <a href="<?php echo $this->getUrl('editor') ?>">
+                    See <em>H&amp;H</em> Editors Favourite Finds
+                    </a>
+                </h3>
             </div>
             <div class="editors-thumbs">
                 <ul class="row no-gutters"><?php $i=0; ?>
@@ -178,7 +181,11 @@
                 <?php foreach ($_editor as $editorItem): ?>
                 <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
                     <h4>Guest Editor</h4>
-                    <h3><?php echo $editorItem->getName(); ?></h3>
+                    <h3>
+                        <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>">
+                            <?php echo $editorItem->getName(); ?>
+                        </a>
+                    </h3>
                 <div class="editor-blurb">
                     <?php echo $editorItem->getContent(); ?>
                 </div>
@@ -236,9 +243,12 @@
                                 <?php foreach($magazineProduct as $mPro): ?>
                                     <?php $proMagazine = $objMagazine->getProductById($mPro); ?>
                                     <?php $mImage = $proMagazine->getData('small_image'); ?>
-                                    <li>
+                                    <li class="mag-hover-mini">
                                         <a href="<?php echo $proMagazine->getProductUrl() ?>">
                                             <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$mImage ?>" />
+                                            <div class="shot-thumb-meta">
+                                                <h4><span>Shop</span></h4>
+                                            </div>
                                         </a>
                                     </li>
                                      <?php $m++; if($m==10){ break; } ?>
