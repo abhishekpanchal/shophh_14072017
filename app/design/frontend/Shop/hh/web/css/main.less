@@ -235,7 +235,7 @@ buttons
   font-style: italic;
   font-size: 15px;
   line-height: normal;
-  padding: 8px 35px;
+  padding: 11px 35px;
   display: block;
   width: auto;
   text-transform: capitalize;
@@ -2924,7 +2924,7 @@ Media Queries
 
 
 .main-content {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 
 
@@ -4389,7 +4389,7 @@ Products
     width: 100%;
   }
   .price {
-    font-size: 14px;
+    font-size: 16px;
     color: #8d8d8d;
     font-weight: 700;
     font-family: @headlineFont;
@@ -4510,7 +4510,7 @@ Hotspot Details
       line-height: normal;
       padding: 9px 25px;
       border: 1px solid #000;
-      width: 42%;
+      min-width: 42%;
       border-radius: 0;
       margin: 0;
       margin-left: 5px;
@@ -4983,7 +4983,7 @@ Home Page
       margin-bottom: 40px;
 
       p {
-        font-size: 13px;
+        font-size: 14px;
       }
     }
     .issues-thumb-list {
@@ -5116,7 +5116,7 @@ Home Page
 
           .editor-link {
             .relative;
-            .block;
+            display: block;
 
             &:after {
               content: '';
@@ -5953,6 +5953,9 @@ Editos Main Page
 ========================================================================== */
 
 .editor-index-index {
+  .main-content {
+    margin-bottom: 30px;
+  }
   .editor-guest-image {
     background: url(../images/guest-editor.jpg);
     background-repeat: no-repeat;
@@ -5987,7 +5990,7 @@ Editos Main Page
       }
       .editor-blurb {
         font: normal 15px/22px @baseFont;
-        padding: 30px 0;
+        padding: 25px 0;
         border-top: 1px solid #889dbb;
         border-bottom: 1px solid #889dbb;
         p {
@@ -5999,7 +6002,7 @@ Editos Main Page
         background: url(../images/quote-open.png) no-repeat 0 20px;
         padding: 25px 34px;
         position: relative;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
         font-weight: normal;
 
         &:after {
@@ -6024,7 +6027,7 @@ Editos Main Page
   .editor_list_view {
     .editor_list_item {
       text-align: center;
-      margin-top: 30px;
+      margin-bottom: 35px;
 
       img {
         width: 80%;
@@ -6040,7 +6043,7 @@ Editos Main Page
         font-weight: normal;
       }
       h5 {
-        font-family: @baseFont;
+        font-family: @headlineFont;
         font-size: 12px;
         text-transform: uppercase;
       }
@@ -6054,6 +6057,9 @@ Editors Details
 ========================================================================== */
 .editor-index-view {
   .editor-intro {
+    .editor-img {
+      margin-right: 30px;
+    }
     img {
       max-width: 300px;
       max-height: 300px;
@@ -6091,7 +6097,7 @@ Editors Details
     text-transform: uppercase;
     font-size: 12px;
     font-family: @headlineFont;
-    .block;
+    display: inline-block;
   }
   .editor-quote {
     font: italic 26px/36px @fancyFont;
@@ -6124,7 +6130,7 @@ Editors Details
     margin-bottom: 40px;
 
     h4 {
-      font-family: @baseFont;
+      font-family: @headlineFont;
       text-transform: uppercase;
       color: #5eb1ae;
       font-size: 14px;
@@ -6132,7 +6138,7 @@ Editors Details
   }
   .editor-products {
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 
     .editor-product {
       list-style: none;
@@ -6155,8 +6161,18 @@ Editors Details
         font-family: @fancyFont;
         font-style: italic;
         font-size: 14px;
+        line-height: 22px;
         margin: 20px;
         margin-bottom: 0;
+        .relative;
+
+        &:before {
+          content: '"';
+        }
+
+        &:after {
+          content: '"';
+        }
       }
     }
   }
