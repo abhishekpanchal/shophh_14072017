@@ -201,7 +201,7 @@ Common LESS
 }
 
 .normal-case {
-  text-transform: normal;
+  text-transform: none;
 }
 
 .font40 {
@@ -4128,6 +4128,46 @@ Header
   }
 }
 
+/* ==========================================================================
+Header Social
+========================================================================== */
+.social {
+  li {
+    a {
+      .block;
+
+      span {
+        background-color: #666;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 30px;
+        .block;
+        border-radius: 50%;
+        transition: 0.3s all;
+      }
+    }
+
+    &:hover span {
+      background-color: #000;
+    }
+  }
+  .ico-facebook {
+    background-image: url(../images/social-facebook.png);
+  }
+  .ico-instagram {
+    background-image: url(../images/social-instagram.png);
+  }
+  .ico-pinterest {
+    background-image: url(../images/social-pinterest.png);
+  }
+  .ico-twitter {
+    background-image: url(../images/social-twitter.png);
+  }
+  .ico-mail {
+    background-image: url(../images/share-mail.png);
+  }
+}
 
 /* ==========================================================================
 Header Top Right
