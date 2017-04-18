@@ -10,18 +10,15 @@
  * @date: 2/26/16 3:35 PM
  * @file: Mandrill.php
  */
+
 namespace Ebizmarts\Mandrill\Model\Api;
 
 class Mandrill
 {
-    /**
-     * @var \Mandrill
-     */
+  
+  
     protected $_api;
-    /**
-     * Mandrill constructor.
-     * @param \Ebizmarts\Mandrill\Helper\Data $helper
-     */
+  
     public function __construct(
         \Ebizmarts\Mandrill\Helper\Data $helper
     )

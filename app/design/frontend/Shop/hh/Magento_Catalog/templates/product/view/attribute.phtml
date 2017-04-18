@@ -21,6 +21,7 @@
 	$_attributeLabel = $block->getAtLabel();
 	$_attributeType = $block->getAtType();
 	$_attributeAddAttribute = $block->getAddAttribute();
+	$_quote = $block->getProduct()->getEditorsQuote();
 
 	if ($_attributeLabel && $_attributeLabel == 'default') {
 	    $_attributeLabel = $_product->getResource()->getAttribute($_code)->getFrontendLabel();
@@ -37,9 +38,14 @@
     <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
 </div>
 	<?php if($_code == 'description'): ?>
+		
+		<?php if(isset($_quote)): ?>
 		<div class="product-editors-pick-quote">
 			<span class="what-editor-says">What Editor's Say:</span>
 			<span class="what-editor-say-quote"><?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getEditorsQuote(), 'editors_quote') ?></span>
 		</div>
+		<?php endif; ?>
+		
+		
 	<?php endif; ?>
 <?php endif; ?>

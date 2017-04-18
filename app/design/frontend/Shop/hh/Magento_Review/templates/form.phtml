@@ -19,7 +19,7 @@
         <?php if ($block->getAllowWriteReviewFlag()): ?>
 
 <div class="col-md-3">
-  <a href="#" class="btn btn-main btn-toggle-form">Write a Review</a>
+  <a href="#" class="btn btn-main btn-toggle-form">Add A Review</a>
 </div>
 
 
@@ -27,20 +27,20 @@
                 <?php echo $block->getBlockHtml('formkey'); ?>
                 <?php echo $block->getChildHtml('form_fields_before')?>
                 <fieldset class="fieldset review-fieldset" data-hasrequired="<?php __('* Required Fields'); ?>">
-                    <div class="field review-field-nickname required hidden">
+                    <!--<div class="field review-field-nickname required hidden">
                         <label for="nickname_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Nicknames') ?></span></label>
                         <div class="control">
-                            <input type="text" name="nickname" id="nickname_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" />
+                            <input type="text" name="nickname" id="nickname_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" value="abc" />
                         </div>
                     </div>
                     <div class="field review-field-summary required hidden">
                         <label for="summary_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Summary') ?></span></label>
                         <div class="control">
-                            <input type="text" name="title" id="summary_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" />
+                            <input type="text" name="title" id="summary_field" class="input-text" data-validate="{required:false}" data-bind="value: nickname()" value="xyz" />
                         </div>
-                    </div>
+                    </div>-->
                     <div class="field review-field-text required">
-                        <label for="review_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Write a Review') ?></span></label>
+                        <label for="review_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Add A Review') ?></span></label>
                         <div class="control">
                             <textarea name="detail" class="review-text" id="review_field" cols="5" rows="3" data-validate="{required:true}" data-bind="value: review().detail"></textarea>
                         </div>
@@ -108,7 +108,8 @@
             <!-- <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
                 <p><?php echo __('You must log in or create an acoount to review this product.') ?></p> -->
                 <!--<p class="no-review-text">There are currently no reviews for this product.Be the first to write your review! You must be logged in to submit.</p>-->
-                <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Write a Review') ?></a>
+                <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
+								<span class="first-review">Be the first to write a review. You must be logged in to an account to submit.</span>
                 <!-- <a href="<?php echo $block->getRegisterUrl() ?>" class="btn btn-main"><?php echo __('Sign Up') ?></a> -->
             </div>
         <?php endif ?>

@@ -22,8 +22,12 @@
     </div>
     <div style="clear: both"></div>
     <script>
-        var x = document.getElementById("my-account").parentNode;
-        x.className += "authorization-link";
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        // var x = document.getElementById("my-account").parentNode;
+        // console.log('loadeddddd');
+        // x.className += "authorization-link";
+
         require(['Mageplaza_SocialLogin/js/sociallogin/form'], function (SocialLoginForm) {
             var config = {
                 /*General*/
@@ -92,6 +96,8 @@
                 });
             }
         });
+
+  });
 
     </script>
 <?php endif; ?>

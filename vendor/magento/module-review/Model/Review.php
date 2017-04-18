@@ -268,13 +268,13 @@ class Review extends \Magento\Framework\Model\AbstractModel implements IdentityI
     {
         $errors = [];
 
-        if (!\Zend_Validate::is($this->getTitle(), 'NotEmpty')) {
+        /*if (!\Zend_Validate::is($this->getTitle(), 'NotEmpty')) {
             $errors[] = __('Please enter a review summary.');
         }
 
         if (!\Zend_Validate::is($this->getNickname(), 'NotEmpty')) {
             $errors[] = __('Please enter a nickname.');
-        }
+        }*/
 
         if (!\Zend_Validate::is($this->getDetail(), 'NotEmpty')) {
             $errors[] = __('Please enter a review.');
