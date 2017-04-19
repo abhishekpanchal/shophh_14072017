@@ -112,6 +112,9 @@ textarea, input, select {
   outline: none;
 }
 
+address {
+  line-height: 28px;
+}
 
 /* ==========================================================================
 Forms
@@ -206,6 +209,10 @@ Common LESS
 
 .font40 {
   font-size: 40px;
+}
+
+.nomargin-bottom {
+  margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -1952,7 +1959,6 @@ Social Login
 
     button, .action {
       border-radius: 0;
-      font-style: 16px!important;
     }
 
     .fieldset > .field:not(.choice) > .label {
@@ -7156,5 +7162,35 @@ Collection Page
 }
 
 /* ==========================================================================
-Mobile Nav
+Orders
 ========================================================================== */
+
+.orders-recent {
+  .table {
+   thead {
+      font-family: @headlineFont;
+      font-size: 14px;
+      text-transform: uppercase;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid #ababab;
+        td {
+          padding-bottom: 15px;
+          padding-top: 15px;
+        }
+      }
+    }
+  }
+}
+
+
+.account {
+  .action, span {
+    font-size: 14px;
+  }
+}
