@@ -212,7 +212,7 @@ Common LESS
 }
 
 .nomargin-bottom {
-  margin-bottom: 0;
+  margin-bottom: 0!important;
 }
 
 /* ==========================================================================
@@ -307,7 +307,9 @@ Buttons
   font-weight: normal;
 }
 
-.action.primary:hover {
+.action.primary:hover,
+.action.primary:focus,
+.action.primary:active {
   background: rgba(0,0,0,0.8);
   border-color: #1a1a1a;
   cursor: pointer;
@@ -1155,6 +1157,9 @@ Dashboard Fixes
   margin-bottom: 30px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ababab;
+  font-family: @fancyFont;
+  font-style: italic;
+  font-size: 22px;
 }
 .login-container {
   margin-top: 40px;
@@ -1861,19 +1866,21 @@ Social Login
   background-color: #FFF!important;
 }
 .account {
-  .current {
-    background-color: #FFF!important;
-    font-family: @baseFont;
-    font-weight: norma;
-    padding: 13px 10px;
+  .sidebar {
+    .current {
+      background-color: #FFF!important;
+      font-family: @baseFont;
+      font-weight: norma;
+      padding: 13px 10px;
 
-    strong {
-      font-weight: normal;
+      strong {
+        font-weight: normal;
+      }
     }
-  }
-  .current a {
-    color: #707070!important;
-    padding: 5px 18px;
+    .current a {
+      color: #707070!important;
+      padding: 5px 18px;
+    }
   }
 }
 
@@ -1993,7 +2000,6 @@ Social Login
     }
 
     .field-name-firstname  {
-      margin-top: 20px;
       display: block;
     }
 
@@ -7165,32 +7171,86 @@ Collection Page
 Orders
 ========================================================================== */
 
-.orders-recent {
-  .table {
-   thead {
-      font-family: @headlineFont;
+.account {
+  .inner-content {
+    .action, .action span {
       font-size: 14px;
-      text-transform: uppercase;
-
-      a {
-        text-decoration: underline;
-      }
     }
-    tbody {
-      tr {
-        border-bottom: 1px solid #ababab;
-        td {
-          padding-bottom: 15px;
-          padding-top: 15px;
-        }
-      }
+    a {
+      font-size: 14px;
+      text-decoration: underline;
+      color: #898989;
     }
   }
 }
 
+.customer-account-index {
+  .orders-recent {
+    .table {
+     thead {
+        font-family: @headlineFont;
+        font-size: 14px;
+        text-transform: uppercase;
 
-.account {
-  .action, span {
-    font-size: 14px;
+        a {
+          text-decoration: underline;
+        }
+      }
+      tbody {
+        tr {
+          border-bottom: 1px solid #ababab;
+          td {
+            padding-bottom: 15px;
+            padding-top: 15px;
+          }
+        }
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .block-tickets-dashboard {
+    .none;
+  }
+}
+
+.customer-account-edit {
+  .form-edit-account {
+    input {
+      width: 50%;
+    }
+    .field-dob {
+      margin-bottom: 0;
+    }
+    .customer-dob {
+      input {
+        width: 50%;
+        padding-left: 45px;
+      }
+    }
+    ._has-datepicker ~ .ui-datepicker-trigger:before {
+      margin-top: -70px;
+    }
+  }
+  .password-strength-meter {
+    font-size: 12px;
+    height: auto;
+    line-height: auto;
+    padding: 0;
+  }
+}
+
+.customer-address-index {
+  .box-title {
+    font-weight: normal;
+    margin-bottom: 5px;
+
+    span {
+      text-transform: uppercase;
+      font-family: @headlineFont;
+      font-size: 14px;
+    }
   }
 }
