@@ -116,6 +116,10 @@ address {
   line-height: 28px;
 }
 
+.italic {
+  font-style: italic;
+}
+
 /* ==========================================================================
 Forms
 ========================================================================== */
@@ -7182,9 +7186,6 @@ Orders
       color: #898989;
     }
   }
-}
-
-.customer-account-index {
   .orders-recent {
     .table {
      thead {
@@ -7211,6 +7212,9 @@ Orders
     }
   }
 
+}
+
+.customer-account-index {
   .block-tickets-dashboard {
     .none;
   }
@@ -7251,6 +7255,62 @@ Orders
       text-transform: uppercase;
       font-family: @headlineFont;
       font-size: 14px;
+    }
+  }
+}
+
+
+
+/* ==========================================================================
+Account reviews
+========================================================================== */
+.review-customer-index {
+  .account-reviews-listing {
+    border-bottom: 1px solid #ababab;
+    padding: 25px 0;
+
+    h4 {
+      font-family: @headlineFont;
+      font-weight: normal;
+      font-size: 14px;
+      color: #000;
+      margin-bottom: 20px;
+
+      span {
+        font-family: @baseFont;
+        padding-left: 10px;
+        .relative;
+        .italic;
+
+        &:before {
+          content: '-'
+        }
+      }
+    }
+
+    .review-product-details {
+      .product-title a {
+        font-family: @fancyFont;
+        font-size: 18px;
+        font-weight: normal;
+        margin-bottom: 20px;
+        text-decoration: none;
+        font-weight: normal;
+        color: #000;
+      }
+      .ratings {
+        .block;
+        padding: 5px 0;
+        .rating-summary {
+          .label {
+            .none;
+          }
+        }
+      }
+      .desc {
+        font-family: @baseFont;
+        font-size: 14px
+      }
     }
   }
 }
