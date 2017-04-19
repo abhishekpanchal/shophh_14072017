@@ -18,8 +18,9 @@
         <div class="block-content">
         <?php if ($block->getAllowWriteReviewFlag()): ?>
 
-<div class="col-md-3">
-  <a href="#" class="btn btn-main btn-toggle-form">Add A Review</a>
+<div class="col-md-12 text-center">
+  <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
+	<a href="#" class="btn btn-main btn-toggle-form btn-no-review">Add A Review</a>
 </div>
 
 
@@ -40,7 +41,7 @@
                         </div>
                     </div>-->
                     <div class="field review-field-text required">
-                        <label for="review_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Add A Review') ?></span></label>
+                        <label for="review_field" class="label"><span><?php /* @escapeNotVerified */ echo __('Write A Review') ?></span></label>
                         <div class="control">
                             <textarea name="detail" class="review-text" id="review_field" cols="5" rows="3" data-validate="{required:true}" data-bind="value: review().detail"></textarea>
                         </div>
@@ -87,7 +88,7 @@
 
             <div class="actions-toolbar review-form-actions">
                 <div class="primary actions-primary">
-                    <button type="submit" class="btn-main review-btn"><span><?php /* @escapeNotVerified */ echo __('Add A Review') ?></span></button>
+                    <button type="submit" class="btn-main review-btn"><span><?php /* @escapeNotVerified */ echo __('Submit Review') ?></span></button>
                 </div>
             </div>
         </form>
@@ -107,9 +108,10 @@
             <div class="col-md-12 text-center">
             <!-- <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
                 <p><?php echo __('You must log in or create an acoount to review this product.') ?></p> -->
-                <!--<p class="no-review-text">There are currently no reviews for this product.Be the first to write your review! You must be logged in to submit.</p>-->
-                <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
-								<span class="first-review">Be the first to write a review. You must be logged in to an account to submit.</span>
+                <!--<p class="no-review-text">oo reviews for this product.Be the first to write your review! You must be logged in to submit.</p>-->
+                <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
+								<a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
+
                 <!-- <a href="<?php echo $block->getRegisterUrl() ?>" class="btn btn-main"><?php echo __('Sign Up') ?></a> -->
             </div>
         <?php endif ?>
