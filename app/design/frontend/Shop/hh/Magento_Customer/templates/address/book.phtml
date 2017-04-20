@@ -13,9 +13,13 @@
  * @var $block \Magento\Customer\Block\Address\Book
  */
 ?>
+
 <div class="block block-addresses-default">
-    <div class="block-title"><strong><?php /* @escapeNotVerified */ echo __('Default Addresses') ?></strong></div>
+    <div class="block-main-title"><strong><?php /* @escapeNotVerified */ echo __('Default Addresses') ?></strong></div>
     <div class="block-content">
+        <div class="row marginbottom-30">
+
+        <div class="col-md-6">
         <?php if ($_pAddsses = $block->getDefaultBilling()): ?>
             <div class="box box-address-billing">
                 <strong class="box-title">
@@ -40,8 +44,10 @@
                 </div>
             </div>
         <?php endif ?>
+        </div>
 
         <?php if ($_pAddsses = $block->getDefaultShipping()): ?>
+            <div class="col-md-6">
             <div class="box box-address-shipping">
                 <strong class="box-title">
                     <span><?php /* @escapeNotVerified */ echo __('Default Shipping Address') ?></span>
@@ -58,6 +64,7 @@
                 </div>
             </div>
         <?php else: ?>
+            <div class="col-md-6">
             <div class="box box-shipping-address">
                 <strong class="box-title"><span><?php /* @escapeNotVerified */ echo __('Default Shipping Address') ?></span></strong>
                 <div class="box-content">
@@ -65,11 +72,13 @@
                 </div>
             </div>
         <?php endif ?>
+        </div>
+        </div>
     </div>
 </div>
 
 <div class="block block-addresses-list">
-    <div class="block-title"><strong><?php /* @escapeNotVerified */ echo __('Additional Addresses') ?></strong></div>
+    <div class="block-main-title"><strong><?php /* @escapeNotVerified */ echo __('Additional Addresses') ?></strong></div>
     <div class="block-content">
         <?php if ($_pAddsses = $block->getAdditionalAddresses()): ?>
             <ol class="items addresses">
