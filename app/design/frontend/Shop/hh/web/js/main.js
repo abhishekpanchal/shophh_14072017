@@ -206,13 +206,13 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
 
   $('.editor-bio').each(function(event){
-    var max_length = 200;
+    var max_length = 250;
     if($(this).html().length > max_length){
       var short_content   = $(this).html().substr(0, max_length);
       var long_content  = $(this).html().substr(max_length);
 
       $(this).html(short_content+
-             '<a href="#" class="read_more hover-effect">Read More</a>'+
+             '<span class="editor-readmore block"><a href="#" class="read_more hover-effect">Read More</a></span>'+
              '<span class="more_text" style="display:none;">'+long_content+'</span>');
 
       $(this).find('a.read_more').click(function(event){
