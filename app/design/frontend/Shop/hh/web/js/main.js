@@ -39,6 +39,12 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
   jQuery(document).ready(function () {
 
+      $('.tabs-register').click(function() {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('clicked');
+      });
+      
 
     jQuery(document).on('click', '.hotspot', function (event) {
       event.preventDefault();
@@ -77,6 +83,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
         $(numHotspot).addClass('visible').removeClass('hidden');
       }
+
 
     });
   });
