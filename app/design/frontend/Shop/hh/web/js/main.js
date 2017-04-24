@@ -39,12 +39,11 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
   jQuery(document).ready(function () {
 
-      $('.tabs-register').click(function() {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log('clicked');
-      });
-      
+    $('.tabs-register').click(function() {
+      event.preventDefault();
+      event.stopPropagation();
+      console.log('clicked');
+    });
 
     jQuery(document).on('click', '.hotspot', function (event) {
       event.preventDefault();
@@ -62,26 +61,13 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(numHotspotVal).appendTo('body');
 
 
-
       $(numHotspot).addClass('hidden').removeClass('visible');
 
 
       if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
-        if ($('.ion-android-close').hasClass('hotspot-active')) {
-          $('.ion-android-close').removeClass().addClass('ion-android-search hotspot-inactive');
-          $(numHotspot).addClass('visible').removeClass('hidden');
-        }
-        $('.hotspot-details-placeholder').empty().removeClass('hidden').addClass('visible');
-        $('.hotspot-details-placeholder').html(hotspotDesc);
-        $('.hotspot-details-placeholder h2 a').prepend('<span>' + numHotspotVal +'.<span> ');
-        $('.hotspot-default').removeClass('visible').addClass('hidden');
-        $(defaultHotspotIcon).removeClass().addClass('ion-android-close hotspot-active');
-        $(numHotspot).addClass('hidden').removeClass('visible');
+
       } else if($(defaultHotspotIcon).hasClass('ion-android-close hotspot-active')) {
-        $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
-        $('.hotspot-default').removeClass('hidden').addClass('visible');
-        $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
-        $(numHotspot).addClass('visible').removeClass('hidden');
+
       }
 
 
