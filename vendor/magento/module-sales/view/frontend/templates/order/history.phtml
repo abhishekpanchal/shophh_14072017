@@ -10,7 +10,13 @@
 <?php $_orders = $block->getOrders(); ?>
 <?php echo $block->getChildHtml('info');?>
 <?php if ($_orders && count($_orders)): ?>
-    <div class="table-wrapper orders-history">
+
+    <div class="block-main-title nomargin-bottom">
+        <strong>Recent Orders</strong>
+    </div>
+
+
+    <div class="table-wrapper orders-history block-dashboard-orders orders-recent">
         <table class="data table table-order-items history" id="my-orders-table">
             <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Orders') ?></caption>
             <thead>
@@ -42,12 +48,12 @@
                                 <span><?php /* @escapeNotVerified */ echo __('View Order') ?></span>
                             </a>
                             <?php if ($this->helper('Magento\Sales\Helper\Reorder')->canReorder($_order->getEntityId())) : ?>
-                                <a href="#" data-post='<?php /* @escapeNotVerified */ echo
+                         <!--        <a href="#" data-post='<?php /* @escapeNotVerified */ echo
                                 $this->helper(\Magento\Framework\Data\Helper\PostHelper::class)
                                     ->getPostData($block->getReorderUrl($_order))
                                 ?>' class="action order">
                                     <span><?php /* @escapeNotVerified */ echo __('Reorder') ?></span>
-                                </a>
+                                </a> -->
                             <?php endif ?>
                         </td>
                     </tr>
@@ -56,7 +62,7 @@
         </table>
     </div>
     <?php if ($block->getPagerHtml()): ?>
-        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+        <!-- <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div> -->
     <?php endif ?>
 <?php else: ?>
     <div class="message info empty"><span><?php /* @escapeNotVerified */ echo __('You have placed no orders.'); ?></span></div>

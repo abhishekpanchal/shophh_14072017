@@ -39,6 +39,12 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
   jQuery(document).ready(function () {
 
+      $('.tabs-register').click(function() {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('clicked');
+      });
+      
 
     jQuery(document).on('click', '.hotspot', function (event) {
       event.preventDefault();
@@ -77,6 +83,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
         $(numHotspot).addClass('visible').removeClass('hidden');
       }
+
 
     });
   });
@@ -206,13 +213,13 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
 
   $('.editor-bio').each(function(event){
-    var max_length = 200;
+    var max_length = 250;
     if($(this).html().length > max_length){
       var short_content   = $(this).html().substr(0, max_length);
       var long_content  = $(this).html().substr(max_length);
 
       $(this).html(short_content+
-             '<a href="#" class="read_more hover-effect">Read More</a>'+
+             '<span class="editor-readmore block"><a href="#" class="read_more hover-effect">Read More</a></span>'+
              '<span class="more_text" style="display:none;">'+long_content+'</span>');
 
       $(this).find('a.read_more').click(function(event){

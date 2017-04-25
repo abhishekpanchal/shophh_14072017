@@ -29,7 +29,9 @@
             <legend class="legend"><span><?php echo __('Shop H&H eNewsletter') ?></span></legend><br>
             <div class="field choice">
                 <input type="checkbox" name="is_subscribed" id="subscription" value="1" title="<?php echo __('Sign Up') ?>"<?php if ($block->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
-                <label for="subscription" class="label"><span><?php echo __('Sign up to receive lorem Ipsum gravida nibh vel velit auctor aliquet. Aenean sollicitudin. lorem uis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.') ?></span></label>
+                <label for="subscription" class="label"></label>
+                <span class="email-pref-txt"><?php echo __('Sign up to receive lorem Ipsum gravida nibh vel velit auctor aliquet. Aenean sollicitudin. lorem uis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.') ?></span>
+                <div class="clearfix"></div>
             </div>
             <?php echo $block->getChildHtml('customer.form.newsletter.extra')?>
         </div>

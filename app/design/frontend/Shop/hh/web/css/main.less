@@ -112,6 +112,13 @@ textarea, input, select {
   outline: none;
 }
 
+address {
+  line-height: 28px;
+}
+
+.italic {
+  font-style: italic;
+}
 
 /* ==========================================================================
 Forms
@@ -193,11 +200,15 @@ Common LESS
 }
 
 .shot-thumb a img:hover {
-  opacity: 0.8!important;
+  opacity: inherit!important;
 }
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .normal-case {
@@ -206,6 +217,10 @@ Common LESS
 
 .font40 {
   font-size: 40px;
+}
+
+.nomargin-bottom {
+  margin-bottom: 0!important;
 }
 
 /* ==========================================================================
@@ -300,7 +315,9 @@ Buttons
   font-weight: normal;
 }
 
-.action.primary:hover {
+.action.primary:hover,
+.action.primary:focus,
+.action.primary:active {
   background: rgba(0,0,0,0.8);
   border-color: #1a1a1a;
   cursor: pointer;
@@ -1014,7 +1031,6 @@ Footer
 }
 
 .footer-social {
-  text-align: right;
   font-size: 13px;
   text-transform: uppercase;
 
@@ -1104,6 +1120,7 @@ fieldset {
   padding: 0!important;
   margin: 0!important;
   margin-bottom: 10px!important;
+  margin-right: 15px!important;
 }
 
 
@@ -1148,6 +1165,9 @@ Dashboard Fixes
   margin-bottom: 30px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ababab;
+  font-family: @fancyFont;
+  font-style: italic;
+  font-size: 22px;
 }
 .login-container {
   margin-top: 40px;
@@ -1519,6 +1539,7 @@ Social Login
   }
 
   .social-login-authentication-channel {
+    padding-top: 15px!important;
 
     button {
       padding: 11px 15px;
@@ -1854,19 +1875,21 @@ Social Login
   background-color: #FFF!important;
 }
 .account {
-  .current {
-    background-color: #FFF!important;
-    font-family: @baseFont;
-    font-weight: norma;
-    padding: 13px 10px;
+  .sidebar {
+    .current {
+      background-color: #FFF!important;
+      font-family: @baseFont;
+      font-weight: norma;
+      padding: 13px 10px;
 
-    strong {
-      font-weight: normal;
+      strong {
+        font-weight: normal;
+      }
     }
-  }
-  .current a {
-    color: #707070!important;
-    padding: 5px 18px;
+    .current a {
+      color: #707070!important;
+      padding: 5px 18px;
+    }
   }
 }
 
@@ -1952,7 +1975,6 @@ Social Login
 
     button, .action {
       border-radius: 0;
-      font-style: 16px!important;
     }
 
     .fieldset > .field:not(.choice) > .label {
@@ -1987,7 +2009,6 @@ Social Login
     }
 
     .field-name-firstname  {
-      margin-top: 20px;
       display: block;
     }
 
@@ -2878,6 +2899,7 @@ Media Queries
     font-size: 12px;
     line-height:20px;
     font-family: @baseFont;
+    margin-bottom: 15px;
   }
   input[type="email"] {
     border-radius: 15px!important;
@@ -2898,7 +2920,6 @@ Media Queries
     font-size: 15px;
     line-height: normal;
     padding: 8px 22px;
-    margin-top: 15px;
     float: left;
     border: 1px solid #000;
 
@@ -2999,10 +3020,14 @@ Media Queries
     border-radius: 0;
     box-shadow: none;
     border: none;
-    border-bottom: 1px solid #c4c4c4;
+    border-top: 1px solid #c4c4c4;
     font-family: @baseFont;
     font-size: 14px;
     line-height: 23px;
+
+    &:last-of-type {
+      border-bottom: 1px solid #c4c4c4;
+    }
 
     p {
       display: block;
@@ -3078,7 +3103,6 @@ Media Queries
 
 .faq-sidebar {
   border-top: 1px solid #CDCDCD;
-  margin-top: 10px;
 
   li {
     border-bottom: 1px solid #CDCDCD;
@@ -3220,7 +3244,14 @@ Products
     }
     .actions-toolbar {
       margin-top: 20px;
+
+      a:hover {
+        color: #000;
+      }
     }
+  }
+  .social-login .social-login-authentication-channel {
+    padding-top: 10px!important;
   }
   .action.remind {
     span {
@@ -3269,7 +3300,7 @@ Products
 .popup-register-bottom a {
   font-family: @fancyFont;
   font-size: 14px;
-  color: #000;
+  color: #939393;
   font-style: italic;
   display: block;
   margin-top: 20px!important;
@@ -3278,6 +3309,14 @@ Products
   span {
     color: #939393;
     text-decoration: underline;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &:hover {
+    color: #000;
   }
 
 }
@@ -3983,6 +4022,11 @@ Classes
   margin-bottom: 20px;
 }
 
+.marginbottom-25 {
+  margin-bottom: 25px!important;
+}
+
+
 .marginbottom-30 {
   margin-bottom: 30px;
 }
@@ -4017,6 +4061,15 @@ Classes
 
 .clear {
   clear: both;
+}
+
+.border-underline {
+  padding-bottom: 3px;
+  border: 2px solid #000;
+
+  &:hover {
+    border: none;
+  }
 }
 
 /* ==========================================================================
@@ -4217,6 +4270,16 @@ Header Top Left
 ========================================================================== */
 .header-top-left {
   margin-top: 10px;
+
+  a {
+    color: #8d8d8d;
+    font-family: @headlineFont;
+    font-weight: normal;
+
+    &:hover {
+      color: #000;
+    }
+  }
 }
 
 .header-top-left-link {
@@ -4282,7 +4345,7 @@ Shot Thumbs
     position: relative;
     font-family: @dietDidot;
     font-size: 28px;
-    margin-top: 42%;
+    margin-top: 35%;
 
     span {
       background-color: #FFF;
@@ -4305,6 +4368,7 @@ Shot Thumbs
   .title {
     text-transform: uppercase;
     font-size: 24px;
+    line-height: 24px;
   }
 }
 .shot-thumb * {
@@ -4341,8 +4405,10 @@ Shot Thumbs
   cursor: pointer;
 }
 .shot-thumb:hover img,
-.shot-thumb.hover img {
-  opacity: 0.3;
+.shot-thumb.hover img,
+.shot-thumb a:hover img,
+.shot-thumb a img:hover {
+  opacity: 0.3!important;
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
@@ -4417,6 +4483,9 @@ Shot Slider
   .product-info-main {
     float: none;
     text-align: center;
+  }
+  .pro-detail-div .price {
+    font-size: 14px;
   }
 }
 
@@ -4526,6 +4595,10 @@ Hotspot Details
     text-align: center;
     font-family: @fancyFont;
     font-style: italic;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.7)
+    }
   }
 
   .social {
@@ -4725,6 +4798,11 @@ Main Navigation
 /* ==========================================================================
 Awe Menu
  ========================================================================== */
+#awemenu .am-tabs .am-tab > a {
+  font-family: @baseFont;
+  font-weight: normal;
+}
+
 #awemenu {
   margin: 0!important;
 
@@ -5054,7 +5132,6 @@ Home Page
         }
 
         img {
-          max-height: 120px;
           padding: 5px;
         }
       }
@@ -5081,8 +5158,8 @@ Home Page
         border-radius: 50%;
 
         color: #000000;
-        width: 60%;
-        height: 60%;
+        width: 80%;
+        height: 80%;
         background: #ffffff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         -webkit-transform: translate(-50%, -50%) scale(0);
@@ -5110,6 +5187,7 @@ Home Page
         font-size: 20px;
         font-family: @dietDidot;
         font-style: italic;
+        margin-top: 40%;
       }
     }
     .carousel-control.right, .carousel-control.left {
@@ -5119,10 +5197,10 @@ Home Page
       width: 100%;
     }
     .carousel-control.left {
-      left: -7%;
+      left: -5%;
     }
     .carousel-control.right {
-      right: -7%;
+      right: -5%;
     }
   }
   .editors-area {
@@ -5239,7 +5317,6 @@ Home Page
           background: url(../images/quote-open.png) no-repeat 0 20px;
           padding: 25px 34px;
           position: relative;
-          margin-bottom: 40px;
           font-weight: normal;
 
           &:after {
@@ -5310,7 +5387,7 @@ Home Page
       }
     }
     .decorating-formula-product {
-      margin-top: 40px;
+      margin-top: 10px;
       text-align: center;
     }
     .decorating-formula-product-title {
@@ -5805,10 +5882,10 @@ div.MagicToolboxSelectorsContainer a {
     border-right: 1px solid #d3d3d3;
   }
 }
-div.MagicToolboxSelectorsContainer img {
-  max-height: 125px;
-  min-width: 125px;
-}
+// div.MagicToolboxSelectorsContainer img {
+//   max-height: 125px;
+//   min-width: 125px;
+// }
 
 .mcs-wrapper {
 
@@ -6034,7 +6111,7 @@ Editos Main Page
         display: block;
         text-transform: uppercase;
         font: normal 18px/18px  @baseFont;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
       }
       h3 {
         font-size: 33px;
@@ -6058,7 +6135,6 @@ Editos Main Page
         background: url(../images/quote-open.png) no-repeat 0 20px;
         padding: 25px 34px;
         position: relative;
-        margin-bottom: 10px;
         font-weight: normal;
 
         &:after {
@@ -6073,10 +6149,11 @@ Editos Main Page
         }
       }
       .btn-picks {
-        font-size: 16px!important;
+        font-size: 16px;
         line-height: normal;
         padding: 15px 25px;
         width: auto;
+        margin-bottom: 20px;
       }
     }
   }
@@ -6117,8 +6194,8 @@ Editors Details
       margin-right: 30px;
     }
     img {
-      max-width: 300px;
-      max-height: 300px;
+      max-width: 220px;
+      max-height: 220px;
       border-radius: 50%;
       margin: 0 auto;
       .inline;
@@ -6157,7 +6234,7 @@ Editors Details
   }
   .editor-quote {
     font: italic 26px/36px @fancyFont;
-    background: url(../images/quote-open.png) no-repeat 0 20px;
+    background: url(../images/quote-open-grey.png) no-repeat 0 20px;
     padding: 25px;
     position: relative;
     margin: 30px auto;
@@ -6169,7 +6246,7 @@ Editors Details
       right: 0;
       width: 26px;
       height: 22px;
-      background: url(../images/quote-close.png);
+      background: url(../images/quote-close-grey.png);
       position: absolute;
       z-index: 2;
       background-repeat: no-repeat;
@@ -6194,7 +6271,8 @@ Editors Details
 
     a {
       .inline-block;
-      font-weight: strong;
+      font-family: @headlineFont;
+      text-transform: uppercase;
     }
   }
   .editor-products {
@@ -6252,7 +6330,7 @@ Editors Details
       font-style: italic;
     }
     h5 {
-      font-family: @baseFont;
+      font-family: @headlineFont;
       font-size: 12px;
       text-transform: uppercase;
     }
@@ -6378,11 +6456,20 @@ Contact Pages
   .main-content {
     h3 {
       border-bottom: 1px solid #ababab;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
+      padding-bottom: 15px;
+      margin-bottom: 30px;
+    }
+    .inner-content {
+      a {
+        text-decoration: underline;
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
     p {
       margin-bottom: 40px;
+      font-size: 14px;
     }
     input, textarea {
       width: 100%;
@@ -6390,6 +6477,11 @@ Contact Pages
     .address-details {
       p {
         margin-bottom: 5px;
+      }
+
+      h4 {
+        margin-bottom: 5px;
+        font-size: 14px;
       }
     }
     .form.contact {
@@ -6402,7 +6494,8 @@ Contact Pages
       text-transform: uppercase!important;
       font-size: 14px;
       padding: 0;
-      .relative
+      font-family: @baseFont;
+      .relative;
     }
     .required-msg {
       margin-top: 10px;
@@ -6475,6 +6568,14 @@ Contact Pages
       line-height: 28px;
       text-align: center;
     }
+    a {
+      border-bottom: 2px solid #000;
+      padding-bottom: 3px;
+
+      &:hover {
+        border: none;
+      }
+    }
     .product-404 {
       font-family: @fancyFont;
       font-size: 22px;
@@ -6488,12 +6589,12 @@ Contact Pages
       }
     }
     .page-title {
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
     p {
       width: 70%;
       margin: 0 auto;
-      margin-bottom: 20px;
+      margin-bottom: 35px;
     }
     .listing-404 {
       margin-top: 40px;
@@ -6953,7 +7054,7 @@ Shop the issue page
     .toolbar {
       margin-bottom: 40px;
       h4 {
-        font-family: @baseFont;
+        font-family: @headlineFont;
         font-size: 12px;
         font-weight: normal;
         text-transform: uppercase;
@@ -7126,6 +7227,11 @@ Collection Page
     margin-top: 20px;
     margin-bottom: 30px;
   }
+  .category-image {
+    h2 {
+      font-size: 34px;
+    }
+  }
 }
 
 .lookbook-main {
@@ -7152,5 +7258,185 @@ Collection Page
     margin-top: 2px;
     border: 2px solid #FFF;
     box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.7);
+  }
+}
+
+/* ==========================================================================
+Orders
+========================================================================== */
+
+.account {
+  .inner-content {
+    .action, .action span {
+      font-size: 14px;
+    }
+    a {
+      font-size: 14px;
+      text-decoration: underline;
+      color: #898989;
+    }
+  }
+  .orders-recent {
+    .table {
+     thead {
+        font-family: @headlineFont;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+      tbody {
+        tr {
+          border-bottom: 1px solid #ababab;
+          td {
+            padding-bottom: 15px;
+            padding-top: 15px;
+          }
+        }
+        a {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+}
+
+.customer-account-index {
+  .block-tickets-dashboard {
+    .none;
+  }
+}
+
+.customer-account-edit {
+  .form-edit-account {
+    input {
+      width: 50%;
+    }
+    .field-dob {
+      margin-bottom: 0;
+    }
+    .customer-dob {
+      input {
+        width: 50%;
+        padding-left: 45px;
+      }
+    }
+    ._has-datepicker ~ .ui-datepicker-trigger:before {
+      margin-top: -70px;
+    }
+  }
+  .password-strength-meter {
+    font-size: 12px;
+    height: auto;
+    line-height: auto;
+    padding: 0;
+  }
+}
+
+.customer-address-index {
+  .box-title {
+    font-weight: normal;
+    margin-bottom: 5px;
+
+    span {
+      text-transform: uppercase;
+      font-family: @headlineFont;
+      font-size: 14px;
+    }
+  }
+}
+
+
+
+/* ==========================================================================
+Account reviews
+========================================================================== */
+.review-customer-index {
+  .account-reviews-listing {
+    border-bottom: 1px solid #ababab;
+    padding: 25px 0;
+
+    h4 {
+      font-family: @headlineFont;
+      font-weight: normal;
+      font-size: 14px;
+      color: #000;
+      margin-bottom: 20px;
+
+      span {
+        font-family: @baseFont;
+        padding-left: 10px;
+        .relative;
+        .italic;
+
+        &:before {
+          content: '-'
+        }
+      }
+    }
+
+    .review-product-details {
+      .product-title a {
+        font-family: @fancyFont;
+        font-size: 18px;
+        font-weight: normal;
+        margin-bottom: 20px;
+        text-decoration: none;
+        font-weight: normal;
+        color: #000;
+      }
+      .ratings {
+        .block;
+        padding: 5px 0;
+        .rating-summary {
+          .label {
+            .none;
+          }
+        }
+      }
+      .desc {
+        font-family: @baseFont;
+        font-size: 14px
+      }
+    }
+  }
+}
+
+.newsletter-manage-index {
+  .legend {
+    margin-bottom: 0;
+  }
+  .email-pref-txt {
+    float: left;
+    margin-left: 10px;
+    width: 95%;
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+}
+
+
+.faqs-index-index {
+  .inner-content {
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  }
+}
+
+.page-with-filter {
+  .styled-select .sorter-options {
+    width: 75%;
   }
 }

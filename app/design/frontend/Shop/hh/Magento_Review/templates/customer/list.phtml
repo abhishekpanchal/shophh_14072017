@@ -8,7 +8,73 @@
 /** @var \Magento\Review\Block\Customer\ListCustomer $block */
 ?>
 <?php if ($block->getReviews() && count($block->getReviews())): ?>
-    <div class="table-wrapper reviews">
+
+
+<div class="row review-topbar">
+    <div class="col-md-12">
+        <div class="block-main-title nomargin-bottom">Product Review History</div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<?php foreach ($block->getReviews() as $_review): ?>
+<div class="account-reviews-listing">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>
+                <?php echo $block->dateFormat($_review->getReviewCreatedAt()); ?>
+                <span>
+                    <?php
+                        if($_review->getStatusId() == 1){
+                            echo "Review Approved";
+                        }elseif($_review->getStatusId() == 2){
+                            echo "Review Pending";
+                        }else{
+                            echo "Review Declined";
+                        }
+                    ?>
+                </span>
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 review-product-img">
+            <?php $helper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
+            <?php $product = $helper->getLoadProduct($_review->getEntityPkValue()); ?>
+            <?php $image = $product->getData('small_image'); ?>
+            <a href="<?php echo $block->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>">
+                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" class="product-image" />
+            </a>
+        </div>
+        <div class="col-md-9 review-product-details">
+            <div class="product-title">
+                <a href="<?php echo $block->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>">
+                    <?php echo $block->escapeHtml($_review->getName()) ?>
+                </a>
+                <div class="ratings">
+                    <?php if ($_review->getSum()): ?>
+                        <div class="rating-summary">
+                            <span class="label"><span><?php /* @escapeNotVerified */ echo __('Rating') ?>:</span></span>
+                            <div class="rating-result" title="<?php /* @escapeNotVerified */ echo($_review->getSum() / $_review->getCount()) ?>%">
+                                <span style="width:<?php /* @escapeNotVerified */ echo($_review->getSum() / $_review->getCount()) ?>%;"><span><?php /* @escapeNotVerified */ echo($_review->getSum() / $_review->getCount()) ?>%</span></span>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="desc">
+                    <?php echo $_review->getDetail() ?>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<?php endforeach; ?>
+
+
+
+
+    <div class="table-wrapper reviews" style="display: none;">
         <table class="data table table-reviews" id="my-reviews-table">
             <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Product Review History') ?></caption>
             <thead>
@@ -69,8 +135,10 @@
             </tbody>
         </table>
     </div>
+
+
     <?php if ($block->getToolbarHtml()): ?>
-        <div class="toolbar products-reviews-toolbar bottom">
+        <div class="toolbar products-reviews-toolbar bottom none">
             <?php echo $block->getToolbarHtml() ?>
         </div>
     <?php endif; ?>
