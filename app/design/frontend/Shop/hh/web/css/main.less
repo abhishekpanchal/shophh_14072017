@@ -1031,7 +1031,6 @@ Footer
 }
 
 .footer-social {
-  text-align: right;
   font-size: 13px;
   text-transform: uppercase;
 
@@ -1121,6 +1120,7 @@ fieldset {
   padding: 0!important;
   margin: 0!important;
   margin-bottom: 10px!important;
+  margin-right: 15px!important;
 }
 
 
@@ -2899,6 +2899,7 @@ Media Queries
     font-size: 12px;
     line-height:20px;
     font-family: @baseFont;
+    margin-bottom: 15px;
   }
   input[type="email"] {
     border-radius: 15px!important;
@@ -2919,7 +2920,6 @@ Media Queries
     font-size: 15px;
     line-height: normal;
     padding: 8px 22px;
-    margin-top: 15px;
     float: left;
     border: 1px solid #000;
 
@@ -4270,6 +4270,16 @@ Header Top Left
 ========================================================================== */
 .header-top-left {
   margin-top: 10px;
+
+  a {
+    color: #8d8d8d;
+    font-family: @headlineFont;
+    font-weight: normal;
+
+    &:hover {
+      color: #000;
+    }
+  }
 }
 
 .header-top-left-link {
@@ -4788,6 +4798,11 @@ Main Navigation
 /* ==========================================================================
 Awe Menu
  ========================================================================== */
+#awemenu .am-tabs .am-tab > a {
+  font-family: @baseFont;
+  font-weight: normal;
+}
+
 #awemenu {
   margin: 0!important;
 
@@ -5117,7 +5132,6 @@ Home Page
         }
 
         img {
-          max-height: 120px;
           padding: 5px;
         }
       }
@@ -5144,8 +5158,8 @@ Home Page
         border-radius: 50%;
 
         color: #000000;
-        width: 60%;
-        height: 60%;
+        width: 80%;
+        height: 80%;
         background: #ffffff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         -webkit-transform: translate(-50%, -50%) scale(0);
@@ -5173,6 +5187,7 @@ Home Page
         font-size: 20px;
         font-family: @dietDidot;
         font-style: italic;
+        margin-top: 40%;
       }
     }
     .carousel-control.right, .carousel-control.left {
@@ -5182,10 +5197,10 @@ Home Page
       width: 100%;
     }
     .carousel-control.left {
-      left: -7%;
+      left: -5%;
     }
     .carousel-control.right {
-      right: -7%;
+      right: -5%;
     }
   }
   .editors-area {
@@ -5302,7 +5317,6 @@ Home Page
           background: url(../images/quote-open.png) no-repeat 0 20px;
           padding: 25px 34px;
           position: relative;
-          margin-bottom: 40px;
           font-weight: normal;
 
           &:after {
@@ -5373,7 +5387,7 @@ Home Page
       }
     }
     .decorating-formula-product {
-      margin-top: 40px;
+      margin-top: 10px;
       text-align: center;
     }
     .decorating-formula-product-title {
@@ -7418,5 +7432,11 @@ Account reviews
       font-size: 15px;
       line-height: 22px;
     }
+  }
+}
+
+.page-with-filter {
+  .styled-select .sorter-options {
+    width: 75%;
   }
 }
