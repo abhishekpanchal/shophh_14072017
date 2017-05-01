@@ -225,12 +225,14 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(this).find('a.read_more').click(function(event){
         event.preventDefault();
         $(this).hide();
+        $('.editor-readmore').hide();
         $(this).parents('.editor-bio').find('.more_text').show();
       });
     }
   });
 
 
-
+$('#authorization-link').attr('href', '#social-login-popup').addClass('social-login');
+console.log('aaaaaa');
 
 });
