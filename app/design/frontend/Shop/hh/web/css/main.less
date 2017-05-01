@@ -1641,7 +1641,11 @@ Social Login
 
 
 #awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-link > a {
-  padding: 4px 20px!important;
+  padding: 5px 20px!important;
+}
+
+#awemenu .am-tabs a {
+  font-family: @headlineFont;
 }
 
 .cms-page-view {
@@ -3760,10 +3764,6 @@ Cart Page
   }
 }
 
-.old-price {
-  display: none;
-}
-
 .customer-account-login, .customer-account-create {
 
   .main {
@@ -4523,10 +4523,12 @@ Products
 
     .old-price {
       position: relative;
-      font-size: 11px;
       display: inline-block;
-      margin-right: 20px;
-      float: right;
+      margin-left: 10px;
+      text-decoration: line-through;
+    }
+    .current-price {
+      .inline;
     }
   }
 }
@@ -4709,7 +4711,7 @@ Hotspot Details
     width: auto;
   }
   .old-price {
-    display: none!important;
+
   }
   .main-content {
     margin-bottom: 5px;
@@ -4802,7 +4804,7 @@ Main Navigation
 Awe Menu
  ========================================================================== */
 #awemenu .am-tabs .am-tab > a {
-  font-family: @baseFont;
+  font-family: @headlineFont;
   font-weight: normal;
 }
 
@@ -4863,6 +4865,7 @@ Awe Menu
       float: right;
       margin-left: 10px;
       margin-top: 3px;
+      color: #a30046;
     }
   }
 
@@ -4953,7 +4956,7 @@ Awe Menu
   padding: 20px;
 
   h4 {
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
     font-weight: normal;
     font-family: @baseFont;
@@ -5020,7 +5023,9 @@ Awe Menu
 }
 
 
-
+#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-link > a {
+  line-height: 1.3em!important;
+}
 
 
 .row.is-flex {
@@ -5762,7 +5767,6 @@ Catalog View
     display: block;
   }
   .product-item-photo {
-    /*height: 240px;*/
     margin-bottom: 20px;
     overflow-y: hidden;
 
@@ -6648,6 +6652,7 @@ Mini Cart
       font-family: @baseFont;
       font-weight: normal;
 
+      /*
       .product {
         display: -ms-flexbox;
         display: -webkit-flex;
@@ -6656,6 +6661,10 @@ Mini Cart
         -webkit-align-items: center;
         -webkit-box-align: center;
         align-items: center;
+      }
+      */
+      .product-item-details {
+        margin-bottom: 10px;
       }
 
       .product.list {
@@ -6690,7 +6699,6 @@ Mini Cart
       margin-right: 25px;
       margin-left: 25px;
       .relative;
-      margin-top: 5px;
     }
     .product-item-name {
       margin: 0;
@@ -6718,8 +6726,9 @@ Mini Cart
     }
     .price {
       font-weight: normal;
-      font-family: @baseFont;
+      font-family: @headlineFont;
       font-size: 14px;
+      color: #000;
     }
     .details-qty {
       margin-top: 0;
@@ -6845,6 +6854,8 @@ Mini Cart
     font-family: @baseFont;
     font-size: 12px;
     font-weight: normal;
+    margin-left: -2px;
+    margin-right: -4px;
   }
 
   .action.showcart.active .text {
@@ -6862,6 +6873,20 @@ Mini Cart
   }
 }
 
+
+.minicart-wrapper {
+  .dropdown-viewcart {
+    font-family: @fancyFont;
+    padding: 8px 0;
+  }
+}
+.minicart-wrapper .action.showcart.active {
+  color: #000;
+
+  .text {
+    color: #000;
+  }
+}
 .minicart-wrapper .action.showcart:hover {
   color: #000;
 }
