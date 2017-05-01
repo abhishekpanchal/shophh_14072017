@@ -242,18 +242,26 @@ class Vendor extends AbstractDb
 
         $read = $this->getConnection();
 
+        $rowIdField = $this->_hlp->rowIdField();
         $attr = $this->_eavConfig->getAttribute('catalog_product', 'udropship_vendor');
         $table = $attr->getBackend()->getTable();
+        $prodTbl = $this->getTable('catalog_product_entity');
         $select = $read->select()
-            ->from($table, array($this->_hlp->rowIdField()))
-            ->where('attribute_id=?', $attr->getId())
-            ->where('value=?', $vendor->getId());
+            ->from(['vid' => $table], [])
+            ->join(
+                ['pid'=>$prodTbl],
+                "pid.$rowIdField=vid.$rowIdField",
+                []
+            )
+            ->where('vid.attribute_id=?', $attr->getId())
+            ->where('vid.value=?', $vendor->getId());
         if ($productIds) {
-            $select->where($this->_hlp->rowIdField().' in (?)', $productIds);
+            $select->where('pid.entity_id in (?)', $productIds);
         }
         if ($products) {
-            $select->where($this->_hlp->rowIdField().' not in (?)', array_keys($products));
+            $select->where('pid.entity_id not in (?)', array_keys($products));
         }
+        $select->columns(['pid.entity_id']);
         $rows = $read->fetchCol($select);
         foreach ($rows as $id) {
             $products[$id] = array();
@@ -385,7 +393,19 @@ class Vendor extends AbstractDb
 
         $dateFields = array('special_from_date','special_to_date');
 
+        $rowIds = array();
+        $rowIdColumns = array_unique(array('entity_id',$this->_hlp->rowIdField()));
+        $rowIdSelect = $write->select()
+            ->from($rHlp->getTable('catalog_product_entity'), $rowIdColumns)
+            ->where('entity_id in (?)', array_keys($products));
+        $_rowIds = $write->fetchAll($rowIdSelect);
+        foreach ($_rowIds as $__rowId) {
+            $rowIds[$__rowId['entity_id']] = $__rowId[$this->_hlp->rowIdField()];
+        }
+
         foreach ($products as $id=>$a) {
+            $rowId = @$rowIds[$id];
+            if (!$rowId) continue;
             $a['product_id']=$id;
             $a['vendor_id']=$vId;
             if (!(int)$id) {
@@ -396,7 +416,7 @@ class Vendor extends AbstractDb
                 if (!empty($old[$id]['vendor_product_id'])) { // multi
                     $delete[] = $old[$id]['vendor_product_id'];
                 } elseif (isset($old[$id])) { // attr
-                    $delAttr[] = $id;
+                    $delAttr[] = $rowId;
                 }
                 continue;
             }
@@ -421,7 +441,7 @@ class Vendor extends AbstractDb
                         $rHlp->myPrepareDataForTable($table, $a, true)
                     );
                 } else {
-                    $insert[] = '('.$attr->getAttributeId().', '.(int)$id.', '.(int)$vId.')';
+                    $insert[] = '('.$attr->getAttributeId().', '.(int)$rowId.', '.(int)$vId.')';
                 }
             }
             // update

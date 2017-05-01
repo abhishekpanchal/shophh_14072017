@@ -1,3 +1,6 @@
+===== 3.1.5 =====
+  * Fixed statement calculation when apply commission on tax = yes and tax display = exclude
+
 ===== 3.1.4 =====
   * Fixed refund commission calculation when tax excluded
 

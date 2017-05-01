@@ -8,13 +8,8 @@ $_v = $this->getVendor();
 
 <tr class="udropship-cart-vendor-header">
     <td colspan="10" style="padding-top:5px; padding-bottom:0">
-        <?php if($_v->getHideVendorName() == 1): ?>
-           <?php $vendorName = "House & Home Media"; ?>
-        <?php else: ?>
-            <?php $vendorName = $_v->getVendorName(); ?>
-        <?php endif; ?>
         <?php if ($_v->getId()): ?>
-            <h3><?php echo $vendorName ?><?php //echo $_v->getFormatedAddress('text_small') ?></h3>
+            <h3><?php echo $_v->getVendorName() ?> - <?php echo $_v->getFormatedAddress('text_small') ?></h3>
         <?php else: ?>
             <h3>Unknown vendor</h3>
         <?php endif ?>
@@ -39,8 +34,8 @@ $_v = $this->getVendor();
             <?php else: ?>
                 <?php if (($_shippingRateGroups = $this->getEstimateRates())): ?>
                     <?php echo __('Select Shipping:')?>
-        <form method="post" id="shipping_method_form-<?php echo $_v->getId()?>" action="<?php echo $this->escapeHtml($this->getShippingMethodSubmitUrl()) ?>">
-                    <select id="shipping_method_<?php echo $_v->getId()?>" name="shipping_method[<?php echo $_v->getId()?>]" class="shipment-methods" style="width:auto">
+        <form method="post" id="shipping_method_form-<?php echo $_v->getId()?>" class="shipping-method-form" action="<?php echo $this->escapeHtml($this->getShippingMethodSubmitUrl()) ?>">
+                    <select id="shipping_method_<?php echo $_v->getId()?>" name="shipping_method[<?php echo $_v->getId()?>]" class="shipment-methods shipping-method" style="width:auto">
                         <?php foreach ($_shippingRateGroups as $code => $_rates): ?>
                             <optgroup label="<?php echo $this->getCarrierName($code) ?>">
                                 <?php foreach ($_rates as $_rate): ?>
@@ -62,34 +57,6 @@ $_v = $this->getVendor();
                         <?php endforeach; ?>
                     </select>
             </form>
-<script>
-require(["jquery", "prototype"], function(jQuery) {
-
-$('shipping_method_form') && $('shipping_method_form').up('.box') && $('shipping_method_form').up('.box').update('');
-$('shipping_method_<?php echo $_v->getId()?>').observe(
-    'change',
-    function () {
-        PayPalExpressAjax._updateOrderSubmit(true);
-        if (PayPalExpressAjax._pleaseWait) {
-            PayPalExpressAjax._pleaseWait.show();
-        }
-        if ('' != $('shipping_method_<?php echo $_v->getId()?>').value) {
-            new Ajax.Updater('details-reload', $('shipping_method_form-<?php echo $_v->getId()?>').action, {
-                parameters: {isAjax:true, 'shipping_method[<?php echo $_v->getId()?>]':$('shipping_method_<?php echo $_v->getId()?>').value},
-                onComplete: function() {
-                    if (PayPalExpressAjax._pleaseWait) {
-                        PayPalExpressAjax._pleaseWait.hide();
-                    }
-                }.bind(PayPalExpressAjax),
-                onSuccess: PayPalExpressAjax._onSubmitShippingSuccess.bind(PayPalExpressAjax),
-                evalScripts: true
-            });
-        }
-    }
-);
-
-});
-</script>
                 <?php endif; ?>
             <?php endif; ?>
         <?php endif; ?>

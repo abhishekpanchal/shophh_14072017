@@ -38,17 +38,17 @@ class ReviewDetails extends Details
     /**
      * @var HelperData
      */
-    protected $_helperData;
+    protected $_splitHlp;
 
     /**
      * @var ProtectedCode
      */
-    protected $_helperProtectedCode;
+    protected $_hlpPr;
 
     /**
      * @var ProductFactory
      */
-    protected $_modelProductFactory;
+    protected $_productFactory;
 
     /**
      * @var VendorFactory
@@ -58,7 +58,7 @@ class ReviewDetails extends Details
     /**
      * @var DropshipHelperData
      */
-    protected $_dropshipHelperData;
+    protected $_hlp;
 
     /**
      * @var LayoutFactory
@@ -70,27 +70,25 @@ class ReviewDetails extends Details
         ModelSession $checkoutSession, 
         Config $salesConfig, 
         HelperData $helperData, 
-        ProtectedCode $helperProtectedCode, 
-        ProductFactory $modelProductFactory, 
+        ProtectedCode $udropshipProtected,
+        ProductFactory $productFactory,
         VendorFactory $cartVendorFactory,
-        DropshipHelperData $dropshipHelperData, 
-        LayoutFactory $viewLayoutFactory, 
-        array $layoutProcessors = [], 
+        DropshipHelperData $udropshipHelper,
+        array $layoutProcessors = [],
         array $data = [])
     {
-        $this->_helperData = $helperData;
-        $this->_helperProtectedCode = $helperProtectedCode;
-        $this->_modelProductFactory = $modelProductFactory;
+        $this->_splitHlp = $helperData;
+        $this->_hlpPr = $udropshipProtected;
+        $this->_productFactory = $productFactory;
         $this->_cartVendorFactory = $cartVendorFactory;
-        $this->_dropshipHelperData = $dropshipHelperData;
-        $this->_viewLayoutFactory = $viewLayoutFactory;
+        $this->_hlp = $udropshipHelper;
 
         parent::__construct($context, $customerSession, $checkoutSession, $salesConfig, $layoutProcessors, $data);
     }
 
     public function getItems()
     {
-        if (!$this->_helperData->isActive()) {
+        if (!$this->_splitHlp->isActive()) {
             return parent::getItems();
         }
 
@@ -99,13 +97,13 @@ class ReviewDetails extends Details
         $methods = [];
         $details = $a->getUdropshipShippingDetails();
         if ($details) {
-            $details = Json::decode($details);
+            $details = $this->_hlp->jsonDecode($details);
             $methods = isset($details['methods']) ? $details['methods'] : [];
         }
 
         $quoteItems = $q->getAllVisibleItems();
 
-        $this->_helperProtectedCode->prepareQuoteItems($a->getAllItems());
+        $this->_hlpPr->prepareQuoteItems($a->getAllItems());
 
         $vendorItems = [];
         foreach ($quoteItems as $item) {
@@ -125,14 +123,14 @@ class ReviewDetails extends Details
         }
 
         $items = [];
-        $dummyProduct = $this->_modelProductFactory->create();
+        $dummyProduct = $this->_productFactory->create();
         foreach ($vendorItems as $vId=>$vItems) {
             if (!$this->_scopeConfig->isSetFlag('carriers/udsplit/hide_vendor_name', ScopeInterface::SCOPE_STORE)) {
                 $items[] = $this->_cartVendorFactory->create()
                     ->setPart('header')
                     ->setQuote1($q)
                     ->setData('product', $dummyProduct)
-                    ->setVendor($this->_dropshipHelperData->getVendor($vId));
+                    ->setVendor($this->_hlp->getVendor($vId));
             }
             foreach ($vItems as $item) {
                 $items[] = $item;
@@ -158,7 +156,7 @@ class ReviewDetails extends Details
             $items[] = $this->_cartVendorFactory->create()
                 ->setPart('footer')
                 ->setData('product', $dummyProduct)
-                ->setVendor($this->_dropshipHelperData->getVendor($vId))
+                ->setVendor($this->_hlp->getVendor($vId))
                 ->setEstimateRates(isset($rates[$vId]) ? $rates[$vId] : [])
                 ->setErrorsOnly($errorsOnly)
                 ->setShippingMethod(isset($methods[$vId]) ? $methods[$vId] : null)
@@ -173,7 +171,7 @@ class ReviewDetails extends Details
     {
         if ($item instanceof \Unirgy\DropshipSplit\Model\Cart\Vendor) {
             $blockName = "vendor_{$item->getVendor()->getId()}_{$item->getPart()}";
-            return $this->_viewLayoutFactory->create()->createBlock('udsplit/paypalExpress_vendor', $blockName)
+            return $this->getLayout()->createBlock('\Unirgy\DropshipSplit\Block\PaypalExpress\Vendor', $blockName)
                 ->addData($item->getData())
                 ->setShippingMethodSubmitUrl($this->getUrl("paypal/express/saveShippingMethod"))
                 ->setQuote($item->getQuote1())

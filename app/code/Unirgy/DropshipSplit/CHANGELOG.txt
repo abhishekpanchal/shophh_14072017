@@ -1,3 +1,7 @@
+===== 3.1.10 =====
+  * Fixed express checkout order review page shipping methods does not update totals
+  * Fixed too many "...totals-information" api requests at cart page
+
 ===== 3.1.9 =====
   * Fixed recently broken guest checkout due to interfaces move to different folder
 

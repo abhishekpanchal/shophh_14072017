@@ -298,7 +298,7 @@ class Ups
         }
 
         $request->setNode('Shipment/Service/Code', $serviceCode);
-        $request->setNode('Shipment/Service/Description', $services[$serviceCode]);
+        $request->setNode('Shipment/Service/Description', (string)$services[$serviceCode]);
 
         if ($packageType!='01' && ($fromCountry=='US') && (($toCountry=='CA') || ($toCountry=='US' && $toState=='PR')))  {
             $request->setNode('Shipment/InvoiceLineTotal/CurrencyCode', $currencyCode);

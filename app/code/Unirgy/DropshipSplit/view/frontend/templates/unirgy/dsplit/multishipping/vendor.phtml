@@ -12,15 +12,10 @@ $useUdTitles = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento
     <td colspan="<?php if (\Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Tax\Helper\Data')->displayCartBothPrices()) {echo '6';} else {echo '4';}?>">
 <?php endif ?>
 
-<?php if($_v->getHideVendorName() == 1): ?>
-   <?php $vendorName = "House & Home Media"; ?>
-<?php else: ?>
-    <?php $vendorName = $_v->getVendorName(); ?>
-<?php endif; ?>
 <?php if ($_v->getId()): ?>
-    <h3><?php echo $vendorName ?><?php //echo $_v->getFormatedAddress('text_small') ?></h3>
+    <h4><?php echo $_v->getVendorName() ?> - <?php echo $_v->getCity().', '.$_v->getRegionCode() ?></h4>
 <?php else: ?>
-    <h3>Unknown vendor</h3>
+    <h4><?php echo __('Unknown vendor')?></h4>
 <?php endif ?>
 
 <?php if (\Magento\Framework\App\ObjectManager::getInstance()->get('Unirgy\Dropship\Helper\Data')->compareMageVer('1.4.1.0', '1.8.0.0')): ?>
