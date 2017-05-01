@@ -757,6 +757,8 @@ Products
   display: inline-block;
 }
 
+
+/*
 .old-price, .old.price {
   margin: 0;
   text-decoration: none;
@@ -780,8 +782,9 @@ Products
 }
 
 .old-price span.price-wrapper:after {
-  content: ')'; 
+  content: ')';
 }
+*/
 
 /* ==========================================================================
 Products Tabs
@@ -4527,9 +4530,24 @@ Products
       margin-left: 10px;
       text-decoration: line-through;
     }
-    .current-price {
-      .inline;
-    }
+  }
+}
+
+.current-price {
+  .inline;
+  .relative;
+}
+
+.old-price {
+  .inline;
+  .relative;
+  font-size: 14px;
+
+  &:before {
+    content: '(';
+  }
+  &:after {
+    content: ')';
   }
 }
 
@@ -4546,7 +4564,7 @@ Hotspot Details
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  min-height: 90%;
+  height: 90%;
   width: 100%;
 
   h1 {
@@ -4638,9 +4656,9 @@ Hotspot Details
       transition: 0.3s all;
       font-size: 14px;
       line-height: normal;
-      padding: 9px 25px;
+      padding: 9px 15px;
       border: 1px solid #000;
-      min-width: 42%;
+      min-width: 40%;
       border-radius: 0;
       margin: 0;
       margin-left: 5px;
@@ -6471,6 +6489,13 @@ CMS Pages
       border-top-width:0;
     }
   }
+}
+
+
+.read_more {
+  .block;
+  margin-top: 5px;
+  font-size: 12px;
 }
 
 /* ==========================================================================
