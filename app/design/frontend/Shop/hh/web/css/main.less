@@ -2903,13 +2903,13 @@ Media Queries
   }
   input[type="email"] {
     border-radius: 15px!important;
-    padding: 18px 20px!important;
     display: block;
     width: 100%!important;
     background-color: #FFF;
     margin-top: 10px;
     color: #7a7a7a;
     font-size: 12px;
+    min-height: 45px;
   }
   .btn-subscribe {
     background-color: #000;
@@ -3960,16 +3960,19 @@ Placeholder fixes
 ========================================================================== */
 
 ::-webkit-input-placeholder {
-  color: #8d8d8d;
+color: #8d8d8d;
 }
-::-moz-placeholder {
-  color: #8d8d8d;
-}
-:-ms-input-placeholder {
-  color: #8d8d8d;
-}
+
 :-moz-placeholder {
-  color: #8d8d8d;
+color: #8d8d8d;
+}
+
+::-moz-placeholder {
+color: #8d8d8d;
+}
+
+:-ms-input-placeholder {
+color: #8d8d8d;
 }
 
 /* ==========================================================================
@@ -5158,25 +5161,42 @@ Home Page
         border-radius: 50%;
 
         color: #000000;
-        width: 80%;
-        height: 80%;
+        width: 70%;
+        height: 70%;
         background: #ffffff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
         -webkit-transform: translate(-50%, -50%) scale(0);
         transform: translate(-50%, -50%) scale(0);
         transition: all 300ms 0ms cubic-bezier(0.6, -0.28, 0.735, 0.045);
+        z-index: 10;
       }
       a {
         left: 0;
-        right: 0;
         top: 0;
-        bottom: 0;
         cursor: pointer;
+        height: 100%;
+        width: 100%;
+        display: block;
+        transition: 0.3s all;
+
+        &:before {
+          content: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.7);
+        }
+
+      }
+      &:hover a:before {
+        content: '';
       }
       &:hover img {
-        opacity: 0.3;
-        -webkit-filter: grayscale(100%);
-        filter: grayscale(100%);
+        opacity: 1!important;
+        -webkit-filter: none!important;
+        filter: none!important;
       }
       &:hover .shot-thumb-meta {
         -webkit-transform: translate(-50%, -50%) scale(1);
@@ -5184,7 +5204,7 @@ Home Page
         transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       h4 {
-        font-size: 20px;
+        font-size: 24px;
         font-family: @dietDidot;
         font-style: italic;
         margin-top: 40%;
@@ -7440,3 +7460,235 @@ Account reviews
     width: 75%;
   }
 }
+
+
+/* ==========================================================================
+Tablet Portrait size to standard 960 (devices and browsers)
+========================================================================== */
+@media only screen and (min-width: 750px) and (max-width: 959px) {
+  body, html {
+    font-size: 15px;
+  }
+
+
+  /* ===============================
+  Classes
+  =================================*/
+  .display-block-xs {
+    display: block!important;
+  }
+  .center {
+    text-align: center;
+  }
+  .none {
+    display: none;
+  }
+  .clear {
+    clear: both;
+  }
+  .block-center {
+    display: block;
+    margin: 0 auto;
+  }
+  .quickview-bar,
+  .quickview-bar2 {
+    .none;
+  }
+  .page-title, .page-title-small {
+    background-size: 100%;
+
+    span {
+      padding: 0 15px;
+    }
+
+    strong {
+      font-size: 34px;
+    }
+  }
+  .subtitle {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 35px;
+    margin-top: 10px;
+  }
+
+
+  /* ===============================
+  Homepage
+  =================================*/
+  .cms-home {
+
+    .homeslider {
+
+      .homepage-controls {
+        top: 0;
+      }
+      .homepage-controls {
+        bottom: 15px;
+        width: 100px;
+        height: 50px;
+
+        .carousel-control.right, .carousel-control.left  {
+          opacity: 1;
+          margin-top: -400px;
+        }
+        .carousel-control.right {
+          right: -75%;
+        }
+        .carousel-control.left {
+          left: -75%;
+        }
+      }
+
+      .carousel-indicators {
+        li {
+          background-color: #CCC;
+          border-color: #CCC;
+          margin-right: 5px;
+        }
+        .active {
+          background-color: #000;
+          border: none;
+        }
+      }
+    }
+    .home-slider {
+      .homepage-hero-details {
+        margin-top: 20px;
+        width: 300px;
+        height: 300px;
+        background: #FFF;
+
+        p {
+          margin-right: -25%;
+          margin-left: -25%;
+        }
+        h4 {
+          margin-top: 30px;
+        }
+        .hero-details-title {
+          width: 85%;
+          margin: 0 auto;
+          margin-top: 60px;
+        }
+
+        .homepage-hero-btn {
+          padding: 10px 15px;
+          width: 80%;
+        }
+
+        .hero-details-inner {
+          padding: 0;
+        }
+
+        .hero-details-title {
+          margin-top: 45px;
+        }
+
+        .homepage-hero-btn {
+          display: block;
+        }
+        .carousel-indicators .active {
+          margin: 0;
+          margin-right: 5px;
+          width: 11px;
+          height: 11px;
+        }
+
+        .carousel-control.right,
+        .carousel-control.left {
+          height: 70px;
+          width: 35px;
+          top: -400px;
+          background-size: 80% 80%!important;
+          opacity: 1;
+        }
+      }
+    }
+
+    .decorating-formula {
+      padding-top: 40px;
+      border-top: 1px solid #b2b2b2;
+
+      .decorating-formula-product {
+        margin-top: 0;
+      }
+      .formula_list_view {
+        .decorating-formula-product:nth-of-type(3):before,
+        .decorating-formula-product:nth-of-type(3):after  {
+          background-size: 35% 35%!important;
+          background-position: center center;
+          top: 30%;
+        }
+        .decorating-formula-title {
+          font-size: 1.9rem;
+        }
+        .decorating-formula-product-title {
+          font-size: 1rem;
+        }
+        .decorating-formula-price {
+          font-size: 0.75rem;
+        }
+        .decorating-formula-thumb {
+          margin: 20px auto;
+          width: 90%;
+        }
+      }
+
+    }
+
+    .editors-area {
+      .editors-pick, .editor-guest-image, .guest-editor {
+      min-height: 480px;
+      }
+      .editors-pick {
+        padding: 20px;
+
+        .editors-pick-title h3 {
+          font-size: 1.8em;
+        }
+      }
+      .editor-guest-image {
+
+      }
+      .guest-editor {
+        .guest-editor-details {
+          .editor-quote {
+            margin-bottom: 0;
+          }
+          .editor-blurb {
+            padding: 20px 0;
+          }
+
+        }
+      }
+    }
+
+    .shop-the-issue {
+      .magazine_list_item {
+        padding: 0 30px;
+
+        .issue-img {
+          width: 80%;
+          .block-center;
+        }
+      }
+      .carousel-control.right {
+        right: -3%;
+      }
+      .carousel-control.left {
+        left: -3%;
+      }
+    }
+
+    .more-shots {
+      .more-shots-thumbs {
+        &:nth-of-type(2n+1) {
+          clear: none;
+        }
+      }
+    }
+
+  }
+}
+

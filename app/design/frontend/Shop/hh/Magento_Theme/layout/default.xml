@@ -17,7 +17,7 @@
               <container name="header.top.left" htmlTag="div" htmlClass="header-top-left col-md-3 col-sm-4 hidden-xs">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/top-left-link.phtml"/>
               </container>
-              <container name="header.top.right" htmlTag="div" htmlClass="header-top-right col-md-9 col-sm-8 hidden-xs">
+              <container name="header.top.right" htmlTag="div" htmlId="account" htmlClass="header-top-right col-md-9 col-sm-8 hidden-xs">
                 <container name="header.toplinks"></container>
               </container>
             </container>
