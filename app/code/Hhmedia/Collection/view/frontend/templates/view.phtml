@@ -47,7 +47,8 @@
 					                <div class="new-product"><?php echo __('New'); ?></div>
 					            <?php endif; ?>
 					            <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
-					            <h5><?php echo $this->getProductPrice($product->getFinalPrice()); ?></h5>
+<?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                               <h5 class="decorating-formula-price"><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
 										</div>
 				        	<?php endif; ?>
 						<?php endforeach; ?>

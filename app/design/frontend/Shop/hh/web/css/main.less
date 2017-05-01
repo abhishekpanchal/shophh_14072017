@@ -113,7 +113,7 @@ textarea, input, select {
 }
 
 address {
-  line-height: 28px;
+  line-height: 24px;
 }
 
 .italic {
@@ -1165,7 +1165,7 @@ Dashboard Fixes
 .block-main-title {
   margin-bottom: 20px;
   font-size: 22px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ababab;
   font-family: @fancyFont;
@@ -1885,7 +1885,7 @@ Social Login
   .sidebar {
     .current {
       background-color: #FFF!important;
-      font-family: @baseFont;
+      font-family: @headlineFont;
       font-weight: norma;
       padding: 13px 10px;
 
@@ -6490,7 +6490,10 @@ CMS Pages
     }
   }
 }
-
+.price-container .price {
+  font-size: 14px;
+  color: #8d8d8d;
+}
 
 .read_more {
   .block;
@@ -6513,6 +6516,7 @@ Contact Pages
         text-decoration: underline;
         &:hover {
           text-decoration: none;
+          color: #000;
         }
       }
     }
@@ -7344,6 +7348,10 @@ Orders
       font-size: 14px;
       text-decoration: underline;
       color: #898989;
+      &:hover {
+        text-decoration: none;
+        color: #000;
+      }
     }
   }
   .orders-recent {
@@ -7396,6 +7404,9 @@ Orders
     }
     ._has-datepicker ~ .ui-datepicker-trigger:before {
       margin-top: -70px;
+    }
+    .password {
+      margin-top: -5px;
     }
   }
   .password-strength-meter {
