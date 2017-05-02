@@ -13,6 +13,7 @@
 <div class="row review-topbar">
     <div class="col-md-12">
         <div class="block-main-title nomargin-bottom">Product Review History</div>
+        <div class="count"><?php echo count($block->getReviews())." review(s)"; ?></div>
     </div>
     <div class="clearfix"></div>
 </div>
@@ -22,17 +23,16 @@
     <div class="row">
         <div class="col-md-12">
             <h4>
-                <?php echo $block->dateFormat($_review->getReviewCreatedAt()); ?>
+                <?php $format = $block->getDateFormat() ?: \IntlDateFormatter::LONG; ?>
+                <?php echo $block->formatDate($_review->getReviewCreatedAt(), $format); ?>
                 <span>
-                    <?php
-                        if($_review->getStatusId() == 1){
-                            echo "Review Approved";
-                        }elseif($_review->getStatusId() == 2){
-                            echo "Review Pending";
-                        }else{
-                            echo "Review Declined";
-                        }
-                    ?>
+                    <?php if($_review->getStatusId() == 1): ?>
+                        <span class="approved">Review Approved</span>
+                    <?php elseif($_review->getStatusId() == 2): ?>
+                        <span class="pending">Review Pending</span>
+                    <?php else: ?>
+                        <span class="declined">Review Declined</span>
+                    <?php endif; ?>
                 </span>
             </h4>
         </div>
