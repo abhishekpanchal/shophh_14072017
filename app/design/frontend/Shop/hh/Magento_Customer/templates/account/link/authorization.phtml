@@ -12,8 +12,17 @@ if ($block->isLoggedIn()) {
     $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
 }
 ?>
+<?php 
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+if($customerSession->isLoggedIn()) {
+	$label = "SIGN OUT";
+}else{
+	$label = "LOGIN | SIGN UP";
+}
+?>
 <li class="authorization-link" data-label="<?php echo $block->escapeHtml(__('or')); ?>">
     <a <?php /* @escapeNotVerified */ echo $block->getLinkAttributes(); ?><?php /* @escapeNotVerified */ echo $dataPostParam; ?>>
-        <?php echo "LOGIN | SIGN UP"; ?>
+        <?php echo $label; ?>
     </a>
 </li>

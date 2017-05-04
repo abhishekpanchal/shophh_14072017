@@ -101,9 +101,7 @@
 </div>
 
 <div class="actions-toolbar">
-    <div class="primary">
-        <button type="button" role="add-address" title="<?php /* @escapeNotVerified */ echo __('Add New Address') ?>" class="action primary add"><span><?php /* @escapeNotVerified */ echo __('Add New Address') ?></span></button>
-    </div>
+    <a class="action addaddress" href="<?php echo $block->escapeUrl($block->getAddAddressUrl()) ?>"><span><?php /* @escapeNotVerified */ echo __('Add New Address') ?></span></a>
 </div>
 <script type="text/x-magento-init">
     {

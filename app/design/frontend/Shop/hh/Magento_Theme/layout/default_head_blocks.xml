@@ -9,7 +9,6 @@
     <css src="css/fonts.css" />
     <css src="css/main.css" />
     <css src="css/responsive.css"/>
-    <script>jQuery.noConflict();</script>
     <script src="js/main.js"/>
   </head>
 </page>

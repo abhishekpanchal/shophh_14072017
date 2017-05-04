@@ -301,8 +301,19 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                         <?php if($customHelper->isProductNew($product)): ?>
                         <div class="new-product"><?php echo __('New'); ?></div>
                         <?php endif; ?>
-                        <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
-                        <h5><?php echo $blockObj->getProductPrice($product->getFinalPrice()); ?></h5>
+                        <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
+                        <?php $_editors = $objEditor->getCollection(); ?>
+                        <?php $name = ''; ?>
+                        <?php foreach($_editors as $editor): ?>
+                          <?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
+                          <?php if(in_array($product->getId(),$editorProduct)): ?>
+                            <?php echo "Editor's Pick"; ?>
+                            <?php break; ?>
+                          <?php endif; ?>
+                        <?php endforeach; ?>
+                        <?php /*<p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p> */ ?>
+                        <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                        <h5><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
                       </div>
                     <?php endif; ?>
                 <?php endforeach; ?>

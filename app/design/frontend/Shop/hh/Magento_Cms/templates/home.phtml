@@ -90,35 +90,27 @@
                 <div class="item <?php if($iterator2 == 1) echo 'active'; ?>">
             	   <?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
                     <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
-
                         <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                         <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
                         <div class="decorating-formula-text col-md-8 col-md-offset-2"><?php echo $formulaItem->getContent(); ?></div>
                         <?php $d = 0; ?>
-
                         <?php foreach($formulaProduct as $fPro): ?>
                             <div class="decorating-formula-product col-md-4 col-sm-4 col-xs-4">
-                            <?php $proFormula = $objFormula->getProductById($fPro); ?>
-                            <?php
-                                $objPrice = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
-                                $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
-                                $price = $proFormula->getFinalPrice();
-                                $fImage = $proFormula->getData('small_image');
-                            ?>
-                            <a href="<?php echo $proFormula->getProductUrl() ?>">
-                                <div class="formula-thumb">
-                                    <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
-                                    <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $proFormula->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
-                                </div>
-                            </a>
-                            <h4 class="decorating-formula-product-title">
-                                <a href="<?php echo $proFormula->getProductUrl() ?>" class="hover-effect"><?php echo $productName = $proFormula->getName(); ?></a>
-                            </h4>
-                            <h4 class="decorating-formula-price">
-                                <?php echo '$'.number_format($price, 2, '.', ''); ?>
-                            </h4>
+                                <?php $proFormula = $objFormula->getProductById($fPro); ?>
+                                <?php $fImage = $proFormula->getData('small_image'); ?>
+                                <a href="<?php echo $proFormula->getProductUrl() ?>">
+                                    <div class="formula-thumb">
+                                        <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$fImage ?>" class="decorating-formula-thumb" />
+                                        <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $proFormula->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                                    </div>
+                                </a>
+                                <h4 class="decorating-formula-product-title">
+                                    <a href="<?php echo $proFormula->getProductUrl() ?>" class="hover-effect"><?php echo $productName = $proFormula->getName(); ?></a>
+                                </h4>
+                                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                                <h4 class="decorating-formula-price"><?php echo $abstractProductBlock->getProductPrice($proFormula) ?></h4>
                             </div>
-                             <?php $d++; if($d==3){ break; } ?>
+                            <?php $d++; if($d==3){ break; } ?>
                         <?php endforeach; ?>
                     </div>
                 </div>
