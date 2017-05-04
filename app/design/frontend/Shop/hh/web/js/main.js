@@ -232,7 +232,10 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
-$('#authorization-link').attr('href', '#social-login-popup').addClass('social-login');
-console.log('aaaaaa');
+    $('.styled-select select').change( function() {
+      console.log('a');
+      location.href = $(this).val();
+    });
+
 
 });
