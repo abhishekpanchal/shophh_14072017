@@ -8,7 +8,7 @@
 <div class="listing-404">
 	<?php foreach ($categories as $category): ?>
 		<div class="col-md-4 product-404">
-	    <a href="<?php echo $category->getUrl() ?>">
+	    <a href="<?php echo $category->getUrl() ?>" class="no-effect">
 	    	<img src="<?php echo $category->getAdditionalImage() ?>" width="400" height="400" />
 	    </a>
 	    <a href="<?php echo $category->getUrl() ?>" class="hover-effect"><?php echo $category->getName() ?></a>

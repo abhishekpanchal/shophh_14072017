@@ -9,7 +9,6 @@
     <css src="css/fonts.css" />
     <css src="css/main.css" />
     <css src="css/responsive.css"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>jQuery.noConflict();</script>
     <script src="js/main.js"/>
   </head>
