@@ -97,12 +97,18 @@ class View extends \Magento\Framework\View\Element\Template
         return $this->_productRepository->getById($id);
     }
     
-    public function getProductCollection()
+    public function getProductCollection($sort)
     {
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $model = $objectManager->create('\Hhmedia\Tags\Model\Tags');
-        $products  =  $model->getProducts($this->getTags());
-        return $products;
+        $productIds  =  $model->getProducts($this->getTags());
+
+        $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
+        $productCollection->addAttributeToFilter('entity_id', array('in' => $productIds));
+        $productCollection->addAttributeToSort($sort, 'ASC');
+        $productCollection->load();
+
+        return $productCollection;
     }
 
     public function getProductPrice($price){

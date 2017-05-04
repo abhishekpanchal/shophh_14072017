@@ -39,17 +39,17 @@
 	<?php if($_code == 'description'): ?>
 		<?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
 		<?php $_editors = $objEditor->getCollection(); ?>
-
+		<?php $name = ''; ?>
 		<?php foreach($_editors as $editor): ?>
 			<?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
 			<?php if(in_array($_product->getId(),$editorProduct)): ?>
 				<?php $name = $this->escapeHtml($editor->getName()); ?>
+				<div class="product-editors-pick-quote">
+					<span class="what-editor-says"><?php echo "What ".$name." Says:" ?></span>
+					<span class="what-editor-say-quote"><?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getEditorsQuote(), 'editors_quote') ?></span>
+				</div>
 				<?php break; ?>
 			<?php endif; ?>
 		<?php endforeach; ?>
-		<div class="product-editors-pick-quote">
-			<span class="what-editor-says"><?php echo "What ".$name." Says:" ?></span>
-			<span class="what-editor-say-quote"><?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getEditorsQuote(), 'editors_quote') ?></span>
-		</div>
 	<?php endif; ?>
 <?php endif; ?>
