@@ -233,7 +233,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
 
     $('.styled-select select').change( function() {
-      console.log('a');
+      $('.styled-select').addClass('mynameisabhishek');
       location.href = $(this).val();
     });
 
