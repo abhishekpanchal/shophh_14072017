@@ -6623,14 +6623,22 @@ Contact Pages
     }
     a {
       border-bottom: 2px solid #000;
-      padding-bottom: 3px;
+      padding-bottom: 2px;
 
       img {
         border: none;
       }
-      
+
       &:hover {
         border: none;
+      }
+    }
+    .no-effect {
+      border: none;
+      .relative;
+
+      &:before {
+        content: none;
       }
     }
     .product-404 {
