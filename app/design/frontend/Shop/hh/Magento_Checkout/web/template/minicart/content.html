@@ -47,8 +47,15 @@
 
     <!-- ko ifnot: getCartParam('summary_count') -->
         <strong class="subtitle empty" data-bind="visible: closeSidebar()">
-            <!-- ko i18n: 'You have no items in your shopping cart.' --><!-- /ko -->
+            <!-- ko i18n: 'There are no items in your shopping cart.' --><!-- /ko -->
         </strong>
+        <button type="button"
+            id="btn-minicart-close"
+            class="action close continue"
+            data-action="close"
+            data-bind="attr: { title: $t('Close') }">
+            <span><!-- ko i18n: 'Close and Continue Shopping' --><!-- /ko --></span>
+        </button>
         <!-- ko if: getCartParam('cart_empty_message') -->
             <p class="minicart empty text"><!-- ko text: getCartParam('cart_empty_message') --><!-- /ko --></p>
         <!-- /ko -->
@@ -83,7 +90,7 @@
                     <!-- ko i18n: 'Go to Checkout' --><!-- /ko -->
                 </button>
                 <div data-bind="html: getCartParam('extra_actions')"></div>
-                <a class="dropdown-viewcart" data-bind="attr: {href: shoppingCartUrl}">View Cart</a>
+                <a class="dropdown-viewcart" data-bind="attr: {href: shoppingCartUrl}">View Cart &gt;</a>
             </div>
         </div>
         <!-- /ko -->

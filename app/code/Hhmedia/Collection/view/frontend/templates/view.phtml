@@ -35,7 +35,7 @@
 									<div class="collection-item product-details-block col-md-3">
 											<div class="product-img">
 												<a href="<?php echo $product->getProductUrl() ?>">
-					                	<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+					                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
 					            	</a>
 					            	<a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $product->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
 											</div>
@@ -47,7 +47,8 @@
 					                <div class="new-product"><?php echo __('New'); ?></div>
 					            <?php endif; ?>
 					            <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
-					            <h5><?php echo $this->getProductPrice($product->getFinalPrice()); ?></h5>
+<?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                               <h5 class="decorating-formula-price"><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
 										</div>
 				        	<?php endif; ?>
 						<?php endforeach; ?>

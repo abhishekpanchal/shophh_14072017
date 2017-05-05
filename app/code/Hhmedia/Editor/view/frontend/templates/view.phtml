@@ -54,7 +54,9 @@
             <h4>
                 <a class="hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
             </h4>
-            <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+            <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+            <h5 class="decorating-formula-price"><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
+
             <div class="editor-mini-quote"><?php echo $pro->getData('editors_quote'); ?></div>
         </li>
         <?php endforeach; ?>

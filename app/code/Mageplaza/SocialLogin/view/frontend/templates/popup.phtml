@@ -22,11 +22,10 @@
     </div>
     <div style="clear: both"></div>
     <script>
-    document.addEventListener("DOMContentLoaded", function(event) {
 
-        // var x = document.getElementById("my-account").parentNode;
-        // console.log('loadeddddd');
-        // x.className += "authorization-link";
+
+// var x = document.getElementById("my-account").parentNode;
+// x.className += "authorization-link";
 
         require(['Mageplaza_SocialLogin/js/sociallogin/form'], function (SocialLoginForm) {
             var config = {
@@ -42,7 +41,7 @@
                 loginForm: '#social-form-login',
                 loginBtn: '#bnt-social-login-authentication',
                 forgotBtn: '#social-form-login .action.remind',
-                createBtn: '.btn-register-form, .create-btn',
+                createBtn: '#social-form-login .action.create',
                 // createBtn: '#social-form-login .action.create, .register-url, .btn-register-form',
                 formLoginUrl: '<?php echo $block->getFormLoginUrl();?>',
                 /*Forgot*/
@@ -97,7 +96,8 @@
             }
         });
 
-  });
+        console.log('test');
+
 
     </script>
 <?php endif; ?>

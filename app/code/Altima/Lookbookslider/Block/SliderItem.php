@@ -299,7 +299,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                         $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                         $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
                         $regular_price = $priceHelper->currency($regular_price, true, false);
-                        $_p_price      = '<div class="old-price">' . $regular_price . '</div>' . $_p_price;
+                        $_p_price      = '<span class="current-price">' . $_p_price . '</span>' . '<span class="old-price">' . $regular_price . '</span>';
                     }
                     $html_content .= '<div class="price">' . $_p_price . '</div>';
                 }
@@ -409,7 +409,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                         $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                         $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
                         $regular_price = $priceHelper->currency($regular_price, true, false);
-                        $_p_price      = '<div class="old-price">' . $regular_price . '</div>' . $_p_price;
+                        $_p_price      =  '<span class="current-price">' . $_p_price . '</span>' . '<span class="old-price">' . $regular_price . '</span>';
                     }
                     $html_content .= '<div class="price">' . $_p_price . '</div>';
                 }
@@ -418,8 +418,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 }
                 $html_content .= '</div>';
             } else {
-                //$html_content .= '<div>Product with SKU "'.$decoded_array[$key]['text'].'" doesn\'t exists.</div>';
-                $html_content .= '<div><a href=\'' . $decoded_array[$key]['href'] . '\'>' . $decoded_array[$key]['text'] . '</a></div>';
+                $html_content .= '<div>Product with SKU "'.$decoded_array[$key]['text'].'" doesn\'t exists.</div>';
+                //$html_content .= '<div><a href=\'' . $decoded_array[$key]['href'] . '\'>' . $decoded_array[$key]['text'] . '</a></div>';
             }
             $html_content .= '</div></div>';
             $decoded_array[$key]['text'] = $html_content;
