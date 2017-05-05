@@ -89,7 +89,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                         <div class="new-product"><?php echo __('New'); ?></div>
                                     <?php endif; ?>
                                     <?php $shortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
-                                    <?php echo $customHelper->limit_description($shortDescription, 10); ?>
+                                    <?php echo $customHelper->limit_description($shortDescription, 8); ?>
                                 </div>
                             <?php endif; ?>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
