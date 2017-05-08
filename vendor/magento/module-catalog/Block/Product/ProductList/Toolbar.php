@@ -189,8 +189,33 @@ class Toolbar extends \Magento\Framework\View\Element\Template
         if ($limit) {
             $this->_collection->setPageSize($limit);
         }
-        if ($this->getCurrentOrder()) {
+        
+        /*if ($this->getCurrentOrder()) {
             $this->_collection->setOrder($this->getCurrentOrder(), $this->getCurrentDirection());
+        }*/
+          
+        if ($this->getCurrentOrder()) {
+            switch ($this->getCurrentOrder()) {
+            case 'created_at':
+                $this->_collection->getSelect()->order('e.created_at DESC');
+                break;
+            case 'bestseller':
+                $this->_collection->getSelect()->joinLeft( 
+                'sales_order_item', 
+                'e.entity_id = sales_order_item.product_id', 
+                array('qty_ordered'=>'SUM(sales_order_item.qty_ordered)')) 
+                ->group('e.entity_id') 
+                ->order('qty_ordered DESC');
+            case 'price_low':
+                $this->_collection->getSelect()->order('price ASC');
+                break;
+            case 'price_high':
+                $this->_collection->getSelect()->order('price DESC');
+                break;
+            default:
+                $this->_collection->setOrder($this->getCurrentOrder(), $this->getCurrentDirection());
+                break;
+            }
         }
         return $this;
     }

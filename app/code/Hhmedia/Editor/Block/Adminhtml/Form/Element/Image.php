@@ -6,7 +6,7 @@
  */
 namespace Hhmedia\Editor\Block\Adminhtml\Form\Element;
 
-class Image extends Magento\Framework\Data\Form\Element\Image
+class Image extends \Magento\Framework\Data\Form\Element\Image
 { 
     /**
      * Get image preview url

@@ -3,7 +3,7 @@
     <update handle="customer_account"/>
     <body>
         <referenceContainer name="content">
-        	<block class="Customweb\BeanstreamCw\Block\Customer\Aliases" name="beanstreamcw.customer.aliases" cacheable="false" />
+        	<!--<block class="Customweb\BeanstreamCw\Block\Customer\Aliases" name="beanstreamcw.customer.aliases" cacheable="false" />-->
             <block class="Magento\Customer\Block\Account\Dashboard" name="customer.account.link.back" template="account/link/back.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
