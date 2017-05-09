@@ -30,5 +30,6 @@
                 </arguments>
             </block>
         </referenceBlock>
+        <referenceBlock name="customer-account-navigation-giftvoucher-index-index" remove="true" />
     </body>
 </page>

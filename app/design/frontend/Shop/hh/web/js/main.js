@@ -254,8 +254,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
-    $('.styled-select select').change( function() {
-      $('.styled-select').addClass('mynameisabhishek');
+     $('.tags-index-view .styled-select select').change( function() {
       location.href = $(this).val();
     });
 
