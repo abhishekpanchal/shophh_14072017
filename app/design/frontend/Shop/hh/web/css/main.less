@@ -1694,8 +1694,6 @@ Social Login
     display: none!important;
 }
 
-
-
 .product-info-main .old-price .price-label::after, .product-options-bottom .old-price .price-label::after, .product-info-main .special-price .price-label::after, .product-options-bottom .special-price .price-label::after {
     content: ''!important;
 }
@@ -2822,31 +2820,6 @@ Media Queries
   }
 }
 
-
-/* ------ Mobile Landscape Size to Tablet Portrait (devices and browsers) ------*/
-
-
-/* ------ Mobile Portrait Size to Mobile Landscape Size (devices and browsers) ------*/
-@media only screen and (max-width: 600px) {
-
-.reviews-headline {
-  padding: 0;
-}
-
-  .product-item-name, .product.name a {
-    font-size: 14px!important;
-  }
-  .catalog-category-view {
-    .old-price {
-      display: none;
-    }
-  }
-  .catalog-category-view .special-price {
-    width: 100%;
-    display: block;
-    text-align: center!important;
-  }
-}
 
 .header-toplinks {
   a {
@@ -4870,8 +4843,11 @@ Awe Menu
     .relative;
 
     &:hover {
-      color: #000;
+      color: #8d8d8d;
       cursor: pointer;
+    }
+    &:before {
+      border-color: #8d8d8d;
     }
   }
 }
@@ -5701,17 +5677,6 @@ Catalog View
       font-size: 16px;
       font-weight: normal;
     }
-    /*.price {
-      color: #8d8d8d;
-    }
-    .special-price {
-      display: inline-block;
-      color: #b13301;
-    }
-    .old-price {
-      display: inline-block;
-      margin-left: 5px;
-    }*/
   }
   .quickview-bar {
     border: 1px solid #b0b7b8;
@@ -5943,7 +5908,7 @@ Magic Scroll
     display: block;
     text-transform: uppercase;
     font-family: @headlineFont;
-    margin-top: 5px;
+    margin: 10px auto;
   }
   .product-info-main .product-options-wrapper .fieldset .swatch-attribute-label {
     width: auto;
@@ -7803,7 +7768,6 @@ Tablet Portrait size to standard 960 (devices and browsers)
 
   .price {
     font-size: inherit;
-    color: #cecece;
   }
 }
 
