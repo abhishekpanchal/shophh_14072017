@@ -66,6 +66,6 @@ class Link extends \Magento\Framework\View\Element\Html\Link
      */
     public function getLabel()
     {
-        return __('My Wish List');
+        return __('My Wishlist');
     }
 }

@@ -464,7 +464,7 @@ class Config extends \Magento\Eav\Model\Config
      */
     public function getAttributeUsedForSortByArray()
     {
-        $options = ['position' => __('Position')];
+        $options = ['created_at' => __('Newest'),'position' => __('Featured'),'bestseller'=>__('Best Selling'),'price_low' => __('Price Low to High'),'price_high' => __('Price High to Low')];
         foreach ($this->getAttributesUsedForSortBy() as $attribute) {
             /* @var $attribute \Magento\Eav\Model\Entity\Attribute\AbstractAttribute */
             $options[$attribute->getAttributeCode()] = $attribute->getStoreLabel();
