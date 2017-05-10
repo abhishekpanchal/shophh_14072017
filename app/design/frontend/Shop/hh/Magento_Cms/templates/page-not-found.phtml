@@ -6,6 +6,7 @@
 	$categories->addAttributeToFilter('page_not_found', 1);
 ?>
 <div class="listing-404">
+	<?php $i = 1; ?>
 	<?php foreach ($categories as $category): ?>
 		<div class="col-md-4 product-404">
 	    <a href="<?php echo $category->getUrl() ?>" class="no-effect">
@@ -13,5 +14,6 @@
 	    </a>
 	    <a href="<?php echo $category->getUrl() ?>" class="hover-effect"><?php echo $category->getName() ?></a>
 	  </div>
+	  <?php if($i++ == 6) break; ?>
 	<?php endforeach; ?>
 </div>

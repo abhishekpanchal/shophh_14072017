@@ -39,12 +39,34 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
   jQuery(document).ready(function () {
 
-      $('.tabs-register').click(function() {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log('clicked');
-      });
-      
+    // register popup tabs 
+    $('.tabs-replica li, .create-btn').click(function() {
+      event.preventDefault();
+      event.stopPropagation();
+
+      if ( $(this).hasClass('tabs-register') || $(this).hasClass('create') ) {
+        $('.social-login.authentication').hide();
+        $('.social-login.create').show();
+      } else {
+        $('.social-login.authentication').show();
+        $('.social-login.create').hide();
+      }
+    });
+
+    $('a.action.remind').click(function() {
+      $('.social-login.authentication').hide();
+      $('.social-login.create').hide();
+      $('.social-login.forgot').show();
+    });
+
+    $('a.action.back').click(function() {
+      $('.social-login.authentication').show();
+      $('.social-login.forgot').hide();
+    });
+    
+
+
+
 
     jQuery(document).on('click', '.hotspot', function (event) {
       event.preventDefault();
@@ -232,8 +254,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
-    $('.styled-select select').change( function() {
-      $('.styled-select').addClass('mynameisabhishek');
+     $('.tags-index-view .styled-select select').change( function() {
       location.href = $(this).val();
     });
 

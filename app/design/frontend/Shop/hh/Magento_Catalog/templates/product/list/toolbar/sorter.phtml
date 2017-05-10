@@ -15,19 +15,73 @@
  */
 use Magento\Catalog\Model\Product\ProductList\Toolbar;
 ?>
+<?php 
+$active = '';
+$currentUrl = strtok($block->getPagerUrl(), '?');
+$color = $this->getRequest()->getParam('color');
+$price = $this->getRequest()->getParam('price');
+$order = $this->getRequest()->getParam('product_list_order');
+$limit = $this->getRequest()->getParam('product_list_limit');
+?>
 <div class="toolbar-sorter sorter col-md-2 hidden-xs">
     <div class="styled-select">
         <label class="sort-label" for="sorter"><?php /* @escapeNotVerified */ echo __('Sort') ?></label>
         <select id="sorter" data-role="sorter" class="sorter-options">
             <?php foreach ($block->getAvailableOrders() as $_key => $_order): ?>
-                <option value="<?php /* @escapeNotVerified */ echo $_key; ?>"
+                <?php if($_key != "price"): ?>
+                <option value="<?php echo $_key; ?>"
                     <?php if ($block->isOrderCurrent($_key)): ?>
                         selected="selected"
                     <?php endif; ?>
                     >
                     <?php echo $block->escapeHtml(__($_order)) ?>
                 </option>
+                <?php endif; ?>
             <?php endforeach; ?>
         </select>
     </div>
 </div>
+
+<?php 
+$attributeCode = 'color';
+$entityType = 'catalog_product';
+ 
+$objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+$attributeInfo = $objectManager->get(\Magento\Eav\Model\Entity\Attribute::class)->loadByCode($entityType, $attributeCode);
+ 
+$attributeId = $attributeInfo->getAttributeId();
+$attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entity\Attribute\Option\Collection::class)
+                                    ->setPositionOrder('asc')
+                                    ->setAttributeFilter($attributeId)                                               
+                                    ->setStoreFilter()
+                                    ->load();
+?>
+    
+
+
+<div class="styled-select sorter-container ">
+    <select id="price" data-role="price" class="sorter-options price-options addParam">
+        <option value=""><?php echo __('Price') ?></option>
+        <option value="0-50.99" <?php echo $price == '0-50.99' ? 'selected' : ''; ?>><?php echo __('$50 and Under') ?></option>
+        <option value="51-100.99" <?php echo $price == '51-100.99' ? 'selected' : ''; ?>><?php echo __('$51 - $100') ?></option>
+        <option value="101-200.99" <?php echo $price == '101-200.99' ? 'selected' : ''; ?>><?php echo __('$101 - $200') ?></option>
+        <option value="201-500.99" <?php echo $price == '201-500.99' ? 'selected' : ''; ?>><?php echo __('$201 - $500') ?></option>
+        <option value="501-" <?php echo $price == '501-' ? 'selected' : ''; ?>><?php echo __('$501 and Over') ?></option>
+    </select>
+</div>
+
+
+<div class="styled-select sorter-container ">
+    <select id="color" data-role="color" class="sorter-options color-options addParam">
+        <option value=""><?php echo __('Color') ?></option>
+        <?php foreach($attributeOptionAll as $colorOpt): ?>
+            <?php $cId = $colorOpt['option_id']; ?>
+            <option value="<?php echo $cId ?>" <?php echo $color == $cId ? 'selected' : ''; ?>>
+                <?php echo $colorOpt['value']; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+
+
