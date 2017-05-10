@@ -7417,16 +7417,17 @@ Orders
   font-size: 18px;
   font-family: @fancyFont;
 }
+
 .order-details-items {
-  td {
-    padding: 20px;
+  tbody td {
+    padding: 20px !important;
   }
   td.name {
     font-size: 12px;
     color: #8d8d8d;
   }
-  td.qt {
-    font-size: 18px;
+  td.qty {
+    font-family: @headlineFont;
   }
   .table-order-items .product-item-name {
     font-size: 20px;
@@ -7447,6 +7448,17 @@ Orders
     }
   }
 }
+
+
+.sales-order-view .block-order-details-view {
+  display: none;
+}
+
+
+
+
+
+
 
 
 
@@ -7982,10 +7994,6 @@ Tablet Portrait size to standard 960 (devices and browsers)
     }
   }
 }
-
-
-
-
 
 
 
