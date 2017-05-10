@@ -56,20 +56,32 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
                                     ->setStoreFilter()
                                     ->load();
 ?>
-<select id="color" data-role="color" class="color-options">
-    <option value=""><?php echo __('Color') ?></option>
-    <?php foreach($attributeOptionAll as $colorOpt): ?>
-        <?php $cId = $colorOpt['option_id']; ?>
-        <option value="<?php echo $currentUrl.'?color='.$cId; ?>" <?php echo $color == $cId ? 'selected' : ''; ?>>
-            <?php echo $colorOpt['value']; ?>
-        </option>
-    <?php endforeach; ?>
-</select>
-<select id="price" data-role="price" class="price-options">
-    <option value=""><?php echo __('Price') ?></option>
-    <option value="0-50.99" <?php echo $price == '0-50.99' ? 'selected' : ''; ?>><?php echo __('$50 and Under') ?></option>
-    <option value="51-100.99" <?php echo $price == '51-100.99' ? 'selected' : ''; ?>><?php echo __('$51 - $100') ?></option>
-    <option value="101-200.99" <?php echo $price == '101-200.99' ? 'selected' : ''; ?>><?php echo __('$101 - $200') ?></option>
-    <option value="201-500.99" <?php echo $price == '201-500.99' ? 'selected' : ''; ?>><?php echo __('$201 - $500') ?></option>
-    <option value="501-" <?php echo $price == '501-' ? 'selected' : ''; ?>><?php echo __('$501 and Over') ?></option>
-</select>
+    
+
+
+<div class="styled-select sorter-container ">
+    <select id="price" data-role="price" class="sorter-options price-options addParam">
+        <option value=""><?php echo __('Price') ?></option>
+        <option value="0-50.99" <?php echo $price == '0-50.99' ? 'selected' : ''; ?>><?php echo __('$50 and Under') ?></option>
+        <option value="51-100.99" <?php echo $price == '51-100.99' ? 'selected' : ''; ?>><?php echo __('$51 - $100') ?></option>
+        <option value="101-200.99" <?php echo $price == '101-200.99' ? 'selected' : ''; ?>><?php echo __('$101 - $200') ?></option>
+        <option value="201-500.99" <?php echo $price == '201-500.99' ? 'selected' : ''; ?>><?php echo __('$201 - $500') ?></option>
+        <option value="501-" <?php echo $price == '501-' ? 'selected' : ''; ?>><?php echo __('$501 and Over') ?></option>
+    </select>
+</div>
+
+
+<div class="styled-select sorter-container ">
+    <select id="color" data-role="color" class="sorter-options color-options addParam">
+        <option value=""><?php echo __('Color') ?></option>
+        <?php foreach($attributeOptionAll as $colorOpt): ?>
+            <?php $cId = $colorOpt['option_id']; ?>
+            <option value="<?php echo $cId ?>" <?php echo $color == $cId ? 'selected' : ''; ?>>
+                <?php echo $colorOpt['value']; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
+
+

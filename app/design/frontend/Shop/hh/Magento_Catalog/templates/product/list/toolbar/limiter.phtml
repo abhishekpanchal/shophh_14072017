@@ -43,7 +43,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
                 $allcategoryproduct = $cateinstance->create()->load($catId)->getProductCollection();
                 $count = count($allcategoryproduct);
             ?>
-            <?php if($count > 20): ?>
+            <?php //if($count > 20): ?>
                 <select id="limiter" data-role="limiter" class="sorter-options limiter-option">
                     <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
                         <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
@@ -52,9 +52,9 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
                         </option>
                     <?php endforeach; ?>
                 </select>
-            <?php else: ?>
+            <?php /*else: ?>
                 <?php echo $count; ?>
-            <?php endif; ?>
+            <?php endif;*/ ?>
         </div>
     </div>
 <?php elseif($moduleName == "catalogsearch"): ?>
