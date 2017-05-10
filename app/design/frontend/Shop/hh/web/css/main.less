@@ -1171,6 +1171,8 @@ Dashboard Fixes
   font-style: italic;
   font-size: 22px;
 }
+
+
 .login-container {
   margin-top: 40px;
 }
@@ -1230,6 +1232,13 @@ Dashboard Fixes
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #e6e6e7;
+  }
+
+  .count {
+    float: right;
+    font-family: @baseFont;
+    font-style: normal;
+    font-size: 14px;
   }
 }
 
@@ -7357,6 +7366,9 @@ Orders
             padding-bottom: 15px;
             padding-top: 15px;
           }
+          .actions {
+            text-align: right;
+          }
         }
         a {
           text-decoration: underline;
@@ -7364,8 +7376,83 @@ Orders
       }
     }
   }
-
 }
+
+
+.sales-order-view .order-links {
+  display: none;
+}
+
+.order-details-items {
+  font-size: 14px;
+  
+  .block-main-title {
+    border: 0;
+    padding: 0;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  .shipping-container {
+    padding: 20px 0;
+    margin: 20px 0 12px;
+    border-top: 1px solid #d1d1d1;
+    border-bottom: 1px solid #d1d1d1;
+    overflow: auto;
+    .col-md-6:first-child {
+      padding-left: 0;
+    }
+  }
+  address {
+  //  font-size: 14px;
+  }
+}
+
+.price-including-tax, .price-excluding-tax {
+  font-size: 18px;
+  font-family: @fancyFont;
+}
+.order-details-items {
+  td {
+    padding: 20px;
+  }
+  td.name {
+    font-size: 12px;
+    color: #8d8d8d;
+  }
+  td.qt {
+    font-size: 18px;
+  }
+  .table-order-items .product-item-name {
+    font-size: 20px;
+    font-style: italic;
+    font-family: @fancyFont;
+    color: #000;
+  }
+  .item-options {
+    overflow: auto;
+    dd {
+      float: left;
+      margin-bottom: 3px;
+      margin-right: 8px;
+      padding-right: 8px;
+    }
+    dd:first-child {
+      border-right: 1px solid #8d8d8d;
+    }
+  }
+}
+
+
+
+
+
+
 
 .customer-account-index {
   .block-tickets-dashboard {
@@ -7844,4 +7931,66 @@ Tablet Portrait size to standard 960 (devices and browsers)
     margin-left: -2px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+  /* ===============================
+  About Us
+  =================================*/
+.cms-about-us {
+  .main-content {
+    margin-top: -40px;
+  }
+  .sidebar {
+    display: none;
+  }
+  div.pinch {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px 0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  img.portrait {
+    border-radius: 50%;
+    width: 140px;
+    float: left;
+    margin: 0 15px 2px 0;
+  }
+  h3 {
+    font-size: 28px;
+    font-family: @fancyFont;
+    font-style: italic;
+    border-bottom: 1px solid #000;
+    margin-top: 100px;
+    padding-bottom: 8px;
+  }
+  .signature {
+    padding-left: 60%;
+    font-size: 14px;
+    strong {
+      display: block;
+      font-family: @headlineFont;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
