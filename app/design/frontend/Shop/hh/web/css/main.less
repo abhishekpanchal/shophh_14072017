@@ -762,6 +762,28 @@ Products
   display: inline-block;
 }
 
+.old-price, .old.price {
+  margin: 0;
+  text-decoration: none;
+}
+.old-price span {
+  color: #666;
+  position: relative;
+  font-size: 14px;
+}
+.old-price span span {
+  font-size: 14px!important;
+}
+.old-price .product-info-main .price-box .weee .price {
+  font-size: 14px!important;
+}
+.old-price span.price-label:before {
+  content: '(';
+}
+.old-price span.price-wrapper:after {
+  content: ')'; 
+}
+
 
 /* ==========================================================================
 Products Tabs
@@ -1702,7 +1724,9 @@ Social Login
   font-size: 13px!important;
 }
 
-
+.catalog-category-view {
+  .old-price span span {font-size: 11px!important;}
+}
 
 .abs-actions-addto-gridlist:hover::before, .product-item-actions .actions-secondary > .action:hover::before, .table-comparison .wishlist.split.button > .action.split:hover::before, .product-items .wishlist.split.button > .action.split:hover::before, .products.list.items .action.towishlist:hover::before, .table-comparison .action.towishlist:hover::before {
     color: #FFF!important;
@@ -2886,9 +2910,11 @@ Media Queries
     width: 100%!important;
     background-color: #FFF;
     margin-top: 10px;
+    margin-bottom: 20px;
     color: #7a7a7a;
     font-size: 12px;
     min-height: 45px;
+    padding: 18px 20px!important;
   }
   .btn-subscribe {
     background-color: #000;
@@ -4497,7 +4523,6 @@ Products
       position: relative;
       display: inline-block;
       margin-left: 10px;
-      text-decoration: line-through;
     }
   }
 }
