@@ -17,14 +17,20 @@ define([
             directionControl: '[data-role="direction-switcher"]',
             orderControl: '[data-role="sorter"]',
             limitControl: '[data-role="limiter"]',
+            colorControl: '[data-role="color"]',
+            priceControl: '[data-role="price"]',
             mode: 'product_list_mode',
             direction: 'product_list_dir',
             order: 'product_list_order',
             limit: 'product_list_limit',
+            color: 'color',
+            price: 'price',
             modeDefault: 'grid',
             directionDefault: 'asc',
             orderDefault: 'position',
             limitDefault: '9',
+            colorDefault: '',
+            priceDefault: '',
             url: ''
         },
 
@@ -33,6 +39,8 @@ define([
             this._bind($(this.options.directionControl), this.options.direction, this.options.directionDefault);
             this._bind($(this.options.orderControl), this.options.order, this.options.orderDefault);
             this._bind($(this.options.limitControl), this.options.limit, this.options.limitDefault);
+            this._bind($(this.options.colorControl), this.options.color, this.options.colorDefault);
+            this._bind($(this.options.priceControl), this.options.price, this.options.priceDefault);
         },
 
         _bind: function (element, paramName, defaultValue) {
