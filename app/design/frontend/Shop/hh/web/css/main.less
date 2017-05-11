@@ -6031,6 +6031,9 @@ Editos Main Page
         margin-bottom: 5px;
         font-style: italic;
         margin-top: 20px;
+        a {
+          color: #fff;
+        }
       }
       .editor-blurb {
         font: normal 15px/22px @baseFont;
@@ -6043,7 +6046,7 @@ Editos Main Page
       }
       .editor-quote {
         font: italic 18px/30px @fancyFont;
-        background: url(../images/quote-open.png) no-repeat 0 20px;
+        background: url(../images/quote-open-white.png) no-repeat 0 20px;
         padding: 25px 34px;
         position: relative;
         font-weight: normal;
@@ -6053,7 +6056,7 @@ Editos Main Page
           right: 0;
           width: 26px;
           height: 22px;
-          background: url(../images/quote-close.png);
+          background: url(../images/quote-close-white.png);
           position: absolute;
           z-index: 9999;
           background-repeat: no-repeat;
@@ -7791,7 +7794,7 @@ Tablet Portrait size to standard 960 (devices and browsers)
     font-family: @fancyFont;
     font-size: 18px;
     line-height: 26px;
-    
+
     span {
       text-transform: capitalize;
     }
@@ -7934,13 +7937,14 @@ h4.decorating-formula-price {
   A little hacky solution for nav current page hightlights
   =================================*/
 .lookbookslider-index-index .am-sortable .am-tab:nth-child(3) a,
+.lookbookslider-index-view .am-sortable .am-tab:nth-child(3) a,
 .editor-index-index .am-sortable .am-tab:nth-child(4) a,
+.editor-index-view .am-sortable .am-tab:nth-child(4) a,
 .category-made-in-canada .am-sortable .am-tab:nth-child(5) a,
-.wishlist-index-index .am-sortable .am-tab:nth-child(6) a {
+.wishlist-index-index .am-sortable .am-tab:nth-child(6) a,
+.wishlist-index-view .am-sortable .am-tab:nth-child(6) a {
   background: #f0f0f0;
 }
-
-
 
 
 
