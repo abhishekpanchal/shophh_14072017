@@ -2816,7 +2816,7 @@ Media Queries
     color: #7a7a7a;
     font-size: 12px;
     min-height: 45px;
-    padding: 18px 20px!important;
+    padding: 0 20px!important;
   }
   .btn-subscribe {
     background-color: #000;
@@ -6545,6 +6545,17 @@ Contact Pages
 Mini Cart
 ========================================================================== */
 .minicart-items-wrapper {
+  padding: 0;
+  border: none;
+  max-height: 270px !important;
+
+  .block-minicart {
+    padding: 0;
+    border-color: #000;
+  }
+}
+
+.minicart-items-wrapper {
   margin: 0;
   width: 100%;
 
@@ -6587,7 +6598,7 @@ Mini Cart
       }
     }
     li:last-child {
-        border-bottom: 1px solid #DDD;
+        border-bottom: 1px solid #DDD !important;
     }
     .product-item {
       padding: 5px 0;
@@ -6712,6 +6723,7 @@ Mini Cart
   font-size: 16px;
   font-family: @fancyFont;
   font-weight: normal;
+  color: #000;
 }
 .block-minicart .block-content > .actions > .primary {
   margin: 0;
@@ -6789,6 +6801,9 @@ Mini Cart
     font-family: @fancyFont;
     padding: 8px 0;
   }
+  .minicart-widgets {
+    margin-top: 0;
+  }
 }
 .minicart-wrapper .action.showcart.active {
   color: #000;
@@ -6801,28 +6816,21 @@ Mini Cart
   color: #000;
 }
 
-.minicart-items-wrapper {
-  padding: 0;
-  border: none;
-
-  .block-minicart {
-    padding: 0;
-    border-color: #000;
-  }
-}
-
+.minicart-wrapper .minicart-widgets
 
 .block-minicart .items-total {
   font-family: @headlineFont;
   color: #000;
   margin-bottom: 20px;
   margin-left: 25px;
+  font-weight: 700;
 }
 
 .block-minicart .block-content > .actions > .primary .action.primary {
     margin-bottom: 10px;
     width: 81%;
     margin-left: 9%;
+    text-align: center;
 }
 
 #btn-minicart-close {
@@ -7779,8 +7787,11 @@ Tablet Portrait size to standard 960 (devices and browsers)
 
   padding: 20px 0;
   .subtitle.empty {
-    padding: 0;
-
+    padding: 30px 40px 20px;
+    font-family: @fancyFont;
+    font-size: 18px;
+    line-height: 26px;
+    
     span {
       text-transform: capitalize;
     }
