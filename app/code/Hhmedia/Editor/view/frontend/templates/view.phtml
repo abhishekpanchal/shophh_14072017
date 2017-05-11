@@ -75,7 +75,7 @@
                 <div class="col-md-3 editor-single-thumb text-center">
                     <a href="<?php echo $objEditor->getItemUrl($editor) ?>">
                         <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
-                        <h4><?php echo $this->escapeHtml($editor->getName()) ?></h4>
+                        <h4><a class="hover-effect"><?php echo $this->escapeHtml($editor->getName()) ?></a></h4>
                     <h5><?php echo $this->escapeHtml($editor->getJobTitle()) ?></h5>
                     </a>
                 </div>

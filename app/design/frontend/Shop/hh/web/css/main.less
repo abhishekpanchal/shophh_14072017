@@ -555,9 +555,7 @@ Product Description
 Products
  ========================================================================== */
 
-.product-info-main .special-price, .product-options-bottom .special-price {
-  margin: 0;
-}
+
 
 .catalog-product-view {
   .product-qty {
@@ -601,11 +599,6 @@ Products
     }
   }
 
-  .price-container {
-    font-family: @fancyFont;
-    font-size: 26px;
-  }
-
   .new-product {
     font-size: 14px;
     color: #6f8169;
@@ -624,9 +617,6 @@ Products
       font-family: @fancyFont;
       font-size: 16px;
       margin-top: 15px;
-    }
-    .price-container .price {
-      color: #8d8d8d;
     }
   }
   .single-product-wishlist {
@@ -748,9 +738,7 @@ Products
 }
 
 
-.product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {
-  font-size: 26px;
-}
+
 
 
 
@@ -758,31 +746,7 @@ Products
   margin: 0;
 }
 
-.product-info-main .special-price, .product-options-bottom .special-price {
-  display: inline-block;
-}
 
-.old-price, .old.price {
-  margin: 0;
-  text-decoration: none;
-}
-.old-price span {
-  color: #666;
-  position: relative;
-  font-size: 14px;
-}
-.old-price span span {
-  font-size: 14px!important;
-}
-.old-price .product-info-main .price-box .weee .price {
-  font-size: 14px!important;
-}
-.old-price span.price-label:before {
-  content: '(';
-}
-.old-price span.price-wrapper:after {
-  content: ')'; 
-}
 
 
 /* ==========================================================================
@@ -850,19 +814,7 @@ Products Buttons
   color: #FFF;
 }
 
-.product-item-details {
-  .price-container {
-    /* display: block; */
-    padding: 0;
 
-    .price {
-      font-size: 14px;
-      font-family: @headlineFont;
-      color: #666;
-      margin-top: 5px;
-    }
-  }
-}
 
 
 /* ==========================================================================
@@ -1139,9 +1091,7 @@ fieldset {
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   line-height: inherit;
 }
-.product-info-main .special-price .price-container, .product-options-bottom .special-price .price-container {
-  font-size: inherit;
-}
+
 
 
 /* ==========================================================================
@@ -1330,11 +1280,6 @@ Quick View
   }
 }
 .page-products {
-  .price-box {
-    .block;
-    margin-top: 10px;
-  }
-
   .product-item-inner {
     display: inline-block;
   }
@@ -1698,22 +1643,7 @@ Social Login
   }
 }
 
-.products-upsell {
-  .special-price {
-    width: 40%;
-    display: inline-block;
-    text-align: right;
 
-    .price-container .price {
-
-    }
-  }
-  .old-price {
-    width: 50%;
-    display: inline-block;
-    text-align: left;
-  }
-}
 
 
 .rating-summary .rating-result > span:before {
@@ -1724,9 +1654,7 @@ Social Login
   font-size: 13px!important;
 }
 
-.catalog-category-view {
-  .old-price span span {font-size: 11px!important;}
-}
+
 
 .abs-actions-addto-gridlist:hover::before, .product-item-actions .actions-secondary > .action:hover::before, .table-comparison .wishlist.split.button > .action.split:hover::before, .product-items .wishlist.split.button > .action.split:hover::before, .products.list.items .action.towishlist:hover::before, .table-comparison .action.towishlist:hover::before {
     color: #FFF!important;
@@ -1751,13 +1679,9 @@ Social Login
     display: none!important;
 }
 
-.product-info-main .old-price .price-label::after, .product-options-bottom .old-price .price-label::after, .product-info-main .special-price .price-label::after, .product-options-bottom .special-price .price-label::after {
-    content: ''!important;
-}
 
-.product-item .price-box .price-label:after {
-  content: ''!important;
-}
+
+
 :root .catalog-product-view .owl-carousel.products .owl-controls .owl-nav.fullscreen .owl-next,
 :root .catalog-product-view .owl-carousel.products .owl-controls .owl-nav.fullscreen .owl-prev {
   top: 45%!important;
@@ -1782,9 +1706,6 @@ Social Login
 
   .page-title {
     margin-bottom: 30px;
-  }
-  .product-item-details .price-container {
-    display: inline-block;
   }
 }
 
@@ -1838,11 +1759,7 @@ Social Login
     }
 }
 
-.catalog-category-view {
-  .product-item-details .price-container  {
-    /*padding: 0!important;*/
-  }
-}
+
 
 .page-products .toolbar .limiter {
   display: block!important;
@@ -2493,10 +2410,6 @@ Sidebar
       font-size: 16px;
     }
   }
-  .price {
-    color: #8d8d8d;
-    font-size: 12px;
-  }
   .photo {
     max-width: 70%;
     margin: 0 auto;
@@ -2775,14 +2688,6 @@ Media Queries
     margin-left: -20px;
   }
   .product-info-main {
-    .product-info-price .price-box {
-      display: block;
-      text-align: center;
-      width: 100%;
-    }
-    .product-info-price .price-box {
-      margin-top: 0;
-    }
     .single-product-wishlist {
       height: 60px;
       width: 60px;
@@ -2848,9 +2753,6 @@ Media Queries
     .sidebar {
       display: none!important;
     }
-    .product-item-details .price-container .price {
-      font-size: 13px;
-    }
     .products-grid {
       .visible-xs {
         .dropdown {
@@ -2914,7 +2816,7 @@ Media Queries
     color: #7a7a7a;
     font-size: 12px;
     min-height: 45px;
-    padding: 18px 20px!important;
+    padding: 0 20px!important;
   }
   .btn-subscribe {
     background-color: #000;
@@ -3209,9 +3111,7 @@ Media Queries
   }
 }
 
-.catalogsearch-result-index {
 
-}
 
 .modal-content {
   box-shadow: none;
@@ -3670,7 +3570,6 @@ Cart Page
       font-weight: normal
     }
     .product-item-details {
-
       .product-item-name {
         text-align: left;
         display: block;
@@ -4523,6 +4422,7 @@ Products
       position: relative;
       display: inline-block;
       margin-left: 10px;
+      font-size: 14px;
     }
   }
 }
@@ -4645,7 +4545,7 @@ Hotspot Details
 
       &:hover {
         background: rgba(0, 0, 0, 0.7);
-        border: none;
+        border: 1px solid transparent;
       }
     }
     .viewfull {
@@ -4708,9 +4608,7 @@ Hotspot Details
   .product-item-info {
     width: auto;
   }
-  .old-price {
-
-  }
+  
   .main-content {
     margin-bottom: 5px;
   }
@@ -4978,9 +4876,6 @@ Awe Menu
 
 }
 
-#awemenu .am-tabs .am-tab .am-dropdown {
-
-}
 
 .am-tab-hover {
   background-color: #F0F0F0;
@@ -5420,11 +5315,6 @@ Home Page
     .decorating-formula-product-title {
       font-family: @fancyFont;
       font-size: 16px;
-    }
-    .decorating-formula-price {
-      color: #8d8d8d;
-      font-weight: normal;
-      font-size: 14px;
     }
     .decorating-formula-thumb {
       margin: 20px auto;
@@ -6090,9 +5980,6 @@ textarea {
   text-transform: uppercase;
 }
 
-.product-info-main .price-box .price-wrapper .price, .product-options-bottom .price-box .price-wrapper .price {
-  font-weight: normal!important;
-}
 
 
 .customer-account-login {
@@ -6144,6 +6031,9 @@ Editos Main Page
         margin-bottom: 5px;
         font-style: italic;
         margin-top: 20px;
+        a {
+          color: #fff;
+        }
       }
       .editor-blurb {
         font: normal 15px/22px @baseFont;
@@ -6156,7 +6046,7 @@ Editos Main Page
       }
       .editor-quote {
         font: italic 18px/30px @fancyFont;
-        background: url(../images/quote-open.png) no-repeat 0 20px;
+        background: url(../images/quote-open-white.png) no-repeat 0 20px;
         padding: 25px 34px;
         position: relative;
         font-weight: normal;
@@ -6166,7 +6056,7 @@ Editos Main Page
           right: 0;
           width: 26px;
           height: 22px;
-          background: url(../images/quote-close.png);
+          background: url(../images/quote-close-white.png);
           position: absolute;
           z-index: 9999;
           background-repeat: no-repeat;
@@ -6472,10 +6362,7 @@ CMS Pages
     }
   }
 }
-.price-container .price {
-  font-size: 14px;
-  color: #8d8d8d;
-}
+
 
 .read_more {
   .block;
@@ -6661,6 +6548,17 @@ Contact Pages
 Mini Cart
 ========================================================================== */
 .minicart-items-wrapper {
+  padding: 0;
+  border: none;
+  max-height: 270px !important;
+
+  .block-minicart {
+    padding: 0;
+    border-color: #000;
+  }
+}
+
+.minicart-items-wrapper {
   margin: 0;
   width: 100%;
 
@@ -6703,7 +6601,7 @@ Mini Cart
       }
     }
     li:last-child {
-        border-bottom: 1px solid #DDD;
+        border-bottom: 1px solid #DDD !important;
     }
     .product-item {
       padding: 5px 0;
@@ -6806,6 +6704,9 @@ Mini Cart
   .subtotal {
     .block;
     padding: 0 25px;
+    margin: 0;
+    font-family: @headlineFont;
+    font-weight: 700;
 
     .label {
       float: left;
@@ -6825,6 +6726,7 @@ Mini Cart
   font-size: 16px;
   font-family: @fancyFont;
   font-weight: normal;
+  color: #000;
 }
 .block-minicart .block-content > .actions > .primary {
   margin: 0;
@@ -6902,6 +6804,9 @@ Mini Cart
     font-family: @fancyFont;
     padding: 8px 0;
   }
+  .minicart-widgets {
+    margin-top: 0;
+  }
 }
 .minicart-wrapper .action.showcart.active {
   color: #000;
@@ -6914,28 +6819,21 @@ Mini Cart
   color: #000;
 }
 
-.minicart-items-wrapper {
-  padding: 0;
-  border: none;
-
-  .block-minicart {
-    padding: 0;
-    border-color: #000;
-  }
-}
-
+.minicart-wrapper .minicart-widgets
 
 .block-minicart .items-total {
   font-family: @headlineFont;
   color: #000;
   margin-bottom: 20px;
   margin-left: 25px;
+  font-weight: 700;
 }
 
 .block-minicart .block-content > .actions > .primary .action.primary {
     margin-bottom: 10px;
     width: 81%;
     margin-left: 9%;
+    text-align: center;
 }
 
 #btn-minicart-close {
@@ -6969,18 +6867,6 @@ Search
       font-size: 16px;
       font-weight: normal;
       margin-bottom: 0;
-    }
-    .price {
-      color: #8d8d8d;
-      font-size: 14px;
-      font-weight: normal;
-    }
-    .special-price {
-      display: inline-block;
-    }
-    .old-price {
-      display: inline-block;
-      margin-left: 5px;
     }
   }
   .noresults-products-text{
@@ -7312,6 +7198,7 @@ Collection Page
     height: 38px;
     width: 38px;
     line-height: 35px;
+    position: absolute;
   }
   .num {
     color: #FFF;
@@ -7417,16 +7304,17 @@ Orders
   font-size: 18px;
   font-family: @fancyFont;
 }
+
 .order-details-items {
-  td {
-    padding: 20px;
+  tbody td {
+    padding: 20px !important;
   }
   td.name {
     font-size: 12px;
     color: #8d8d8d;
   }
-  td.qt {
-    font-size: 18px;
+  td.qty {
+    font-family: @headlineFont;
   }
   .table-order-items .product-item-name {
     font-size: 20px;
@@ -7447,6 +7335,17 @@ Orders
     }
   }
 }
+
+
+.sales-order-view .block-order-details-view {
+  display: none;
+}
+
+
+
+
+
+
 
 
 
@@ -7891,7 +7790,10 @@ Tablet Portrait size to standard 960 (devices and browsers)
 
   padding: 20px 0;
   .subtitle.empty {
-    padding: 0;
+    padding: 30px 40px 20px;
+    font-family: @fancyFont;
+    font-size: 18px;
+    line-height: 26px;
 
     span {
       text-transform: capitalize;
@@ -7903,34 +7805,6 @@ Tablet Portrait size to standard 960 (devices and browsers)
 }
 
 
-.price-container {
-  font-size: 14px;
-  font-family: @headlineFont;
-
-  .price-label {
-    color: #b0b0b0;
-  }
-
-  .price {
-    font-size: inherit;
-  }
-}
-
-
-.old-price {
-  .inline;
-  .relative;
-  color: #cecece;
-
-  &:before {
-    content: '(';
-    margin-right: -2px;
-  }
-  &:after {
-    content: ')';
-    margin-left: -2px;
-  }
-}
 
 
 
@@ -7989,6 +7863,88 @@ Tablet Portrait size to standard 960 (devices and browsers)
 
 
 
+
+
+  /* ===============================
+  Prices
+  =================================*/
+.price-container {
+  .price {
+    color: #8d8d8d;
+    font-family: @headlineFont;
+    font-size: 14px;
+  }
+}
+.old-price, .old.price {
+  text-decoration: none;
+  color: #cdcdcd;
+  .price {
+    color: #cdcdcd;
+  }
+  &:before {
+    content: '(';
+  }
+  &:after {
+    content: ')';
+  }
+}
+
+.product-item-details .price-box {
+  margin-top: 10px;
+}
+
+.product-info-main {
+  .special-price {
+    display: inline-block;
+  }
+  .price-box {
+    .price {
+      font-size: 28px;
+      font-family: @fancyFont; 
+      color: #000;
+    }
+    .old-price .price-wrapper .price {
+      color: #cdcdcd;
+      font-size: 20px;
+      font-weight: 200;
+    }
+    & + .modal-btns {
+      margin-top: 20px;  
+    }
+  }
+}
+
+h4.decorating-formula-price {
+  font-size: 14px;
+}
+
+.hotspot-details {
+
+}
+
+/* overriding ':' from styles-m */ 
+.product-info-main .old-price .price-label:after,
+.product-options-bottom .old-price .price-label:after,
+.product-info-main .special-price .price-label:after,
+.product-options-bottom .special-price .price-label:after {
+  content: '';
+}
+
+
+
+
+  /* ===============================
+  A little hacky solution for nav current page hightlights
+  =================================*/
+.lookbookslider-index-index .am-sortable .am-tab:nth-child(3) a,
+.lookbookslider-index-view .am-sortable .am-tab:nth-child(3) a,
+.editor-index-index .am-sortable .am-tab:nth-child(4) a,
+.editor-index-view .am-sortable .am-tab:nth-child(4) a,
+.category-made-in-canada .am-sortable .am-tab:nth-child(5) a,
+.wishlist-index-index .am-sortable .am-tab:nth-child(6) a,
+.wishlist-index-view .am-sortable .am-tab:nth-child(6) a {
+  background: #f0f0f0;
+}
 
 
 
