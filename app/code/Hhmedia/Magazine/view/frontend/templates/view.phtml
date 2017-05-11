@@ -65,7 +65,8 @@
                     <a href="<?php echo $pro->getProductUrl() ?>">
                         <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
                     </a>
-                    <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                    <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$pro->getId(); ?>
+                    <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                 </div>
                 <?php $page = $pro->getData('issue_page_number'); ?>
                 <?php if($page != NULL): ?>
