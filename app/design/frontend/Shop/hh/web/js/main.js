@@ -40,7 +40,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
   jQuery(document).ready(function () {
 
     // register popup tabs 
-    $('.tabs-replica li, .create-btn').click(function() {
+    $('.tabs-replica li, .create-btn').click(function(event) {
       event.preventDefault();
       event.stopPropagation();
 
@@ -84,10 +84,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(numHotspotVal).appendTo('body');
 
 
-
-      $(numHotspot).addClass('hidden').removeClass('visible');
-
-
       if ($(defaultHotspotIcon).hasClass('ion-android-search hotspot-inactive')) {
         if ($('.ion-android-close').hasClass('hotspot-active')) {
           $('.ion-android-close').removeClass().addClass('ion-android-search hotspot-inactive');
@@ -98,7 +94,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $('.hotspot-details-placeholder h2 a').prepend('<span>' + numHotspotVal +'.<span> ');
         $('.hotspot-default').removeClass('visible').addClass('hidden');
         $(defaultHotspotIcon).removeClass().addClass('ion-android-close hotspot-active');
-        $(numHotspot).addClass('hidden').removeClass('visible');
       } else if($(defaultHotspotIcon).hasClass('ion-android-close hotspot-active')) {
         $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
         $('.hotspot-default').removeClass('hidden').addClass('visible');

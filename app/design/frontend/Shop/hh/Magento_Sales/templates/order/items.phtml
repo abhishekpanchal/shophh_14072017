@@ -9,24 +9,55 @@
 ?>
 <?php $_order = $block->getOrder() ?>
 <?php $_giftMessage; ?>
-<?php echo "Order Number: ".$_order->getRealOrderId(); ?>
-<?php echo "Status: ".$_order->getStatusLabel(); ?>
-<?php echo "Placed on ".$block->formatDate($_order->getCreatedAt(), \IntlDateFormatter::LONG); ?>
-<?php echo count($_order->getItemsCollection())." Items"; ?>
+
+<div class="block-main-title"><strong><?php echo "Order Number: ".$_order->getRealOrderId(); ?></strong></div>
+
+<p><?php echo "Status: ".$_order->getStatusLabel(); ?></p>
+<p><?php echo "Placed on ".$block->formatDate($_order->getCreatedAt(), \IntlDateFormatter::LONG); ?></p>
+<p><?php echo count($_order->getItemsCollection())." Items"; ?></p>
+
+
+
 <?php $blockObj = $block->getLayout()->createBlock('Magento\Sales\Block\Order\Info'); ?>
-<?php echo __('Shipping Address:'); ?>
-<?php echo $blockObj->getFormattedAddress($_order->getShippingAddress()); ?>
-<?php echo __('Billing Address:'); ?>
-<?php echo $blockObj->getFormattedAddress($_order->getBillingAddress()); ?>
+<div class="block-content shipping-container row">
+    <div class="box block-dashboard-addresses col-md-6">
+        <strong class="box-title">
+            <span>Shipping Address:</span>
+        </strong>
+        <div class="box-content">
+            <address><?php echo $blockObj->getFormattedAddress($_order->getShippingAddress()); ?></address>
+        </div>
+    </div>
+
+    <div class="box block-dashboard-addresses col-md-6">
+        <strong class="box-title">
+            <span>Billing Address:</span>
+        </strong>
+        <div class="box-content">
+            <address><?php echo $blockObj->getFormattedAddress($_order->getBillingAddress()); ?></address>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="table-wrapper order-items">
     <table class="data table table-order-items" id="my-orders-table" summary="<?php /* @escapeNotVerified */ echo __('Items Ordered') ?>">
         <thead>
             <tr>
-                <th class="col image"><?php /* @escapeNotVerified */ echo __('Item') ?></th>
-                <th class="col name"><?php /* @escapeNotVerified */ echo __('Details') ?></th>
-                <th class="col qty"><?php /* @escapeNotVerified */ echo __('Qty') ?></th>
-                <th class="col price"><?php /* @escapeNotVerified */ echo __('Price') ?></th>
-                <th class="col subtotal"><?php /* @escapeNotVerified */ echo __('Subtotal') ?></th>
+                <th class="col image"><h4><?php /* @escapeNotVerified */ echo __('Item') ?></h4></th>
+                <th class="col name"><h4><?php /* @escapeNotVerified */ echo __('Details') ?></h4></th>
+                <th class="col qty"><h4><?php /* @escapeNotVerified */ echo __('Qty') ?></h4></th>
+                <th class="col price"><h4><?php /* @escapeNotVerified */ echo __('Price') ?></h4></th>
+                <th class="col subtotal"><h4><?php /* @escapeNotVerified */ echo __('Subtotal') ?></h4></th>
             </tr>
         </thead>
         <?php $_items = $_order->getItemsCollection(); ?>

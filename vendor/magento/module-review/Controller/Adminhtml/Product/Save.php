@@ -27,6 +27,16 @@ class Save extends ProductController
                 try {
                     $review->addData($data)->save();
 
+                    $reason = $data['reason'];
+                    /* Custom SQL query to add Reason for Declined */ 
+                    if($reason != ''){
+                        $resource = $this->_objectManager->create('\Magento\Framework\App\ResourceConnection');
+                        $connection = $resource->getConnection(\Magento\Framework\App\ResourceConnection::DEFAULT_CONNECTION);
+                        $tableName = $resource->getTableName('review_detail');
+                        $sql = "Update " . $tableName . " Set reason = '".$reason."' where review_id = ".$reviewId;
+                        $connection->query($sql);
+                    }
+
                     $arrRatingId = $this->getRequest()->getParam('ratings', []);
                     /** @var \Magento\Review\Model\Rating\Option\Vote $votes */
                     $votes = $this->_objectManager->create('Magento\Review\Model\Rating\Option\Vote')

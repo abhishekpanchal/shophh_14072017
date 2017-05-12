@@ -292,7 +292,8 @@ if ($helper->getEnabled()) :
                           <a href="<?php echo $product->getProductUrl() ?>">
                             <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
                           </a>
-                          <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $product->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                          <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product->getId(); ?>
+                          <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                         </div>
                         <h4>
                           <a href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
