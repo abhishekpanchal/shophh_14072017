@@ -301,7 +301,7 @@ class Gallery extends \Magento\Catalog\Block\Product\View\Gallery
                         'group' => 'product-page',
                         'img' => $image->getData('large_image_url'),
                         'thumb' => $image->getData('small_image_url'),
-                        'medium' => $image->getData('medium_image_url'),
+                        //'medium' => $image->getData('medium_image_url'),
                         'title' => $label,
                         'alt' => $label
                     ]);
