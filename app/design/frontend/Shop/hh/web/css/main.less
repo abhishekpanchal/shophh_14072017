@@ -7451,7 +7451,6 @@ Account reviews
   .account-reviews-listing {
     border-bottom: 1px solid #ababab;
     padding: 25px 0;
-
     h4 {
       font-family: @headlineFont;
       font-weight: normal;
@@ -7461,14 +7460,40 @@ Account reviews
 
       span {
         font-family: @baseFont;
-        padding-left: 10px;
+        padding-left: 6px;
         .relative;
         .italic;
-
-        &:before {
-          content: '-'
+        &.declined {
+          color: #d61c23;
+        }
+        &.pending {
+          color: #f68b1f;
+        }
+        &.approved {
+          color: #80a139;
+        }
+        .declined, .pending, .approved {
+          padding: 0;
+          &:before {
+            content: '\2022';
+            color: #000;
+            font-size: 20px;
+            line-height: 0;
+            padding-right: 10px;
+          }
+        }
+        &.reason {
+          display: block;
+          font-style: normal;
+          padding: 0;
+          position: relative;
+          top: 8px;
+          opacity: .65;
         }
       }
+    }
+    &.declined .row + .row {
+      opacity: .65;
     }
 
     .review-product-details {
