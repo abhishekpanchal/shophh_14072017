@@ -40,7 +40,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
   jQuery(document).ready(function () {
 
     // register popup tabs 
-    $('.tabs-replica li, .create-btn').click(function() {
+    $('.tabs-replica li, .create-btn').click(function(event) {
       event.preventDefault();
       event.stopPropagation();
 

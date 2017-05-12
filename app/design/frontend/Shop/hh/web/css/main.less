@@ -837,6 +837,10 @@ Forms
  ========================================================================== */
 .label {
   color: #000;
+
+  .asterisk {
+    color: #db4932;
+  }
 }
 input[type="text"], input[type="password"], input[type="url"], input[type="tel"], input[type="search"], input[type="number"], input[type="datetime"], input[type="email"] {
   font-family: @baseFont;
@@ -1180,8 +1184,8 @@ Dashboard Fixes
   .legend {
     font-size: 22px;
     margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e6e6e7;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ababab;
   }
 
   .count {
@@ -1839,6 +1843,9 @@ Social Login
       padding: 5px 18px;
     }
   }
+  .block-main-title strong {
+    font-weight: normal;
+  }
 }
 
 .page-layout-2columns-left .sidebar-additional {
@@ -1867,10 +1874,6 @@ Social Login
       color: #898989;
       text-decoration: underline;
     }
-  }
-
-  .block-main-title strong {
-    font-weight: normal;
   }
 
   .block-content {
@@ -1908,6 +1911,7 @@ Social Login
     font-family: @fancyFont;
     font-style: italic;
     font-size: 22px;
+    color: #000;
   }
 
   .back {
@@ -6489,11 +6493,12 @@ Contact Pages
       font-size: 20px;
       line-height: 28px;
       text-align: center;
+      a, a:hover {
+        border-bottom: 2px solid #000;
+        padding-bottom: 2px;
+      }
     }
     a {
-      border-bottom: 2px solid #000;
-      padding-bottom: 2px;
-
       img {
         border: none;
       }
@@ -7230,7 +7235,7 @@ Orders
       text-decoration: underline;
       color: #898989;
       &:hover {
-        text-decoration: none;
+      //  text-decoration: none;
         color: #000;
       }
     }
@@ -7263,7 +7268,22 @@ Orders
       }
     }
   }
+
+  p.required {
+    font-family: @headlineFont;
+    font-size: 14px;
+    color: #8d8d8d;
+    margin-top: 25px;
+    .asterisk {
+      color: #db4932;
+    }
+  }
 }
+
+.fieldset > .field.choice:before, .fieldset > .field.no-label:before {
+  content: none !important;
+}
+
 
 
 .sales-order-view .order-links {
@@ -7431,7 +7451,6 @@ Account reviews
   .account-reviews-listing {
     border-bottom: 1px solid #ababab;
     padding: 25px 0;
-
     h4 {
       font-family: @headlineFont;
       font-weight: normal;
@@ -7441,14 +7460,40 @@ Account reviews
 
       span {
         font-family: @baseFont;
-        padding-left: 10px;
+        padding-left: 6px;
         .relative;
         .italic;
-
-        &:before {
-          content: '-'
+        &.declined {
+          color: #d61c23;
+        }
+        &.pending {
+          color: #f68b1f;
+        }
+        &.approved {
+          color: #80a139;
+        }
+        .declined, .pending, .approved {
+          padding: 0;
+          &:before {
+            content: '\2022';
+            color: #000;
+            font-size: 20px;
+            line-height: 0;
+            padding-right: 10px;
+          }
+        }
+        &.reason {
+          display: block;
+          font-style: normal;
+          padding: 0;
+          position: relative;
+          top: 8px;
+          opacity: .65;
         }
       }
+    }
+    &.declined .row + .row {
+      opacity: .65;
     }
 
     .review-product-details {
@@ -7839,14 +7884,6 @@ Tablet Portrait size to standard 960 (devices and browsers)
     float: left;
     margin: 0 15px 2px 0;
   }
-  h3 {
-    font-size: 28px;
-    font-family: @fancyFont;
-    font-style: italic;
-    border-bottom: 1px solid #000;
-    margin-top: 100px;
-    padding-bottom: 8px;
-  }
   .signature {
     padding-left: 60%;
     font-size: 14px;
@@ -7855,6 +7892,26 @@ Tablet Portrait size to standard 960 (devices and browsers)
       font-family: @headlineFont;
     }
   }
+  h3.partners {
+    font-size: 28px;
+    font-family: @fancyFont;
+    font-style: italic;
+    border-bottom: 1px solid #000;
+    margin-top: 50px;
+    padding-bottom: 8px;
+  }
+
+  .test + h4 {
+    font-family: @fancyFont;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .row + .row {
+    margin-top: 70px;
+  }
+
 }
 
 
