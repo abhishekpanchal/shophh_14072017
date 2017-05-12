@@ -70,7 +70,8 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                         <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
                             <?php echo $productImage->toHtml(); ?>
                         </a>
-                        <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $_product->getEntityId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                        <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$_product->getEntityId(); ?>
+                        <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                     </div>
 
                     <div class="product details product-item-details">

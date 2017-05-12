@@ -49,7 +49,8 @@
                 <a href="<?php echo $pro->getProductUrl() ?>">
                     <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
                 </a>
-                <a href="javascript: void(0);" data-quickview-url="weltpixel_quickview/catalog_product/view/id/<?php echo $pro->getId() ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$pro->getId(); ?>
+                <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
             </div>
             <h4>
                 <a class="hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
@@ -74,7 +75,7 @@
                 <div class="col-md-3 editor-single-thumb text-center">
                     <a href="<?php echo $objEditor->getItemUrl($editor) ?>">
                         <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
-                        <h4><?php echo $this->escapeHtml($editor->getName()) ?></h4>
+                        <h4><a class="hover-effect"><?php echo $this->escapeHtml($editor->getName()) ?></a></h4>
                     <h5><?php echo $this->escapeHtml($editor->getJobTitle()) ?></h5>
                     </a>
                 </div>

@@ -96,16 +96,37 @@ class View extends \Magento\Framework\View\Element\Template
     {
         return $this->_productRepository->getById($id);
     }
+
+    public function getCount(){
+        return count($this->getProductCollection('name'));
+    }
     
     public function getProductCollection($sort)
     {
+        if($sort == "price_high"){
+            $sort = "price";
+            $order = "DESC";
+        }elseif($sort == "price_low"){
+            $sort = "price";
+            $order = "ASC";
+        }elseif($sort == "position"){
+            $sort = "position";
+            $order = "ASC";
+        }elseif($sort == "created_at"){
+            $sort = "created_at";
+            $order = "DESC";
+        }else{
+            $sort = "name";
+            $order = "ASC";
+        }
+
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $model = $objectManager->create('\Hhmedia\Tags\Model\Tags');
         $productIds  =  $model->getProducts($this->getTags());
 
         $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
         $productCollection->addAttributeToFilter('entity_id', array('in' => $productIds));
-        $productCollection->addAttributeToSort($sort, 'ASC');
+        $productCollection->addAttributeToSort($sort, $order);
         $productCollection->load();
 
         return $productCollection;

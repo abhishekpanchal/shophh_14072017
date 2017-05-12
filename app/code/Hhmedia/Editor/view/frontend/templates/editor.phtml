@@ -7,7 +7,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
         <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
             <div class="guest-editor-details vcenter vcenter-col">
-                <h3 class="guest-name"><?php echo $guest->getName(); ?></h3>
+                <h3 class="guest-name"><a href="<?php echo $this->getItemUrl($guest) ?>"><?php echo $guest->getName(); ?></a></h3>
                 <h4 class="guest-job"><?php echo $guest->getJobTitle(); ?></h4>
                 <div class="editor-blurb"><?php echo $guest->getContent(); ?></div>
                 <div class="editor-quote"><?php echo $guest->getShortQuote(); ?></div>
