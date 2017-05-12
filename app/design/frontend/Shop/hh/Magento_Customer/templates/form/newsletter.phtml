@@ -13,7 +13,7 @@
     <?php if ($block->getIsSubscribed()): ?>
         <div>
             <legend class="legend"><span><?php echo __('Shop H&H eNewsletter') ?></span></legend><br>
-            <p class="already-subs-text"><input type="checkbox" class="already-subscribed" name="checked" value="checked"> <?php echo __("You are subscribed to the Shop H&H eNewsletter list."); ?></p>
+            <p class="already-subs-text"><?php echo __("You are subscribed to the Shop H&H eNewsletter list."); ?></p>
             <div class="field choice">
                 <input type="checkbox" name="is_subscribed" id="subscription" value="0" title="<?php echo __('Unsubscribe') ?>" class="checkbox">
                 <label for="subscription" class="label"><span><?php echo __('Unsubscribe') ?></span></label>
@@ -24,7 +24,6 @@
         <div class="actions-toolbar">
             <div class="primary"><button type="submit" title="<?php echo __('Update Preferences') ?>" class="action save primary"><span><?php echo __('Update Preferences') ?></span></button></div>
         </div>
-
     <?php else: ?>
         <div>
             <legend class="legend"><span><?php echo __('Shop H&H eNewsletter') ?></span></legend><br>
