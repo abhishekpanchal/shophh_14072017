@@ -31,7 +31,16 @@
                     <?php elseif($_review->getStatusId() == 2): ?>
                         <span class="pending">Review Pending</span>
                     <?php else: ?>
+                        <?php
+                            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                            $reviewFactory = $objectManager->create('Magento\Review\Model\Review');
+                            $review = $reviewFactory->load($_review->getReviewId());
+                            $reason = $review->getReason();
+                        ?>
                         <span class="declined">Review Declined</span>
+                        <?php if($reason !== ''): ?>
+                            <span class="reason"><?php echo $reason ?></span>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </span>
             </h4>
