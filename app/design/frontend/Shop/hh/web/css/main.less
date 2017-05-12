@@ -7268,7 +7268,22 @@ Orders
       }
     }
   }
+
+  p.required {
+    font-family: @headlineFont;
+    font-size: 14px;
+    color: #8d8d8d;
+    margin-top: 25px;
+    .asterisk {
+      color: #db4932;
+    }
+  }
 }
+
+.fieldset > .field.choice:before, .fieldset > .field.no-label:before {
+  content: none !important;
+}
+
 
 
 .sales-order-view .order-links {
