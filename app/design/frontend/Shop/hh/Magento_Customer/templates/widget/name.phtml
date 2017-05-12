@@ -71,6 +71,7 @@ $suffix = $block->showSuffix();
         <div class="field field-name-firstname required">
             <label class="label" for="<?php /* @escapeNotVerified */ echo $block->getFieldId('firstname') ?>">
                 <span><?php /* @escapeNotVerified */ echo $block->getStoreLabel('firstname') ?></span>
+                <span class="asterisk">*</span>
             </label>
             <div class="control">
                 <input placeholder="First Name *" type="text" id="<?php /* @escapeNotVerified */ echo $block->getFieldId('firstname') ?>"
@@ -99,6 +100,7 @@ $suffix = $block->showSuffix();
         <div class="field field-name-lastname required">
             <label class="label"  for="<?php /* @escapeNotVerified */ echo $block->getFieldId('lastname') ?>">
                 <span><?php /* @escapeNotVerified */ echo $block->getStoreLabel('lastname') ?></span>
+                <span class="asterisk">*</span>
             </label>
             <div class="control">
                 <input placeholder="Last Name *" type="text" id="<?php /* @escapeNotVerified */ echo $block->getFieldId('lastname') ?>"
