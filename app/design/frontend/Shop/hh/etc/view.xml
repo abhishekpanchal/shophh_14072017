@@ -21,7 +21,10 @@
                 <width>165</width>
                 <height>165</height>
             </image>
+            <image id="category_page_grid" type="small_image">
+                <width>240</width>
+                <height>240</height>
+            </image>
         </images>
-
     </media>
 </view>

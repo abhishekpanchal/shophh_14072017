@@ -30,7 +30,7 @@
 								<div class="collection-item product-details-block col-md-3">
 									<div class="product-img">
 										<a href="<?php echo $product->getProductUrl() ?>">
-				                			<img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+				                			<img src="<?php echo $this->resize($image,240,240); ?>" />
 				            			</a>
 				            			<?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product->getId(); ?>
 				            			<a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
