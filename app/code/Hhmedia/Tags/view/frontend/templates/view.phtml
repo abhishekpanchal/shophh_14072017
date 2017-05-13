@@ -62,7 +62,7 @@
                     <div class="col-md-3 tag-product">
                         <div class="product-img">
                             <a href="<?php echo $pro->getProductUrl() ?>">
-                                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                                <img src="<?php echo $this->resize($image,240,240); ?>" />
                             </a>
                             <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$pro->getId(); ?>
                             <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>

@@ -36,12 +36,12 @@
                         <input type="text" name="telephone" value="<?php echo $block->escapeHtml($block->getAddress()->getTelephone()) ?>" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('telephone') ?>" id="telephone">
                     </div>
                 </div>
-                <div class="field fax">
-                    <label class="label" for="fax"><span><?php /* @escapeNotVerified */ echo __('Fax') ?></span></label>
+                <?php /* <div class="field fax">
+                    <label class="label" for="fax"><span><?php echo __('Fax') ?></span></label>
                     <div class="control">
-                        <input type="text" name="fax" id="fax" title="<?php /* @escapeNotVerified */ echo __('Fax') ?>" value="<?php echo $block->escapeHtml($block->getAddress()->getFax()) ?>" class="input-text <?php /* @escapeNotVerified */ echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('fax') ?>">
+                        <input type="text" name="fax" id="fax" title="<?php echo __('Fax') ?>" value="<?php echo $block->escapeHtml($block->getAddress()->getFax()) ?>" class="input-text <?php echo $this->helper('Magento\Customer\Helper\Address')->getAttributeValidationClass('fax') ?>">
                     </div>
-                </div>
+                </div> */ ?>
             </fieldset>
         </div>
         <div class="col-md-6">
