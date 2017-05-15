@@ -404,16 +404,15 @@ Reviews
   font-size: 13px;
   line-height: 22px;
 
-  .full-review {
-
-  }
   .review-read-more, .review-read-less {
+    text-transform: uppercase;
+    font-size: 12px;
     text-decoration: underline;
     padding-top: 10px;
-    font-weight: bold!important;
-
+    font-weight: bold;
+    text-decoration:none;
     &:hover {
-      text-decoration: none;
+      text-decoration: underline;
     }
 
     span {
@@ -562,6 +561,11 @@ Products
 
 
 .catalog-product-view {
+
+  .product.media img:hover {
+    opacity: 1 !important;
+  }
+
   .product-qty {
 
     label {
@@ -743,6 +747,17 @@ Products
 
 
 
+.product-addto-links, .addthis_toolbox {
+  a:hover, a:hover img {
+    opacity: 1 !important;
+  }
+  a:hover span span {
+    opacity: .5;
+  }
+}
+.addthis_toolbox.addthis_32x32_style span {
+  line-height: 0 !important;
+}
 
 
 
@@ -5942,10 +5957,6 @@ Magic Scroll
   color: #020202!important;
 }
 
-.review-btn {
-  padding: 8px 35px!important;
-  font-size: 14px!important;
-}
 
 .btn-no-review {
   display: inline-block;
@@ -7963,6 +7974,7 @@ Tablet Portrait size to standard 960 (devices and browsers)
       font-size: 28px;
       font-family: @fancyFont; 
       color: #000;
+      font-weight: 200 !important;
     }
     .old-price .price-wrapper .price {
       color: #cdcdcd;
