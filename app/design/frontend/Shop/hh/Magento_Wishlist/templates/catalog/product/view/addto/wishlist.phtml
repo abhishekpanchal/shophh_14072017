@@ -9,14 +9,25 @@
 /** @var $block \Magento\Wishlist\Block\Catalog\Product\View\Addto\Wishlist */
 ?>
 <?php if ($block->isWishListAllowed()) : ?>
-<a 	href="#"
-		data-post='<?php /* @escapeNotVerified */ echo $block->getWishlistParams(); ?>'
-		data-action="add-to-wishlist">
-		<span class="single-product-wishlist">
-			<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />
-			<span>Add to Wishlist Please</span>
-		</span>
-</a>
+	<?php if($this->getRequest()->getModuleName() == "weltpixel_quickview"): ?>
+		<a 	href="#" target="_parent"
+			data-post='<?php /* @escapeNotVerified */ echo $block->getWishlistParams(); ?>'
+			data-action="add-to-wishlist">
+			<span class="single-product-wishlist">
+				<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />
+				<span>Add to Wishlist</span>
+			</span>
+		</a>
+	<?php else: ?>
+		<a 	href="#"
+			data-post='<?php /* @escapeNotVerified */ echo $block->getWishlistParams(); ?>'
+			data-action="add-to-wishlist">
+			<span class="single-product-wishlist">
+				<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />
+				<span>Add to Wishlist</span>
+			</span>
+		</a>
+	<?php endif; ?>
 <?php endif; ?>
 <script type="text/x-magento-init">
 	{
