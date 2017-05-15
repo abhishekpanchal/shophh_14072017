@@ -4714,7 +4714,6 @@ Awe Menu
   margin: 0!important;
 
   .am-tabs a {
-    display: block;
     padding: 10px 15px;
     line-height: 16px;
     text-transform: capitalize;
@@ -4799,18 +4798,11 @@ Awe Menu
 }
 
 
-.am-html h3 {
+.am-html h3{
   display: inline-block;
   a {
     .relative;
-
-    &:hover {
-      color: #8d8d8d;
-      cursor: pointer;
-    }
-    &:before {
-      border-color: #8d8d8d;
-    }
+    display: inline !important;
   }
 }
 
@@ -4873,9 +4865,8 @@ Awe Menu
     a {
       font-size: 20px!important;
       text-transform: capitalize!important;
-      color: #8d8d8d;
       padding: 0!important;
-      font-family: @baseFont;
+      font-family: @baseFont !important;
       font-weight: normal!important;
     }
   }
