@@ -211,6 +211,10 @@ Common LESS
   text-transform: capitalize;
 }
 
+.lowercase {
+  text-transform: lowercase;
+}
+
 .normal-case {
   text-transform: none;
 }
@@ -6316,7 +6320,7 @@ CMS Pages
     }
     h3 {
       font-size: 24px;
-      line-height: 34px;
+      line-height: 20px;
     }
     h4, h5, h6 {
       font-family: @baseFont;
@@ -6375,7 +6379,7 @@ Contact Pages
     h3 {
       border-bottom: 1px solid #ababab;
       padding-bottom: 15px;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
     .inner-content {
       a {
@@ -6388,7 +6392,7 @@ Contact Pages
     }
     p {
       margin-bottom: 40px;
-      font-size: 14px;
+      font-size: 16px;
     }
     input, textarea {
       width: 100%;
@@ -6400,7 +6404,6 @@ Contact Pages
 
       h4 {
         margin-bottom: 5px;
-        font-size: 14px;
       }
     }
     .form.contact {
@@ -6414,10 +6417,16 @@ Contact Pages
       font-size: 14px;
       padding: 0;
       font-family: @baseFont;
+      font-weight: 200;
       .relative;
     }
+    .fieldset > .field.comment .label {
+      font-size: 14px;
+    }
+
     .required-msg {
-      margin-top: 10px;
+      font-size: 14px;
+      margin-top: 15px;
       color: #8d8d8d;
       .block;
       margin-bottom: 0;
@@ -6453,7 +6462,7 @@ Contact Pages
         -moz-appearance: none;
         position: relative;
         z-index: 1;
-        text-transform: uppercase;
+        text-transform: none;
         background-color: transparent;
         width: 100%;
         padding: 12px 20px;
