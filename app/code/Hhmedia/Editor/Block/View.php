@@ -16,6 +16,8 @@ class View extends \Magento\Framework\View\Element\Template
     protected $_dataHelper;
 
     protected $_productRepository;
+    protected $_filesystem ;
+    protected $_imageFactory;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -30,8 +32,12 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Framework\App\Http\Context $httpContext,
         \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Editor\Helper\Data $dataHelper,
+        \Magento\Framework\Filesystem $filesystem,         
+        \Magento\Framework\Image\AdapterFactory $imageFactory,
         array $data = []
     ) {
+        $this->_filesystem = $filesystem;               
+        $this->_imageFactory = $imageFactory;
         $this->_coreRegistry = $registry;
         $this->httpContext = $httpContext;
         $this->_productRepository = $productRepository;
@@ -110,6 +116,30 @@ class View extends \Magento\Framework\View\Element\Template
         $priceHelper = $objPrice->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
         $formattedPrice = $priceHelper->currency($price, true, false);
         return $formattedPrice ;
+    }
+
+    public function resize($image, $width = null, $height = null)
+    {
+        $media = $this->_filesystem->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
+
+        $absolutePath = $media->getAbsolutePath('catalog/product').$image;
+        $imageResized = $media->getAbsolutePath('catalog/product/editor/'.$width.'/').$image;
+
+        $imageResize = $this->_imageFactory->create();
+        $imageResize->open($absolutePath);
+        $imageResize->constrainOnly(TRUE);
+        $imageResize->keepTransparency(TRUE);
+        $imageResize->keepFrame(TRUE);  
+        $imageResize->keepAspectRatio(TRUE);
+        $imageResize->backgroundColor(array(255, 255, 255));
+        $imageResize->resize($width,$height);
+        //destination folder       
+        $destination = $imageResized;
+        //save image
+        $imageResize->save($destination);  
+
+        $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product/editor/'.$width.$image;
+        return $resizedURL;
     }
 
 }

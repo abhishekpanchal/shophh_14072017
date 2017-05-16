@@ -34,7 +34,12 @@
 
 <?php if ($_attributeValue): ?>
 <div class="product attribute <?php /* @escapeNotVerified */ echo $_className?>">
-    <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
+	<?php if($this->getRequest()->getModuleName() == "weltpixel_quickview" && $_code=="description"): ?>
+		<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+		<div class="value" <?php echo $_attributeAddAttribute;?>><?php echo $customHelper->limit_description($_attributeValue, 15); ?></div>
+	<?php else: ?>
+	    <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
+	<?php endif; ?>
 </div>
 	<?php if($_code == 'description'): ?>
 		<?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>

@@ -16,6 +16,7 @@ return array (
     'Hhmedia_Editor' => 1,
     'Hhmedia_Formula' => 1,
     'Hhmedia_Magazine' => 1,
+    'Hhmedia_Notes' => 1,
     'Hhmedia_Override' => 1,
     'Hhmedia_Productpage' => 1,
     'Hhmedia_Shipping' => 1,
