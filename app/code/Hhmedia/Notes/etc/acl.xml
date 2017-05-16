@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Hhmedia_Adminhtml::admin">
+                <resource id="Hhmedia_Notes::notes" title="Notes" sortOrder="40">
+                    <resource id="Hhmedia_Notes::manage" title="Notes Module" sortOrder="10">
+						<resource id="Hhmedia_Notes::save" title="Save Notes" sortOrder="10" />
+                        <resource id="Hhmedia_Notes::news_delete" title="Delete Notes" sortOrder="20" />
+					</resource>
+                </resource>
+                <resource id="Hhmedia_Adminhtml::stores">
+                    <resource id="Hhmedia_Adminhtml::stores_settings">
+                        <resource id="Hhmedia_Adminhtml::config">
+                            <resource id="Hhmedia_Notes::config_notes" title="Notes Section" sortOrder="50" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

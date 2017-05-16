@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hhmedia_Notes::notes_manage" title="Decorating Notes" module="Hhmedia_Notes" sortOrder="30" parent="Hhmedia_Editor::editor" action="notes/index/" resource="Hhmedia_Notes::manage"/>
+    </menu>
+</config>
