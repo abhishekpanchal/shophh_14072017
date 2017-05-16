@@ -6597,7 +6597,13 @@ Mini Cart
     padding: 0;
     border-color: #000;
   }
+
 }
+
+.block-minicart .items-total {
+  margin-left: 9%;
+}
+
 
 .minicart-items-wrapper {
   margin: 0;
@@ -6659,7 +6665,7 @@ Mini Cart
     .product-item-photo {
       width: auto;
       margin-right: 25px;
-      margin-left: 25px;
+      margin-left: 9%;
       .relative;
     }
     .product-item-name {
@@ -6744,7 +6750,7 @@ Mini Cart
 .block-minicart {
   .subtotal {
     .block;
-    padding: 0 25px;
+    padding: 0 9%;
     margin: 0;
     font-family: @headlineFont;
     font-weight: 700;
@@ -7879,7 +7885,7 @@ Tablet Portrait size to standard 960 (devices and browsers)
     line-height: 26px;
 
     span {
-      text-transform: capitalize;
+      text-transform: none;
     }
   }
   .subtitle {
@@ -7928,6 +7934,9 @@ Tablet Portrait size to standard 960 (devices and browsers)
     strong {
       display: block;
       font-family: @headlineFont;
+    }
+    span {
+      white-space: nowrap;
     }
   }
   h3.partners {
