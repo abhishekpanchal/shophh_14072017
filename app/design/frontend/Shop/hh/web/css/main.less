@@ -8111,13 +8111,33 @@ h4.decorating-formula-price {
 
 
 
+  /* ===============================
+  Wishlist page
+  =================================*/
 
-
-
-
-
-
-
+.wishlist-index-index {
+  .products-grid {
+    display: block;
+    .product-item {
+      float: none;
+      display: block;
+      width: 100% !important;
+      overflow: auto;
+    }
+  }
+  .products-grid.wishlist {
+    .product-item-photo {
+      float: left;
+    }
+    .product-item-name a {
+      font-size: 20px;
+      font-family: @fancyFont;
+      font-style: italic;
+      color: #000;
+      text-decoration: none;
+    }
+  }
+}
 
 
 
