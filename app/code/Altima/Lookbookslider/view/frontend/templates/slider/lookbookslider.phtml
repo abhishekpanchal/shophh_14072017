@@ -220,6 +220,20 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                     <h5>Shop the shot</h5>
                     <h1 style="color:<?php echo $slide->getColor() ?>"><?php echo $slide->getTitle(); ?></h1>
                     <p><?php echo $slide->getCaption(); ?></p>
+
+
+
+
+                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                      <a class="icon-share addthis_button_more">
+                        <span><img src="<?php echo $this->getViewFileUrl('images/share-icon.png'); ?>" /></span>
+                        <span>Share this Shot</span>
+                      </a>
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                    <!--
                     <ul class="social">
                       <li><a href="https://houseandhome.com/facebook" target="_blank">
                         <span class="ico-facebook"></span>
@@ -234,6 +248,10 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                         <span class="ico-mail"></span>
                       </a></li>
                     </ul>
+                    -->
+
+
+
                     <a href="#" class="btn-fullscreen">Read All Decorating Notes</a>
                 </div>
                 <div class="hotspot-details-placeholder hidden"></div>
