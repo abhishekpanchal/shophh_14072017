@@ -1,0 +1,26 @@
+<?php $_notes = $this->getCollection(); ?>
+<?php if ($_notes->getSize()): ?>
+<div class="notes_list_view">
+    <?php foreach ($_notes as $notesItem): ?>
+        <div id="item_<?php echo $notesItem->getId() ?>" class="notes_list_item">
+            <h2>
+                <a href="<?php echo $this->getItemUrl($notesItem) ?>">
+                    <?php echo $this->escapeHtml($notesItem->getTitle()) ?>
+                </a>
+            </h2>
+
+            <div class="notes_item_subtitle">
+                <?php echo $this->formatDate($notesItem->getPublishedAt()) ?> |
+                <?php echo $this->escapeHtml($notesItem->getAuthor()) ?>
+            </div>
+
+            <?php if ($imageUrl = $this->getImageUrl($notesItem, 100)): ?>
+               <p><img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($notesItem->getTitle()); ?>" /></p>
+            <?php endif; ?>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php echo $this->getPager() ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Notes.'); ?></span></div>
+<?php endif ?>

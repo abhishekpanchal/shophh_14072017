@@ -130,14 +130,19 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 ]
         );
 
-        /*$fieldset->addField('link', 'text', [
-            'label'    => __('Link'),
-            'required' => false,
-            'name'     => 'slide[link]',
-                ]
-        );*/
+        $fieldset->addField(
+            'link', 'select', 
+            [
+                'label'    => __('Decorating Notes'),
+                'title'    => __('Decorating Notes'),
+                'name'     => 'slide[link]',
+                'required' => true,
+                'options'  => $model->getDecoratingNotes(),
+                'disabled' => $isElementDisabled
+            ]
+        );
 
-        $fieldset->addField('sharetwitter', 'text', [
+        /*$fieldset->addField('sharetwitter', 'text', [
             'label'    => __('Share Copy (Twitter)'),
             'required' => false,
             'name'     => 'slide[sharetwitter]',
@@ -149,41 +154,42 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'required' => false,
             'name'     => 'slide[shareother]',
                 ]
-        );
+        );*/
 
         $fieldset->addField(
-                'is_active', 'select', [
-            'label'    => __('Status'),
-            'title'    => __('Shot Status'),
-            'name'     => 'slide[is_active]',
-            'required' => true,
-            'options'  => $model->getAvailableStatuses(),
-            'disabled' => $isElementDisabled
-                ]
-        );
-
-    $fieldset->addField(
-        'bg_image',
-        'image',
-        [
-            'name'        => 'bg_image',
-            'label'       => __('Background Image'),
-            'title'       => __('Background Image'),
-        ]
-    );
-
-    $fieldset->addField(
-            'display_home', 
-            'select', 
+            'is_active', 'select', 
             [
-                'label'    => __('Display on Home'),
-                'title'    => __('Display on Home'),
-                'name'     => 'slide[display_home]',
+                'label'    => __('Status'),
+                'title'    => __('Shot Status'),
+                'name'     => 'slide[is_active]',
                 'required' => true,
-                'options'  => $model->getDisplayHome(),
+                'options'  => $model->getAvailableStatuses(),
                 'disabled' => $isElementDisabled
             ]
         );
+
+        $fieldset->addField(
+            'bg_image',
+            'image',
+            [
+                'name'        => 'bg_image',
+                'label'       => __('Background Image'),
+                'title'       => __('Background Image'),
+            ]
+        );
+
+        $fieldset->addField(
+                'display_home', 
+                'select', 
+                [
+                    'label'    => __('Display on Home'),
+                    'title'    => __('Display on Home'),
+                    'name'     => 'slide[display_home]',
+                    'required' => true,
+                    'options'  => $model->getDisplayHome(),
+                    'disabled' => $isElementDisabled
+                ]
+            );
 
         $field_hotspots    = $fieldset->addField(
                 'hotspots', 'hidden', [

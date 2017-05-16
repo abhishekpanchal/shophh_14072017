@@ -1184,8 +1184,8 @@ body.mcs-dragging button.mcs-button.mcs-horizontal.mcs-button-arrow {
     -webkit-transition: opacity .15s linear;
     transition: opacity .15s linear;
 }
-.MagicScroll-horizontal .mcs-button-arrow-prev { left: 0; right: auto; top: 0; bottom: 0; }
-.MagicScroll-horizontal .mcs-button-arrow-next { left: auto; right: 0; top: 0; bottom: 0; }
+.MagicScroll-horizontal .mcs-button-arrow-prev { left: -10px; right: auto; top: 0; bottom: 0; }
+.MagicScroll-horizontal .mcs-button-arrow-next { left: auto; right: -10px; top: 0; bottom: 0; }
 .MagicScroll-vertical .mcs-button-arrow-prev { top: 0; bottom: auto; left: 0; right: 0; }
 .MagicScroll-vertical .mcs-button-arrow-next { top: auto; bottom: 0; left: 0; right: 0; }
 
