@@ -20,7 +20,8 @@ div.MagicToolboxSelectorsContainer {
 /* NOTE: selectors styles */
 div.MagicToolboxSelectorsContainer a {
     display: inline-block;
-    margin: 4px;
+    margin: 1px;
+    margin-right: 0;
 }
 
 /* NOTE: contaner with message under Magic Zoom Plus */
