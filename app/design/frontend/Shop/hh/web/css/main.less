@@ -312,6 +312,8 @@ Buttons
   font-size: 16px;
 }
 
+
+
 .bundle-actions .action.primary, .bundle-options-container .block-bundle-summary .box-tocart .action.primary, .product-info-main .box-tocart .action.tocart, .product-options-bottom .box-tocart .action.tocart, .cart-container .checkout-methods-items .action.primary, .block-minicart .block-content > .actions > .primary .action.primary, .methods-shipping .actions-toolbar .action.primary, .block-authentication .action.action-register, .block-authentication .action.action-login, .checkout-payment-method .payment-method-content > .actions-toolbar > .primary .action.primary, .form-address-edit .actions-toolbar .action.primary, .multicheckout .action.primary {
   line-height: normal;
   padding: 10px 30px;
@@ -320,6 +322,16 @@ Buttons
   font-style: italic;
   font-weight: normal;
 }
+
+.actions-toolbar .action.primary {
+  line-height: normal;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-family: @fancyFont;
+  font-style: italic;
+  font-weight: normal;
+}
+
 
 .action.primary:hover,
 .action.primary:focus,
@@ -3681,7 +3693,8 @@ Cart Page
 
 }
 
-.customer-account-login, .customer-account-create {
+
+.customer-account-login, .customer-account-create, .customer-account-forgotpassword {
 
   .main {
     .fieldset > .field:not(.choice) > .label {
@@ -5986,7 +5999,24 @@ textarea {
 
 
 
+.login-container .social-login-authentication-channel {
+  .block-title {
+    border: 0;
+    margin: 0;
+  }
+}
+
+
+
 .customer-account-login {
+  .actions-toolbar .secondary .action span {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-family: @headlineFont;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   .actions-toolbar > .primary:last-child, .actions-toolbar > .secondary:last-child {
     margin-right: 20%;
   }
@@ -8013,6 +8043,82 @@ h4.decorating-formula-price {
 .wishlist-index-view .am-sortable .am-tab:nth-child(6) a {
   background: #f0f0f0;
 }
+
+
+
+
+
+
+  /* ===============================
+  Styling for login forms not in modal
+  =================================*/
+.form.password.reset, .form.send.confirmation, .form.password.forget, .form.create.account {
+  margin: 40px auto;
+}
+
+.form.password.forget {
+  .note {
+    font-family: @fancyFont;
+    font-size: 16px;
+    font-style: italic;
+    text-align: center;
+  }
+  .actions-toolbar {
+    div.primary, .secondary {
+      display: block;
+      float: none;
+      overflow: auto;
+    }
+    button.primary {
+      float: none;
+      margin: 0 auto 20px;
+    }
+    .secondary a {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #8d8d8d;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  input[type="email"] {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+
+.form-login .fieldset > .field, .block-new-customer .block-content > p:first-child {
+  font-size: 15px;
+}
+
+.login-container .fieldset:after {
+  content: '';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
