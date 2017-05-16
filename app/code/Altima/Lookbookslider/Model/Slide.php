@@ -47,6 +47,7 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
     protected $_eventPrefix = 'altima_lookbookslider_slide';
     protected $_eventObject = 'lookbookslider_slide';
     protected $_url;
+    protected $_notesCollectionFactory;
 
     public function __construct(
     \Magento\Framework\Model\Context $context,
@@ -56,6 +57,7 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
     \Altima\Lookbookslider\Model\SlideFactory $slideFactory,
     \Altima\Lookbookslider\Model\ResourceModel\Slider\CollectionFactory $sliderCollectionFactory,
     \Magento\Store\Model\StoreManagerInterface $storeManager,
+    \Hhmedia\Notes\Model\ResourceModel\Notes\CollectionFactory $notesCollectionFactory,
     \Magento\Framework\Logger\Monolog $monolog,
     Cache $cache
     ) {
@@ -65,6 +67,7 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
         $this->_slideFactory = $slideFactory;
         $this->_storeManager = $storeManager;
         $this->_sliderCollectionFactory = $sliderCollectionFactory;
+        $this->_notesCollectionFactory = $notesCollectionFactory;
         $this->_monolog = $monolog;
         $this->cache = $cache;
         if ($storeViewId = $this->_storeManager->getStore()->getId()) {
@@ -247,6 +250,24 @@ class Slide extends \Magento\Framework\Model\AbstractModel {
         }
 
         return in_array($slide, $this->getParentIds());
+    }
+
+    public function getDecoratingNotes() {
+        /*$option[] = [
+            'value' => '',
+            'label' => 'Please select Decorating Notes',
+        ];
+        
+        $notesCollection = $this->_notesCollectionFactory->create();
+
+        /*foreach ($notesCollection as $note) {
+            $option[] = [
+                'value' => $note->getNotesId(),
+                'label' => $note->getTitle(),
+            ];
+        }
+    
+        return $option;*/
     }
 
     public function getChildrenIds() {
