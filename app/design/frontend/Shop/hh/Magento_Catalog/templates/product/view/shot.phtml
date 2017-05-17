@@ -7,7 +7,7 @@
 	<?php $productSku = $blockObj->getProducts($shot); ?>
     <?php if(in_array($_product->getSku(),$productSku)): ?>
     	<?php $slideId = $shot->getSlideId(); ?>
-    	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>
+    	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','290'); ?>
         <div class="row">
             <div class="col-md-6 col-md-offset-6">
                 <div class="product-shop-the-shot">
