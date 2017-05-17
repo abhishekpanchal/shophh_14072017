@@ -6,7 +6,7 @@
 	<?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
 	<?php if(in_array($_product->getId(),$editorProduct)): ?>
 		<div class="product-editors-pick hidden-xs">
-			<a href="<?php echo $objEditor->getItemUrl($editor) ?>" class="vcenter">
+			<a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editor->getEditorId(); ?>" class="vcenter">
             	<img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
 				<div class="product-editors-pick-details">
 					<h4><?php echo ("Editor's Pick:") ?></h4>
