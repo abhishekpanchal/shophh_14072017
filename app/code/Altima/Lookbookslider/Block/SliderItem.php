@@ -23,6 +23,7 @@ namespace Altima\Lookbookslider\Block;
 
 use Altima\Lookbookslider\Model\Slider as SliderModel;
 use Altima\Lookbookslider\Model\Status;
+use Hhmedia\Productpage\Helper\Newproduct as HelperData;
 
 class SliderItem extends \Magento\Framework\View\Element\Template {
 
@@ -46,6 +47,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
     protected $_cartHelper;
     protected $directory_list;
     protected $_productRepository;
+    protected $helperData;
 
     public function __construct(
             \Magento\Framework\View\Element\Template\Context $context,
@@ -59,6 +61,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             \Magento\Catalog\Model\ProductFactory $productFactory,
             \Magento\Catalog\Model\ProductRepository $productRepository,
             \Magento\Catalog\Helper\Image $imageHelper,
+            HelperData $helperData,
             array $data = []
     ) {
         parent::__construct($context, $data);
@@ -74,6 +77,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
         $this->_productRepository = $productRepository;
         $this->imageHelper             = $imageHelper;
         $this->directory_list          = $directory_list;
+        $this->helperData    = $helperData;
     }
 
     protected function _toHtml() {
@@ -292,6 +296,19 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
+
+                if($this->helperData->getStockQty($product_details)){
+                    $html_content .= '<div class="one-left">' . __('Only 1 left') . '</div>';
+                }elseif($this->helperData->isEditorsPick($product_details)){
+                    $html_content .= '<div class="editors-pick">' . __('Editor’s Pick') . '</div>';
+                }elseif($this->helperData->isOnSale($product_details)){
+                    $html_content .= '<div class="one-sale">' . __('On Sale') . '</div>';
+                }elseif($this->helperData->isOneOfKind($product_details)){
+                    $html_content .= '<div class="one-kind">' . __('One of a Kind') . '</div>';
+                }elseif($this->helperData->isProductNew($product_details)){
+                    $html_content .= '<div class="new-product">' . __('New') . '</div>';
+                }
+
                 //$html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
                 if ($product_details->getFinalPrice()) {
                     if ($product_details->getPrice() > $product_details->getFinalPrice()) {
@@ -402,6 +419,19 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<h2>' . $_p_name . '</h2>';
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
+
+                if($this->helperData->getStockQty($product_details)){
+                    $html_content .= '<div class="one-left">' . __('Only 1 left') . '</div>';
+                }elseif($this->helperData->isEditorsPick($product_details)){
+                    $html_content .= '<div class="editors-pick">' . __('Editor’s Pick') . '</div>';
+                }elseif($this->helperData->isOnSale($product_details)){
+                    $html_content .= '<div class="one-sale">' . __('On Sale') . '</div>';
+                }elseif($this->helperData->isOneOfKind($product_details)){
+                    $html_content .= '<div class="one-kind">' . __('One of a Kind') . '</div>';
+                }elseif($this->helperData->isProductNew($product_details)){
+                    $html_content .= '<div class="new-product">' . __('New') . '</div>';
+                }
+
                 $html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
                 if ($product_details->getFinalPrice()) {
                     if ($product_details->getPrice() > $product_details->getFinalPrice()) {
