@@ -1,8 +1,10 @@
 <?php $_notesItem = $this->getNotes(); ?>
 <div class="notes_item_view">
     <img src="<?php echo $this->getUrl('pub/media').$_notesItem->getImage(); ?>" alt="<?php echo $this->escapeHtml($_notesItem->getTitle()) ?>" />
-    <span>Decorating Notes</span>
+    <h2>Decorating Notes</h2>
     <div class="notes_item_content"><?php echo $_notesItem->getContent() ?></div>
-    <a href="<?php echo $_notesItem->getBackLink(); ?>">Back to Shot</a>
-    <a href="<?php echo $_notesItem->getCollectionLink(); ?>">See all Products</a>
+    <div class="btn-container">
+	    <a class="btn btn-main" href="<?php echo $_notesItem->getBackLink(); ?>">Back to Shot</a>
+	    <a class="btn btn-main" href="<?php echo $_notesItem->getCollectionLink(); ?>">See all Products</a>
+	</div>
 </div>
