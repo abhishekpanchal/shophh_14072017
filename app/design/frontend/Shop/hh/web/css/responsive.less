@@ -135,11 +135,68 @@ Temp var
 
 
 
+
+
+
+
+
 /* ==========================================================================
-Tablet - till 1024px
+Tablet Portrait size to standard 1024 (devices and browsers)
 ========================================================================== */
-@media (max-width: 1024px) {
-	.cms-home .homeslider {
+@media only screen and (max-width: 1024px) {
+  body, html {
+    font-size: 15px;
+  }
+
+
+  /* ===============================
+  Classes
+  =================================*/
+  .display-block-xs {
+    display: block!important;
+  }
+  .center {
+    text-align: center;
+  }
+  .none {
+    display: none;
+  }
+  .clear {
+    clear: both;
+  }
+  .block-center {
+    display: block;
+    margin: 0 auto;
+  }
+  .quickview-bar,
+  .quickview-bar2 {
+    .none;
+  }
+  .page-title, .page-title-small {
+    background: none;
+
+    span {
+      padding: 0 15px;
+    }
+
+    strong {
+      font-size: 34px;
+    }
+  }
+  .subtitle {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 35px;
+    margin-top: 10px;
+  }
+
+
+  /* ===============================
+  Homepage
+  =================================*/
+  .cms-home {
+
+  	.homeslider {
 		.vcenter-flex {
 			display: block;
 		}
@@ -191,13 +248,181 @@ Tablet - till 1024px
 			position: relative;
 		}
 	}
+    .homeslider {
+
+      .homepage-controls {
+        top: 0;
+      }
+      .homepage-controls {
+        bottom: 15px;
+        width: 100px;
+        height: 50px;
+
+        .carousel-control.right, .carousel-control.left  {
+          opacity: 1;
+          margin-top: -400px;
+        }
+        .carousel-control.right {
+          right: -75%;
+        }
+        .carousel-control.left {
+          left: -75%;
+        }
+      }
+
+      .carousel-indicators {
+        li {
+          background-color: #CCC;
+          border-color: #CCC;
+          margin-right: 5px;
+        }
+        .active {
+          background-color: #000;
+          border: none;
+        }
+      }
+    }
+    .home-slider {
+      .homepage-hero-details {
+
+        p {
+          margin-right: -25%;
+          margin-left: -25%;
+        }
+        h4 {
+          margin-top: 30px;
+        }
+        .hero-details-title {
+          width: 85%;
+          margin: 0 auto;
+          margin-top: 60px;
+        }
+
+        .homepage-hero-btn {
+          padding: 10px 15px;
+          width: 80%;
+        }
+
+        .hero-details-inner {
+          padding: 0;
+        }
+
+        .hero-details-title {
+          margin-top: 45px;
+        }
+
+        .homepage-hero-btn {
+          display: block;
+        }
+        .carousel-indicators .active {
+          margin: 0;
+          margin-right: 5px;
+          width: 11px;
+          height: 11px;
+        }
+
+        .carousel-control.right,
+        .carousel-control.left {
+          height: 70px;
+          width: 35px;
+          top: -400px;
+          background-size: 80% 80%!important;
+          opacity: 1;
+        }
+      }
+    }
+    
+
+    .decorating-formula {
+      padding-top: 40px;
+
+      .decorating-formula-product {
+        margin-top: 0;
+      }
+      .formula_list_view {
+        .decorating-formula-product:nth-of-type(3):before,
+        .decorating-formula-product:nth-of-type(3):after  {
+          background-size: 35% 35%!important;
+          background-position: center center;
+          top: 30%;
+        }
+        .decorating-formula-title {
+          font-size: 1.9rem;
+        }
+        .decorating-formula-product-title {
+          font-size: 1rem;
+        }
+        .decorating-formula-price {
+          font-size: 0.75rem;
+        }
+        .decorating-formula-thumb {
+          margin: 20px auto;
+          width: 90%;
+        }
+      }
+
+    }
+
+    .editors-area {
+      .editors-pick, .editor-guest-image, .guest-editor {
+      min-height: 480px;
+      }
+      .editors-pick {
+        padding: 20px;
+        width: 100%;
+        min-height: 0;
+        .editors-pick-title h3 {
+          font-size: 1.8em;
+        }
+        .editors-thumbs li {
+			width: 25%;
+        }
+      }
+	  .editor-guest-image, .guest-editor {
+		width: 50%;
+	  }	
+      
+      .guest-editor {
+        .guest-editor-details {
+          .editor-quote {
+            margin-bottom: 0;
+          }
+          .editor-blurb {
+            padding: 20px 0;
+          }
+
+        }
+      }
+    }
+
+    .shop-the-issue {
+      .magazine_list_item {
+        padding: 0 30px;
+
+        .issue-img {
+          width: 80%;
+          .block-center;
+        }
+      }
+      .carousel-control.right {
+        right: -3%;
+      }
+      .carousel-control.left {
+        left: -3%;
+      }
+    }
+
+    .more-shots {
+      .more-shots-thumbs {
+		width: 50%;
+        &:nth-of-type(2n+1) {
+          clear: both;
+        }
+      }
+    }
+
+  }
 }
-
-
-
-
-
-
 
 
 
