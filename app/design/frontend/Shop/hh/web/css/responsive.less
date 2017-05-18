@@ -446,17 +446,36 @@ Tablet Portrait size to standard 1024 (devices and browsers)
         left: -3%;
       }
     }
-
-    .more-shots {
-      .more-shots-thumbs {
-		width: 50%;
-        &:nth-of-type(2n+1) {
-          clear: both;
-        }
-      }
-    }
-
   }
+
+  .more-shots .more-shots-thumbs, .lookbookslider-index-index .column.main .col-md-3 {
+	width: 50%;
+    &:nth-of-type(2n+1) {
+      clear: both;
+    }
+  }
+  
+  
+  /* ===============================
+	Shop the Spot
+	=================================*/
+	
+	.lookbook-container {
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+		}
+	}
+	.hotspot-details {
+		margin: 0;
+		padding-top: 25px;
+		h5 {
+			display: none;
+		}
+	}
+  
 }
 
 
