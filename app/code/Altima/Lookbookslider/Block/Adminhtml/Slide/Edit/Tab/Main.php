@@ -142,7 +142,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'label'    => __('Decorating Notes'),
                 'title'    => __('Decorating Notes'),
                 'name'     => 'slide[link]',
-                'required' => true,
+                'required' => false,
                 'options'  => $noteOptions,
                 'disabled' => $isElementDisabled
             ]

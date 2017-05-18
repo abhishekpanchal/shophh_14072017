@@ -1,5 +1,25 @@
 <?php $_product = $block->getProduct(); ?>
-<?php $newProduct = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-<?php if($newProduct->isProductNew($_product)): ?>
+<?php $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+
+<?php if($helper->getStockQty($_product)): ?>
+	<div class="one-left"><?php echo __('Only 1 left'); ?></div>
+<?php elseif($helper->isOnSale($_product)): ?>
+	<div class="one-sale"><?php echo __('On Sale'); ?></div>
+<?php elseif($helper->isOneOfKind($_product)): ?>
+	<div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+<?php elseif($helper->isProductNew($_product)): ?>
     <div class="new-product"><?php echo __('New'); ?></div>
 <?php endif; ?>
+
+<?php 
+/*
+1 Best Seller - left
+2 Only 1 left 
+3 Editor’s Pick
+4 H&H exclusive - left
+5 On Sale
+6 One of a Kind 
+7 New!
+8 Last Call - left
+*/
+?>

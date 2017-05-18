@@ -267,10 +267,18 @@ switch ($type = $block->getType()) {
                             </strong>
                             <?php if ($description):?>
                                 <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                                <?php $shortDescription = $_item->getShortDescription(); ?>
-                                 <?php if($customHelper->isProductNew($_item)): ?>
+                                <?php if($customHelper->getStockQty($_item)): ?>
+                                    <div class="one-left"><?php echo __('Only 1 left'); ?></div>
+                                <?php elseif($customHelper->isEditorsPick($_item)): ?>
+                                        <div class="editors-pick"><?php echo __('Editor’s Pick'); ?></div>
+                                <?php elseif($customHelper->isOnSale($_item)): ?>
+                                    <div class="one-sale"><?php echo __('On Sale'); ?></div>
+                                <?php elseif($customHelper->isOneOfKind($_item)): ?>
+                                    <div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+                                <?php elseif($customHelper->isProductNew($_item)): ?>
                                     <div class="new-product"><?php echo __('New'); ?></div>
                                 <?php endif; ?>
+                                <?php $shortDescription = $_item->getShortDescription(); ?>
                                 <?php echo $customHelper->limit_description($shortDescription, 10); ?>
                             <?php endif; ?>
                             <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
