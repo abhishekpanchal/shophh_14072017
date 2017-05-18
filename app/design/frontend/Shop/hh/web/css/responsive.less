@@ -470,9 +470,14 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	.hotspot-details {
 		margin: 0;
-		padding-top: 25px;
+		padding: 25px 10%;
+		box-shadow: none;
 		h5 {
 			display: none;
+		}
+		.btn-fullscreen {
+			display: inline-block;
+			margin-top: 10px;
 		}
 	}
   
@@ -481,8 +486,20 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 
-
-
+/* ===============================
+	Shop the Spot Desktop Responsive
+	=================================*/
+@media only screen and (min-width: 1024px) and (max-width: 1256px) {
+	.hotspot-details {
+		padding: 5%;
+		margin: 3%;
+	}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1126px) {
+	.cycle-slideshow1 img:first-child {
+		min-height: 375px;;
+	}
+}
 
 
 
