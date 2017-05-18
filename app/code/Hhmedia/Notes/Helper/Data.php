@@ -106,6 +106,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
+
+    protected $_notesCollectionFactory;
     
     /**
      * @param \Magento\Framework\App\Helper\Context $context
@@ -119,6 +121,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory,
         \Magento\Framework\Filesystem\Io\File $ioFile,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Hhmedia\Notes\Model\ResourceModel\Notes\CollectionFactory $notesCollectionFactory,
         \Magento\Framework\Image\Factory $imageFactory
     ) {
         $this->_scopeConfig = $scopeConfig;
@@ -128,6 +131,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_fileUploaderFactory = $fileUploaderFactory;
         $this->_ioFile = $ioFile;
         $this->_storeManager = $storeManager;
+        $this->_notesCollectionFactory = $notesCollectionFactory;
         $this->_imageFactory = $imageFactory;
         parent::__construct($context);
     }
@@ -262,4 +266,21 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     {
         return abs((int)$this->_scopeConfig->getValue(self::XML_PATH_ITEMS_PER_PAGE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE));
     }
+
+    public function getCollection()
+    {
+        $collection = $this->_notesCollectionFactory->create();
+        $option[''] = 'Please Select';
+        if(count($collection) > 0) {
+            foreach($collection as $note){
+                if($note->getStatus() == 1) {
+                    $label = $note->getTitle();
+                    $value = $note->getNotesId();
+                    $option[$value] = $label;
+                }
+            }
+        }
+        return $option;
+    }
+
 }
