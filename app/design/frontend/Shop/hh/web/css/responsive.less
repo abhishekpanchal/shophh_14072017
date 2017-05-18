@@ -125,12 +125,104 @@ Temp var
 @baseFontSize : 13px;
 @baseLineHeight: 20px;
 
+
+
+
+
+
+
+
+
+
+
 /* ==========================================================================
-All small devices - till 750px
+Tablet - till 1024px
 ========================================================================== */
-@media (max-width: 750px) {
+@media (max-width: 1024px) {
+	.cms-home .homeslider {
+		.vcenter-flex {
+			display: block;
+		}
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+			margin-top: -100px;
+		}
+		.homepage-hero-details {
+			background: #fff;
+			width: 50%;
+			height: 0;
+			padding-bottom: 50%;
+			.hero-details-title {
+				border: 0;
+				margin-top: 8%;
+			}
+			h4 {
+				margin-top: 15px;
+			}
+			p {
+				margin-right: -35%;
+				margin-left: -35%;
+			}
+		}		
+		.homepage-controls-container {
+			margin-top: -15%;
+			
+			.col-md-4 {
+				width: 100%;
+				margin: 0;
+			}
+			.homepage-controls {
+				width: 100%;
+				.carousel-control {
+					margin-top: -35%;
+				}
+				.carousel-control.left {
+					left: 5%;
+				}
+				.carousel-control.right {
+					right: 5%;
+				}
+			}
+		}
+		& + div {
+			position: relative;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+All small devices - till 767px
+========================================================================== */
+@media (max-width: 767px) {
 	body, html {
 		font-size: 15px;
+	}
+	
+	.page-title, .page-title-small {
+		margin-top: 30px;
 	}
 
 	/* ===============================
