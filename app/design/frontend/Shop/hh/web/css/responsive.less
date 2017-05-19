@@ -190,6 +190,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     margin-top: 10px;
   }
   
+  .page-layout-1column {
+	margin-bottom: 0;
+  }
+  
   .cms-page-view .inner-content, .faqs-index-index .inner-content, .contact-index-index .inner-content, .cms-privacy-policy .inner-content, .cms-terms-conditions .inner-content {
 	padding-left: 30px;
   }
@@ -559,11 +563,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		}
 	}
 	
-	
 	.cms-no-route .main-content p {
 		width: 100%;
 	}
 	
+	
+	
+
 	
 	
 	
@@ -586,6 +592,33 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 @media only screen and (min-width: 1024px) and (max-width: 1126px) {
 	.cycle-slideshow1 img:first-child {
 		min-height: 375px;;
+	}
+}
+
+
+
+
+
+
+/* ==========================================================================
+Footer - till 992px
+========================================================================== */
+@media (max-width: 992px) {
+	.footer-subscribe {
+		padding: 0;
+		margin-top: 40px;
+		margin-left: 50%;
+		padding-left: 20px;
+	}
+	.footer-bottom {
+		padding-right: 40%;
+		margin: -220px auto 120px;
+		.vcenter {
+			display: block;
+		}
+	}
+	.footer-social {
+		margin-top: 30px;
 	}
 }
 
@@ -661,6 +694,9 @@ All small devices - till 767px
 	/* ===============================
 	Footer
 	=================================*/
+	
+	
+	/*
 	.footer-col li strong {
 		font-size: 1rem;
 	}
@@ -695,6 +731,42 @@ All small devices - till 767px
 			.center;
 		}
 	}
+	*/
+	
+	
+	.footer-links {
+		padding: 0 15px;
+	}
+	.footer-col {
+		margin-left: 0;
+		margin-bottom: 20px;
+	}
+	.footer-subscribe {
+		margin-top: 0;
+		padding-left: 0;
+		text-align: center;
+		.text-right {
+			text-align: center;
+		}
+	}
+	.newsletter-footer {
+		margin-bottom: 0;
+		input[type="email"] {
+			text-align: center;
+		}
+		.btn-subscribe {
+			float: none;
+		}
+	}
+	.footer-bottom {
+		margin: 40px 0 0;
+		padding: 0 15px;
+		text-align: center;
+	}
+	
+	
+	
+	
 
 	/* ===============================
 	Carousel - Global
