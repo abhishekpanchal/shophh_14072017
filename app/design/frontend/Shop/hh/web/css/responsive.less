@@ -196,6 +196,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 
+
   	/* ===============================
 	Meganav
 	=================================*/
@@ -415,13 +416,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
         .editors-pick-title h3 {
           font-size: 1.8em;
         }
-        .editors-thumbs li {
-			width: 25%;
+        .editors-thumbs {
+			margin-bottom: 0;
+			li {
+				margin-bottom: 5px;
+			}
         }
       }
-	  .editor-guest-image, .guest-editor {
-		width: 50%;
-	  }	
       
       .guest-editor {
         .guest-editor-details {
@@ -559,6 +560,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 	
+	.cms-no-route .main-content p {
+		width: 100%;
+	}
+	
 	
 	
 	
@@ -627,23 +632,14 @@ All small devices - till 767px
 	.quickview-bar2 {
 		.none;
 	}
-	.page-title, .page-title-small {
-		background-size: 100%;
-
-		span {
-			padding: 0 15px;
-		}
-
-		strong {
-			font-size: 34px;
-		}
-	}
+	
 	.subtitle {
-		margin: 0 auto;
-    width: 90%;
-    margin-bottom: 35px;
-    margin-top: 10px;
+		font-size: 12px;
+		margin-top: 0;
+		margin-bottom: 20px;
 	}
+
+
 
 	/* ===============================
 	Global
@@ -713,17 +709,12 @@ All small devices - till 767px
 	Homepage
 	=================================*/
 	.cms-home {
-
 		.homeslider {
-			.homepage-hero {
-				width: 100%;
-			}
 			.mood-bg {
-				width: 100%;
-				background: none!important;
+				margin-top: 0;
 			}
-			.homepage-controls {
-				top: 0;
+			.homepage-controls-container {
+				margin-top: -10%;
 			}
 			.homepage-controls {
 				bottom: 15px;
@@ -732,7 +723,7 @@ All small devices - till 767px
 
 				.carousel-control.right, .carousel-control.left  {
 					opacity: 1;
-					margin-top: -400px;
+					margin-top: -300px;
 				}
 				.carousel-control.right {
 			    right: -75%;
@@ -741,7 +732,6 @@ All small devices - till 767px
 			    left: -75%;
 				}
 			}
-
 			.carousel-indicators {
 				li {
 					background-color: #CCC;
@@ -760,11 +750,10 @@ All small devices - till 767px
 				background: #FFF;
 
 				p {
-					margin-right: -25%;
-					margin-left: -25%;
+					margin: 10px -10%;
 				}
 				h4 {
-					margin-top: 30px;
+					margin-top: 20px;
 				}
 				.hero-details-title {
 			    width: 85%;
@@ -782,7 +771,8 @@ All small devices - till 767px
 				}
 
 				.hero-details-title {
-					margin-top: 45px;
+					border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+					padding-bottom: 5px;
 				}
 
 				.homepage-hero-btn {
@@ -834,21 +824,24 @@ All small devices - till 767px
 
 		}
 
-		.editors-area {
-			.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-			}
-			.editors-pick {
-				padding: 20px;
 
-				.editors-pick-title h3 {
-					font-size: 1.8em;
+		.editors-area {
+			margin-bottom: 0;
+			.editors-pick {
+				padding: 10px;
+
+				.editors-pick-title {
+					margin-top: 5px;
+					h3 {
+						font-size: 1.8em;
+					}
 				}
 			}
 			.editor-guest-image {
 
 			}
 			.guest-editor {
+				min-height: 0;
 				.guest-editor-details {
 					.editor-quote {
 						margin-bottom: 0;
@@ -886,6 +879,9 @@ All small devices - till 767px
 			}
 		}
 
+	}
+	.shot-thumb {
+		margin: 0 0 5px;
 	}
 
 	/* ===============================
@@ -989,8 +985,6 @@ Extra Small Screens
         }
         p {
           font-size: 1rem;
-          margin-right: -5%;
-    			margin-left: -5%;
         }
         .hero-details-title {
           font-size: 16px;
@@ -1021,9 +1015,6 @@ Extra Small Screens
 		}
 
 		.editors-area {
-			.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-			}
 			.editor-guest-image {
 			}
 			.guest-editor {
