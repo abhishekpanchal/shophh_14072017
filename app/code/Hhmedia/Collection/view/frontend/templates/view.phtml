@@ -43,12 +43,16 @@
 					                    <div class="one-left"><?php echo __('Only 1 left'); ?></div>
 					                <?php elseif($customHelper->isEditorsPick($product)): ?>
                             			<div class="editors-pick"><?php echo __('Editor’s Pick'); ?></div>
+                            		<?php elseif($customHelper->isExclusive($product)): ?>
+                            			<div class="exclusive"><?php echo __('H&H exclusive'); ?></div> 
 					                <?php elseif($customHelper->isOnSale($product)): ?>
 					                    <div class="one-sale"><?php echo __('On Sale'); ?></div>
 					                <?php elseif($customHelper->isOneOfKind($product)): ?>
 					                    <div class="one-kind"><?php echo __('One of a Kind'); ?></div>
 					                <?php elseif($customHelper->isProductNew($product)): ?>
 					                    <div class="new-product"><?php echo __('New'); ?></div>
+					                <?php elseif($customHelper->isLastCall($product)): ?>
+                            			<div class="last-call"><?php echo __('Last Call'); ?></div>
 					                <?php endif; ?>
 				            		<p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
 									<?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>

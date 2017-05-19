@@ -301,12 +301,16 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<div class="one-left">' . __('Only 1 left') . '</div>';
                 }elseif($this->helperData->isEditorsPick($product_details)){
                     $html_content .= '<div class="editors-pick">' . __('Editor’s Pick') . '</div>';
+                }elseif($this->helperData->isExclusive($product_details)){
+                    $html_content .= '<div class="exclusive">' . __('H&H exclusive') . '</div>';
                 }elseif($this->helperData->isOnSale($product_details)){
                     $html_content .= '<div class="one-sale">' . __('On Sale') . '</div>';
                 }elseif($this->helperData->isOneOfKind($product_details)){
                     $html_content .= '<div class="one-kind">' . __('One of a Kind') . '</div>';
                 }elseif($this->helperData->isProductNew($product_details)){
                     $html_content .= '<div class="new-product">' . __('New') . '</div>';
+                }elseif($this->helperData->isLastCall($product_details)){
+                    $html_content .= '<div class="last-call">' . __('Last Call') . '</div>';
                 }
 
                 //$html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
@@ -424,12 +428,16 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<div class="one-left">' . __('Only 1 left') . '</div>';
                 }elseif($this->helperData->isEditorsPick($product_details)){
                     $html_content .= '<div class="editors-pick">' . __('Editor’s Pick') . '</div>';
+                }elseif($this->helperData->isExclusive($product_details)){
+                    $html_content .= '<div class="exclusive">' . __('H&H exclusive') . '</div>';
                 }elseif($this->helperData->isOnSale($product_details)){
                     $html_content .= '<div class="one-sale">' . __('On Sale') . '</div>';
                 }elseif($this->helperData->isOneOfKind($product_details)){
                     $html_content .= '<div class="one-kind">' . __('One of a Kind') . '</div>';
                 }elseif($this->helperData->isProductNew($product_details)){
                     $html_content .= '<div class="new-product">' . __('New') . '</div>';
+                }elseif($this->helperData->isLastCall($product_details)){
+                    $html_content .= '<div class="last-call">' . __('Last Call') . '</div>';
                 }
 
                 $html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
