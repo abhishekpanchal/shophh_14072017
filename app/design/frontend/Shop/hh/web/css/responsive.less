@@ -189,6 +189,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     margin-bottom: 35px;
     margin-top: 10px;
   }
+  
+  .cms-page-view .inner-content, .faqs-index-index .inner-content, .contact-index-index .inner-content, .cms-privacy-policy .inner-content, .cms-terms-conditions .inner-content {
+	padding-left: 30px;
+  }
+
 
 
 
@@ -260,7 +265,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			}
 		}		
 		.homepage-controls-container {
-			margin-top: -15%;
+			margin-top: -20%;
 			
 			.col-md-4 {
 				width: 100%;
@@ -399,9 +404,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     }
 
     .editors-area {
-      .editors-pick, .editor-guest-image, .guest-editor {
-      min-height: 480px;
-      }
+		margin-bottom: 30px;
+		
+		.editors-pick, .editor-guest-image, .guest-editor {
+			min-height: 480px;
+		}
       .editors-pick {
         padding: 20px;
         width: 100%;
@@ -409,13 +416,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
         .editors-pick-title h3 {
           font-size: 1.8em;
         }
-        .editors-thumbs li {
-			width: 25%;
+        .editors-thumbs {
+			margin-bottom: 0;
+			li {
+				margin-bottom: 5px;
+			}
         }
       }
-	  .editor-guest-image, .guest-editor {
-		width: 50%;
-	  }	
       
       .guest-editor {
         .guest-editor-details {
@@ -448,8 +455,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     }
   }
 
-  .more-shots .more-shots-thumbs, .lookbookslider-index-index .column.main .col-md-3 {
+  .more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
 	width: 50%;
+	float: left;
     &:nth-of-type(2n+1) {
       clear: both;
     }
@@ -472,6 +480,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		margin: 0;
 		padding: 25px 10%;
 		box-shadow: none;
+		
+		.hotspot-details-placeholder {
+			width: 100%;
+		}
 		h5 {
 			display: none;
 		}
@@ -479,9 +491,85 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			display: inline-block;
 			margin-top: 10px;
 		}
+		
+		.image {
+			float: left;
+		}
+		h2 {
+			padding-top: 35px;
+		}
+		.pro-detail-div {
+			.actions-primary {
+				margin-top: 20px;
+			}
+			.hotspot-btn {
+				min-width: 25%;
+			}
+		}
 	}
-  
+	
+	.shot-products {
+		.marginbottom-40 {
+			margin-bottom: 0 !important;
+		}
+		.col-md-3 {
+			width: 50%;
+			float: left;
+		}
+	}
+	
+
+
+	
+	.catalog-product-view {
+		section .col-md-6 + .col-md-6 {
+			width: 100%;
+			.product-info-main {
+				float: right !important;
+				width: 50% !important;
+				margin-top: -510px;
+			}
+			.product-addto-links {
+				display: block;
+				margin-top: -225px;
+				margin-left: 50%;
+			}
+			.addthis_toolbox {
+				margin-top: -225px;
+			}
+		}
+	
+		.product.info.detailed NULL {
+			width: 90vw;
+			left: -39.8vw;
+			position: relative;
+			margin-top: 225px;
+		}
+	}
+	
+
+	
+	
+	/* ===============================
+	Editors
+	=================================*/
+	.editor-index-index {
+		.vcenter-flex.display-block-xs {
+			display: flex !important;
+		}
+	}
+	
+	
+	.cms-no-route .main-content p {
+		width: 100%;
+	}
+	
+	
+	
+	
 }
+
+
 
 
 
@@ -544,23 +632,14 @@ All small devices - till 767px
 	.quickview-bar2 {
 		.none;
 	}
-	.page-title, .page-title-small {
-		background-size: 100%;
-
-		span {
-			padding: 0 15px;
-		}
-
-		strong {
-			font-size: 34px;
-		}
-	}
+	
 	.subtitle {
-		margin: 0 auto;
-    width: 90%;
-    margin-bottom: 35px;
-    margin-top: 10px;
+		font-size: 12px;
+		margin-top: 0;
+		margin-bottom: 20px;
 	}
+
+
 
 	/* ===============================
 	Global
@@ -630,17 +709,12 @@ All small devices - till 767px
 	Homepage
 	=================================*/
 	.cms-home {
-
 		.homeslider {
-			.homepage-hero {
-				width: 100%;
-			}
 			.mood-bg {
-				width: 100%;
-				background: none!important;
+				margin-top: 0;
 			}
-			.homepage-controls {
-				top: 0;
+			.homepage-controls-container {
+				margin-top: -10%;
 			}
 			.homepage-controls {
 				bottom: 15px;
@@ -649,7 +723,7 @@ All small devices - till 767px
 
 				.carousel-control.right, .carousel-control.left  {
 					opacity: 1;
-					margin-top: -400px;
+					margin-top: -300px;
 				}
 				.carousel-control.right {
 			    right: -75%;
@@ -658,7 +732,6 @@ All small devices - till 767px
 			    left: -75%;
 				}
 			}
-
 			.carousel-indicators {
 				li {
 					background-color: #CCC;
@@ -677,11 +750,10 @@ All small devices - till 767px
 				background: #FFF;
 
 				p {
-					margin-right: -25%;
-					margin-left: -25%;
+					margin: 10px -10%;
 				}
 				h4 {
-					margin-top: 30px;
+					margin-top: 20px;
 				}
 				.hero-details-title {
 			    width: 85%;
@@ -699,7 +771,8 @@ All small devices - till 767px
 				}
 
 				.hero-details-title {
-					margin-top: 45px;
+					border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+					padding-bottom: 5px;
 				}
 
 				.homepage-hero-btn {
@@ -724,9 +797,6 @@ All small devices - till 767px
 		}
 
 		.decorating-formula {
-			padding-top: 40px;
-			border-top: 1px solid #b2b2b2;
-
 			.decorating-formula-product {
 				margin-top: 0;
 			}
@@ -754,21 +824,24 @@ All small devices - till 767px
 
 		}
 
-		.editors-area {
-			.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-			}
-			.editors-pick {
-				padding: 20px;
 
-				.editors-pick-title h3 {
-					font-size: 1.8em;
+		.editors-area {
+			margin-bottom: 0;
+			.editors-pick {
+				padding: 10px;
+
+				.editors-pick-title {
+					margin-top: 5px;
+					h3 {
+						font-size: 1.8em;
+					}
 				}
 			}
 			.editor-guest-image {
 
 			}
 			.guest-editor {
+				min-height: 0;
 				.guest-editor-details {
 					.editor-quote {
 						margin-bottom: 0;
@@ -806,6 +879,9 @@ All small devices - till 767px
 			}
 		}
 
+	}
+	.shot-thumb {
+		margin: 0 0 5px;
 	}
 
 	/* ===============================
@@ -909,8 +985,6 @@ Extra Small Screens
         }
         p {
           font-size: 1rem;
-          margin-right: -5%;
-    			margin-left: -5%;
         }
         .hero-details-title {
           font-size: 16px;
@@ -941,9 +1015,6 @@ Extra Small Screens
 		}
 
 		.editors-area {
-			.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-			}
 			.editor-guest-image {
 			}
 			.guest-editor {

@@ -248,9 +248,9 @@ switch ($type = $block->getType()) {
                         <?php endif; ?>
                     <?php endif; ?>
                     <?php if ($type == 'related' || $type == 'upsell'): ?>
-                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 col-sm-3 product-item-catalog" style="display: none;">' : '</li><li class="item product col-md-3 product-item-catalog" style="display: none;">' ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 col-sm-3 product-item-catalog" style="display: none;">' : '</li><li class="item product col-md-3 col-sm-3 product-item-catalog" style="display: none;">' ?>
                     <?php else: ?>
-                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 product-item-catalog">' : '</li><li class="item product col-md-3 product-item-catalog">' ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 col-sm-3 product-item-catalog">' : '</li><li class="item product col-md-3 col-sm-3 product-item-catalog">' ?>
                     <?php endif; ?>
                     <div class="product-item-details <?php /* @escapeNotVerified */ echo $available; ?>">
                         <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>

@@ -22,7 +22,7 @@ echo $this->getLayout()
 
     <h3>Contact Form</h3>
     <div class="row marginbottom-30">
-        <div class="col-md-6">
+        <div class="col-md-6 col-sm-6">
             <div class="field name required">
                 <label class="label" for="name"><span><?php /* @escapeNotVerified */ echo __('Full Name') ?></span>
                 <span class="asterix">*</span>
@@ -32,7 +32,7 @@ echo $this->getLayout()
                 </div>
             </div>
         </div>
-        <div class="field email col-md-6 required">
+        <div class="field email col-md-6  col-sm-6 required">
             <label class="label" for="email"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span>
             <span class="asterix">*</span>
             </label>
@@ -43,13 +43,13 @@ echo $this->getLayout()
     </div>
 
     <div class="row marginbottom-30">
-        <div class="field col-md-6 telephone">
+        <div class="field col-md-6 col-sm-6 telephone">
             <label class="label" for="telephone"><span><?php /* @escapeNotVerified */ echo __('Phone Number') ?> <span class="lowercase">(not required)</span></span></label>
             <div class="control">
                 <input name="telephone" id="telephone" title="<?php /* @escapeNotVerified */ echo __('Phone Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('telephone')) ?>" class="input-text" type="text" />
             </div>
         </div>
-        <div class="field order-number col-md-6">
+        <div class="field order-number col-md-6 col-sm-6">
             <label class="label" for="order-number"><span>Order Number <span class="lowercase">(if applicable)</span></span></label>
             <div class="control">
                 <input name="order-number" id="order-number" title="<?php /* @escapeNotVerified */ echo __('Order Number') ?>" value="<?php echo $block->escapeHtml($this->helper('Magento\Contact\Helper\Data')->getPostValue('order-number')) ?>" class="input-text" type="text" />
@@ -58,7 +58,7 @@ echo $this->getLayout()
     </div>
 
     <div class="row marginbottom-30">
-        <div class="field subject col-md-6">
+        <div class="field subject col-md-6 col-sm-6">
             <label class="label" for="subject"><span><?php /* @escapeNotVerified */ echo __('Subject') ?></span>
             <span class="asterix">*</span>
             </label>
