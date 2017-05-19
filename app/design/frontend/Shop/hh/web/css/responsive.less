@@ -260,7 +260,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			}
 		}		
 		.homepage-controls-container {
-			margin-top: -15%;
+			margin-top: -20%;
 			
 			.col-md-4 {
 				width: 100%;
@@ -399,9 +399,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     }
 
     .editors-area {
-      .editors-pick, .editor-guest-image, .guest-editor {
-      min-height: 480px;
-      }
+		margin-bottom: 30px;
+		
+		.editors-pick, .editor-guest-image, .guest-editor {
+			min-height: 480px;
+		}
       .editors-pick {
         padding: 20px;
         width: 100%;
@@ -448,8 +450,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     }
   }
 
-  .more-shots .more-shots-thumbs, .lookbookslider-index-index .column.main .col-md-3 {
+  .more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
 	width: 50%;
+	float: left;
     &:nth-of-type(2n+1) {
       clear: both;
     }
@@ -472,12 +475,70 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		margin: 0;
 		padding: 25px 10%;
 		box-shadow: none;
+		
+		.hotspot-details-placeholder {
+			width: 100%;
+		}
 		h5 {
 			display: none;
 		}
 		.btn-fullscreen {
 			display: inline-block;
 			margin-top: 10px;
+		}
+		
+		.image {
+			float: left;
+		}
+		h2 {
+			padding-top: 35px;
+		}
+		.pro-detail-div {
+			.actions-primary {
+				margin-top: 20px;
+			}
+			.hotspot-btn {
+				min-width: 25%;
+			}
+		}
+	}
+	
+	.shot-products {
+		.marginbottom-40 {
+			margin-bottom: 0 !important;
+		}
+		.col-md-3 {
+			width: 50%;
+			float: left;
+		}
+	}
+	
+
+
+	
+	.catalog-product-view {
+		section .col-md-6 + .col-md-6 {
+			width: 100%;
+			.product-info-main {
+				float: right !important;
+				width: 50% !important;
+				margin-top: -510px;
+			}
+			.product-addto-links {
+				display: block;
+				margin-top: -225px;
+				margin-left: 50%;
+			}
+			.addthis_toolbox {
+				margin-top: -225px;
+			}
+		}
+	
+		.product.info.detailed NULL {
+			width: 90vw;
+			left: -39.8vw;
+			position: relative;
+			margin-top: 225px;
 		}
 	}
   
@@ -724,9 +785,6 @@ All small devices - till 767px
 		}
 
 		.decorating-formula {
-			padding-top: 40px;
-			border-top: 1px solid #b2b2b2;
-
 			.decorating-formula-product {
 				margin-top: 0;
 			}
