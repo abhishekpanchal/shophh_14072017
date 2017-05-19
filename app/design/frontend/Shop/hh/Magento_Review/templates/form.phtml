@@ -10,6 +10,10 @@
  * @var $block \Magento\Review\Block\Form
  */
 ?>
+<?php
+$reviewkObj= $block->getLayout()->createBlock('Magento\Review\Block\Product\View');
+$reviewCollection = $reviewkObj->getReviewsCollection();
+?>
 <div class="block review-add row">
     <div class="review-details-div">
         <div class="col-md-3 pull-right read-all-reviews text-right">
@@ -18,11 +22,12 @@
         <div class="block-content">
         <?php if ($block->getAllowWriteReviewFlag()): ?>
 
-<div class="col-md-12 text-center">
-    <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
-	<a href="#" class="btn btn-main btn-toggle-form btn-no-review">Add A Review</a>
-</div>
-
+            <div class="col-md-12 text-center">
+                <?php if(count($reviewCollection) == 0): ?>
+                    <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
+                <?php endif; ?>
+            	<a href="#" class="btn btn-main btn-toggle-form btn-no-review">Add A Review</a>
+            </div>
 
             <form action="<?php /* @escapeNotVerified */ echo $block->getAction() ?>" class="col-md-8 col-md-offset-2 review-form display-none" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
                 <?php echo $block->getBlockHtml('formkey'); ?>
@@ -94,13 +99,10 @@
         </script>
         <?php else: ?>
             <div class="col-md-12 text-center">
-            <!-- <h4><?php /* @escapeNotVerified */ echo __('Write A Review') ?></h4>
-                <p><?php echo __('You must log in or create an acoount to review this product.') ?></p> -->
-                <!--<p class="no-review-text">oo reviews for this product.Be the first to write your review! You must be logged in to submit.</p>-->
-                <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
-								<a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
-
-                <!-- <a href="<?php echo $block->getRegisterUrl() ?>" class="btn btn-main"><?php echo __('Sign Up') ?></a> -->
+                <?php if(count($reviewCollection) == 0): ?>
+                    <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
+                <?php endif; ?>
+                <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
             </div>
         <?php endif ?>
         </div>

@@ -67,7 +67,7 @@
 
 
 
-div.MagicToolboxContainer {
+div.MagicToolboxSelectorsContainer {
 	width:80%;
 	margin:0 auto;
 }
@@ -80,12 +80,13 @@ div.MagicToolboxContainer {
 	opacity: 0.5;
 }
 
-.catalog-product-view .product-info-main .name .value {
-    font-size: 30px;
-}
-
-.weltpixel-quickview-catalog-product-view .viewfull-details {
-    margin-bottom: 25px;
+.weltpixel-quickview-catalog-product-view {
+	.product-info-main .name .value {
+    	font-size: 30px;
+	}
+	.viewfull-details {
+    	margin-bottom: 25px;
+    }
 }
 
 
@@ -124,12 +125,400 @@ Temp var
 @baseFontSize : 13px;
 @baseLineHeight: 20px;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==========================================================================
-All small devices - till 750px
+Tablet Portrait size to standard 1024 (devices and browsers)
 ========================================================================== */
-@media (max-width: 750px) {
+@media only screen and (max-width: 1024px) {
+  body, html {
+    font-size: 15px;
+  }
+
+
+  /* ===============================
+  Classes
+  =================================*/
+  .display-block-xs {
+    display: block!important;
+  }
+  .center {
+    text-align: center;
+  }
+  .none {
+    display: none;
+  }
+  .clear {
+    clear: both;
+  }
+  .block-center {
+    display: block;
+    margin: 0 auto;
+  }
+  .quickview-bar,
+  .quickview-bar2 {
+    .none;
+  }
+  .page-title, .page-title-small {
+    background: none;
+
+    span {
+      padding: 0 15px;
+    }
+
+    strong {
+      font-size: 34px;
+    }
+  }
+  .subtitle {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 35px;
+    margin-top: 10px;
+  }
+
+
+
+  	/* ===============================
+	Meganav
+	=================================*/
+	
+	.main-nav {
+		.container {
+			width: 100%;
+		}
+	}
+	#awemenu .am-tabs .am-tab.shop-menu a {
+		padding: 16px 20px;
+	}
+	#awemenu .am-tabs.am-tabs-root > .am-sortable > .am-tab > .am-dropdown {
+		width: 100vw;
+		padding: 0;
+		left: 15px;
+	}
+	#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column {
+		width: 32.33333%;
+	}
+	.menu-one {
+		border-left: 1px solid rgba(0, 0, 0, 0.1);
+		margin-left: 2%;
+		padding-left: 0;
+		width: 31.333333%;
+	}
+	.menu-three {
+		min-height: 300px;
+	}
+
+
+
+
+
+  /* ===============================
+  Homepage
+  =================================*/
+  .cms-home {
+
+  	.homeslider {
+		.vcenter-flex {
+			display: block;
+		}
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+			margin-top: -100px;
+		}
+		.homepage-hero-details {
+			background: #fff;
+			width: 50%;
+			height: 0;
+			padding-bottom: 50%;
+			.hero-details-title {
+				border: 0;
+				margin-top: 8%;
+			}
+			h4 {
+				margin-top: 15px;
+			}
+			p {
+				margin-right: -35%;
+				margin-left: -35%;
+			}
+		}		
+		.homepage-controls-container {
+			margin-top: -15%;
+			
+			.col-md-4 {
+				width: 100%;
+				margin: 0;
+			}
+			.homepage-controls {
+				width: 100%;
+				.carousel-control {
+					margin-top: -35%;
+				}
+				.carousel-control.left {
+					left: 5%;
+				}
+				.carousel-control.right {
+					right: 5%;
+				}
+			}
+		}
+		& + div {
+			position: relative;
+		}
+	}
+    .homeslider {
+
+      .homepage-controls {
+        top: 0;
+      }
+      .homepage-controls {
+        bottom: 15px;
+        width: 100px;
+        height: 50px;
+
+        .carousel-control.right, .carousel-control.left  {
+          opacity: 1;
+          margin-top: -400px;
+        }
+        .carousel-control.right {
+          right: -75%;
+        }
+        .carousel-control.left {
+          left: -75%;
+        }
+      }
+
+      .carousel-indicators {
+        li {
+          background-color: #CCC;
+          border-color: #CCC;
+          margin-right: 5px;
+        }
+        .active {
+          background-color: #000;
+          border: none;
+        }
+      }
+    }
+    .home-slider {
+      .homepage-hero-details {
+
+        p {
+          margin-right: -25%;
+          margin-left: -25%;
+        }
+        h4 {
+          margin-top: 30px;
+        }
+        .hero-details-title {
+          width: 85%;
+          margin: 0 auto;
+          margin-top: 60px;
+        }
+
+        .homepage-hero-btn {
+          padding: 10px 15px;
+          width: 80%;
+        }
+
+        .hero-details-inner {
+          padding: 0;
+        }
+
+        .hero-details-title {
+          margin-top: 45px;
+        }
+
+        .homepage-hero-btn {
+          display: block;
+        }
+        .carousel-indicators .active {
+          margin: 0;
+          margin-right: 5px;
+          width: 11px;
+          height: 11px;
+        }
+
+        .carousel-control.right,
+        .carousel-control.left {
+          height: 70px;
+          width: 35px;
+          top: -400px;
+          background-size: 80% 80%!important;
+          opacity: 1;
+        }
+      }
+    }
+    
+
+    .decorating-formula {
+      padding-top: 40px;
+
+      .decorating-formula-product {
+        margin-top: 0;
+      }
+      .formula_list_view {
+        .decorating-formula-product:nth-of-type(3):before,
+        .decorating-formula-product:nth-of-type(3):after  {
+          background-size: 35% 35%!important;
+          background-position: center center;
+          top: 30%;
+        }
+        .decorating-formula-title {
+          font-size: 1.9rem;
+        }
+        .decorating-formula-product-title {
+          font-size: 1rem;
+        }
+        .decorating-formula-price {
+          font-size: 0.75rem;
+        }
+        .decorating-formula-thumb {
+          margin: 20px auto;
+          width: 90%;
+        }
+      }
+
+    }
+
+    .editors-area {
+      .editors-pick, .editor-guest-image, .guest-editor {
+      min-height: 480px;
+      }
+      .editors-pick {
+        padding: 20px;
+        width: 100%;
+        min-height: 0;
+        .editors-pick-title h3 {
+          font-size: 1.8em;
+        }
+        .editors-thumbs li {
+			width: 25%;
+        }
+      }
+	  .editor-guest-image, .guest-editor {
+		width: 50%;
+	  }	
+      
+      .guest-editor {
+        .guest-editor-details {
+          .editor-quote {
+            margin-bottom: 0;
+          }
+          .editor-blurb {
+            padding: 20px 0;
+          }
+
+        }
+      }
+    }
+
+    .shop-the-issue {
+      .magazine_list_item {
+        padding: 0 30px;
+
+        .issue-img {
+          width: 80%;
+          .block-center;
+        }
+      }
+      .carousel-control.right {
+        right: -3%;
+      }
+      .carousel-control.left {
+        left: -3%;
+      }
+    }
+  }
+
+  .more-shots .more-shots-thumbs, .lookbookslider-index-index .column.main .col-md-3 {
+	width: 50%;
+    &:nth-of-type(2n+1) {
+      clear: both;
+    }
+  }
+  
+  
+  /* ===============================
+	Shop the Spot
+	=================================*/
+	
+	.lookbook-container {
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+		}
+	}
+	.hotspot-details {
+		margin: 0;
+		padding: 25px 10%;
+		box-shadow: none;
+		h5 {
+			display: none;
+		}
+		.btn-fullscreen {
+			display: inline-block;
+			margin-top: 10px;
+		}
+	}
+  
+}
+
+
+
+
+/* ===============================
+	Shop the Spot Desktop Responsive
+	=================================*/
+@media only screen and (min-width: 1024px) and (max-width: 1256px) {
+	.hotspot-details {
+		padding: 5%;
+		margin: 3%;
+	}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1126px) {
+	.cycle-slideshow1 img:first-child {
+		min-height: 375px;;
+	}
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+All small devices - till 767px
+========================================================================== */
+@media (max-width: 767px) {
 	body, html {
 		font-size: 15px;
+	}
+	
+	.page-title, .page-title-small {
+		margin-top: 30px;
 	}
 
 	/* ===============================
@@ -484,6 +873,13 @@ All small devices - till 750px
 	/* ===============================
 	Search Results
 	=================================*/
+	
+	
+
+	
+	
+	
+	
 
 
 }

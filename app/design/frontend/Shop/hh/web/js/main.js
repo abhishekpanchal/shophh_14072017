@@ -254,4 +254,16 @@ require(['jquery', 'jquery.bootstrap'], function($){
     });
 
 
+
+
+
+
+  // Adding dynamic form key to modal add to wishlist button
+  $('.js-add-formKey').click(function(e) {
+    var theKey = $('input[name=form_key]').val();
+    e.originalEvent.currentTarget.href = $(this).attr('href') + theKey;
+  });
+
+
+
 });

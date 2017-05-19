@@ -1,6 +1,9 @@
 <?php $availableSocials = $this->getAvailableSocials(); ?>
 <?php if (sizeof($availableSocials)): ?>
 <div class="block social-login-authentication-channel">
+     <div class="block-title">
+        <span><?php echo __('Or Login With:') ?></span>
+    </div>
     <div class="block-content">
         <ul class="social-login-list">
         <?php foreach ($availableSocials as $key => $social): ?>

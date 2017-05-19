@@ -103,6 +103,26 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         }
     }
 
+    public function isLastCall(ModelProduct $product)
+    {
+        $lastCall = $product->getData('last_call');
+        if($lastCall == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function isExclusive(ModelProduct $product)
+    {
+        $exclusive = $product->getData('last_call');
+        if($exclusive == 1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     function limit_review($text, $limit) {
         if (str_word_count($text, 0) > $limit) {
             $words = str_word_count($text, 2);
