@@ -37,11 +37,7 @@
                                 <argument name="title" translate="true" xsi:type="string">Product Details and Comment</argument>
                             </arguments>
                         </block>
-                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.cart" template="item/column/cart.phtml" cacheable="false">
-                            <arguments>
-                                <argument name="title" translate="true" xsi:type="string">Add to Cart</argument>
-                            </arguments>
-                        </block>
+                        
 
                         <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Actions" name="customer.wishlist.item.actions" template="item/column/actions.phtml" cacheable="false">
                             <arguments>
@@ -50,6 +46,15 @@
                             <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Edit" name="customer.wishlist.item.edit" template="item/column/edit.phtml" before="-" cacheable="false"/>
                             <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Remove" name="customer.wishlist.item.remove" template="item/column/remove.phtml" cacheable="false"/>
                         </block>
+
+
+                        <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.cart" template="item/column/cart.phtml" cacheable="false">
+                            <arguments>
+                                <argument name="title" translate="true" xsi:type="string">Add to Cart</argument>
+                            </arguments>
+                        </block>
+
+
                     </block>
                 </block>
                 <container name="customer.wishlist.buttons" as="control_buttons" label="Wishlist Control Buttons">

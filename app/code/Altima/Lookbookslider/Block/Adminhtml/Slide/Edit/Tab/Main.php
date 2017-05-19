@@ -28,6 +28,7 @@ use Magento\Framework\Registry;
 use Magento\Framework\Data\FormFactory;
 use Magento\Cms\Model\Wysiwyg\Config as WysiwygConfig;
 use Magento\Config\Model\Config\Source\Yesno as BooleanOptions;
+use Hhmedia\Notes\Helper\Data as HelperData;
 
 class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface {
 
@@ -35,6 +36,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected $_systemStore;
     protected $_categoryCollection;
     protected $_lookbooksliderHelper;
+    protected $helperData;
 
     public function __construct(
             \Magento\Backend\Block\Template\Context $context,
@@ -43,11 +45,13 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             \Magento\Store\Model\System\Store $systemStore,
             \Altima\Lookbookslider\Model\ResourceModel\Slide\Collection $slideCollection,
             \Altima\Lookbookslider\Helper\Data $lookbooksliderHelper,
+            HelperData $helperData,
             array $data = []
     ) {
         $this->_systemStore          = $systemStore;
         $this->_slideCollection      = $slideCollection;
         $this->_lookbooksliderHelper = $lookbooksliderHelper;
+        $this->helperData    = $helperData;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -130,14 +134,16 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 ]
         );
 
+        $noteOptions = $this->helperData->getCollection();
+
         $fieldset->addField(
             'link', 'select', 
             [
                 'label'    => __('Decorating Notes'),
                 'title'    => __('Decorating Notes'),
                 'name'     => 'slide[link]',
-                'required' => true,
-                'options'  => $model->getDecoratingNotes(),
+                'required' => false,
+                'options'  => $noteOptions,
                 'disabled' => $isElementDisabled
             ]
         );

@@ -8,10 +8,12 @@
 
 /** @var $block \Magento\Wishlist\Block\Catalog\Product\View\Addto\Wishlist */
 ?>
+
 <?php if ($block->isWishListAllowed()) : ?>
 	<?php if($this->getRequest()->getModuleName() == "weltpixel_quickview"): ?>
-		<a 	href="#" target="_parent"
-			data-post='<?php /* @escapeNotVerified */ echo $block->getWishlistParams(); ?>'
+		<?php $id = $block->getProductId(); ?>
+		<a target="_parent"
+			href="<?php echo $this->getUrl('wishlist').'index/add/product/'.$id.'/form_key/71UD2LR6HIYz7Uwj'; ?>"
 			data-action="add-to-wishlist">
 			<span class="single-product-wishlist">
 				<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />

@@ -248,9 +248,9 @@ switch ($type = $block->getType()) {
                         <?php endif; ?>
                     <?php endif; ?>
                     <?php if ($type == 'related' || $type == 'upsell'): ?>
-                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 col-sm-3 product-item-catalog" style="display: none;">' : '</li><li class="item product col-md-3 product-item-catalog" style="display: none;">' ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 col-sm-3 product-item-catalog" style="display: none;">' : '</li><li class="item product col-md-3 col-sm-3 product-item-catalog" style="display: none;">' ?>
                     <?php else: ?>
-                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 product-item-catalog">' : '</li><li class="item product col-md-3 product-item-catalog">' ?>
+                        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product col-md-3 col-sm-3 product-item-catalog">' : '</li><li class="item product col-md-3 col-sm-3 product-item-catalog">' ?>
                     <?php endif; ?>
                     <div class="product-item-details <?php /* @escapeNotVerified */ echo $available; ?>">
                         <?php /* @escapeNotVerified */ echo '<!-- ' . $image . '-->' ?>
@@ -267,10 +267,22 @@ switch ($type = $block->getType()) {
                             </strong>
                             <?php if ($description):?>
                                 <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                                <?php $shortDescription = $_item->getShortDescription(); ?>
-                                 <?php if($customHelper->isProductNew($_item)): ?>
+                                <?php if($customHelper->getStockQty($_item)): ?>
+                                    <div class="one-left"><?php echo __('Only 1 left'); ?></div>
+                                <?php elseif($customHelper->isEditorsPick($_item)): ?>
+                                    <div class="editors-pick"><?php echo __('Editor’s Pick'); ?></div>  
+                                <?php elseif($customHelper->isExclusive($_item)): ?>
+                                    <div class="exclusive"><?php echo __('H&H exclusive'); ?></div> 
+                                <?php elseif($customHelper->isOnSale($_item)): ?>
+                                    <div class="one-sale"><?php echo __('On Sale'); ?></div>
+                                <?php elseif($customHelper->isOneOfKind($_item)): ?>
+                                    <div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+                                <?php elseif($customHelper->isProductNew($_item)): ?>
                                     <div class="new-product"><?php echo __('New'); ?></div>
+                                <?php elseif($customHelper->isLastCall($_item)): ?>
+                                    <div class="last-call"><?php echo __('Last Call'); ?></div>
                                 <?php endif; ?>
+                                <?php $shortDescription = $_item->getShortDescription(); ?>
                                 <?php echo $customHelper->limit_description($shortDescription, 10); ?>
                             <?php endif; ?>
                             <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>

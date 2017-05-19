@@ -67,7 +67,7 @@
 
 
 
-div.MagicToolboxContainer {
+div.MagicToolboxSelectorsContainer {
 	width:80%;
 	margin:0 auto;
 }
@@ -80,12 +80,13 @@ div.MagicToolboxContainer {
 	opacity: 0.5;
 }
 
-.catalog-product-view .product-info-main .name .value {
-    font-size: 30px;
-}
-
-.weltpixel-quickview-catalog-product-view .viewfull-details {
-    margin-bottom: 25px;
+.weltpixel-quickview-catalog-product-view {
+	.product-info-main .name .value {
+    	font-size: 30px;
+	}
+	.viewfull-details {
+    	margin-bottom: 25px;
+    }
 }
 
 
@@ -124,12 +125,488 @@ Temp var
 @baseFontSize : 13px;
 @baseLineHeight: 20px;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==========================================================================
-All small devices - till 750px
+Tablet Portrait size to standard 1024 (devices and browsers)
 ========================================================================== */
-@media (max-width: 750px) {
+@media only screen and (max-width: 1024px) {
+  body, html {
+    font-size: 15px;
+  }
+
+
+  /* ===============================
+  Classes
+  =================================*/
+  .display-block-xs {
+    display: block!important;
+  }
+  .center {
+    text-align: center;
+  }
+  .none {
+    display: none;
+  }
+  .clear {
+    clear: both;
+  }
+  .block-center {
+    display: block;
+    margin: 0 auto;
+  }
+  .quickview-bar,
+  .quickview-bar2 {
+    .none;
+  }
+  .page-title, .page-title-small {
+    background: none;
+
+    span {
+      padding: 0 15px;
+    }
+
+    strong {
+      font-size: 34px;
+    }
+  }
+  .subtitle {
+    margin: 0 auto;
+    width: 90%;
+    margin-bottom: 35px;
+    margin-top: 10px;
+  }
+  
+  .cms-page-view .inner-content, .faqs-index-index .inner-content, .contact-index-index .inner-content, .cms-privacy-policy .inner-content, .cms-terms-conditions .inner-content {
+	padding-left: 30px;
+  }
+
+
+
+
+  	/* ===============================
+	Meganav
+	=================================*/
+	
+	.main-nav {
+		.container {
+			width: 100%;
+		}
+	}
+	#awemenu .am-tabs .am-tab.shop-menu a {
+		padding: 16px 20px;
+	}
+	#awemenu .am-tabs.am-tabs-root > .am-sortable > .am-tab > .am-dropdown {
+		width: 100vw;
+		padding: 0;
+		left: 15px;
+	}
+	#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column {
+		width: 32.33333%;
+	}
+	.menu-one {
+		border-left: 1px solid rgba(0, 0, 0, 0.1);
+		margin-left: 2%;
+		padding-left: 0;
+		width: 31.333333%;
+	}
+	.menu-three {
+		min-height: 300px;
+	}
+
+
+
+
+
+  /* ===============================
+  Homepage
+  =================================*/
+  .cms-home {
+
+  	.homeslider {
+		.vcenter-flex {
+			display: block;
+		}
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+			margin-top: -100px;
+		}
+		.homepage-hero-details {
+			background: #fff;
+			width: 50%;
+			height: 0;
+			padding-bottom: 50%;
+			.hero-details-title {
+				border: 0;
+				margin-top: 8%;
+			}
+			h4 {
+				margin-top: 15px;
+			}
+			p {
+				margin-right: -35%;
+				margin-left: -35%;
+			}
+		}		
+		.homepage-controls-container {
+			margin-top: -20%;
+			
+			.col-md-4 {
+				width: 100%;
+				margin: 0;
+			}
+			.homepage-controls {
+				width: 100%;
+				.carousel-control {
+					margin-top: -35%;
+				}
+				.carousel-control.left {
+					left: 5%;
+				}
+				.carousel-control.right {
+					right: 5%;
+				}
+			}
+		}
+		& + div {
+			position: relative;
+		}
+	}
+    .homeslider {
+
+      .homepage-controls {
+        top: 0;
+      }
+      .homepage-controls {
+        bottom: 15px;
+        width: 100px;
+        height: 50px;
+
+        .carousel-control.right, .carousel-control.left  {
+          opacity: 1;
+          margin-top: -400px;
+        }
+        .carousel-control.right {
+          right: -75%;
+        }
+        .carousel-control.left {
+          left: -75%;
+        }
+      }
+
+      .carousel-indicators {
+        li {
+          background-color: #CCC;
+          border-color: #CCC;
+          margin-right: 5px;
+        }
+        .active {
+          background-color: #000;
+          border: none;
+        }
+      }
+    }
+    .home-slider {
+      .homepage-hero-details {
+
+        p {
+          margin-right: -25%;
+          margin-left: -25%;
+        }
+        h4 {
+          margin-top: 30px;
+        }
+        .hero-details-title {
+          width: 85%;
+          margin: 0 auto;
+          margin-top: 60px;
+        }
+
+        .homepage-hero-btn {
+          padding: 10px 15px;
+          width: 80%;
+        }
+
+        .hero-details-inner {
+          padding: 0;
+        }
+
+        .hero-details-title {
+          margin-top: 45px;
+        }
+
+        .homepage-hero-btn {
+          display: block;
+        }
+        .carousel-indicators .active {
+          margin: 0;
+          margin-right: 5px;
+          width: 11px;
+          height: 11px;
+        }
+
+        .carousel-control.right,
+        .carousel-control.left {
+          height: 70px;
+          width: 35px;
+          top: -400px;
+          background-size: 80% 80%!important;
+          opacity: 1;
+        }
+      }
+    }
+    
+
+    .decorating-formula {
+      padding-top: 40px;
+
+      .decorating-formula-product {
+        margin-top: 0;
+      }
+      .formula_list_view {
+        .decorating-formula-product:nth-of-type(3):before,
+        .decorating-formula-product:nth-of-type(3):after  {
+          background-size: 35% 35%!important;
+          background-position: center center;
+          top: 30%;
+        }
+        .decorating-formula-title {
+          font-size: 1.9rem;
+        }
+        .decorating-formula-product-title {
+          font-size: 1rem;
+        }
+        .decorating-formula-price {
+          font-size: 0.75rem;
+        }
+        .decorating-formula-thumb {
+          margin: 20px auto;
+          width: 90%;
+        }
+      }
+
+    }
+
+    .editors-area {
+		margin-bottom: 30px;
+		
+		.editors-pick, .editor-guest-image, .guest-editor {
+			min-height: 480px;
+		}
+      .editors-pick {
+        padding: 20px;
+        width: 100%;
+        min-height: 0;
+        .editors-pick-title h3 {
+          font-size: 1.8em;
+        }
+        .editors-thumbs {
+			margin-bottom: 0;
+			li {
+				margin-bottom: 5px;
+			}
+        }
+      }
+      
+      .guest-editor {
+        .guest-editor-details {
+          .editor-quote {
+            margin-bottom: 0;
+          }
+          .editor-blurb {
+            padding: 20px 0;
+          }
+
+        }
+      }
+    }
+
+    .shop-the-issue {
+      .magazine_list_item {
+        padding: 0 30px;
+
+        .issue-img {
+          width: 80%;
+          .block-center;
+        }
+      }
+      .carousel-control.right {
+        right: -3%;
+      }
+      .carousel-control.left {
+        left: -3%;
+      }
+    }
+  }
+
+  .more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+	width: 50%;
+	float: left;
+    &:nth-of-type(2n+1) {
+      clear: both;
+    }
+  }
+  
+  
+  /* ===============================
+	Shop the Spot
+	=================================*/
+	
+	.lookbook-container {
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+		}
+	}
+	.hotspot-details {
+		margin: 0;
+		padding: 25px 10%;
+		box-shadow: none;
+		
+		.hotspot-details-placeholder {
+			width: 100%;
+		}
+		h5 {
+			display: none;
+		}
+		.btn-fullscreen {
+			display: inline-block;
+			margin-top: 10px;
+		}
+		
+		.image {
+			float: left;
+		}
+		h2 {
+			padding-top: 35px;
+		}
+		.pro-detail-div {
+			.actions-primary {
+				margin-top: 20px;
+			}
+			.hotspot-btn {
+				min-width: 25%;
+			}
+		}
+	}
+	
+	.shot-products {
+		.marginbottom-40 {
+			margin-bottom: 0 !important;
+		}
+		.col-md-3 {
+			width: 50%;
+			float: left;
+		}
+	}
+	
+
+
+	
+	.catalog-product-view {
+		section .col-md-6 + .col-md-6 {
+			width: 100%;
+			.product-info-main {
+				float: right !important;
+				width: 50% !important;
+				margin-top: -510px;
+			}
+			.product-addto-links {
+				display: block;
+				margin-top: -225px;
+				margin-left: 50%;
+			}
+			.addthis_toolbox {
+				margin-top: -225px;
+			}
+		}
+	
+		.product.info.detailed NULL {
+			width: 90vw;
+			left: -39.8vw;
+			position: relative;
+			margin-top: 225px;
+		}
+	}
+	
+
+	
+	
+	/* ===============================
+	Editors
+	=================================*/
+	.editor-index-index {
+		.vcenter-flex.display-block-xs {
+			display: flex !important;
+		}
+	}
+	
+	
+	.cms-no-route .main-content p {
+		width: 100%;
+	}
+	
+	
+	
+	
+}
+
+
+
+
+
+
+/* ===============================
+	Shop the Spot Desktop Responsive
+	=================================*/
+@media only screen and (min-width: 1024px) and (max-width: 1256px) {
+	.hotspot-details {
+		padding: 5%;
+		margin: 3%;
+	}
+}
+@media only screen and (min-width: 1024px) and (max-width: 1126px) {
+	.cycle-slideshow1 img:first-child {
+		min-height: 375px;;
+	}
+}
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+All small devices - till 767px
+========================================================================== */
+@media (max-width: 767px) {
 	body, html {
 		font-size: 15px;
+	}
+	
+	.page-title, .page-title-small {
+		margin-top: 30px;
 	}
 
 	/* ===============================
@@ -155,23 +632,14 @@ All small devices - till 750px
 	.quickview-bar2 {
 		.none;
 	}
-	.page-title, .page-title-small {
-		background-size: 100%;
-
-		span {
-			padding: 0 15px;
-		}
-
-		strong {
-			font-size: 34px;
-		}
-	}
+	
 	.subtitle {
-		margin: 0 auto;
-    width: 90%;
-    margin-bottom: 35px;
-    margin-top: 10px;
+		font-size: 12px;
+		margin-top: 0;
+		margin-bottom: 20px;
 	}
+
+
 
 	/* ===============================
 	Global
@@ -241,17 +709,12 @@ All small devices - till 750px
 	Homepage
 	=================================*/
 	.cms-home {
-
 		.homeslider {
-			.homepage-hero {
-				width: 100%;
-			}
 			.mood-bg {
-				width: 100%;
-				background: none!important;
+				margin-top: 0;
 			}
-			.homepage-controls {
-				top: 0;
+			.homepage-controls-container {
+				margin-top: -10%;
 			}
 			.homepage-controls {
 				bottom: 15px;
@@ -260,7 +723,7 @@ All small devices - till 750px
 
 				.carousel-control.right, .carousel-control.left  {
 					opacity: 1;
-					margin-top: -400px;
+					margin-top: -300px;
 				}
 				.carousel-control.right {
 			    right: -75%;
@@ -269,7 +732,6 @@ All small devices - till 750px
 			    left: -75%;
 				}
 			}
-
 			.carousel-indicators {
 				li {
 					background-color: #CCC;
@@ -288,11 +750,10 @@ All small devices - till 750px
 				background: #FFF;
 
 				p {
-					margin-right: -25%;
-					margin-left: -25%;
+					margin: 10px -10%;
 				}
 				h4 {
-					margin-top: 30px;
+					margin-top: 20px;
 				}
 				.hero-details-title {
 			    width: 85%;
@@ -310,7 +771,8 @@ All small devices - till 750px
 				}
 
 				.hero-details-title {
-					margin-top: 45px;
+					border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+					padding-bottom: 5px;
 				}
 
 				.homepage-hero-btn {
@@ -335,9 +797,6 @@ All small devices - till 750px
 		}
 
 		.decorating-formula {
-			padding-top: 40px;
-			border-top: 1px solid #b2b2b2;
-
 			.decorating-formula-product {
 				margin-top: 0;
 			}
@@ -365,21 +824,24 @@ All small devices - till 750px
 
 		}
 
-		.editors-area {
-			.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-			}
-			.editors-pick {
-				padding: 20px;
 
-				.editors-pick-title h3 {
-					font-size: 1.8em;
+		.editors-area {
+			margin-bottom: 0;
+			.editors-pick {
+				padding: 10px;
+
+				.editors-pick-title {
+					margin-top: 5px;
+					h3 {
+						font-size: 1.8em;
+					}
 				}
 			}
 			.editor-guest-image {
 
 			}
 			.guest-editor {
+				min-height: 0;
 				.guest-editor-details {
 					.editor-quote {
 						margin-bottom: 0;
@@ -417,6 +879,9 @@ All small devices - till 750px
 			}
 		}
 
+	}
+	.shot-thumb {
+		margin: 0 0 5px;
 	}
 
 	/* ===============================
@@ -484,6 +949,13 @@ All small devices - till 750px
 	/* ===============================
 	Search Results
 	=================================*/
+	
+	
+
+	
+	
+	
+	
 
 
 }
@@ -513,8 +985,6 @@ Extra Small Screens
         }
         p {
           font-size: 1rem;
-          margin-right: -5%;
-    			margin-left: -5%;
         }
         .hero-details-title {
           font-size: 16px;
@@ -545,9 +1015,6 @@ Extra Small Screens
 		}
 
 		.editors-area {
-			.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-			}
 			.editor-guest-image {
 			}
 			.guest-editor {

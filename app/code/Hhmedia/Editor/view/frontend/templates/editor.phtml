@@ -5,7 +5,7 @@
     <div class="vcenter-flex display-block-xs">
     <?php foreach($this->getGuestEditor() as $guest): ?>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
-        <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
             <div class="guest-editor-details vcenter vcenter-col">
                 <h3 class="guest-name"><a href="<?php echo $this->getItemUrl($guest) ?>"><?php echo $guest->getName(); ?></a></h3>
                 <h4 class="guest-job"><?php echo $guest->getJobTitle(); ?></h4>
@@ -29,7 +29,7 @@ $pastEditor = $this->getCollection()
     <h2 class="page-title fancyfont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
     <h4 class="subtitle"><?php echo __('See What your favorite have selected and why'); ?></h4>
     <?php foreach ($pastEditor as $editorItem): ?>
-        <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 editor_list_item">
+        <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 col-sm-3 editor_list_item">
             <a href="<?php echo $this->getItemUrl($editorItem) ?>">
                 <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($editorItem->getName()); ?>" />
             </a>
