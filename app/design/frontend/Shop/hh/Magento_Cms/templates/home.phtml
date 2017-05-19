@@ -88,7 +88,7 @@
             <div class="carousel-inner" role="listbox">
             <?php foreach ($_formula as $formulaItem): ?>
                 <div class="item <?php if($iterator2 == 1) echo 'active'; ?>">
-            	   <?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
+                   <?php $formulaProduct = $objFormula->getFormula($formulaItem->getFormulaId()); ?>
                     <div id="item_<?php echo $formulaItem->getId() ?>" class="formula_list_item">
                         <h2 class="decorating-formula-title"><?php echo $formulaItem->getTitle(); ?></h2>
                         <h4 class="decorating-formula-sub"><?php echo $formulaItem->getSubtitle(); ?></h4>
@@ -148,7 +148,7 @@
                 <ul class="row no-gutters"><?php $i=0; ?>
                     <?php foreach ($_editor as $editorItem): ?>
                         <?php if($editorItem->getPast() == 1 && $editorItem->getGuest() == 0): ?>
-                            <li class="col-md-6 col-sm-6 col-xs-6">
+                            <li class="col-md-6 col-sm-3 col-xs-6">
                                 <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>" class="editor-link">
                                     <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" />
                                 </a>
@@ -162,13 +162,13 @@
         </div>
         <?php foreach ($_editor as $editorItem): ?>
             <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
-                <div class="col-lg-5 col-md-4 col-sm-4 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
                      <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>"></a>
                 </div>
                 <?php $bgColor = $editorItem->getColor(); ?>
             <?php endif; ?>
         <?php break; endforeach; ?>
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $bgColor ?>">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $bgColor ?>">
             <div class="guest-editor-details vcenter vcenter-col">
                 <?php foreach ($_editor as $editorItem): ?>
                 <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
@@ -211,7 +211,7 @@
         <?php $iterator = 1; ?>
         <div id="shoptheissue-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
             <div class="carousel-inner" role="listbox">
-        	<?php foreach ($_magazine as $magazineItem): ?>
+            <?php foreach ($_magazine as $magazineItem): ?>
                 <div class="item <?php if($iterator == 1) echo 'active'; ?>">
                     <?php $magazineProduct = $objMagazine->getMagazine($magazineItem->getMagazineId()); ?>
                     <div id="item_<?php echo $magazineItem->getId() ?>" class="magazine_list_item">

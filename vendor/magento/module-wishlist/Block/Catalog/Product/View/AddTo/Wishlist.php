@@ -51,4 +51,10 @@ class Wishlist extends \Magento\Catalog\Block\Product\View
     {
         return $this->_wishlistHelper->isAllow();
     }
+
+    public function getProductId()
+    {
+        return $this->getProduct()->getEntityId();
+    }
+
 }
