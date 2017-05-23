@@ -21,17 +21,21 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
     protected $_editorCollectionFactory;
     protected $editorFactory;
 
+    protected $eavConfig;
+
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\CatalogInventory\Api\StockStateInterface $stockItem,
         \Hhmedia\Editor\Model\ResourceModel\Editor\CollectionFactory $editorCollectionFactory,
         EditorFactory $editorFactory,
+        \Magento\Eav\Model\Config $eavConfig,
         TimezoneInterface $localeDate
     ) {
         $this->localeDate = $localeDate;
         $this->stockItem = $stockItem;
         $this->_editorCollectionFactory = $editorCollectionFactory;
         $this->editorFactory = $editorFactory;
+        $this->eavConfig = $eavConfig;
         parent::__construct($context);
     }
 
@@ -145,4 +149,65 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             return $text;
         }
     }
+
+    public function getColorFilter(){
+        $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+
+        $filterableAttributes = $objectManager->get(\Magento\Catalog\Model\Layer\Category\FilterableAttributeList::class);
+
+
+        $appState = $objectManager->get(\Magento\Framework\App\State::class);
+        $layerResolver = $objectManager->get(\Magento\Catalog\Model\Layer\Resolver::class);
+        $filterList = $objectManager->create(\Magento\Catalog\Model\Layer\FilterList::class,
+            [
+                'filterableAttributes' => $filterableAttributes
+            ]
+        );
+
+        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category')->getId();
+
+        $layer = $layerResolver->get()->setCurrentCategory($category);
+        $filters = $filterList->getFilters($layer);
+
+        foreach ($filters as $filter) {
+            $fname = $filter->getName();
+            if($fname == "Color:"){
+                foreach ($filter->getItems() as $item) {
+                    $color[] =  $item->getValue();
+                }
+            }
+        }
+        return $color;
+    }
+
+    public function getPriceFilter(){
+        $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+
+        $filterableAttributes = $objectManager->get(\Magento\Catalog\Model\Layer\Category\FilterableAttributeList::class);
+
+
+        $appState = $objectManager->get(\Magento\Framework\App\State::class);
+        $layerResolver = $objectManager->get(\Magento\Catalog\Model\Layer\Resolver::class);
+        $filterList = $objectManager->create(\Magento\Catalog\Model\Layer\FilterList::class,
+            [
+                'filterableAttributes' => $filterableAttributes
+            ]
+        );
+
+        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category')->getId();
+
+        $layer = $layerResolver->get()->setCurrentCategory($category);
+        $filters = $filterList->getFilters($layer);
+
+        foreach ($filters as $filter) {
+            $fname = $filter->getName();
+            if($fname == "Price"){
+                foreach ($filter->getItems() as $item) {
+                    $price[] =  $item->getValue();
+                }
+            }
+        }
+        return $price;
+    }
+
 }
