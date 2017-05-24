@@ -1,33 +1,69 @@
 <?php $availableSocials = $this->getAvailableSocials(); ?>
+<?php $moduleName = $this->getRequest()->getModuleName(); ?>
+<?php $controller = $this->getRequest()->getControllerName(); ?>
+<?php $action     = $this->getRequest()->getActionName(); ?>
 <?php if (sizeof($availableSocials)): ?>
-<div class="block social-login-authentication-channel">
-    <div class="block-title">
-        <span><?php echo __('Sign Up With Your Social Account') ?></span>
-    </div>
-    <div class="block-content">
-        <ul class="social-login-list">
-        <?php foreach ($availableSocials as $key => $social): ?>
-            <li>
-			<div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
-                <div class="primary">
-                    <button class="action btn_<?= $key ?>_login" id="account_btn_<?= $key ?>_login" type="button">
-                        <span>
-                            <span><?php echo __('%1', $social->getLabel()) ?></span>
-                        </span>
-                    </button>
+    <?php if($moduleName == "customer" && $controller == "account" && $action == "create"): ?>
+    <div class="block social-login-authentication-channel col-md-6">
+        <div class="block-title">
+            <span><?php echo __('Sign Up With Your Social Account') ?></span>
+        </div>
+        <div class="block-content">
+            <ul class="social-login-list">
+            <?php foreach ($availableSocials as $key => $social): ?>
+                <li>
+    			<div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                    <div class="primary">
+                        <button class="action btn_<?= $key ?>_login" id="account_btn_<?= $key ?>_login" type="button">
+                            <span>
+                                <span><?php echo __('%1', $social->getLabel()) ?></span>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-			<script>
-                require(['jquery', 'Mageplaza_SocialLogin/js/sociallogin'], function ($, SocialLoginPopup) {
-					$('#account_btn_<?= $key ?>_login').click(function () {
-						var popup = new SocialLoginPopup();
-						popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('%1', $social->getLabel())?>');
-					});
-				});
-            </script>
-            </li>
-		<?php endforeach; ?>
-        </ul>
+    			<script>
+                    require(['jquery', 'Mageplaza_SocialLogin/js/sociallogin'], function ($, SocialLoginPopup) {
+    					$('#account_btn_<?= $key ?>_login').click(function () {
+    						var popup = new SocialLoginPopup();
+    						popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('%1', $social->getLabel())?>');
+    					});
+    				});
+                </script>
+                </li>
+    		<?php endforeach; ?>
+            </ul>
+        </div>
     </div>
-</div>
+    <?php else: ?>
+    <div class="block social-login-authentication-channel">
+        <div class="block-title">
+            <span><?php echo __('Or Login With:') ?></span>
+        </div>
+        <div class="block-content">
+            <ul class="social-login-list">
+            <?php foreach ($availableSocials as $key => $social): ?>
+                <li>
+                <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                    <div class="primary">
+                        <button class="action btn_<?= $key ?>_login" id="account_btn_<?= $key ?>_login" type="button">
+                            <span>
+                                <span><?php echo __('%1', $social->getLabel()) ?></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <script>
+                    require(['jquery', 'Mageplaza_SocialLogin/js/sociallogin'], function ($, SocialLoginPopup) {
+                        $('#account_btn_<?= $key ?>_login').click(function () {
+                            var popup = new SocialLoginPopup();
+                            popup.openPopup('<?php echo $social->getLoginUrl()?>', '<?php echo __('%1', $social->getLabel())?>');
+                        });
+                    });
+                </script>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <?php endif; ?>
 <?php endif; ?>
