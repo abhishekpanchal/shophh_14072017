@@ -86,8 +86,20 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                         </strong>
                          <?php if ($showDescription):?>
                                 <div class="product description product-item-description">
-                                    <?php if($customHelper->isProductNew($_product)): ?>
+                                    <?php if($customHelper->getStockQty($_product)): ?>
+                                        <div class="one-left"><?php echo __('Only 1 left'); ?></div>
+                                    <?php elseif($customHelper->isEditorsPick($_product)): ?>
+                                        <div class="editors-pick"><?php echo __('Editor’s Pick'); ?></div>
+                                    <?php elseif($customHelper->isExclusive($_product)): ?>
+                                        <div class="exclusive"><?php echo __('H&H exclusive'); ?></div>   
+                                    <?php elseif($customHelper->isOnSale($_product)): ?>
+                                        <div class="one-sale"><?php echo __('On Sale'); ?></div>
+                                    <?php elseif($customHelper->isOneOfKind($_product)): ?>
+                                        <div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+                                    <?php elseif($customHelper->isProductNew($_product)): ?>
                                         <div class="new-product"><?php echo __('New'); ?></div>
+                                    <?php elseif($customHelper->isLastCall($_product)): ?>
+                                        <div class="last-call"><?php echo __('Last Call'); ?></div>
                                     <?php endif; ?>
                                     <?php $shortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
                                     <?php echo $customHelper->limit_description($shortDescription, 8); ?>

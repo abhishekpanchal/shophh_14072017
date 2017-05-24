@@ -252,7 +252,9 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
 
                     <?php $noteId = $slide->getLink(); ?>
-                    <a href="<?php echo $this->getUrl('notes').'index/view/id/'.$noteId; ?>" class="btn-fullscreen">Read All Decorating Notes</a>
+                    <?php if($noteId != NULL && $noteId > 0): ?>
+                      <a href="<?php echo $this->getUrl('notes').'index/view/id/'.$noteId; ?>" class="btn-fullscreen">Read All Decorating Notes</a>
+                    <?php endif; ?>
                 </div>
                 <div class="hotspot-details-placeholder hidden"></div>
             </div>
@@ -317,20 +319,22 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                           <a href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
                         </h4>
                         <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                        <?php if($customHelper->isProductNew($product)): ?>
-                        <div class="new-product"><?php echo __('New'); ?></div>
+                        <?php if($customHelper->getStockQty($product)): ?>
+                            <div class="one-left"><?php echo __('Only 1 left'); ?></div>
+                        <?php elseif($customHelper->isEditorsPick($product)): ?>
+                            <div class="editors-pick"><?php echo __('Editor’s Pick'); ?></div>
+                        <?php elseif($customHelper->isExclusive($product)): ?>
+                            <div class="exclusive"><?php echo __('H&H exclusive'); ?></div> 
+                        <?php elseif($customHelper->isOnSale($product)): ?>
+                            <div class="one-sale"><?php echo __('On Sale'); ?></div>
+                        <?php elseif($customHelper->isOneOfKind($product)): ?>
+                            <div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+                        <?php elseif($customHelper->isProductNew($product)): ?>
+                            <div class="new-product"><?php echo __('New'); ?></div>
+                        <?php elseif($customHelper->isLastCall($product)): ?>
+                            <div class="last-call"><?php echo __('Last Call'); ?></div>
                         <?php endif; ?>
-                        <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
-                        <?php $_editors = $objEditor->getCollection(); ?>
-                        <?php $name = ''; ?>
-                        <?php foreach($_editors as $editor): ?>
-                          <?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
-                          <?php if(in_array($product->getId(),$editorProduct)): ?>
-                            <?php echo "Editor's Pick"; ?>
-                            <?php break; ?>
-                          <?php endif; ?>
-                        <?php endforeach; ?>
-                        <?php /*<p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p> */ ?>
+                        <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
                         <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
                         <h5><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
                       </div>
