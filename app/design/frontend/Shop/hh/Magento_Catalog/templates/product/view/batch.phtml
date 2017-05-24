@@ -2,17 +2,17 @@
 <?php $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 
 <?php if($helper->getStockQty($_product)): ?>
-	<div class="one-left"><?php echo __('Only 1 left'); ?></div>
+	<span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
 <?php elseif($helper->isExclusive($_product)): ?>
-	<div class="exclusive"><?php echo __('H&H exclusive'); ?></div> 
+	<span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
 <?php elseif($helper->isOnSale($_product)): ?>
-	<div class="one-sale"><?php echo __('On Sale'); ?></div>
+	<span class="callout one-sale"><?php echo __('On Sale'); ?></span>
 <?php elseif($helper->isOneOfKind($_product)): ?>
-	<div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+	<span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
 <?php elseif($helper->isProductNew($_product)): ?>
-    <div class="new-product"><?php echo __('New'); ?></div>
+    <span class="callout new-product"><?php echo __('New'); ?></span>
 <?php elseif($helper->isLastCall($_product)): ?>
-	<div class="last-call"><?php echo __('Last Call'); ?></div>
+	<span class="callout last-call"><?php echo __('Last Call'); ?></span>
 <?php endif; ?>
 
 <?php 
