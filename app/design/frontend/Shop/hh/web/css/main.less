@@ -772,7 +772,6 @@ Products
   }
   a:hover span {
     opacity: .5;
-    opacity: 1;
   }
 }
 .addthis_toolbox.addthis_32x32_style span {
@@ -6859,6 +6858,14 @@ Mini Cart
 
   .action.showcart {
     .relative;
+    padding: 0;
+    transition: 0.3s color;
+    &:hover {
+      background: none;
+      .text {
+        color: #000;
+      }
+    }
   }
   .action.showcart:before,
   .action.showcart.active:before {
