@@ -609,8 +609,11 @@ Products
     .product.attribute.name {
       margin-top: 30px;
       margin-bottom: 15px;
-      & + div {
-        text-transform: uppercase;
+      & + span.callout {
+        display: block;
+        font-family: @headlineFont;
+        font-size: 14px;
+        
       }
     }
     .product-info-price {
@@ -5597,32 +5600,31 @@ Catalog View
   p, div {
     display: inline;
   }
-  div {
-    text-transform: uppercase;
+}
+span.callout {
+  text-transform: uppercase;
+  &.one-left {
+    color: #ef3ea9;
+  }
+  &.editors-pick {
+    color: #009ba7;
+  }
+  &.exclusive {
+    color: #1a528d;
+  }
+  &.one-sale {
+    color: #d61c23;
+  }
+  &.one-kind {
+    color: #a6a4bc;
+  }
+  &.new-product {
+    color: #8dbea4;
+  }
+  &.last-call {
+    color: #701471;
   }
 }
-&.one-left {
-  color: #ef3ea9;
-}
-&.editors-pick {
-  color: #009ba7;
-}
-&.exclusive {
-  color: #1a528d;
-}
-&.one-sale {
-  color: #d61c23;
-}
-&.one-kind {
-  color: #a6a4bc;
-}
-&.new-product {
-  color: #8dbea4;
-}
-&.last-call {
-  color: #701471;
-}
-
 
 
 .new-product {
