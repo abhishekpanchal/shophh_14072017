@@ -1169,11 +1169,19 @@ Dashboard Fixes
   margin-top: 40px;
 }
 
-.login-container .block .block-title {
+.block .block-title {
     font-size: 22px;
     font-family: @fancyFont;
     font-style: italic;
     .relative;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    line-height: 26px;
+}
+
+.login-container .block .block-title {
+  font-size: 22px;
 }
 
 .login-container .block .block-title strong {
@@ -1222,8 +1230,8 @@ Dashboard Fixes
   .legend {
     font-size: 22px;
     margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ababab;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8e8e8;
   }
 
   .count {
@@ -1233,6 +1241,12 @@ Dashboard Fixes
     font-size: 14px;
   }
 }
+
+.customer-account-create .social-login-authentication-channel {
+  margin-top: 40px;
+}
+
+
 
 /* ==========================================================================
 Quick View
@@ -7875,6 +7889,11 @@ h4.decorating-formula-price {
 .form.password.reset, .form.send.confirmation, .form.password.forget, .form.create.account {
   margin: 40px auto;
 }
+.form.create.account {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
 
 .form.password.forget {
   .note {
@@ -7907,10 +7926,14 @@ h4.decorating-formula-price {
     margin: 0 auto;
   }
 }
-
 .form-login .fieldset > .field, .block-new-customer .block-content > p:first-child {
   font-size: 15px;
 }
+.form-create-account p {
+  font-size: 15px;
+  clear: both;
+}
+
 
 .login-container .fieldset:after {
   content: '';
