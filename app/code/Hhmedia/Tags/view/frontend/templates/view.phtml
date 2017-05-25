@@ -76,19 +76,19 @@
                         </h4>
                         <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
                         <?php if($customHelper->getStockQty($pro)): ?>
-                            <div class="one-left"><?php echo __('Only 1 left'); ?></div>
+                            <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
                         <?php elseif($customHelper->isEditorsPick($pro)): ?>
-                            <div class="editors-pick"><?php echo __('Editor’s Pick'); ?></div>
+                            <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
                         <?php elseif($customHelper->isExclusive($pro)): ?>
-                            <div class="exclusive"><?php echo __('H&H exclusive'); ?></div> 
+                            <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
                         <?php elseif($customHelper->isOnSale($pro)): ?>
-                            <div class="one-sale"><?php echo __('On Sale'); ?></div>
+                            <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
                         <?php elseif($customHelper->isOneOfKind($pro)): ?>
-                            <div class="one-kind"><?php echo __('One of a Kind'); ?></div>
+                            <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
                         <?php elseif($customHelper->isProductNew($pro)): ?>
-                            <div class="new-product"><?php echo __('New'); ?></div>
+                            <span class="callout new-product"><?php echo __('New'); ?></span>
                         <?php elseif($customHelper->isLastCall($pro)): ?>
-                            <div class="last-call"><?php echo __('Last Call'); ?></div>
+                            <span class="callout last-call"><?php echo __('Last Call'); ?></span>
                         <?php endif; ?>
                         <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
                         <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>

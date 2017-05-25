@@ -33,6 +33,7 @@
                 popup: '#social-login-popup',
                 popupEffect: '<?php echo $block->getPopupEffect()?>',
                 headerLink:  '.header.links',
+                reviewLink:  '.review-details-div',
                 sectionLink: '.section-item-content .header.links',
                 ajaxLoading: '#social-login-popup .ajax-loading',
                 /*Login*/
@@ -80,6 +81,26 @@
                     midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
                 });
             }
+
+
+            var reviewLink = $('.review-details-div');
+            if(reviewLink.length) {
+
+                console.log('review link exists');
+
+                reviewLink.magnificPopup({
+                    delegate: 'a.btn-no-review',
+                    removalDelay: 500, //delay removal by X to allow out-animation
+                    callbacks: {
+                        beforeOpen: function () {
+                            this.st.mainClass = this.st.el.attr('data-effect');
+                        }
+                    },
+                    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+                });
+            }
+
+
 
             var menuSection = $('.section-item-content');
             if(menuSection.length) {

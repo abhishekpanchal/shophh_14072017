@@ -609,6 +609,12 @@ Products
     .product.attribute.name {
       margin-top: 30px;
       margin-bottom: 15px;
+      & + span.callout {
+        display: block;
+        font-family: @headlineFont;
+        font-size: 14px;
+
+      }
     }
     .product-info-price {
       margin-top: 5px;
@@ -1163,11 +1169,19 @@ Dashboard Fixes
   margin-top: 40px;
 }
 
-.login-container .block .block-title {
+.block .block-title {
     font-size: 22px;
     font-family: @fancyFont;
     font-style: italic;
     .relative;
+    border-bottom: 1px solid #e8e8e8;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    line-height: 26px;
+}
+
+.login-container .block .block-title {
+  font-size: 22px;
 }
 
 .login-container .block .block-title strong {
@@ -1216,8 +1230,8 @@ Dashboard Fixes
   .legend {
     font-size: 22px;
     margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ababab;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8e8e8;
   }
 
   .count {
@@ -1227,6 +1241,12 @@ Dashboard Fixes
     font-size: 14px;
   }
 }
+
+.customer-account-create .social-login-authentication-channel {
+  margin-top: 40px;
+}
+
+
 
 /* ==========================================================================
 Quick View
@@ -4569,7 +4589,7 @@ Hotspot Details
 
   p {
     font-size: 14px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
   }
 
   .desc {
@@ -4659,7 +4679,7 @@ Hotspot Details
   }
   .addthis_toolbox {
     width: 160px;
-    margin: 0 auto 15px;
+    margin: 0 auto 25px;
   }
 }
 
@@ -5663,10 +5683,35 @@ Catalog View
 .product-item-description {
   margin: 0;
   line-height: 18px;
-  p {
+  p, div {
     display: inline;
   }
 }
+span.callout {
+  text-transform: uppercase;
+  &.one-left {
+    color: #ef3ea9;
+  }
+  &.editors-pick {
+    color: #009ba7;
+  }
+  &.exclusive {
+    color: #1a528d;
+  }
+  &.one-sale {
+    color: #d61c23;
+  }
+  &.one-kind {
+    color: #a6a4bc;
+  }
+  &.new-product {
+    color: #8dbea4;
+  }
+  &.last-call {
+    color: #701471;
+  }
+}
+
 
 .new-product {
   display: inline-block
@@ -6026,6 +6071,9 @@ Magic Scroll
 
 .btn-no-review {
   display: inline-block;
+  &.display-none {
+  display: none;
+  }
 }
 
 .btn-cart-single {
@@ -6663,6 +6711,7 @@ Mini Cart
 
 .block-minicart .items-total {
   margin-left: 9%;
+  margin-bottom: 15px;
 }
 
 
@@ -6896,6 +6945,14 @@ Mini Cart
 
   .action.showcart {
     .relative;
+    padding: 0;
+    transition: 0.3s color;
+    &:hover {
+      background: none;
+      .text {
+        color: #000;
+      }
+    }
   }
   .action.showcart:before,
   .action.showcart.active:before {
@@ -7753,9 +7810,6 @@ Account reviews
     display: none;
   }
   div.pinch {
-    width: 50%;
-    margin: 0 auto;
-    padding: 20px 0;
     font-size: 16px;
     line-height: 24px;
   }
@@ -7775,6 +7829,7 @@ Account reviews
     }
     span {
       white-space: nowrap;
+      font-style: italic;
     }
   }
   h3.partners {
@@ -7786,11 +7841,17 @@ Account reviews
     padding-bottom: 8px;
   }
 
+  a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
   .test + h4 {
     font-family: @fancyFont;
     font-size: 16px;
     text-align: center;
     margin-top: 10px;
+    font-style: italic;
   }
 
   .row + .row {
@@ -7901,6 +7962,11 @@ h4.decorating-formula-price {
 .form.password.reset, .form.send.confirmation, .form.password.forget, .form.create.account {
   margin: 40px auto;
 }
+.form.create.account {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
 
 .form.password.forget {
   .note {
@@ -7933,10 +7999,14 @@ h4.decorating-formula-price {
     margin: 0 auto;
   }
 }
-
 .form-login .fieldset > .field, .block-new-customer .block-content > p:first-child {
   font-size: 15px;
 }
+.form-create-account p {
+  font-size: 15px;
+  clear: both;
+}
+
 
 .login-container .fieldset:after {
   content: '';
@@ -8087,16 +8157,19 @@ h4.decorating-formula-price {
   }
   h2 {
     font-family: @fancyFont;
-    font-size: 20px;
+    font-size: 26px;
     font-style: italic;
     margin: 40px 0 20px;
   }
-  p {
-    font-size: 14px;
-    line-height: 22px;
+  .img-crop {
+    height: 580px;
+    overflow: hidden;
+  }
+  .notes_item_content p {
+    font-size: 16px;
+    line-height: 24px;
   }
   .btn-container {
-    width: 50%;
     margin: 40px auto 0;
     text-align: center;
   }
