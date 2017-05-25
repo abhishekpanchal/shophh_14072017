@@ -190,6 +190,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     margin-top: 10px;
   }
   
+  .page-layout-1column {
+	margin-bottom: 0;
+  }
+  
   .cms-page-view .inner-content, .faqs-index-index .inner-content, .contact-index-index .inner-content, .cms-privacy-policy .inner-content, .cms-terms-conditions .inner-content {
 	padding-left: 30px;
   }
@@ -518,10 +522,8 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		}
 	}
 	
-
-
-	
-	.catalog-product-view {
+	/*
+	.catalog-product-view:not(.weltpixel-quickview-catalog-product-view) { {
 		section .col-md-6 + .col-md-6 {
 			width: 100%;
 			.product-info-main {
@@ -546,6 +548,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			margin-top: 225px;
 		}
 	}
+	*/
 	
 
 	
@@ -559,11 +562,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		}
 	}
 	
-	
 	.cms-no-route .main-content p {
 		width: 100%;
 	}
 	
+	
+	
+
 	
 	
 	
@@ -586,6 +591,33 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 @media only screen and (min-width: 1024px) and (max-width: 1126px) {
 	.cycle-slideshow1 img:first-child {
 		min-height: 375px;;
+	}
+}
+
+
+
+
+
+
+/* ==========================================================================
+Footer - till 992px
+========================================================================== */
+@media (max-width: 992px) {
+	.footer-subscribe {
+		padding: 0;
+		margin-top: 40px;
+		margin-left: 50%;
+		padding-left: 20px;
+	}
+	.footer-bottom {
+		padding-right: 40%;
+		margin: -220px auto 120px;
+		.vcenter {
+			display: block;
+		}
+	}
+	.footer-social {
+		margin-top: 30px;
 	}
 }
 
@@ -661,6 +693,9 @@ All small devices - till 767px
 	/* ===============================
 	Footer
 	=================================*/
+	
+	
+	/*
 	.footer-col li strong {
 		font-size: 1rem;
 	}
@@ -695,6 +730,42 @@ All small devices - till 767px
 			.center;
 		}
 	}
+	*/
+	
+	
+	.footer-links {
+		padding: 0 15px;
+	}
+	.footer-col {
+		margin-left: 0;
+		margin-bottom: 20px;
+	}
+	.footer-subscribe {
+		margin-top: 0;
+		padding-left: 0;
+		text-align: center;
+		.text-right {
+			text-align: center;
+		}
+	}
+	.newsletter-footer {
+		margin-bottom: 0;
+		input[type="email"] {
+			text-align: center;
+		}
+		.btn-subscribe {
+			float: none;
+		}
+	}
+	.footer-bottom {
+		margin: 40px 0 0;
+		padding: 0 15px;
+		text-align: center;
+	}
+	
+	
+	
+	
 
 	/* ===============================
 	Carousel - Global
@@ -882,6 +953,9 @@ All small devices - till 767px
 	}
 	.shot-thumb {
 		margin: 0 0 5px;
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	/* ===============================
@@ -1034,3 +1108,74 @@ Extra Small Screens
 
 	}
 }
+
+
+
+
+
+
+.mobile-nav {
+	.modal-dialog {
+		margin: 0;
+		width: 100vw;
+	}
+	.modal-content {
+		background: rgba(255,255,255,.9);
+		border-radius: 0;
+		height: 100vh;
+	}
+	.modal-header {
+		border: 0;
+	}
+	button {
+		border: 0;
+		background: none;
+		float: right;
+		&.close {
+			float: left;
+			opacity: 1;
+			font-size: 40px;
+			font-weight: 100;
+		}
+	}
+	input[type="text"] {
+		border: 0;
+		box-shadow: none;
+		background: transparent !important;
+		width: 70% !important;
+		margin: 0 auto;
+		position: absolute;
+		left: 0;
+		right: 0;
+		text-align: center;
+		font-size: 16x;
+		font-family: @fancyFont;
+		border-bottom: 2px solid #000;
+		border-radius: 0 !important;
+		padding: 0 !important;
+	}
+	.modal-body {
+		font-family: @headlineFont;
+		text-transform: uppercase;
+	}
+	.nav-tabs > li > a {
+		font-size: 18px;
+		margin-bottom: 15px;
+		&:hover {
+			background: none;
+			border: none;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

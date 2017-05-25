@@ -298,19 +298,19 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 }
 
                 if($this->helperData->getStockQty($product_details)){
-                    $html_content .= '<div class="one-left">' . __('Only 1 left') . '</div>';
+                    $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
                 }elseif($this->helperData->isEditorsPick($product_details)){
-                    $html_content .= '<div class="editors-pick">' . __('Editor’s Pick') . '</div>';
+                    $html_content .= '<span class="callout editors-pick">' . __('Editor’s Pick') . '</span>';
                 }elseif($this->helperData->isExclusive($product_details)){
-                    $html_content .= '<div class="exclusive">' . __('H&H exclusive') . '</div>';
+                    $html_content .= '<span class="callout exclusive">' . __('H&H exclusive') . '</span>';
                 }elseif($this->helperData->isOnSale($product_details)){
-                    $html_content .= '<div class="one-sale">' . __('On Sale') . '</div>';
+                    $html_content .= '<span class="callout one-sale">' . __('On Sale') . '</span>';
                 }elseif($this->helperData->isOneOfKind($product_details)){
-                    $html_content .= '<div class="one-kind">' . __('One of a Kind') . '</div>';
+                    $html_content .= '<span class="callout one-kind">' . __('One of a Kind') . '</span>';
                 }elseif($this->helperData->isProductNew($product_details)){
-                    $html_content .= '<div class="new-product">' . __('New') . '</div>';
+                    $html_content .= '<span class="callout new-product">' . __('New') . '</span>';
                 }elseif($this->helperData->isLastCall($product_details)){
-                    $html_content .= '<div class="last-call">' . __('Last Call') . '</div>';
+                    $html_content .= '<span class="callout last-call">' . __('Last Call') . '</span>';
                 }
 
                 //$html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
@@ -425,19 +425,19 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                 }
 
                 if($this->helperData->getStockQty($product_details)){
-                    $html_content .= '<div class="one-left">' . __('Only 1 left') . '</div>';
+                    $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
                 }elseif($this->helperData->isEditorsPick($product_details)){
-                    $html_content .= '<div class="editors-pick">' . __('Editor’s Pick') . '</div>';
+                    $html_content .= '<span class="callout editors-pick">' . __('Editor’s Pick') . '</span>';
                 }elseif($this->helperData->isExclusive($product_details)){
-                    $html_content .= '<div class="exclusive">' . __('H&H exclusive') . '</div>';
+                    $html_content .= '<span class="callout exclusive">' . __('H&H exclusive') . '</span>';
                 }elseif($this->helperData->isOnSale($product_details)){
-                    $html_content .= '<div class="one-sale">' . __('On Sale') . '</div>';
+                    $html_content .= '<span class="callout one-sale">' . __('On Sale') . '</span>';
                 }elseif($this->helperData->isOneOfKind($product_details)){
-                    $html_content .= '<div class="one-kind">' . __('One of a Kind') . '</div>';
+                    $html_content .= '<span class="callout one-kind">' . __('One of a Kind') . '</span>';
                 }elseif($this->helperData->isProductNew($product_details)){
-                    $html_content .= '<div class="new-product">' . __('New') . '</div>';
+                    $html_content .= '<span class="callout new-product">' . __('New') . '</span>';
                 }elseif($this->helperData->isLastCall($product_details)){
-                    $html_content .= '<div class="last-call">' . __('Last Call') . '</div>';
+                    $html_content .= '<span class="callout last-call">' . __('Last Call') . '</span>';
                 }
 
                 $html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';

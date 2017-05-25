@@ -102,7 +102,7 @@ $reviewCollection = $reviewkObj->getReviewsCollection();
                 <?php if(count($reviewCollection) == 0): ?>
                     <span class="first-review">There are currently no reviews for this product. Be the first to write your review! You must be logged in to submit.</span>
                 <?php endif; ?>
-                <a href="<?php echo $block->getLoginLink() ?>" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
+                <a href="#social-login-popup" class="btn btn-main btn-no-review"><?php echo __('Add A Review') ?></a>
             </div>
         <?php endif ?>
         </div>

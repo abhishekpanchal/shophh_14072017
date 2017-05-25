@@ -1,6 +1,10 @@
 <?php $_notesItem = $this->getNotes(); ?>
-<div class="notes_item_view">
-    <img src="<?php echo $this->getUrl('pub/media').$_notesItem->getImage(); ?>" alt="<?php echo $this->escapeHtml($_notesItem->getTitle()) ?>" />
+<div class="notes_item_view col-md-10 col-md-offset-1">
+
+	<div class="img-crop">
+    	<img src="<?php echo $this->getUrl('pub/media').$_notesItem->getImage(); ?>" alt="<?php echo $this->escapeHtml($_notesItem->getTitle()) ?>" />
+    </div>
+    
     <h2>Decorating Notes</h2>
     <div class="notes_item_content"><?php echo $_notesItem->getContent() ?></div>
     <div class="btn-container">
