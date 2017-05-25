@@ -419,146 +419,28 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
         <script type="text/javascript">
 
-            (function () {
-                var flexSliderSelector = '<?php echo $htmlId; ?>';
-                require(['jquery', 'altima/cycle', 'altima/hotspots', 'altima/cyclecarousel', 'altima/cyclecenter', 'altima/cycleAddEffects', 'altima/cycleflip'], function (jQuery) {
-                    var $altima_jq = jQuery.noConflict();
+        (function () {
+            var flexSliderSelector = '<?php echo $htmlId; ?>';
+            require(['jquery', 'altima/cycle', 'altima/hotspots', 'altima/cyclecarousel', 'altima/cyclecenter', 'altima/cycleAddEffects', 'altima/cycleflip'], function (jQuery) {
 
-                    $altima_jq(window).load(function () {
-                        $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle();
-                        $altima_jq('#pagernav_<?php echo $slider->getId() ?>_thumb').cycle();
-                        var hotspots = <?php echo json_encode($hotspots); ?>;
-                        $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> > div.slide:not(.cycle-sentinel)').each(function (i) {
-                            var ind = $altima_jq(this).index();
-                            var slide = $altima_jq(this);
-                            $altima_jq.setHotspots(slide, hotspots[i]);
-                        });
-        <?php if ($navigation): ?>
-                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').click(function () {
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('pause');
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').hide();
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').show();
-                            });
-                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').click(function () {
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('resume');
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').hide();
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').show();
-                                
-                                
-                            });
-        <?php endif; ?>
-        <?php if ($thumbnails): ?>
-                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').on('cycle-update-view', function (e, opts) {
-                                $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').cycle('goto', opts.currSlide);
-                            });
-
-                            $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul li').click(function () {
-                                var index = $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').data('cycle.API').getSlideIndex(this);
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('goto', index);
-                                $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').cycle('goto', index);
-                            });
-        <?php endif; ?>
-                        var progress = $altima_jq('#progress'),
-                                slideshow = $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>');
-                        slideshow.on('cycle-initialized cycle-before', function (e, opts) {
-                            progress.stop(true).css('width', 0);
-                        });
-                        slideshow.on('cycle-initialized cycle-after', function (e, opts) {
-                            if (!slideshow.is('.cycle-paused'))
-                                progress.animate({width: '100%'}, opts.timeout, 'linear');
-                        });
-                        slideshow.on('cycle-paused', function (e, opts) {
-                            progress.stop();
-                        });
-                        slideshow.on('cycle-resumed', function (e, opts, timeoutRemaining) {
-                            progress.animate({width: '100%'}, timeoutRemaining, 'linear');
-                        });
-                        
-        jQuery.fn.cycle.transitions.carousel.transition = function( opts, curr, next, fwd, callback ) {
-        var moveBy, props = {};
-        var hops = opts.nextSlide - opts.currSlide;
-        var vert = opts.carouselVertical;
-        var speed = opts.speed;
-        var offset = 2; //Number of slides to offset
-        if ( opts.allowWrap === false ) {
-        fwd = hops > 0;
-        var currSlide = opts._currSlide;
-        var maxCurr = opts.slideCount - (opts.carouselVisible - offset);
-        var minCurr = opts.slideCount - (opts.carouselVisible + offset);
-        if(minCurr < offset){
-            minCurr = offset;
-        }
-        if(fwd){ // MOVING FORWARDS
+            /* this was the problem line for why it wouldn't load in firefox..
+            var $altima_jq = jQuery.noConflict();
+            */
+            // even this wont work in firefox: jQuery(window).load(function() {
             
-            if ( opts.nextSlide > maxCurr && currSlide == maxCurr|| opts.nextSlide <= minCurr ) {
-                hops = 0;
-            }
-            else if (opts.currSlide < minCurr && opts.nextSlide > maxCurr){
-                 hops = maxCurr-minCurr;
-            }
-            else if (opts.currSlide < minCurr && opts.nextSlide > maxCurr || opts.nextSlide > maxCurr){
-                 hops += opts.currSlide - maxCurr;
-            }
-            else if (opts.currSlide < minCurr && opts.nextSlide > minCurr){
-                 hops = opts.nextSlide - minCurr;  
-            }
-            else {
-                currSlide = opts.currSlide;
-            }
-
-        } else { // MOVING BACKWARDS
-            if ( opts.currSlide > maxCurr && opts.nextSlide > maxCurr || opts.currSlide <= minCurr ) {
-                hops = 0;
-            }
-            else if (opts.currSlide > maxCurr && opts.nextSlide < minCurr){
-                hops = minCurr - maxCurr;
-            }
-            else if (hops < -offset && opts.nextSlide < minCurr){
-                hops = opts.nextSlide;
-            }
-            else if ( opts.currSlide > maxCurr) {
-                hops += opts.currSlide - maxCurr;
-            }
-            else if (opts.nextSlide < minCurr){
-                hops = opts.nextSlide - minCurr; 
-            }
-            else {
-                currSlide = opts.currSlide; 
-            }
-        }
-        moveBy = this.getScroll( opts, vert, currSlide, hops );
-        opts.API.opts()._currSlide = opts.nextSlide > maxCurr ? maxCurr : opts.nextSlide;
-    }
-        else {
-            if ( fwd && opts.nextSlide === 0 ) {
-                // moving from last slide to first
-                moveBy = this.getDim( opts, opts.currSlide, vert );
-                callback = this.genCallback( opts, fwd, vert, callback );
-            }
-            else if ( !fwd && opts.nextSlide == opts.slideCount - 1 ) {
-                // moving from first slide to last
-                moveBy = this.getDim( opts, opts.currSlide, vert );
-                callback = this.genCallback( opts, fwd, vert, callback );
-            }
-            else {
-                moveBy = this.getScroll( opts, vert, opts.currSlide, hops );
-            }
-        }
-
-        props[ vert ? 'top' : 'left' ] = fwd ? ( "-=" + moveBy ) : ( "+=" + moveBy );
-
-        // throttleSpeed means to scroll slides at a constant rate, rather than
-        // a constant speed
-        if ( opts.throttleSpeed )
-            speed = (moveBy / $(opts.slides[0])[vert ? 'height' : 'width']() ) * opts.speed;
-
-        opts._carouselWrap.animate( props, speed, opts.easing, callback );
-    }
-                    });
-
-
-                });
-            })();
+            jQuery(document).ready(function() {
+              jQuery('#lookbookslider_<?php echo $slider->getId() ?>').cycle();
+              jQuery('#pagernav_<?php echo $slider->getId() ?>_thumb').cycle();
+              var hotspots = <?php echo json_encode($hotspots); ?>;
+              
+              jQuery('#lookbookslider_<?php echo $slider->getId() ?> > div.slide:not(.cycle-sentinel)').each(function (i) {
+                var ind = jQuery(this).index();
+                var slide = jQuery(this);
+                jQuery.setHotspots(slide, hotspots[i]);
+              });
+            });
+          });
+        })();
         </script>
         <?php
     endif;
