@@ -1578,8 +1578,20 @@ Cart
       font-weight: normal;
     }
   }
+  .cart-subtotal, .cart-vendor {
+    display: none;
+  }
 }
 
+.cart-continue {
+    text-transform: uppercase;
+    text-family: @headlineFont;
+    &:before {
+      font-family: FontAwesome; 
+      content: "\f104 ";
+      padding-right: 5px;
+    }
+}
 
 /* ==========================================================================
 Social Login
