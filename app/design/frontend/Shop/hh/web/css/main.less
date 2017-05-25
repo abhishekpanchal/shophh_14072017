@@ -1117,6 +1117,7 @@ fieldset {
   margin: 0!important;
   margin-bottom: 10px!important;
   margin-right: 15px!important;
+  text-align: left;
 }
 
 
@@ -5612,13 +5613,11 @@ Select
 
 .styled-select {
   width: 100%;
-}
-
-.styled-select {
   border-bottom: 1px solid #000;
   text-align: left;
   position: relative;
-  font-family: @baseFont;
+  font-size: 12px;
+  font-family: @headlineFont;
 
   &:after {
     content: "\f104";
@@ -5648,7 +5647,7 @@ Select
     padding: 0;
     height: auto;
     color: #959595;
-    padding-left: 10px;
+    padding-left: 5px;
     border: none;
 
     &:focus {
@@ -5879,13 +5878,17 @@ Limiter
   margin-left: 60px;
 }
 .sorter-container {
-  max-width: 75px;
+  max-width: 120px;
   float: left;
   margin-right: 30px;
   .sorter-options {
     color: #000;
     padding-left: 0;
   }
+}
+.toolbar a.clear {
+  color: #8d8d8d;
+  font-family: @headlineFont;
 }
 .limiter-option {
   width: 40%!important;
@@ -7718,7 +7721,13 @@ Account reviews
 
 .page-with-filter {
   .styled-select .sorter-options {
-    width: 75%;
+    width: 100%;
+  }
+  .toolbar-sorter {
+    width: 17%;
+    .styled-select .sorter-options {
+      width: 75%;
+    }
   }
 }
 
