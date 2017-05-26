@@ -253,36 +253,28 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		}
 		.mood-bg {
 			background: none !important;
-			margin-top: -100px;
+			display: block;
+			height: 268px;
+			margin-top: -12%;
 		}
 		.homepage-hero-details {
 			background: #fff;
 			width: 50%;
 			height: 0;
 			padding-bottom: 50%;
-			.hero-details-title {
-				border: 0;
-				margin-top: 8%;
-			}
-			h4 {
-				margin-top: 15px;
-			}
-			p {
-				margin-right: -35%;
-				margin-left: -35%;
-			}
+			margin-top: 0;
 		}		
-		.homepage-controls-container {
-			margin-top: -20%;
-			
+		.homepage-controls-container {			
 			.col-md-4 {
 				width: 100%;
 				margin: 0;
 			}
 			.homepage-controls {
 				width: 100%;
+				top: 0;
 				.carousel-control {
-					margin-top: -35%;
+					opacity: 1;
+          			margin-top: -260px;
 				}
 				.carousel-control.left {
 					left: 5%;
@@ -295,70 +287,44 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		& + div {
 			position: relative;
 		}
-	}
-    .homeslider {
 
-      .homepage-controls {
-        top: 0;
-      }
-      .homepage-controls {
-        bottom: 15px;
-        width: 100px;
-        height: 50px;
-
-        .carousel-control.right, .carousel-control.left  {
-          opacity: 1;
-          margin-top: -400px;
-        }
-        .carousel-control.right {
-          right: -75%;
-        }
-        .carousel-control.left {
-          left: -75%;
-        }
-      }
-
-      .carousel-indicators {
-        li {
-          background-color: #CCC;
-          border-color: #CCC;
-          margin-right: 5px;
-        }
-        .active {
-          background-color: #000;
-          border: none;
-        }
-      }
+      	.carousel-indicators {
+			li {
+				background-color: #CCC;
+				border-color: #CCC;
+				margin-right: 5px;
+			}
+			.active {
+				background-color: #000;
+				border: none;
+			}
+		}
     }
     .home-slider {
       .homepage-hero-details {
 
-        p {
-          margin-right: -25%;
-          margin-left: -25%;
-        }
-        h4 {
-          margin-top: 30px;
-        }
         .hero-details-title {
           width: 85%;
           margin: 0 auto;
-          margin-top: 60px;
+          padding-top: 45px;
+          font-size: 32px;
+          border: 0;
+          white-space: nowrap;
         }
-
-        .homepage-hero-btn {
-          padding: 10px 15px;
-          width: 80%;
+        h4 {
+          margin-top: 15px;
+          font-size: 55px;
+          white-space: nowrap;
+        }
+        p {
+        	height: 2em;
+          margin-right: -35%;
+          margin-left: -35%;
         }
 
         .hero-details-inner {
           padding: 0;
         }
-
-        .hero-details-title {
-          margin-top: 45px;
-        }
-
         .homepage-hero-btn {
           display: block;
         }
@@ -390,9 +356,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
       .formula_list_view {
         .decorating-formula-product:nth-of-type(3):before,
         .decorating-formula-product:nth-of-type(3):after  {
-          background-size: 35% 35%!important;
+          background-size: 50% 50%!important;
           background-position: center center;
-          top: 30%;
+          top: 33%;
         }
         .decorating-formula-title {
           font-size: 1.9rem;
@@ -428,6 +394,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			margin-bottom: 0;
 			li {
 				margin-bottom: 5px;
+				width: 25%;
 			}
         }
       }
@@ -461,6 +428,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
         left: -3%;
       }
     }
+  }
+  #formula-slider {
+		.carousel-control.right, .carousel-control.left {
+  			height: 40px;
+  		}
   }
 
   .more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
@@ -609,9 +581,9 @@ Footer - till 992px
 
 
 /* ==========================================================================
-All small devices - till 767px
+All small devices - till 768px
 ========================================================================== */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 	body, html {
 		font-size: 15px;
 	}
@@ -673,45 +645,6 @@ All small devices - till 767px
 	Footer
 	=================================*/
 	
-	
-	/*
-	.footer-col li strong {
-		font-size: 1rem;
-	}
-	.page-footer {
-		.border-left {
-			margin-left: 0;
-		}
-	}
-	.page-footer {
-    .newsletter-footer {
-      text-align: center;
-    }
-		.newsletter-footer-inner {
-			text-align: center;
-
-			button {
-				float: none;
-			}
-		}
-		.footer-social {
-			.center;
-			margin-bottom: 50px;
-		}
-		.footer-col.border-left {
-			border-left: none;
-			ul {
-				border-left: 1px solid #000;
-				padding-left: 20px;
-			}
-		}
-		.footer-logo {
-			.center;
-		}
-	}
-	*/
-	
-	
 	.footer-links {
 		padding: 0 15px;
 	}
@@ -759,6 +692,25 @@ All small devices - till 767px
 	Homepage
 	=================================*/
 	.cms-home {
+		.modal-popup.modal-slide {
+			left: 0;
+			&._inner-scroll .modal-inner-wrap {
+				min-height: 0;
+				margin: 8% auto 0;
+				background: #fff;
+				max-width: 80%;
+				.modal-footer {
+					margin: 0;
+				}
+			}
+		}
+	}
+
+	.cms-home .editors-area .editors-pick .editors-thumbs li {
+		width: 25%;
+	}
+
+	/*
 		.homeslider {
 			.mood-bg {
 				margin-top: 0;
@@ -930,6 +882,8 @@ All small devices - till 767px
 		}
 
 	}
+	*/
+
 	.shot-thumb {
 		margin: 0 0 5px;
 		&:last-child {
