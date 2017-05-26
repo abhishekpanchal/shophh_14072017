@@ -52,39 +52,15 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
   <div class="row no-gutters vcenter-flex display-block-xs">
     <div class="col-lg-8 col-md-7 homepage-hero">
+
+
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
               <div class="content-before"><?php echo $contentBefore; ?></div>
             <?php endif; ?>
             <div id="lookbookslider_container_<?php echo $slider->getId() ?>"  class="lookbookslider-container">
                 <div class="cycle-slideshow1" id="lookbookslider_<?php echo $slider->getId() ?>"
-                     data-cycle-center-horz="true"
-                     data-cycle-loader="wait"
-                     data-cycle-slides="> div.slide"
-                     data-cycle-auto-height="container"
-                     data-cycle-log="false"
-                     <?php
-                     /** ** effect options ********* */
-                     if ($effect_opt) {
-                         echo $effect_opt;
-                     }
-                     if ($effect_arr === FALSE):
-                    ?>
-                         data-cycle-fx="<?php echo $effect; ?>"
-                     <?php
-                     endif;
-                     /** ***** end effect options ******** */
-                     ?>
-                     <?php
-                     if (count($slideCollection) > 1):
-                         ?>
-                         data-cycle-swipe="true"
-                         data-cycle-pause-on-hover="#lookbookslider_container_<?php echo $slider->getId() ?>"
-                         data-cycle-timeout="<?php echo $time; ?>"
-                         data-cycle-speed="<?php echo $trans_period; ?>"
-                         <?php
-                     endif;
-                     ?>
+                     
 
         <?php if (!$thumbnails && $thumb): ?>
                          data-cycle-pager="#pagernav_<?php echo $slider->getId() ?> .cycle"
@@ -94,34 +70,10 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                          data-cycle-prev="#lookbookslider_<?php echo $slider->getId() ?> .slide-prev"
                          data-cycle-next="#lookbookslider_<?php echo $slider->getId() ?> .slide-next"
         <?php endif; ?>
-
-
-
-                     style="max-width:<?php echo $slider->getWidth(); ?>px; max-height:<?php echo $slider->getHeight(); ?>px; display: block;"
-
                      >
 
 
-                    <?php if ($navigation): ?>
-                        <div class="slide_commands <?php
-                        if ($navigationHover) {
-                            echo 'hover';
-                        }
-                        ?>">
-                            <div class="slide_play" style="display: none;"></div>
-                            <div class="slide_stop" style="display: block;"></div>
-                        </div>
-                        <div class="slide-prev <?php
-                        if ($navigationHover) {
-                            echo 'hover';
-                        }
-                        ?>"><span></span></div>
-                        <div class="slide-next <?php
-                        if ($navigationHover) {
-                            echo 'hover';
-                        }
-                        ?>"><span></span></div>    
-        <?php endif; ?>
+
 
 
                     <?php $slide_ind = 1; ?>
@@ -136,25 +88,14 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                         endif;
                         ?>
                              >
-                                 <?php
-                                 if ($slide->getLink()):
-                                     $link = $slide->getLink();
-                                     $pos = strpos($link, 'http://');
-                                     $pos1 = strpos($link, 'https://');
-                                     if ($pos === FALSE && $pos1 === FALSE) {
-                                         $link = 'http://' . $link;
-                                     }
-                                     ?>
-                                <a href="<?php echo $link; ?>">
-            <?php endif; ?>
-    
+                                
+
                                 <img alt="Slide <?php echo $slide->getId(); ?>" class="shoptheshot-img" src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
+                                <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
 
-                                    
 
-                            <?php if ($slide->getLink()): ?>
-                                </a>
-                            <?php endif; ?>
+
+
                         </div>
                         <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
                         <?php $slide_ind++; ?>
@@ -163,10 +104,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                     <div id="progress"></div>
                 </div>
 
-                <!-- Go to www.addthis.com/dashboard to customize your tools --> 
-               <!--  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58939f9f70524f36"></script> 
-                <div class="addthis_inline_share_toolbox" data-url="http://www.google.com" data-title="Shop The Shot" data-media="http://hhshop.hhmedia.com:8888/shophh/pub/media/lookbookslider/600X250/bedroom.jpeg">
-                </div> -->
+
                 
                 <?php if ($thumbnails && $thumb): ?>
                     <?php $count_pager = 5; ?>
@@ -185,11 +123,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                              data-cycle-carousel-visible="<?php echo $count_pager; ?>"
                              data-allow-wrap="false"
                              >
-            <?php foreach ($slideCollection as $slide): ?>
-                                <li class="thumb">
-                                    <img src='<?php echo $blockObj->getSlideThumbUrl($slide); ?>'/>
-                                </li>
-            <?php endforeach; ?>
+
                         </ul>
                     </div>
         <?php elseif ($thumb): ?>
@@ -419,146 +353,28 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
         <script type="text/javascript">
 
-            (function () {
-                var flexSliderSelector = '<?php echo $htmlId; ?>';
-                require(['jquery', 'altima/cycle', 'altima/hotspots', 'altima/cyclecarousel', 'altima/cyclecenter', 'altima/cycleAddEffects', 'altima/cycleflip'], function (jQuery) {
-                    var $altima_jq = jQuery.noConflict();
+        (function () {
+            var flexSliderSelector = '<?php echo $htmlId; ?>';
+            require(['jquery', 'altima/cycle', 'altima/hotspots', 'altima/cyclecarousel', 'altima/cyclecenter', 'altima/cycleAddEffects', 'altima/cycleflip'], function (jQuery) {
 
-                    $altima_jq(window).load(function () {
-                        $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle();
-                        $altima_jq('#pagernav_<?php echo $slider->getId() ?>_thumb').cycle();
-                        var hotspots = <?php echo json_encode($hotspots); ?>;
-                        $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> > div.slide:not(.cycle-sentinel)').each(function (i) {
-                            var ind = $altima_jq(this).index();
-                            var slide = $altima_jq(this);
-                            $altima_jq.setHotspots(slide, hotspots[i]);
-                        });
-        <?php if ($navigation): ?>
-                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').click(function () {
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('pause');
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').hide();
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').show();
-                            });
-                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').click(function () {
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('resume');
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_play').hide();
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?> .slide_stop').show();
-                                
-                                
-                            });
-        <?php endif; ?>
-        <?php if ($thumbnails): ?>
-                            $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').on('cycle-update-view', function (e, opts) {
-                                $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').cycle('goto', opts.currSlide);
-                            });
-
-                            $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul li').click(function () {
-                                var index = $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').data('cycle.API').getSlideIndex(this);
-                                $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>').cycle('goto', index);
-                                $altima_jq('#pagernav_<?php echo $slider->getId() ?> ul').cycle('goto', index);
-                            });
-        <?php endif; ?>
-                        var progress = $altima_jq('#progress'),
-                                slideshow = $altima_jq('#lookbookslider_<?php echo $slider->getId() ?>');
-                        slideshow.on('cycle-initialized cycle-before', function (e, opts) {
-                            progress.stop(true).css('width', 0);
-                        });
-                        slideshow.on('cycle-initialized cycle-after', function (e, opts) {
-                            if (!slideshow.is('.cycle-paused'))
-                                progress.animate({width: '100%'}, opts.timeout, 'linear');
-                        });
-                        slideshow.on('cycle-paused', function (e, opts) {
-                            progress.stop();
-                        });
-                        slideshow.on('cycle-resumed', function (e, opts, timeoutRemaining) {
-                            progress.animate({width: '100%'}, timeoutRemaining, 'linear');
-                        });
-                        
-        jQuery.fn.cycle.transitions.carousel.transition = function( opts, curr, next, fwd, callback ) {
-        var moveBy, props = {};
-        var hops = opts.nextSlide - opts.currSlide;
-        var vert = opts.carouselVertical;
-        var speed = opts.speed;
-        var offset = 2; //Number of slides to offset
-        if ( opts.allowWrap === false ) {
-        fwd = hops > 0;
-        var currSlide = opts._currSlide;
-        var maxCurr = opts.slideCount - (opts.carouselVisible - offset);
-        var minCurr = opts.slideCount - (opts.carouselVisible + offset);
-        if(minCurr < offset){
-            minCurr = offset;
-        }
-        if(fwd){ // MOVING FORWARDS
+            /* this was the problem line for why it wouldn't load in firefox..
+            var $altima_jq = jQuery.noConflict();
+            */
+            // even this wont work in firefox: jQuery(window).load(function() {
             
-            if ( opts.nextSlide > maxCurr && currSlide == maxCurr|| opts.nextSlide <= minCurr ) {
-                hops = 0;
-            }
-            else if (opts.currSlide < minCurr && opts.nextSlide > maxCurr){
-                 hops = maxCurr-minCurr;
-            }
-            else if (opts.currSlide < minCurr && opts.nextSlide > maxCurr || opts.nextSlide > maxCurr){
-                 hops += opts.currSlide - maxCurr;
-            }
-            else if (opts.currSlide < minCurr && opts.nextSlide > minCurr){
-                 hops = opts.nextSlide - minCurr;  
-            }
-            else {
-                currSlide = opts.currSlide;
-            }
-
-        } else { // MOVING BACKWARDS
-            if ( opts.currSlide > maxCurr && opts.nextSlide > maxCurr || opts.currSlide <= minCurr ) {
-                hops = 0;
-            }
-            else if (opts.currSlide > maxCurr && opts.nextSlide < minCurr){
-                hops = minCurr - maxCurr;
-            }
-            else if (hops < -offset && opts.nextSlide < minCurr){
-                hops = opts.nextSlide;
-            }
-            else if ( opts.currSlide > maxCurr) {
-                hops += opts.currSlide - maxCurr;
-            }
-            else if (opts.nextSlide < minCurr){
-                hops = opts.nextSlide - minCurr; 
-            }
-            else {
-                currSlide = opts.currSlide; 
-            }
-        }
-        moveBy = this.getScroll( opts, vert, currSlide, hops );
-        opts.API.opts()._currSlide = opts.nextSlide > maxCurr ? maxCurr : opts.nextSlide;
-    }
-        else {
-            if ( fwd && opts.nextSlide === 0 ) {
-                // moving from last slide to first
-                moveBy = this.getDim( opts, opts.currSlide, vert );
-                callback = this.genCallback( opts, fwd, vert, callback );
-            }
-            else if ( !fwd && opts.nextSlide == opts.slideCount - 1 ) {
-                // moving from first slide to last
-                moveBy = this.getDim( opts, opts.currSlide, vert );
-                callback = this.genCallback( opts, fwd, vert, callback );
-            }
-            else {
-                moveBy = this.getScroll( opts, vert, opts.currSlide, hops );
-            }
-        }
-
-        props[ vert ? 'top' : 'left' ] = fwd ? ( "-=" + moveBy ) : ( "+=" + moveBy );
-
-        // throttleSpeed means to scroll slides at a constant rate, rather than
-        // a constant speed
-        if ( opts.throttleSpeed )
-            speed = (moveBy / $(opts.slides[0])[vert ? 'height' : 'width']() ) * opts.speed;
-
-        opts._carouselWrap.animate( props, speed, opts.easing, callback );
-    }
-                    });
-
-
-                });
-            })();
+            jQuery(document).ready(function() {
+              jQuery('#lookbookslider_<?php echo $slider->getId() ?>').cycle();
+              jQuery('#pagernav_<?php echo $slider->getId() ?>_thumb').cycle();
+              var hotspots = <?php echo json_encode($hotspots); ?>;
+              
+              jQuery('#lookbookslider_<?php echo $slider->getId() ?> > div.slide:not(.cycle-sentinel)').each(function (i) {
+                var ind = jQuery(this).index();
+                var slide = jQuery(this);
+                jQuery.setHotspots(slide, hotspots[i]);
+              });
+            });
+          });
+        })();
         </script>
         <?php
     endif;

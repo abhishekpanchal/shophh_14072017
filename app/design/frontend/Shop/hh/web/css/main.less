@@ -331,6 +331,7 @@ Buttons
   font-family: @fancyFont;
   font-style: italic;
   font-weight: normal;
+  border-radius: 0;
 }
 
 
@@ -896,6 +897,10 @@ input:active {
   float: none;
 }
 
+.fieldset > .field {
+  margin-bottom: 25px !important;
+}
+
 .fieldset > .field:not(.choice) > .label {
   padding-right: 20px!important;
   padding-top: 5px!important;
@@ -1117,6 +1122,7 @@ fieldset {
   margin: 0!important;
   margin-bottom: 10px!important;
   margin-right: 15px!important;
+  text-align: left;
 }
 
 
@@ -3501,25 +3507,31 @@ Products
         margin-top: -5px!important;
       }
   }
-  .field.choice.newsletter {
-    input[type="checkbox"] {
-      float: left;
-    }
-    label {
-      float: left;
-      margin-left: 10px;
-      width: 90%;
-      font-family: @fancyFont;
-      font-size:14px;
-      font-style: italic;
-      text-transform: none!important;
-      text-align: left;
-      line-height: 20px;
-      margin-bottom: 20px;
-
-      span {
-        display: block;
-      }
+  .field.choice.newsletter label {
+    margin-bottom: 20px;
+  }
+  .privacy-popup {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+.field.choice.newsletter {
+  input[type="checkbox"] {
+    float: left;
+  }
+  label {
+    float: left;
+    margin-left: 10px;
+    width: 90%;
+    font-family: @fancyFont;
+    font-size:14px;
+    font-style: italic;
+    text-transform: none!important;
+    text-align: left;
+    line-height: 20px;
+    padding-bottom: 0;
+    span {
+      display: block;
     }
   }
 }
@@ -3528,14 +3540,15 @@ Products
     font-family: @fancyFont;
     font-size:14px;
     font-style: italic;
-    text-align: center;
     display: block;
-    margin: 20px auto;
     width: 80%;
     line-height: 20px;
-
+    padding: 20px 0;
     a {
       text-decoration: underline;
+    }
+    & + p.required {
+      margin-top: 0;
     }
 }
 
@@ -3811,7 +3824,7 @@ Cart Page
       color: #53595a;
     }
 
-    .newsletter, .back {
+    .back {
       display: none;
     }
   }
@@ -4640,7 +4653,7 @@ Hotspot Details
     }
     .actions-primary {
       display: block;
-      margin-top: 40px;
+      margin-top: 20px;
     }
     .hotspot-btn {
       background-color: #000;
@@ -5612,13 +5625,11 @@ Select
 
 .styled-select {
   width: 100%;
-}
-
-.styled-select {
   border-bottom: 1px solid #000;
   text-align: left;
   position: relative;
-  font-family: @baseFont;
+  font-size: 12px;
+  font-family: @headlineFont;
 
   &:after {
     content: "\f104";
@@ -5648,7 +5659,7 @@ Select
     padding: 0;
     height: auto;
     color: #959595;
-    padding-left: 10px;
+    padding-left: 5px;
     border: none;
 
     &:focus {
@@ -5879,13 +5890,17 @@ Limiter
   margin-left: 60px;
 }
 .sorter-container {
-  max-width: 75px;
+  max-width: 120px;
   float: left;
   margin-right: 30px;
   .sorter-options {
     color: #000;
     padding-left: 0;
   }
+}
+.toolbar a.clear {
+  color: #8d8d8d;
+  font-family: @headlineFont;
 }
 .limiter-option {
   width: 40%!important;
@@ -7718,7 +7733,14 @@ Account reviews
 
 .page-with-filter {
   .styled-select .sorter-options {
-    width: 75%;
+    width: 100%;
+  }
+  .toolbar-sorter {
+    width: 17%;
+    min-width: 180px;
+    .styled-select .sorter-options {
+      width: 75%;
+    }
   }
 }
 
@@ -7965,6 +7987,9 @@ h4.decorating-formula-price {
 .form.create.account {
   width: 100% !important;
   min-width: 0 !important;
+  .fieldset {
+    margin-bottom: 0;
+  }
 }
 
 
@@ -7985,7 +8010,7 @@ h4.decorating-formula-price {
       float: none;
       margin: 0 auto 20px;
     }
-    .secondary a {
+    .secondary a span {
       text-transform: uppercase;
       font-size: 12px;
       color: #8d8d8d;
@@ -8135,10 +8160,6 @@ h4.decorating-formula-price {
 
 
 
-
-
-
-
   /* ===============================
   Notes page
   =================================*/
@@ -8178,6 +8199,70 @@ h4.decorating-formula-price {
     margin: 0 30px;
   }
 }
+
+
+
+
+
+  /* ===============================
+  Homepage Modal
+  =================================*/
+.cms-home .modal-inner-wrap {
+  width: 50%;
+  max-width: 600px;
+  .modal-header {
+    border: 0;
+    padding-top: 10px;
+  }
+  .action-close {
+    padding: 2px 5px;
+  }
+  .modal-content {
+    text-align: center;
+    font-family: @headlineFont;
+    font-size: 14px;
+    padding-bottom: 20px;
+  }
+  p {
+    margin-bottom: 15px;
+  }
+  img {
+    border-radius: 50%;
+    width: 100px;
+  }
+  h2 {
+    font-family: @fancyFont;
+    font-size: 26px;
+    font-style: italic;
+    margin-top: 20px;
+  }
+  .modal-footer {
+    border: 0 !important;
+    text-align: center !important;
+    padding: 0 0 40px;
+    button {
+      background: #000;
+      color: #fff;
+      border: 0;
+      border-radius: 0;
+      font-style: italic;
+      font-size: 16px;
+    }
+  }
+}
+
+
+
+
+
+
+.lookbookslider-top, .lookbookslider-container, .cycle-slideshow1, .cycle-slideshow1 .slide {
+  height: 100%;
+}
+.cycle-slideshow1 .slide img {
+  height: 100% !important;
+}
+
 
 
 
