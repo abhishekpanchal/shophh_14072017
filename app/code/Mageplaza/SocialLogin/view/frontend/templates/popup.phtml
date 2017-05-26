@@ -33,7 +33,7 @@
                 popup: '#social-login-popup',
                 popupEffect: '<?php echo $block->getPopupEffect()?>',
                 headerLink:  '.header.links',
-                reviewLink:  '.review-details-div',
+            //    reviewLink:  '.review-details-div',
                 sectionLink: '.section-item-content .header.links',
                 ajaxLoading: '#social-login-popup .ajax-loading',
                 /*Login*/
@@ -82,7 +82,7 @@
                 });
             }
 
-
+            
             var reviewLink = $('.review-details-div');
             if(reviewLink.length) {
 
@@ -99,6 +99,7 @@
                     midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
                 });
             }
+            
 
 
 

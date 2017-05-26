@@ -19,6 +19,7 @@ define([
             limitControl: '[data-role="limiter"]',
             colorControl: '[data-role="color"]',
             priceControl: '[data-role="price"]',
+            clearControl: '[data-role="clear"]',
             mode: 'product_list_mode',
             direction: 'product_list_dir',
             order: 'product_list_order',
@@ -41,6 +42,7 @@ define([
             this._bind($(this.options.limitControl), this.options.limit, this.options.limitDefault);
             this._bind($(this.options.colorControl), this.options.color, this.options.colorDefault);
             this._bind($(this.options.priceControl), this.options.price, this.options.priceDefault);
+            this._bind($(this.options.clearControl));
         },
 
         _bind: function (element, paramName, defaultValue) {
@@ -85,10 +87,17 @@ define([
             if (paramValue == defaultValue) {
                 delete paramData[paramName];
             }
-            paramData = $.param(paramData);
+            if(paramName == undefined) {
+                delete paramData['price'];
+                delete paramData['color'];
+            }
 
+            paramData = $.param(paramData);
             location.href = baseUrl + (paramData.length ? '?' + paramData : '');
         }
+
+
+
     });
 
     return $.mage.productListToolbarForm;
