@@ -20,8 +20,6 @@ $active = '';
 $currentUrl = strtok($block->getPagerUrl(), '?');
 $color = $this->getRequest()->getParam('color');
 $price = $this->getRequest()->getParam('price');
-$order = $this->getRequest()->getParam('product_list_order');
-$limit = $this->getRequest()->getParam('product_list_limit');
 ?>
 <div class="toolbar-sorter sorter col-md-2 hidden-xs">
     <div class="styled-select">
@@ -96,6 +94,7 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
         <?php endforeach; ?>
     </select>
 </div>
+    <?php if($color != '' || $price != ''): ?>
+        <a href="#" data-role="clear" class="clear">CLEAR ALL X</a>
+    <?php endif; ?>
 <?php endif; ?>
-
-<a href="#" data-role="clear" class="clear">CLEAR ALL X</a>
