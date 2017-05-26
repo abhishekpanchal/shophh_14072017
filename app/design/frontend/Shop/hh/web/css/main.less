@@ -331,6 +331,7 @@ Buttons
   font-family: @fancyFont;
   font-style: italic;
   font-weight: normal;
+  border-radius: 0;
 }
 
 
@@ -894,6 +895,10 @@ input:active {
   font-size: 14px;
   margin: 0!important;
   float: none;
+}
+
+.fieldset > .field {
+  margin-bottom: 25px !important;
 }
 
 .fieldset > .field:not(.choice) > .label {
@@ -3502,25 +3507,31 @@ Products
         margin-top: -5px!important;
       }
   }
-  .field.choice.newsletter {
-    input[type="checkbox"] {
-      float: left;
-    }
-    label {
-      float: left;
-      margin-left: 10px;
-      width: 90%;
-      font-family: @fancyFont;
-      font-size:14px;
-      font-style: italic;
-      text-transform: none!important;
-      text-align: left;
-      line-height: 20px;
-      margin-bottom: 20px;
-
-      span {
-        display: block;
-      }
+  .field.choice.newsletter label {
+    margin-bottom: 20px;
+  }
+  .privacy-popup {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
+.field.choice.newsletter {
+  input[type="checkbox"] {
+    float: left;
+  }
+  label {
+    float: left;
+    margin-left: 10px;
+    width: 90%;
+    font-family: @fancyFont;
+    font-size:14px;
+    font-style: italic;
+    text-transform: none!important;
+    text-align: left;
+    line-height: 20px;
+    padding-bottom: 0;
+    span {
+      display: block;
     }
   }
 }
@@ -3529,14 +3540,15 @@ Products
     font-family: @fancyFont;
     font-size:14px;
     font-style: italic;
-    text-align: center;
     display: block;
-    margin: 20px auto;
     width: 80%;
     line-height: 20px;
-
+    padding: 20px 0;
     a {
       text-decoration: underline;
+    }
+    & + p.required {
+      margin-top: 0;
     }
 }
 
@@ -3812,7 +3824,7 @@ Cart Page
       color: #53595a;
     }
 
-    .newsletter, .back {
+    .back {
       display: none;
     }
   }
@@ -7975,6 +7987,9 @@ h4.decorating-formula-price {
 .form.create.account {
   width: 100% !important;
   min-width: 0 !important;
+  .fieldset {
+    margin-bottom: 0;
+  }
 }
 
 
@@ -7995,7 +8010,7 @@ h4.decorating-formula-price {
       float: none;
       margin: 0 auto 20px;
     }
-    .secondary a {
+    .secondary a span {
       text-transform: uppercase;
       font-size: 12px;
       color: #8d8d8d;

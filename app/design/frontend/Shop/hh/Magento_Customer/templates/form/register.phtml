@@ -134,13 +134,13 @@
         <?php endif; ?>
         <fieldset class="fieldset create account" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>">
             <div class="field required">
-                <label for="email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span></label>
+                <label for="email_address" class="label"><span><?php /* @escapeNotVerified */ echo __('Email') ?></span> <span class="asterisk">*</span></label>
                 <div class="control">
                     <input type="email" name="email" autocomplete="email" id="email_address" value="<?php echo $block->escapeHtml($block->getFormData()->getEmail()) ?>" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" class="input-text" data-validate="{required:true, 'validate-email':true}">
                 </div>
             </div>
             <div class="field password required" data-mage-init='{"passwordStrengthIndicator": {}}'>
-                <label for="password" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span></label>
+                <label for="password" class="label"><span><?php /* @escapeNotVerified */ echo __('Password') ?></span> <span class="asterisk">*</span></label>
                 <div class="control">
                     <input type="password" name="password" id="password"
                            title="<?php /* @escapeNotVerified */ echo __('Password') ?>"
@@ -161,7 +161,7 @@
 
             </div>
             <div class="field confirmation required">
-                <label for="password-confirmation" class="label"><span><?php /* @escapeNotVerified */ echo __('Confirm Password') ?></span></label>
+                <label for="password-confirmation" class="label"><span><?php /* @escapeNotVerified */ echo __('Confirm Password') ?></span> <span class="asterisk">*</span></label>
                 <div class="control">
                     <input type="password" name="password_confirmation" title="<?php /* @escapeNotVerified */ echo __('Confirm Password') ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off">
                 </div>
@@ -175,7 +175,7 @@
             <div class="secondary">
                 <a class="action back" href="<?php echo $block->escapeUrl($block->getBackUrl()) ?>"><span><?php /* @escapeNotVerified */ echo __('Back') ?></span></a>
             </div>
-            <p>By creating an account, you agree to Shop H&H's <a href="<?php echo $this->getUrl('terms-conditions') ?>">Terms of Use</a> and <a href="<?php echo $this->getUrl('privacy-policy') ?>">Privacy Policy</a>.</p>
+            <p class="privacy-popup">By creating an account, you agree to Shop H&H's <a href="<?php echo $this->getUrl('terms-conditions') ?>">Terms of Use</a> and <a href="<?php echo $this->getUrl('privacy-policy') ?>">Privacy Policy</a>.</p>
             <p class="required"><span class="asterisk">*</span>Required fields</p>
         </div>
     </form>
