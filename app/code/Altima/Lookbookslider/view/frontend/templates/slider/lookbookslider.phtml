@@ -52,39 +52,15 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
 
   <div class="row no-gutters vcenter-flex display-block-xs">
     <div class="col-lg-8 col-md-7 homepage-hero">
+
+
         <div class="lookbookslider-top">
             <?php if ($contentBefore): ?>
               <div class="content-before"><?php echo $contentBefore; ?></div>
             <?php endif; ?>
             <div id="lookbookslider_container_<?php echo $slider->getId() ?>"  class="lookbookslider-container">
                 <div class="cycle-slideshow1" id="lookbookslider_<?php echo $slider->getId() ?>"
-                     data-cycle-center-horz="true"
-                     data-cycle-loader="wait"
-                     data-cycle-slides="> div.slide"
-                     data-cycle-auto-height="container"
-                     data-cycle-log="false"
-                     <?php
-                     /** ** effect options ********* */
-                     if ($effect_opt) {
-                         echo $effect_opt;
-                     }
-                     if ($effect_arr === FALSE):
-                    ?>
-                         data-cycle-fx="<?php echo $effect; ?>"
-                     <?php
-                     endif;
-                     /** ***** end effect options ******** */
-                     ?>
-                     <?php
-                     if (count($slideCollection) > 1):
-                         ?>
-                         data-cycle-swipe="true"
-                         data-cycle-pause-on-hover="#lookbookslider_container_<?php echo $slider->getId() ?>"
-                         data-cycle-timeout="<?php echo $time; ?>"
-                         data-cycle-speed="<?php echo $trans_period; ?>"
-                         <?php
-                     endif;
-                     ?>
+                     
 
         <?php if (!$thumbnails && $thumb): ?>
                          data-cycle-pager="#pagernav_<?php echo $slider->getId() ?> .cycle"
@@ -94,34 +70,10 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                          data-cycle-prev="#lookbookslider_<?php echo $slider->getId() ?> .slide-prev"
                          data-cycle-next="#lookbookslider_<?php echo $slider->getId() ?> .slide-next"
         <?php endif; ?>
-
-
-
-                     style="max-width:<?php echo $slider->getWidth(); ?>px; max-height:<?php echo $slider->getHeight(); ?>px; display: block;"
-
                      >
 
 
-                    <?php if ($navigation): ?>
-                        <div class="slide_commands <?php
-                        if ($navigationHover) {
-                            echo 'hover';
-                        }
-                        ?>">
-                            <div class="slide_play" style="display: none;"></div>
-                            <div class="slide_stop" style="display: block;"></div>
-                        </div>
-                        <div class="slide-prev <?php
-                        if ($navigationHover) {
-                            echo 'hover';
-                        }
-                        ?>"><span></span></div>
-                        <div class="slide-next <?php
-                        if ($navigationHover) {
-                            echo 'hover';
-                        }
-                        ?>"><span></span></div>    
-        <?php endif; ?>
+
 
 
                     <?php $slide_ind = 1; ?>
@@ -136,25 +88,14 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                         endif;
                         ?>
                              >
-                                 <?php
-                                 if ($slide->getLink()):
-                                     $link = $slide->getLink();
-                                     $pos = strpos($link, 'http://');
-                                     $pos1 = strpos($link, 'https://');
-                                     if ($pos === FALSE && $pos1 === FALSE) {
-                                         $link = 'http://' . $link;
-                                     }
-                                     ?>
-                                <a href="<?php echo $link; ?>">
-            <?php endif; ?>
-    
+                                
+
                                 <img alt="Slide <?php echo $slide->getId(); ?>" class="shoptheshot-img" src="<?php echo $blockObj->getSlideImageUrl($slide) ?>"/>
+                                <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
 
-                                    
 
-                            <?php if ($slide->getLink()): ?>
-                                </a>
-                            <?php endif; ?>
+
+
                         </div>
                         <?php $hotspots[] = $blockObj->getHotspotsWithProductDetails($slide); ?>
                         <?php $slide_ind++; ?>
@@ -163,10 +104,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                     <div id="progress"></div>
                 </div>
 
-                <!-- Go to www.addthis.com/dashboard to customize your tools --> 
-               <!--  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58939f9f70524f36"></script> 
-                <div class="addthis_inline_share_toolbox" data-url="http://www.google.com" data-title="Shop The Shot" data-media="http://hhshop.hhmedia.com:8888/shophh/pub/media/lookbookslider/600X250/bedroom.jpeg">
-                </div> -->
+
                 
                 <?php if ($thumbnails && $thumb): ?>
                     <?php $count_pager = 5; ?>
@@ -185,11 +123,7 @@ if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) 
                              data-cycle-carousel-visible="<?php echo $count_pager; ?>"
                              data-allow-wrap="false"
                              >
-            <?php foreach ($slideCollection as $slide): ?>
-                                <li class="thumb">
-                                    <img src='<?php echo $blockObj->getSlideThumbUrl($slide); ?>'/>
-                                </li>
-            <?php endforeach; ?>
+
                         </ul>
                     </div>
         <?php elseif ($thumb): ?>
