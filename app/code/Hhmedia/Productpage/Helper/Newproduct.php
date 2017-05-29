@@ -29,6 +29,9 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
 
     protected $_storeManager;
 
+    protected $_filesystem ;
+    protected $_imageFactory;
+
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\CatalogInventory\Api\StockStateInterface $stockItem,
@@ -37,8 +40,12 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         \Magento\Eav\Model\Config $eavConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         CategoryRepositoryInterface $categoryRepository,
+        \Magento\Framework\Filesystem $filesystem,         
+        \Magento\Framework\Image\AdapterFactory $imageFactory,
         TimezoneInterface $localeDate
     ) {
+        $this->_filesystem = $filesystem;               
+        $this->_imageFactory = $imageFactory;
         $this->localeDate = $localeDate;
         $this->stockItem = $stockItem;
         $this->_editorCollectionFactory = $editorCollectionFactory;
@@ -255,6 +262,30 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             }
             return $ids;
         }
+    }
+
+    public function resize($image, $width = null, $height = null)
+    {
+        $media = $this->_filesystem->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
+
+        $absolutePath = $media->getAbsolutePath('catalog/product').$image;
+        $imageResized = $media->getAbsolutePath('catalog/product/resize/'.$width.'/').$image;
+
+        $imageResize = $this->_imageFactory->create();
+        $imageResize->open($absolutePath);
+        $imageResize->constrainOnly(TRUE);
+        $imageResize->keepTransparency(TRUE);
+        $imageResize->keepFrame(TRUE);  
+        $imageResize->keepAspectRatio(TRUE);
+        $imageResize->backgroundColor(array(255, 255, 255));
+        $imageResize->resize($width,$height);
+        //destination folder       
+        $destination = $imageResized;
+        //save image
+        $imageResize->save($destination);  
+
+        $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product/resize/'.$width.$image;
+        return $resizedURL;
     }
 
 }
