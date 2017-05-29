@@ -19,6 +19,7 @@ define([
             limitControl: '[data-role="limiter"]',
             colorControl: '[data-role="color"]',
             priceControl: '[data-role="price"]',
+            catControl: '[data-role="cat"]',
             clearControl: '[data-role="clear"]',
             mode: 'product_list_mode',
             direction: 'product_list_dir',
@@ -26,12 +27,14 @@ define([
             limit: 'product_list_limit',
             color: 'color',
             price: 'price',
+            cat: 'cat',
             modeDefault: 'grid',
             directionDefault: 'asc',
             orderDefault: 'position',
             limitDefault: '9',
             colorDefault: '',
             priceDefault: '',
+            catDefault: '',
             url: ''
         },
 
@@ -42,6 +45,7 @@ define([
             this._bind($(this.options.limitControl), this.options.limit, this.options.limitDefault);
             this._bind($(this.options.colorControl), this.options.color, this.options.colorDefault);
             this._bind($(this.options.priceControl), this.options.price, this.options.priceDefault);
+            this._bind($(this.options.catControl), this.options.cat, this.options.catDefault);
             this._bind($(this.options.clearControl));
         },
 
@@ -90,6 +94,7 @@ define([
             if(paramName == undefined) {
                 delete paramData['price'];
                 delete paramData['color'];
+                delete paramData['cat'];
             }
 
             paramData = $.param(paramData);
