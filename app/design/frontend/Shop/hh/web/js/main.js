@@ -140,15 +140,11 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(productType).prependTo('.catalog-product-view .product.media');
       $(productTitle).prependTo('.catalog-product-view .product.media');
 
-
+      /*
       $('.footer-subscribe').prependTo('.footer-links');
       $('.footer-social').insertAfter('.footer-subscribe');
-      var mobileContent = $('.mobile-content').width();
+      */
 
-      // if (mobileContent < 600) {
-      //   $('.issue-date').prependTo('.mobile-content');
-      //   $('.issue-title').appendTo('.mobile-content');
-      // }
 
       // Search Box
       $(searchBox).prependTo('.mobile-full');
@@ -180,7 +176,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
       });
     }
 
-    
+
   });
 
   $(document).ajaxComplete(function() {
