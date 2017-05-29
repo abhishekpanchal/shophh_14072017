@@ -252,16 +252,19 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
     {
         $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
         $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
-        $ids = [];
+        $ids = array();
         if ($category) {
             $categoryId = $category->getId();
-            $subCat = explode(",", $category->getChildren());
-            foreach($subCat as $id){
-                $name = $this->categoryRepository->get($id, $this->_storeManager->getStore()->getId())->getName();
-                $ids[$id] = $name;
+            $child = $category->getChildren();
+            if($child != NULL){
+                $subCat = explode(",", $child);
+                foreach($subCat as $id){
+                    $name = $this->categoryRepository->get($id, $this->_storeManager->getStore()->getId())->getName();
+                    $ids[$id] = $name;
+                }
             }
-            return $ids;
         }
+        return $ids;
     }
 
     public function resize($image, $width = null, $height = null)

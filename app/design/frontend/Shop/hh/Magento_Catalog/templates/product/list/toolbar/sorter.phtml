@@ -60,12 +60,12 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
                                     ->setStoreFilter()
                                     ->load();
 ?>
+<?php $subCats = $helper->getSubcategories(); ?>
 <?php $moduleName = $this->getRequest()->getModuleName(); ?>
-<?php if($moduleName == "catalog"): ?>
+<?php if(($moduleName == "catalog") && (count($subCats) > 0)): ?>
 <div class="styled-select sorter-container ">
     <select id="cat" data-role="cat" class="sorter-options cat-options addParam">
         <option value=""><?php echo __('All Products') ?></option>
-        <?php $subCats = $helper->getSubcategories(); ?>
         <?php foreach($subCats as $key => $val): ?>
             <option value="<?php echo $key ?>" <?php echo $subCat == $key ? 'selected' : ''; ?>>
                 <?php echo $val; ?>
