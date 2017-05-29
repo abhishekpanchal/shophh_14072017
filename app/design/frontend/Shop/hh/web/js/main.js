@@ -265,5 +265,17 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
+  // menu launch hover effect on click
+  $('#awemenu .am-tabs .am-tab.shop-menu > a').click(function(e) {
+    e.preventDefault();
+    $(e.target).parent().toggleClass('am-tab-hover');
+  });
+
+
+
+
+
+
+
 
 });
