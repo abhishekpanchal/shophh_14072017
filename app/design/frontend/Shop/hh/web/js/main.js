@@ -12,7 +12,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
     if ($('body').hasClass('faqs-index-index')) {
       $('.faq-sidebar li.faq').addClass('active-sidebar');
-      $('.shop-menu').addClass('active-menu');
     }
     else if ($('body').hasClass('contact-index-index')) {
       $('.faq-sidebar li.contact').addClass('active-sidebar');
@@ -158,6 +157,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
         e.stopPropagation();
       });
 
+
+
       // Sidebar Navigation (CMS pages)
       $('ul.faq-sidebar, .sidebar ul').each(function() {
         var $select = $('<select />');
@@ -170,12 +171,16 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $(this).replaceWith($select);
       });
 
+      // add current page as active
+      $('.sidebar select option[value="'+ location.href +'"]').prop('selected', true) ;
+
       // Redirect on click - select (sidebar)
       $('.sidebar select').change( function() {
         location.href = $(this).val();
       });
-
     }
+
+    
   });
 
   $(document).ajaxComplete(function() {
@@ -209,6 +214,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
+  /*
+
   $(document).ready(function() {
     $('.panel-collapse').on('show.bs.collapse', function () {
       $(this).siblings('.panel-heading').addClass('active');
@@ -218,6 +225,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(this).siblings('.panel-heading').removeClass('active');
     });
   });
+
+  */
 
 
   $('.btn-toggle-form').click(function(e) {
