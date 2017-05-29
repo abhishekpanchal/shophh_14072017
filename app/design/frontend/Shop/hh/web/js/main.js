@@ -272,8 +272,14 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
-
-
+  // close homepage popup on click outside
+  $("body").click(function(e) {
+    var checkclass = e.target.className ;  
+      if (checkclass.indexOf("_show") >= 0){
+        $( ".action-close" ).trigger( "click" );
+      }
+    }
+  );
 
 
 
