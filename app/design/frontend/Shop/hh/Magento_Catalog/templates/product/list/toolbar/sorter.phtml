@@ -20,6 +20,7 @@ $active = '';
 $currentUrl = strtok($block->getPagerUrl(), '?');
 $color = $this->getRequest()->getParam('color');
 $price = $this->getRequest()->getParam('price');
+$subCat = $this->getRequest()->getParam('cat');
 ?>
 <div class="toolbar-sorter sorter col-md-2 hidden-xs">
     <div class="styled-select">
@@ -41,18 +42,14 @@ $price = $this->getRequest()->getParam('price');
 </div>
 
 <?php 
-$moduleName = $this->getRequest()->getModuleName();
-
-if($moduleName == "catalog"):
-
 $attributeCode = 'color';
 $entityType = 'catalog_product';
  
 $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
 
 $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct');
-$colors = $helper->getColorFilter();
-$prices = $helper->getPriceFilter();
+$colors = $helper->getColorFilter($subCat);
+$prices = $helper->getPriceFilter($subCat);
 
 $attributeInfo = $objectManager->get(\Magento\Eav\Model\Entity\Attribute::class)->loadByCode($entityType, $attributeCode);
  
@@ -63,12 +60,25 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
                                     ->setStoreFilter()
                                     ->load();
 ?>
-
+<?php $subCats = $helper->getSubcategories(); ?>
+<?php $moduleName = $this->getRequest()->getModuleName(); ?>
+<?php if(($moduleName == "catalog") && (count($subCats) > 0)): ?>
+<div class="styled-select sorter-container ">
+    <select id="cat" data-role="cat" class="sorter-options cat-options addParam">
+        <option value=""><?php echo __('All Products') ?></option>
+        <?php foreach($subCats as $key => $val): ?>
+            <option value="<?php echo $key ?>" <?php echo $subCat == $key ? 'selected' : ''; ?>>
+                <?php echo $val; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+<?php endif; ?>
 <div class="styled-select sorter-container ">
     <select id="price" data-role="price" class="sorter-options price-options addParam">
         <option value=""><?php echo __('Price') ?></option>
         <?php foreach($prices as $val): ?>
-            <option value="<?php echo $val ?>" <?php if(in_array($price,array("-50","50-100","100-150","150-200","500-"))) echo 'selected'; ?>>
+            <option value="<?php echo $val ?>" <?php if(in_array($price,array("-50","50-100","100-150","150-200","500-","-","50-","100-","150-"))) echo 'selected'; ?>>
                 <?php 
                     if($val == "-50" || $val == "-"){ echo "$50 and Under"; }
                     elseif($val == "50-100" || $val == "50-"){ echo "$50 - $100"; }
@@ -94,7 +104,6 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
         <?php endforeach; ?>
     </select>
 </div>
-    <?php if($color != '' || $price != ''): ?>
-        <a href="#" data-role="clear" class="clear">CLEAR ALL X</a>
-    <?php endif; ?>
+<?php if($color != '' || $price != '' || $subCat != ''): ?>
+    <a href="#" data-role="clear" class="clear">CLEAR ALL X</a>
 <?php endif; ?>
