@@ -506,6 +506,22 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 
+
+	/* ===============================
+	Product Page
+	=================================*/
+	.product-item-listing {
+		width: 33.333%;
+		&:nth-child(5) {
+			clear: none;
+		}
+		&:nth-child(3n+1) {
+			clear: both;
+		}
+	}
+	.description p {
+		font-size: 13px;
+	}
 	
 	
 	/* ===============================
@@ -581,13 +597,25 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		white-space: nowrap;
 	}
 
-
-
 	.shot-thumb .shot-thumb-meta {
 		width: 60%;
 		height: 60%;
 	}
 
+
+	.sorter-container {
+		max-width: 120px;
+		margin-right: 10px;
+	}
+
+
+	.column.main .product-items {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.toolbar {
+		padding: 0 15px !important;
+	}
 
 
 	.footer-subscribe {
