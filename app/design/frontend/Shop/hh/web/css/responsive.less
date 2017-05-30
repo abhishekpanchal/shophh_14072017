@@ -510,8 +510,23 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	
 	
 	
-
+	/* ===============================
+	Account
+	=================================*/
+	.account-nav .item {
+		a, > strong {
+			padding: 14px 5px;
+		}
+	}
+	.account .sidebar .current {
+		padding: 0;
+	}
 	
+
+
+	.footer-links li {
+		white-space: nowrap;
+	}
 	
 	
 }
@@ -542,9 +557,20 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 /* ==========================================================================
-Footer - till 992px
+992px
 ========================================================================== */
 @media (max-width: 992px) {
+	.account .inner-content .block-content .col-md-6 + .col-md-6 {
+		margin-top: 40px;
+	}
+	.account .orders-recent .table tbody tr .actions {
+		text-align: left;
+		white-space: nowrap;
+	}
+
+
+
+
 	.footer-subscribe {
 		padding: 0;
 		margin-top: 40px;
