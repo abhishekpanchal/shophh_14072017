@@ -6,7 +6,7 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
 ?>
 <?php if ($block->getResultCount()): ?>
 <?php echo $block->getChildHtml('tagged_product_list_rss_link'); ?>
-<div class="search results">
+<div class="search results page-with-filter">
     <?php if ($messages = $block->getNoteMessages()):?>
     <div class="message notice">
         <div>
