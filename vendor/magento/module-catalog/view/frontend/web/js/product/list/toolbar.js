@@ -96,6 +96,9 @@ define([
                 delete paramData['color'];
                 delete paramData['cat'];
             }
+            if(paramName == 'cat') {
+                delete paramData['price'];
+            }
 
             paramData = $.param(paramData);
             location.href = baseUrl + (paramData.length ? '?' + paramData : '');
