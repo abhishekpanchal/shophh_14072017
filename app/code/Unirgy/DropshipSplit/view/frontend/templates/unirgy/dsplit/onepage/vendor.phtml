@@ -8,15 +8,10 @@ $useUdTitles = $_hlp->getScopeFlag('carriers/udsplit/use_dropship_titles');
 
 <tr class="udropship-cart-vendor-header">
     <td colspan="10" style="padding-top:5px; padding-bottom:0">
-    <?php if($_v->getHideVendorName() == 1): ?>
-       <?php $vendorName = "House & Home Media"; ?>
-    <?php else: ?>
-        <?php $vendorName = $_v->getVendorName(); ?>
-    <?php endif; ?>
     <?php if ($_v->getId()): ?>
-        <h3><?php echo $vendorName ?><?php //echo $_v->getFormatedAddress('text_small') ?></h3>
+        <h3><?php echo $_v->getVendorName() ?> - <?php echo $_v->getFormatedAddress('text_small') ?></h3>
     <?php else: ?>
-        <h3>Unknown vendor</h3>
+        <h3><?php echo __('Unknown vendor')?></h3>
     <?php endif ?>
     <?php $vendorErrors = $this->getQuote1()->getMinVendorOrderAmountErrors(); ?>
     <?php if (!empty($vendorErrors) && !empty($vendorErrors[$_v->getId()])): ?>

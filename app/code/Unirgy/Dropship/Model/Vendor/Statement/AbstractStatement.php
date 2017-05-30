@@ -151,7 +151,7 @@ abstract class AbstractStatement extends AbstractModel implements StatementInter
                 if ($this->getVendor()->getApplyCommissionOnTax()) {
                     $taxCom = round($order['amounts']['tax']*$order['com_percent']/100, 2);
                     $order['amounts']['com_amount'] += $taxCom;
-                    $order['amounts']['total_payout'] -= $taxCom;
+                    //$order['amounts']['total_payout'] -= $taxCom;
                 }
             }
         }
@@ -245,7 +245,7 @@ abstract class AbstractStatement extends AbstractModel implements StatementInter
                 if ($this->getVendor()->getApplyCommissionOnTax()) {
                     $taxCom = round($refund['amounts']['tax']*$refund['com_percent']/100, 2);
                     $refund['amounts']['com_amount'] += $taxCom;
-                    $refund['amounts']['total_refund'] -= $taxCom;
+                    //$refund['amounts']['total_refund'] -= $taxCom;
                 }
             }
         } else {

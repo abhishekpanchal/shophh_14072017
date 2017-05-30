@@ -12,7 +12,8 @@ var config = {
             'Magento_Checkout/js/view/cart/shipping-rates': 'Unirgy_DropshipSplit/js/view/cart/shipping-rates',
             'Magento_Checkout/js/view/shipping-information': 'Unirgy_DropshipSplit/js/view/shipping-information',
             'Magento_Checkout/js/view/shipping': 'Unirgy_DropshipSplit/js/view/shipping',
-            'Magento_Checkout/js/view/summary/shipping': 'Unirgy_DropshipSplit/js/view/summary/shipping'
+            'Magento_Checkout/js/view/summary/shipping': 'Unirgy_DropshipSplit/js/view/summary/shipping',
+            'orderReview': 'Unirgy_DropshipSplit/js/paypal/order-review'
         }
     }
 };

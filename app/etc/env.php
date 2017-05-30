@@ -20,7 +20,7 @@ return array (
       'default' => 
       array (
         'host' => 'chp-rds.crfjybhiwfvf.us-east-1.rds.amazonaws.com',
-        'dbname' => 'shophh',
+        'dbname' => 'shophh_aws',
         'username' => 'chp_dbuser',
         'password' => 'a3c3804ed2',
         'active' => '1',
@@ -38,19 +38,19 @@ return array (
   'MAGE_MODE' => 'developer',
   'cache_types' => 
   array (
-    'config' => 0,
-    'layout' => 0,
-    'block_html' => 0,
-    'collections' => 0,
-    'reflection' => 0,
-    'db_ddl' => 0,
-    'eav' => 0,
-    'customer_notification' => 0,
-    'full_page' => 0,
-    'config_integration' => 0,
-    'config_integration_api' => 0,
-    'translate' => 0,
-    'config_webservice' => 0,
+    'config' => 1,
+    'layout' => 1,
+    'block_html' => 1,
+    'collections' => 1,
+    'reflection' => 1,
+    'db_ddl' => 1,
+    'eav' => 1,
+    'customer_notification' => 1,
+    'full_page' => 1,
+    'config_integration' => 1,
+    'config_integration_api' => 1,
+    'translate' => 1,
+    'config_webservice' => 1,
   ),
   'install' => 
   array (

@@ -1,3 +1,13 @@
+===== 3.1.39 =====
+  * Fixed statement calculation when apply commission on tax = yes and tax display = exclude
+  * Fixed vendor/product association in non-multivendor dropship in EE
+
+===== 3.1.38 =====
+  * Fixed UPS labels printing when using global labels config
+
+===== 3.1.37 =====
+  * Fixed manual create PO pages doesn't preselect correct system method
+
 ===== 3.1.36 =====
   * Fixed vendor save and continue doesn't redirect back to edit page
   * Fixed magento core shipments collection load doesn't unserialize fields

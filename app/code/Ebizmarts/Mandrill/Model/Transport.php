@@ -81,7 +81,7 @@ class Transport implements \Magento\Framework\Mail\TransportInterface
                 $message['text'] = $this->_message->getBody();
                 break;
         }
-        $this->_api->getApi()->messages->send($message);
+       // $this->_api->getApi()->messages->send($message);
         return true;
     }
 }

@@ -66,11 +66,11 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             'index'     => 'vendor_id',
             'type'      => 'number',
         ));
-
-        $this->addColumn('vendor_code', array(
+	
+	$this->addColumn('vendor_code', array(
             'header'    => __('Vendor Code'),
             'index'     => 'vendor_code',
-        ));
+        ));	
 
         $this->addColumn('vendor_name', array(
             'header'    => __('Vendor Name'),

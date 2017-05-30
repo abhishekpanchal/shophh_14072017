@@ -30,6 +30,9 @@
     <preference for="Unirgy\DropshipSplit\Api\GuestShippingMethodManagementInterface" type="Unirgy\DropshipSplit\Model\GuestShippingMethodManagement" />
     <preference for="Unirgy\DropshipSplit\Api\ShippingMethodManagementInterface" type="Unirgy\DropshipSplit\Model\ShippingMethodManagement"/>
 
+    <preference for="Magento\Paypal\Model\Express\Checkout" type="Unirgy\DropshipSplit\Model\ExpressCheckout" />
+    <preference for="Magento\Paypal\Model\PayflowExpress\Checkout" type="Unirgy\DropshipSplit\Model\PayflowExpressCheckout" />
+
     <type name="Magento\Checkout\Block\Cart">
         <plugin name="udsplitFrontCart" type="Unirgy\DropshipSplit\Plugin\CheckoutCart" />
     </type>
