@@ -141,22 +141,24 @@ Common LESS
 ========================================================================== */
 
 /* Hover Effect */
-.hover-effect {
-  .relative;
+@media (pointer: fine) {
+  .hover-effect {
+    .relative;
 
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    bottom: -3px;
-    border-bottom: 2px solid rgba(0,0,0,0.7);
-    transition: width .3s;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  &:hover:before {
-    width: 100%;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      bottom: -3px;
+      border-bottom: 2px solid rgba(0,0,0,0.7);
+      transition: width .3s;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover:before {
+      width: 100%;
+    }
   }
 }
 
