@@ -90,7 +90,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'required'  => true,
         ));
 
-        $fieldset->addField('vendor_code', 'text', array(
+	$fieldset->addField('vendor_code', 'text', array(
             'name'      => 'vendor_code',
             'label'     => __('Vendor Code'),
             'class'     => 'required-entry',
@@ -256,7 +256,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'label'     => __('Vendor Fax'),
         ));
 
-        $fieldset->addField(
+	$fieldset->addField(
             'hide_vendor_name', 'select', array(
             'label'    => __('Hide Vendor Name'),
             'name'     => 'hide_vendor_name',

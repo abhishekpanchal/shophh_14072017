@@ -143,7 +143,7 @@ class Label extends AbstractHelper
             $vendor->setData('__'.$cfgKey, $vendor->getData($cfgKey));
             $vendor->setData($cfgKey, @$shipmentPdf[$cfgKey]);
         }
-        $shipmentEpl = $this->erData('udropship_label/epl', $storeId);
+        $shipmentEpl = $this->_hlp->getScopeConfig('udropship_label/epl', $storeId);
         foreach ($this->_eplCfgKeys as $cfgKey) {
             $vendor->setData('__'.$cfgKey, $vendor->getData($cfgKey));
             $vendor->setData($cfgKey, @$shipmentEpl[$cfgKey]);

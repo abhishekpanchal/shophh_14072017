@@ -192,7 +192,9 @@ define([
                 selectShippingMethodAction(availableRate);
             }
             _.each(availableVendorRates, function(smVal, smKey){
-                selectShippingMethodAction(smVal);
+                if (_.isObject(smVal) && smVal.udropship_vendor>0) {
+                    selectShippingMethodAction(smVal);
+                }
             });
         },
 

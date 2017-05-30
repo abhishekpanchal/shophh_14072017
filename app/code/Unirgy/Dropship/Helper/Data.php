@@ -243,8 +243,19 @@ class Data extends AbstractHelper
         return $this->isModuleActive('Unirgy_DropshipPo') && $this->udpoHlp()->isActive();
     }
 
-    protected $_ustockpoHlp;
+    protected $_hlpPr;
+    /**
+     * @return \Unirgy\Dropship\Helper\ProtectedCode
+     */
+    public function hlpPr()
+    {
+        if ($this->_hlpPr === null) {
+            $this->_hlpPr = $this->_objMng->get('\Unirgy\Dropship\Helper\ProtectedCode');
+        }
+        return $this->_hlpPr;
+    }
 
+    protected $_ustockpoHlp;
     /**
      */
     public function ustockpoHlp()
@@ -256,7 +267,6 @@ class Data extends AbstractHelper
     }
 
     protected $_udpoHlp;
-
     /**
      * @return \Unirgy\DropshipPo\Helper\Data
      */
@@ -269,7 +279,6 @@ class Data extends AbstractHelper
     }
 
     protected $_udpoHlpPr;
-
     /**
      * @return \Unirgy\DropshipPo\Helper\ProtectedCode
      */
@@ -2586,7 +2595,7 @@ class Data extends AbstractHelper
         ) {
             $oShipping = $shipping->getItemByColumnValue('shipping_code', $oShippingMethod[1]);
         }
-        $oShippingDetails = $this->unserialize($order->getUdropshipShippingDetails());
+        $oShippingDetails = $this->hlpPr()->getOrderVendorRates($order);
         foreach ($vMethods as $vId => &$vMethod) {
             if ($vMethod === false) continue;
             $v = $this->getVendor($vId);
@@ -2619,18 +2628,14 @@ class Data extends AbstractHelper
                             }
                             foreach ($ccMcKeys as $ccMcKey) {
                                 if ($oShippingMethod[0] == 'udropship' && !empty($oShippingMethod[1])
-                                    && $sc == $oShippingMethod[1]
-                                    && is_array($oShippingDetails)
-                                    && !empty($oShippingDetails['methods'][$vId]['code'])
-                                    && $oShippingDetails['methods'][$vId]['code'] == $ccMcKey
+                                    && $sc==$oShippingMethod[1]
+                                    && @$oShippingDetails[$vId]['code'] == $ccMcKey
                                 ) {
                                     if (empty($oShippingMethod[2]) || $oShippingMethod[2] == $ccMcKey) {
                                         $vMethod[$sc][$ccMcKey]['__selected'] = true;
                                     }
                                 } elseif ($oShippingMethod[0] == 'udsplit'
-                                    && is_array($oShippingDetails)
-                                    && !empty($oShippingDetails['methods'][$vId]['code'])
-                                    && $oShippingDetails['methods'][$vId]['code'] == $ccMcKey
+                                    && @$oShippingDetails[$vId]['code'] == $ccMcKey
                                 ) {
                                     $vMethod[$sc][$ccMcKey]['__selected'] = true;
                                 }

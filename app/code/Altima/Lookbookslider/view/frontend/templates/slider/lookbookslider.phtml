@@ -4,7 +4,7 @@ $slideId =$this->getRequest()->getParam('slide_id');
 $blockObj = $block->getLayout()->createBlock('Altima\Lookbookslider\Block\SliderItem');
 $helper = $this->helper('Altima\Lookbookslider\Helper\Data');
 
-if ($helper->getEnabled() && ($helper->canRun(false) || $helper->canRun(true))) :
+if ($helper->getEnabled()) :
     $slideCollection = $blockObj->getShotCollection($sliderId);
     if (!empty($slideCollection) && $slideCollection->getSize()) :
         $currentUrl = $blockObj->getUrl();

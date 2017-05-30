@@ -3,6 +3,7 @@
 namespace Hhmedia\Tags\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Save extends \Magento\Backend\App\Action
 {
@@ -61,20 +62,45 @@ class Save extends \Magento\Backend\App\Action
                 $this->_redirect('*/*/edit', ['tags_id' => $model->getId(), '_current' => true]);
                 return;
             }
+            $image = $this->getRequest()->getFiles('image');
+            $fileName = ($image && array_key_exists('name', $image)) ? $image['name'] : null;
+            if ($image && $fileName) {
+                try {
+                    /** @var \Magento\Framework\ObjectManagerInterface $uploader */
+                    $uploader = $this->_objectManager->create(
+                        'Magento\MediaStorage\Model\File\Uploader',
+                        ['fileId' => 'image']
+                    );
+
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
+
+                    /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapterFactory */
+                    $imageAdapterFactory = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')
+                        ->create();
+
+                    $uploader->setAllowRenameFiles(true);
+                    $uploader->setFilesDispersion(true);
+                    $uploader->setAllowCreateFolders(true);
+
+                    /** @var \Magento\Framework\Filesystem\Directory\Read $mediaDirectory */
+                    $mediaDirectory = $this->_objectManager->get('Magento\Framework\Filesystem')
+                        ->getDirectoryRead(DirectoryList::MEDIA);
+                    
+                    $result = $uploader->save(
+                        $mediaDirectory
+                            ->getAbsolutePath('Tags')
+                    );
+                    $model->setImage('Tags'.$result['file']);
+                } catch (\Magento\Framework\Model\Exception $e) {
+                    $this->messageManager->addError($e->getMessage());
+                } catch (\RuntimeException $e) {
+                    $this->messageManager->addError($e->getMessage());
+                } catch (\Exception $e) {
+                    $this->messageManager->addException($e, __('Something went wrong while saving the data.'));
+                }
+            }
 
             try {
-                $imageHelper = $this->_objectManager->get('Hhmedia\Tags\Helper\Data');
-
-                if (isset($imageData['delete']) && $model->getImage()) {
-                    $imageHelper->removeImage($model->getImage());
-                    $model->setImage(null);
-                }
-                
-                $imageFile = $imageHelper->uploadImage('image');
-                if ($imageFile) {
-                    $model->setImage($imageFile);
-                }
-                
                 $model->save();
 
                 $this->messageManager->addSuccess(__('The Data has been saved.'));
