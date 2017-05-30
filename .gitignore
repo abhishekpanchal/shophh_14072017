@@ -30,6 +30,7 @@ atlassian*
 
 
 !/pub/media/catalog/.htaccess
+/pub/media/catalog/product/cache
 
 /pub/media/customer/*
 !/pub/media/customer/.htaccess
@@ -59,3 +60,6 @@ atlassian*
 
 /vendor/*
 !/vendor/.htaccess
+
+*.swp
+*.swo

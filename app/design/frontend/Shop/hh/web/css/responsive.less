@@ -204,14 +204,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 
-
   	/* ===============================
 	Meganav
 	=================================*/
-	.main-nav {
-		.container {
-			width: 100%;
-		}
+	.main-nav .container {
+		width: 100%;
 	}
 	#awemenu .am-tabs .am-tab.shop-menu a {
 		padding: 16px 20px;
@@ -235,6 +232,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	.menu-img-meta {
 		padding-bottom: 40px;
+	}
+	#search_mini_form {
+		width: 80%;
 	}
 	
 
@@ -304,18 +304,16 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     }
     .home-slider {
       .homepage-hero-details {
-
         .hero-details-title {
           width: 85%;
           margin: 0 auto;
           padding-top: 45px;
-          font-size: 32px;
+          font-size: 28px;
           border: 0;
           white-space: nowrap;
         }
         h4 {
           margin-top: 15px;
-          font-size: 55px;
           white-space: nowrap;
         }
         p {
@@ -362,19 +360,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
           background-position: center center;
           top: 33%;
         }
-        .decorating-formula-title {
-          font-size: 1.9rem;
-        }
-        .decorating-formula-product-title {
-          font-size: 1rem;
-        }
-        .decorating-formula-price {
-          font-size: 0.75rem;
-        }
-        .decorating-formula-thumb {
-          margin: 20px auto;
-          width: 90%;
-        }
       }
 
     }
@@ -389,9 +374,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
         padding: 20px;
         width: 100%;
         min-height: 0;
-        .editors-pick-title h3 {
-          font-size: 1.8em;
-        }
         .editors-thumbs {
 			margin-bottom: 0;
 			li {
@@ -508,6 +490,20 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	.pro-detail-div img {
 		width: 100%;
 	}
+
+	.shot-thumb .shot-thumb-meta {
+		width: 50%;
+		height: 50%;
+		background: rgba(255,250,250,.9);
+		h4 {
+			&:before {
+				content: none;
+			}
+			span {
+				background: none;
+			}
+		}
+	}
 	
 
 	
@@ -527,8 +523,23 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	
 	
 	
-
+	/* ===============================
+	Account
+	=================================*/
+	.account-nav .item {
+		a, > strong {
+			padding: 14px 5px;
+		}
+	}
+	.account .sidebar .current {
+		padding: 0;
+	}
 	
+
+
+	.footer-links li {
+		white-space: nowrap;
+	}
 	
 	
 }
@@ -559,9 +570,26 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 /* ==========================================================================
-Footer - till 992px
+992px
 ========================================================================== */
 @media (max-width: 992px) {
+	.account .inner-content .block-content .col-md-6 + .col-md-6 {
+		margin-top: 40px;
+	}
+	.account .orders-recent .table tbody tr .actions {
+		text-align: left;
+		white-space: nowrap;
+	}
+
+
+
+	.shot-thumb .shot-thumb-meta {
+		width: 60%;
+		height: 60%;
+	}
+
+
+
 	.footer-subscribe {
 		padding: 0;
 		margin-top: 40px;
@@ -596,10 +624,6 @@ All small devices - till 768px
 		font-size: 15px;
 	}
 	
-	.page-title, .page-title-small {
-		margin-top: 30px;
-	}
-
 	/* ===============================
 	Classes
 	=================================*/
@@ -625,7 +649,6 @@ All small devices - till 768px
 	}
 	
 	.subtitle {
-		font-size: 12px;
 		margin-top: 0;
 		margin-bottom: 20px;
 	}
@@ -637,17 +660,33 @@ All small devices - till 768px
 	=================================*/
 	.cms-page-view, .faqs-index-index, .contact-index-index, .cms-privacy-policy, .cms-terms-conditions {
 	  .inner-content {
-	    padding-left: 0;
+	    padding-left: 15px;
+	    p {
+			font-size: 16px;
+			line-height: 24px;
+	    }
 	  }
 	  .page-title {
 	    margin-bottom: 40px;
 	  }
 	}
+	.contact-index-index {
+		fieldset .col-md-6 + .col-md-6 {
+			margin-top: 15px;
+		}
+		.action.primary {
+			text-align: center;
+		}
+	}
+
 
 	/* ===============================
 	Header
 	=================================*/
 
+	.action.showcart .text .icon-cart {
+		display: block;
+	}
 
 	/* ===============================
 	Footer
@@ -961,7 +1000,7 @@ Media Queries
     padding-bottom: 0;
 
   }
-  .page-title {font-size: 20px;}
+  .page-title {font-size: 22px;}
   .product.data.items > .item.content {border: none; padding-left: 20px!important;border-bottom: 1px solid #DDD;}
   .page-layout-1column .product-info-main, .page-layout-1column .product.media {margin-bottom: 40px;}
   .product.data.items > .item.title {
@@ -1078,10 +1117,6 @@ Media Queries
     margin-bottom: 30px;
   }
 
-  .border-left {
-    margin-left: 15px;
-  }
-
   .catalog-category-view  {
     .sidebar {
       display: none!important;
@@ -1111,5 +1146,21 @@ Media Queries
     text-align: center;
   }
 }
+
+
+
+
+
+/* ===============================
+Specific to Tablet landscape
+=================================*/
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+	.mfp-container {
+		top: 45px !important;
+	}
+}
+
+
+
 
 

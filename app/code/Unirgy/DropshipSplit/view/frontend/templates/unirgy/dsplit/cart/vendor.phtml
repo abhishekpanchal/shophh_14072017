@@ -10,9 +10,9 @@ $useUdTitles = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento
 <tr class="udropship-cart-vendor-header">
     <td colspan="10" style="padding-top:5px; padding-bottom:0">
     <?php if ($_v->getId()): ?>
-        <h3><?php echo $_v->getVendorName() ?> - <?php echo $_v->getFormatedAddress('text_small') ?></h3>
+        <h3 class="cart-vendor"><?php echo $vendorName ?><?php //echo $_v->getFormatedAddress('text_small') ?></h3>
     <?php else: ?>
-        <h3>Unknown vendor</h3>
+        <h3 class="cart-vendor">Unknown vendor</h3>
     <?php endif ?>
     <?php $vendorErrors = $this->getQuote1()->getMinVendorOrderAmountErrors(); ?>
     <?php if (!empty($vendorErrors) && !empty($vendorErrors[$_v->getId()])): ?>
@@ -25,7 +25,7 @@ $useUdTitles = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento
 
 <tr class="udropship-cart-vendor-footer">
     <td colspan="10">
-        <div style="float:right">
+        <div class="cart-subtotal" style="float:right">
             <?php echo __('Subtotal:')?>
             <strong><?php echo $_hlp->formatPrice($this->getSubtotal()) ?></strong>
         </div>

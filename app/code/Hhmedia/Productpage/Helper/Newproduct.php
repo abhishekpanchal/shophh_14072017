@@ -7,6 +7,7 @@ use Magento\Catalog\Model\Product as ModelProduct;
 use Magento\Store\Model\Store;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Hhmedia\Editor\Model\EditorFactory;
+use Magento\Catalog\Api\CategoryRepositoryInterface;
 
 class Newproduct extends \Magento\Framework\Url\Helper\Data
 {
@@ -19,9 +20,17 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
     protected $stockItem;
 
     protected $_editorCollectionFactory;
+    
     protected $editorFactory;
 
     protected $eavConfig;
+
+    protected $categoryRepository;
+
+    protected $_storeManager;
+
+    protected $_filesystem ;
+    protected $_imageFactory;
 
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -29,12 +38,20 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         \Hhmedia\Editor\Model\ResourceModel\Editor\CollectionFactory $editorCollectionFactory,
         EditorFactory $editorFactory,
         \Magento\Eav\Model\Config $eavConfig,
+        \Magento\Store\Model\StoreManagerInterface $storeManager,
+        CategoryRepositoryInterface $categoryRepository,
+        \Magento\Framework\Filesystem $filesystem,         
+        \Magento\Framework\Image\AdapterFactory $imageFactory,
         TimezoneInterface $localeDate
     ) {
+        $this->_filesystem = $filesystem;               
+        $this->_imageFactory = $imageFactory;
         $this->localeDate = $localeDate;
         $this->stockItem = $stockItem;
         $this->_editorCollectionFactory = $editorCollectionFactory;
         $this->editorFactory = $editorFactory;
+        $this->_storeManager = $storeManager;
+        $this->categoryRepository = $categoryRepository;
         $this->eavConfig = $eavConfig;
         parent::__construct($context);
     }
@@ -150,11 +167,10 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         }
     }
 
-    public function getColorFilter(){
+    public function getColorFilter($subCatId){
         $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
 
         $filterableAttributes = $objectManager->get(\Magento\Catalog\Model\Layer\Category\FilterableAttributeList::class);
-
 
         $appState = $objectManager->get(\Magento\Framework\App\State::class);
         $layerResolver = $objectManager->get(\Magento\Catalog\Model\Layer\Resolver::class);
@@ -164,9 +180,18 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             ]
         );
 
-        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category')->getId();
-
-        $layer = $layerResolver->get()->setCurrentCategory($category);
+        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+        if ($category) {
+            if(isset($subCatId)){
+                $categoryId = $subCatId;
+            }else{
+                $categoryId = $category->getId();
+            }
+        }else{
+            $categoryId = $this->getCurrentStore()->getRootCategoryId();
+        }
+        
+        $layer = $layerResolver->get()->setCurrentCategory($categoryId);
         $filters = $filterList->getFilters($layer);
 
         foreach ($filters as $filter) {
@@ -180,11 +205,10 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         return $color;
     }
 
-    public function getPriceFilter(){
+    public function getPriceFilter($subCatId){
         $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
 
         $filterableAttributes = $objectManager->get(\Magento\Catalog\Model\Layer\Category\FilterableAttributeList::class);
-
 
         $appState = $objectManager->get(\Magento\Framework\App\State::class);
         $layerResolver = $objectManager->get(\Magento\Catalog\Model\Layer\Resolver::class);
@@ -194,9 +218,18 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             ]
         );
 
-        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category')->getId();
+        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+        if ($category) {
+            if(isset($subCatId)){
+                $categoryId = $subCatId;
+            }else{
+                $categoryId = $category->getId();
+            }
+        }else{
+            $categoryId = $this->getCurrentStore()->getRootCategoryId();
+        }
 
-        $layer = $layerResolver->get()->setCurrentCategory($category);
+        $layer = $layerResolver->get()->setCurrentCategory($categoryId);
         $filters = $filterList->getFilters($layer);
 
         foreach ($filters as $filter) {
@@ -208,6 +241,54 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
             }
         }
         return $price;
+    }
+
+    public function getCurrentStore()
+    {
+        return $this->_storeManager->getStore();
+    }
+
+    public function getSubcategories()
+    {
+        $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
+        $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');
+        $ids = array();
+        if ($category) {
+            $categoryId = $category->getId();
+            $child = $category->getChildren();
+            if($child != NULL){
+                $subCat = explode(",", $child);
+                foreach($subCat as $id){
+                    $name = $this->categoryRepository->get($id, $this->_storeManager->getStore()->getId())->getName();
+                    $ids[$id] = $name;
+                }
+            }
+        }
+        return $ids;
+    }
+
+    public function resize($image, $width = null, $height = null)
+    {
+        $media = $this->_filesystem->getDirectoryRead(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
+
+        $absolutePath = $media->getAbsolutePath('catalog/product').$image;
+        $imageResized = $media->getAbsolutePath('catalog/product/resize/'.$width.'/').$image;
+
+        $imageResize = $this->_imageFactory->create();
+        $imageResize->open($absolutePath);
+        $imageResize->constrainOnly(TRUE);
+        $imageResize->keepTransparency(TRUE);
+        $imageResize->keepFrame(TRUE);  
+        $imageResize->keepAspectRatio(TRUE);
+        $imageResize->backgroundColor(array(255, 255, 255));
+        $imageResize->resize($width,$height);
+        //destination folder       
+        $destination = $imageResized;
+        //save image
+        $imageResize->save($destination);  
+
+        $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product/resize/'.$width.$image;
+        return $resizedURL;
     }
 
 }
