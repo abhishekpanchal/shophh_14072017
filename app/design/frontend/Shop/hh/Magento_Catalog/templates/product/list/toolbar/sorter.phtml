@@ -80,13 +80,16 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
     <select id="price" data-role="price" class="sorter-options price-options addParam">
         <option value=""><?php echo __('Price') ?></option>
         <?php foreach($prices as $val): ?>
-            <?php if($price != ''){ $val = $price; } ?>
+            <?php if($price != '' && count($prices) == 1){ $val = $price; } ?>
             <option value="<?php echo $val ?>" <?php if($val == $price) echo 'selected'; ?>>
                 <?php
                     if($val[0] == "-"){ // First Occurance
+                        if($val == "-") { $val = "-50"; }
                         echo '$'.ltrim($val,"-").' AND UNDER'; 
                     }
-                    elseif($val[strlen($val)-1] == "-") { echo '$'.rtrim($val,"-").' AND OVER'; } // Last Occurance
+                    elseif($val[strlen($val)-1] == "-") { // Last Occurance
+                        echo '$'.rtrim($val,"-").' AND OVER'; 
+                    } 
                     else{
                         $value = explode("-", $val);
                         echo "$".$value[0]." - "."$".$value[1];
