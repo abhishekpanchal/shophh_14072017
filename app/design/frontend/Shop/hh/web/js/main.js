@@ -133,7 +133,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
     var viewportWidth = $(window).width();
     var viewportHeight = $(window).height();
 
-    console.log('Viewport', viewportWidth)
 
     if (viewportWidth < 600) {
       // Search Box
