@@ -776,6 +776,9 @@ Products
     opacity: .5;
   }
 }
+.product-addto-links a:hover span {
+  opacity: .7;
+}
 .addthis_toolbox.addthis_32x32_style span {
   line-height: 0 !important;
 }
@@ -2411,6 +2414,9 @@ Products
         display: block;
         margin-bottom: 5px;
       }
+      .swatch-attribute + .swatch-attribute {
+        margin-top: 18px;
+      }
       .swatch-option {
         .relative;
 
@@ -3069,6 +3075,7 @@ Checkout
       border: none;
       .relative;
 
+      /*
       &:after {
         font-family: "Ionicons";
         font-size: inherit;
@@ -3081,17 +3088,16 @@ Checkout
         font-size: 30px;
         font-style: normal;
       }
-
       &.active {
-
         &:after {
           .ionicon;
           content: "\f462";
           font-style: normal;
           color: #8d8d8d;
         }
-
       }
+      */
+
       h4 {
         a {
           background: transparent;
@@ -3105,6 +3111,33 @@ Checkout
           font-family: @fancyFont;
           font-style: italic;
           .relative;
+
+          &:after {
+            font-family: "Ionicons";
+            font-size: inherit;
+            text-rendering: auto;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: #8d8d8d;
+            font-size: 30px;
+            font-style: normal;
+            content: "\f489";
+          }          
+          /*
+          &.collapsed {
+            background: red;
+            &:after {
+              content: "\f489";
+            }
+          }
+          &:not(.collapsed) {
+            background: lime;
+            &:after {
+              content: "\f462";
+            }
+          }
+          */
         }
       }
     }
@@ -3486,8 +3519,12 @@ Products
         margin-top: -5px!important;
       }
   }
-  .field.choice.newsletter label {
-    margin-bottom: 20px;
+  .field.choice.newsletter {
+    padding-top: 10px;
+    label {
+      margin-bottom: 20px;
+      margin-top: -10px;
+    }
   }
   .privacy-popup {
     text-align: center;
@@ -5245,7 +5282,7 @@ Home Page
           font: normal 18px/18px  @baseFont;
         }
         h3 {
-          font-size: 33px;
+          font-size: 34px;
           font-family: @fancyFont;
           margin-bottom: 10px;
           font-weight: normal;
@@ -5314,7 +5351,7 @@ Home Page
           font: normal 18px/18px  @baseFont;
         }
         h3 {
-          font-size: 33px;
+          font-size: 34px;
           font-family: @fancyFont;
           font-style: italic;
           margin-bottom: 30px;
@@ -6924,6 +6961,9 @@ Mini Cart
     text-transform: uppercase;
     color: #8d8d8d;
     font-size: 12px;
+    .icon-cart {
+      display: none;
+    }
   }
   .counter-number {
     font-family: @baseFont;
@@ -7414,7 +7454,7 @@ Orders
             padding-top: 15px;
           }
           .actions {
-            text-align: right;
+          //  text-align: right;
           }
         }
         a {
@@ -8225,6 +8265,12 @@ h4.decorating-formula-price {
       border-radius: 0;
       font-style: italic;
       font-size: 16px;
+      padding: 10px 25px;
+      transition: 0.3s all;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7)
+        }
     }
   }
 }

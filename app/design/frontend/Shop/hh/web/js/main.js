@@ -12,7 +12,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
 
     if ($('body').hasClass('faqs-index-index')) {
       $('.faq-sidebar li.faq').addClass('active-sidebar');
-      $('.shop-menu').addClass('active-menu');
     }
     else if ($('body').hasClass('contact-index-index')) {
       $('.faq-sidebar li.contact').addClass('active-sidebar');
@@ -141,15 +140,11 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(productType).prependTo('.catalog-product-view .product.media');
       $(productTitle).prependTo('.catalog-product-view .product.media');
 
-
+      /*
       $('.footer-subscribe').prependTo('.footer-links');
       $('.footer-social').insertAfter('.footer-subscribe');
-      var mobileContent = $('.mobile-content').width();
+      */
 
-      // if (mobileContent < 600) {
-      //   $('.issue-date').prependTo('.mobile-content');
-      //   $('.issue-title').appendTo('.mobile-content');
-      // }
 
       // Search Box
       $(searchBox).prependTo('.mobile-full');
@@ -157,6 +152,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
         e.preventDefault();
         e.stopPropagation();
       });
+
+
 
       // Sidebar Navigation (CMS pages)
       $('ul.faq-sidebar, .sidebar ul').each(function() {
@@ -170,12 +167,16 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $(this).replaceWith($select);
       });
 
+      // add current page as active
+      $('.sidebar select option[value="'+ location.href +'"]').prop('selected', true) ;
+
       // Redirect on click - select (sidebar)
       $('.sidebar select').change( function() {
         location.href = $(this).val();
       });
-
     }
+
+
   });
 
   $(document).ajaxComplete(function() {
@@ -209,6 +210,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
+  /*
+
   $(document).ready(function() {
     $('.panel-collapse').on('show.bs.collapse', function () {
       $(this).siblings('.panel-heading').addClass('active');
@@ -218,6 +221,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $(this).siblings('.panel-heading').removeClass('active');
     });
   });
+
+  */
 
 
   $('.btn-toggle-form').click(function(e) {
@@ -272,8 +277,14 @@ require(['jquery', 'jquery.bootstrap'], function($){
   });
 
 
-
-
+  // close homepage popup on click outside
+  $("body").click(function(e) {
+    var checkclass = e.target.className ;  
+      if (checkclass.indexOf("_show") >= 0){
+        $( ".action-close" ).trigger( "click" );
+      }
+    }
+  );
 
 
 
