@@ -48,7 +48,7 @@ class SectionTwo extends \Magento\Backend\Block\Widget\Form\Generic implements \
                 'name' => 'title_two',
                 'label' => __('Title'),
                 'title' => __('Title'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -59,7 +59,7 @@ class SectionTwo extends \Magento\Backend\Block\Widget\Form\Generic implements \
                 'name' => 'description_two',
                 'label' => __('Description'),
                 'title' => __('Description'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -70,7 +70,7 @@ class SectionTwo extends \Magento\Backend\Block\Widget\Form\Generic implements \
                 'name' => 'link_two',
                 'label' => __('Link'),
                 'title' => __('Link'),
-                'required' => true
+                'required' => false
             ]
         );
 
