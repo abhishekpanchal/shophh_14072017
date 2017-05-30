@@ -18,7 +18,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
 <?php 
 $active = '';
 $currentUrl = strtok($block->getPagerUrl(), '?');
-$color = $this->getRequest()->getParam('color');
+//$color = $this->getRequest()->getParam('color');
 $price = $this->getRequest()->getParam('price');
 $subCat = $this->getRequest()->getParam('cat');
 ?>
@@ -48,7 +48,7 @@ $entityType = 'catalog_product';
 $objectManager =  \Magento\Framework\App\ObjectManager::getInstance();
 
 $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct');
-$colors = $helper->getColorFilter($subCat);
+//$colors = $helper->getColorFilter($subCat);
 $prices = $helper->getPriceFilter($subCat);
 
 $attributeInfo = $objectManager->get(\Magento\Eav\Model\Entity\Attribute::class)->loadByCode($entityType, $attributeCode);
@@ -74,6 +74,8 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
     </select>
 </div>
 <?php endif; ?>
+
+<!-- Price Filter -->
 <div class="styled-select sorter-container ">
     <select id="price" data-role="price" class="sorter-options price-options addParam">
         <option value=""><?php echo __('Price') ?></option>
@@ -91,6 +93,8 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
     </select>
 </div>
 
+<!-- Color Filter -->
+<?php /*
 <div class="styled-select sorter-container ">
     <select id="color" data-role="color" class="sorter-options color-options addParam">
         <option value=""><?php echo __('Color') ?></option>
@@ -107,3 +111,4 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
 <?php if($color != '' || $price != '' || $subCat != ''): ?>
     <a href="#" data-role="clear" class="clear">CLEAR ALL X</a>
 <?php endif; ?>
+*/ ?>
