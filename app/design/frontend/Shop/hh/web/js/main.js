@@ -133,19 +133,8 @@ require(['jquery', 'jquery.bootstrap'], function($){
     var viewportWidth = $(window).width();
     var viewportHeight = $(window).height();
 
-    console.log('Viewport', viewportWidth)
 
     if (viewportWidth < 600) {
-      $(productPrice).prependTo('.catalog-product-view .product.media');
-      $(productType).prependTo('.catalog-product-view .product.media');
-      $(productTitle).prependTo('.catalog-product-view .product.media');
-
-      /*
-      $('.footer-subscribe').prependTo('.footer-links');
-      $('.footer-social').insertAfter('.footer-subscribe');
-      */
-
-
       // Search Box
       $(searchBox).prependTo('.mobile-full');
       $(searchBox).on('click', function(e) {

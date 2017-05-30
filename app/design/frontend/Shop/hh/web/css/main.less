@@ -141,22 +141,24 @@ Common LESS
 ========================================================================== */
 
 /* Hover Effect */
-.hover-effect {
-  .relative;
+@media (pointer: fine) {
+  .hover-effect {
+    .relative;
 
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    bottom: -3px;
-    border-bottom: 2px solid rgba(0,0,0,0.7);
-    transition: width .3s;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  &:hover:before {
-    width: 100%;
+    &:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      bottom: -3px;
+      border-bottom: 2px solid rgba(0,0,0,0.7);
+      transition: width .3s;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover:before {
+      width: 100%;
+    }
   }
 }
 
@@ -571,10 +573,7 @@ Product Description
 
 /* ==========================================================================
 Products
- ========================================================================== */
-
-
-
+========================================================================== */
 .catalog-product-view {
 
   .product.media img:hover {
@@ -764,6 +763,9 @@ Products
     }
   }
 
+  .price-box .price-label {
+    display: none;
+  }
 }
 
 
@@ -1015,7 +1017,7 @@ Footer
   display: block;
   padding: 5px 0;
   list-style: none;
-
+  white-space: nowrap;
   a {
     font-family: @baseFont;
   }
@@ -1125,7 +1127,6 @@ fieldset {
   padding: 0!important;
   margin: 0!important;
   margin-bottom: 10px!important;
-  margin-right: 15px!important;
   text-align: left;
 }
 
@@ -4622,7 +4623,8 @@ Hotspot Details
 
   .desc {
     font-size: 13px;
-
+    height: 4.6em;
+    overflow: hidden;
     img {
       max-width: 280px;
       display: block;
@@ -5743,10 +5745,11 @@ span.callout {
   display: inline-block
 }
 
+.product-item-listing {
+  margin-bottom: 30px;
+}
+
 .catalog-category-view {
-  .product-item-listing {
-    margin-bottom: 30px;
-  }
   .new-product {
     font-family: @headlineFont;
     font-weight: normal;
@@ -7056,7 +7059,7 @@ Social Login
 Search
 ========================================================================== */
 .catalogsearch-result-index {
-  .product-item-details, .noresults-products {
+  .product-item-details {
     text-align: center;
     display: block;
 
@@ -7067,29 +7070,6 @@ Search
       margin-bottom: 0;
     }
   }
-  .noresults-products-text{
-    font-family: @baseFont;
-    font-size: 18px;
-    text-align: center;
-    margin-bottom: 45px;
-  }
-  .noresults-products {
-    margin-bottom: 40px;
-
-    .image {
-      margin-bottom: 15px;
-    }
-
-    p {
-      font-family: @baseFont;
-      margin: 10px 0;
-      .block;
-    }
-    .image:hover .quickview-bar2 {
-      opacity: 1;
-    }
-  }
-
 }
 
 
