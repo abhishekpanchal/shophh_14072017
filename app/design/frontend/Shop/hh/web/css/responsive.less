@@ -57,9 +57,6 @@
 	text-decoration:underline;
 }
 
-.catalog-product-view .product-editors-pick {
-    right: 15px;
-}
 
 .catalog-product-view .product-editors-pick .product-editors-pick-details h5:hover {
 	text-decoration:underline;
@@ -510,19 +507,32 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	/* ===============================
 	Product Page
 	=================================*/
-	.product-item-listing {
-		width: 33.333%;
-		&:nth-child(5) {
-			clear: none;
-		}
-		&:nth-child(3n+1) {
-			clear: both;
-		}
-	}
 	.description p {
 		font-size: 13px;
 	}
-	
+
+	/* ===============================
+	Product Detail
+	=================================*/
+	.catalog-product-view {
+		.product-info-main .product-info-price {
+			margin-bottom: 0;
+		}
+		.product-editors-pick {
+			position: static;
+			clear: both;
+			margin-bottom: 10px;
+			img {
+				display: none;
+			}
+			h4, h5 {
+				display: inline;
+			}
+		}
+	}
+
+
+
 	
 	/* ===============================
 	Editors
@@ -565,7 +575,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 
-/* ===============================
+	/* ===============================
 	Shop the Spot Desktop Responsive
 	=================================*/
 @media only screen and (min-width: 1024px) and (max-width: 1256px) {
@@ -603,18 +613,51 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 
 
+	/* ===============================
+	Product Page
+	=================================*/
+	.product-item-listing, .product-item-catalog {
+		width: 33.333%;
+		&:nth-child(5) {
+			clear: none;
+		}
+		&:nth-child(3n+1) {
+			clear: both;
+		}
+	}
+	.toolbar {
+		padding: 0 15px !important;
+		margin-right: 0 !important;
+	}
+	.limiter-container {
+		margin-left: 48px;
+	}
+	.page-with-filter .toolbar-sorter {
+		min-width: 212px;
+	}
 	.sorter-container {
 		max-width: 120px;
 		margin-right: 10px;
 	}
-
-
 	.column.main .product-items {
 		margin-left: 0;
 		margin-right: 0;
 	}
-	.toolbar {
-		padding: 0 15px !important;
+
+
+	/* ===============================
+	Product Detail
+	=================================*/
+	.catalog-product-view .product.info.detailed {
+		margin-left: -108%;
+		padding-top: 40px;
+	}
+	#product-review-container {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.read-all-reviews {
+		z-index: 10;
 	}
 
 
@@ -789,27 +832,6 @@ All small devices - till 768px
 		margin: 0 0 5px;
 		&:last-child {
 			margin-bottom: 0;
-		}
-	}
-
-	/* ===============================
-	Shop Details
-	=================================*/
-	.catalog-product-view {
-		.main {
-			padding-top: 60px;
-		}
-		.product.attribute.name {
-			text-align: center;
-			font-family: @fancyFont;
-			font-size: 34px;
-			font-style: italic;
-			margin-top: 20px;
-			margin-bottom: 20px;
-		}
-		.product-info-price {
-			font-family: @fancyFont;
-			text-align: center;
 		}
 	}
 
