@@ -3,6 +3,7 @@
 namespace Hhmedia\Collection\Controller\Adminhtml\Index;
 
 use Magento\Backend\App\Action;
+use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Save extends \Magento\Backend\App\Action
 {
@@ -61,19 +62,45 @@ class Save extends \Magento\Backend\App\Action
                 return;
             }
 
-            try {
-                $imageHelper = $this->_objectManager->get('Hhmedia\Collection\Helper\Data');
+            $image = $this->getRequest()->getFiles('image');
+            $fileName = ($image && array_key_exists('name', $image)) ? $image['name'] : null;
+            if ($image && $fileName) {
+                try {
+                    /** @var \Magento\Framework\ObjectManagerInterface $uploader */
+                    $uploader = $this->_objectManager->create(
+                        'Magento\MediaStorage\Model\File\Uploader',
+                        ['fileId' => 'image']
+                    );
 
-                if (isset($imageData['delete']) && $model->getImage()) {
-                    $imageHelper->removeImage($model->getImage());
-                    $model->setImage(null);
+                    $uploader->setAllowedExtensions(['jpg', 'jpeg', 'gif', 'png']);
+
+                    /** @var \Magento\Framework\Image\Adapter\AdapterInterface $imageAdapterFactory */
+                    $imageAdapterFactory = $this->_objectManager->get('Magento\Framework\Image\AdapterFactory')
+                        ->create();
+
+                    $uploader->setAllowRenameFiles(true);
+                    $uploader->setFilesDispersion(true);
+                    $uploader->setAllowCreateFolders(true);
+
+                    /** @var \Magento\Framework\Filesystem\Directory\Read $mediaDirectory */
+                    $mediaDirectory = $this->_objectManager->get('Magento\Framework\Filesystem')
+                        ->getDirectoryRead(DirectoryList::MEDIA);
+                    
+                    $result = $uploader->save(
+                        $mediaDirectory
+                            ->getAbsolutePath('Collection')
+                    );
+                    $model->setImage('Collection'.$result['file']);
+                } catch (\Magento\Framework\Model\Exception $e) {
+                    $this->messageManager->addError($e->getMessage());
+                } catch (\RuntimeException $e) {
+                    $this->messageManager->addError($e->getMessage());
+                } catch (\Exception $e) {
+                    $this->messageManager->addException($e, __('Something went wrong while saving the data.'));
                 }
-                
-                $imageFile = $imageHelper->uploadImage('image');
-                if ($imageFile) {
-                    $model->setImage($imageFile);
-                }
-                
+            }
+
+            try {
                 $model->save();
                 $this->messageManager->addSuccess(__('The Data has been saved.'));
                 $this->_objectManager->get('Magento\Backend\Model\Session')->setFormData(false);
