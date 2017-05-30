@@ -552,7 +552,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	/* ===============================
 	Account
 	=================================*/
-	.account-nav .item {
+	.account-nav .item, .faq-sidebar li {
 		a, > strong {
 			padding: 14px 5px;
 		}
@@ -562,10 +562,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 
-
-	.footer-links li {
-		white-space: nowrap;
-	}
 	
 	
 }
@@ -1183,13 +1179,11 @@ Media Queries
 /* ===============================
 Specific to Tablet landscape
 =================================*/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media (max-height: 900px) {
 	.mfp-container {
 		top: 45px !important;
 	}
 }
-
-
 
 
 
