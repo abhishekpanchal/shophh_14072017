@@ -301,34 +301,34 @@
 </div>
 <!-- Shop MORE Shots End -->
 
-<div id="popup-modal">
+<!-- Welcome Message Popup -->
+<div id="popup-modal" style="display:none;">
     <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('welcome_message')->toHtml(); ?>
 </div>
 <script>
-    require(
-        [
+    require([
             'jquery',
-            'Magento_Ui/js/modal/modal'
-        ],
-        function(
-            $,
-            modal
-        ) {
-            var options = {
-                type: 'popup',
-                responsive: true,
-                innerScroll: true,
-                //title: 'popup modal title',
-                buttons: [{
-                    text: $.mage.__('Start Shopping'),
-                    class: '',
-                    click: function () {
-                        this.closeModal();
-                    }
-                }]
-            };
-            var popup = modal(options, $('#popup-modal'));
-            $('#popup-modal').modal('openModal');
+            'Magento_Ui/js/modal/modal',
+            'mage/cookies'
+        ],function($,modal) {
+            var cookie = $.mage.cookies['defaults']['lifetime'];
+            if(!$.mage.cookies.get("welcome-message")){
+                $.mage.cookies.set('welcome-message', 'true');
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    buttons: [{
+                        text: $.mage.__('Start Shopping'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }]
+                };
+                var popup = modal(options, $('#popup-modal'));
+                $('#popup-modal').modal('openModal');
+            }
         }
     );
 </script>

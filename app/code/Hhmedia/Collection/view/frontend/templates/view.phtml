@@ -1,6 +1,6 @@
 <?php $collection = $this->getCollection(); ?>
 <div class="category-view">
-	<div class="category-image vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Collection/'.$collection->getImage() ?>" alt="<?php echo $this->escapeHtml($collection->getCollectionTitle()); ?>)">
+	<div class="category-image vcenter" style="background:url(<?php echo $this->getUrl('pub/media').$collection->getImage() ?>" alt="<?php echo $this->escapeHtml($collection->getCollectionTitle()); ?>)">
 	    <h2>
 	    	<?php echo $collection->getCollectionTitle(); ?><span><?php echo $collection->getCollectionSubtitle() ?></span>
 	    </h2>
@@ -18,9 +18,8 @@
 	<div class="row">
 		<div class="collection_item_view marginbottom-40">
 			<?php for($i=1; $i<=8; $i++): ?>
-				<?php if(isset($collection['title_'.$i])): ?>
+				<?php if($collection['title_'.$i] != NULL): ?>
 					<h2 class="page-title"><span><?php echo $collection['title_'.$i] ?></span></h2>
-				<?php endif; ?>
 					<div class="row collection-container">
 						<?php $skus = array(trim($collection['sku_one_'.$i]), trim($collection['sku_two_'.$i]), trim($collection['sku_three_'.$i]), trim($collection['sku_four_'.$i])); ?>
 						<?php foreach($skus as $sku): ?>
@@ -61,7 +60,6 @@
 				        	<?php endif; ?>
 						<?php endforeach; ?>
 					</div>
-				<?php if(isset($collection['link_'.$i])): ?>
 					<div class="marginbottom-60 text-center">
 						<a href="<?php echo $collection['link_'.$i]; ?>" class="btn btn-main btn-center"><?php echo __('See Full Collection') ?></a>
 					</div>

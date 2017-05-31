@@ -46,7 +46,7 @@ class Products extends \Magento\Backend\Block\Widget\Form\Generic implements \Ma
                 'name' => 'collection_title',
                 'label' => __('Collection Title'),
                 'title' => __('Collection Title'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -57,7 +57,7 @@ class Products extends \Magento\Backend\Block\Widget\Form\Generic implements \Ma
                 'name' => 'sku_one',
                 'label' => __('SKU One'),
                 'title' => __('SKU One'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -68,7 +68,7 @@ class Products extends \Magento\Backend\Block\Widget\Form\Generic implements \Ma
                 'name' => 'sku_two',
                 'label' => __('SKU Two'),
                 'title' => __('SKU Two'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -79,7 +79,7 @@ class Products extends \Magento\Backend\Block\Widget\Form\Generic implements \Ma
                 'name' => 'sku_three',
                 'label' => __('SKU Three'),
                 'title' => __('SKU Three'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -90,7 +90,7 @@ class Products extends \Magento\Backend\Block\Widget\Form\Generic implements \Ma
                 'name' => 'sku_four',
                 'label' => __('SKU Four'),
                 'title' => __('SKU Four'),
-                'required' => true
+                'required' => false
             ]
         );
 
@@ -101,7 +101,7 @@ class Products extends \Magento\Backend\Block\Widget\Form\Generic implements \Ma
                 'name' => 'collection_link',
                 'label' => __('Collection Link'),
                 'title' => __('Collection Link'),
-                'required' => true
+                'required' => false
             ]
         );
 

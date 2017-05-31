@@ -57,9 +57,6 @@
 	text-decoration:underline;
 }
 
-.catalog-product-view .product-editors-pick {
-    right: 15px;
-}
 
 .catalog-product-view .product-editors-pick .product-editors-pick-details h5:hover {
 	text-decoration:underline;
@@ -235,6 +232,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	#search_mini_form {
 		width: 80%;
+	}
+	.wishlist-index-index .am-sortable .am-tab:nth-child(6) a {
+		margin-right: -15px;
 	}
 	
 
@@ -506,7 +506,36 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 
-	
+
+	/* ===============================
+	Product Page
+	=================================*/
+	.description p {
+		font-size: 13px;
+	}
+
+	/* ===============================
+	Product Detail
+	=================================*/
+	.catalog-product-view {
+		.product-info-main .product-info-price {
+			margin-bottom: 0;
+		}
+		.product-editors-pick {
+			position: static;
+			clear: both;
+			margin-bottom: 10px;
+			img {
+				display: none;
+			}
+			h4, h5 {
+				display: inline;
+			}
+		}
+	}
+
+
+
 	
 	/* ===============================
 	Editors
@@ -526,7 +555,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	/* ===============================
 	Account
 	=================================*/
-	.account-nav .item {
+	.account-nav .item, .faq-sidebar li {
 		a, > strong {
 			padding: 14px 5px;
 		}
@@ -536,10 +565,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 
-
-	.footer-links li {
-		white-space: nowrap;
-	}
 	
 	
 }
@@ -549,7 +574,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 
-/* ===============================
+	/* ===============================
 	Shop the Spot Desktop Responsive
 	=================================*/
 @media only screen and (min-width: 1024px) and (max-width: 1256px) {
@@ -581,13 +606,62 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		white-space: nowrap;
 	}
 
-
-
 	.shot-thumb .shot-thumb-meta {
 		width: 60%;
 		height: 60%;
 	}
 
+	.main-content {
+		margin-bottom: 30px;
+	}
+
+
+	/* ===============================
+	Product Page
+	=================================*/
+	.product-item-listing, .product-item-catalog {
+		width: 33.333%;
+		&:nth-child(5) {
+			clear: none;
+		}
+		&:nth-child(3n+1) {
+			clear: both;
+		}
+	}
+	.toolbar {
+		padding: 0 15px !important;
+		margin-right: 0 !important;
+	}
+	.limiter-container {
+		margin-left: 48px;
+	}
+	.page-with-filter .toolbar-sorter {
+		min-width: 212px;
+	}
+	.sorter-container {
+		max-width: 120px;
+		margin-right: 10px;
+	}
+	.column.main .product-items {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+
+	/* ===============================
+	Product Detail
+	=================================*/
+	.catalog-product-view .product.info.detailed {
+		margin-left: -108%;
+		padding-top: 40px;
+	}
+	#product-review-container {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.read-all-reviews {
+		z-index: 10;
+	}
 
 
 	.footer-subscribe {
@@ -765,59 +839,13 @@ All small devices - till 768px
 	}
 
 	/* ===============================
-	Shop Details
-	=================================*/
-	.catalog-product-view {
-		.main {
-			padding-top: 60px;
-		}
-		.product.attribute.name {
-			text-align: center;
-			font-family: @fancyFont;
-			font-size: 34px;
-			font-style: italic;
-			margin-top: 20px;
-			margin-bottom: 20px;
-		}
-		.product-info-price {
-			font-family: @fancyFont;
-			text-align: center;
-		}
-	}
-
-	/* ===============================
 	Editors
 	=================================*/
-	.editor-index-view {
-		.vcenter {
-			display: block!important;
-		}
-		.editor-intro {
-			.editor-guest-title {
-				margin-bottom: 10px;
-			}
-		}
-		.editor-details {
-			text-align: center;
-			display: block;
-			margin-top: 20px;
-		}
-		.quote {
-			p {
-				font-size: 20px;
-				line-height: 22px;
-			}
-		}
-		.editor-single-thumb {
-			img {
-				margin: 20px auto;
-				width: 90%;
-			}
-		}
-		.editor-single-thumb {
-			margin-bottom: 30px;
-		}
+	.editor-index-view .editor-quote p {
+		line-height: 45px;
 	}
+
+
 	/* ===============================
 	Magazine
 	=================================*/
@@ -1154,13 +1182,11 @@ Media Queries
 /* ===============================
 Specific to Tablet landscape
 =================================*/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+@media (max-height: 900px) {
 	.mfp-container {
 		top: 45px !important;
 	}
 }
-
-
 
 
 

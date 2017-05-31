@@ -424,6 +424,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
 
+                $html_content .= '<div class="desc">';
+
                 if($this->helperData->getStockQty($product_details)){
                     $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
                 }elseif($this->helperData->isEditorsPick($product_details)){
@@ -440,7 +442,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<span class="callout last-call">' . __('Last Call') . '</span>';
                 }
 
-                $html_content .= '<div class="desc">' . $_p_shrt_desc . '</div>';
+                $html_content .= ' ' . $_p_shrt_desc . '</div>';
+
                 if ($product_details->getFinalPrice()) {
                     if ($product_details->getPrice() > $product_details->getFinalPrice()) {
                         $regular_price = $product_details->getPrice();
