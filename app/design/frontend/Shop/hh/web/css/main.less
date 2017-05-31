@@ -912,6 +912,11 @@ input:active {
   padding-top: 5px!important;
 }
 
+.field.choice.set.shipping {
+  min-width: 323px;
+}
+
+
 /* ==========================================================================
 Sidebar Filter
  ========================================================================== */
@@ -1132,7 +1137,7 @@ fieldset {
 
 
 
-.product-item-listing:nth-child(5) {
+.product-item-listing:nth-child(4n+1) {
   clear: both;
 }
 
@@ -4589,7 +4594,7 @@ Hotspot Details
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  height: 90%;
+  min-height: 90%;
   width: 100%;
 
   h1 {
@@ -5898,10 +5903,6 @@ Limiter
   opacity: 1;
 }
 
-
-/* ==========================================================================
-Limiter
-========================================================================== */
 .limiter-container {
   max-width: 105px;
   float: right;
@@ -5925,6 +5926,13 @@ Limiter
   width: 40%!important;
   padding-left: 0;
 }
+
+.items {
+  text-align: center;
+  font-family: @headlineFont;
+}
+
+
 
 /* ==========================================================================
 Magic Scroll
