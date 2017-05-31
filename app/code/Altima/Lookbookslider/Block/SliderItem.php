@@ -322,7 +322,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                         $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                         $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
                         $regular_price = $priceHelper->currency($regular_price, true, false);
-                        $_p_price      = '<span class="current-price">' . $_p_price . '</span>' . '<span class="old-price">' . $regular_price . '</span>';
+                        //$_p_price      = '<span class="current-price">' . $_p_price . '</span>' . '<span class="old-price">' . $regular_price . '</span>';
+                        $abstractProductBlock = $this->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+                        $_p_price = $abstractProductBlock->getProductPrice($product_details);
                     }
                     $html_content .= '<div class="price">' . $_p_price . '</div>';
                 }
@@ -404,6 +406,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
 
 
             if ($product_details) {
+
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                 $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
                 $_p_price      = $product_details->getFinalPrice();
@@ -452,7 +455,9 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                         $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                         $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
                         $regular_price = $priceHelper->currency($regular_price, true, false);
-                        $_p_price      =  '<span class="current-price">' . $_p_price . '</span>' . '<span class="old-price">' . $regular_price . '</span>';
+                        //$_p_price      =  '<span class="current-price">' . $_p_price . '</span>' . '<span class="old-price">' . $regular_price . '</span>';
+                        $abstractProductBlock = $this->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct');
+                        $_p_price = $abstractProductBlock->getProductPrice($product_details);
                     }
                     $html_content .= '<div class="price">' . $_p_price . '</div>';
                 }
