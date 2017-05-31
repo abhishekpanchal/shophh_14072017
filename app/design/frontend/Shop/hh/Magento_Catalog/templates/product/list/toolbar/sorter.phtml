@@ -80,13 +80,20 @@ $attributeOptionAll = $objectManager->get(\Magento\Eav\Model\ResourceModel\Entit
     <select id="price" data-role="price" class="sorter-options price-options addParam">
         <option value=""><?php echo __('Price') ?></option>
         <?php foreach($prices as $val): ?>
-            <option value="<?php echo $val ?>" <?php if(in_array($price,array("-50","50-100","100-150","150-200","500-","-","50-","100-","150-"))) echo 'selected'; ?>>
-                <?php 
-                    if($val == "-50" || $val == "-"){ echo "$50 and Under"; }
-                    elseif($val == "50-100" || $val == "50-"){ echo "$50 - $100"; }
-                    elseif($val == "100-150" || $val == "100-"){ echo "$100 - $150"; }
-                    elseif($val == "150-200" || $val == "150-"){ echo "$150 - $200"; }
-                    elseif($val == "500-"){ echo "$500 and Over"; }
+            <?php if($price != '' && count($prices) == 1){ $val = $price; } ?>
+            <option value="<?php echo $val ?>" <?php if($val == $price) echo 'selected'; ?>>
+                <?php
+                    if($val[0] == "-"){ // First Occurance
+                        if($val == "-") { $val = "-50"; }
+                        echo '$'.ltrim($val,"-").' AND UNDER'; 
+                    }
+                    elseif($val[strlen($val)-1] == "-") { // Last Occurance
+                        echo '$'.rtrim($val,"-").' AND OVER'; 
+                    } 
+                    else{
+                        $value = explode("-", $val);
+                        echo "$".$value[0]." - "."$".$value[1];
+                    }
                 ?>
             </option>
         <?php endforeach; ?>
