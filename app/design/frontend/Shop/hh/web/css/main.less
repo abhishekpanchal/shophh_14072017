@@ -4833,6 +4833,14 @@ Hotspot Details
 .lookbookslider-container {
   position: relative;
   z-index: 1;
+  min-height: 725px;
+}
+.cycle-slideshow1 .slide {
+  background-size: cover;
+  background-position: center;
+}
+.homepage-hero .cycle-slideshow1 .slide img {
+  display: none;
 }
 
 .cycle-slideshow1 {
@@ -4842,6 +4850,16 @@ Hotspot Details
 .lookbook-container {
   background: #efefef;
   margin-bottom: 70px;
+}
+
+
+@media (max-width: 1515px) {
+  .lookbookslider-container {
+    min-height: 0;
+  }
+  .homepage-hero .cycle-slideshow1 .slide img {
+    display: block;
+  }
 }
 
 
