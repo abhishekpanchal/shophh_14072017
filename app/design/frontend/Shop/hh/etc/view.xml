@@ -22,8 +22,12 @@
                 <height>165</height>
             </image>
             <image id="category_page_grid" type="small_image">
-                <width>240</width>
-                <height>240</height>
+                <width>280</width>
+                <height>280</height>
+            </image>
+            <image id="upsell_products_list" type="small_image">
+                <width>280</width>
+                <height>280</height>
             </image>
         </images>
     </media>
