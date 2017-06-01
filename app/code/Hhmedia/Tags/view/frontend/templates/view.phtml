@@ -9,10 +9,10 @@
 <div class="container marginbottom-50">
 
     <div class="row tags-toolbar">
-        <div class="col-md-6">
+        <div class="col-md-3">
             <a href="<?php echo $tags->getLinkUrl() ?>" class="hover-effect">&lt; <?php echo $tags->getLinkText() ?></a>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-9 text-right">
 
             <div class="toolbar toolbar-products clearfix">
                 
@@ -63,37 +63,58 @@
                         $pro = $this->getProductData($_product->getEntityId());
                         $image = $pro->getData('small_image');
                     ?>
+
+
+
+
+                    <!--
                     <div class="col-md-3 tag-product">
-                        <div class="product-img">
-                            <a href="<?php echo $pro->getProductUrl() ?>">
-                                <img src="<?php echo $this->resize($image,240,240); ?>" />
-                            </a>
-                            <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$pro->getId(); ?>
-                            <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                    -->
+                    <div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">
+                        <div class="product-item-info" >
+                            <div class="product-img">
+                                <a href="<?php echo $pro->getProductUrl() ?>">
+                                    <img src="<?php echo $this->resize($image,240,240); ?>" />
+                                </a>
+                                <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$pro->getId(); ?>
+                                <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
+                            </div>
+
+                            <div class="product details product-item-details">
+                                <strong class="product name product-item-name">
+                                    <a class="product-item-link hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
+                                </strong>
+
+                                <div class="product description product-item-description">
+                                    <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+                                    <?php if($customHelper->getStockQty($pro)): ?>
+                                        <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
+                                    <?php elseif($customHelper->isEditorsPick($pro)): ?>
+                                        <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
+                                    <?php elseif($customHelper->isExclusive($pro)): ?>
+                                        <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
+                                    <?php elseif($customHelper->isOnSale($pro)): ?>
+                                        <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
+                                    <?php elseif($customHelper->isOneOfKind($pro)): ?>
+                                        <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+                                    <?php elseif($customHelper->isProductNew($pro)): ?>
+                                        <span class="callout new-product"><?php echo __('New'); ?></span>
+                                    <?php elseif($customHelper->isLastCall($pro)): ?>
+                                        <span class="callout last-call"><?php echo __('Last Call'); ?></span>
+                                    <?php endif; ?>
+                                    <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
+                                </div>
+
+                                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                                <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
+                            </div>
+
                         </div>
-                        <h4>
-                            <a href="<?php echo $pro->getProductUrl() ?>" class="hover-effect"><?php echo $pro->getName(); ?></a>
-                        </h4>
-                        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                        <?php if($customHelper->getStockQty($pro)): ?>
-                            <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-                        <?php elseif($customHelper->isEditorsPick($pro)): ?>
-                            <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
-                        <?php elseif($customHelper->isExclusive($pro)): ?>
-                            <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
-                        <?php elseif($customHelper->isOnSale($pro)): ?>
-                            <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
-                        <?php elseif($customHelper->isOneOfKind($pro)): ?>
-                            <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
-                        <?php elseif($customHelper->isProductNew($pro)): ?>
-                            <span class="callout new-product"><?php echo __('New'); ?></span>
-                        <?php elseif($customHelper->isLastCall($pro)): ?>
-                            <span class="callout last-call"><?php echo __('Last Call'); ?></span>
-                        <?php endif; ?>
-                        <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
-                        <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                        <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
                     </div>
+
+
+
+
                     <?php endforeach; ?>
                 </div>
             </div>
