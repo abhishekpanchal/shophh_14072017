@@ -8,6 +8,7 @@ use Magento\Store\Model\Store;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 use Hhmedia\Editor\Model\EditorFactory;
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Checkout\Helper\Cart;
 
 class Newproduct extends \Magento\Framework\Url\Helper\Data
 {
@@ -32,6 +33,8 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
     protected $_filesystem ;
     protected $_imageFactory;
 
+    protected $cartHelper;
+
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\CatalogInventory\Api\StockStateInterface $stockItem,
@@ -42,6 +45,7 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         CategoryRepositoryInterface $categoryRepository,
         \Magento\Framework\Filesystem $filesystem,         
         \Magento\Framework\Image\AdapterFactory $imageFactory,
+        Cart $cartHelper,
         TimezoneInterface $localeDate
     ) {
         $this->_filesystem = $filesystem;               
@@ -53,6 +57,7 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         $this->_storeManager = $storeManager;
         $this->categoryRepository = $categoryRepository;
         $this->eavConfig = $eavConfig;
+        $this->cartHelper = $cartHelper;
         parent::__construct($context);
     }
 
@@ -289,6 +294,10 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
 
         $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product/resize/'.$width.$image;
         return $resizedURL;
+    }
+
+    public function getItemDeleteUrl($item){
+        return $this->cartHelper->getDeletePostJson($item);
     }
 
 }
