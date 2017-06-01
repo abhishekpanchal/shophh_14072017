@@ -1701,6 +1701,7 @@ Cart
     .cart-item {
       .product-item-photo {
         max-width: none;
+        max-height: 5em;
         padding: 5px;
       }
     }
@@ -1713,8 +1714,21 @@ Cart
       top: 1.5em;
       margin-bottom: 2em;
     }
+    .cart-qty-wrapper {
+      display: block;
+      min-width: 100px;
+    }
+    .cart-qty-wrapper * {
+      padding: 0 0.3em;
+    }
   }
-
+}
+@media only screen and (min-width: 450px) and (max-width: 550px) {
+  .product-item-photo {
+    img {
+      max-width: 80%;
+    }
+  }
 }
 @media only screen and (min-width: 551px) and (max-width: @screen-xs-max) {
   .cart-container {
@@ -1727,7 +1741,14 @@ Cart
   .qty {
     padding: 0;
   }
-
+  .cart {
+    .cart-item {
+      .product-item-photo {
+        max-width: none;
+        padding: 5px;
+      }
+    }
+  }
 }
 
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
@@ -1738,8 +1759,15 @@ Cart
   .qty {
     padding-left: 0;
   }
+  .cart-totals {
+    table {
+      table-layout: fixed;
+    }
+  }
+  #coupon_code {
+    max-width: 100%;
+  }
 }
-/* Medium devices (desktops, 992px and up) */
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
 }
@@ -2303,6 +2331,10 @@ Social Login
   top: 15%;
   height: 70px;
   width: 40px;
+}
+
+.carousel-indicators li {
+  box-shadow: 3px 3px 3px rgba(0,0,0,.4);
 }
 
 
@@ -4424,7 +4456,10 @@ Shot Thumbs
   .title {
     text-transform: uppercase;
     font-size: 24px;
-    line-height: 24px;
+    line-height: 28px;
+    display: block;
+    width: 85%;
+    margin: 0 auto;
   }
 }
 .shot-thumb * {
@@ -4473,6 +4508,10 @@ Shot Thumbs
   -webkit-transform: translate(-50%, -50%) scale(1);
   transform: translate(-50%, -50%) scale(1);
   transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.more-shots, .lookbookslider-index-index .column.main .row.no-gutters {
+  margin-right: -10px !important;
 }
 
 .green {
@@ -4549,8 +4588,8 @@ Shot Slider
 Products
 ========================================================================== */
 
-.pro-detail-div {
 
+.pro-detail-div {
   .name {
     display: block;
     margin-bottom: 10px;
@@ -4577,10 +4616,10 @@ Products
     .old-price {
       position: relative;
       display: inline-block;
-      margin-left: 10px;
       font-size: 14px;
     }
   }
+
 }
 
 .current-price {
@@ -4822,6 +4861,14 @@ Hotspot Details
 .lookbookslider-container {
   position: relative;
   z-index: 1;
+  min-height: 725px;
+}
+.cycle-slideshow1 .slide {
+  background-size: cover;
+  background-position: center;
+}
+.homepage-hero .cycle-slideshow1 .slide img {
+  display: none;
 }
 
 .cycle-slideshow1 {
@@ -4831,6 +4878,16 @@ Hotspot Details
 .lookbook-container {
   background: #efefef;
   margin-bottom: 70px;
+}
+
+
+@media (max-width: 1515px) {
+  .lookbookslider-container {
+    min-height: 0;
+  }
+  .homepage-hero .cycle-slideshow1 .slide img {
+    display: block;
+  }
 }
 
 
@@ -5548,7 +5605,7 @@ Home Page
       margin: 0 auto;
     }
     .homepage-hero-details {
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.9);
       border-radius: 50%;
       height: 380px;
       width: 380px;
@@ -5933,7 +5990,7 @@ Limiter
   padding-left: 0;
 }
 
-.items {
+.main-pagination .items {
   text-align: center;
   font-family: @headlineFont;
 }
@@ -7286,7 +7343,7 @@ Product Meta Details (all pages)
     }
   }
 
-  &:nth-child(5) {
+  &:nth-child(4n+1) {
     .clear;
   }
 }
@@ -7931,7 +7988,26 @@ Account reviews
   margin-top: 10px;
 }
 
+
+
+
 .product-info-main {
+  .special-price {
+    display: inline;
+    margin: 0;
+  }
+  .price-box {
+    .weee {
+      font-size: 14px;
+    }
+    .price-wrapper .price {
+      font-size: 14px;
+      font-weight: 200;
+    }
+  }
+}
+
+.catalog-product-view .product-info-main {
   .special-price {
     display: inline-block;
   }
@@ -7955,6 +8031,8 @@ Account reviews
     }
   }
 }
+
+
 
 h4.decorating-formula-price {
   font-size: 14px;

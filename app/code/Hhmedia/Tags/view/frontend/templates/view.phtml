@@ -91,7 +91,8 @@
                             <span class="callout last-call"><?php echo __('Last Call'); ?></span>
                         <?php endif; ?>
                         <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
-                        <h5><?php echo $this->getProductPrice($pro->getFinalPrice()); ?></h5>
+                        <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                        <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
                     </div>
                     <?php endforeach; ?>
                 </div>
