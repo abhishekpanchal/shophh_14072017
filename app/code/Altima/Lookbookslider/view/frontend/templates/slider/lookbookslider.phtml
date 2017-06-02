@@ -80,7 +80,7 @@ if ($helper->getEnabled()) :
 
                     <?php foreach ($slideCollection as $slide): ?>
                         <?php if($slide->getId() == $slideId): ?>
-                        <div class="slide" style="background-image:url(<?php echo $blockObj->getSlideImageUrl($slide) ?>);"
+                        <div class="slide" style="background-image:url('<?php echo $blockObj->getSlideImageUrl($slide) ?>');"
                         <?php
                         if ($effect_arr):
                             $ind = array_rand($effect, 1);
