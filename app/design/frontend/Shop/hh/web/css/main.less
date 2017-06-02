@@ -378,13 +378,6 @@ Content
   min-height: auto!important;
 }
 
-/*.minicart-wrapper .action.showcart {
-  padding: 0!important;
-  margin-top: 14px;
-}*/
-
-
-
 
 .columns .column.main {
   padding-bottom: 0;
@@ -6978,26 +6971,18 @@ Mini Cart
   }
 
   .action.showcart .counter.qty {
-    background: transparent;
-    height: auto;
-    line-height: auto;
-    border-radius: 0;
-    display: inline-block;
-    margin: 0;
-    min-width: auto;
-    overflow: visible;
-    padding: 0;
-    text-align: center;
-    white-space: normal;
-    margin-left: 5px;
+    background: none;
     color: inherit;
-
+    margin: 0;
+    padding: 0;
+    line-height: 22px;
     &:before {
       content: '(';
     }
-
     &:after {
       content: ')';
+      display: inline-block;
+      width: 8px;
     }
   }
   .action.showcart .text {
@@ -7030,7 +7015,7 @@ Mini Cart
     .relative;
     padding: 0;
     transition: 0.3s color;
-    &:hover {
+    &:hover, &:focus {
       background: none;
       .text {
         color: #000;
