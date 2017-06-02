@@ -1834,86 +1834,91 @@ Social Login
       color: #000;
     }
   }
+}
 
-  .social-login-authentication-channel {
-    padding-top: 15px!important;
+.social-login-authentication-channel {
+  padding-top: 15px!important;
 
-    button {
-      padding: 11px 15px;
-      padding-left: 25px;
-      text-align: center;
-      height: auto;
-      display: block;
-      font-family: @fancyFont;
-      font-style: italic;
-      font-weight: normal;
-      font-size: 17px!important;
-    }
-
-    .login > .primary, .login > .secondary {
-      width: 70%!important;
-      float: none!important;
-      display: block!important;
-    }
+  button {
+    padding: 11px 15px;
+    padding-left: 25px;
+    text-align: center;
+    height: auto !important;
+    display: block;
+    font-family: @fancyFont;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 17px!important;
   }
 
-  .facebook-login button, #btn_facebook_signup {
-    background: none;
-    background-color: #3b5998!important;
-    position: relative;
-    padding-left: 20px;
-
-    &:before {
-      content: "\f231";
-      display: inline-block;
-      font-family: "Ionicons";
-      speak: none;
-      font-style: normal;
-      color: #FFF;
-      font-size: 25px;
-      position: absolute;
-      margin-left: 0;
-      left: 15px;
-    }
+  .login > .primary, .login > .secondary {
+    width: 70%!important;
+    float: none!important;
+    display: block!important;
   }
-  .google-login button, #btn_google_signup {
-    background: none;
-    background-color: #dd4b39!important;
-    position: relative;
-    padding-left: 20px;
-
-    &:before {
-      content: "\f34e";
-      display: inline-block;
-      font-family: "Ionicons";
-      speak: none;
-      font-style: normal;
-      color: #FFF;
-      font-size: 25px;
-      position: absolute;
-      margin-left: 0;
-      left: 15px;
-    }
-  }
-  .twitter-login button, #btn_twitter_signup {
-    background: none;
-    background-color: #28bceb!important;
-    position: relative;
-
-    &:before {
-      content: "\f243";
-      display: inline-block;
-      font-family: "Ionicons";
-      speak: none;
-      font-style: normal;
-      color: #FFF;
-      font-size: 25px;
-      position: absolute;
-      margin-left: 0;
-      left: 15px;
-    }
+  .actions-toolbar > .primary:last-child {
+    margin-right: 0 !important;
   }
 }
+
+
+.facebook-login button, #btn_facebook_signup {
+  background: none !important;
+  background-color: #3b5998!important;
+  position: relative;
+  padding-left: 20px;
+
+  &:before {
+    content: "\f231";
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    color: #FFF;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 0;
+    left: 15px;
+  }
+}
+.google-login button, #btn_google_signup {
+  background: none !important;
+  background-color: #dd4b39!important;
+  position: relative;
+  padding-left: 20px;
+
+  &:before {
+    content: "\f34e";
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    color: #FFF;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 0;
+    left: 15px;
+  }
+}
+.twitter-login button, #btn_twitter_signup {
+  background: none !important;
+  background-color: #28bceb!important;
+  position: relative;
+
+  &:before {
+    content: "\f243";
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    color: #FFF;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 0;
+    left: 15px;
+  }
+}
+
 
 #social-login-popup .block-container .block .block-title {
     padding-bottom: 0!important;
