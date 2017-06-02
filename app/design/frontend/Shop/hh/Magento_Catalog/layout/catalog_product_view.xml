@@ -42,7 +42,6 @@
               </arguments>
           </block>
       </container>
-      <block class="Magento\Catalog\Block\Product\View" name="shot" template="product/view/shot.phtml" after="product.info.details" />
     </referenceContainer>
 
     <referenceBlock name="product.info.description">
@@ -58,6 +57,10 @@
 
     <referenceBlock name="product.info.main">
       <block class="Magento\Catalog\Block\Product\View" name="batch" template="product/view/batch.phtml" />
+    </referenceBlock>
+
+    <referenceBlock name="product.info.main">
+      <block class="Magento\Catalog\Block\Product\View" name="shot" template="product/view/shot.phtml" after="product.info.details" />
     </referenceBlock>
 
     <referenceBlock name="product.info.main">
