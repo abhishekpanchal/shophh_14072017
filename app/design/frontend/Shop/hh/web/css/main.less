@@ -763,9 +763,6 @@ Products
     }
   }
 
-  .price-box .price-label {
-    display: none;
-  }
 }
 
 
@@ -1614,10 +1611,11 @@ Cart
       padding-right: 5px;
     }
 }
+/*
 .product-item-catalog {
   .product-item-details {
     text-align: center;
-    font-family: @fancyFont;
+  //  font-family: @fancyFont;
   }
   .product-item-link {
     font-size: 16px;
@@ -1633,6 +1631,7 @@ Cart
     display: none;
   }
 }
+*/
 .cart-summary {
   top: 0px !important;
   .mark {
@@ -5578,7 +5577,8 @@ Home Page
       width: 380px;
       margin: 0 auto;
       position: relative;
-      margin-top: -20px;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 4;
 
       .hero-details-title {
