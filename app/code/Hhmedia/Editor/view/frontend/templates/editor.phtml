@@ -4,7 +4,7 @@
     <div class="row">
     <div class="vcenter-flex display-block-xs">
     <?php foreach($this->getGuestEditor() as $guest): ?>
-        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background-image:url(<?php echo $this->getUrl('pub/media').$guest->getImage() ?>)"></div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 guest-editor vcenter-flex" style="background-color:<?php echo $guest->getColor() ?>">
             <div class="guest-editor-details vcenter vcenter-col">
                 <h3 class="guest-name"><a href="<?php echo $this->getItemUrl($guest) ?>"><?php echo $guest->getName(); ?></a></h3>

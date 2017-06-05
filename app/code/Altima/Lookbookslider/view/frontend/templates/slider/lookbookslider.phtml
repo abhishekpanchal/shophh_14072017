@@ -147,7 +147,7 @@ if ($helper->getEnabled()) :
 
 <?php foreach ($slideCollection as $slide): ?>
     <?php if($slide->getId() == $slideId): ?>
-        <div class="col-lg-4 col-md-5 mood-bg vcenter display-block-xs" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
+        <div class="col-lg-4 col-md-5 mood-bg vcenter display-block-xs" style="background-image:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$slide->getBgImage() ?>);">
 
             <div class="hotspot-details vcenter">
                 <div class="hotspot-default visible">

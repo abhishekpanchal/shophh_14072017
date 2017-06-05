@@ -30,7 +30,7 @@
                                     <img src="<?php echo $imagePath ?>" />
                                 </a>
                             </div>
-                            <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
+                            <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background-image:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
                                 <div class="homepage-hero-details">
                                 <div class="hero-details-inner">
                                     <a href="<?php echo $shotUrl ?>">
@@ -162,7 +162,7 @@
         </div>
         <?php foreach ($_editor as $editorItem): ?>
             <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
-                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 editor-guest-image" style="background-image:url(<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>)">
                      <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>"></a>
                 </div>
                 <?php $bgColor = $editorItem->getColor(); ?>
