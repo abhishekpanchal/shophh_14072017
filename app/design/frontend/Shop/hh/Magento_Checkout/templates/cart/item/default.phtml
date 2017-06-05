@@ -69,7 +69,13 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <?php else: ?>
         <?php echo $block->getRowTotalHtml($_item); ?>
         <?php endif; ?>
-        <span class="cart-item-remove">╳</span>
+        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+        <a href="#"
+           title="<?php echo $block->escapeHtml(__('Remove item')); ?>"
+           class="action action-delete cart-item-remove"
+           data-post='<?php echo $customHelper->getItemDeleteUrl($_item); ?>'>
+            ╳
+        </a>
       </div>
     </div>
     <div class="row cart-details-container">
@@ -109,4 +115,3 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
     </div>
   </div>
 </div>
-
