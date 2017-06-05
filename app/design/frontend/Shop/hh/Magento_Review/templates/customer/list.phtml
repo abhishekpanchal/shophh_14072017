@@ -46,7 +46,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 review-product-img">
+        <div class="col-md-3 col-sm-3 review-product-img">
             <?php $helper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
             <?php $product = $helper->getLoadProduct($_review->getEntityPkValue()); ?>
             <?php $image = $product->getData('small_image'); ?>
@@ -54,7 +54,7 @@
                 <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" class="product-image" />
             </a>
         </div>
-        <div class="col-md-9 review-product-details">
+        <div class="col-md-9 col-sm-9 review-product-details">
             <div class="product-title">
                 <a href="<?php echo $block->getProductLink() ?>id/<?php echo $_review->getEntityPkValue() ?>">
                     <?php echo $block->escapeHtml($_review->getName()) ?>
