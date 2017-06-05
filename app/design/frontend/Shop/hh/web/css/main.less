@@ -143,9 +143,8 @@ Common LESS
 /* Hover Effect */
 .hover-effect {
   .relative;
-  display: inline-block;
   &:before {
-    content: 'i';
+    content: '';
     position: absolute;
     width: 0;
     bottom: -3px;
@@ -160,8 +159,8 @@ Common LESS
   }
 }
 
-
-@media (pointer: fine) {
+// removing hover effect for tablet double click
+@media (max-width: 992px) {
   .hover-effect:before {
     content: none;
   }
