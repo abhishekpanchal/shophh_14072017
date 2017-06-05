@@ -15,17 +15,17 @@ $columns = $block->getColumns();
 <div class="products-grid wishlist wishlist-grid">
     <?php $iterator = 1; ?>
     <?php if (count($block->getItems())): ?>
-    <ol class="product-items">
+    <div class="product-items">
         <?php foreach ($block->getItems() as $item): ?>
-        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li data-row="product-item" class="product-item col-xs-6 col-sm-4 col-md-4" id="item_' . $item->getId() . '">' : '</li><li class="product-item col-xs-6 col-sm-4 col-md-4" id="item_' . $item->getId() . '">' ?>
+        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div data-row="product-item" class="row product-item" id="item_' . $item->getId() . '">' : '</div><div class="row product-item" id="item_' . $item->getId() . '">' ?>
             <div class="product-item-info">
                 <?php foreach ($columns as $column): ?>
                     <?php $column->setItem($item); echo $column->toHtml($item);?>
                 <?php endforeach; ?>
             </div>
-        <?php echo($iterator == count($block->getItems())+1) ? '</li>' : '' ?>
+        <?php echo($iterator == count($block->getItems())+1) ? '</div>' : '' ?>
         <?php endforeach; ?>
-    </ol>
+    </div>
     <?php else: ?>
         <div class="message info empty">
             <span><?php /* @escapeNotVerified */ echo __('This Wish List has no Items');?></span>
