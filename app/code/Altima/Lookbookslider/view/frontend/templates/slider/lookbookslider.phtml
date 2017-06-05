@@ -318,7 +318,7 @@ if ($helper->getEnabled()) :
                         <?php if($slide->getId() == $slideId): ?>
                             <?php $products = $blockObj->getProductCollection($slide); ?>
                             <?php foreach($products as $_product): ?>
-                                <div class="col-md-3">
+                                <div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">
                                     <?php echo $_product['text']; ?>
                                 </div>
                             <?php endforeach; ?>
