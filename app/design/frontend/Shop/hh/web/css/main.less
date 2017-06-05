@@ -6796,7 +6796,15 @@ Mini Cart
     padding: 0;
     border-color: #000;
   }
-
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;// you need to tweak this to make it available..
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    box-shadow: 0 0 1px rgba(255,255,255,.5);
+  }
 }
 
 .block-minicart .items-total {
