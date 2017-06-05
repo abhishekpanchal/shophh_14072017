@@ -143,9 +143,9 @@ Common LESS
 /* Hover Effect */
 .hover-effect {
   .relative;
-
+  display: inline-block;
   &:before {
-    content: '';
+    content: 'i';
     position: absolute;
     width: 0;
     bottom: -3px;
@@ -3788,9 +3788,6 @@ Cart Page
       max-width: 100%!important;
     }
   }
-  .product-item-photo img {
-    width: 100%!important;
-  }
   .product-reviews-summary {
     display: none;
   }
@@ -5852,8 +5849,7 @@ span.callout {
   .product-item-photo {
     margin-bottom: 20px;
     overflow-y: hidden;
-
-    .image {
+    img {
       width: 100%;
     }
   }
@@ -5863,9 +5859,8 @@ span.callout {
   .price-container {
     margin-top: 5px;
   }
-/*
-}
-*/
+
+
 
 .product-qty {
   .styled-select {

@@ -893,6 +893,11 @@ Extra Small Screens
 		font-size: 14px;
 	}
 
+	.header-logo img {
+		width: 80%;
+		margin: 10px auto;
+	}
+
 	.page-title {
 		font-size: 20px;
 		background: url(../images/shop-keyline-faded-center.png) no-repeat center;
@@ -907,7 +912,6 @@ Extra Small Screens
 	.subtitle {
 		font-size: 14px;
 	}
-
 
 
 
@@ -1015,6 +1019,20 @@ Extra Small Screens
 		}
 		.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
 			width: 100%;
+		}
+	}
+
+
+	/* ===============================
+	Product Page
+	=================================*/
+	.product-item-listing, .product-item-catalog {
+		width: 50%;
+		&:nth-child(3n+1) {
+			clear: none;
+		}
+		&:nth-child(2n+1) {
+			clear: both;
 		}
 	}
 }

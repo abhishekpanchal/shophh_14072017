@@ -26,36 +26,42 @@
 							<?php $product = $this->getProductBySku($sku); ?>
 							<?php if($product != NULL): ?>
 								<?php $image = $product->getData('small_image'); ?>
-								<div class="collection-item product-details-block col-md-3">
-									<div class="product-img">
-										<a href="<?php echo $product->getProductUrl() ?>">
-				                			<img src="<?php echo $this->resize($image,240,240); ?>" />
-				            			</a>
-				            			<?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product->getId(); ?>
-				            			<a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
-									</div>
-			            			<h4>
-			            				<a href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
-			            			</h4>
-			            			<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-				            		<?php if($customHelper->getStockQty($product)): ?>
-					                    <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-					                <?php elseif($customHelper->isEditorsPick($product)): ?>
-                            			<span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
-                            		<?php elseif($customHelper->isExclusive($product)): ?>
-                            			<span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
-					                <?php elseif($customHelper->isOnSale($product)): ?>
-					                    <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
-					                <?php elseif($customHelper->isOneOfKind($product)): ?>
-					                    <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
-					                <?php elseif($customHelper->isProductNew($product)): ?>
-					                    <span class="callout new-product"><?php echo __('New'); ?></span>
-					                <?php elseif($customHelper->isLastCall($product)): ?>
-                            			<span class="callout last-call"><?php echo __('Last Call'); ?></span>
-					                <?php endif; ?>
-				            		<p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
-									<?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                           			<h5 class="decorating-formula-price"><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
+								<div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">
+									<div class="product-item-info">
+										<div class="category-thumb relative">
+											<a href="<?php echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+					                			<img src="<?php echo $this->resize($image,240,240); ?>" />
+					            			</a>
+										</div>
+
+										<div class="product details product-item-details">
+											<strong class="product name product-item-name">
+										    	<a class="product-item-link hover-effect" href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
+										    </strong>
+
+										    <div class="product description product-item-description">
+										    	<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+							            		<?php if($customHelper->getStockQty($product)): ?>
+								                    <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
+								                <?php elseif($customHelper->isEditorsPick($product)): ?>
+			                            			<span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
+			                            		<?php elseif($customHelper->isExclusive($product)): ?>
+			                            			<span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
+								                <?php elseif($customHelper->isOnSale($product)): ?>
+								                    <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
+								                <?php elseif($customHelper->isOneOfKind($product)): ?>
+								                    <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+								                <?php elseif($customHelper->isProductNew($product)): ?>
+								                    <span class="callout new-product"><?php echo __('New'); ?></span>
+								                <?php elseif($customHelper->isLastCall($product)): ?>
+			                            			<span class="callout last-call"><?php echo __('Last Call'); ?></span>
+								                <?php endif; ?>
+								                <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
+								                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+	                           					<h5 class="decorating-formula-price"><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
+										    </div>
+										</div>
+	                           		</div>
 								</div>
 				        	<?php endif; ?>
 						<?php endforeach; ?>
