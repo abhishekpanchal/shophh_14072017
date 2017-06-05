@@ -33,7 +33,7 @@
 
 
 .upsell .product-item-details p{
-	margin-bottom: 10px;
+	display: inline;
 }
 
 .catalog-product-view .product-shop-the-shot .shop-the-shot-hover {
@@ -256,8 +256,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		.mood-bg {
 			background: none !important;
 			display: block;
-			height: 268px;
+			height: 260px;
 			margin-top: -12%;
+			min-height: 0;
 		}
 		.homepage-hero-details {
 			background: #fff;
@@ -265,6 +266,8 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			height: 0;
 			padding-bottom: 50%;
 			margin-top: 0;
+			top: 0;
+			transform: none;
 		}		
 		.homepage-controls-container {			
 			.col-md-4 {
@@ -274,6 +277,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			.homepage-controls {
 				width: 100%;
 				top: 0;
+				height: 30px;
 				.carousel-control {
 					opacity: 1;
           			margin-top: -260px;
@@ -285,9 +289,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 					right: 5%;
 				}
 			}
-		}
-		& + div {
-			position: relative;
 		}
 
       	.carousel-indicators {
@@ -309,7 +310,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
           width: 85%;
           margin: 0 auto;
           padding-top: 45px;
-          font-size: 28px;
+          font-size: 20px;
           border: 0;
           white-space: nowrap;
         }
@@ -318,7 +319,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
           white-space: nowrap;
         }
         p {
-        	height: 2em;
+          height: 26px;
           margin-right: -35%;
           margin-left: -35%;
         }
@@ -349,8 +350,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     
 
     .decorating-formula {
-      padding-top: 40px;
-
       .decorating-formula-product {
         margin-top: 0;
       }
@@ -424,6 +423,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		-webkit-transform: translate(-50%, -50%) scale(1);
 		transform: translate(-50%, -50%) scale(1);
 		transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	}
+
+	.more-shots {
+		width: 100%;
+		overflow: hidden;
 	}
 
   .more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
@@ -575,9 +579,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
 
 
-	/* ===============================
-	Shop the Spot Desktop Responsive
-	=================================*/
+/* ===============================
+Shop the Spot Desktop Responsive
+=================================*/
 @media only screen and (min-width: 1024px) and (max-width: 1256px) {
 	.hotspot-details {
 		padding: 5%;
@@ -617,12 +621,14 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 
 
+
+
 	/* ===============================
 	Product Page
 	=================================*/
 	.product-item-listing, .product-item-catalog {
 		width: 33.333%;
-		&:nth-child(5) {
+		&:nth-child(4n+1) {
 			clear: none;
 		}
 		&:nth-child(3n+1) {
@@ -805,10 +811,13 @@ All small devices - till 768px
 	Carousel - Global
 	=================================*/
 	.carousel-control.right, .carousel-control.left {
-		height: 50px;
+	height: 50px;
     width: 30px;
     background-size: 90%;
 	}
+
+
+
 
 	/* ===============================
 	Homepage
@@ -826,10 +835,21 @@ All small devices - till 768px
 				}
 			}
 		}
-	}
-
-	.cms-home .editors-area .editors-pick .editors-thumbs li {
-		width: 25%;
+		.decorating-formula {
+			.formula_list_view {
+				.decorating-formula-product:nth-of-type(3) {
+					&:before, &:after {
+						top: 28%;
+					}
+				}
+				.carousel-control {
+					&.right, &.left {
+						background-size: 50%;
+						top: 52%;
+					}
+				}
+			}
+		}
 	}
 
 	.shot-thumb {
@@ -859,15 +879,10 @@ All small devices - till 768px
 	Search Results
 	=================================*/
 	
-	
-
-	
-	
-	
-	
-
-
 }
+
+
+
 
 /* ==========================================================================
 Extra Small Screens
@@ -878,69 +893,129 @@ Extra Small Screens
 		font-size: 14px;
 	}
 
+	.page-title {
+		font-size: 20px;
+		background: url(../images/shop-keyline-faded-center.png) no-repeat center;
+		background-size: contain;
+		strong {
+			font-size: 24px;
+		}
+	}
+	.page-title-small {
+		font-size: 14px;
+	}
+	.subtitle {
+		font-size: 14px;
+	}
+
+
+
+
 	/* ===============================
 	Homepage
 	=================================*/
 	.cms-home {
 		.homeslider {
-		}
-		.home-slider {
-      .homepage-hero-details {
-        height: 300px;
-        width: 300px;
-
-        h4 {
-          font-size: 28px;
-        }
-        p {
-          font-size: 1rem;
-        }
-        .hero-details-title {
-          font-size: 16px;
-
-          strong {
-            font-size: 22px;
-          }
-        }
-      }
-      .carousel-control.right, .carousel-control.left {
-      }
-		}
-
-		.decorating-formula {
-
-			.formula_list_view {
-				.carousel-control.right, .carousel-control.left {
-					background-size: 50%;
-					top: 58%;
+			margin-bottom: 30px;
+			.homepage-hero-details {
+				width: 100%;
+				padding-bottom: 100%;
+				.hero-details-title {
+					font-size: 16px;
+					padding-top: 25px;
+					strong {
+						font-size: 20px;
+					}
 				}
-				.carousel-control.right {
-					right: -3%;
+				h4 {
+					font-size: 24px;
 				}
-				.carousel-control.left {
-					left: -3%;
+				p {
+					margin: 0;
+					height: 32px;
+				}
+				.homepage-hero-btn {
+					width: 60%;
+				}
+			}
+			.mood-bg {
+				height: 200px;
+				min-width: 0;
+			}
+			.homepage-controls-container .homepage-controls .carousel-control {
+				margin-top: -280px;
+				&.right {
+					right: 8%;
+				}
+				&.left {
+					left: 8%;
 				}
 			}
 		}
-
+		.decorating-formula .formula_list_view {
+			margin-bottom: 20px;
+			.decorating-formula-title {
+				font-size: 22px;
+			}
+			.decorating-formula-sub {
+				font-size: 14px;
+			}
+			.carousel-control, .carousel-control {
+				&.right {
+					top: 62%;
+					right: -4%;
+				}
+				&.left {
+					top: 62%;
+					left: -4%;
+				}
+			}
+			.decorating-formula-product:nth-of-type(3) {
+				&:before, &:after {
+					background-size: 32% 32%!important;
+					top: 25%;
+				}
+			}
+			.decorating-formula-product-title, .price-container .price {
+				font-family: @headlineFont;
+				font-size: 10px;
+				text-transform: uppercase;
+				margin: 0;
+			}
+			.old-price, .old.price {
+				display: none;
+			}
+		}
 		.editors-area {
-			.editor-guest-image {
+			.editors-pick {
+				padding: 10px;
+				.editors-pick-title {
+					margin: 5px;
+					padding: 15px 20px;
+					h4 {
+						font-size: 14px;
+					}
+					h3 {
+						font-size: 24px;
+					}
+				}
+				.editors-thumbs li {
+					width: 50%;
+				}
 			}
-			.guest-editor {
-				.guest-editor-details {
+			.guest-editor .guest-editor-details {
+				h4 {
+					font-size: 14px;
+				}
+				h3 {
+					font-size: 24px;
+					margin-top: 0;
 				}
 			}
 		}
-
-		.shop-the-issue {
-
+		.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+			width: 100%;
 		}
-		.more-shots {
-      .more-shots-thumbs {
-        width: 100%;
-      }
-    }
-
 	}
 }
 
@@ -1021,7 +1096,7 @@ Media Queries
  ========================================================================== */
 /* ------ Tablet Portrait size to standard 960 (devices and browsers) 
 @media only screen and (max-width: 959px) {
-------*/
+------*
 @media only screen and (max-width: 700px) {
   .product.data.items > .item.content {
     margin: 0;

@@ -160,6 +160,7 @@ Common LESS
   }
 }
 
+
 @media (pointer: fine) {
   .hover-effect:before {
     content: none;
@@ -376,13 +377,6 @@ Content
 .page-wrapper {
   min-height: auto!important;
 }
-
-/*.minicart-wrapper .action.showcart {
-  padding: 0!important;
-  margin-top: 14px;
-}*/
-
-
 
 
 .columns .column.main {
@@ -769,9 +763,6 @@ Products
     }
   }
 
-  .price-box .price-label {
-    display: none;
-  }
 }
 
 
@@ -1620,10 +1611,11 @@ Cart
       padding-right: 5px;
     }
 }
+/*
 .product-item-catalog {
   .product-item-details {
     text-align: center;
-    font-family: @fancyFont;
+  //  font-family: @fancyFont;
   }
   .product-item-link {
     font-size: 16px;
@@ -1639,6 +1631,7 @@ Cart
     display: none;
   }
 }
+*/
 .cart-summary {
   top: 0px !important;
   .mark {
@@ -1840,86 +1833,91 @@ Social Login
       color: #000;
     }
   }
+}
 
-  .social-login-authentication-channel {
-    padding-top: 15px!important;
+.social-login-authentication-channel {
+  padding-top: 15px!important;
 
-    button {
-      padding: 11px 15px;
-      padding-left: 25px;
-      text-align: center;
-      height: auto;
-      display: block;
-      font-family: @fancyFont;
-      font-style: italic;
-      font-weight: normal;
-      font-size: 17px!important;
-    }
-
-    .login > .primary, .login > .secondary {
-      width: 70%!important;
-      float: none!important;
-      display: block!important;
-    }
+  button {
+    padding: 11px 15px;
+    padding-left: 25px;
+    text-align: center;
+    height: auto !important;
+    display: block;
+    font-family: @fancyFont;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 17px!important;
   }
 
-  .facebook-login button, #btn_facebook_signup {
-    background: none;
-    background-color: #3b5998!important;
-    position: relative;
-    padding-left: 20px;
-
-    &:before {
-      content: "\f231";
-      display: inline-block;
-      font-family: "Ionicons";
-      speak: none;
-      font-style: normal;
-      color: #FFF;
-      font-size: 25px;
-      position: absolute;
-      margin-left: 0;
-      left: 15px;
-    }
+  .login > .primary, .login > .secondary {
+    width: 70%!important;
+    float: none!important;
+    display: block!important;
   }
-  .google-login button, #btn_google_signup {
-    background: none;
-    background-color: #dd4b39!important;
-    position: relative;
-    padding-left: 20px;
-
-    &:before {
-      content: "\f34e";
-      display: inline-block;
-      font-family: "Ionicons";
-      speak: none;
-      font-style: normal;
-      color: #FFF;
-      font-size: 25px;
-      position: absolute;
-      margin-left: 0;
-      left: 15px;
-    }
-  }
-  .twitter-login button, #btn_twitter_signup {
-    background: none;
-    background-color: #28bceb!important;
-    position: relative;
-
-    &:before {
-      content: "\f243";
-      display: inline-block;
-      font-family: "Ionicons";
-      speak: none;
-      font-style: normal;
-      color: #FFF;
-      font-size: 25px;
-      position: absolute;
-      margin-left: 0;
-      left: 15px;
-    }
+  .actions-toolbar > .primary:last-child {
+    margin-right: 0 !important;
   }
 }
+
+
+.facebook-login button, #btn_facebook_signup {
+  background: none !important;
+  background-color: #3b5998!important;
+  position: relative;
+  padding-left: 20px;
+
+  &:before {
+    content: "\f231";
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    color: #FFF;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 0;
+    left: 15px;
+  }
+}
+.google-login button, #btn_google_signup {
+  background: none !important;
+  background-color: #dd4b39!important;
+  position: relative;
+  padding-left: 20px;
+
+  &:before {
+    content: "\f34e";
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    color: #FFF;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 0;
+    left: 15px;
+  }
+}
+.twitter-login button, #btn_twitter_signup {
+  background: none !important;
+  background-color: #28bceb!important;
+  position: relative;
+
+  &:before {
+    content: "\f243";
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    color: #FFF;
+    font-size: 25px;
+    position: absolute;
+    margin-left: 0;
+    left: 15px;
+  }
+}
+
 
 #social-login-popup .block-container .block .block-title {
     padding-bottom: 0!important;
@@ -2348,11 +2346,11 @@ Social Login
 
 .homepage-controls {
   .carousel-control.right {
-    background: url(../images/button-hero-next.png) no-repeat center center;
+    background: url(../images/right-arrow-shadow.png) no-repeat center center;
   }
 
   .carousel-control.left {
-    background: url(../images/button-hero-prev.png) no-repeat center center;
+    background: url(../images/left-arrow-shadow.png) no-repeat center center;
   }
 }
 
@@ -3022,9 +3020,9 @@ Checkout
   min-width: 100%!important;
 }
 
-/*.mcs-item {
-  width: 25%!important;
-}*/
+.MagicScroll-horizontal .mcs-bullets {
+  display: none !important;
+}
 
 
 .main-content {
@@ -3118,30 +3116,6 @@ Checkout
       background-color: transparent;
       border: none;
       .relative;
-
-      /*
-      &:after {
-        font-family: "Ionicons";
-        font-size: inherit;
-        text-rendering: auto;
-        content: "\f489";
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        color: #8d8d8d;
-        font-size: 30px;
-        font-style: normal;
-      }
-      &.active {
-        &:after {
-          .ionicon;
-          content: "\f462";
-          font-style: normal;
-          color: #8d8d8d;
-        }
-      }
-      */
-
       h4 {
         a {
           background: transparent;
@@ -3155,7 +3129,6 @@ Checkout
           font-family: @fancyFont;
           font-style: italic;
           .relative;
-
           &:after {
             font-family: "Ionicons";
             font-size: inherit;
@@ -3166,22 +3139,11 @@ Checkout
             color: #8d8d8d;
             font-size: 30px;
             font-style: normal;
+            content: "\f462";
+          }
+          &.collapsed:after {
             content: "\f489";
-          }          
-          /*
-          &.collapsed {
-            background: red;
-            &:after {
-              content: "\f489";
-            }
           }
-          &:not(.collapsed) {
-            background: lime;
-            &:after {
-              content: "\f462";
-            }
-          }
-          */
         }
       }
     }
@@ -4528,6 +4490,11 @@ Shot Slider
   background-repeat: no-repeat!important;
   background-size: cover!important;
   background-color: #EFEFEF;
+  min-height: 500px;
+  min-width: 400px;
+}
+.mood-bg {
+  align-items: baseline;
 }
 .hotspot:hover {
   cursor: pointer;
@@ -4650,7 +4617,6 @@ Hotspot Details
     font-style: italic;
     margin-bottom: 15px;
   }
-
   h5 {
     font-family: @baseFont;
     text-transform: uppercase;
@@ -4658,12 +4624,12 @@ Hotspot Details
     margin-bottom: 15px;
   }
 
-  h2 a {
+  h2 {
     font-family: @fancyFont;
     font-size: 20px;
     font-weight: normal;
     font-style: italic;
-    margin-top: 5px;
+    margin-top: 25px;
   }
 
   p {
@@ -5576,7 +5542,7 @@ Home Page
       height: 70px;
       bottom: 20px;
       left: 0;
-      right: 0;
+      right: 20px;
       margin: 0 auto;
       z-index: 100;
 
@@ -5611,7 +5577,8 @@ Home Page
       width: 380px;
       margin: 0 auto;
       position: relative;
-      margin-top: -20px;
+      top: 50%;
+      transform: translateY(-50%);
       z-index: 4;
 
       .hero-details-title {
@@ -5640,7 +5607,7 @@ Home Page
       }
       .hero-details-inner {
         position: relative;
-        padding: 15% 12%;
+        padding: 15% 8%;
         text-align: center;
       }
       .homepage-hero-btn {
@@ -5817,6 +5784,7 @@ span.callout {
   margin-bottom: 30px;
 }
 
+
 .catalog-category-view {
   .new-product {
     font-family: @headlineFont;
@@ -5837,6 +5805,8 @@ span.callout {
       display: none;
     }
   }
+}
+
   .products-grid {
     .toolbar-products {
       .main-pagination {
@@ -5893,7 +5863,9 @@ span.callout {
   .price-container {
     margin-top: 5px;
   }
+/*
 }
+*/
 
 .product-qty {
   .styled-select {
@@ -6445,6 +6417,9 @@ Editors Details
     .editor-product {
       list-style: none;
       text-align: center;
+      &:nth-child(4n+1) {
+        clear: both;
+      }
 
       img {
         margin-bottom: 10px;
@@ -7003,26 +6978,18 @@ Mini Cart
   }
 
   .action.showcart .counter.qty {
-    background: transparent;
-    height: auto;
-    line-height: auto;
-    border-radius: 0;
-    display: inline-block;
-    margin: 0;
-    min-width: auto;
-    overflow: visible;
-    padding: 0;
-    text-align: center;
-    white-space: normal;
-    margin-left: 5px;
+    background: none;
     color: inherit;
-
+    margin: 0;
+    padding: 0;
+    line-height: 22px;
     &:before {
       content: '(';
     }
-
     &:after {
       content: ')';
+      display: inline-block;
+      width: 8px;
     }
   }
   .action.showcart .text {
@@ -7055,7 +7022,7 @@ Mini Cart
     .relative;
     padding: 0;
     transition: 0.3s color;
-    &:hover {
+    &:hover, &:focus {
       background: none;
       .text {
         color: #000;
@@ -7176,64 +7143,6 @@ Mini Cart Fixes
   z-index: 98;
 }
 
-/* ==========================================================================
-Tags View Page
-========================================================================== */
-.tags-index-view {
-  .main-nav {
-    margin-bottom: 0;
-  }
-  .category-image {
-    background-color: #EFEFEF;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-bottom: 40px;
-
-    h2 {
-      font-size: 34px;
-      font-weight: normal;
-
-      span {
-        font-family: @baseFont;
-        margin-top: 10px;
-        text-transform: capitalize;
-        font-weight: normal;
-      }
-    }
-  }
-  .tags-toolbar {
-    a {
-      text-transform: uppercase;
-      font-size: 12px;
-      font-family: @headlineFont;
-    }
-  }
-  .tag-product {
-    margin-bottom: 50px;
-    .center;
-    h4 {
-      a {
-        font-family: @fancyFont;
-        font-size: 16px;
-        font-weight: normal;
-      }
-    }
-    p {
-      font-family: @baseFont;
-      font-size: 13px;
-      display: inline;
-    }
-    h5 {
-      margin-top: 10px;
-      font-size: 14px;
-      font-family: @headlineFont;
-      color: #666;
-    }
-    .product-img {
-      margin-bottom: 10px;
-      .relative;
-    }
-  }
-}
 
 
 /* ==========================================================================
@@ -7310,7 +7219,7 @@ Shop the issue page
 
 /* ==========================================================================
 Product Meta Details (all pages)
-========================================================================== */
+========================================================================== *
 .product-details-block {
   margin-bottom: 50px;
   .center;
@@ -8361,7 +8270,10 @@ h4.decorating-formula-price {
 }
 
 
-
+/* no global class for wysiwyg content, trying a good bullet point global fix */
+.inner-content p + ul {
+  list-style-type: disc;
+}
 
 
 
