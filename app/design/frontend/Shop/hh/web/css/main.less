@@ -6815,18 +6815,6 @@ Mini Cart
       display: block;
       font-family: @baseFont;
       font-weight: normal;
-
-      /*
-      .product {
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        align-items: center;
-      }
-      */
       .product-item-details {
         margin-bottom: 10px;
       }
@@ -7899,8 +7887,10 @@ Account reviews
   }
 }
 
-.product-item-details .price-box {
-  margin-top: 10px;
+.product-item-details {
+  .price-box, h5 {
+    margin-top: 10px;
+  }
 }
 
 
