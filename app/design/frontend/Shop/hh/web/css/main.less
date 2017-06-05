@@ -7948,18 +7948,6 @@ h4.decorating-formula-price {
 }
 
 
-
-/* overriding ':' from styles-m */ 
-.product-info-main .old-price .price-label:after,
-.product-options-bottom .old-price .price-label:after,
-.product-info-main .special-price .price-label:after,
-.product-options-bottom .special-price .price-label:after {
-  content: '';
-}
-
-
-
-
   /* ===============================
   A little hacky solution for nav current page hightlights
   =================================*/
@@ -8274,6 +8262,24 @@ h4.decorating-formula-price {
 .inner-content p + ul {
   list-style-type: disc;
 }
+
+
+
+
+
+
+
+/* this isnt updating on dev!? */
+
+/* overriding ':' from styles-m */ 
+.product-info-main, .product-options-bottom {
+  .old-price .price-label, .special-price .price-label {
+    &:after {
+      content: none;
+    }
+  }
+}
+
 
 
 
