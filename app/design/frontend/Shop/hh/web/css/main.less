@@ -143,7 +143,6 @@ Common LESS
 /* Hover Effect */
 .hover-effect {
   .relative;
-
   &:before {
     content: '';
     position: absolute;
@@ -160,8 +159,8 @@ Common LESS
   }
 }
 
-
-@media (pointer: fine) {
+// removing hover effect for tablet double click
+@media (max-width: 992px) {
   .hover-effect:before {
     content: none;
   }
@@ -3790,9 +3789,6 @@ Cart Page
       max-width: 100%!important;
     }
   }
-  .product-item-photo img {
-    width: 100%!important;
-  }
   .product-reviews-summary {
     display: none;
   }
@@ -3809,8 +3805,12 @@ Cart Page
   .product-item-details .price-container {
       padding: 0!important;
   }
-
 }
+.noresults-products-text {
+  font-family: @baseFont;
+  text-align: center;
+}
+
 
 
 .customer-account-login, .customer-account-create, .customer-account-forgotpassword {
@@ -5741,7 +5741,7 @@ Catalog View
 .product-item-description {
   margin: 0;
   line-height: 18px;
-  p, div {
+  p {
     display: inline;
   }
 }
@@ -5777,6 +5777,20 @@ span.callout {
 
 .product-item-listing {
   margin-bottom: 30px;
+  .pro-detail-div {
+    img {
+      width: 100%;
+    }
+    .name {
+      margin-bottom: 5px;
+    }
+    .price-box {
+      margin-top: 5px;
+    }
+    .price {
+      margin-top: 0;
+    }
+  }
 }
 
 
@@ -5847,8 +5861,7 @@ span.callout {
   .product-item-photo {
     margin-bottom: 20px;
     overflow-y: hidden;
-
-    .image {
+    img {
       width: 100%;
     }
   }
@@ -5858,9 +5871,8 @@ span.callout {
   .price-container {
     margin-top: 5px;
   }
-/*
-}
-*/
+
+
 
 .product-qty {
   .styled-select {
@@ -5921,9 +5933,6 @@ Limiter
   margin-bottom: 15px;
 }
 
-.editor-product-img {
-  margin-bottom: 20px;
-}
 
 .category-thumb:hover .quickview-bar2,
 .product-item-details:hover .quickview-bar2,
@@ -6412,14 +6421,13 @@ Editors Details
     .editor-product {
       list-style: none;
       text-align: center;
+      margin-bottom: 30px;
       &:nth-child(4n+1) {
         clear: both;
       }
-
-      img {
-        margin-bottom: 10px;
+      .editor-product-img {
+        margin-bottom: 20px;
       }
-
       h4 {
         font-family: @fancyFont;
         font-size: 16px;
@@ -6804,18 +6812,6 @@ Mini Cart
       display: block;
       font-family: @baseFont;
       font-weight: normal;
-
-      /*
-      .product {
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -ms-flex-align: center;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        align-items: center;
-      }
-      */
       .product-item-details {
         margin-bottom: 10px;
       }
@@ -7888,8 +7884,10 @@ Account reviews
   }
 }
 
-.product-item-details .price-box {
-  margin-top: 10px;
+.product-item-details {
+  .price-box, h5 {
+    margin-top: 10px;
+  }
 }
 
 

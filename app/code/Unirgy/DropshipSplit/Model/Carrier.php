@@ -164,7 +164,7 @@ class Carrier extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
             foreach ($vRequests as $cCode=>$req) {
                 $vResult = $hlp->collectVendorCarrierRates($req);
                 $vRates = $vResult->getAllRates();
-                udDump($vRates, '$vRates$vRates');
+                //udDump($vRates, '$vRates$vRates');
                 foreach ($vRates as $rate) {
                     $wildcardUsed = false;
                     $hasVendorMethod = false;
