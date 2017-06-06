@@ -10,7 +10,7 @@
 $item = $block->getItem();
 $product = $item->getProduct();
 ?>
-<div class="col-md-9 col-sm-8 col-xs-9"> <!-- these divs are closed in cart.phtml -->
+<div class="col-md-9 col-sm-8 col-xs-9 wishlist-item-details"> <!-- these divs are closed in cart.phtml -->
   <div class="row">
     <strong class="col-md-5 col-sm-12 col-xs-12 product-item-name">
       <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($item) ?>" title="<?php echo $block->escapeHtml($product->getName()) ?>" class="product-item-link">
