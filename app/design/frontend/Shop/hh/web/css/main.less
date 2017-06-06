@@ -2059,16 +2059,13 @@ Social Login
     font-size: 30px;
     display: block;
     margin: 0 auto;
-    font-weight: normal!important;
     font-style: italic;
-
     span {
       display: block;
       font-size: 18px;
       margin-top: 8px;
-      font-family: @headlineFont;
+      font-family: @baseFont;
       font-style: normal;
-
     }
   }
     p {
@@ -2082,6 +2079,11 @@ Social Login
   .toolbar .limiter {
     display: block;
   }
+}
+.tags-toolbar a {
+  font-family: @headlineFont;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .filter-options-content {
@@ -7272,10 +7274,6 @@ Collection Page
   .main-nav {
     margin-bottom: 0;
   }
-  .category-image h2 span {
-    font-family: @baseFont;
-    font-weight: normal;
-  }
   .collection_item_view {
     .page-title {
       background: none;
@@ -7334,11 +7332,6 @@ Collection Page
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
-  }
-  .category-image {
-    h2 {
-      font-size: 34px;
-    }
   }
 }
 
