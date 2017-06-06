@@ -370,6 +370,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
     .editors-area {
 		margin-bottom: 30px;
+		.editors-area-wrap {
+			display: block;
+		}
 		
 		.editors-pick, .editor-guest-image, .guest-editor {
 			min-height: 480px;
@@ -423,10 +426,14 @@ Tablet Portrait size to standard 1024 (devices and browsers)
   		}
   }
 
+  	.shot-thumb {
+  		box-shadow: none;
+  	}
 	.shot-thumb .shot-thumb-meta {
 		-webkit-transform: translate(-50%, -50%) scale(1);
 		transform: translate(-50%, -50%) scale(1);
 		transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		box-shadow: none;
 	}
 
 	.more-shots {
@@ -881,10 +888,7 @@ All small devices - till 768px
 	}
 
 	.shot-thumb {
-		margin: 0 0 5px;
-		&:last-child {
-			margin-bottom: 0;
-		}
+	//	margin: 0 0 5px;
 	}
 
 	/* ===============================
