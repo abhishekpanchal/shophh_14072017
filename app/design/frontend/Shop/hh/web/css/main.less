@@ -4751,9 +4751,6 @@ Hotspot Details
       font-family: @baseFont;
     }
   }
-  .main-nav {
-    margin-bottom: 0;
-  }
   .lookbookslider-top {
   }
   #progress {
@@ -4855,11 +4852,11 @@ Main Navigation
 .main-nav {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 40px;
   border-top: 2px solid #ccc;
   margin-top: -2px;
   position: relative;
   z-index: 1;
+  height: 54px;
 }
 
 .customer-name {
@@ -4869,6 +4866,16 @@ Main Navigation
 
 .navigation {
   background: transparent!important;
+}
+
+.fixed-navbar {
+  transition: 0.3s all;
+  width: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 56px;
+  background-color: #FFF;
 }
 
 /* ==========================================================================
@@ -5136,9 +5143,6 @@ Home Page
   .container-fluid {
     padding: 0;
     width: 100%;
-  }
-  .main-nav {
-    margin-bottom: 0;
   }
   .magazine_list_view {
     margin: 40px auto;
@@ -5624,22 +5628,7 @@ Home Page
 }
 
 
-/* ==========================================================================
-Navigation
-========================================================================== */
-.main-nav {
-  height: 54px;
-}
 
-.fixed-navbar {
-  transition: 0.3s all;
-  width: 100%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 56px;
-  background-color: #FFF;
-}
 
 
 
@@ -5796,9 +5785,6 @@ span.callout {
   .new-product {
     font-family: @headlineFont;
     font-weight: normal;
-  }
-  .main-nav {
-    margin-bottom: 0;
   }
   .filters {
     display: none;
@@ -7274,9 +7260,6 @@ Section Breadcrumb
 Collection Page
 ========================================================================== */
 .collection-index-view {
-  .main-nav {
-    margin-bottom: 0;
-  }
   .collection_item_view {
     .page-title {
       background: none;
