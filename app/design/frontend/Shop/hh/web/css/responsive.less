@@ -211,11 +211,12 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	#awemenu .am-tabs .am-tab.shop-menu a {
 		padding: 16px 20px;
+		white-space: nowrap;
 	}
 	#awemenu .am-tabs.am-tabs-root > .am-sortable > .am-tab > .am-dropdown {
 		width: 100vw;
 		padding: 0;
-		left: 15px;
+		left: 14px;
 	}
 	#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column {
 		width: 32.33333%;
@@ -225,12 +226,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		margin-left: 2%;
 		padding-left: 0;
 		width: 31.333333%;
+		margin-bottom: 10px;
 	}
 	.menu-three {
 		min-height: 300px;
 	}
 	.menu-img-meta {
-		padding-bottom: 40px;
+		padding-bottom: 10px;
 	}
 	#search_mini_form {
 		width: 80%;
@@ -561,6 +563,14 @@ Shop the Spot Desktop Responsive
 992px
 ========================================================================== */
 @media (max-width: 992px) {
+	#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column {
+		width: 28%;
+		&.menu-three {
+			width: 42%;
+		}
+	}
+
+
 	.account .inner-content .block-content .col-md-6 + .col-md-6 {
 		margin-top: 40px;
 	}
