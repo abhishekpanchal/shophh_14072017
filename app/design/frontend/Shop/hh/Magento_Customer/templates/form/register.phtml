@@ -164,8 +164,8 @@
 
             <?php if ($block->isNewsletterEnabled()): ?>
                 <div class="field choice newsletter">
-                    <input type="checkbox" name="is_subscribed" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
-                    <label for="is_subscribed" class="label"><span><?php /* @escapeNotVerified */ echo __('Add me to the Shop H&H Mailing List. (You may unsubscribe at any time)') ?></span></label>
+                    <input type="checkbox" name="is_subscribed2" title="<?php /* @escapeNotVerified */ echo __('Sign Up for Newsletter') ?>" value="1" id="is_subscribed2"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+                    <label for="is_subscribed2" class="label"><span><?php /* @escapeNotVerified */ echo __('Add me to the Shop H&H Mailing List. (You may unsubscribe at any time)') ?></span></label>
                 </div>
                 <?php /* Extensions placeholder */ ?>
                 <?php echo $block->getChildHtml('customer.form.register.newsletter')?>
