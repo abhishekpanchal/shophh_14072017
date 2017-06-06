@@ -756,7 +756,11 @@ Shop the Spot Desktop Responsive
 
 
 
-
+@media (min-width: 768px) and (max-width: 992px) {
+	.container {
+	//	width: auto;
+	}
+}
 
 
 
@@ -843,8 +847,14 @@ All small devices - till 768px
 		margin-left: 0;
 		margin-bottom: 20px;
 	}
+	.footer-col.col-md-2 {
+		width: 49%;
+	}
+	.border-left {
+		border-left: 2px solid #000;
+	}
 	.footer-subscribe {
-		margin-top: 0;
+		margin-top: 20px;
 		padding-left: 0;
 		text-align: center;
 		.text-right {
@@ -861,7 +871,7 @@ All small devices - till 768px
 		}
 	}
 	.footer-bottom {
-		margin: 40px 0 0;
+		margin: 20px 0 0;
 		padding: 0 15px;
 		text-align: center;
 	}
