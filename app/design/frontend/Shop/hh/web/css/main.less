@@ -1785,7 +1785,7 @@ Social Login
   }
 
   input[type="checkbox"] {
-    width: auto!important;
+    width: 14px;
   }
 
   .forgot-pass a {
@@ -4540,18 +4540,7 @@ Shot Slider
   margin-bottom: 40px!important;
 }
 
-.shot-products {
-  .product-item-info {
-    margin-bottom: 40px;
-  }
-  .product-info-main {
-    float: none;
-    text-align: center;
-  }
-  .pro-detail-div .price {
-    font-size: 14px;
-  }
-}
+
 
 /* ==========================================================================
 Products
@@ -4729,10 +4718,6 @@ Hotspot Details
     width: 160px;
     margin: 0 auto 25px;
   }
-}
-
-.shot-products {
-  margin-bottom: 50px;
 }
 
 
@@ -5784,6 +5769,7 @@ span.callout {
 
 .product-item-listing {
   margin-bottom: 30px;
+  text-align: center;
   .pro-detail-div {
     img {
       width: 100%;
@@ -6796,7 +6782,15 @@ Mini Cart
     padding: 0;
     border-color: #000;
   }
-
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;// you need to tweak this to make it available..
+    width: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    box-shadow: 0 0 1px rgba(255,255,255,.5);
+  }
 }
 
 .block-minicart .items-total {
@@ -6931,8 +6925,11 @@ Mini Cart
   text-transform: capitalize;
 }
 
-.minicart-wrapper.active .block-minicart {
-  border: 1px solid #000;
+.minicart-wrapper.active {
+  max-width: 93px;
+  .block-minicart {
+    border: 1px solid #000;
+  }
 }
 
 .block-minicart {
@@ -7948,18 +7945,6 @@ h4.decorating-formula-price {
 }
 
 
-
-/* overriding ':' from styles-m */ 
-.product-info-main .old-price .price-label:after,
-.product-options-bottom .old-price .price-label:after,
-.product-info-main .special-price .price-label:after,
-.product-options-bottom .special-price .price-label:after {
-  content: '';
-}
-
-
-
-
   /* ===============================
   A little hacky solution for nav current page hightlights
   =================================*/
@@ -8274,6 +8259,24 @@ h4.decorating-formula-price {
 .inner-content p + ul {
   list-style-type: disc;
 }
+
+
+
+
+
+
+
+/* this isnt updating on dev!? */
+
+/* overriding ':' from styles-m */ 
+.product-info-main, .product-options-bottom {
+  .old-price .price-label, .special-price .price-label {
+    &:after {
+      content: none;
+    }
+  }
+}
+
 
 
 

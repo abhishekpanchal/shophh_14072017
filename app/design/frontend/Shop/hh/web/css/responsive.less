@@ -154,7 +154,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
   Classes
   =================================*/
   .display-block-xs {
-    display: block!important;
+  //  display: block!important;
   }
   .center {
     text-align: center;
@@ -170,11 +170,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     margin: 0 auto;
   }
   .quickview-bar,
-  .quickview-bar2 {
+  .quickview-bar2,
+  .quickview-lookbook {
     .none;
   }
   .page-title, .page-title-small {
-    background: none;
+   // background: none;
+   	background-size: contain;
 
     span {
       padding: 0 15px;
@@ -439,60 +441,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
   }
   
   
-  /* ===============================
+  	/* ===============================
 	Shop the Spot
 	=================================*/
-	
-	.lookbook-container {
-		.homepage-hero, .mood-bg {
-			width: 100%;
-		}
-		.mood-bg {
-			background: none !important;
-			min-height: 0;
-		}
-	}
-	.hotspot-details {
-		margin: 0;
-		padding: 25px 10%;
-		box-shadow: none;
-		
-		.hotspot-details-placeholder {
-			width: 100%;
-		}
-		h5 {
-			display: none;
-		}
-		.btn-fullscreen {
-			display: inline-block;
-			margin-top: 10px;
-		}
-		
-		.image {
-			float: left;
-		}
-		h2 {
-			padding-top: 35px;
-		}
-		.pro-detail-div {
-			.actions-primary {
-				margin-top: 20px;
-			}
-			.hotspot-btn {
-				min-width: 25%;
-			}
-		}
-	}
-	.shot-products {
-		.marginbottom-40 {
-			margin-bottom: 0 !important;
-		}
-		.col-md-3 {
-			width: 50%;
-			float: left;
-		}
-	}
-	
+
 	.pro-detail-div img {
 		width: 100%;
 	}
@@ -510,6 +462,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			}
 		}
 	}
+
 	
 
 
@@ -571,7 +524,11 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 
-	
+
+
+	.footer-col.col-md-2 {
+		width: 16%;
+	}
 	
 }
 
@@ -624,6 +581,60 @@ Shop the Spot Desktop Responsive
 
 
 
+
+
+
+	/* ===============================
+	Shop the Shot
+	=================================*/
+	.lookbook-container .display-block-xs {
+		display: block;
+	}
+
+	.lookbook-container {
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+			min-height: 0;
+		}
+	}
+	.hotspot-details {
+		margin: 0;
+		padding: 25px 10%;
+		box-shadow: none;
+		
+		.hotspot-details-placeholder {
+			width: 116%;
+			margin-top: -4%;
+		}
+		h5 {
+			display: none;
+		}
+		.btn-fullscreen {
+			display: inline-block;
+			margin-top: 10px;
+		}
+		
+		.image {
+			float: left;
+			margin-right: 30px;
+		}
+		h2 {
+			padding-top: 35px;
+		}
+		.pro-detail-div {
+			.actions-primary {
+				margin-top: 20px;
+			}
+			.hotspot-btn {
+				min-width: 25%;
+			}
+		}
+	}
+
+
 	/* ===============================
 	Product Page
 	=================================*/
@@ -672,6 +683,9 @@ Shop the Spot Desktop Responsive
 	}
 
 
+
+
+
 	.footer-subscribe {
 		padding: 0;
 		margin-top: 40px;
@@ -687,6 +701,9 @@ Shop the Spot Desktop Responsive
 	}
 	.footer-social {
 		margin-top: 30px;
+	}
+	.footer-col.col-sm-3 {
+		width: 24.5%;
 	}
 }
 
