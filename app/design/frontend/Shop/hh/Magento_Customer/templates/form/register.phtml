@@ -22,7 +22,7 @@
 
     <form class="form create account form-create-account" action="<?php /* @escapeNotVerified */ echo $block->getPostActionUrl() ?>" method="post" id="form-validate" enctype="multipart/form-data" autocomplete="off">
         <fieldset class="fieldset create info">
-            <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign Up Now') ?></span></legend><br>
+            <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Sign Up Now') ?></span></legend>
             <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('sign_up_text')->toHtml();?>
             <input type="hidden" name="success_url" value="<?php /* @escapeNotVerified */ echo $block->getSuccessUrl() ?>">
             <input type="hidden" name="error_url" value="<?php /* @escapeNotVerified */ echo $block->getErrorUrl() ?>">
@@ -46,7 +46,7 @@
         </fieldset>
         <?php if ($block->getShowAddressFields()): ?>
             <fieldset class="fieldset address">
-                <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Address Information') ?></span></legend><br>
+                <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Address Information') ?></span></legend>
                 <input type="hidden" name="create_address" value="1" />
                 <div class="field company">
                     <label for="company" class="label"><span><?php /* @escapeNotVerified */ echo __('Company') ?></span></label>
