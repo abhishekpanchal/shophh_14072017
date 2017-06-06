@@ -127,6 +127,7 @@ define([
                 addToCartButton.removeClass(self.options.addToCartButtonDisabledClass);
                 addToCartButton.find('span').text(addToCartButtonTextDefault);
                 addToCartButton.attr('title', addToCartButtonTextDefault);
+                $('.action.showcart').trigger('click');
             }, 1000);
         }
     });
