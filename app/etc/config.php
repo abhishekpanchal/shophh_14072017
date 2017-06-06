@@ -129,8 +129,6 @@ return array (
     'Mageplaza_SocialLogin' => 1,
     'Magestore_Giftvoucher' => 1,
     'MagicToolbox_MagicZoomPlus' => 1,
-    'RebelShipper_CanadaPost' => 1,
-    'RebelShipper_Purolator' => 1,
     'Sebwite_Sidebar' => 1,
     'Unirgy_Dropship' => 1,
     'Unirgy_DropshipBatch' => 1,
