@@ -459,6 +459,10 @@ Reviews
 /* ==========================================================================
 Page Title
  ========================================================================== */
+.page-title {
+  margin-top: 40px;
+}
+
 .page-title,
 .page-title-small {
   background: url(../images/shop-keyline-faded-center.png) no-repeat center;
@@ -467,7 +471,6 @@ Page Title
   font-style: italic;
   text-transform: none;
   display: inline;
-  margin-top: 0;
   display: block;
   text-align: center;
   margin-bottom: 0;
@@ -574,7 +577,9 @@ Product Description
 Products
 ========================================================================== */
 .catalog-product-view {
-
+  header.header {
+    margin-bottom: 40px;
+  }
   .product.media img:hover {
     opacity: 1 !important;
   }
@@ -897,6 +902,9 @@ input:active {
   font-size: 14px;
   margin: 0!important;
   float: none;
+  & + p {
+    margin-top: 20px;
+  }
 }
 
 .fieldset > .field {
@@ -1255,7 +1263,7 @@ Dashboard Fixes
 }
 
 .customer-account-create .social-login-authentication-channel {
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 
@@ -1472,7 +1480,7 @@ Quick View
     font-size: 17px;
   }
   .action.primary {
-    padding: 10px 25px !important;
+    padding: 10px 25px;
   }
 }
 
@@ -1506,6 +1514,9 @@ Cart
   }
 }
 .checkout-cart-index {
+  .page-title {
+    margin-bottom: 20px;
+  }
   .cart-container {
     margin-top: 2em;
   }
@@ -1520,6 +1531,7 @@ Cart
       font-family: @fancyFont;
       font-size: 20px;
       font-style: italic;
+      letter-spacing: .05em;
     }
     .cart-item-details {
       margin-top: 1.5em;
@@ -1565,6 +1577,9 @@ Cart
       a:not(:first-child):before {
         content: "  |  ";
       }
+    }
+    .qty {
+      text-align: right;
     }
     .cart-qty-wrapper {
       border: 1px solid black;
@@ -1632,6 +1647,29 @@ Cart
   }
   .cart-summary {
     top: 0px !important;
+    strong {
+      font-family: @headlineFont;
+    }
+    .block {
+      .title {
+        &:after {
+          font-family: FontAwesome; 
+          content: "\f067";
+          font-size: 1em;
+          right: 10px;
+        }
+      }
+    }
+    .block.active {
+      .title {
+        &:after {
+          font-family: FontAwesome; 
+          content: "\f00d";
+          font-size: 1em;
+          right: 10px;
+        }
+      }
+    }
     .mark {
       background: #f5f5f5;
       font-family: @headlineFont;
@@ -1641,6 +1679,17 @@ Cart
     .price {
       font-family: @fancyFont;
       font-size: 16px;
+    }
+    tr.grand.totals {
+      td.amount {
+        span.price::after {
+          content: "CAD";
+          display: block;
+          color: #8d8d8d;
+          font-family: @headlineFont;
+          font-size: 12px;
+        }
+      }
     }
     strong > .price {
       font-size: 30px;
@@ -1652,10 +1701,57 @@ Cart
       content: "\f105 ";
       float: right;
     }
+    #shipping-zip-form {
+      .note {
+        display: none;
+      }
+      select[name="country_id"] {
+        option:not([value="CA"]):not([value="US"]):not([value=""]) {
+          display: none;
+        }
+      }
+      label {
+        span {
+          font-weight: normal;
+        }
+      }
+      .message.warning {
+        font-size: 1em;
+      }
+    }
+    #co-shipping-method-form {
+      label {
+        white-space: normal;
+      }
+      .item-options {
+        font-weight: normal;
+        dt {
+          margin-bottom: 5px;
+        }
+        input {
+          display: inline;
+        }
+        label {
+          font-weight: normal;
+        }
+      }
+    }
+    #discount-coupon-form {
+      input {
+        width: 60%;
+      }
+      .cart-promo {
+        button {
+          padding: 5px 15px;
+          font-style: italic;
+        }
+      }
+    }
   }
   .crosssell {
     .page-title {
-      margin-bottom: 1.5em;
+      margin-top: 50px;
+      margin-bottom: 0.5em;
     }
   }
   .cart-related {
@@ -2059,16 +2155,13 @@ Social Login
     font-size: 30px;
     display: block;
     margin: 0 auto;
-    font-weight: normal!important;
     font-style: italic;
-
     span {
       display: block;
       font-size: 18px;
       margin-top: 8px;
-      font-family: @headlineFont;
+      font-family: @baseFont;
       font-style: normal;
-
     }
   }
     p {
@@ -2082,6 +2175,11 @@ Social Login
   .toolbar .limiter {
     display: block;
   }
+}
+.tags-toolbar a {
+  font-family: @headlineFont;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .filter-options-content {
@@ -3021,10 +3119,6 @@ Checkout
   min-width: 100%!important;
 }
 
-.MagicScroll-horizontal .mcs-bullets {
-  display: none !important;
-}
-
 
 .main-content {
   margin-bottom: 60px;
@@ -3921,14 +4015,7 @@ Cart Page
 }
 
 
-.form-wishlist-items {
-  .product-item-comment {
-    display: none;
-  }
-  .product-item-actions {
-    display: none;
-  }
-}
+
 
 
 .wishlist-index-index .products-grid .product-item {
@@ -4746,9 +4833,6 @@ Hotspot Details
       font-family: @baseFont;
     }
   }
-  .main-nav {
-    margin-bottom: 0;
-  }
   .lookbookslider-top {
   }
   #progress {
@@ -4850,11 +4934,11 @@ Main Navigation
 .main-nav {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 40px;
   border-top: 2px solid #ccc;
   margin-top: -2px;
   position: relative;
   z-index: 1;
+  height: 54px;
 }
 
 .customer-name {
@@ -4864,6 +4948,16 @@ Main Navigation
 
 .navigation {
   background: transparent!important;
+}
+
+.fixed-navbar {
+  transition: 0.3s all;
+  width: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 56px;
+  background-color: #FFF;
 }
 
 /* ==========================================================================
@@ -5131,9 +5225,6 @@ Home Page
   .container-fluid {
     padding: 0;
     width: 100%;
-  }
-  .main-nav {
-    margin-bottom: 0;
   }
   .magazine_list_view {
     margin: 40px auto;
@@ -5409,7 +5500,7 @@ Home Page
             height: 22px;
             background: url(../images/quote-close-white.png);
             position: absolute;
-            z-index: 9999;
+            z-index: 9;
             background-repeat: no-repeat;
           }
         }
@@ -5531,7 +5622,7 @@ Home Page
       left: 0;
       right: 20px;
       margin: 0 auto;
-      z-index: 100;
+      z-index: 9;
 
       .carousel-indicators {
         position: absolute;
@@ -5619,22 +5710,7 @@ Home Page
 }
 
 
-/* ==========================================================================
-Navigation
-========================================================================== */
-.main-nav {
-  height: 54px;
-}
 
-.fixed-navbar {
-  transition: 0.3s all;
-  width: 100%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 56px;
-  background-color: #FFF;
-}
 
 
 
@@ -5669,6 +5745,7 @@ Select
   position: relative;
   font-size: 12px;
   font-family: @headlineFont;
+  white-space: nowrap;
 
   &:after {
     content: "\f104";
@@ -5791,9 +5868,6 @@ span.callout {
   .new-product {
     font-family: @headlineFont;
     font-weight: normal;
-  }
-  .main-nav {
-    margin-bottom: 0;
   }
   .filters {
     display: none;
@@ -6275,7 +6349,7 @@ Editos Main Page
           height: 22px;
           background: url(../images/quote-close-grey.png);
           position: absolute;
-          z-index: 9999;
+          z-index: 9;
           background-repeat: no-repeat;
         }
       }
@@ -7092,6 +7166,8 @@ Social Login
 /* ==========================================================================
 Search
 ========================================================================== */
+
+/*
 .catalogsearch-result-index {
   .product-item-details {
     text-align: center;
@@ -7105,7 +7181,7 @@ Search
     }
   }
 }
-
+*/
 
 .main-breadcrumb {
   margin-top: 10px;
@@ -7269,13 +7345,6 @@ Section Breadcrumb
 Collection Page
 ========================================================================== */
 .collection-index-view {
-  .main-nav {
-    margin-bottom: 0;
-  }
-  .category-image h2 span {
-    font-family: @baseFont;
-    font-weight: normal;
-  }
   .collection_item_view {
     .page-title {
       background: none;
@@ -7334,11 +7403,6 @@ Collection Page
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
-  }
-  .category-image {
-    h2 {
-      font-size: 34px;
-    }
   }
 }
 
@@ -7712,9 +7776,6 @@ Account reviews
   .toolbar-sorter {
     width: 17%;
     min-width: 180px;
-    .styled-select .sorter-options {
-      width: 75%;
-    }
   }
 }
 
@@ -8031,34 +8092,19 @@ h4.decorating-formula-price {
   Wishlist page
   =================================*/
 
-
-
 .wishlist-index-index {
   .products-grid {
     display: block;
-    .product-items {
-      border-top: 1px solid #ababab;
-      border-bottom: 1px solid #ababab;
-      margin: 20px 0 !important;
-      padding: 30px 0;
-    }
     .product-item {
-      float: none;
-      display: block;
       width: 100% !important;
-      overflow: auto;
-      margin: 0;
     }
   }
   .products-grid.wishlist {
     .product-item-photo {
       float: left;
       width: 140px;
-      margin-right: 30px;
-      margin-top: -24px;
     }
     .product-item-name {
-      margin-bottom: 10px;
       a {
         font-size: 20px;
         font-family: @fancyFont;
@@ -8072,19 +8118,60 @@ h4.decorating-formula-price {
     color: #000;
     font-size: 18px;
     font-family: @fancyFont;
+    font-weight: normal;
   }
-  .product-item-inner {
-    overflow: auto;
+  .wishlist-item-details {
+    margin-top: 10px;
+  }
+  .wishlist-qty-container {
+    border: 1px solid black;
+    width: 75px;
+    padding: 7px 2px;
+    display: inline;
+    label span {
+      text-transform: uppercase!important; /*fighting important with important */
+    }
+    input {
+      background-color: #fff;
+      display: inline;
+      margin: 0;
+      padding: 0;
+      width: 40px;
+    }
+    .wishlist-item-qty {
+      height: 0.9rem;
+      width: 40px;
+      border: 0;
+      &:focus {
+        outline: none;
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    }
+  }
+  .product-item-info {
+    .wishlist-item-remove {
+      text-decoration: none;
+      color: #AC2232;
+      float: right;
+      padding: 0 5px;
+      font-size: 1.8rem;
+    }
+  }
     .product-item-actions {
       display: block;
       float: left;
       a {
         background: none;
-        text-transform: uppercase;
-        color: #000;
-        font-family: @headlineFont;
-        font-size: 12px;
         text-decoration: none;
+        span {
+          text-transform: uppercase;
+          color: #000;
+          font-family: @headlineFont;
+          font-size: 12px;
+          font-weight: 600;
+        }
         white-space: nowrap;
         height: auto;
         line-height: 16px;
@@ -8098,23 +8185,6 @@ h4.decorating-formula-price {
         }
       }
     }
-    .box-tocart {
-      float: right;
-      margin-top: -30px;
-      .action.primary {
-        background: none;
-        border: 0;
-        color: #000;
-        text-transform: uppercase;
-        font-style: normal !important;
-        font-family: @headlineFont !important;
-        padding: 0;
-        span {
-          font-size: 12px;
-        }
-      }
-    }
-  }
   .products-grid + .actions-toolbar {
     button.update {
       display: none;
@@ -8135,6 +8205,11 @@ h4.decorating-formula-price {
       border: 0;
       font-family: @headlineFont;
       text-transform: uppercase;
+    }
+  }
+  .form-wishlist-items {
+    .product-item-comment {
+      display: none;
     }
   }
 }
