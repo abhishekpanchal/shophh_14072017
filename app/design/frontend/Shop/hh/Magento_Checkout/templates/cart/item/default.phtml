@@ -87,7 +87,8 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
           <?php /* @escapeNotVerified */ echo __("What's this?"); ?>
         </a>
         <?php else: ?>
-        <span><?php echo "$" . $product->getFinalPrice(); ?> ea.</span>
+        <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+        <span><?php echo $abstractProductBlock->getProductPrice($product) ?></span>
         <?php endif; ?>
         <?php if ($_options = $block->getOptionList()):?>
         <?php foreach ($_options as $_option) : ?>
