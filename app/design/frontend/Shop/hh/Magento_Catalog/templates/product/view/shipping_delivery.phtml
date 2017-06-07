@@ -20,6 +20,6 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                 echo 'This item is shippable to the US <br />';
 }
 if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')) != '')
-	echo 'This product ships from '. ' within '.strip_tags($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')); 
+	echo 'This product ships from '.$this->helper('Unirgy\Dropship\Helper\Data')->getVendorName($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getUdropshipVendor(), 'udropship_vendor')). ' within '.strip_tags($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')); 
 
 ?>
