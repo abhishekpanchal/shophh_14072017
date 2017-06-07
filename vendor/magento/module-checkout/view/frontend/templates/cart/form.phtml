@@ -22,7 +22,7 @@
       <?php endforeach ?>
     </div>
         <?php if ($block->getContinueShoppingUrl()): ?>
-            <a ;ref="<?php echo $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
+            <a href="<?php echo $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
                title="<?php echo $block->escapeHtml(__('Continue Shopping')); ?>">
                 <span class="cart-continue"><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span>
             </a>
