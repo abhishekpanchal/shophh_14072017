@@ -1517,10 +1517,10 @@ Cart
   .page-title {
     margin-bottom: 20px;
   }
-  .cart-container {
-    margin-top: 2em;
-  }
   .cart {
+    .cart-container {
+      margin-top: 2em;
+    }
     .cart-item {
       margin-bottom: 2em;
     }
@@ -1538,10 +1538,19 @@ Cart
       font-family: @headlineFont;
       font-size: 12px;
       color: #8d8d8d;
-      span {
-        padding: 2px;
+      .price-container .price {
+        font-size: 12px;
       }
-      span:not(:last-child):after {
+      .price-box.price-final_price {
+        display: inline;
+        .price-label {
+          display: none;
+        }
+        #old-price-1:before {
+          content: "was ";
+        }
+      }
+      span:not(:last-child):not([class*="price"]):after {
         content: " | ";
       }
       display: block;
@@ -1615,6 +1624,7 @@ Cart
     .cart-subtotal, .cart-vendor {
       display: none;
     }
+    border-bottom: 1px solid #8d8d8d;
   }
 
   .cart-continue {
@@ -1747,7 +1757,15 @@ Cart
         }
       }
     }
+    
   }
+  .customer-service {
+      margin-top: 3em;
+      padding: 0 10px;
+      font-family: @headlineFont;
+      font-size: 14px;
+      color: #8d8d8d;
+    }
   .crosssell {
     .page-title {
       margin-top: 50px;
