@@ -622,6 +622,9 @@ Shop the Spot Desktop Responsive
 			min-height: 0;
 		}
 	}
+	.lookbook-main .lookbook-container {
+		margin-bottom: 0;
+	}
 	.hotspot-details {
 		margin: 0;
 		padding: 25px 10%;
@@ -630,9 +633,6 @@ Shop the Spot Desktop Responsive
 		.hotspot-details-placeholder {
 			width: 116%;
 			margin-top: -4%;
-		}
-		h5 {
-			display: none;
 		}
 		.btn-fullscreen {
 			display: inline-block;
@@ -752,13 +752,6 @@ Shop the Spot Desktop Responsive
 
 
 
-
-
-@media (min-width: 768px) and (max-width: 992px) {
-	.container {
-	//	width: auto;
-	}
-}
 
 
 
@@ -931,9 +924,15 @@ All small devices - till 768px
 		}
 	}
 
-	.shot-thumb {
-	//	margin: 0 0 5px;
+	
+
+	/* ===============================
+	Shop the Spot
+	=================================*/
+	.hotspot-details h1 {
+		font-size: 24px;
 	}
+
 
 	/* ===============================
 	Editors
@@ -1083,6 +1082,53 @@ All small devices - till 768px
 
 
 
+
+/* ==========================================================================
+Somewhere in between
+========================================================================== */
+@media  (max-width: 680px) {
+	/* ===============================
+	Shop the Shot
+	=================================*/
+	.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+		width: 100%;
+		.shot-thumb {
+			margin: 0 0 5px;
+		}
+	}
+
+
+	/* ===============================
+	Editors
+	=================================*/
+	.editor-index-index {
+		guest-editor-top {
+			margin-bottom: 0;
+		}
+		.vcenter-flex.display-block-xs {
+			display: block !important;
+		}
+		.guest-editor {
+			width: 90%;
+			margin: 0 auto;
+			float: none;
+			position: relative;
+			top: -30px;
+			.guest-editor-details {
+				border: 0;
+				margin: 0;
+				padding: 0;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
 /* ==========================================================================
 Extra Small Screens
 ========================================================================== */
@@ -1212,6 +1258,7 @@ Extra Small Screens
 			width: 100%;
 		}
 	}
+
 
 
 	/* ===============================
