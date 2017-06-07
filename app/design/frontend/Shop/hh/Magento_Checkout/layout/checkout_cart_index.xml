@@ -173,13 +173,20 @@
                                     </argument>
                                 </arguments>
                             </block>
-                                                        <block class="Magento\Checkout\Block\Cart\Coupon" name="checkout.cart.coupon" as="coupon" template="cart/coupon.phtml"/>
+                            <block class="Magento\Checkout\Block\Cart\Coupon" name="checkout.cart.coupon" as="coupon" template="cart/coupon.phtml"/>
                             <block class="Magento\Checkout\Block\Cart" name="checkout.cart.methods.bottom" template="cart/methods.phtml">
                                 <container name="checkout.cart.methods" as="methods" label="Payment Methods After Checkout Button">
                                     <block class="Magento\Checkout\Block\Onepage\Link" name="checkout.cart.methods.onepage.bottom" template="onepage/link.phtml" />
                                     <block class="Magento\Checkout\Block\QuoteShortcutButtons" name="checkout.cart.shortcut.buttons" />
                                 </container>
                             </block>
+                            <container name="cart.customer.service" htmlTag="div" htmlClass="customer-service" after="cart.summary">
+                                <block class="Magento\Cms\Block\Block" name="customer.service.cart" after="-">
+                                    <arguments>
+                                        <argument name="block_id" xsi:type="string">cart-customer-service</argument>
+                                    </arguments>
+                                </block>
+                            </container>
                         </container>
                         <container name="cart.item.form" htmlTag="div" htmlClass="cart-form" after="-">
 	                        <block class="Magento\Checkout\Block\Cart" name="checkout.cart.form" as="cart-items" template="cart/form.phtml" after="cart.summary">
