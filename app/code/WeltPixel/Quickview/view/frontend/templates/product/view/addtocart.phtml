@@ -70,7 +70,6 @@
                 if (!validationErrorMoved) {
                     $('.swatch-attribute').each(function() {
                         var attrId = $(this).attr('attribute-id');
-                        alert(attrId);
                         var validationElement = $('input[name="super_attribute['+attrId+']"]').get(0);
                         $(validationElement).appendTo(this);
                     });
