@@ -1,1 +1,25 @@
-<?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery') ?>
+<?php 
+if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) != '')
+	echo 'This item has a restocking fee of ' . $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getRestockingFee(), 'restocking_fee').'<br />';
+switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) {
+	case 'Y':
+	case '1':
+	case 'Yes':
+		echo 'This item is finale sale <br />';
+}
+switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getReturnable(), 'returnable')) {
+        case 'Y':
+	case '1':
+        case 'Yes':
+                echo 'This item is returnable <br />';
+}
+switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippableUsa(), 'shippable_usa')) {
+        case 'Y':
+	case '1':
+        case 'Yes':
+                echo 'This item is shippable to the US <br />';
+}
+if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')) != '')
+	echo 'This product ships from '. ' within '.strip_tags($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')); 
+
+?>
