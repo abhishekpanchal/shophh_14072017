@@ -87,8 +87,12 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
           <?php /* @escapeNotVerified */ echo __("What's this?"); ?>
         </a>
         <?php else: ?>
-        <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-        <span><?php echo $abstractProductBlock->getProductPrice($product) ?></span>
+          <?php if ($_options = $block->getOptionList()):?>
+            <span><?php echo $block->getUnitPriceHtml($_item); ?></span>
+          <?php else: ?>
+            <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+            <span><?php echo $abstractProductBlock->getProductPrice($product) ?></span>
+          <?php endif; ?>
         <?php endif; ?>
         <?php if ($_options = $block->getOptionList()):?>
         <?php foreach ($_options as $_option) : ?>
@@ -106,9 +110,18 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       <span class="cart-item-sku">
         SKU: <?php /* @escapeNotVerified */ echo $_item->getSku() ?>
       </span>
-      <span class="cart-item-shipping">
-        Ships in approximately 10 business days*
-      </span>
+      <?php $overrideHelper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
+      <?php $custProd = $overrideHelper->getLoadProduct($product->getId()); ?>
+      <?php 
+      /*echo "<pre>";
+      print_r($custProd->getData());
+      echo "</pre>";*/
+      ?>
+      <?php if($custProd->getShipWarehouse()): ?>
+        <span class="cart-item-shipping">
+          <?php echo $custProd->getShipWarehouse(); ?>
+        </span>
+      <?php endif; ?>
       <div class="cart-item-actions">
         <?php /* @escapeNotVerified */ echo $block->getActions($_item) ?>
       </div>
