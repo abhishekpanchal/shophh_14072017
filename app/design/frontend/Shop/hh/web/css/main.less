@@ -459,6 +459,10 @@ Reviews
 /* ==========================================================================
 Page Title
  ========================================================================== */
+.page-title {
+  margin-top: 40px;
+}
+
 .page-title,
 .page-title-small {
   background: url(../images/shop-keyline-faded-center.png) no-repeat center;
@@ -467,7 +471,6 @@ Page Title
   font-style: italic;
   text-transform: none;
   display: inline;
-  margin-top: 0;
   display: block;
   text-align: center;
   margin-bottom: 0;
@@ -574,7 +577,9 @@ Product Description
 Products
 ========================================================================== */
 .catalog-product-view {
-
+  header.header {
+    margin-bottom: 40px;
+  }
   .product.media img:hover {
     opacity: 1 !important;
   }
@@ -897,6 +902,9 @@ input:active {
   font-size: 14px;
   margin: 0!important;
   float: none;
+  & + p {
+    margin-top: 20px;
+  }
 }
 
 .fieldset > .field {
@@ -1255,7 +1263,7 @@ Dashboard Fixes
 }
 
 .customer-account-create .social-login-authentication-channel {
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 
@@ -2147,16 +2155,13 @@ Social Login
     font-size: 30px;
     display: block;
     margin: 0 auto;
-    font-weight: normal!important;
     font-style: italic;
-
     span {
       display: block;
       font-size: 18px;
       margin-top: 8px;
-      font-family: @headlineFont;
+      font-family: @baseFont;
       font-style: normal;
-
     }
   }
     p {
@@ -2170,6 +2175,11 @@ Social Login
   .toolbar .limiter {
     display: block;
   }
+}
+.tags-toolbar a {
+  font-family: @headlineFont;
+  text-transform: uppercase;
+  font-size: 12px;
 }
 
 .filter-options-content {
@@ -3107,10 +3117,6 @@ Checkout
 .MagicScroll.MagicScroll-horizontal {
   /*min-width: 450px!important;*/
   min-width: 100%!important;
-}
-
-.MagicScroll-horizontal .mcs-bullets {
-  display: none !important;
 }
 
 
@@ -4827,9 +4833,6 @@ Hotspot Details
       font-family: @baseFont;
     }
   }
-  .main-nav {
-    margin-bottom: 0;
-  }
   .lookbookslider-top {
   }
   #progress {
@@ -4931,11 +4934,11 @@ Main Navigation
 .main-nav {
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  margin-bottom: 40px;
   border-top: 2px solid #ccc;
   margin-top: -2px;
   position: relative;
   z-index: 1;
+  height: 54px;
 }
 
 .customer-name {
@@ -4945,6 +4948,16 @@ Main Navigation
 
 .navigation {
   background: transparent!important;
+}
+
+.fixed-navbar {
+  transition: 0.3s all;
+  width: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 56px;
+  background-color: #FFF;
 }
 
 /* ==========================================================================
@@ -5212,9 +5225,6 @@ Home Page
   .container-fluid {
     padding: 0;
     width: 100%;
-  }
-  .main-nav {
-    margin-bottom: 0;
   }
   .magazine_list_view {
     margin: 40px auto;
@@ -5490,7 +5500,7 @@ Home Page
             height: 22px;
             background: url(../images/quote-close-white.png);
             position: absolute;
-            z-index: 9999;
+            z-index: 9;
             background-repeat: no-repeat;
           }
         }
@@ -5612,7 +5622,7 @@ Home Page
       left: 0;
       right: 20px;
       margin: 0 auto;
-      z-index: 100;
+      z-index: 9;
 
       .carousel-indicators {
         position: absolute;
@@ -5700,22 +5710,7 @@ Home Page
 }
 
 
-/* ==========================================================================
-Navigation
-========================================================================== */
-.main-nav {
-  height: 54px;
-}
 
-.fixed-navbar {
-  transition: 0.3s all;
-  width: 100%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  height: 56px;
-  background-color: #FFF;
-}
 
 
 
@@ -5750,6 +5745,7 @@ Select
   position: relative;
   font-size: 12px;
   font-family: @headlineFont;
+  white-space: nowrap;
 
   &:after {
     content: "\f104";
@@ -5872,9 +5868,6 @@ span.callout {
   .new-product {
     font-family: @headlineFont;
     font-weight: normal;
-  }
-  .main-nav {
-    margin-bottom: 0;
   }
   .filters {
     display: none;
@@ -6356,7 +6349,7 @@ Editos Main Page
           height: 22px;
           background: url(../images/quote-close-grey.png);
           position: absolute;
-          z-index: 9999;
+          z-index: 9;
           background-repeat: no-repeat;
         }
       }
@@ -7173,6 +7166,8 @@ Social Login
 /* ==========================================================================
 Search
 ========================================================================== */
+
+/*
 .catalogsearch-result-index {
   .product-item-details {
     text-align: center;
@@ -7186,7 +7181,7 @@ Search
     }
   }
 }
-
+*/
 
 .main-breadcrumb {
   margin-top: 10px;
@@ -7350,13 +7345,6 @@ Section Breadcrumb
 Collection Page
 ========================================================================== */
 .collection-index-view {
-  .main-nav {
-    margin-bottom: 0;
-  }
-  .category-image h2 span {
-    font-family: @baseFont;
-    font-weight: normal;
-  }
   .collection_item_view {
     .page-title {
       background: none;
@@ -7415,11 +7403,6 @@ Collection Page
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
-  }
-  .category-image {
-    h2 {
-      font-size: 34px;
-    }
   }
 }
 
@@ -7793,9 +7776,6 @@ Account reviews
   .toolbar-sorter {
     width: 17%;
     min-width: 180px;
-    .styled-select .sorter-options {
-      width: 75%;
-    }
   }
 }
 

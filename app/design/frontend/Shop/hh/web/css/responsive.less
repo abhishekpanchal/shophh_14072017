@@ -211,11 +211,12 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	#awemenu .am-tabs .am-tab.shop-menu a {
 		padding: 16px 20px;
+		white-space: nowrap;
 	}
 	#awemenu .am-tabs.am-tabs-root > .am-sortable > .am-tab > .am-dropdown {
 		width: 100vw;
 		padding: 0;
-		left: 15px;
+		left: 14px;
 	}
 	#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column {
 		width: 32.33333%;
@@ -225,12 +226,13 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 		margin-left: 2%;
 		padding-left: 0;
 		width: 31.333333%;
+		margin-bottom: 10px;
 	}
 	.menu-three {
 		min-height: 300px;
 	}
 	.menu-img-meta {
-		padding-bottom: 40px;
+		padding-bottom: 10px;
 	}
 	#search_mini_form {
 		width: 80%;
@@ -368,6 +370,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 
     .editors-area {
 		margin-bottom: 30px;
+		.editors-area-wrap {
+			display: block;
+		}
 		
 		.editors-pick, .editor-guest-image, .guest-editor {
 			min-height: 480px;
@@ -421,10 +426,14 @@ Tablet Portrait size to standard 1024 (devices and browsers)
   		}
   }
 
+  	.shot-thumb {
+  		box-shadow: none;
+  	}
 	.shot-thumb .shot-thumb-meta {
 		-webkit-transform: translate(-50%, -50%) scale(1);
 		transform: translate(-50%, -50%) scale(1);
 		transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		box-shadow: none;
 	}
 
 	.more-shots {
@@ -478,9 +487,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	=================================*/
 	.catalog-product-view {
 		.product-info-main .product-info-price {
-			margin-bottom: 0;
+		//	margin-bottom: 0;
 		}
 		.product-editors-pick {
+			display: none;
 			position: static;
 			clear: both;
 			margin-bottom: 10px;
@@ -492,7 +502,9 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			}
 		}
 	}
-
+	.MagicScroll-horizontal .mcs-bullets {
+		display: none !important;
+	}
 
 
 	
@@ -524,6 +536,10 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	}
 	
 
+
+	.notes-index-view .img-crop {
+		height: auto;
+	}
 
 
 	.footer-col.col-md-2 {
@@ -561,6 +577,14 @@ Shop the Spot Desktop Responsive
 992px
 ========================================================================== */
 @media (max-width: 992px) {
+	#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column {
+		width: 28%;
+		&.menu-three {
+			width: 42%;
+		}
+	}
+
+
 	.account .inner-content .block-content .col-md-6 + .col-md-6 {
 		margin-top: 40px;
 	}
@@ -666,13 +690,26 @@ Shop the Spot Desktop Responsive
 		margin-right: 0;
 	}
 
+	.collection-index-view, .lookbookslider-index-view {
+		.product-item-listing:nth-child(n+4) {
+			display: none;
+		}
+	}
+
 
 	/* ===============================
 	Product Detail
 	=================================*/
-	.catalog-product-view .product.info.detailed {
-		margin-left: -108%;
-		padding-top: 40px;
+	.catalog-product-view {
+		.product.info.detailed, .product-shop-the-shot {
+			margin-left: -108%;
+		}
+		.product.info.detailed {
+			padding-top: 90px;
+		}
+		.product-item-catalog:nth-child(n+4) {
+			display: none !important;
+		}
 	}
 	#product-review-container {
 		margin-left: -15px;
@@ -683,6 +720,14 @@ Shop the Spot Desktop Responsive
 	}
 
 
+
+
+
+
+	.cms-about-us .test {
+		display: block;
+		margin: 0 auto;
+	}
 
 
 
@@ -711,7 +756,11 @@ Shop the Spot Desktop Responsive
 
 
 
-
+@media (min-width: 768px) and (max-width: 992px) {
+	.container {
+	//	width: auto;
+	}
+}
 
 
 
@@ -745,6 +794,10 @@ All small devices - till 768px
 	.quickview-bar,
 	.quickview-bar2 {
 		.none;
+	}
+
+	.page-title {
+		font-size: 24px;
 	}
 	
 	.subtitle {
@@ -798,8 +851,14 @@ All small devices - till 768px
 		margin-left: 0;
 		margin-bottom: 20px;
 	}
+	.footer-col.col-md-2 {
+		width: 49%;
+	}
+	.border-left {
+		border-left: 2px solid #000;
+	}
 	.footer-subscribe {
-		margin-top: 0;
+		margin-top: 20px;
 		padding-left: 0;
 		text-align: center;
 		.text-right {
@@ -816,7 +875,7 @@ All small devices - till 768px
 		}
 	}
 	.footer-bottom {
-		margin: 40px 0 0;
+		margin: 20px 0 0;
 		padding: 0 15px;
 		text-align: center;
 	}
@@ -871,10 +930,7 @@ All small devices - till 768px
 	}
 
 	.shot-thumb {
-		margin: 0 0 5px;
-		&:last-child {
-			margin-bottom: 0;
-		}
+	//	margin: 0 0 5px;
 	}
 
 	/* ===============================
@@ -894,9 +950,29 @@ All small devices - till 768px
 	=================================*/
 
 	/* ===============================
-	Search Results
+	Search Results / Product Page Lists
 	=================================*/
-	
+	.main-breadcrumb {
+		margin-top: 0;
+	}
+	.catalogsearch-result-index .item.search strong {
+		font-size: 16px;
+	}
+	.product-item-details .product-item-link {
+		font-size: 13px;
+	}
+	.category-thumb, .product-item-photo, .product-item-name {
+		margin-bottom: 0;
+	}
+	.description p, span.callout {
+		font-size: 10px;
+	}
+	.price-container .price {
+		font-size: 12px;
+	}
+	.product-item-details .price-box, .product-item-details h5 {
+		margin-top: 0;
+	}
 }
 
 
