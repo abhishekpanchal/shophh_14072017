@@ -1,11 +1,17 @@
 <?php 
-if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) != '')
+if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) != '' && trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) != 'N' && trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) != 'No')
 	echo 'This item has a restocking fee of ' . $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getRestockingFee(), 'restocking_fee').'<br />';
 switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) {
 	case 'Y':
 	case '1':
 	case 'Yes':
-		echo 'This item is finale sale <br />';
+		echo 'This item is final sale <br />';
+}
+switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getCallForQuote(), 'call_for_quote')) {
+        case 'Y':
+        case '1':
+        case 'Yes':
+                echo 'This item is call for quote <br />';
 }
 switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getReturnable(), 'returnable')) {
         case 'Y':
