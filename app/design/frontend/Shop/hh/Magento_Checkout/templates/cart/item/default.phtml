@@ -108,20 +108,19 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       </span>
       <?php $overrideHelper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
       <?php $custProd = $overrideHelper->getLoadProduct($product->getId()); ?>
-      <?php 
-      /*echo "<pre>";
-      print_r($custProd->getData());
-      echo "</pre>";*/
-      ?>
       <?php if($custProd->getShipWarehouse()): ?>
         <span class="cart-item-shipping">
-          <?php echo $custProd->getShipWarehouse(); ?>
+          Ship in approximately <?php echo $custProd->getShipWarehouse(); ?>
+        </span>
+      <?php endif; ?>
+      <?php if($custProd->getCallForQuote()): ?>
+        <span class="call-for-quote">
+          Call or email for shipping quote. <a target="_blank" href="<?php echo $this->getUrl('shipping-information'); ?>">Get more info</a>
         </span>
       <?php endif; ?>
       <div class="cart-item-actions">
         <?php /* @escapeNotVerified */ echo $block->getActions($_item) ?>
       </div>
-
     </div>
   </div>
 </div>
