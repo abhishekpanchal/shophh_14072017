@@ -143,7 +143,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
       });
 
 
-
+      /*
       // Sidebar Navigation (CMS pages)
       $('ul.faq-sidebar, .sidebar ul').each(function() {
         var $select = $('<select />');
@@ -156,6 +156,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
         $(this).replaceWith($select);
       });
 
+
       // add current page as active
       $('.sidebar select option[value="'+ location.href +'"]').prop('selected', true) ;
 
@@ -163,6 +164,7 @@ require(['jquery', 'jquery.bootstrap'], function($){
       $('.sidebar select').change( function() {
         location.href = $(this).val();
       });
+      */
     }
 
 
@@ -275,6 +277,15 @@ require(['jquery', 'jquery.bootstrap'], function($){
     }
   );
 
+
+  // add to cart trigger dropdown
+  $("#product-addtocart-button").click(function(e) {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+      setTimeout(function(){
+      $('.action.showcart').trigger('click');
+    }, 1000);
+  });
+  
 
 
 
