@@ -161,7 +161,7 @@ Common LESS
 
 // removing hover effect for tablet double click
 @media (max-width: 992px) {
-  .hover-effect:before {
+  .hover-effect:before, .am-link-text:before {
     content: none;
   }
 }
@@ -2038,13 +2038,6 @@ Social Login
 }
 
 
-#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-link > a {
-  padding: 5px 20px!important;
-}
-
-#awemenu .am-tabs a {
-  font-family: @headlineFont;
-}
 
 .cms-page-view {
   .main-content {
@@ -4963,31 +4956,35 @@ Main Navigation
 /* ==========================================================================
 Awe Menu
  ========================================================================== */
-#awemenu .am-tabs .am-tab > a {
-  font-family: @headlineFont;
-  font-weight: normal;
-}
-
 #awemenu {
   margin: 0!important;
 
   .am-tabs a {
+    font-family: @headlineFont;
     padding: 10px 15px;
     line-height: 16px;
     text-transform: capitalize;
     position: relative;
     transition: 0.3s all;
     font-weight: normal; 
-
-    &:hover {
-    }
-
+  }
+  .am-tabs > .am-sortable {
+    float: none!important;
   }
 
   .am-tab-no-dropdown {
     a {
       text-transform: uppercase;
       font-size: 12px;
+    }
+  }
+
+  .am-tabs .am-tab .am-dropdown .am-row .am-column {
+    .am-item {
+      margin-bottom: 5px!important;
+    }
+    .am-link > a {
+      padding: 5px 20px!important;
     }
   }
 
@@ -5004,14 +5001,10 @@ Awe Menu
     -webkit-align-items: center;
     -webkit-box-align: center;
     align-items: center;
-
-
   }
 }
 
-#awemenu .am-tabs > .am-sortable {
-  float: none!important;
-}
+
 
 .inspiration-board {
   float: right!important;
@@ -5027,12 +5020,6 @@ Awe Menu
       color: #a30046;
     }
   }
-
-
-}
-
-#awemenu .am-tabs .am-tab .am-dropdown .am-row .am-column .am-item {
-  margin-bottom: 5px!important;
 }
 
 .menu-one {
