@@ -49,7 +49,10 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <div class="cart-qty-wrapper">
           <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
           <div class="styled-select">
-            <select class="input-text qty-select" name="qty" id="qty">
+            <select class="input-text qty-select" name="qty" id="qty" 
+                    onfocus='this.size=10;' 
+                    onblur='this.size=1;' 
+                    onchange='this.size=1; this.blur();'>
               <?php $stock = $customHelper->getProductStock($product,$_item->getSku()); ?>
               <?php if($stock > 40) { $stock = 40; } ?>
               <?php for($i=1; $i<=$stock; $i++){ ?>

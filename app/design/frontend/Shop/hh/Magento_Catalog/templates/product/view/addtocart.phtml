@@ -25,6 +25,12 @@
              title="<?php /* @escapeNotVerified */ echo __('Qty') ?>" class="input-text qty"
              data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
          />-->
+         <select class="input-text qty-select" 
+                 name="qty" 
+                 id="qty"
+                 onfocus='this.size=10;' 
+                 onblur='this.size=1;' 
+                 onchange='this.size=1; this.blur();'>
          <?php $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
          <?php $stock = $helper->getProductStock($_product); ?>
          <?php if($stock > 40) { $stock = 40; } ?>
