@@ -1590,10 +1590,10 @@ Cart
   .page-title {
     margin-bottom: 20px;
   }
-  .cart-container {
-    margin-top: 2em;
-  }
   .cart {
+    .cart-container {
+      margin-top: 2em;
+    }
     .cart-item {
       margin-bottom: 2em;
     }
@@ -1604,32 +1604,51 @@ Cart
       font-family: @fancyFont;
       font-size: 20px;
       font-style: italic;
-      letter-spacing: .05em;
     }
     .cart-item-details {
-      margin-top: 1.5em;
+      margin-top: 1em;
       font-family: @headlineFont;
       font-size: 12px;
       color: #8d8d8d;
-      span {
-        padding: 2px;
+      .price-container .price, .price-excluding-tax .price {
+        font-family: @headlineFont;
+        font-size: 12px;
       }
-      span:not(:last-child):after {
+      .price-box.price-final_price {
+        display: inline;
+        .price-label {
+          display: none;
+        }
+        #old-price-1:before {
+          content: "was ";
+        }
+      }
+      span:not(:last-child):not([class*="price"]):after {
         content: " | ";
       }
       display: block;
     }
-    .cart-item-sku {
+    .cart-item-sku, .cart-item-shipping {
       font-family: @headlineFont;
       font-size: 12px;
       color: #8d8d8d;
       display: block;
     }
-    .cart-item-shipping {
-      font-family: @headlineFont;
-      font-size: 12px;
-      color: #8d8d8d;
-      display: block;
+    .cart-item-shipping:before {
+      content: "This item ships in approximately ";
+    }
+    .call-for-quote {
+      color: #A42335;
+      a {
+        color: #A42335;
+        text-decoration: underline;
+      }
+      &:before {
+        font-family: FontAwesome; 
+        content: "\f06a";
+        font-size: 1.2em;
+        padding-right: .25em;
+      }
     }
     .cart-item-actions {
       .action-towishlist::after {
@@ -1652,25 +1671,24 @@ Cart
       }
     }
     .qty {
-      text-align: right;
-    }
-    .cart-qty-wrapper {
-      border: 1px solid black;
-      width: 75px;
-      padding: 7px 2px;
-      display: inline;
-
-    }
-    .cart-item-qty {
-      height: 0.9rem;
-      width: 40px;
-      border: 0;
-      &:focus {
-        outline: none;
-        border-color: inherit;
-        -webkit-box-shadow: none;
-        box-shadow: none;
+      .cart-qty-wrapper {
+        border: 1px solid #000;
+        float: right;
+        width: 110px;
       }
+      padding: 0px 2px;
+      display: inline;
+      .styled-select {
+        display: inline;
+        width: 75px;
+        border: 0px;
+      }
+      select {
+        width: auto;
+        border: 0px;
+        outline: 0px;
+      }
+
     }
     .cart-item-remove {
       color: #AC2232;
@@ -1688,6 +1706,7 @@ Cart
     .cart-subtotal, .cart-vendor {
       display: none;
     }
+    border-bottom: 1px solid #8d8d8d;
   }
 
   .cart-continue {
@@ -1820,7 +1839,15 @@ Cart
         }
       }
     }
+    
   }
+  .customer-service {
+      margin-top: 3em;
+      padding: 0 10px;
+      font-family: @headlineFont;
+      font-size: 14px;
+      color: #8d8d8d;
+    }
   .crosssell {
     .page-title {
       margin-top: 50px;

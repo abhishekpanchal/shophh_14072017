@@ -15,7 +15,7 @@ $isVisibleProduct = $product->isVisibleInSiteVisibility();
 $helper = $this->helper('Magento\Msrp\Helper\Data');
 $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
 ?>
-
+<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 <div class="row cart-item">
   <div class="col-md-3 col-sm-4 col-xs-3">
     <?php if ($block->hasProductUrl()):?>
@@ -47,20 +47,24 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6 qty" data-th="<?php echo $block->escapeHtml(__('Qty')); ?>">
         <div class="cart-qty-wrapper">
-          <label class="label" for="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty">
-            <span><?php /* @escapeNotVerified */ echo __('Qty:') ?></span>
-          </label>
-          <input id="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty"
-          name="cart[<?php /* @escapeNotVerified */ echo $_item->getId() ?>][qty]"
-          data-cart-item-id="<?php /* @escapeNotVerified */ echo $_item->getSku() ?>"
-          value="<?php /* @escapeNotVerified */ echo $block->getQty() ?>"
-          type="number"
-          size="4"
-          title="<?php echo $block->escapeHtml(__('Qty')); ?>"
-          class="input-text cart-item-qty"
-          maxlength="12"
-          data-validate="{required:true,'validate-greater-than-zero':true}"
-          data-role="cart-item-qty"/>
+          <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
+          <div class="styled-select">
+            <select class="input-text qty-select" name="qty" id="qty">
+              <?php $stock = $customHelper->getProductStock($product,$_item->getSku()); ?>
+              <?php if($stock > 40) { $stock = 40; } ?>
+              <?php for($i=1; $i<=$stock; $i++){ ?>
+              <?php if ($block->getQty() == $i):?>
+              <option value="<?php echo $i ?>" selected>
+                <?php echo $i?>
+              </option>
+              <?php else: ?>
+              <option value="<?php echo $i ?>">
+                <?php echo $i?>
+              </option>
+              <?php endif; ?>
+              <?php } ?>
+            </select>
+          </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-8 col-xs-6">
@@ -69,7 +73,6 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <?php else: ?>
         <?php echo $block->getRowTotalHtml($_item); ?>
         <?php endif; ?>
-        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
         <a href="#"
            title="<?php echo $block->escapeHtml(__('Remove item')); ?>"
            class="action action-delete cart-item-remove"
@@ -112,20 +115,19 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       </span>
       <?php $overrideHelper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
       <?php $custProd = $overrideHelper->getLoadProduct($product->getId()); ?>
-      <?php 
-      /*echo "<pre>";
-      print_r($custProd->getData());
-      echo "</pre>";*/
-      ?>
       <?php if($custProd->getShipWarehouse()): ?>
         <span class="cart-item-shipping">
-          <?php echo $custProd->getShipWarehouse(); ?>
+          Ship in approximately <?php echo $custProd->getShipWarehouse(); ?>
+        </span>
+      <?php endif; ?>
+      <?php if($custProd->getCallForQuote()): ?>
+        <span class="call-for-quote">
+          Call or email for shipping quote. <a target="_blank" href="<?php echo $this->getUrl('shipping-information'); ?>">Get more info</a>
         </span>
       <?php endif; ?>
       <div class="cart-item-actions">
         <?php /* @escapeNotVerified */ echo $block->getActions($_item) ?>
       </div>
-
     </div>
   </div>
 </div>
