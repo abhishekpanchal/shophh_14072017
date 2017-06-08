@@ -2,12 +2,10 @@
 echo '<ul>';
 if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')) != '')
 	echo '<li>This product ships from '.$this->helper('Unirgy\Dropship\Helper\Data')->getVendorName($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getUdropshipVendor(), 'udropship_vendor')). ' within '.strip_tags($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getShippingDelivery(), 'shipping_delivery')).'</li>'; 
-
 if(trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getRestockingFee(), 'restocking_fee')) != '' && 
 trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getRestockingFee(), 'restocking_fee')) != 'N' && 
 trim($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getRestockingFee(), 'restocking_fee')) != 'No')
 	echo '<li>This item has a restocking fee of ' . $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getRestockingFee(), 'restocking_fee').'</li>';
-
 switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getFinalSale(), 'final_sale')) {
 	case 'Y':
 	case '1':
@@ -33,5 +31,4 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                 echo '<li>This item is shippable to the US </li>';
 }
 echo '</ul>';
-
 ?>

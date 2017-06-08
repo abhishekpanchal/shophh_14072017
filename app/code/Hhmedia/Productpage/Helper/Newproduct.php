@@ -86,6 +86,28 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         }
     }
 
+    public function getProductStock(ModelProduct $product,$sku)
+    {
+        if($product->getTypeId() == "configurable"){
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $stockState = $objectManager->get('\Magento\CatalogInventory\Api\StockStateInterface');
+            $_children = $product->getTypeInstance()->getUsedProducts($product);
+            foreach ($_children as $child){
+                if($child->getSku() == $sku){
+                    $qty = $stockState->getStockQty($child->getId(), $product->getStore()->getWebsiteId()); 
+                    return $qty;
+                }else{
+                    $qty = $stockState->getStockQty($child->getId(), $product->getStore()->getWebsiteId()); 
+                    $stock[$child->getId()] = $qty;
+                }
+            }
+            return max($stock);
+        }else{
+            $qty = $this->stockItem->getStockQty($product->getId(), $product->getStore()->getWebsiteId());
+            return $qty;
+        }
+    }
+
     public function isEditorsPick(ModelProduct $product)
     {
         $collection = $this->_editorCollectionFactory->create();

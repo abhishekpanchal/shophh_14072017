@@ -215,5 +215,7 @@
             </block>
         </referenceContainer>
         <block class="Magento\Checkout\Block\Cart\Additional\Info" name="additional.product.info" template="cart/additional/info.phtml"/>
+
+        <move element="checkout.cart.coupon" destination="cart.summary" after="checkout.cart.shipping" />
     </body>
 </page>

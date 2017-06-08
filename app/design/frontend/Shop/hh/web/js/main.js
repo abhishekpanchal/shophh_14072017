@@ -142,27 +142,6 @@ require(['jquery', 'jquery.bootstrap'], function($){
         e.stopPropagation();
       });
 
-
-
-      // Sidebar Navigation (CMS pages)
-      $('ul.faq-sidebar, .sidebar ul').each(function() {
-        var $select = $('<select />');
-
-        $(this).find('a').each(function() {
-            var $option = $('<option />');
-            $option.attr('value', $(this).attr('href')).html($(this).html());
-            $select.append($option);
-        });
-        $(this).replaceWith($select);
-      });
-
-      // add current page as active
-      $('.sidebar select option[value="'+ location.href +'"]').prop('selected', true) ;
-
-      // Redirect on click - select (sidebar)
-      $('.sidebar select').change( function() {
-        location.href = $(this).val();
-      });
     }
 
 
@@ -276,6 +255,13 @@ require(['jquery', 'jquery.bootstrap'], function($){
   );
 
 
-
+jQuery(document).ready(function () {
+$('#form-validate .table-wrapper .qty select').change(function() {
+          console.log("test");
+          //$('#form-validate .table-wrapper .qty select').click();
+          $('#form-validate .update').trigger("click");
+        }
+    );
+});
 
 });
