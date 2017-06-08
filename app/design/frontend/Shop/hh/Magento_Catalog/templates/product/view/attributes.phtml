@@ -1,0 +1,52 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product additional attributes template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Attributes
+ */
+?>
+<?php
+    $_helper = $this->helper('Magento\Catalog\Helper\Output');
+    $_product = $block->getProduct()
+?>
+<?php
+switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getSwatchOrder(), 'swatch_order')) {
+        case 'Y':
+        case '1':
+        case 'Yes':
+                echo 'A swatch is available for this item <br />';
+}
+switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getOneOfKind(), 'one_of_kind')) {
+        case 'Y':
+        case '1':
+        case 'Yes':
+                echo 'This item is one of a kind <br />';
+}
+?>
+<?php if ($_additional = $block->getAdditionalData()): ?>
+    <div class="additional-attributes-wrapper table-wrapper">
+        <table class="data table additional-attributes" id="product-attribute-specs-table">
+            <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('More Information') ?></caption>
+            <tbody>
+            <?php foreach ($_additional as $_data): 
+		   $_MyValue = $_data['value'];
+		   if (is_numeric($_MyValue))
+			$_MyValue = round($_MyValue, 2); //round to 0.00
+
+	    ?>
+                <tr>
+                    <th class="col label" scope="row"><?php echo $block->escapeHtml(__($_data['label'])) ?></th>
+                    <td class="col data" data-th="<?php echo $block->escapeHtml(__($_data['label'])) ?>"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_MyValue, $_data['code']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+<?php endif;?>
