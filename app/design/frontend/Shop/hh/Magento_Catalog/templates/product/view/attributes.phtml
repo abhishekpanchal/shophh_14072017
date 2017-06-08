@@ -35,10 +35,15 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
         <table class="data table additional-attributes" id="product-attribute-specs-table">
             <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('More Information') ?></caption>
             <tbody>
-            <?php foreach ($_additional as $_data): ?>
+            <?php foreach ($_additional as $_data): 
+		   $_MyValue = $_data['value'];
+		   if (is_numeric($_MyValue))
+			$_MyValue = round($_MyValue, 2); //round to 0.00
+
+	    ?>
                 <tr>
                     <th class="col label" scope="row"><?php echo $block->escapeHtml(__($_data['label'])) ?></th>
-                    <td class="col data" data-th="<?php echo $block->escapeHtml(__($_data['label'])) ?>"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_data['value'], $_data['code']) ?></td>
+                    <td class="col data" data-th="<?php echo $block->escapeHtml(__($_data['label'])) ?>"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_MyValue, $_data['code']) ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>
