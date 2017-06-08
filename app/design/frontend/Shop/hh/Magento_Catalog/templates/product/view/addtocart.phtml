@@ -31,7 +31,11 @@
                  onfocus='this.size=10;' 
                  onblur='this.size=1;' 
                  onchange='this.size=1; this.blur();'>
-          <?php for($i=1; $i<=40; $i++){ ?>
+         <?php $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+         <?php $stock = $helper->getProductStock($_product); ?>
+         <?php if($stock > 40) { $stock = 40; } ?>
+         <select class="input-text qty-select" name="qty" id="qty">
+          <?php for($i=1; $i<=$stock; $i++){ ?>
             <option value="<?php echo $i ?>">
               <?php echo $i?>
             </option>
