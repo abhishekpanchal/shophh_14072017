@@ -15,7 +15,7 @@ $isVisibleProduct = $product->isVisibleInSiteVisibility();
 $helper = $this->helper('Magento\Msrp\Helper\Data');
 $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
 ?>
-
+<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 <div class="row cart-item">
   <div class="col-md-3 col-sm-4 col-xs-3">
     <?php if ($block->hasProductUrl()):?>
@@ -50,7 +50,9 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
           <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
           <div class="styled-select">
             <select class="input-text qty-select" name="qty" id="qty">
-              <?php for($i=1; $i<=40; $i++){ ?>
+              <?php $stock = $customHelper->getProductStock($product,$_item->getSku()); ?>
+              <?php if($stock > 40) { $stock = 40; } ?>
+              <?php for($i=1; $i<=$stock; $i++){ ?>
               <?php if ($block->getQty() == $i):?>
               <option value="<?php echo $i ?>" selected>
                 <?php echo $i?>
@@ -71,7 +73,6 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <?php else: ?>
         <?php echo $block->getRowTotalHtml($_item); ?>
         <?php endif; ?>
-        <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
         <a href="#"
            title="<?php echo $block->escapeHtml(__('Remove item')); ?>"
            class="action action-delete cart-item-remove"
