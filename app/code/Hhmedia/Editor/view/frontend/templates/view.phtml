@@ -6,7 +6,7 @@
 <?php $_editorItem = $this->getEditor(); ?>
 
 <div class="row">
-    <div class="col-md-7 col-sm-8 col-sm-offset-2 col-md-offset-3">
+    <div class="col-md-7 col-sm-8 col-xs-8 col-sm-offset-2 col-md-offset-3 col-xs-offset-2">
     <div class="vcenter vcenter-column editor-intro">
         <div class="editor-img">
             <img src="<?php echo $this->getUrl('pub/media').$_editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_editorItem->getName()); ?>" />
@@ -44,7 +44,7 @@
             $pro = $this->getProductData($_product);
             $image = $pro->getData('small_image');
         ?>
-        <li class="col-md-3 col-sm-6 editor-product">
+        <li class="col-md-3 col-sm-6 col-xs-6 editor-product">
             <div class="editor-product-img relative">
                 <a href="<?php echo $pro->getProductUrl() ?>">
                     <img src="<?php echo $this->resize($image,240,240); ?>" />
@@ -72,7 +72,7 @@
     <div class="row">
         <?php foreach($_editor as $editor): ?>
             <?php if($editor->getEditorId() != $this->getRequest()->getParam('id')): ?>
-                <div class="col-md-3 col-sm-3 editor-single-thumb text-center">
+                <div class="col-md-3 col-sm-3 col-xs-6 editor-single-thumb text-center">
                     <a href="<?php echo $objEditor->getItemUrl($editor) ?>">
                         <img src="<?php echo $this->getUrl('pub/media').$editor->getImage() ?>" alt="<?php echo $this->escapeHtml($editor->getName()); ?>" />
                         <h4><a class="hover-effect"><?php echo $this->escapeHtml($editor->getName()) ?></a></h4>
