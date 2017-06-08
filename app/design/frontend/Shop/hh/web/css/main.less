@@ -1602,6 +1602,11 @@ Cart
         border: 1px solid #000;
         float: right;
         width: 110px;
+        overflow: visible;
+        height: 32px;
+        label {
+          padding: .4em .6em;
+        }
       }
       padding: 0px 2px;
       display: inline;
@@ -1611,9 +1616,14 @@ Cart
         border: 0px;
       }
       select {
-        width: auto;
+        background-color: #fff;
+        width: 60px;
         border: 0px;
         outline: 0px;
+        vertical-align: top;
+        -webkit-appearance:none;
+        -moz-appearance:none;
+        appearance:none;
       }
 
     }
