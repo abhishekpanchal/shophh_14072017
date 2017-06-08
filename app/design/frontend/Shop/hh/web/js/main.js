@@ -255,15 +255,13 @@ require(['jquery', 'jquery.bootstrap'], function($){
   );
 
 
-  // add to cart trigger dropdown
-  $("#product-addtocart-button").click(function(e) {
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-      setTimeout(function(){
-      $('.action.showcart').trigger('click');
-    }, 1000);
-  });
-  
-
-
+jQuery(document).ready(function () {
+$('#form-validate .table-wrapper .qty select').change(function() {
+          console.log("test");
+          //$('#form-validate .table-wrapper .qty select').click();
+          $('#form-validate .update').trigger("click");
+        }
+    );
+});
 
 });
