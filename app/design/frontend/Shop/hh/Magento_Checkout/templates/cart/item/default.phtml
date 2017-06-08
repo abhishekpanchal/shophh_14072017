@@ -50,10 +50,16 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
           <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
           <div class="styled-select">
             <select class="input-text qty-select" name="qty" id="qty">
-              <?php for($i=1; $i<=10; $i++){ ?>
+              <?php for($i=1; $i<=40; $i++){ ?>
+              <?php if ($block->getQty() == $i):?>
+              <option value="<?php echo $i ?>" selected>
+                <?php echo $i?>
+              </option>
+              <?php else: ?>
               <option value="<?php echo $i ?>">
                 <?php echo $i?>
               </option>
+              <?php endif; ?>
               <?php } ?>
             </select>
           </div>
