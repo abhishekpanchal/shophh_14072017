@@ -1,6 +1,6 @@
 <?php $collection = $this->getCollection(); ?>
 <div class="category-view">
-	<div class="category-image vcenter" style="background-image:url(<?php echo $this->getUrl('pub/media').$collection->getImage() ?>" alt="<?php echo $this->escapeHtml($collection->getCollectionTitle()); ?>)">
+	<div class="category-image vcenter" style="background-image:url('<?php echo $this->getUrl('pub/media').$collection->getImage() ?>')" alt="<?php echo $this->escapeHtml($collection->getCollectionTitle()); ?>)">
 	    <h2>
 	    	<?php echo $collection->getCollectionTitle(); ?><span><?php echo $collection->getCollectionSubtitle() ?></span>
 	    </h2>

@@ -29,7 +29,7 @@ $pastEditor = $this->getCollection()
     <h2 class="page-title fancyfont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
     <h4 class="subtitle"><?php echo __('See What your favorite have selected and why'); ?></h4>
     <?php foreach ($pastEditor as $editorItem): ?>
-        <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 col-sm-3 editor_list_item">
+        <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 col-sm-3 col-xs-6 editor_list_item">
             <a href="<?php echo $this->getItemUrl($editorItem) ?>">
                 <img src="<?php echo $this->getUrl('pub/media').$editorItem->getImage() ?>" alt="<?php echo $this->escapeHtml($editorItem->getName()); ?>" />
             </a>

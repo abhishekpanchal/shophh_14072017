@@ -479,7 +479,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 	Product Page
 	=================================*/
 	.description p, span.callout {
-		font-size: 13px;
+	//	font-size: 13px;
 	}
 
 	/* ===============================
@@ -502,9 +502,7 @@ Tablet Portrait size to standard 1024 (devices and browsers)
 			}
 		}
 	}
-	.MagicScroll-horizontal .mcs-bullets {
-		display: none !important;
-	}
+	
 
 
 	
@@ -583,7 +581,9 @@ Shop the Spot Desktop Responsive
 			width: 42%;
 		}
 	}
-
+	.hover-effect:before, .am-link-text:before {
+    	content: none;
+	}
 
 	.account .inner-content .block-content .col-md-6 + .col-md-6 {
 		margin-top: 40px;
@@ -624,6 +624,9 @@ Shop the Spot Desktop Responsive
 			min-height: 0;
 		}
 	}
+	.lookbook-main .lookbook-container {
+		margin-bottom: 0;
+	}
 	.hotspot-details {
 		margin: 0;
 		padding: 25px 10%;
@@ -632,9 +635,6 @@ Shop the Spot Desktop Responsive
 		.hotspot-details-placeholder {
 			width: 116%;
 			margin-top: -4%;
-		}
-		h5 {
-			display: none;
 		}
 		.btn-fullscreen {
 			display: inline-block;
@@ -756,13 +756,6 @@ Shop the Spot Desktop Responsive
 
 
 
-@media (min-width: 768px) and (max-width: 992px) {
-	.container {
-	//	width: auto;
-	}
-}
-
-
 
 /* ==========================================================================
 All small devices - till 768px
@@ -791,6 +784,9 @@ All small devices - till 768px
 		display: block;
 		margin: 0 auto;
 	}
+	.block {
+		margin-bottom: 0;
+	}
 	.quickview-bar,
 	.quickview-bar2 {
 		.none;
@@ -798,6 +794,7 @@ All small devices - till 768px
 
 	.page-title {
 		font-size: 24px;
+		margin-top: 20px;
 	}
 	
 	.subtitle {
@@ -888,9 +885,9 @@ All small devices - till 768px
 	Carousel - Global
 	=================================*/
 	.carousel-control.right, .carousel-control.left {
-	height: 50px;
-    width: 30px;
-    background-size: 90%;
+		height: 50px;
+	    width: 30px;
+	    background-size: 90%;
 	}
 
 
@@ -929,9 +926,15 @@ All small devices - till 768px
 		}
 	}
 
-	.shot-thumb {
-	//	margin: 0 0 5px;
+	
+
+	/* ===============================
+	Shop the Spot
+	=================================*/
+	.hotspot-details h1 {
+		font-size: 24px;
 	}
+
 
 	/* ===============================
 	Editors
@@ -952,28 +955,218 @@ All small devices - till 768px
 	/* ===============================
 	Search Results / Product Page Lists
 	=================================*/
+	.category-image {
+		height: 200px;
+		h2 {
+			font-size: 24px;
+			padding: 15px 30px 10px;
+		}
+	}
+
+
 	.main-breadcrumb {
 		margin-top: 0;
+	}
+	.sorter-container {
+		max-width: 140px;
+		margin: 0;
+		& + .sorter-container {
+			float: right;
+		}
+	}
+	.styled-select select {
+		font-size: 14px;
 	}
 	.catalogsearch-result-index .item.search strong {
 		font-size: 16px;
 	}
-	.product-item-details .product-item-link {
+	.product-item-details .price-box, .product-item-details h5 {
+		margin-top: 0;
+	}
+	#upsellCarousel {
+		.photo {
+			max-width: 90%;
+		}
+		.carousel-control.right, .carousel-control.left {
+			top: 35%;
+		}
+		.carousel-caption {
+			margin-top: 0;
+			padding-bottom: 0;
+		}
+		.carousel-caption, .price-container .price {
+			font-size: 12px;
+			line-height: 18px;
+		}
+	}
+	
+
+
+
+
+
+	/* ===============================
+	Product Detail Page
+	=================================*/
+	.catalog-product-view {
+		.product.info.detailed, .product-shop-the-shot {
+			margin-left: 0;
+			padding-top: 0;
+		}
+		.product-shop-the-shot .shop-the-shot-hover {
+			margin-bottom: 0;
+		}
+	}
+
+	/* tab system to match that of faqs */
+	.product.data.items {
+		.item.content {
+			border: 0;
+			padding: 0 !important;
+			margin: 15px 0 !important;
+		}
+		.item.title {
+			border-top: 1px solid #e0e0e0;
+			border-bottom: 1px solid #e0e0e0;
+			margin-top: -1px;
+			.switch {
+				padding-left: 0 !important;
+				position: relative;
+				&:after {
+					font-family: "Ionicons";
+					font-size: inherit;
+					text-rendering: auto;
+					position: absolute;
+					right: 14px;
+					top: 4px;
+					color: #8d8d8d;
+					font-size: 30px;
+					font-style: normal;
+					content: "\f489";
+				}
+			}
+			&.active .switch:after {
+				content: "\f462";
+			}
+			&:nth-of-type(even) {
+				background: blue;
+			}
+		}
+	}
+	.review-details-div {
+		.pull-right {
+			float: none !important;
+			margin-bottom: 10px;
+			text-align: left;
+			padding: 0;
+		}
+		.text-center {
+			text-align: left;
+			padding: 0;
+		}
+	}
+
+
+
+
+}
+
+
+
+
+
+/* ==========================================================================
+Somewhere in between
+========================================================================== */
+@media  (max-width: 680px) {
+	/* ===============================
+	Shop the Shot
+	=================================*/
+	.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+		width: 100%;
+		.shot-thumb {
+			margin: 0 0 5px;
+		}
+	}
+
+	/* ===============================
+	Product Thumbnails
+	=================================*/
+	.product-item-details .product-item-link, #upsellCarousel .product-item-name a {
 		font-size: 13px;
+		line-height: 20px;
 	}
 	.category-thumb, .product-item-photo, .product-item-name {
 		margin-bottom: 0;
 	}
-	.description p, span.callout {
-		font-size: 10px;
+	.product-item-listing {
+		.price-container .price, .description p, span.callout {
+			font-size: 12px;
+		}
 	}
-	.price-container .price {
-		font-size: 12px;
+
+
+	/* ===============================
+	Editors
+	=================================*/
+	.editor-index-index {
+		guest-editor-top {
+			margin-bottom: 0;
+		}
+		.vcenter-flex.display-block-xs {
+			display: block !important;
+		}
+		.guest-editor {
+			width: 90%;
+			margin: 0 auto;
+			float: none;
+			position: relative;
+			top: -30px;
+			.guest-editor-details {
+				border: 0;
+				margin: 0;
+				padding: 0;
+			}
+		}
 	}
-	.product-item-details .price-box, .product-item-details h5 {
-		margin-top: 0;
+	.editor-index-view {
+		.editor-link {
+			margin: 20px 0;
+		}
+		.editor-intro {
+			img {
+				max-width: 115px;
+				max-height: 115px;
+			}
+			.editor-name {
+				font-size: 20px;
+				padding-bottom: 12px;
+				margin-bottom: 12px;
+			}
+		}
+		.editor-quote {
+			font-size: 18px;
+			margin: 0;
+			p {
+				line-height: 28px;
+			}
+		}
+		.editor-products {
+			margin-bottom: 0;
+		}
+		.editor-products .editor-product {
+			h4 {
+				font-size: 14px;
+			}
+			.editor-mini-quote {
+				margin: 0;
+			}
+		}
 	}
 }
+
+
+
 
 
 
@@ -992,14 +1185,6 @@ Extra Small Screens
 		margin: 10px auto;
 	}
 
-	.page-title {
-		font-size: 20px;
-		background: url(../images/shop-keyline-faded-center.png) no-repeat center;
-		background-size: contain;
-		strong {
-			font-size: 24px;
-		}
-	}
 	.page-title-small {
 		font-size: 14px;
 	}
@@ -1111,10 +1296,11 @@ Extra Small Screens
 				}
 			}
 		}
-		.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+		.more-shots .col-md-3 {
 			width: 100%;
 		}
 	}
+
 
 
 	/* ===============================
@@ -1129,10 +1315,65 @@ Extra Small Screens
 			clear: both;
 		}
 	}
+
+
+	/* ===============================
+	Product Detail
+	=================================*/
+	.catalog-product-view {
+		div.MagicToolboxSelectorsContainer {
+			margin: -180px auto 30px;
+		}
+		.mcs-wrapper {
+			display: none !important;
+		}
+		.MagicScroll .mcs-hidden {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+		}
+		.product-info-main {
+			clear: both;
+			text-align: center;
+			.product-info-price {
+				float: none;
+			}
+			.price-box .price {
+				font-size: 20px;
+			}
+			.product-add-form {
+				text-align: left;
+			}
+		}
+	}
+	#upsellCarousel {
+		.carousel-control.right, .carousel-control.left {
+			top: 95px;
+		}
+	}
+
+	.editor-index-index .editor_list_view .editor_list_item, .lookbookslider-index-index .column.main .col-md-3 {
+		width: 100%;
+	}
+
+
+	.editor-index-view {
+		.editor-intro .editor-name {
+			white-space: normal;
+		}
+		.col-xs-offset-2 {
+			float: none;
+			width: 90%;
+			margin: 0 auto;
+		}
+	}
+
+
+
+	.col-xs-6:nth-child(2n+1) {
+		clear: both;
+	}
 }
-
-
-
 
 
 
