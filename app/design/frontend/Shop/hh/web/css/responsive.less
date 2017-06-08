@@ -1077,6 +1077,8 @@ All small devices - till 768px
 	}
 
 
+
+
 }
 
 
@@ -1118,6 +1120,40 @@ Somewhere in between
 				border: 0;
 				margin: 0;
 				padding: 0;
+			}
+		}
+	}
+	.editor-index-view {
+		.editor-link {
+			margin: 20px 0;
+		}
+		.editor-intro {
+			img {
+				max-width: 115px;
+				max-height: 115px;
+			}
+			.editor-name {
+				font-size: 20px;
+				padding-bottom: 12px;
+				margin-bottom: 12px;
+			}
+		}
+		.editor-quote {
+			font-size: 18px;
+			margin: 0;
+			p {
+				line-height: 28px;
+			}
+		}
+		.editor-products {
+			margin-bottom: 0;
+		}
+		.editor-products .editor-product {
+			h4 {
+				font-size: 14px;
+			}
+			.editor-mini-quote {
+				margin: 0;
 			}
 		}
 	}
@@ -1254,7 +1290,7 @@ Extra Small Screens
 				}
 			}
 		}
-		.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+		.more-shots .col-md-3 {
 			width: 100%;
 		}
 	}
@@ -1310,11 +1346,31 @@ Extra Small Screens
 		}
 	}
 
+	.editor-index-index .editor_list_view .editor_list_item, .lookbookslider-index-index .column.main .col-md-3 {
+		width: 100%;
+	}
+
+
+	.editor-index-view {
+		.editor-intro .editor-name {
+			white-space: normal;
+		}
+		.col-xs-offset-2 {
+			float: none;
+			width: 90%;
+			margin: 0 auto;
+		}
+	}
 }
 
 
 
 
+
+
+.col-xs-6:nth-child(2n+1) {
+	clear: both;
+}
 
 
 .mobile-nav {
