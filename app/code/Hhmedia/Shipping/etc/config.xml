@@ -6,9 +6,9 @@
                 <active>1</active>
                 <sallowspecific>0</sallowspecific>
                 <model>Hhmedia\Shipping\Model\Carrier\Sod</model>
-                <name>Shipping Charge on Delivery</name>
+                <name>-</name>
                 <price>0.00</price>
-                <title>Cash On Delivery</title>
+                <title>Call for Quote</title>
                 <type>I</type>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
             </sod>
