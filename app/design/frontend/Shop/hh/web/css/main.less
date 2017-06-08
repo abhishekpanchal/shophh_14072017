@@ -346,6 +346,88 @@ Buttons
 }
 
 
+
+  /* ===============================
+  Prices
+  =================================*/
+.price-container {
+  .price {
+    color: #8d8d8d;
+    font-family: @headlineFont;
+    font-size: 14px;
+  }
+}
+.old-price, .old.price {
+  text-decoration: none;
+  color: #cdcdcd;
+  .price {
+    color: #cdcdcd;
+  }
+  &:before {
+    content: '(';
+  }
+  &:after {
+    content: ')';
+  }
+}
+
+.product-item-details {
+  .price-box, h5 {
+    margin-top: 10px;
+  }
+}
+
+
+
+
+.product-info-main {
+  .special-price {
+    display: inline;
+    margin: 0;
+  }
+  .price-box {
+    .weee {
+      font-size: 14px;
+    }
+    .price-wrapper .price {
+      font-size: 14px;
+      font-weight: 200;
+    }
+  }
+}
+
+.catalog-product-view .product-info-main {
+  .special-price {
+    display: inline-block;
+  }
+  .price-box {
+    .price {
+      font-size: 28px;
+      font-family: @fancyFont; 
+      color: #000;
+      font-weight: 200 !important;
+    }
+    .old-price {
+      color: #8d8d8d;
+    }
+    .old-price .price-wrapper .price {
+      color: #8d8d8d;
+      font-size: 20px;
+      font-weight: 200;
+    }
+    & + .modal-btns {
+      margin-top: 20px;  
+    }
+  }
+}
+
+h4.decorating-formula-price {
+  font-size: 14px;
+}
+
+
+
+
 /* ==========================================================================
 Content
  ========================================================================== */
@@ -4803,7 +4885,7 @@ Hotspot Details
       border-radius: 0;
       margin: 0;
       margin-left: 5px;
-
+      white-space: nowrap;
       &:hover {
         background: rgba(0, 0, 0, 0.7);
         border: 1px solid transparent;
@@ -7943,85 +8025,7 @@ Account reviews
 
 
 
-  /* ===============================
-  Prices
-  =================================*/
-.price-container {
-  .price {
-    color: #8d8d8d;
-    font-family: @headlineFont;
-    font-size: 14px;
-  }
-}
-.old-price, .old.price {
-  text-decoration: none;
-  color: #cdcdcd;
-  .price {
-    color: #cdcdcd;
-  }
-  &:before {
-    content: '(';
-  }
-  &:after {
-    content: ')';
-  }
-}
 
-.product-item-details {
-  .price-box, h5 {
-    margin-top: 10px;
-  }
-}
-
-
-
-
-.product-info-main {
-  .special-price {
-    display: inline;
-    margin: 0;
-  }
-  .price-box {
-    .weee {
-      font-size: 14px;
-    }
-    .price-wrapper .price {
-      font-size: 14px;
-      font-weight: 200;
-    }
-  }
-}
-
-.catalog-product-view .product-info-main {
-  .special-price {
-    display: inline-block;
-  }
-  .price-box {
-    .price {
-      font-size: 28px;
-      font-family: @fancyFont; 
-      color: #000;
-      font-weight: 200 !important;
-    }
-    .old-price {
-      color: #8d8d8d;
-    }
-    .old-price .price-wrapper .price {
-      color: #8d8d8d;
-      font-size: 20px;
-      font-weight: 200;
-    }
-    & + .modal-btns {
-      margin-top: 20px;  
-    }
-  }
-}
-
-
-
-h4.decorating-formula-price {
-  font-size: 14px;
-}
 
 
   /* ===============================

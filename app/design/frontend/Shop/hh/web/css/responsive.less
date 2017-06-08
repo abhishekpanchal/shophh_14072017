@@ -453,9 +453,14 @@ Tablet Portrait size to standard 1024 (devices and browsers)
   	/* ===============================
 	Shop the Spot
 	=================================*/
-
-	.pro-detail-div img {
-		width: 100%;
+	.hotspot-details {
+		padding: 0 15px;
+		.hotspot-details-placeholder {
+			padding: 15px 0;
+		}
+		h2 {
+			margin-top: 10px;
+		}
 	}
 
 	.shot-thumb .shot-thumb-meta {
@@ -614,7 +619,6 @@ Shop the Spot Desktop Responsive
 	.lookbook-container .display-block-xs {
 		display: block;
 	}
-
 	.lookbook-container {
 		.homepage-hero, .mood-bg {
 			width: 100%;
@@ -649,6 +653,9 @@ Shop the Spot Desktop Responsive
 			padding-top: 35px;
 		}
 		.pro-detail-div {
+			img {
+				width: 100%;
+			}
 			.actions-primary {
 				margin-top: 20px;
 			}
@@ -657,6 +664,7 @@ Shop the Spot Desktop Responsive
 			}
 		}
 	}
+
 
 
 	/* ===============================
@@ -690,7 +698,7 @@ Shop the Spot Desktop Responsive
 		margin-right: 0;
 	}
 
-	.collection-index-view, .lookbookslider-index-view {
+	.collection-index-view, .lookbookslider-index-view .product-stories-products {
 		.product-item-listing:nth-child(n+4) {
 			display: none;
 		}
@@ -810,13 +818,9 @@ All small devices - till 768px
 	.cms-page-view, .faqs-index-index, .contact-index-index, .cms-privacy-policy, .cms-terms-conditions {
 	  .inner-content {
 	    padding-left: 15px;
-	    p {
-			font-size: 16px;
-			line-height: 24px;
-	    }
 	  }
 	  .page-title {
-	    margin-bottom: 40px;
+	  	margin-bottom: 20px;
 	  }
 	}
 	.contact-index-index {
@@ -1082,6 +1086,26 @@ Somewhere in between
 	/* ===============================
 	Shop the Shot
 	=================================*/
+	.mood-bg {
+		min-width: 0;
+	}
+	.hotspot-details {
+		padding: 10px 0;
+		.hotspot-details-placeholder {
+			width: 100%;
+		}
+		.image {
+			width: 40%;
+			margin: 0 auto;
+			float: none;
+		}
+		h2 {
+			padding-top: 0;
+		}
+		h5 {
+			margin-top: 10px;
+		}
+	}
 	.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
 		width: 100%;
 		.shot-thumb {
@@ -1092,15 +1116,15 @@ Somewhere in between
 	/* ===============================
 	Product Thumbnails
 	=================================*/
-	.product-item-details .product-item-link, #upsellCarousel .product-item-name a {
+	.product-item-details .product-item-link, #upsellCarousel .product-item-name a, .pro-detail-div .name a {
 		font-size: 13px;
 		line-height: 20px;
 	}
-	.category-thumb, .product-item-photo, .product-item-name {
+	.category-thumb, .product-item-photo, .product-item-name, .product-item-listing .pro-detail-div .name {
 		margin-bottom: 0;
 	}
 	.product-item-listing {
-		.price-container .price, .description p, span.callout {
+		.price-container .price, .pro-detail-div .price, .product-info-main .price-box .price-wrapper .price, .description p, span.callout {
 			font-size: 12px;
 		}
 	}
@@ -1169,6 +1193,12 @@ Somewhere in between
 
 
 
+@media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+	.hotspot {
+		display: block !important;
+	}
+}
+
 
 
 /* ==========================================================================
@@ -1184,7 +1214,9 @@ Extra Small Screens
 		width: 80%;
 		margin: 10px auto;
 	}
-
+	.page-title {
+		background: none;
+	}
 	.page-title-small {
 		font-size: 14px;
 	}
