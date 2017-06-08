@@ -47,20 +47,16 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6 qty" data-th="<?php echo $block->escapeHtml(__('Qty')); ?>">
         <div class="cart-qty-wrapper">
-          <label class="label" for="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty">
-            <span><?php /* @escapeNotVerified */ echo __('Qty:') ?></span>
-          </label>
-          <input id="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty"
-          name="cart[<?php /* @escapeNotVerified */ echo $_item->getId() ?>][qty]"
-          data-cart-item-id="<?php /* @escapeNotVerified */ echo $_item->getSku() ?>"
-          value="<?php /* @escapeNotVerified */ echo $block->getQty() ?>"
-          type="number"
-          size="4"
-          title="<?php echo $block->escapeHtml(__('Qty')); ?>"
-          class="input-text cart-item-qty"
-          maxlength="12"
-          data-validate="{required:true,'validate-greater-than-zero':true}"
-          data-role="cart-item-qty"/>
+          <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
+          <div class="styled-select">
+            <select class="input-text qty-select" name="qty" id="qty">
+              <?php for($i=1; $i<=10; $i++){ ?>
+              <option value="<?php echo $i ?>">
+                <?php echo $i?>
+              </option>
+              <?php } ?>
+            </select>
+          </div>
         </div>
       </div>
       <div class="col-md-3 col-sm-8 col-xs-6">
