@@ -11,12 +11,16 @@ use Magento\Framework\Data\FormFactory;
 class SectionOne extends \Magento\Backend\Block\Widget\Form\Generic implements \Magento\Backend\Block\Widget\Tab\TabInterface 
 {
 
+    protected $oneWysiwyg;
+
 	public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
+        \Magento\Cms\Model\Wysiwyg\Config $oneWysiwyg,
         \Magento\Framework\Data\FormFactory $formFactory,
         array $data = []
     ) {
+        $this->oneWysiwyg = $oneWysiwyg;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -54,12 +58,14 @@ class SectionOne extends \Magento\Backend\Block\Widget\Form\Generic implements \
 
         $fieldset->addField(
             'description_one',
-            'textarea',
+            'editor',
             [
                 'name' => 'description_one',
                 'label' => __('Description'),
                 'title' => __('Description'),
-                'required' => false
+                'required' => false,
+                'config'    => $this->oneWysiwyg->getConfig(),
+                'wysiwyg'   => true
             ]
         );
 
