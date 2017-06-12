@@ -800,17 +800,6 @@ All small devices - till 768px
 		.none;
 	}
 
-	.page-title {
-		font-size: 24px;
-		margin-top: 20px;
-	}
-	
-	.subtitle {
-		margin-top: 0;
-		margin-bottom: 20px;
-	}
-
-
 
 	/* ===============================
 	Global
@@ -971,13 +960,6 @@ All small devices - till 768px
 	.main-breadcrumb {
 		margin-top: 0;
 	}
-	.sorter-container {
-		max-width: 140px;
-		margin: 0;
-		& + .sorter-container {
-			float: right;
-		}
-	}
 	.styled-select select {
 		font-size: 14px;
 	}
@@ -1005,8 +987,110 @@ All small devices - till 768px
 	}
 	
 
+}
 
 
+
+
+@media (max-width: 767px) {
+	.header-wrap {
+		.vcenter {
+			display: block;
+		}
+		.header-logo {
+			float: none;
+			margin: 0 auto;
+		}
+		.hidden-lg {
+			position: absolute;
+			bottom: 15px;
+			.fa, .icon-cart {
+				font-size: 21px;
+			}
+			& + .hidden-lg {
+				right: 15px;
+			}
+			
+		}
+	}
+}
+
+
+
+
+/* ==========================================================================
+Somewhere in between
+========================================================================== */
+@media  (max-width: 680px) {
+
+	.page-title {
+		font-size: 24px;
+		margin-top: 20px;
+	}
+	.subtitle {
+		font-size: 16px;
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	.marginbottom-40 {
+		margin-bottom: 20px;
+	}
+	
+
+
+	/* ===============================
+	Shop the Shot
+	=================================*/
+	.mood-bg {
+		min-width: 0;
+	}
+	.hotspot-details {
+		padding: 10px 0;
+		.hotspot-details-placeholder {
+			width: 100%;
+		}
+		.image {
+			width: 40%;
+			margin: 0 auto;
+			float: none;
+		}
+		h2 {
+			padding-top: 0;
+		}
+		h5 {
+			margin-top: 10px;
+		}
+	}
+	.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
+		width: 100%;
+		.shot-thumb {
+			margin: 0 0 5px;
+		}
+	}
+
+	/* ===============================
+	Product Thumbnails
+	=================================*/
+	.product-item-details .product-item-link, #upsellCarousel .product-item-name a, .pro-detail-div .name a {
+		font-size: 13px;
+		line-height: 20px;
+	}
+	.category-thumb, .product-item-photo, .product-item-name, .product-item-listing .pro-detail-div .name {
+		margin-bottom: 0;
+	}
+	.product-item-listing {
+		.price-container .price, .pro-detail-div .price, .product-info-main .price-box .price-wrapper .price, .description p, span.callout {
+			font-size: 12px;
+		}
+	}
+	.sorter-container {
+		max-width: 140px;
+		margin: 0;
+		& + .sorter-container {
+			float: right;
+		}
+	}
 
 
 	/* ===============================
@@ -1070,93 +1154,12 @@ All small devices - till 768px
 		}
 	}
 
-}
-
-
-
-
-@media (max-width: 767px) {
-	.header-wrap {
-		.vcenter {
-			display: block;
-		}
-		.header-logo {
-			float: none;
-			margin: 0 auto;
-		}
-		.hidden-lg {
-			position: absolute;
-			bottom: 15px;
-			.fa, .icon-cart {
-				font-size: 21px;
-			}
-			& + .hidden-lg {
-				right: 15px;
-			}
-			
-		}
-	}
-}
-
-
-
-
-/* ==========================================================================
-Somewhere in between
-========================================================================== */
-@media  (max-width: 680px) {
-	/* ===============================
-	Shop the Shot
-	=================================*/
-	.mood-bg {
-		min-width: 0;
-	}
-	.hotspot-details {
-		padding: 10px 0;
-		.hotspot-details-placeholder {
-			width: 100%;
-		}
-		.image {
-			width: 40%;
-			margin: 0 auto;
-			float: none;
-		}
-		h2 {
-			padding-top: 0;
-		}
-		h5 {
-			margin-top: 10px;
-		}
-	}
-	.more-shots .col-md-3, .lookbookslider-index-index .column.main .col-md-3 {
-		width: 100%;
-		.shot-thumb {
-			margin: 0 0 5px;
-		}
-	}
-
-	/* ===============================
-	Product Thumbnails
-	=================================*/
-	.product-item-details .product-item-link, #upsellCarousel .product-item-name a, .pro-detail-div .name a {
-		font-size: 13px;
-		line-height: 20px;
-	}
-	.category-thumb, .product-item-photo, .product-item-name, .product-item-listing .pro-detail-div .name {
-		margin-bottom: 0;
-	}
-	.product-item-listing {
-		.price-container .price, .pro-detail-div .price, .product-info-main .price-box .price-wrapper .price, .description p, span.callout {
-			font-size: 12px;
-		}
-	}
-
 
 	/* ===============================
 	Editors
 	=================================*/
 	.editor-index-index {
-		guest-editor-top {
+		.guest-editor-top {
 			margin-bottom: 0;
 		}
 		.vcenter-flex.display-block-xs {
@@ -1174,7 +1177,17 @@ Somewhere in between
 				padding: 0;
 			}
 		}
+		.editor_list_view {
+			margin-top: -30px;
+			.editor_list_item {
+				margin-bottom: 15px;
+				h4 {
+					font-size: 16px;
+				}
+			}
+		}
 	}
+
 	.editor-index-view {
 		.editor-link {
 			margin: 20px 0;
@@ -1207,6 +1220,9 @@ Somewhere in between
 			.editor-mini-quote {
 				margin: 0;
 			}
+		}
+		.editor-single-thumb {
+			margin-bottom: 15px;
 		}
 	}
 
@@ -1411,7 +1427,7 @@ Extra Small Screens
 		}
 	}
 
-	.editor-index-index .editor_list_view .editor_list_item, .lookbookslider-index-index .column.main .col-md-3 {
+	.lookbookslider-index-index .column.main .col-md-3 {
 		width: 100%;
 	}
 
@@ -1433,6 +1449,8 @@ Extra Small Screens
 		clear: both;
 	}
 }
+
+
 
 
 
@@ -1464,7 +1482,7 @@ Extra Small Screens
 		border: 0;
 		box-shadow: none;
 		background: transparent !important;
-		width: 70% !important;
+		width: 60% !important;
 		margin: 0 auto;
 		position: absolute;
 		left: 0;
@@ -1480,12 +1498,49 @@ Extra Small Screens
 		font-family: @headlineFont;
 		text-transform: uppercase;
 	}
-	.nav-tabs > li > a {
-		font-size: 18px;
-		margin-bottom: 15px;
-		&:hover {
-			background: none;
-			border: none;
+	.nav-tabs, .nav-pills {
+		> li > a {
+			font-size: 18px;
+			margin-bottom: 15px;
+			&:hover, &:focus {
+				background: none;
+				border: none;
+			}
+		}
+	}
+	.grey > li > a {
+		color: #acacac;
+	}
+	.nav-tabs.nav-justified .title a:after {
+		content: '';
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-top: 8px solid #000;
+		position: absolute;
+		margin: 6px 12px;
+	}
+	a.homelink {
+		color: #acacac;
+		display: block;
+		margin: 20px auto;
+		text-align: center;
+	}
+
+	ul.dropdown {
+		display: none;
+		li {
+			text-align: center;
+			text-transform: none;
+			margin-bottom: 1em;
+		}
+	}
+	&.expanded {
+		.nav-tabs.nav-justified .title a:after  {
+			border-top: 0;
+			border-bottom: 8px solid #000;
+		}
+		ul.dropdown {
+			display: block;
 		}
 	}
 }
