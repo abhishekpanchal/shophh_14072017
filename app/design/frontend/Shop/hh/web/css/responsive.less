@@ -1452,6 +1452,8 @@ Extra Small Screens
 
 
 
+
+
 .mobile-nav {
 	.modal-dialog {
 		margin: 0;
@@ -1506,7 +1508,7 @@ Extra Small Screens
 			}
 		}
 	}
-	.nav-pills > li > a {
+	.grey > li > a {
 		color: #acacac;
 	}
 	.nav-tabs.nav-justified .title a:after {
@@ -1522,6 +1524,24 @@ Extra Small Screens
 		display: block;
 		margin: 20px auto;
 		text-align: center;
+	}
+
+	ul.dropdown {
+		display: none;
+		li {
+			text-align: center;
+			text-transform: none;
+			margin-bottom: 1em;
+		}
+	}
+	&.expanded {
+		.nav-tabs.nav-justified .title a:after  {
+			border-top: 0;
+			border-bottom: 8px solid #000;
+		}
+		ul.dropdown {
+			display: block;
+		}
 	}
 }
 

@@ -45,22 +45,22 @@
     				$cart = $objectManager->get('\Magento\Checkout\Model\Cart');
         			$totalQuantity = $cart->getQuote()->getItemsQty();
     			?>
-    			<ul>
-    			<li><a href="<?php echo $this->getUrl('wishlist') ?>">wishlist</a></li>
-    			<li><a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo "cart (".($totalQuantity*1).")" ?></a></li>
-				<?php
-				    $customerSession = $objectManager->get('Magento\Customer\Model\Session');
-					if($customerSession->isLoggedIn()) {
-						$label = "SIGN OUT";
-						$link = $this->getUrl().'customer/account/logout';
-					}else{
-						$label = "LOGIN | SIGN UP";
-						$link = $this->getUrl().'customer/account/login';
-					}
-				?>
-				<li><a href="<?php echo $link ?>"><?php echo $label ?></a></li>
+    			<ul class="nav nav-pills nav-justified grey">
+	    			<li><a href="<?php echo $this->getUrl('wishlist') ?>">wishlist</a></li>
+	    			<li><a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo "cart (".($totalQuantity*1).")" ?></a></li>
+					<?php
+					    $customerSession = $objectManager->get('Magento\Customer\Model\Session');
+						if($customerSession->isLoggedIn()) {
+							$label = "SIGN OUT";
+							$link = $this->getUrl().'customer/account/logout';
+						}else{
+							$label = "LOGIN | SIGN UP";
+							$link = $this->getUrl().'customer/account/login';
+						}
+					?>
+					<li><a href="<?php echo $link ?>"><?php echo $label ?></a></li>
     			</ul>
-    			<a href="https://houseandhome.com/">go to houseandhome.com</a>
+    			<a href="https://houseandhome.com/" class="homelink">go to houseandhome.com ></a>
     		</div>
     	</div>
 	</div>
