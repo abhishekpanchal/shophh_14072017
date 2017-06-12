@@ -3989,15 +3989,6 @@ Cart Page
   .product-reviews-summary {
     display: none;
   }
-  .special-price {
-    width: 40%;
-    display: inline-block;
-    text-align: right;
-  }
-  .old-price {
-    width: 50%;
-    display: inline-block;
-  }
 
   .product-item-details .price-container {
       padding: 0!important;
@@ -4724,10 +4715,6 @@ Shot Slider
 .cycle-overlay,
 #pagernav_ {
   display: none;
-}
-
-.marginbottom-40 {
-  margin-bottom: 40px!important;
 }
 
 
@@ -5751,7 +5738,9 @@ Home Page
       height: 380px;
       width: 380px;
       margin: 0 auto;
-      position: relative;
+      position: absolute;
+      left: 0;
+      right: 0;
       top: 50%;
       transform: translateY(-50%);
       z-index: 4;
@@ -5825,6 +5814,12 @@ Pagination
     border-bottom: 1px solid #000;
     font-weight: bold;
   }
+}
+.toolbar-products .main-pagination {
+  display: none;
+}
+.products-grid .toolbar-products .main-pagination {
+  display: block;
 }
 
 
@@ -5978,20 +5973,9 @@ span.callout {
     padding: 0;
     margin: 0;
   }
-  .toolbar-products {
-    .main-pagination {
-      display: none;
-    }
-  }
 }
 
-  .products-grid {
-    .toolbar-products {
-      .main-pagination {
-        display: block;
-      }
-    }
-  }
+
   .product-item-info {
     position: relative;
     overflow-y: hidden;

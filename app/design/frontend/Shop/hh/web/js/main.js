@@ -255,11 +255,23 @@ require(['jquery', 'jquery.bootstrap'], function($){
   );
 
 
-jQuery(document).ready(function () {
-$('#form-validate .table-wrapper .qty select').change(function() {
-          $('#form-validate .update').trigger("click");
-        }
-    );
-});
+  jQuery(document).ready(function () {
+  $('#form-validate .table-wrapper .qty select').change(function() {
+            $('#form-validate .update').trigger("click");
+          }
+      );
+  });
+
+
+
+
+
+  // mobile nav dropdown
+  $('.mobile-nav .nav-tabs.nav-justified .title a').click(function(e) {
+    $('.mobile-nav').toggleClass('expanded');
+  });
+
+
+
 
 });

@@ -20,6 +20,9 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
 </div>
 <?php else: ?>
 
+
+
+<div class="container">
 <h4 class="noresults-products-text">
     <?php echo __("View our product suggestions to find something else you may be interested in :"); ?>
 </h4>
@@ -85,6 +88,7 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
     </div>
 
 <?php endforeach; ?>
+</div>
 </div>
 
 <?php endif; ?>
