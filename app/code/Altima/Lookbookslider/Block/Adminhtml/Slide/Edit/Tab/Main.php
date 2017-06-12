@@ -37,6 +37,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
     protected $_categoryCollection;
     protected $_lookbooksliderHelper;
     protected $helperData;
+    protected $shortWysiwyg;
+    protected $longWysiwyg;
 
     public function __construct(
             \Magento\Backend\Block\Template\Context $context,
@@ -45,6 +47,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             \Magento\Store\Model\System\Store $systemStore,
             \Altima\Lookbookslider\Model\ResourceModel\Slide\Collection $slideCollection,
             \Altima\Lookbookslider\Helper\Data $lookbooksliderHelper,
+            \Magento\Cms\Model\Wysiwyg\Config $shortWysiwyg, 
+            \Magento\Cms\Model\Wysiwyg\Config $longWysiwyg, 
             HelperData $helperData,
             array $data = []
     ) {
@@ -52,6 +56,8 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
         $this->_slideCollection      = $slideCollection;
         $this->_lookbooksliderHelper = $lookbooksliderHelper;
         $this->helperData    = $helperData;
+        $this->shortWysiwyg = $shortWysiwyg;
+        $this->longWysiwyg = $longWysiwyg;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -114,17 +120,21 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 ]
         );
         $fieldset->addField(
-            'caption', 'textarea', [
+            'caption', 'editor', [
             'label'    => __('Long Description'),
             'name'     => 'slide[caption]',
             'required' => true,
-                ]
+            'config'    => $this->longWysiwyg->getConfig(),
+            'wysiwyg'   => true
+            ]
         );
 		$fieldset->addField(
-            'short_description', 'textarea', [
+            'short_description', 'editor', [
             'label'    => __('Shor Description (Home)'),
             'name'     => 'slide[short_description]',
             'required' => true,
+            'config'    => $this->shortWysiwyg->getConfig(),
+            'wysiwyg'   => true
             ]
         );
         $fieldset->addField('position', 'text', [
