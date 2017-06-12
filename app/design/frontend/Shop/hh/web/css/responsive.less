@@ -1070,11 +1070,33 @@ All small devices - till 768px
 		}
 	}
 
-
-
-
 }
 
+
+
+
+@media (max-width: 767px) {
+	.header-wrap {
+		.vcenter {
+			display: block;
+		}
+		.header-logo {
+			float: none;
+			margin: 0 auto;
+		}
+		.hidden-lg {
+			position: absolute;
+			bottom: 15px;
+			.fa, .icon-cart {
+				font-size: 21px;
+			}
+			& + .hidden-lg {
+				right: 15px;
+			}
+			
+		}
+	}
+}
 
 
 
@@ -1186,6 +1208,11 @@ Somewhere in between
 				margin: 0;
 			}
 		}
+	}
+
+
+	.cms-about-us .signature {
+		padding-left: 40%;
 	}
 }
 
