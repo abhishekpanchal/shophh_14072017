@@ -1,67 +1,67 @@
 <!-- Modal -->
 <div class="modal fade mobile-nav" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        
-				<?php
-				/** @var $block \Magento\Framework\View\Element\Template */
-				/** @var $helper \Magento\Search\Helper\Data */
-				$helper = $this->helper('Magento\Search\Helper\Data');
-				?>
-				
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+	        	<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        	<?php $helper = $this->helper('Magento\Search\Helper\Data'); ?>
 				<form class="form minisearch"
-				      role="search"
-				      id="search_mini_formm"
-				      action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>"
-				      method="get">
-				      <button type="submit" title="<?php echo $block->escapeHtml(__('Search')) ?>" class="search-btn">
-				        <img src="<?php echo $block->getViewFileUrl('images/icon-search.png'); ?>" />
-				      </button>
-				      <input  id="search"
-				        class="search-input"
-				        data-mage-init='{"quickSearch":{
-				          "formSelector":"#search_mini_form",
-				          "url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]); ?>",
-				          "destinationSelector":"#search_autocomplete",
-				          "responseFieldElements":"ul li",
-				          "selectClass": "active",
-				          "template": "<li class=\"<%- data.row_class %>\" id=\"qs-option-<%- data.index %>\" role=\"option\"><a href=\"#\" onclick=\"return false;\"><span class=\"qs-option-name\"><%- data.title %></span><span aria-hidden=\"true\" class=\"amount\"><%- data.num_results %></span></a></li>"
-				          }
-				        }'
-				        type="text"
-				        name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
-				        value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
-				        placeholder="<?php /* @escapeNotVerified */ echo __('Search ...'); ?>"
-				        class="form-control"
-				        maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
-				        role="combobox"
-				        aria-haspopup="false"
-				        aria-autocomplete="both"
-				        autocomplete="off">
-				      <div id="search_autocomplete" class="search-autocomplete"></div>
-				      <?php echo $block->getChildHtml() ?>
+					role="search"
+					id="search_mini_formm"
+					action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>"
+					method="get">
+					<button type="submit" title="<?php echo $block->escapeHtml(__('Search')) ?>" class="search-btn">
+					<img src="<?php echo $block->getViewFileUrl('images/icon-search.png'); ?>" />
+					</button>
+					<input  id="search"
+					class="search-input"
+					data-mage-init='{"quickSearch":{
+					  "formSelector":"#search_mini_form",
+					  "url":"<?php /* @escapeNotVerified */ echo $block->getUrl('search/ajax/suggest', ['_secure' => $block->getRequest()->isSecure()]); ?>",
+					  "destinationSelector":"#search_autocomplete",
+					  "responseFieldElements":"ul li",
+					  "selectClass": "active",
+					  "template": "<li class=\"<%- data.row_class %>\" id=\"qs-option-<%- data.index %>\" role=\"option\"><a href=\"#\" onclick=\"return false;\"><span class=\"qs-option-name\"><%- data.title %></span><span aria-hidden=\"true\" class=\"amount\"><%- data.num_results %></span></a></li>"
+					  }
+					}'
+					type="text"
+					name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
+					value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
+					placeholder="<?php /* @escapeNotVerified */ echo __('Search ...'); ?>"
+					class="form-control"
+					maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
+					role="combobox"
+					aria-haspopup="false"
+					aria-autocomplete="both"
+					autocomplete="off">
+					<div id="search_autocomplete" class="search-autocomplete"></div>
+					<?php echo $block->getChildHtml() ?>
 				</form>
-				
-      </div>
-
-
-      <div class="modal-body">
-		<ul class="nav nav-tabs nav-justified">
-			<li class="title"><a href="#">SHOP</a></li>
-			<li><a href="/lookbookslider">shop the shot</a></li>
-			<li><a href="/editor">editors&#x27; picks</a></li>
-			<li><a href="shop/made-in-canada.html">made in canada</a></li>
-		</ul>
-		<ul class="nav nav-pills nav-justified">
-			<li><a href="/Wishlist">Wishlist</a></li>
-			<li><a href="/checkout/cart/">My Cart</a></li>
-			<li><a href="shop/made-in-canada.html">made in canada</a></li>
-		<a href="http://www.houseandhome.com" class="homelink">Go to houseandhome.com ></a>
-
-
-      </div>
-    </div>
-  </div>
+			</div>
+			<div class="modal-body">
+    			<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('mobile-menu')->toHtml(); ?>
+    			<?php
+    				$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    				$cart = $objectManager->get('\Magento\Checkout\Model\Cart');
+        			$totalQuantity = $cart->getQuote()->getItemsQty();
+    			?>
+    			<ul>
+    			<li><a href="<?php echo $this->getUrl('wishlist') ?>">wishlist</a></li>
+    			<li><a href="<?php echo $this->getUrl('checkout/cart') ?>"><?php echo "cart (".($totalQuantity*1).")" ?></a></li>
+				<?php
+				    $customerSession = $objectManager->get('Magento\Customer\Model\Session');
+					if($customerSession->isLoggedIn()) {
+						$label = "SIGN OUT";
+						$link = $this->getUrl().'customer/account/logout';
+					}else{
+						$label = "LOGIN | SIGN UP";
+						$link = $this->getUrl().'customer/account/login';
+					}
+				?>
+				<li><a href="<?php echo $link ?>"><?php echo $label ?></a></li>
+    			</ul>
+    			<a href="https://houseandhome.com/">go to houseandhome.com</a>
+    		</div>
+    	</div>
+	</div>
 </div>

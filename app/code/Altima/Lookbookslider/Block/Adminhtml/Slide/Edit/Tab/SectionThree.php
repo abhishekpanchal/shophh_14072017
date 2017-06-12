@@ -14,9 +14,11 @@ class SectionThree extends \Magento\Backend\Block\Widget\Form\Generic implements
 	public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
+        \Magento\Cms\Model\Wysiwyg\Config $threeWysiwyg,
         \Magento\Framework\Data\FormFactory $formFactory,
         array $data = []
     ) {
+        $this->threeWysiwyg = $threeWysiwyg;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -54,12 +56,14 @@ class SectionThree extends \Magento\Backend\Block\Widget\Form\Generic implements
 
         $fieldset->addField(
             'description_three',
-            'textarea',
+            'editor',
             [
                 'name' => 'description_three',
                 'label' => __('Description'),
                 'title' => __('Description'),
-                'required' => false
+                'required' => false,
+                'config'    => $this->threeWysiwyg->getConfig(),
+                'wysiwyg'   => true
             ]
         );
 

@@ -14,9 +14,11 @@ class SectionFour extends \Magento\Backend\Block\Widget\Form\Generic implements 
 	public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
+        \Magento\Cms\Model\Wysiwyg\Config $fourWysiwyg,
         \Magento\Framework\Data\FormFactory $formFactory,
         array $data = []
     ) {
+        $this->fourWysiwyg = $fourWysiwyg;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -54,12 +56,14 @@ class SectionFour extends \Magento\Backend\Block\Widget\Form\Generic implements 
 
         $fieldset->addField(
             'description_four',
-            'textarea',
+            'editor',
             [
                 'name' => 'description_four',
                 'label' => __('Description'),
                 'title' => __('Description'),
-                'required' => false
+                'required' => false,
+                'config'    => $this->fourWysiwyg->getConfig(),
+                'wysiwyg'   => true
             ]
         );
 
