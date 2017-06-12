@@ -1676,9 +1676,9 @@ Cart
         float: right;
         width: 110px;
         overflow: visible;
-        height: 32px;
+        height: 36px;
         label {
-          padding: .4em .6em;
+          line-height: 2;
         }
       }
       padding: 0px 2px;
@@ -5841,11 +5841,11 @@ Select
   white-space: nowrap;
 
   &:after {
-    content: "\f104";
-    font-family: "Ionicons";
+    content: "\f0d7";
+    font-family: FontAwesome;
     position: absolute;
     pointer-events: none;
-    right: 2px;
+    right: 5px;
     top: 0;
     z-index: 1;
   }
@@ -6043,12 +6043,15 @@ span.callout {
   .styled-select {
     margin-top: 10px;
     width: 15%;
+    height: 34px;
     border: 1px solid #000;
+    overflow: visible;
+    z-index: 2;
 
     &:after {
-      top: 9px;
-      right: 9px;
-      content: '\f123';
+      top: 5px;
+      right: 10px;
+      content: '\f0d7';
     }
   }
 
@@ -6056,6 +6059,7 @@ span.callout {
     width: 100%;
     border: none;
     text-align: center;
+    background-color: #fff;
   }
 }
 
