@@ -78,7 +78,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'subtitle',
                 'label' => __('Subtitle'),
                 'title' => __('Subtitle'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled
             ]
         );
