@@ -3042,6 +3042,7 @@ Checkout
   }
   .main {
     .opc-wrapper {
+      margin-top: 20px;
       li {
         .step-title {
           font-family: @fancyFont;
@@ -3052,6 +3053,11 @@ Checkout
           text-transform: capitalize;
         }
       }
+      h4 {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 25px 0 10px;
+      }
     }
   }
   .checkout-progress-bar {
@@ -3061,6 +3067,7 @@ Checkout
     font-family: @headlineFont;
     font-size: 16px;
     text-transform: uppercase;
+    margin-bottom: 40px;
     li {
       text-align: left;
       display: inline-block;
@@ -3875,15 +3882,15 @@ Products
 /* =========================================================
 Checkout
 ============================================================ */
+
+/* Right side order summary */
 .opc-sidebar {
-  margin: 0;
+  margin: 0 !important;
   .modal-header {
     padding: 0;
     border-bottom: 0;
   }
 }
-
-
 
 .opc-block-summary {
   background: #F0F0F0;
@@ -3927,6 +3934,9 @@ Checkout
       }
       .minicart-items li:last-child {
         padding-bottom: 15px;
+      }
+      .product-image-container {
+        display: none;
       }
       .minicart-items .product-item-details {
         width: 100%;
@@ -3975,6 +3985,9 @@ Checkout
       font-family: @fancyFont;
       font-size: 16px;
     }
+    .shipping.excl .value {
+      display: none;
+    }
     .grand.totals .amount {
       font-size: 30px;
       line-height: 10px;
@@ -4016,7 +4029,35 @@ Checkout
     font-size: 14px;
     line-height: 24px;
   }
+  .ship-via {
+    display: none;
+  }
 }
+
+@media (min-width: 1024px) {
+  .opc-wrapper .shipping-address-item {
+    width: 50% !important;
+  }
+}
+
+
+/* Payment */
+.opc-payment {
+  .payment-methods .payment-method:nth-child(n+3) {
+  //  display: none;
+  }
+  .payment-method-title input[type="radio"], input[type="checkbox"] {
+    float: left;
+    margin-right: 6px;
+  }
+  .label {
+    text-transform: none;
+    font-size: 14px;
+  }
+}
+
+
+
 
 
 /*

@@ -6,6 +6,7 @@
 -->
 <li id="shipping" class="checkout-shipping-address" data-bind="fadeVisible: visible()">
     <div class="step-title" data-bind="i18n: 'Shipping Address'" data-role="title"></div>
+    <h4>Your addresses</h4>
     <div id="checkout-step-shipping"
          class="step-content"
          data-role="content">
@@ -53,7 +54,7 @@
     data-bind="fadeVisible: visible(), blockLoader: isLoading"
     role="presentation">
     <div class="checkout-shipping-method">
-        <div class="step-title" data-bind="i18n: 'Shipping Methods'" data-role="title"></div>
+        <div class="step-title" data-bind="i18n: 'Shipping Information'" data-role="title"></div>
         <!-- ko foreach: getRegion('before-shipping-method-form') -->
         <!-- ko template: getTemplate() --><!-- /ko -->
         <!-- /ko -->
