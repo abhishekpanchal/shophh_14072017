@@ -1689,6 +1689,12 @@ Cart
         display: inline;
         width: 75px;
         border: 0px;
+        &:after {
+          content: "";
+        }
+        .select2-selection {
+          border: none;
+        }
       }
       select {
         background-color: #fff;
@@ -1703,8 +1709,9 @@ Cart
 
     }
     .cart-item-remove {
+      font-family: 'icons-blank-theme';
       color: #AC2232;
-      font-size: 1.8rem;
+      font-size: 40px;
       float: right;
       padding: 0 5px;
     }
@@ -1759,7 +1766,7 @@ Cart
         &:after {
           font-family: "Ionicons";
           content: "\f2c7";
-          font-size: 1em;
+          font-size: 18px;
           right: 10px;
         }
       }
@@ -1769,7 +1776,7 @@ Cart
         &:after {
           font-family: "Ionicons";
           content: "\f2d7";
-          font-size: 1em;
+          font-size: 18px;
           right: 10px;
         }
       }
@@ -6355,24 +6362,26 @@ span.callout {
 
 
 .product-qty {
+  .select2-container--default .select2-selection--single {
+    border: 1px solid #000;
+    border-radius: 0px;
+  }
   .styled-select {
     margin-top: 10px;
+    border: none;
     width: 15%;
     height: 34px;
-    border: 1px solid #000;
     overflow: visible;
     z-index: 2;
-
     &:after {
-      top: 5px;
-      right: 10px;
-      content: '\f0d7';
+      content: "";
     }
+
   }
 
   select {
     width: 100%;
-    border: none;
+    border: 1px solid #000;
     text-align: center;
     background-color: #fff;
   }
