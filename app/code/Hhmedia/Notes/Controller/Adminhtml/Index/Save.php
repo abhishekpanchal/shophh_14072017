@@ -47,6 +47,14 @@ class Save extends \Magento\Backend\App\Action
                 $model->load($id);
             }
 
+            // save image data and remove from data array
+            if (isset($data['image'])) {
+                $imageData = $data['image'];
+                unset($data['image']);
+            } else {
+                $imageData = array();
+            }
+
             $model->addData($data);
 
             if (!$this->dataProcessor->validate($data)) {
