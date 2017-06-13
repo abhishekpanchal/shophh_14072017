@@ -1588,7 +1588,7 @@ Cart
 }
 .checkout-cart-index {
   .page-title {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   .cart {
     .cart-container {
@@ -1601,6 +1601,7 @@ Cart
       padding: 0;
     }
     .cart-item-name {
+      line-height: 25px;
       font-family: @fancyFont;
       font-size: 20px;
       font-style: italic;
@@ -1667,7 +1668,8 @@ Cart
       color: #000;
       text-transform: uppercase;
       a:not(:first-child):before {
-        content: "  |  ";
+        content: "|";
+        padding: 0 .5em;
       }
     }
     .qty {
@@ -1755,8 +1757,8 @@ Cart
     .block {
       .title {
         &:after {
-          font-family: FontAwesome; 
-          content: "\f067";
+          font-family: "Ionicons";
+          content: "\f2c7";
           font-size: 1em;
           right: 10px;
         }
@@ -1765,8 +1767,8 @@ Cart
     .block.active {
       .title {
         &:after {
-          font-family: FontAwesome; 
-          content: "\f00d";
+          font-family: "Ionicons";
+          content: "\f2d7";
           font-size: 1em;
           right: 10px;
         }
