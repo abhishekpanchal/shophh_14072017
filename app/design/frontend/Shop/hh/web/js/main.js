@@ -1,4 +1,4 @@
-require(['jquery', 'jquery.bootstrap'], function($){
+require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
 
   jQuery.noConflict();
 
@@ -254,17 +254,15 @@ require(['jquery', 'jquery.bootstrap'], function($){
     }
   );
 
-
+  //dropdown qty selectors on product details page & cart pages
   jQuery(document).ready(function () {
-  $('#form-validate .table-wrapper .qty select').change(function() {
-            $('#form-validate .update').trigger("click");
-          }
-      );
+    $('.product-details-select').select2();
+    $('#form-validate .table-wrapper .qty select').select2();
+    $('#form-validate .table-wrapper .qty select').on('select2:select', function (evt) {
+      $('#form-validate .update').trigger("click");
+    }
+    );
   });
-
-
-
-
 
   // mobile nav dropdown
   $('.mobile-nav .nav-tabs.nav-justified .title a').click(function(e) {

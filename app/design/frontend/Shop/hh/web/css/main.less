@@ -1588,7 +1588,7 @@ Cart
 }
 .checkout-cart-index {
   .page-title {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   .cart {
     .cart-container {
@@ -1601,6 +1601,7 @@ Cart
       padding: 0;
     }
     .cart-item-name {
+      line-height: 25px;
       font-family: @fancyFont;
       font-size: 20px;
       font-style: italic;
@@ -1667,7 +1668,8 @@ Cart
       color: #000;
       text-transform: uppercase;
       a:not(:first-child):before {
-        content: "  |  ";
+        content: "|";
+        padding: 0 .5em;
       }
     }
     .qty {
@@ -1687,6 +1689,12 @@ Cart
         display: inline;
         width: 75px;
         border: 0px;
+        &:after {
+          content: "";
+        }
+        .select2-selection {
+          border: none;
+        }
       }
       select {
         background-color: #fff;
@@ -1701,8 +1709,9 @@ Cart
 
     }
     .cart-item-remove {
+      font-family: 'icons-blank-theme';
       color: #AC2232;
-      font-size: 1.8rem;
+      font-size: 40px;
       float: right;
       padding: 0 5px;
     }
@@ -1755,9 +1764,9 @@ Cart
     .block {
       .title {
         &:after {
-          font-family: FontAwesome; 
-          content: "\f067";
-          font-size: 1em;
+          font-family: "Ionicons";
+          content: "\f2c7";
+          font-size: 18px;
           right: 10px;
         }
       }
@@ -1765,9 +1774,9 @@ Cart
     .block.active {
       .title {
         &:after {
-          font-family: FontAwesome; 
-          content: "\f00d";
-          font-size: 1em;
+          font-family: "Ionicons";
+          content: "\f2d7";
+          font-size: 18px;
           right: 10px;
         }
       }
@@ -3031,6 +3040,101 @@ Sidebar
 /* =========================================================
 Checkout
 ============================================================ */
+.checkout-index-index {
+  .page-title-wrapper {
+    height: auto;
+    width: auto;
+    position: relative;
+    margin-bottom: 2em;
+  }
+  .main {
+    .opc-wrapper {
+      li {
+        .step-title {
+          font-family: @fancyFont;
+          font-style: italic;
+          font-size: 20px;
+          font-weight: normal;
+          border-bottom: 1px solid #8d8d8d;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+  .checkout-progress-bar {
+    text-align: center;
+    color: #000;
+    list-style-type: decimal;
+    font-family: @headlineFont;
+    font-size: 16px;
+    text-transform: uppercase;
+    li {
+      text-align: left;
+      display: inline-block;
+      width: 220px;
+      opacity: 0.6;
+      &:before {
+        display: inline-block;
+        content: "";
+      }
+      &._active {
+        opacity: 1;
+      }
+      span {
+        padding-left: 1em;
+      }
+    }
+    li:first-child:before {
+      background-size: 32px 32px;
+      width: 32px;
+      height: 32px;
+      background-image: url(../images/package-2.png);
+    }
+    li:last-child:before {
+      background-size: 42px 32px;
+      width: 42px;
+      height: 32px;
+      background-image: url(../images/credit-card.png);
+    }
+  }
+  .opc-wrapper {
+    .shipping-address-items {
+      .shipping-address-item {
+        padding: 0;
+        border: 1px solid #8d8d8d;
+      }
+      .address-details {
+        padding: 20px 35px 20px 20px;
+      }
+      .address-actions {
+        width: 100%;
+        background-color: #000;
+        color: #fff;
+        font-family: @fancyFont;
+        font-style: italic;
+        text-align: center;
+      }
+      .selected-item {
+        background-color: #f0f0f0;
+         &:after {
+           background: #f0f0f0;
+           color: #000;
+           content: "\f058";
+           font-family: FontAwesome;
+         }
+        .address-actions {
+          background-color: #8d8d8d;
+        }
+      }
+      .not-selected-item {
+         &:after {
+           content: "";
+
+         }
+      }
+    }
+  }
+}
 
 .review-form {
   max-width: 100%;
@@ -6028,24 +6132,26 @@ span.callout {
 
 
 .product-qty {
+  .select2-container--default .select2-selection--single {
+    border: 1px solid #000;
+    border-radius: 0px;
+  }
   .styled-select {
     margin-top: 10px;
+    border: none;
     width: 15%;
     height: 34px;
-    border: 1px solid #000;
     overflow: visible;
     z-index: 2;
-
     &:after {
-      top: 5px;
-      right: 10px;
-      content: '\f0d7';
+      content: "";
     }
+
   }
 
   select {
     width: 100%;
-    border: none;
+    border: 1px solid #000;
     text-align: center;
     background-color: #fff;
   }

@@ -49,19 +49,8 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         <div class="cart-qty-wrapper">
           <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
           <div class="styled-select">
-<!--
-                           value="<?php /* @escapeNotVerified */ echo $block->getQty() ?>"
-                           type="number"
-                           size="4"
-                           title="<?php echo $block->escapeHtml(__('Qty')); ?>"
-                           class="input-text qty"
-                           maxlength="12"
--->
             <select class="input-text qty-select" id="qty" form="form-validate"
                     name="cart[<?php /* @escapeNotVerified */ echo $_item->getId() ?>][qty]"
-                    onfocus='this.size=10;' 
-                    onblur='this.size=1;' 
-                    onchange='this.size=1; this.blur();'
                     data-cart-item-id="<?php /* @escapeNotVerified */ echo $_item->getSku() ?>"
                     data-validate="{required:true,'validate-greater-than-zero':true}"
                     data-role="cart-item-qty" >
@@ -92,7 +81,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
            title="<?php echo $block->escapeHtml(__('Remove item')); ?>"
            class="action action-delete cart-item-remove"
            data-post='<?php echo $customHelper->getItemDeleteUrl($_item); ?>'>
-            ╳
+
         </a>
       </div>
     </div>
