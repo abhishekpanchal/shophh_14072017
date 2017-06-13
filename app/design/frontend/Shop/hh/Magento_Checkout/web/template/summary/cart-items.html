@@ -7,12 +7,12 @@
 <!-- ko ifnot: isItemsBlockExpanded() -->
 <div class="block items-in-cart" data-bind="mageInit: {'collapsible':{'openedState': 'active'}}">
     <div class="title" data-role="title">
-        <strong role="heading"><span data-bind="text: getItemsQty()"></span>
+        <strong role="heading">You are purchasing <span data-bind="text: getItemsQty()"></span>
             <!-- ko if: getItemsQty() == 1 -->
-            <!-- ko i18n: 'Item in Cart' --><!-- /ko -->
+            <!-- ko i18n: ' item' --><!-- /ko -->
             <!-- /ko -->
             <!-- ko if: getItemsQty() > 1 -->
-            <!-- ko i18n: 'Items in Cart' --><!-- /ko -->
+            <!-- ko i18n: ' items' --><!-- /ko -->
             <!-- /ko -->
         </strong>
     </div>
@@ -36,12 +36,12 @@
 <!-- ko if: isItemsBlockExpanded() -->
 <div class="block items-in-cart" data-bind="mageInit: {'collapsible':{'openedState': 'active', 'active': true}}">
     <div class="title" data-role="title">
-        <strong role="heading"><span data-bind="text: getItemsQty()"></span>
+        <strong role="heading">You are purchasing <span data-bind="text: getItemsQty()"></span>
             <!-- ko if: getItemsQty() == 1 -->
-            <!-- ko i18n: 'Item in Cart' --><!-- /ko -->
+            <!-- ko i18n: ' item' --><!-- /ko -->
             <!-- /ko -->
             <!-- ko if: getItemsQty() > 1 -->
-            <!-- ko i18n: 'Items in Cart' --><!-- /ko -->
+            <!-- ko i18n: ' items' --><!-- /ko -->
             <!-- /ko -->
         </strong>
     </div>
