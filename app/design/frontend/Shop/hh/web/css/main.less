@@ -4054,11 +4054,45 @@ Checkout
     text-transform: none;
     font-size: 14px;
   }
+  input[type="text"] {
+    background-color: #f0f0f0;
+    display: block;
+    text-align: left;
+    border-radius: 8px;
+    padding: 0;
+    height: auto;
+    padding: 11px 16px;
+    width: 100%;
+    margin: 0;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #8d8d8d;
+  }
+  .help-block {
+    display: none;
+  }
 }
 
-
-
-
+.checkout-payment-method .payment-method-content {
+  padding-left: 80px;
+  .label {
+    text-transform: uppercase;
+    padding: 0 !important;
+    width: auto !important;
+    margin-bottom: 10px !important;
+  }
+  .expiration-date, .card-cvc {
+    width: 50%;
+    float: left;
+  }
+  .expiration-date .label {
+    width: 100% !important;
+    text-align: left !important;
+  }
+}
+.checkout-payment-method .payment-method-billing-address .billing-address-details {
+  padding-left: 0;
+}
 
 /*
 .checkout-index-index {
