@@ -5,10 +5,10 @@
 <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
 <?php foreach($shotCollection as $shot): ?>
 	<?php $productSku = $blockObj->getProducts($shot); ?>
-    <?php if(in_array($_product->getSku(),$productSku)): ?>
-    	<?php $slideId = $shot->getSlideId(); ?>
-    	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','290'); ?>
-        
+    <?php if(is_array($productSku)): ?>
+        <?php if(in_array($_product->getSku(),$productSku)): ?>
+        	<?php $slideId = $shot->getSlideId(); ?>
+        	<?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','290'); ?>
                 <div class="product-shop-the-shot">
                     <h4>This product is featured in this shot:</h4>
                     <a href="<?php echo $this->getUrl('lookbookslider/index/view').'?slider_id='.$sliderId.'&slide_id='.$slideId; ?>">
@@ -16,7 +16,7 @@
                         <span class="shop-the-shot-hover">Shop this shot</span>
                     </a>
                 </div>
-            
-    	<?php break; ?>
- 	<?php endif; ?>
- <?php endforeach; ?>
+            <?php break; ?>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endforeach; ?>
