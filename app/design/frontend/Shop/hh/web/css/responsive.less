@@ -693,7 +693,7 @@ Shop the Spot Desktop Responsive
 		max-width: 120px;
 		margin-right: 10px;
 	}
-	.column.main .product-items {
+	.column.main .product-items, .collection-container {
 		margin-left: 0;
 		margin-right: 0;
 	}
@@ -1073,7 +1073,7 @@ Somewhere in between
 	Product Thumbnails
 	=================================*/
 	.product-item-details .product-item-link, #upsellCarousel .product-item-name a, .pro-detail-div .name a {
-		font-size: 13px;
+		font-size: 14px;
 		line-height: 20px;
 	}
 	.category-thumb, .product-item-photo, .product-item-name, .product-item-listing .pro-detail-div .name {
@@ -1389,6 +1389,15 @@ Extra Small Screens
 		}
 		&:nth-child(2n+1) {
 			clear: both;
+		}
+	}
+	.product-item-listing {
+		.description p {
+			display: none;
+		}
+		span.callout {
+			display: block;
+			margin-bottom: 4px
 		}
 	}
 
