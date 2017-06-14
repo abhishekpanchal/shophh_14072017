@@ -1588,7 +1588,7 @@ Cart
 }
 .checkout-cart-index {
   .page-title {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
   .cart {
     .cart-container {
@@ -1601,6 +1601,7 @@ Cart
       padding: 0;
     }
     .cart-item-name {
+      line-height: 25px;
       font-family: @fancyFont;
       font-size: 20px;
       font-style: italic;
@@ -1667,7 +1668,8 @@ Cart
       color: #000;
       text-transform: uppercase;
       a:not(:first-child):before {
-        content: "  |  ";
+        content: "|";
+        padding: 0 .5em;
       }
     }
     .qty {
@@ -1687,6 +1689,12 @@ Cart
         display: inline;
         width: 75px;
         border: 0px;
+        &:after {
+          content: "";
+        }
+        .select2-selection {
+          border: none;
+        }
       }
       select {
         background-color: #fff;
@@ -1701,8 +1709,9 @@ Cart
 
     }
     .cart-item-remove {
+      font-family: 'icons-blank-theme';
       color: #AC2232;
-      font-size: 1.8rem;
+      font-size: 40px;
       float: right;
       padding: 0 5px;
     }
@@ -1755,9 +1764,9 @@ Cart
     .block {
       .title {
         &:after {
-          font-family: FontAwesome; 
-          content: "\f067";
-          font-size: 1em;
+          font-family: "Ionicons";
+          content: "\f2c7";
+          font-size: 18px;
           right: 10px;
         }
       }
@@ -1765,9 +1774,9 @@ Cart
     .block.active {
       .title {
         &:after {
-          font-family: FontAwesome; 
-          content: "\f00d";
-          font-size: 1em;
+          font-family: "Ionicons";
+          content: "\f2d7";
+          font-size: 18px;
           right: 10px;
         }
       }
@@ -3031,6 +3040,108 @@ Sidebar
 /* =========================================================
 Checkout
 ============================================================ */
+.checkout-index-index {
+  .page-title-wrapper {
+    height: auto;
+    width: auto;
+    position: relative;
+    margin-bottom: 2em;
+  }
+  .main {
+    .opc-wrapper {
+      margin-top: 20px;
+      li {
+        .step-title {
+          font-family: @fancyFont;
+          font-style: italic;
+          font-size: 20px;
+          font-weight: normal;
+          border-bottom: 1px solid #8d8d8d;
+          text-transform: capitalize;
+        }
+      }
+      h4 {
+        text-transform: uppercase;
+        font-size: 14px;
+        margin: 25px 0 10px;
+      }
+    }
+  }
+  .checkout-progress-bar {
+    text-align: center;
+    color: #000;
+    list-style-type: decimal;
+    font-family: @headlineFont;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    li {
+      text-align: left;
+      display: inline-block;
+      width: 220px;
+      opacity: 0.6;
+      &:before {
+        display: inline-block;
+        content: "";
+      }
+      &._active {
+        opacity: 1;
+      }
+      span {
+        padding-left: 1em;
+      }
+    }
+    li:first-child:before {
+      background-size: 32px 32px;
+      width: 32px;
+      height: 32px;
+      background-image: url(../images/package-2.png);
+    }
+    li:last-child:before {
+      background-size: 42px 32px;
+      width: 42px;
+      height: 32px;
+      background-image: url(../images/credit-card.png);
+    }
+  }
+  .opc-wrapper {
+    .shipping-address-items {
+      .shipping-address-item {
+        padding: 0;
+        border: 1px solid #8d8d8d;
+      }
+      .address-details {
+        padding: 20px 35px 20px 20px;
+      }
+      .address-actions {
+        width: 100%;
+        background-color: #000;
+        color: #fff;
+        font-family: @fancyFont;
+        font-style: italic;
+        text-align: center;
+      }
+      .selected-item {
+        background-color: #f0f0f0;
+         &:after {
+           background: #f0f0f0;
+           color: #000;
+           content: "\f058";
+           font-family: FontAwesome;
+         }
+        .address-actions {
+          background-color: #8d8d8d;
+        }
+      }
+      .not-selected-item {
+         &:after {
+           content: "";
+
+         }
+      }
+    }
+  }
+}
 
 .review-form {
   max-width: 100%;
@@ -3773,6 +3884,230 @@ Products
 }
 
 
+
+
+/* =========================================================
+Checkout
+============================================================ */
+
+/* Right side order summary */
+.opc-sidebar {
+  margin: 0 !important;
+  .modal-header {
+    padding: 0;
+    border-bottom: 0;
+  }
+}
+
+.opc-block-summary {
+  background: #F0F0F0;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  .mark {
+    background: none;
+    font-family: @headlineFont;
+    font-size: 14px;
+    .label {
+      text-transform: none;
+      padding: 0;
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+  .items-in-cart {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-bottom: none;
+    overflow: hidden;
+    &.active .title:after {
+      content: none;
+    }
+    .title {
+      border: none;
+      padding: 0;
+      cursor: default;
+      margin-bottom: 8px;
+    }
+    .minicart-items-wrapper {
+      max-height: none !important;
+      padding: 0;
+      margin: 0 20px;
+      width: 88%;
+      .product-item-name {
+        font-family: @fancyFont;
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+      .minicart-items li:last-child {
+        padding-bottom: 15px;
+      }
+      .product-image-container {
+        display: none;
+      }
+      .minicart-items .product-item-details {
+        width: 100%;
+        margin-bottom: 0;
+        .price {
+          font-family: @fancyFont;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .product-item {
+    .product-item-inner {
+      margin: 0;
+    }
+    .details {
+      font-size: 12px;
+      color: #8d8d8d;
+      dl, dd {
+        display: inline;
+        font-size: 12px;
+        color: #8d8d8d;
+      }
+      .label {
+        color: #8d8d8d;
+        text-transform: none;
+        font-size: 12px;
+        &:after {
+          content: ': ';
+        }
+      }
+      dl .label {
+        display: none;
+      }
+      dd:after {
+        content: '|';
+        display: inline-block;
+        margin-left: 4px;
+      }
+    }
+  }
+  .table-totals {
+    width: 90%;
+    margin: 0 20px 10px;
+    .amount {
+      font-family: @fancyFont;
+      font-size: 16px;
+    }
+    .shipping.excl .value {
+      display: none;
+    }
+    .grand.totals .amount {
+      font-size: 30px;
+      line-height: 10px;
+      &:after {
+        content: 'CAD';
+        display: block;
+        font-family: @headlineFont;
+        font-size: 12px;
+        color: #8d8d8d;
+        margin-top: 12px;
+      }
+    }
+  }
+}
+.opc-sidebar .title, .shipping-information .shipping-information-title {
+  font-family: @headlineFont;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #8d8d8d;
+  margin: 20px 20px 10px;
+  strong {
+    font-size: 14px !important;
+  }
+}
+.opc-block-shipping-information {
+  padding: 0;
+  border: 1px solid #f0f0f0;
+  border-top: none;
+  overflow: auto;
+  .shipping-information-title {
+    border-bottom: none;
+    margin-bottom: 0;
+    button {
+      display: none !important;
+    }
+  }
+  .shipping-information-content {
+    margin: 0 20px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .ship-via {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .opc-wrapper .shipping-address-item {
+    width: 50% !important;
+  }
+}
+
+
+/* Payment */
+.opc-payment {
+  .payment-methods .payment-method:nth-child(n+3) {
+  //  display: none;
+  }
+  .payment-method-title input[type="radio"], input[type="checkbox"] {
+    float: left;
+    margin-right: 6px;
+  }
+  .label {
+    text-transform: none;
+    font-size: 14px;
+  }
+  input[type="text"] {
+    background-color: #f0f0f0;
+    display: block;
+    text-align: left;
+    border-radius: 8px;
+    padding: 0;
+    height: auto;
+    padding: 11px 16px;
+    width: 100%;
+    margin: 0;
+    margin-top: 15px;
+    font-size: 16px;
+    color: #8d8d8d;
+  }
+  .help-block {
+    display: none;
+  }
+}
+
+.checkout-payment-method .payment-method-content {
+  padding-left: 80px;
+  .label {
+    text-transform: uppercase;
+    padding: 0 !important;
+    width: auto !important;
+    margin-bottom: 10px !important;
+  }
+  .expiration-date, .card-cvc {
+    width: 50%;
+    float: left;
+  }
+  .expiration-date .label {
+    width: 100% !important;
+    text-align: left !important;
+  }
+  .payment-image, .payment-description, .field.alias {
+    display: none;
+  }
+}
+.checkout-payment-method .payment-method-billing-address {
+//  display: none;
+  .billing-address-details {
+    padding-left: 0;
+  }
+}
+
+/*
 .checkout-index-index {
   .authorization-link {
     display: none;
@@ -3866,6 +4201,11 @@ Products
 
   }
 }
+*/
+
+
+
+
 
 .modal-content {
   box-shadow: none!important;
@@ -6028,24 +6368,26 @@ span.callout {
 
 
 .product-qty {
+  .select2-container--default .select2-selection--single {
+    border: 1px solid #000;
+    border-radius: 0px;
+  }
   .styled-select {
     margin-top: 10px;
+    border: none;
     width: 15%;
     height: 34px;
-    border: 1px solid #000;
     overflow: visible;
     z-index: 2;
-
     &:after {
-      top: 5px;
-      right: 10px;
-      content: '\f0d7';
+      content: "";
     }
+
   }
 
   select {
     width: 100%;
-    border: none;
+    border: 1px solid #000;
     text-align: center;
     background-color: #fff;
   }
@@ -8361,6 +8703,12 @@ Account reviews
     }
   }
 }
+
+
+
+
+
+
 
 
 

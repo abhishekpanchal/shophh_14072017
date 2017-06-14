@@ -43,7 +43,7 @@
                 </block>
               </container>
 					    <container name="shopping-cart-wrapper" htmlTag="div" htmlClass="hidden-sm hidden-md hidden-lg col-xs-1">
-					        <block name="shopping-cart" class="Magento\Framework\View\Element\Template" template="Magento_Theme::html/header/mobile-shopping-cart.phtml"/>
+					        <block name="shopping-cart" class="Magento\Checkout\Block\Cart\Sidebar" template="Magento_Checkout::cart/minicart.phtml"/>
 					    </container>
               <container name="header.main.search" htmlTag="div" htmlClass="col-md-3 col-sm-3 header-search hidden-xs" after="-">
                 <block class="Magento\Framework\View\Element\Template" template="Magento_Search::form.mini.phtml" />
