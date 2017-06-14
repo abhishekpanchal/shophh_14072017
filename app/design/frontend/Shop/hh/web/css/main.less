@@ -4080,33 +4080,61 @@ Checkout
   }
 }
 
-.checkout-payment-method .payment-method-content {
-  padding-left: 80px;
-  .label {
-    text-transform: uppercase;
-    padding: 0 !important;
-    width: auto !important;
-    margin-bottom: 10px !important;
+.payment-method {
+  display: none;
+  &.credit {
+    display: block;
+    &.general, &.americanexpress {
+      display: none;
+    }
   }
-  .expiration-date, .card-cvc {
-    width: 50%;
-    float: left;
-  }
-  .expiration-date .label {
-    width: 100% !important;
-    text-align: left !important;
-  }
-  .payment-image, .payment-description, .field.alias {
-    display: none;
-  }
-}
-.checkout-payment-method .payment-method-billing-address {
-//  display: none;
-  .billing-address-details {
-    padding-left: 0;
+  &.visa .payment-method-title {
+    border-top: none;
   }
 }
 
+
+
+
+
+.checkout-payment-method {
+  .fieldset > .field-select-billing > .control {
+    display: none;
+  }
+  .billing-address-form {
+    display: block !important;
+    .fieldset > .field {
+      float: left;
+      width: 50%;
+    }
+  }
+  .payment-method-content {
+    padding-left: 80px;
+    .label {
+      text-transform: uppercase;
+      padding: 0 !important;
+      width: auto !important;
+      margin-bottom: 10px !important;
+    }
+    .expiration-date, .card-cvc {
+      width: 50%;
+      float: left;
+    }
+    .expiration-date .label {
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .payment-image, .payment-description, .field.alias {
+      display: none;
+    }
+  }
+  .payment-method-billing-address {
+    .billing-address-details {
+      display: none;
+      padding-left: 0;
+    }
+  }
+}
 /*
 .checkout-index-index {
   .authorization-link {
