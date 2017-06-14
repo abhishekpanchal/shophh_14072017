@@ -26,3 +26,49 @@
         </div>
     </div>
 </div>
+<?php $helper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
+<?php $proHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+<?php $orderDetail = $helper->getOrderDetails($block->getOrderId()); ?>
+<?php $billingAddress = $orderDetail->getBillingAddress()->getData(); ?>
+<?php $shippingAddress = $orderDetail->getShippingAddress()->getData(); ?>
+<?php $_items = $orderDetail->getAllVisibleItems(); ?>
+<div class="order-summary">
+<span>Order Summary</span>
+<span>Shipping Address:</span>
+<?php echo $shippingAddress['firstname'].' '.$shippingAddress['lastname']; ?>
+<?php echo $shippingAddress['street']; ?>
+<?php echo $shippingAddress['city'].', '.$shippingAddress['region']; ?>
+<?php if($shippingAddress['country_id'] == 'CA'){ echo "Canada"; }else{ echo "United States"; } ?>
+<?php echo $shippingAddress['telephone']; ?>
+<span>Billing Address:</span>
+<?php echo $billingAddress['firstname'].' '.$billingAddress['lastname']; ?>
+<?php echo $billingAddress['street']; ?>
+<?php echo $billingAddress['city'].', '.$billingAddress['region']; ?>
+<?php if($billingAddress['country_id'] == 'CA'){ echo "Canada"; }else{ echo "United States"; } ?>
+<?php echo $billingAddress['telephone']; ?>
+</div>
+<span><?php echo count($_items).' items purchased.'; ?></span>
+<?php foreach ($_items as $_item): ?>
+    <?php $product = $helper->getProductBySku($_item->getSku()); ?>
+    <?php $image = $product->getData('thumbnail'); ?>
+    <?php $qty = $_item->getQtyOrdered(); ?>
+    <img src="<?php echo $proHelper->resize($image,80,80); ?>" />
+    <span><?php echo $product->getName() ?></span>
+    <?php $productOptions = $_item->getProductOptions(); ?>
+    <?php 
+    foreach($productOptions as $key => $val):
+        if($key == 'attributes_info'):
+            foreach($val as $attribute):
+                echo $attribute['value'];
+            endforeach;
+        endif;
+    endforeach;
+    ?>
+    <span><?php echo 'Qty: '.($qty)*1; ?></span>
+    <span><?php echo 'SKU# '.$_item->getSku() ?></span>
+    <span><?php echo ($_item->getPrice())*$qty*1; ?></span>
+<?php endforeach; ?>
+<span>Subtotal</span><?php echo ($orderDetail->getSubTotal())*1; ?>
+<span>Shipping</span><?php echo ($orderDetail->getShippingAmount())*1; ?>
+<span>Taxes</span><?php echo ($orderDetail->getTaxAmount())*1; ?>
+<span>Total</span><?php echo ($orderDetail->getGrandTotal())*1; ?>
