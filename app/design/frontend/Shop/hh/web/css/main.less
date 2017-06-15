@@ -811,13 +811,6 @@ Products
     max-width: 400px;
     margin-top: -10px;
 
-    h4 {
-      font-family: @headlineFont;
-      font-size: 14px;
-      text-transform: capitalize;
-      font-weight: normal;
-      margin-bottom: 15px;
-    }
     .shop-the-shot-hover {
       border: 1px solid #b0b7b8;
       font-size: 15px;
@@ -6818,7 +6811,7 @@ Editos Main Page
         line-height: normal;
         padding: 15px 25px;
         width: auto;
-        margin-bottom: 20px;
+        margin: 20px 0;
       }
     }
   }
@@ -6924,6 +6917,7 @@ Editors Details
       margin-bottom: 0;
     }
   }
+  /*
   .editor-bio {
     font-size: 14px;
     line-height: 1.4rem;
@@ -6942,6 +6936,7 @@ Editors Details
       text-transform: uppercase;
     }
   }
+  */
   .editor-products {
     margin: 0 auto;
     margin-bottom: 60px;
@@ -7808,7 +7803,6 @@ Collection Page
 .collection-index-view {
   .collection_item_view {
     .page-title {
-      background: none;
       margin-bottom: 25px;
       font-size: 30px;
     }
@@ -7858,12 +7852,17 @@ Collection Page
     }
   }
   .highlighted-products-title {
+    background: url(../images/shop-keyline-faded-center.png) no-repeat center;
     font-family: @fancyFont;
     font-style: italic;
     font-size: 22px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    span {
+      background: #fff;
+      padding: 0 30px;
+    }
   }
 }
 

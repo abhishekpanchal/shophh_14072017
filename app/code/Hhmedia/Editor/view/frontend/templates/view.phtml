@@ -28,15 +28,19 @@
             <div class="quote"><?php echo $_editorItem->getQuote() ?></div>
         </div>
     </div>
+    <!--
     <div class="clearfix"></div>
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 editor-bio">
         <h4>Biography</h4>
         <?php echo $_editorItem->getBio() ?>
     </div>
+    -->
 </div>
 
 
 <div class="editor_item_view">
+    <h2 class="page-title marginbottom-40"><span><?php echo $this->escapeHtml($_editorItem->getName()) ?>'s Picks</span></h2>
+
     <div class="row editor-products">
         <?php
             $products = $this->getProductCollection();
@@ -65,7 +69,7 @@
 </div>
 
 <div class="editors-thumbs">
-    <h2 class="page-title marginbottom-40"><span><?php echo __("More Editors") ?></span></h2>
+    <h2 class="page-title marginbottom-40"><span><?php echo __("More Editor's Picks") ?></span></h2>
     <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
     <?php $_editor = $objEditor->getCollection()->addFieldToFilter('past', 1)->addFieldToFilter('guest',0)->setPageSize(4); ?>
     <?php $_editor->getSelect()->orderRand(); ?>
