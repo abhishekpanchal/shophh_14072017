@@ -4,7 +4,7 @@
 	$totalQuantity = $cart->getQuote()->getItemsQty();
 ?>
 <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="mobile-shopping-cart">
-	<?php echo ($totalQuantity*1); ?>
+	<span><?php echo ($totalQuantity*1); ?></span>
 	<span class="text">
 		<span class="ion-ios-cart-outline icon-cart"></span>
 	</span>

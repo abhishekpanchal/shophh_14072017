@@ -6,11 +6,44 @@
 -->
 <div class="step-title" >Billing Address</div>
 
-
+<!--
 <div class="billing-address-same-as-shipping-block field choice" data-bind="visible: canUseShippingAddress()">
     <input type="checkbox" name="billing-address-same-as-shipping" data-bind="checked: isAddressSameAsShipping, click: useShippingAddress, attr: {id: 'billing-address-same-as-shipping-' + $parent.getCode()}"/>
     <label data-bind="attr: {for: 'billing-address-same-as-shipping-' + $parent.getCode()}"><span data-bind="i18n: 'My billing and shipping address are the same'"></span></label>
 </div>
+-->
+
+
+<div class="margintop-20">
+    <label>
+        <input type="radio" name="newship" checked="checked"> <span> Same as my shipping address</span>
+    </label>
+</div>
+<div>
+    <label>
+        <input type="radio" name="newship" class="useShippingAddress"> <span> Use a new address</span>
+    </label>
+</div>
+
+<!--
+<div class="payment-method-title field choice">
+    <input type="radio" name="billing-address-same-as-shipping1" class="radio" data-bind="attr: {id: 'billing-address-same-as-shipping-' + $parent.getCode()}">
+    <label class="label" for="billing-address-same-as-shipping1"><span data-bind="i18n: 'Same as my shipping address'"></span></label>
+</div>
+
+<div class="payment-method-title field choice">
+    <input type="radio" name="billing-address-same-as-shipping2" class="radio" data-bind="attr: {id: 'billing-address-same-as-shipping-' + $parent.getCode()}, click: useShippingAddress">
+    <label class="label" for="billing-address-same-as-shipping2"><span data-bind="i18n: 'Use a new address'"></span></label>
+</div>
+
+<!--
+ <div class="payment-method-title field choice">
+    <input type="radio" name="payment[method]" class="radio" data-bind="attr: {'id': getCode()}, value: getCode(), checked: isChecked, click: selectPaymentMethod, visible: isRadioButtonVisible()" />
+    <label data-bind="attr: {'for': getCode()}" class="label"><span data-bind="text: getTitle()"></span></label>
+</div>
+-->
+
+
 
 <!-- ko template: 'Magento_Checkout/billing-address/details' --><!-- /ko -->
 <fieldset class="fieldset" data-bind="visible: !isAddressDetailsVisible()">
