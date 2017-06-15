@@ -811,13 +811,6 @@ Products
     max-width: 400px;
     margin-top: -10px;
 
-    h4 {
-      font-family: @headlineFont;
-      font-size: 14px;
-      text-transform: capitalize;
-      font-weight: normal;
-      margin-bottom: 15px;
-    }
     .shop-the-shot-hover {
       border: 1px solid #b0b7b8;
       font-size: 15px;
@@ -4109,7 +4102,7 @@ Checkout
     }
   }
   .payment-method-content {
-    padding-left: 80px;
+    padding-left: 0;
     .label {
       text-transform: uppercase;
       padding: 0 !important;
@@ -6818,7 +6811,7 @@ Editos Main Page
         line-height: normal;
         padding: 15px 25px;
         width: auto;
-        margin-bottom: 20px;
+        margin: 20px 0;
       }
     }
   }
@@ -6924,24 +6917,18 @@ Editors Details
       margin-bottom: 0;
     }
   }
+
   .editor-bio {
     font-size: 14px;
     line-height: 1.4rem;
     margin-bottom: 40px;
-
-    h4 {
-      font-family: @headlineFont;
-      text-transform: uppercase;
-      color: #5eb1ae;
-      font-size: 14px;
-    }
-
     a {
       .inline-block;
       font-family: @headlineFont;
       text-transform: uppercase;
     }
   }
+
   .editor-products {
     margin: 0 auto;
     margin-bottom: 60px;
@@ -7460,11 +7447,11 @@ Mini Cart
   text-transform: capitalize;
 }
 
-.minicart-wrapper.active {
-  max-width: 70px;
-  .block-minicart {
-    border: 1px solid #000;
-  }
+.minicart-wrapper {
+  width: 70px;
+}
+.minicart-wrapper.active .block-minicart {
+  border: 1px solid #000;
 }
 
 .block-minicart {
@@ -7808,7 +7795,6 @@ Collection Page
 .collection-index-view {
   .collection_item_view {
     .page-title {
-      background: none;
       margin-bottom: 25px;
       font-size: 30px;
     }
@@ -7858,12 +7844,17 @@ Collection Page
     }
   }
   .highlighted-products-title {
+    background: url(../images/shop-keyline-faded-center.png) no-repeat center;
     font-family: @fancyFont;
     font-style: italic;
     font-size: 22px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    span {
+      background: #fff;
+      padding: 0 30px;
+    }
   }
 }
 

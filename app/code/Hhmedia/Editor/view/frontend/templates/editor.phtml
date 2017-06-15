@@ -10,7 +10,7 @@
                 <h3 class="guest-name"><a href="<?php echo $this->getItemUrl($guest) ?>"><?php echo $guest->getName(); ?></a></h3>
                 <h4 class="guest-job"><?php echo $guest->getJobTitle(); ?></h4>
                 <div class="editor-blurb"><?php echo $guest->getContent(); ?></div>
-                <div class="editor-quote"><?php echo $guest->getShortQuote(); ?></div>
+                <!--<div class="editor-quote"><?php echo $guest->getShortQuote(); ?></div>-->
                 <a href="<?php echo $this->getItemUrl($guest) ?>" class="btn btn-main btn-picks">See Picks</a>
             </div>
         </div>
@@ -27,7 +27,7 @@ $pastEditor = $this->getCollection()
 <?php if ($pastEditor->getSize()): ?>
 <div class="editor_list_view">
     <h2 class="page-title fancyfont"><span><?php echo __("H&H Editors' Picks") ?></span></h2>
-    <h4 class="subtitle"><?php echo __('See What your favorite have selected and why'); ?></h4>
+    <h4 class="subtitle"><?php echo __('See What your favorite editors have selected and why'); ?></h4>
     <?php foreach ($pastEditor as $editorItem): ?>
         <div id="item_<?php echo $editorItem->getId() ?>" class="col-md-3 col-sm-3 col-xs-6 editor_list_item">
             <a href="<?php echo $this->getItemUrl($editorItem) ?>">
