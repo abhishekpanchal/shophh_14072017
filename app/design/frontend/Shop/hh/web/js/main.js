@@ -264,6 +264,13 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
     );
   });
 
+  //checkout page login flow
+  $(window).load(function() {
+    if (!window.isCustomerLoggedIn) {
+      $('.checkout-login-container').siblings().hide();
+    }
+  });
+
   // mobile nav dropdown
   $('.mobile-nav .nav-tabs.nav-justified .title a').click(function(e) {
     $('.mobile-nav').toggleClass('expanded');

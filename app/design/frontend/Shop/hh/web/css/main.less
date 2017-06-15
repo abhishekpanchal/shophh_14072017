@@ -3080,9 +3080,11 @@ Checkout
         width: 66%;
         margin: auto;
         font-size: 14px;
+        margin-bottom: 1em;
       }
       input, button {
         margin: auto;
+        margin-bottom: 1em;
       }
       button {
         float: none;
@@ -3092,6 +3094,26 @@ Checkout
     .checkout-user {
       button, a {
         display: block;
+        margin-bottom: 1em;
+      }
+      .checkout-create-account {
+        font-family: @headlineFont;
+        font-size: 14px;
+        text-transform: uppercase;
+        &:after {
+          content: ">";
+          padding-left: 1em;
+        }
+      }
+      .fieldset {
+        margin-bottom: 20px;
+      }
+      .action-remind span {
+        font-family: @headlineFont;
+        color: #8d8d8d;
+        text-transform: uppercase;
+        text-decoration: underline;
+        font-size: 12px;
       }
     }
   }
@@ -3188,6 +3210,15 @@ Checkout
          }
       }
     }
+  }
+  .customer-service {
+    margin-top: 3em;
+    padding: 2em;
+    font-family: @headlineFont;
+    font-size: 14px;
+    color: #8d8d8d;
+    background-color: #f0f0f0;
+    text-align: center;
   }
 }
 

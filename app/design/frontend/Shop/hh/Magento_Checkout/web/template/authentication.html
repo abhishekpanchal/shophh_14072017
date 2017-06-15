@@ -5,7 +5,8 @@
 */
 -->
 <div class="container checkout-login-container">
-<!-- ko ifnot: customer().firstname  -->
+  <pre data-bind="text: ko.toJSON($root, null, 2)"></pre>
+<!-- ko if: isActive()  -->
   <div class="row">
     <div class="col-md-6 checkout-guest">
       <div class="block">
@@ -21,7 +22,7 @@
       <div class="block">
         <div class="block-title" role="heading" aria-level="2">Login To Your Shop H&H Account</div>
       </div>
-      <a href="">Create Account</a>
+      <a class="checkout-create-account" href="../customer/account/create">Create Account</a>
       <form data-role="login"
         data-bind="submit:login"
         method="post">
