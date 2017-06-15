@@ -4,5 +4,13 @@
   xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
       <move element="logo" destination="header.main.logo"/>
+      <move element="cart.customer.service" destination="content" after="-"/>
     </body>
+    <container name="cart.customer.service" htmlTag="div" htmlClass="customer-service" after="checkout.header.wrapper">
+      <block class="Magento\Cms\Block\Block" name="customer.service.cart" after="checkout.header.wrapper">
+        <arguments>
+          <argument name="block_id" xsi:type="string">cart-customer-service</argument>
+        </arguments>
+      </block>
+    </container>
 </page>
