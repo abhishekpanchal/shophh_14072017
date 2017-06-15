@@ -69,13 +69,14 @@
     </div>
 </div>
 
-<?php if($_editorItem->getSubtitle() == ''): ?>
+<?php //if($_editorItem->getSubtitle() == ''): ?>
     <div class="editors-thumbs">
         <h2 class="page-title marginbottom-40"><span><?php echo __("More Editor's Picks") ?></span></h2>
         <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
-        <?php $_editor = $objEditor->getCollection()->addFieldToFilter('past', 1)->addFieldToFilter('guest',0)->setPageSize(4); ?>
+        <?php $_editor = $objEditor->getCollection()->addFieldToFilter('past', 1)->addFieldToFilter('guest',0); ?>
         <?php $_editor->getSelect()->orderRand(); ?>
         <div class="row">
+            <?php $i = 0; ?>
             <?php foreach($_editor as $editor): ?>
                 <?php if($editor->getEditorId() != $this->getRequest()->getParam('id')): ?>
                     <div class="col-md-3 col-sm-3 col-xs-6 editor-single-thumb text-center">
@@ -86,6 +87,7 @@
                         </a>
                     </div>
                 <?php endif; ?>
+                <?php if($i++==4) break; ?>
             <?php endforeach; ?>
         </div>
         <div class="row">
@@ -94,4 +96,4 @@
             </div>
         </div>
     </div>
-<?php endif; ?>
+<?php //endif; ?>
