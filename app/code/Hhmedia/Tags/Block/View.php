@@ -133,6 +133,7 @@ class View extends \Magento\Framework\View\Element\Template
 
         $productCollection = $objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
         $productCollection->addAttributeToFilter('entity_id', array('in' => $productIds));
+        $productCollection->addFieldToFilter('visibility', 4);
         $productCollection->addAttributeToSort($sort, $order);
         $productCollection->load();
 
