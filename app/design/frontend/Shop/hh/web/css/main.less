@@ -832,8 +832,26 @@ Products
       cursor: pointer;
     }
   }
-
 }
+
+
+/* mobile styling of tabs at all devices */
+.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+  &.additional-attributes tbody th {
+    display: none;
+  }
+  tbody > tr td:before {
+    padding-right: 10px;
+    content: attr(data-th) ': ';
+    display: inline-block;
+    color: #111111;
+    font-weight: 700;
+  }
+}
+
+
+
+
 
 
 
