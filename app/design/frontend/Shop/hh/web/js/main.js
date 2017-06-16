@@ -265,18 +265,22 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
   });
 
   //checkout page login flow
-  $(window).load(function() {
+  window.addEventListener('load', function() {
+    setTimeout(function(){
+
+    $('#guest-checkout-btn').click(function() {
+      var email = $("input[name='guest-checkout-email']").val();
+      $("#customer-email").val(email);
+      $('.checkout-login-container').hide();
+      $('.checkout-login-container').siblings().not(".opc-estimated-wrapper").show();
+    });
     if (!window.isCustomerLoggedIn) {
       $('.checkout-login-container').siblings().hide();
     }
+    }, 10000);
   });
-
   // mobile nav dropdown
   $('.mobile-nav .nav-tabs.nav-justified .title a').click(function(e) {
     $('.mobile-nav').toggleClass('expanded');
   });
-
-
-
-
 });
