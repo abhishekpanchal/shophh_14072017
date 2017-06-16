@@ -29,6 +29,10 @@
                 <width>280</width>
                 <height>280</height>
             </image>
+            <image id="cart_page_product_thumbnail" type="thumbnail">
+                <width>200</width>
+                <height>200</height>
+            </image>
         </images>
     </media>
 </view>
