@@ -1,4 +1,10 @@
-<a href="/checkout/cart" class="mobile-shopping-cart">
+<?php
+	$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+	$cart = $objectManager->get('\Magento\Checkout\Model\Cart');
+	$totalQuantity = $cart->getQuote()->getItemsQty();
+?>
+<a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="mobile-shopping-cart">
+	<span><?php echo ($totalQuantity*1); ?></span>
 	<span class="text">
 		<span class="ion-ios-cart-outline icon-cart"></span>
 	</span>

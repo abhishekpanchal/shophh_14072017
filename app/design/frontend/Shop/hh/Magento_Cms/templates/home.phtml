@@ -37,7 +37,7 @@
                                     <h3 class="hero-details-title"><span><strong class="dietdidot">Shop</strong> THE SHOT</span></h3>
                                     <h4 style="color:<?php echo $shot->getColor() ?>"><?php echo $shot->getTitle(); ?></h4>
                                     <p><?php echo truncate(($shot->getShortDescription()),20) ?></p>
-                                    <div class="homepage-hero-btn"><span><?php echo __('Shop This') ?></span></div>
+                                    <div class="homepage-hero-btn"><span><?php echo __('Explore') ?></span></div>
                                     </a>
                                 </div>
                                 </div>
@@ -76,7 +76,7 @@
 
 <!-- Decorating Formula Start -->
 <div class="decorating-formula">
-    <h2 class="page-title-small"><span><?php echo __("Decorating Formulas") ?></span></h2>
+    <h2 class="page-title-small"><span><?php echo __("Decorating Lesson") ?></span></h2>
     <?php $objFormula = $block->getLayout()->createBlock('Hhmedia\Formula\Block\Formula'); ?>
     <?php $_formula = $objFormula->getCollection(); ?>
     <?php if ($_formula->getSize()): ?>

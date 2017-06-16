@@ -8,21 +8,91 @@
 
 ?>
 <?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<?php $helper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
+<?php $proHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+<?php $orderDetail = $helper->getOrderDetails($block->getOrderId()); ?>
+<?php $billingAddress = $orderDetail->getBillingAddress()->getData(); ?>
+<?php $shippingAddress = $orderDetail->getShippingAddress()->getData(); ?>
+<?php $_items = $orderDetail->getAllVisibleItems(); ?>
+
 <div class="checkout-success">
     <?php if ($block->getOrderId()):?>
-        <?php if ($block->getCanViewOrder()) :?>
-            <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
-        <?php  else :?>
-            <p><?php echo __('Your order # is: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
-        <?php endif;?>
-            <p><?php /* @escapeNotVerified */ echo __('We\'ll email you an order confirmation with details and tracking info.') ?></p>
-    <?php endif;?>
+          <p><?php /* @escapeNotVerified */ echo __('Your order has been confirmed.') ?></p>
+      <?php if ($block->getCanViewOrder()) :?>
+          <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
+      <?php  else :?>
+          <p><?php echo __('Your order number is: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
+      <?php endif;?>
+  <?php endif;?>
 
-    <?php echo $block->getAdditionalInfoHtml() ?>
+  <?php echo $block->getAdditionalInfoHtml() ?>
 
-    <div class="actions-toolbar">
-        <div class="primary">
-            <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
+  <div class="order-summary">
+    <div class="block block-dashboard-addresses">
+      <div class="block-title">
+        Order Summary
+      </div>
+      <div class="block-content row">
+        <div class="box col-md-6">
+          <span class="box-title">Shipping Address:</span>
+          <div class="box-content">
+            <p><?php echo $shippingAddress['firstname'].' '.$shippingAddress['lastname']; ?></p>
+            <p><?php echo $shippingAddress['street']; ?></p>
+            <p><?php echo $shippingAddress['city'].', '.$shippingAddress['region']; ?></p>
+            <p><?php if($shippingAddress['country_id'] == 'CA'){ echo "Canada"; }else{ echo "United States"; } ?></p>
+            <p><?php echo $shippingAddress['telephone']; ?></p>
+          </div>
         </div>
+        <div class="box col-md-6">
+          <span class="box-title">Billing Address:</span>
+          <div class="box-content">
+            <p><?php echo $billingAddress['firstname'].' '.$billingAddress['lastname']; ?></p>
+            <p><?php echo $billingAddress['street']; ?></p>
+            <p><?php echo $billingAddress['city'].', '.$billingAddress['region']; ?></p>
+            <p><?php if($billingAddress['country_id'] == 'CA'){ echo "Canada"; }else{ echo "United States"; } ?></p>
+            <p><?php echo $billingAddress['telephone']; ?></p>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <div class="block">
+      <div class="block-title">
+        <?php echo count($_items).' items purchased:'; ?>
+      </div>
+      <div class="block-content order-products">
+        <?php foreach ($_items as $_item): ?>
+
+          <?php $product = $helper->getProductBySku($_item->getSku()); ?>
+          <?php $image = $product->getData('thumbnail'); ?>
+          <?php $qty = $_item->getQtyOrdered(); ?>
+          <?php $productOptions = $_item->getProductOptions(); ?>
+
+          <div class="row">
+            <img src="<?php echo $proHelper->resize($image,80,80); ?>" />
+            <span class="order-product-name"><?php echo $product->getName() ?></span>
+            <div class="order-product-options">
+            <?php 
+            foreach($productOptions as $key => $val):
+            if($key == 'attributes_info'):
+            foreach($val as $attribute):
+            echo $attribute['value'];
+            endforeach;
+            endif;
+            endforeach;
+            ?>
+            <span><?php echo 'Qty: '.($qty)*1; ?></span>
+            <span><?php echo 'SKU# '.$_item->getSku() ?></span>
+            <span><?php echo ($_item->getPrice())*$qty*1; ?></span>
+          </div>
+        <?php endforeach; ?>
+      </div>
+    </div>
+  </div>
+  <span>Subtotal</span><?php echo ($orderDetail->getSubTotal())*1; ?>
+  <span>Shipping</span><?php echo ($orderDetail->getShippingAmount())*1; ?>
+  <span>Taxes</span><?php echo ($orderDetail->getTaxAmount())*1; ?>
+  <span>Total</span><?php echo ($orderDetail->getGrandTotal())*1; ?>
+              <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
+
 </div>

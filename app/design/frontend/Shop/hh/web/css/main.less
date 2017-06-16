@@ -811,13 +811,6 @@ Products
     max-width: 400px;
     margin-top: -10px;
 
-    h4 {
-      font-family: @headlineFont;
-      font-size: 14px;
-      text-transform: capitalize;
-      font-weight: normal;
-      margin-bottom: 15px;
-    }
     .shop-the-shot-hover {
       border: 1px solid #b0b7b8;
       font-size: 15px;
@@ -3225,6 +3218,27 @@ Checkout
   }
 }
 
+//Order confirmation page
+
+.checkout-onepage-success {
+  .checkout-success {
+    margin: auto;
+    width: 66%;
+  }
+  .page-title-wrapper {
+    height: 100px;
+    width: auto;
+    position: static;
+  }
+  .order-products {
+    .order-product-name {
+      font-family: 'Droid Serif';
+      font-style: italic;
+    }
+  }
+
+}
+
 .review-form {
   max-width: 100%;
 
@@ -4162,33 +4176,61 @@ Checkout
   }
 }
 
-.checkout-payment-method .payment-method-content {
-  padding-left: 80px;
-  .label {
-    text-transform: uppercase;
-    padding: 0 !important;
-    width: auto !important;
-    margin-bottom: 10px !important;
+.payment-method {
+  display: none;
+  &.credit {
+    display: block;
+    &.general, &.americanexpress {
+      display: none;
+    }
   }
-  .expiration-date, .card-cvc {
-    width: 50%;
-    float: left;
-  }
-  .expiration-date .label {
-    width: 100% !important;
-    text-align: left !important;
-  }
-  .payment-image, .payment-description, .field.alias {
-    display: none;
-  }
-}
-.checkout-payment-method .payment-method-billing-address {
-//  display: none;
-  .billing-address-details {
-    padding-left: 0;
+  &.visa .payment-method-title {
+    border-top: none;
   }
 }
 
+
+
+
+
+.checkout-payment-method {
+  .fieldset > .field-select-billing > .control {
+    display: none;
+  }
+  .billing-address-form {
+    display: block !important;
+    .fieldset > .field {
+      float: left;
+      width: 50%;
+    }
+  }
+  .payment-method-content {
+    padding-left: 0;
+    .label {
+      text-transform: uppercase;
+      padding: 0 !important;
+      width: auto !important;
+      margin-bottom: 10px !important;
+    }
+    .expiration-date, .card-cvc {
+      width: 50%;
+      float: left;
+    }
+    .expiration-date .label {
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .payment-image, .payment-description, .field.alias {
+      display: none;
+    }
+  }
+  .payment-method-billing-address {
+    .billing-address-details {
+      display: none;
+      padding-left: 0;
+    }
+  }
+}
 /*
 .checkout-index-index {
   .authorization-link {
@@ -6872,7 +6914,7 @@ Editos Main Page
         line-height: normal;
         padding: 15px 25px;
         width: auto;
-        margin-bottom: 20px;
+        margin: 20px 0;
       }
     }
   }
@@ -6942,7 +6984,7 @@ Editors Details
     .editor-job {
       font-family: @headlineFont;
       text-transform: uppercase;
-      color: #5eb1ae;
+      color: #508fba;
       font-size: 15px;
     }
   }
@@ -6978,24 +7020,22 @@ Editors Details
       margin-bottom: 0;
     }
   }
+
   .editor-bio {
     font-size: 14px;
     line-height: 1.4rem;
     margin-bottom: 40px;
-
-    h4 {
-      font-family: @headlineFont;
-      text-transform: uppercase;
-      color: #5eb1ae;
-      font-size: 14px;
-    }
-
     a {
       .inline-block;
       font-family: @headlineFont;
       text-transform: uppercase;
     }
+    h3 {
+      font: italic 26px/36px @fancyFont;
+      margin: 50px 0 20px;
+    }
   }
+
   .editor-products {
     margin: 0 auto;
     margin-bottom: 60px;
@@ -7024,7 +7064,7 @@ Editors Details
         font-style: italic;
         font-size: 14px;
         line-height: 22px;
-        margin: 20px;
+        margin: 10px 20px;
         margin-bottom: 0;
         .relative;
 
@@ -7514,11 +7554,11 @@ Mini Cart
   text-transform: capitalize;
 }
 
-.minicart-wrapper.active {
-  max-width: 70px;
-  .block-minicart {
-    border: 1px solid #000;
-  }
+.minicart-wrapper {
+  width: 70px;
+}
+.minicart-wrapper.active .block-minicart {
+  border: 1px solid #000;
 }
 
 .block-minicart {
@@ -7862,7 +7902,6 @@ Collection Page
 .collection-index-view {
   .collection_item_view {
     .page-title {
-      background: none;
       margin-bottom: 25px;
       font-size: 30px;
     }
@@ -7912,12 +7951,17 @@ Collection Page
     }
   }
   .highlighted-products-title {
+    background: url(../images/shop-keyline-faded-center.png) no-repeat center;
     font-family: @fancyFont;
     font-style: italic;
     font-size: 22px;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 30px;
+    span {
+      background: #fff;
+      padding: 0 30px;
+    }
   }
 }
 
