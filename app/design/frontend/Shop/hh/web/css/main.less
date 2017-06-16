@@ -198,9 +198,6 @@ Common LESS
   }
 }
 
-.homepage-hero a img:hover {
-  opacity: 1!important;
-}
 
 .shot-thumb a img:hover {
   opacity: inherit!important;
@@ -5359,9 +5356,6 @@ Hotspot Details
   z-index: 1;
   min-height: 725px;
 }
-.homepage-hero .cycle-slideshow1 .slide img {
-  display: none;
-}
 
 .lookbook-container {
   background: #efefef;
@@ -5380,6 +5374,9 @@ Hotspot Details
     padding-bottom: 73%;
     background-size: cover;
     background-position: center;
+    img {
+      display: none !important;
+    }
   }
 }
 
@@ -6100,19 +6097,16 @@ Home Page
   }
 
   .home-slider {
-
     .homepage-hero {
       padding: 0;
-      img {
-        width: 100%;
-        height: 100%;
+      background-size: cover;
+      background-position: center;
+      padding-bottom: 33%;
+
+      @media (max-width: 1530px) {
+        height: auto;
+        padding-bottom: 0;
       }
-    }
-    .hero-bg-img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
     }
     .homepage-hero-details {
       background: rgba(255,255,255,0.9);
