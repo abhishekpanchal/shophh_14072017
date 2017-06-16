@@ -198,9 +198,6 @@ Common LESS
   }
 }
 
-.homepage-hero a img:hover {
-  opacity: 1!important;
-}
 
 .shot-thumb a img:hover {
   opacity: inherit!important;
@@ -835,8 +832,26 @@ Products
       cursor: pointer;
     }
   }
-
 }
+
+
+/* mobile styling of tabs at all devices */
+.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+  &.additional-attributes tbody th {
+    display: none;
+  }
+  tbody > tr td:before {
+    padding-right: 10px;
+    content: attr(data-th) ': ';
+    display: inline-block;
+    color: #111111;
+    font-weight: 700;
+  }
+}
+
+
+
+
 
 
 
@@ -4684,8 +4699,14 @@ Classes
 
 .vcenter-col {
   align-items: center;
+  -webkit-align-items: center;
+  -ms-align-items: center;
   justify-content: center;
+  -webkit-justify-content: center;
+  -ms-justify-content: center;
   flex-direction: column;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
 }
 
 .vcenter-flex {
@@ -5231,15 +5252,23 @@ Hotspot Details
 ========================================================================== */
 .hotspot-details {
   background-color: #FFF;
-  margin: 25px;
+//  margin: 25px;
   padding: 45px;
   box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  /*
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  text-align: center;
-  min-height: 90%;
+  min-height: 90%;  
   width: 100%;
+  */
+  position: absolute;
+  top: 25px;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
+
 
   h1 {
     color: #27577b;
@@ -5454,30 +5483,43 @@ Hotspot Details
   z-index: 1;
   min-height: 725px;
 }
-.cycle-slideshow1 .slide {
-  background-size: cover;
-  background-position: center;
-}
-.homepage-hero .cycle-slideshow1 .slide img {
-  display: none;
-}
-
-.cycle-slideshow1 {
-  margin: 0!important;
-}
 
 .lookbook-container {
   background: #efefef;
   margin-bottom: 70px;
 }
 
+.lookbookslider-container {
+  max-height: 725px;
+  overflow: hidden;
+}
+
+.cycle-slideshow1 {
+  margin: 0!important;
+  .slide {
+    height: 0;
+    padding-bottom: 73%;
+    background-size: cover;
+    background-position: center;
+    img {
+      display: none !important;
+    }
+  }
+}
 
 @media (max-width: 1515px) {
   .lookbookslider-container {
     min-height: 0;
   }
-  .homepage-hero .cycle-slideshow1 .slide img {
-    display: block;
+}
+@media (max-width: 1190px) and (min-width: 992px) {
+  .cycle-slideshow1 .slide {
+    padding-bottom: 88%;
+  }
+}
+@media (max-width: 992px) {
+  .cycle-slideshow1 .slide {
+    padding-bottom: 50%;
   }
 }
 
@@ -6182,19 +6224,16 @@ Home Page
   }
 
   .home-slider {
-
     .homepage-hero {
       padding: 0;
-      img {
-        width: 100%;
-        height: 100%;
+      background-size: cover;
+      background-position: center;
+      padding-bottom: 33%;
+
+      @media (max-width: 1530px) {
+        height: auto;
+        padding-bottom: 0;
       }
-    }
-    .hero-bg-img {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
     }
     .homepage-hero-details {
       background: rgba(255,255,255,0.9);
@@ -6366,6 +6405,7 @@ Catalog View
 .product-item-description {
   margin: 0;
   line-height: 18px;
+  font-size: 13px;
   p {
     display: inline;
   }
@@ -7556,9 +7596,12 @@ Mini Cart
 
 .minicart-wrapper {
   width: 70px;
-}
-.minicart-wrapper.active .block-minicart {
-  border: 1px solid #000;
+  &.hasitem {
+    width: 103px;
+  }
+  &.active .block-minicart {
+    border: 1px solid #000;
+  }
 }
 
 .block-minicart {
@@ -8797,15 +8840,6 @@ Account reviews
 
 
 
-
-
-
-.lookbookslider-top, .lookbookslider-container, .cycle-slideshow1, .cycle-slideshow1 .slide {
-  height: 100%;
-}
-.cycle-slideshow1 .slide img {
-  height: 100% !important;
-}
 
 
 /* no global class for wysiwyg content, trying a good bullet point global fix */
