@@ -5359,16 +5359,8 @@ Hotspot Details
   z-index: 1;
   min-height: 725px;
 }
-.cycle-slideshow1 .slide {
-  background-size: cover;
-  background-position: center;
-}
 .homepage-hero .cycle-slideshow1 .slide img {
   display: none;
-}
-
-.cycle-slideshow1 {
-  margin: 0!important;
 }
 
 .lookbook-container {
@@ -5376,13 +5368,34 @@ Hotspot Details
   margin-bottom: 70px;
 }
 
+.lookbookslider-container {
+  max-height: 725px;
+  overflow: hidden;
+}
+
+.cycle-slideshow1 {
+  margin: 0!important;
+  .slide {
+    height: 0;
+    padding-bottom: 73%;
+    background-size: cover;
+    background-position: center;
+  }
+}
 
 @media (max-width: 1515px) {
   .lookbookslider-container {
     min-height: 0;
   }
-  .homepage-hero .cycle-slideshow1 .slide img {
-    display: block;
+}
+@media (max-width: 1190px) and (min-width: 992px) {
+  .cycle-slideshow1 .slide {
+    padding-bottom: 88%;
+  }
+}
+@media (max-width: 992px) {
+  .cycle-slideshow1 .slide {
+    padding-bottom: 50%;
   }
 }
 
@@ -8702,15 +8715,6 @@ Account reviews
 
 
 
-
-
-
-.lookbookslider-top, .lookbookslider-container, .cycle-slideshow1, .cycle-slideshow1 .slide {
-  height: 100%;
-}
-.cycle-slideshow1 .slide img {
-  height: 100% !important;
-}
 
 
 /* no global class for wysiwyg content, trying a good bullet point global fix */
