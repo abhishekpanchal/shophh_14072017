@@ -7486,9 +7486,12 @@ Mini Cart
 
 .minicart-wrapper {
   width: 70px;
-}
-.minicart-wrapper.active .block-minicart {
-  border: 1px solid #000;
+  &.hasitem {
+    width: 103px;
+  }
+  &.active .block-minicart {
+    border: 1px solid #000;
+  }
 }
 
 .block-minicart {
