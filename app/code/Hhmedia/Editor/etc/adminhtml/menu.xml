@@ -3,5 +3,9 @@
     <menu>
     	<add id="Hhmedia_Editor::editor" title="Shop HH" module="Hhmedia_Editor" sortOrder="30" resource="Hhmedia_Editor::editor"/>
         <add id="Hhmedia_Editor::editor_manage" title="Editors Picks" module="Hhmedia_Editor" sortOrder="20" parent="Hhmedia_Editor::editor" action="editor/index/" resource="Hhmedia_Editor::manage" />
+        <add id="Hhmedia_Editor::cms_page" title="Edit Pages" translate="title" module="Magento_Cms" sortOrder="200" parent="Hhmedia_Editor::editor" action="cms/page" resource="Magento_Cms::page"/>
+        <add id="Hhmedia_Editor::cms_block_welcome" title="Welcome to Shop HH" translate="title" module="Magento_Cms" sortOrder="300" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/10" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_contact" title="Contact Information" translate="title" module="Magento_Cms" sortOrder="301" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/8" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_customer" title="Cart Customer Service" translate="title" module="Magento_Cms" sortOrder="302" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/12" resource="Magento_Cms::block"/>
     </menu>
 </config>

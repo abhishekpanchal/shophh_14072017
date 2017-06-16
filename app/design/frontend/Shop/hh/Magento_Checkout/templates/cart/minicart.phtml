@@ -8,8 +8,12 @@
 
 /** @var $block \Magento\Checkout\Block\Cart\Sidebar */
 ?>
-
-<ul data-block="minicart" class="minicart-wrapper nav navbar-nav navbar-right">
+<?php
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $cart = $objectManager->get('\Magento\Checkout\Model\Cart');
+    $totalQuantity = $cart->getQuote()->getItemsQty();
+?>
+<ul data-block="minicart" class="minicart-wrapper nav navbar-nav navbar-right <?php if($totalQuantity > 1) { echo 'hasitem'; } ?>">
     <li>
         <a class="action showcart" href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>"
            data-bind="scope: 'minicart_content'">
