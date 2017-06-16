@@ -25,9 +25,11 @@
                 <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'1170','600'); ?>
                     <div class="row no-gutters home-slider ">
                         <div class="vcenter-flex display-block-xs">
-                            <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero">
+                            <div class="col-md-8 col-sm-7 col-xs-7 homepage-hero" style="background-image:url('<?php echo $imagePath ?>');">
                                 <a href="<?php echo $shotUrl ?>">
+                                    <!--
                                     <img src="<?php echo $imagePath ?>" />
+                                    -->
                                 </a>
                             </div>
                             <div class="col-md-4 col-sm-5 col-xs-5 mood-bg vcenter" style="background-image:url(<?php echo $this->getUrl('pub/media').'Altima/Lookbookslider/Slide/image'.$shot->getBgImage() ?>);">
