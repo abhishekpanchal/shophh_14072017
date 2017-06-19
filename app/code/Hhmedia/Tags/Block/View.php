@@ -12,12 +12,19 @@ class View extends \Magento\Framework\View\Element\Template
      */
     protected $_coreRegistry = null;
 
-    /** @var \Hhmedia\Tags\Helper\Data */
+    /**
+     * @var \Hhmedia\Tags\Helper\Data
+     */
     protected $_dataHelper;
 
+    /**
+     * @var \Magento\Catalog\Model\ProductRepository
+     */
     protected $_productRepository;
 
-    protected $_filesystem ;
+    /**
+     * @var \Magento\Framework\Image\AdapterFactory
+     */
     protected $_imageFactory;
     
     /**
@@ -33,11 +40,9 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Framework\App\Http\Context $httpContext,
         \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Tags\Helper\Data $dataHelper,
-        \Magento\Framework\Filesystem $filesystem,         
         \Magento\Framework\Image\AdapterFactory $imageFactory,
         array $data = []
     ) {
-        $this->_filesystem = $filesystem;               
         $this->_imageFactory = $imageFactory;
         $this->_coreRegistry = $registry;
         $this->httpContext = $httpContext;

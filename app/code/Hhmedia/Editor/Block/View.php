@@ -15,15 +15,24 @@ class View extends \Magento\Framework\View\Element\Template
     /** @var \Hhmedia\Editor\Helper\Data */
     protected $_dataHelper;
 
-    protected $_productRepository;
-    protected $_filesystem ;
-    protected $_imageFactory;
-    
     /**
+     * @var \Magento\Catalog\Model\ProductRepository
+     */
+    protected $_productRepository;
+
+    /**
+     * @var \Magento\Framework\Image\AdapterFactory
+     */
+    protected $_imageFactory;
+
+    /**
+     * View constructor.
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\App\Http\Context $httpContext
-     * @param \Magento\Payment\Helper\Data $paymentHelper
+     * @param \Magento\Catalog\Model\ProductRepository $productRepository
+     * @param \Hhmedia\Editor\Helper\Data $dataHelper
+     * @param \Magento\Framework\Image\AdapterFactory $imageFactory
      * @param array $data
      */
     public function __construct(
@@ -32,11 +41,9 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Framework\App\Http\Context $httpContext,
         \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Editor\Helper\Data $dataHelper,
-        \Magento\Framework\Filesystem $filesystem,         
         \Magento\Framework\Image\AdapterFactory $imageFactory,
         array $data = []
     ) {
-        $this->_filesystem = $filesystem;               
         $this->_imageFactory = $imageFactory;
         $this->_coreRegistry = $registry;
         $this->httpContext = $httpContext;
