@@ -15,20 +15,17 @@ protected $_ticketid;
 protected $_helper;
 protected $response;
 protected $_messageManager;
-protected $logger;
 
 public function __construct(
 Context $context,
 HelperData $helperdata,
 \Magento\Framework\App\Response\Http $response,
 \Magento\Framework\Message\ManagerInterface $messageManager,
-\Psr\Log\LoggerInterface $logger,
 array $data = []
     ) {
 
 $this->_helper=$helperdata;
 $this->response = $response;
-$this->logger = $logger;
 $this->_messageManager = $messageManager;
 
 parent::__construct($context, $data);

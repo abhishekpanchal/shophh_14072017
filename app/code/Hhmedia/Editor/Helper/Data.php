@@ -115,7 +115,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
         \Magento\Backend\Model\UrlInterface $backendUrl,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Framework\Filesystem $filesystem,
         \Magento\Framework\File\Size $fileSize,
         \Magento\Framework\HTTP\Adapter\FileTransferFactory $httpFactory,
@@ -124,7 +123,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Image\Factory $imageFactory
     ) {
-        $this->_scopeConfig = $scopeConfig;
         $this->filesystem = $filesystem;
         $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->httpFactory = $httpFactory;
