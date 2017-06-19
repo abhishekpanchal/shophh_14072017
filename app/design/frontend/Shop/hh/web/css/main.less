@@ -649,9 +649,6 @@ Product Description
 Products
 ========================================================================== */
 .catalog-product-view {
-  header.header {
-    margin-bottom: 40px;
-  }
   .product.media img:hover {
     opacity: 1 !important;
   }
@@ -679,7 +676,7 @@ Products
   .product-info-main {
     .name .value {
       font-size: 34px;
-      line-height: 32px;
+      line-height: 40px;
       font-family: @fancyFont;
       color: #000;
       font-style: italic;
@@ -6574,21 +6571,23 @@ div.MagicToolboxSelectorsContainer a {
   }
 }
 
-.mcs-item {
-  /*border: 1px solid #d3d3d3;
-  border-right: none;*/
 
+.MagicScroll-horizontal .mcs-item {
+  height: auto !important;
   &:last-child {
     border-right: 1px solid #d3d3d3;
   }
+  .mt-thumb-switcher.active-selector img {
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
 }
-// div.MagicToolboxSelectorsContainer img {
-//   max-height: 125px;
-//   min-width: 125px;
-// }
 
-.mcs-wrapper {
-
+.MagicScroll-horizontal.MagicScroll-bullets {
+  margin-bottom: 0!important;
+}
+.MagicScroll-horizontal .mcs-button-arrow-next, .MagicScroll-horizontal .mcs-button-arrow-prev {
+  top: -50% !important;
 }
 
 .MagicScroll-horizontal .mcs-button-arrow-next:before{
