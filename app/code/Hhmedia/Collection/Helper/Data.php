@@ -106,13 +106,20 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $_storeManager;
-    
+
     /**
+     * Data constructor.
      * @param \Magento\Framework\App\Helper\Context $context
+     * @param \Magento\Framework\Filesystem $filesystem
+     * @param \Magento\Framework\File\Size $fileSize
+     * @param \Magento\Framework\HTTP\Adapter\FileTransferFactory $httpFactory
+     * @param \Magento\MediaStorage\Model\File\UploaderFactory $fileUploaderFactory
+     * @param \Magento\Framework\Filesystem\Io\File $ioFile
+     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
+     * @param \Magento\Framework\Image\Factory $imageFactory
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Framework\Filesystem $filesystem,
         \Magento\Framework\File\Size $fileSize,
         \Magento\Framework\HTTP\Adapter\FileTransferFactory $httpFactory,
@@ -121,7 +128,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\Store\Model\StoreManagerInterface $storeManager,
         \Magento\Framework\Image\Factory $imageFactory
     ) {
-        $this->_scopeConfig = $scopeConfig;
         $this->filesystem = $filesystem;
         $this->mediaDirectory = $filesystem->getDirectoryWrite(DirectoryList::MEDIA);
         $this->httpFactory = $httpFactory;
@@ -260,6 +266,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getCollectionPerPage()
     {
-        return abs((int)$this->_scopeConfig->getValue(self::XML_PATH_ITEMS_PER_PAGE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE));
+        return abs((int)$this->scopeConfig->getValue(self::XML_PATH_ITEMS_PER_PAGE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE));
     }
 }
