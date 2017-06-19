@@ -278,6 +278,6 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
      */
     public function getTagsPerPage()
     {
-        return abs((int)$this->_scopeConfig->getValue(self::XML_PATH_ITEMS_PER_PAGE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE));
+        return abs((int)$this->scopeConfig->getValue(self::XML_PATH_ITEMS_PER_PAGE, \Magento\Store\Model\ScopeInterface::SCOPE_STORE));
     }
 }
