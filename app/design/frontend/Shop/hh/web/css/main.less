@@ -3056,6 +3056,76 @@ Checkout
     position: relative;
     margin-bottom: 2em;
   }
+  .checkout-login-container {
+    text-align: center;
+    input[type="text"], input[type="email"], input[type="password"] {
+      background-color: #f0f0f0;
+      display: block;
+      border-radius: 8px;
+      height: auto;
+      padding: 11px 16px;
+      width: 80%;
+      font-size: 15px !important;
+      float: none;
+    }
+    .block {
+      margin-bottom: 0;
+      .block-title {
+        margin-bottom: 0;
+        border-bottom: 0;
+        text-align: center;
+      }
+    }
+    .checkout-guest, .checkout-user {
+      input, button {
+        margin: auto;
+      }
+      button {
+        float: none;
+      }
+    }
+    .checkout-guest {
+      p {
+        width: 66%;
+        margin: auto;
+        font-size: 14px;
+        margin-bottom: 1em;
+      }
+      input, button {
+        margin: auto;
+        margin-bottom: 1em;
+      }
+      button {
+        float: none;
+      }
+      border-right: 1px solid #8d8d8d;
+    }
+    .checkout-user {
+      button, a {
+        display: block;
+        margin-bottom: 1em;
+      }
+      .checkout-create-account {
+        font-family: @headlineFont;
+        font-size: 14px;
+        text-transform: uppercase;
+        &:after {
+          content: ">";
+          padding-left: 1em;
+        }
+      }
+      .fieldset {
+        margin-bottom: 20px;
+      }
+      .action-remind span {
+        font-family: @headlineFont;
+        color: #8d8d8d;
+        text-transform: uppercase;
+        text-decoration: underline;
+        font-size: 12px;
+      }
+    }
+  }
   .main {
     .opc-wrapper {
       margin-top: 20px;
@@ -3149,6 +3219,15 @@ Checkout
          }
       }
     }
+  }
+  .customer-service {
+    margin-top: 3em;
+    padding: 2em;
+    font-family: @headlineFont;
+    font-size: 14px;
+    color: #8d8d8d;
+    background-color: #f0f0f0;
+    text-align: center;
   }
 }
 
