@@ -492,7 +492,7 @@ switch($info['http_code']){
 
 if(!empty($emsg)):
 	$emsg.=" Action ".$action;
-	$this->logger->debug($emsg);
+	$this->_logger->debug($emsg);
 endif;
 
 curl_close($ch);
