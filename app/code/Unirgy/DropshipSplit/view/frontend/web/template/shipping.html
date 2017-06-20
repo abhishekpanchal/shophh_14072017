@@ -29,7 +29,8 @@
         <button type="button"
                 data-bind="click: showFormPopUp, visible: !isNewAddressAdded()"
                 class="action action-show-popup">
-            <span data-bind="i18n: 'New Address'"></span></button>
+                <span class="hover-effect">Add a new delivery address</span>
+              </button>
         <div id="opc-new-shipping-address" data-bind="visible: isFormPopUpVisible()">
             <!-- ko template: 'Magento_Checkout/shipping-address/form' --><!-- /ko -->
         </div>
