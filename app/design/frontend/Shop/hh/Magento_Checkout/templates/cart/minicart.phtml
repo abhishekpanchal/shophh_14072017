@@ -13,7 +13,7 @@
     $cart = $objectManager->get('\Magento\Checkout\Model\Cart');
     $totalQuantity = $cart->getQuote()->getItemsQty();
 ?>
-<ul data-block="minicart" class="minicart-wrapper nav navbar-nav navbar-right <?php if($totalQuantity > 1) { echo 'hasitem'; } ?>">
+<ul data-block="minicart" class="minicart-wrapper nav navbar-nav navbar-right <?php if($totalQuantity > 0) { echo 'hasitem'; } ?>">
     <li>
         <a class="action showcart" href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>"
            data-bind="scope: 'minicart_content'">

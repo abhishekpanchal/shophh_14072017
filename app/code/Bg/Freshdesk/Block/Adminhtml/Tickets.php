@@ -18,12 +18,10 @@ protected $_nextlink;
    public function __construct(
         \Magento\Backend\Block\Widget\Context $context,
         \Magento\Framework\Registry $registry,
-   		\Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezoneInterface,
         array $data = []
     ) {
         $this->_coreRegistry = $registry;
         $this->_nextlink=0;
-        $this->_timezoneInterface = $timezoneInterface;
         parent::__construct($context, $data);
     }
 
