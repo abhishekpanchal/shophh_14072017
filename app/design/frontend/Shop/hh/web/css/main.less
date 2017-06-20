@@ -1751,7 +1751,7 @@ Cart
   .product-item-catalog {
     .product-item-details {
       text-align: center;
-      font-family: @fancyFont;
+      font-family: @baseFont;
     }
     .product-item-link {
       font-size: 16px;
@@ -1874,7 +1874,7 @@ Cart
   .customer-service {
       margin-top: 3em;
       padding: 0 10px;
-      font-family: @headlineFont;
+      font-family: @baseFont;
       font-size: 14px;
       color: #8d8d8d;
     }
@@ -3196,33 +3196,129 @@ Checkout
       }
       .address-actions {
         width: 100%;
-        background-color: #000;
+        background-color: #8d8d8d;
         color: #fff;
         font-family: @fancyFont;
         font-style: italic;
         text-align: center;
+        span {
+          &:hover { 
+            cursor: pointer;
+          }
+        }
       }
       .selected-item {
         background-color: #f0f0f0;
-         &:after {
-           background: #f0f0f0;
-           color: #000;
-           content: "\f058";
-           font-family: FontAwesome;
-         }
+        &:after {
+          background: #f0f0f0;
+          color: #000;
+          content: "\f058";
+          font-family: FontAwesome;
+        }
         .address-actions {
-          background-color: #8d8d8d;
+          background-color: #000;
         }
       }
       .not-selected-item {
-         &:after {
-           content: "";
+        &:after {
+          content: "";
 
-         }
+        }
+      }
+    }
+    button.action.action-show-popup {
+      text-transform: uppercase;
+      font-family: @headlineFont !important;
+      border: none;
+      padding: none !important;
+      background: none;
+      span {
+        font-size: 12px;
+        &:before {
+          content: "";
+        }
+        &:after {
+          content: ">";
+          padding-left: .5em;
+        }
+        &:hover {
+          color: #000;
+        }
       }
     }
   }
-  .customer-service {
+    #co-shipping-form {
+      max-width: none;
+      width: 100%;
+    }
+    .form.form-login {
+      .note {
+        display: none !important; 
+      }
+    }
+    #shipping-new-address-form, .form.form-login {
+      .fieldset > .field {
+        margin-bottom: 40px !important;
+      }
+      .field {
+        width: 50%;
+        display: inline-block;
+        position: relative;
+      }
+      .field.choice {
+        display: none;
+      }
+      fieldset.field {
+        display: block;
+        margin-bottom: 15px;
+        .control .field {
+          width: 100%;
+        }
+      }
+      input.input-text {
+        border-radius: 8px;
+        background-color: #f0f0f0;
+        padding: 11px 16px;
+        width: 80%;
+        height: 42px;
+      }
+      label.label {
+        padding: 0;
+        text-align: left;
+        position: absolute;
+        top: -25px;
+      }
+      legend.label {
+        padding: 0;
+        text-align: left;
+        position: absolute;
+        top: -30px;
+      }
+      select {
+        height: 42px;
+        background-color: #f0f0f0;
+        color: #8d8d8d;
+        option:checked {
+          color: #000;
+        }
+      }
+    }
+    h1.modal-title {
+      font-family: @fancyFont;
+      font-style: italic;
+      border-bottom: none;
+    }
+    .modal-content {
+      #opc-new-shipping-address {
+        margin-top: 50px;
+      }
+    }
+    .modal-footer {
+      button.action span {
+        font-style: italic;
+      }
+    }
+    .customer-service {
     margin-top: 3em;
     padding: 2em;
     font-family: @headlineFont;
@@ -7335,15 +7431,6 @@ Contact Pages
       font-family: @baseFont;
       margin-top: 15px;
 
-      &:after {
-        content: "\f104";
-        font-family: "Ionicons";
-        position: absolute;
-        pointer-events: none;
-        right: 10px;
-        top: 13px;
-        z-index: 1;
-      }
       select {
         appearance: none;
         -webkit-appearance: none;

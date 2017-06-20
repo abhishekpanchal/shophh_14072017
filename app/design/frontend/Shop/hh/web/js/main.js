@@ -264,7 +264,7 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
     );
   });
 
-  //checkout login flow - needs to be localized to just that page
+    //checkout login flow - needs to be localized to just that page
   $(document).ready(checkDOMChange());
   function checkDOMChange()
   {
@@ -276,10 +276,14 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
           $('.checkout-login-container').hide();
           $('.checkout-login-container').siblings().not(".opc-estimated-wrapper").show();
         });
+        $("input[name='guest-checkout-email']").keydown(function(event){
+          if(event.keyCode == 13){
+            $("#guest-checkout-btn").click();
+          }
+        });
         if (!window.isCustomerLoggedIn) {
           $('.checkout-login-container').siblings().hide();
         }
-
       }
       else {
         setTimeout( checkDOMChange, 100 );
