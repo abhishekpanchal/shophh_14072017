@@ -649,6 +649,9 @@ Product Description
 Products
 ========================================================================== */
 .catalog-product-view {
+  header.header {
+    margin-bottom: 40px;
+  }
   .product.media img:hover {
     opacity: 1 !important;
   }
@@ -676,7 +679,7 @@ Products
   .product-info-main {
     .name .value {
       font-size: 34px;
-      line-height: 40px;
+      line-height: 32px;
       font-family: @fancyFont;
       color: #000;
       font-style: italic;
@@ -833,8 +836,8 @@ Products
 
 
 /* mobile styling of tabs at all devices */
-.table.additional-attributes {
-  tbody th {
+.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+  &.additional-attributes tbody th {
     display: none;
   }
   tbody > tr td:before {
@@ -1093,7 +1096,6 @@ Footer
   padding-bottom: 30px;
   background: #e6e6e7;
   font: normal 11px/11px 'Montserrat', Helvetica, Arial, sans-serif;
-  overflow: auto;
 
   a:hover {
     text-decoration: underline;
@@ -1136,9 +1138,6 @@ Footer
   ul {
     margin-top: 10px;
   }
-}
-.footer-subscribe {
-  margin-left: 8%;
 }
 
 div.mage-error[generated] {
@@ -1644,9 +1643,6 @@ Cart
       color: #8d8d8d;
       display: block;
     }
-    .cart-item-shipping:before {
-      content: "This item ships in approximately ";
-    }
     .call-for-quote {
       color: #A42335;
       a {
@@ -1752,7 +1748,7 @@ Cart
   .product-item-catalog {
     .product-item-details {
       text-align: center;
-      font-family: @baseFont;
+      font-family: @fancyFont;
     }
     .product-item-link {
       font-size: 16px;
@@ -3202,11 +3198,6 @@ Checkout
         font-family: @fancyFont;
         font-style: italic;
         text-align: center;
-        span {
-          &:hover { 
-            cursor: pointer;
-          }
-        }
       }
       .selected-item {
         background-color: #f0f0f0;
@@ -3231,7 +3222,7 @@ Checkout
       text-transform: uppercase;
       font-family: @headlineFont !important;
       border: none;
-      padding: none !important;
+      padding: none;
       background: none;
       span {
         font-size: 12px;
@@ -3242,92 +3233,10 @@ Checkout
           content: ">";
           padding-left: .5em;
         }
-        &:hover {
-          color: #000;
-        }
       }
     }
   }
-    #co-shipping-form {
-      max-width: none;
-      width: 100%;
-    }
-    .form.form-login {
-      .note {
-        display: none !important; 
-      }
-    }
-    #shipping-new-address-form, .form.form-login {
-      >div.field {
-        margin-bottom: 40px!important;
-      }
-      .field.additional {
-        margin-bottom: 40px;
-      }
-      .field {
-        width: 50%;
-        display: inline-block;
-        position: relative;
-      }
-      .field.choice {
-        display: none;
-      }
-      fieldset.field {
-        display: block;
-        margin-bottom: 15px;
-        .control .field {
-          width: 100%;
-        }
-      }
-      input.input-text {
-        border-radius: 8px;
-        background-color: #f0f0f0;
-        padding: 11px 16px;
-        width: 80%;
-        height: 42px;
-      }
-      label.label {
-        padding: 0;
-        text-align: left;
-        position: absolute;
-        top: -25px;
-      }
-      legend.label {
-        padding: 0;
-        text-align: left;
-        position: absolute;
-        top: -30px;
-      }
-      select {
-        height: 42px;
-        background-color: #f0f0f0;
-        color: #8d8d8d;
-        option:checked {
-          color: #000;
-        }
-      }
-      select[name="country_id"] {
-          option:not([value="CA"]):not([value="US"]):not([value=""]) {
-            display: none;
-          }
-        }
-    }
-    h1.modal-title {
-      font-family: @fancyFont;
-      font-style: italic;
-      border-bottom: none;
-    }
-    .modal-content {
-      #opc-new-shipping-address {
-        margin-top: 50px;
-      }
-    }
-    .modal-footer {
-      button.action span {
-        font-style: italic;
-      }
-    }
-    .customer-service {
+  .customer-service {
     margin-top: 3em;
     padding: 2em;
     font-family: @headlineFont;
@@ -3373,6 +3282,9 @@ Checkout
   }
 }
 
+.field.review-field-text.required {
+
+}
 
 .review-field-ratings {
   .relative;
@@ -3383,7 +3295,7 @@ Checkout
 
   legend.label {
     display: inline-block;
-    width: auto;
+    width: 12%;
     float: left;
     text-align: left;
     font-weight: normal!important;
@@ -4582,7 +4494,7 @@ Cart Page
 
 
 
-.customer-account-login, .customer-account-create, .customer-account-forgotpassword, .customer-account-createpassword {
+.customer-account-login, .customer-account-create, .customer-account-forgotpassword {
 
   .main {
     .fieldset > .field:not(.choice) > .label {
@@ -4621,10 +4533,6 @@ Cart Page
     }
   }
 
-}
-
-.customer-account-forgotpassword .main .back {
-  display: block;
 }
 
 
@@ -5536,7 +5444,6 @@ Hotspot Details
   
   .main-content {
     margin-bottom: 5px;
-    overflow: auto;
   }
 
   .quickview-btn {
@@ -5728,9 +5635,6 @@ Awe Menu
       margin-left: 10px;
       margin-top: 3px;
       color: #a30046;
-    }
-    span {
-      float: left;
     }
   }
 }
@@ -6721,7 +6625,7 @@ Limiter
   margin-left: 60px;
 }
 .sorter-container {
-  max-width: 140px;
+  max-width: 120px;
   float: left;
   margin-right: 30px;
   .sorter-options {
@@ -6733,7 +6637,6 @@ Limiter
   color: #8d8d8d;
   font-family: @headlineFont;
   font-size: 13px;
-  white-space: nowrap;
 }
 .limiter-option {
   width: 40%!important;
@@ -6778,23 +6681,21 @@ div.MagicToolboxSelectorsContainer a {
   }
 }
 
+.mcs-item {
+  /*border: 1px solid #d3d3d3;
+  border-right: none;*/
 
-.MagicScroll-horizontal .mcs-item {
-  height: auto !important;
   &:last-child {
     border-right: 1px solid #d3d3d3;
   }
-  .mt-thumb-switcher.active-selector img {
-    filter: none !important;
-    -webkit-filter: none !important;
-  }
 }
+// div.MagicToolboxSelectorsContainer img {
+//   max-height: 125px;
+//   min-width: 125px;
+// }
 
-.MagicScroll-horizontal.MagicScroll-bullets {
-  margin-bottom: 0!important;
-}
-.MagicScroll-horizontal .mcs-button-arrow-next, .MagicScroll-horizontal .mcs-button-arrow-prev {
-  top: -50% !important;
+.mcs-wrapper {
+
 }
 
 .MagicScroll-horizontal .mcs-button-arrow-next:before{
@@ -7075,9 +6976,6 @@ Editos Main Page
     .editor_list_item {
       text-align: center;
       margin-bottom: 35px;
-      &:nth-child(n+7) {
-        display: none;
-      }
 
       img {
         width: 80%;
@@ -8483,7 +8381,7 @@ Account reviews
     width: 100%;
   }
   .toolbar-sorter {
-    width: 22%;
+    width: 17%;
     min-width: 180px;
   }
 }
@@ -8756,7 +8654,6 @@ Account reviews
     width: 75px;
     padding: 7px 2px;
     display: inline;
-    white-space: nowrap;
     label span {
       text-transform: uppercase!important; /*fighting important with important */
     }
