@@ -1405,7 +1405,7 @@ Extra Small Screens
 					font-size: 24px;
 				}
 				p {
-					margin: 0;
+					margin: 0 15px;
 					height: 32px;
 				}
 				.homepage-hero-btn {
@@ -1493,6 +1493,16 @@ Extra Small Screens
 		}
 	}
 
+	/* shop the spot */
+	.hotspot-details .desc {
+		display: none;
+	}
+	/* re-displaying 4th items that were hidden for 3 accross tablet */
+	.collection-index-view, .lookbookslider-index-view .product-stories-products {
+		.product-item-listing:nth-child(n+4) {
+			display: block;
+		}
+	}
 
 
 	/* ===============================
@@ -1570,6 +1580,14 @@ Extra Small Screens
 			.product-info-price {
 				float: none;
 			}
+			.product.info.detailed {
+				text-align: left;
+			}
+		}
+		.addthis_toolbox {
+			float: none !important;
+			display: inline-block;
+			margin-left: 10px;
 		}
 		.product-qty .styled-select {
 			display: inline-block;
