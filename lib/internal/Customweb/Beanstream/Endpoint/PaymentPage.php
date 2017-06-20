@@ -19,14 +19,14 @@
  *
  */
 
-//require_once 'Customweb/Payment/Endpoint/Annotation/ExtractionMethod.php';
-//require_once 'Customweb/Core/Http/Response.php';
-//require_once 'Customweb/Beanstream/Authorization/PaymentPage/ParameterBuilder.php';
-//require_once 'Customweb/Util/Currency.php';
-//require_once 'Customweb/Core/Url.php';
 //require_once 'Customweb/Beanstream/Container.php';
+//require_once 'Customweb/Beanstream/Authorization/PaymentPage/ParameterBuilder.php';
+//require_once 'Customweb/Core/Url.php';
+//require_once 'Customweb/Util/Currency.php';
 //require_once 'Customweb/Beanstream/Endpoint/Abstract.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Payment/Endpoint/Annotation/ExtractionMethod.php';
+//require_once 'Customweb/Core/Http/Response.php';
 
 
 

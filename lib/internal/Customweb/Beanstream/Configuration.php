@@ -29,6 +29,7 @@
  * @Bean
  */
 class Customweb_Beanstream_Configuration {
+	private $container;
 	
 	/**
 	 *         	 								 	  
@@ -37,8 +38,9 @@ class Customweb_Beanstream_Configuration {
 	 */
 	private $configurationAdapter = null;
 
-	public function __construct(Customweb_Payment_IConfigurationAdapter $configurationAdapter){
+	public function __construct(Customweb_Payment_IConfigurationAdapter $configurationAdapter, Customweb_DependencyInjection_IContainer $container){
 		$this->configurationAdapter = $configurationAdapter;
+		$this->container = $container;
 	}
 
 	public function getConfigurationAdapter(){
@@ -56,7 +58,7 @@ class Customweb_Beanstream_Configuration {
 	}
 
 	public function getBackendApiUrl(){
-		return "https://beanstream.com/api";
+		return "https://www.beanstream.com/api";
 	}
 
 	public function getAjaxUrl(){
@@ -94,27 +96,45 @@ class Customweb_Beanstream_Configuration {
 	}
 
 	public function getMerchantId($currency){
+		// first check if configured in backend form
+		$currency = strtoupper($currency);
+		$storage = $this->getContainer()->getBean('Customweb_Storage_IBackend');
+		$configuredCurrencies = $storage->read('Beanstream_MIDs', 'configuredCurrencies');
+		if (!empty($configuredCurrencies) && isset($configuredCurrencies[$currency])) {
+			$settingsHandler = $this->getContainer()->getBean('Customweb_Payment_SettingHandler');
+			if ($this->isTestMode()) {
+				return $settingsHandler->getSettingValue($currency . '_test');
+			}
+			else {
+				return $settingsHandler->getSettingValue($currency . '_live');
+			}
+		}
+		
+		// then check legacy fields
 		$currency = strtolower($currency);
+		
 		if ($this->isTestMode()) {
-			if($this->getConfigurationAdapter()->existsConfiguration('merchant_id_' . $currency . '_test')){
+			if ($this->getConfigurationAdapter()->existsConfiguration('merchant_id_' . $currency . '_test')) {
 				$merchantId = $this->getConfigurationAdapter()->getConfigurationValue('merchant_id_' . $currency . '_test');
 			}
-			else{
-				throw new Exception(Customweb_I18n_Translation::__("The currency @currency is not supported.", 
-							array(
-								"@currency" => strtoupper($currency) 
-							)));
+			else {
+				throw new Exception(
+						Customweb_I18n_Translation::__("The currency @currency is not supported.", 
+								array(
+									"@currency" => strtoupper($currency) 
+								)));
 			}
 		}
 		else {
-			if($this->getConfigurationAdapter()->existsConfiguration('merchant_id_' . $currency . '_live')){
+			if ($this->getConfigurationAdapter()->existsConfiguration('merchant_id_' . $currency . '_live')) {
 				$merchantId = $this->getConfigurationAdapter()->getConfigurationValue('merchant_id_' . $currency . '_live');
 			}
-			else{
-				throw new Exception(Customweb_I18n_Translation::__("The currency @currency is not supported.",
-						array(
-							"@currency" => strtoupper($currency)
-						)));
+			else {
+				throw new Exception(
+						Customweb_I18n_Translation::__("The currency @currency is not supported.", 
+								array(
+									"@currency" => strtoupper($currency) 
+								)));
 			}
 		}
 		if (empty($merchantId)) {
@@ -144,4 +164,7 @@ class Customweb_Beanstream_Configuration {
 		return $hashKey;
 	}
 
+	private function getContainer(){
+		return $this->container;
+	}
 }

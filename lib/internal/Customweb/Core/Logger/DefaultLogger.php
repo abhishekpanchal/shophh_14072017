@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Core/Logger/Factory.php';
 //require_once 'Customweb/Core/ILogger.php';
+//require_once 'Customweb/Core/Logger/Factory.php';
 
 
 class Customweb_Core_Logger_DefaultLogger implements Customweb_Core_ILogger{

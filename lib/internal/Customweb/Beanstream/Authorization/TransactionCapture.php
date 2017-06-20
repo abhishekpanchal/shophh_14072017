@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/DefaultTransactionCapture.php';
 //require_once 'Customweb/Util/Currency.php';
+//require_once 'Customweb/Payment/Authorization/DefaultTransactionCapture.php';
 
 
 

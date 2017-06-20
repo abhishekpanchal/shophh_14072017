@@ -1,8 +1,8 @@
 <?php
 
 //require_once 'Customweb/Annotation/IAnnotationReflector.php';
-//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
 //require_once 'Customweb/Annotation/AnnotationsBuilder.php';
+//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
 
 
 class Customweb_Annotation_ReflectionAnnotatedProperty extends ReflectionProperty implements Customweb_Annotation_IAnnotationReflector

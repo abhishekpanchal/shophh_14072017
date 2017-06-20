@@ -18,12 +18,12 @@
  *
  */
 
-//require_once 'Customweb/DependencyInjection/Bean/Provider/Annotation/Util.php';
-//require_once 'Customweb/Payment/Annotation/Method.php';
 //require_once 'Customweb/Core/Exception/CastException.php';
-//require_once 'Customweb/DependencyInjection/Bean/Object.php';
 //require_once 'Customweb/Annotation/Scanner.php';
 //require_once 'Customweb/Payment/Authorization/Method/PaymentMethodResolutionException.php';
+//require_once 'Customweb/DependencyInjection/Bean/Object.php';
+//require_once 'Customweb/Payment/Annotation/Method.php';
+//require_once 'Customweb/DependencyInjection/Bean/Provider/Annotation/Util.php';
 //require_once 'Customweb/DependencyInjection/Container/Extendable.php';
 
 

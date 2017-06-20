@@ -18,11 +18,11 @@
  *
  */
 
-//require_once 'Customweb/Core/Util/Class.php';
 //require_once 'Customweb/Core/Exception/CastException.php';
-//require_once 'Customweb/Core/Exception/CharsetNotFoundException.php';
-//require_once 'Customweb/Core/Exception/InvalidPatternException.php';
 //require_once 'Customweb/Core/Charset.php';
+//require_once 'Customweb/Core/Exception/InvalidPatternException.php';
+//require_once 'Customweb/Core/Exception/CharsetNotFoundException.php';
+//require_once 'Customweb/Core/Util/Class.php';
 
 
 /**

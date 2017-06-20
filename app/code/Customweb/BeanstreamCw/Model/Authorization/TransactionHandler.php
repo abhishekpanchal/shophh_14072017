@@ -19,7 +19,7 @@
  *
  * @category	Customweb
  * @package		Customweb_BeanstreamCw
- * 
+ *
  */
 
 namespace Customweb\BeanstreamCw\Model\Authorization;
@@ -37,7 +37,7 @@ class TransactionHandler implements \Customweb_Payment_ITransactionHandler
 	private $cache = [];
 
 	private $internalHandler = null;
-	
+
 	/**
 	 * @var array
 	 */
@@ -54,10 +54,17 @@ class TransactionHandler implements \Customweb_Payment_ITransactionHandler
 	 */
 	protected $_transactionFactory;
 
+	/**
+	 * @var \Customweb\BeanstreamCw\Model\Configuration
+	 */
+	protected $_configuration;
+
 	public function __construct(
-			\Customweb\BeanstreamCw\Model\Authorization\TransactionFactory $transactionFactory
+			\Customweb\BeanstreamCw\Model\Authorization\TransactionFactory $transactionFactory,
+			\Customweb\BeanstreamCw\Model\Configuration $configuration
 	) {
 		$this->_transactionFactory = $transactionFactory;
+		$this->_configuration = $configuration;
 	}
 
 	public function isTransactionRunning()
@@ -142,6 +149,7 @@ class TransactionHandler implements \Customweb_Payment_ITransactionHandler
 		if ($useCache) {
 			$transaction = $this->loadFromCache($value, $field);
 			if ($transaction !== null) {
+				$this->_configuration->setStore($transaction->getStore());
 				return $transaction;
 			}
 		}
@@ -150,6 +158,7 @@ class TransactionHandler implements \Customweb_Payment_ITransactionHandler
 			return null;
 		}
 		$this->storeInCache($transaction);
+		$this->_configuration->setStore($transaction->getStore());
 		return $transaction;
 	}
 
@@ -194,7 +203,7 @@ class TransactionHandler implements \Customweb_Payment_ITransactionHandler
 	private function createEntity() {
 		return $this->_transactionFactory->create();
 	}
-	
+
 	private function getInternalHandler(){
 		if($this->internalHandler === null){
 			$this->internalHandler = $this->createEntity()->getResource();

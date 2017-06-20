@@ -19,9 +19,9 @@
  *
  */
 
-//require_once 'Customweb/Core/Logger/Factory.php';
-//require_once 'Customweb/Core/Logger/Exceptions/FileWriteException.php';
 //require_once 'Customweb/Core/Logger/IListener.php';
+//require_once 'Customweb/Core/Logger/Exceptions/FileWriteException.php';
+//require_once 'Customweb/Core/Logger/Factory.php';
 
 /**
  * Listener class to write messages to a given file.
