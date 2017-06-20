@@ -3258,8 +3258,11 @@ Checkout
       }
     }
     #shipping-new-address-form, .form.form-login {
-      .fieldset > .field {
-        margin-bottom: 40px !important;
+      >div.field {
+        margin-bottom: 40px!important;
+      }
+      .field.additional {
+        margin-bottom: 40px;
       }
       .field {
         width: 50%;
@@ -3303,6 +3306,11 @@ Checkout
           color: #000;
         }
       }
+      select[name="country_id"] {
+          option:not([value="CA"]):not([value="US"]):not([value=""]) {
+            display: none;
+          }
+        }
     }
     h1.modal-title {
       font-family: @fancyFont;
