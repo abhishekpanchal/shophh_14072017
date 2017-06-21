@@ -18,9 +18,9 @@
  *
  */
 
+//require_once 'Customweb/I18n/Translation.php';
 //require_once 'Customweb/Util/String.php';
 //require_once 'Customweb/Beanstream/Authorization/AbstractParameterBuilder.php';
-//require_once 'Customweb/I18n/Translation.php';
 
 
 class Customweb_Beanstream_Authorization_Ajax_ParameterBuilder extends Customweb_Beanstream_Authorization_AbstractParameterBuilder {

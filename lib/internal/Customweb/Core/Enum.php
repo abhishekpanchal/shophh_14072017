@@ -19,8 +19,8 @@
  *
  */
 
-//require_once 'Customweb/Core/String.php';
 //require_once 'Customweb/Core/Exception/CastException.php';
+//require_once 'Customweb/Core/String.php';
 //require_once 'Customweb/Core/Enum.php';
 
 

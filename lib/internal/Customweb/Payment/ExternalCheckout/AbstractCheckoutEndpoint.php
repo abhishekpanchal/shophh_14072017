@@ -20,10 +20,10 @@
  */
 
 //require_once 'Customweb/Payment/Endpoint/Controller/Abstract.php';
+//require_once 'Customweb/Util/Rand.php';
 //require_once 'Customweb/Core/Util/Class.php';
 //require_once 'Customweb/Payment/Exception/ExternalCheckoutInvalidTokenException.php';
 //require_once 'Customweb/Util/JavaScript.php';
-//require_once 'Customweb/Util/Rand.php';
 
 abstract class Customweb_Payment_ExternalCheckout_AbstractCheckoutEndpoint extends Customweb_Payment_Endpoint_Controller_Abstract {
 

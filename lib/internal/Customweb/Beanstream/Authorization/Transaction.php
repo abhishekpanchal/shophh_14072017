@@ -19,8 +19,8 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/DefaultTransaction.php';
 //require_once 'Customweb/Beanstream/Authorization/TransactionCapture.php';
+//require_once 'Customweb/Payment/Authorization/DefaultTransaction.php';
 
 class Customweb_Beanstream_Authorization_Transaction extends Customweb_Payment_Authorization_DefaultTransaction {
 	private $expiryMonth = null;

@@ -18,12 +18,12 @@
  *
  */
 
-//require_once 'Customweb/DependencyInjection/Bean/Provider/Annotation/Util.php';
-//require_once 'Customweb/Core/String.php';
-//require_once 'Customweb/Core/Util/Reflection.php';
 //require_once 'Customweb/Cron/Annotation/Cron.php';
 //require_once 'Customweb/Util/System.php';
+//require_once 'Customweb/Core/String.php';
 //require_once 'Customweb/Annotation/Scanner.php';
+//require_once 'Customweb/Core/Util/Reflection.php';
+//require_once 'Customweb/DependencyInjection/Bean/Provider/Annotation/Util.php';
 //require_once 'Customweb/DependencyInjection/Container/Extendable.php';
 
 

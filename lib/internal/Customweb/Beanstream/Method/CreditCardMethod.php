@@ -19,9 +19,9 @@
  */
 
 //require_once 'Customweb/Payment/Authorization/Method/CreditCard/CardHandler.php';
-//require_once 'Customweb/Payment/Authorization/Method/CreditCard/CardInformation.php';
-//require_once 'Customweb/Beanstream/Method/DefaultMethod.php';
 //require_once 'Customweb/Payment/Authorization/Method/CreditCard/ElementBuilder.php';
+//require_once 'Customweb/Beanstream/Method/DefaultMethod.php';
+//require_once 'Customweb/Payment/Authorization/Method/CreditCard/CardInformation.php';
 
 
 /**

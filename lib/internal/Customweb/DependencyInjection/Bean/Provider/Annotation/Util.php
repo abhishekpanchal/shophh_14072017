@@ -18,10 +18,10 @@
  *
  */
 
-//require_once 'Customweb/Core/Util/Class.php';
-//require_once 'Customweb/DependencyInjection/Bean/Generic.php';
 //require_once 'Customweb/DependencyInjection/Bean/Generic/DefaultDependency.php';
 //require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
+//require_once 'Customweb/Core/Util/Class.php';
+//require_once 'Customweb/DependencyInjection/Bean/Generic.php';
 
 
 

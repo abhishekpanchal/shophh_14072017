@@ -71,7 +71,7 @@ if (!function_exists('crypt_random_string')) {
             // method 1. prior to PHP 5.3 this would call rand() on windows hence the function_exists('class_alias') call.
             // ie. class_alias is a function that was introduced in PHP 5.3
             if (function_exists('mcrypt_create_iv') && function_exists('class_alias')) {
-                return mcrypt_create_iv($length);
+                return @mcrypt_create_iv($length);
             }
             // method 2. openssl_random_pseudo_bytes was introduced in PHP 5.3.0 but prior to PHP 5.3.4 there was,
             // to quote <http://php.net/ChangeLog-5.php#5.3.4>, "possible blocking behavior". as of 5.3.4
@@ -110,7 +110,7 @@ if (!function_exists('crypt_random_string')) {
             // not doing. regardless, this'll only be called if this PHP script couldn't open /dev/urandom due to open_basedir
             // restrictions or some such
             if (function_exists('mcrypt_create_iv')) {
-                return mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
+                return @mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
             }
         }
         // at this point we have no choice but to use a pure-PHP CSPRNG
@@ -138,21 +138,21 @@ if (!function_exists('crypt_random_string')) {
             $old_session_id = session_id();
             $old_use_cookies = ini_get('session.use_cookies');
             $old_session_cache_limiter = session_cache_limiter();
-            
+
             // In some environments the session_save_path is not working. Hence we can't use it.
             $session_save_path = session_save_path();
             if (@file_exists($session_save_path) && @is_writable($session_save_path)) {
-            
+
 	            $_OLD_SESSION = isset($_SESSION) ? $_SESSION : false;
 	            if ($old_session_id != '') {
 	                session_write_close();
 	            }
-	
+
 	            session_id(1);
 	            ini_set('session.use_cookies', 0);
 	            session_cache_limiter('');
 	            session_start();
-	
+
 	            $v = $seed = $_SESSION['seed'] = pack('H*', sha1(
 	                serialize($_SERVER) .
 	                serialize($_POST) .
@@ -166,9 +166,9 @@ if (!function_exists('crypt_random_string')) {
 	                $_SESSION['count'] = 0;
 	            }
 	            $_SESSION['count']++;
-	
+
 	            session_write_close();
-	
+
 	            // restore old session data
 	            if ($old_session_id != '') {
 	                session_id($old_session_id);

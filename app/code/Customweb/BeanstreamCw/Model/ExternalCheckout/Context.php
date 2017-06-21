@@ -109,6 +109,11 @@ class Context extends \Magento\Framework\Model\AbstractModel implements \Customw
 	protected $_invoiceItemHelper;
 
 	/**
+	 * @var \Customweb\BeanstreamCw\Helper\FoomanSurcharge
+	 */
+	protected $_foomanSurchargeHelper;
+
+	/**
 	 * Event prefix
 	 *
 	 * @var string
@@ -142,6 +147,7 @@ class Context extends \Magento\Framework\Model\AbstractModel implements \Customw
 	 * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
 	 * @param \Magento\Customer\Model\Session $customerSession
 	 * @param \Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper
+	 * @param \Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper
 	 * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
 	 * @param \Magento\Framework\Data\Collection\Db $resourceCollection
 	 * @param array $data
@@ -157,6 +163,7 @@ class Context extends \Magento\Framework\Model\AbstractModel implements \Customw
 			\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
 			\Magento\Customer\Model\Session $customerSession,
 			\Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper,
+			\Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper,
 			\Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
 			\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
 			array $data = []
@@ -170,6 +177,7 @@ class Context extends \Magento\Framework\Model\AbstractModel implements \Customw
 		$this->_scopeConfig = $scopeConfig;
 		$this->_customerSession = $customerSession;
 		$this->_invoiceItemHelper = $invoiceItemHelper;
+		$this->_foomanSurchargeHelper = $foomanSurchargeHelper;
 	}
 
     protected function _construct() {
@@ -382,7 +390,8 @@ class Context extends \Magento\Framework\Model\AbstractModel implements \Customw
 				$address->getShippingDescription(),
 				$quote->getCustomerId(),
 				$this->isUseBaseCurrency() ? $quote->getBaseGrandTotal() : $quote->getGrandTotal(),
-				$this->isUseBaseCurrency()
+				$this->isUseBaseCurrency(),
+				$this->_foomanSurchargeHelper->getQuoteSurchargeAmount($quote->getId())
 		));
 		$this->setOrderAmountInDecimals(\Customweb_Util_Invoice::getTotalAmountIncludingTax($this->getInvoiceItems()));
 		$this->setCurrencyCode($this->isUseBaseCurrency() ? $this->getQuote()->getStore()->getBaseCurrencyCode() : $this->getQuote()->getStore()->getCurrentCurrencyCode());

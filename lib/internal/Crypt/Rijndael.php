@@ -811,7 +811,7 @@ class Crypt_Rijndael extends Crypt_Base
         // Determining the availibility/usability of $cipher_name_mcrypt
         switch (true) {
             case $this->key_size % 8: // mcrypt is not usable for 160/224-bit keys, only for 128/192/256-bit keys
-            case !in_array($cipher_name_mcrypt, mcrypt_list_algorithms()): // $cipher_name_mcrypt is not available for the current $block_size
+            case !in_array($cipher_name_mcrypt, @mcrypt_list_algorithms()): // $cipher_name_mcrypt is not available for the current $block_size
                 $engine = CRYPT_MODE_INTERNAL;
                 break;
             default:
@@ -830,13 +830,13 @@ class Crypt_Rijndael extends Crypt_Base
         if ($this->enmcrypt) {
             // Closing the current mcrypt resource(s). _mcryptSetup() will, if needed,
             // (re)open them with the module named in $this->cipher_name_mcrypt
-            mcrypt_module_close($this->enmcrypt);
-            mcrypt_module_close($this->demcrypt);
+            @mcrypt_module_close($this->enmcrypt);
+            @mcrypt_module_close($this->demcrypt);
             $this->enmcrypt = null;
             $this->demcrypt = null;
 
             if ($this->ecb) {
-                mcrypt_module_close($this->ecb);
+                @mcrypt_module_close($this->ecb);
                 $this->ecb = null;
             }
         }

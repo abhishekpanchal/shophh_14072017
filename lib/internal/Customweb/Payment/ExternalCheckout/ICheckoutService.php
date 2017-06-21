@@ -123,6 +123,8 @@ interface Customweb_Payment_ExternalCheckout_ICheckoutService {
 	 * cannot be hijacked by an attacker. In case this is not possible use the authenticate() method.
 	 *
 	 * The implementor has to make sure that the user is afterwards authorized in case a user account already exists.
+	 * 
+	 * The implementor has to handle the case, where no shipping or billing address is set on the context, when this function is called.
 	 *
 	 * @param Customweb_Payment_ExternalCheckout_IContext $context
 	 * @param string $emailAddress

@@ -215,7 +215,11 @@ abstract class AbstractMethod
 				}
 				if ($this->getContext()->getTransaction()->getTransactionObject()->isCaptured()) {
 					$payment->registerCaptureNotification($this->getContext()->getOrder()->getGrandTotal(), true);
-					$invoice = $this->_coreRegistry->registry('beanstreamcw_invoice');
+					if ($payment->getCreatedInvoice()) {
+						$invoice = $payment->getCreatedInvoice();
+					} else {
+						$invoice = $this->getInvoiceByTransactionId($payment->getOrder(), $payment->getTransactionId());
+					}
 				} else {
 					$payment->authorize(true, $this->getContext()->getOrder()->getGrandTotal());
 					$invoice = $this->createInvoice();
@@ -385,6 +389,28 @@ abstract class AbstractMethod
 					$order->addRelatedObject($invoice);
 					return $invoice;
 				}
+			}
+		}
+	}
+
+	/**
+	 * @param \Magento\Sales\Api\Data\OrderInterface $order
+	 * @param string $transactionId
+	 * @return \Magento\Sales\Model\Order\Invoice
+	 */
+	private function getInvoiceByTransactionId(\Magento\Sales\Api\Data\OrderInterface $order, $transactionId) {
+		foreach ($order->getInvoiceCollection() as $invoice) {
+			if ($invoice->getTransactionId() == $transactionId) {
+				$invoice->load($invoice->getId());
+				// to make sure all data will properly load (maybe not required)
+				return $invoice;
+			}
+		}
+		foreach ($order->getInvoiceCollection() as $invoice) {
+			if ($invoice->getState() == \Magento\Sales\Model\Order\Invoice::STATE_OPEN
+				&& $invoice->load($invoice->getId())) {
+				$invoice->setTransactionId($transactionId);
+				return $invoice;
 			}
 		}
 	}

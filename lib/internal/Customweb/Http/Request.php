@@ -383,6 +383,14 @@ class Customweb_Http_Request {
 			if (!empty($_SERVER['php_stream_proxy_server'])){
 				$proxy = $_SERVER['php_stream_proxy_server'];
 			}
+			
+			if (!empty($_SERVER['PHP_HTTP_CLIENT_PROXY_URL'])){
+				$proxy = $_SERVER['PHP_HTTP_CLIENT_PROXY_URL'];
+			}
+			if (!empty($_SERVER['php_http_client_proxy_url'])){
+				$proxy = $_SERVER['php_http_client_proxy_url'];
+			}
+			
 			if ($proxy !== NULL) {
 				$this->proxyUrl = new Customweb_Http_Url($proxy);
 			}
@@ -452,6 +460,11 @@ class Customweb_Http_Request {
 			elseif ($this->getForcedIPVersion() == 6) {
 				$options['socket'] = array( 'bindto' => '[::]:0');
 			}
+		}
+		
+		if ($this->isProxyActive()) {
+			$options['http']['proxy'] = $this->getProxyUrl()->toString();
+			$options['http']['request_fulluri'] = true;
 		}
 		
 		return stream_context_create($options);

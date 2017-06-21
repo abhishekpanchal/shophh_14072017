@@ -1,8 +1,8 @@
 <?php
 
-//require_once 'Customweb/Annotation/Parser/ParallelMatcher.php';
-//require_once 'Customweb/Annotation/Parser/RegexMatcher.php';
 //require_once 'Customweb/Annotation/Parser/AnnotationIntegerMatcher.php';
+//require_once 'Customweb/Annotation/Parser/RegexMatcher.php';
+//require_once 'Customweb/Annotation/Parser/ParallelMatcher.php';
 //require_once 'Customweb/Annotation/Parser/AnnotationStringMatcher.php';
 
 

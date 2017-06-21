@@ -2,6 +2,12 @@
 	margin: 0 0 3rem;
 }
 
+.beanstreamcw-transaction-payment-information-block {
+	margin: 3rem 0;
+	background-color: #f1f1f1;
+	padding: 1rem;
+}
+
 .beanstreamcw-transaction-information .tooltip,
 .beanstreamcw-payment-information-block .tooltip {
 	float: right;

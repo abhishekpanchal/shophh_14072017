@@ -18,24 +18,24 @@
  *
 */
 
+//require_once 'Customweb/Util/Rand.php';
 //require_once 'Customweb/Core/Util/Xml.php';
+//require_once 'Customweb/Form/Intention/Factory.php';
+//require_once 'Customweb/Form/Control/Html.php';
+//require_once 'Customweb/Payment/Authorization/Method/CreditCard/CreditCardValidator.php';
+//require_once 'Customweb/Payment/Authorization/Method/CreditCard/ElementBuilder.php';
+//require_once 'Customweb/Util/JavaScript.php';
 //require_once 'Customweb/Payment/Authorization/Method/CreditCard/CardHandler.php';
-//require_once 'Customweb/Core/Util/Class.php';
-//require_once 'Customweb/Payment/Authorization/Method/CreditCard/CardInformation.php';
+//require_once 'Customweb/Form/Control/MultiControl.php';
 //require_once 'Customweb/Form/Element.php';
+//require_once 'Customweb/Form/Validator/NotEmpty.php';
 //require_once 'Customweb/Form/Control/HiddenInput.php';
 //require_once 'Customweb/I18n/Translation.php';
-//require_once 'Customweb/Form/Validator/NotEmpty.php';
 //require_once 'Customweb/Form/Control/Select.php';
 //require_once 'Customweb/Payment/Authorization/Method/CreditCard/CvcValidator.php';
-//require_once 'Customweb/Form/Control/MultiControl.php';
-//require_once 'Customweb/Payment/Authorization/Method/CreditCard/ElementBuilder.php';
-//require_once 'Customweb/Form/Control/Html.php';
-//require_once 'Customweb/Util/JavaScript.php';
+//require_once 'Customweb/Core/Util/Class.php';
 //require_once 'Customweb/Form/Control/TextInput.php';
-//require_once 'Customweb/Payment/Authorization/Method/CreditCard/CreditCardValidator.php';
-//require_once 'Customweb/Form/Intention/Factory.php';
-//require_once 'Customweb/Util/Rand.php';
+//require_once 'Customweb/Payment/Authorization/Method/CreditCard/CardInformation.php';
 
 
 /**

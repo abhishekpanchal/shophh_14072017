@@ -18,12 +18,12 @@
  *
  */
 
-//require_once 'Customweb/Core/Util/Class.php';
-//require_once 'Customweb/Payment/Endpoint/Annotation/ExtractionMethod.php';
-//require_once 'Customweb/Mvc/Controller/Dispatcher.php';
-//require_once 'Customweb/DependencyInjection/Bean/Object.php';
 //require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
+//require_once 'Customweb/DependencyInjection/Bean/Object.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Payment/Endpoint/Annotation/ExtractionMethod.php';
+//require_once 'Customweb/Core/Util/Class.php';
+//require_once 'Customweb/Mvc/Controller/Dispatcher.php';
 
 
 /**
