@@ -1,7 +1,7 @@
 <?php
 
-//require_once 'Customweb/Annotation/ReflectionAnnotatedMethod.php';
 //require_once 'Customweb/Annotation/DocComment.php';
+//require_once 'Customweb/Annotation/ReflectionAnnotatedMethod.php';
 //require_once 'Customweb/Annotation/ReflectionAnnotatedProperty.php';
 
 

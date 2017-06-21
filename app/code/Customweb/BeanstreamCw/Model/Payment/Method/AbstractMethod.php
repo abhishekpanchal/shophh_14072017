@@ -1,5 +1,4 @@
 <?php
-
 /**
  *  * You are allowed to use this API in your web application.
  *
@@ -24,7 +23,8 @@
  */
 namespace Customweb\BeanstreamCw\Model\Payment\Method;
 
-class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implements \Customweb_Payment_Authorization_IPaymentMethod {
+class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implements \Customweb_Payment_Authorization_IPaymentMethod
+{
 	/**
 	 *
 	 * @var \Magento\Checkout\Model\Session
@@ -74,6 +74,11 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	protected $_invoiceItemHelper;
 
 	/**
+	 * @var \Customweb\BeanstreamCw\Helper\FoomanSurcharge
+	 */
+	protected $_foomanSurchargeHelper;
+
+	/**
 	 * Payment method code
 	 *
 	 * @var string
@@ -120,9 +125,30 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 * @param \Customweb\BeanstreamCw\Model\DependencyContainer $container
 	 * @param \Customweb\BeanstreamCw\Model\Authorization\TransactionFactory $transactionFactory
 	 * @param \Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper
+	 * @param \Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper
 	 * @param array $data
 	 */
-	public function __construct(\Magento\Framework\Model\Context $context, \Magento\Framework\Registry $registry, \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory, \Magento\Framework\Api\AttributeValueFactory $customAttributeFactory, \Magento\Payment\Helper\Data $paymentData, \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig, \Magento\Payment\Model\Method\Logger $logger, \Magento\Checkout\Model\Session $checkoutSession, \Magento\Framework\App\RequestInterface $request, \Magento\Framework\DB\TransactionFactory $dbTransactionFactory, \Customweb\BeanstreamCw\Model\Authorization\Method\Factory $authorizationMethodFactory, \Customweb\BeanstreamCw\Model\Configuration $configuration, \Customweb\BeanstreamCw\Model\DependencyContainer $container, \Customweb\BeanstreamCw\Model\Authorization\TransactionFactory $transactionFactory, \Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper, \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null, \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null, array $data = []){
+	public function __construct(
+			\Magento\Framework\Model\Context $context,
+			\Magento\Framework\Registry $registry,
+			\Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory,
+			\Magento\Framework\Api\AttributeValueFactory $customAttributeFactory,
+			\Magento\Payment\Helper\Data $paymentData,
+			\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+			\Magento\Payment\Model\Method\Logger $logger,
+			\Magento\Checkout\Model\Session $checkoutSession,
+			\Magento\Framework\App\RequestInterface $request,
+			\Magento\Framework\DB\TransactionFactory $dbTransactionFactory,
+			\Customweb\BeanstreamCw\Model\Authorization\Method\Factory $authorizationMethodFactory,
+			\Customweb\BeanstreamCw\Model\Configuration $configuration,
+			\Customweb\BeanstreamCw\Model\DependencyContainer $container,
+			\Customweb\BeanstreamCw\Model\Authorization\TransactionFactory $transactionFactory,
+			\Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper,
+			\Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper,
+			\Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
+			\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
+			array $data = []
+	) {
 		parent::__construct($context, $registry, $extensionFactory, $customAttributeFactory, $paymentData, $scopeConfig, $logger, $resource,
 				$resourceCollection, $data);
 		$this->_checkoutSession = $checkoutSession;
@@ -133,21 +159,32 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		$this->_container = $container;
 		$this->_transactionFactory = $transactionFactory;
 		$this->_invoiceItemHelper = $invoiceItemHelper;
+		$this->_foomanSurchargeHelper = $foomanSurchargeHelper;
 	}
 
-	public function getPaymentMethodName(){
+	public function setStore($storeId)
+	{
+		parent::setStore($storeId);
+		$this->_configuration->setStore($storeId);
+	}
+
+	public function getPaymentMethodName()
+	{
 		return $this->_name;
 	}
 
-	public function getPaymentMethodDisplayName(){
+	public function getPaymentMethodDisplayName()
+	{
 		return $this->getPaymentMethodConfigurationValue('title');
 	}
 
-	public function getPaymentMethodConfigurationValue($key, $languageCode = null){
+	public function getPaymentMethodConfigurationValue($key, $languageCode = null)
+	{
 		return $this->_configuration->getConfigurationValue('payment', $this->getCode() . '/' . $key);
 	}
 
-	public function existsPaymentMethodConfigurationValue($key, $languageCode = null){
+	public function existsPaymentMethodConfigurationValue($key, $languageCode = null)
+	{
 		return $this->_configuration->existsConfiguration('payment', $this->getCode() . '/' . $key);
 	}
 
@@ -156,7 +193,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 *
 	 * @return string
 	 */
-	public function getDescription(){
+	public function getDescription()
+	{
 		return trim($this->getPaymentMethodConfigurationValue('description'));
 	}
 
@@ -165,7 +203,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 *
 	 * @return boolean
 	 */
-	public function isShowImage(){
+	public function isShowImage()
+	{
 		return (boolean) $this->getPaymentMethodConfigurationValue('show_image');
 	}
 
@@ -174,7 +213,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 *
 	 * @return boolean
 	 */
-	public function isUseBaseCurrency(){
+	public function isUseBaseCurrency()
+	{
 		return (boolean) $this->getPaymentMethodConfigurationValue('base_currency');
 	}
 
@@ -182,7 +222,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 *
 	 * @return string
 	 */
-	public function getOrderPlaceRedirectUrl(){
+	public function getOrderPlaceRedirectUrl()
+	{
 		$quote = $this->_checkoutSession->getQuote();
 		$quote->setIsActive(true);
 		$quote->setReservedOrderId(null);
@@ -199,7 +240,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		]);
 	}
 
-	public function isAvailable(\Magento\Quote\Api\Data\CartInterface $quote = null){
+	public function isAvailable(\Magento\Quote\Api\Data\CartInterface $quote = null)
+	{
 		$isAvailable = parent::isAvailable($quote);
 
 		if ($isAvailable) {
@@ -223,13 +265,14 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		return $isAvailable;
 	}
 
-	public function validate(){
+	public function validate()
+	{
 		
 		$arguments = null;
-		return \Customweb_Licensing_BeanstreamCw_License::run('ovpduk8462pbv7bh', $this, $arguments);
+		return \Customweb_Licensing_BeanstreamCw_License::run('a59ul6qdus1ma8d0', $this, $arguments);
 	}
 
-	final public function call_8l67quia4a9ds58s() {
+	final public function call_vlcek23iiosvg696() {
 		$arguments = func_get_args();
 		$method = $arguments[0];
 		$call = $arguments[1];
@@ -243,7 +286,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		
 		
 	}
-	private function parentValidate(){
+	private function parentValidate()
+	{
 		parent::validate();
 	}
 
@@ -254,7 +298,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 * @param \Magento\Framework\Object $stateObject
 	 * @return \Customweb\BeanstreamCw\Model\Payment\Method\AbstractMethod
 	 */
-	public function initialize($paymentAction, $stateObject){
+	public function initialize($paymentAction, $stateObject)
+	{
 		$state = \Magento\Sales\Model\Order::STATE_PENDING_PAYMENT;
 		$stateObject->setState($state);
 		$stateObject->setStatus('pending_payment');
@@ -269,7 +314,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 * @param float $amount
 	 * @return \Customweb\BeanstreamCw\Model\Payment\Method\AbstractMethod
 	 */
-	public function authorize(\Magento\Payment\Model\InfoInterface $payment, $amount){
+	public function authorize(\Magento\Payment\Model\InfoInterface $payment, $amount)
+	{
 		parent::authorize($payment, $amount);
 
 		$transaction = $this->_registry->registry('beanstreamcw_authorization_transaction');
@@ -289,7 +335,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 * @param float $amount
 	 * @return \Customweb\BeanstreamCw\Model\Payment\Method\AbstractMethod
 	 */
-	public function capture(\Magento\Payment\Model\InfoInterface $payment, $amount){
+	public function capture(\Magento\Payment\Model\InfoInterface $payment, $amount)
+	{
 		parent::capture($payment, $amount);
 
 		
@@ -312,6 +359,7 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 					$invoice->getOrder()->getShippingDescription(), $invoice->getOrder()->getCustomerId(),
 					$this->isUseBaseCurrency() ? $invoice->getBaseGrandTotal() : $invoice->getGrandTotal(),
 					$this->isUseBaseCurrency(),
+					$this->_foomanSurchargeHelper->getOrderSurchargeAmount($invoice->getOrder()),
 					false
 				);
 			}
@@ -336,7 +384,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 * @param float $amount
 	 * @return \Customweb\BeanstreamCw\Model\Payment\Method\AbstractMethod
 	 */
-	public function refund(\Magento\Payment\Model\InfoInterface $payment, $amount){
+	public function refund(\Magento\Payment\Model\InfoInterface $payment, $amount)
+	{
 		parent::refund($payment, $amount);
 
 		
@@ -366,6 +415,7 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 									$creditmemo->getOrder()->getCustomerId(),
 									$this->isUseBaseCurrency() ? $creditmemo->getBaseGrandTotal() : $creditmemo->getGrandTotal(),
 									$this->isUseBaseCurrency(),
+									$this->_foomanSurchargeHelper->getOrderSurchargeAmount($creditmemo->getOrder()),
 									false
 								);
 							}
@@ -405,7 +455,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 * @param \Magento\Payment\Model\InfoInterface $payment
 	 * @return \Customweb\BeanstreamCw\Model\Payment\Method\AbstractMethod
 	 */
-	public function void(\Magento\Payment\Model\InfoInterface $payment){
+	public function void(\Magento\Payment\Model\InfoInterface $payment)
+	{
 		parent::void($payment);
 
 		
@@ -414,7 +465,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		return $this;
 	}
 
-	public function acceptPayment(\Magento\Payment\Model\InfoInterface $payment){
+	public function acceptPayment(\Magento\Payment\Model\InfoInterface $payment)
+	{
 		$transaction = $this->_transactionFactory->create()->loadByOrderPaymentId($payment->getId());
 		if ($transaction->getId()) {
 			if ($transaction->getTransactionObject()->isCapturePossible()) {
@@ -424,7 +476,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		return true;
 	}
 
-	public function denyPayment(\Magento\Payment\Model\InfoInterface $payment){
+	public function denyPayment(\Magento\Payment\Model\InfoInterface $payment)
+	{
 		$transaction = $this->_transactionFactory->create()->loadByOrderPaymentId($payment->getId());
 		if ($transaction->getId()) {
 			if ($transaction->getTransactionObject()->isCancelPossible()) {
@@ -437,7 +490,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		return true;
 	}
 
-	public function assignData(\Magento\Framework\DataObject $data){
+	public function assignData(\Magento\Framework\DataObject $data)
+	{
 		parent::assignData($data);
 		$infoInstance = $this->getInfoInstance();
 		//Since 2.1 the alias and form values are stored in the additional_data array
@@ -461,7 +515,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		return $this;
 	}
 
-	private function captureItems(\Customweb\BeanstreamCw\Model\Authorization\Transaction $transaction, $items = []){
+	private function captureItems(\Customweb\BeanstreamCw\Model\Authorization\Transaction $transaction, $items = [])
+	{
 		
 		if ($transaction->getTransactionObject()->isCapturePossible()) {
 			try {
@@ -494,7 +549,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 	 *
 	 * @return boolean
 	 */
-	private function isCaptureNoClose(){
+	private function isCaptureNoClose()
+	{
 		if ($this->_request->getParam('capture_no_close')) {
 			return true;
 		}
@@ -505,7 +561,8 @@ class AbstractMethod extends \Magento\Payment\Model\Method\AbstractMethod implem
 		return false;
 	}
 
-	private function getAuthorizationMethodFactory(){
+	private function getAuthorizationMethodFactory()
+	{
 		return $this->_authorizationMethodFactory;
 	}
 }

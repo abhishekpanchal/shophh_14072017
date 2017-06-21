@@ -19,12 +19,12 @@
  *
  */
 
-//require_once 'Customweb/Payment/Document/Document.php';
-//require_once 'Customweb/Payment/Document/IDocumentStorageService.php';
-//require_once 'Customweb/Core/Stream/Input/File.php';
-//require_once 'Customweb/Core/Stream/Output/File.php';
-//require_once 'Customweb/I18n/Translation.php';
 //require_once 'Customweb/Payment/Entity/AbstractDocument.php';
+//require_once 'Customweb/Payment/Document/Document.php';
+//require_once 'Customweb/Core/Stream/Input/File.php';
+//require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Core/Stream/Output/File.php';
+//require_once 'Customweb/Payment/Document/IDocumentStorageService.php';
 
 
 

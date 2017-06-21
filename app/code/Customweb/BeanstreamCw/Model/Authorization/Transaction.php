@@ -226,14 +226,21 @@ class Transaction extends \Magento\Framework\Model\AbstractModel implements \Mag
 
 		if ($this->getTransactionObject() !== null && $this->getTransactionObject() instanceof \Customweb_Payment_Authorization_ITransaction) {
 			$this->authorizationRequired = $this->isAuthorizationRequired();
-
-			if ($this->getTransactionObject()->getAliasForDisplay() != null && $this->getTransactionObject()->getAliasForDisplay() != '') {
+			
+			$aliasForDisplay = $this->getTransactionObject()->getAliasForDisplay();
+			if (!empty($aliasForDisplay)){
 				$deleteSimilar = $this->getAliasForDisplay() == null;
-				$this->setAliasForDisplay($this->getTransactionObject()->getAliasForDisplay());
+				$this->setAliasForDisplay($aliasForDisplay);
 				if ($deleteSimilar) {
 					$this->_aliasHandler->removeSimilarAliases($this);
 				}
+			}				
+			// When the alias for display is empty and the alias was once set as active we deactivate it.
+			$currentSetAlias = $this->getAliasForDisplay();
+			if (empty($aliasForDisplay) && !empty($currentSetAlias)) {
+				$this->setAliasActive(false);
 			}
+			
 			$this->setAuthorizationType($this->getTransactionObject()->getAuthorizationMethod());
 			$this->setPaymentMethod($this->getTransactionObject()->getPaymentMethod()->getCode());
 			$this->setPaymentId($this->getTransactionObject()->getPaymentId());

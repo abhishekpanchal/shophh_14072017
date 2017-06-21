@@ -719,6 +719,14 @@ final class Customweb_Util_Country {
  			'states' => array(
 			),
  		),
+ 		'AX' => array(
+			'code' => 'AX',
+ 			'name' => 'Aland Islands',
+ 			'code3' => 'ALA',
+ 			'numeric' => '248',
+ 			'states' => array(
+			),
+ 		),
  		'AZ' => array(
 			'code' => 'AZ',
  			'name' => 'Azerbaijan',

@@ -20,9 +20,9 @@
 
 //require_once 'Customweb/Util/Currency.php';
 //require_once 'Customweb/Payment/BackendOperation/Adapter/Service/ICapture.php';
-//require_once 'Customweb/Util/Invoice.php';
-//require_once 'Customweb/Beanstream/AbstractAdapter.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Beanstream/AbstractAdapter.php';
+//require_once 'Customweb/Util/Invoice.php';
 
 //require_once 'Customweb/Beanstream/Authorization/Transaction.php';
 

@@ -19,7 +19,7 @@
  *
  * @category	Customweb
  * @package		Customweb_BeanstreamCw
- * 
+ *
  */
 
 namespace Customweb\BeanstreamCw\Plugin\Framework\App;
@@ -61,26 +61,8 @@ class Http
 	 */
 	public function beforeLaunch(\Magento\Framework\App\Http $subject)
 	{
-		$this->registerAutoload();
 		$this->registerTranslationResolver();
 		$this->setupLicensingAdapter();
-	}
-
-	private function registerAutoload()
-	{
-		$internalLibraryDirectory = $this->_directoryList->getPath(\Magento\Framework\App\Filesystem\DirectoryList::LIB_INTERNAL);
-
-		$directories = [
-			'Customweb',
-			'File',
-			'Crypt',
-			'Math',
-			'Net',
-			'System',
-		];
-		foreach ($directories as $directory) {
-			\Magento\Framework\Autoload\AutoloaderRegistry::getAutoloader()->addPsr0($directory . '_', $internalLibraryDirectory, true);
-		}
 	}
 
 	private function registerTranslationResolver()
@@ -92,10 +74,10 @@ class Http
 	{
 		
 		$arguments = null;
-		return \Customweb_Licensing_BeanstreamCw_License::run('rrfv088hfhkib5t5', $this, $arguments);
+		return \Customweb_Licensing_BeanstreamCw_License::run('ffm9dnq9vtht7ns2', $this, $arguments);
 	}
 
-	final public function call_v7cs0ta8lmj0fptt() {
+	final public function call_1dr8r5fe1b7lc28u() {
 		$arguments = func_get_args();
 		$method = $arguments[0];
 		$call = $arguments[1];

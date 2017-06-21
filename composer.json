@@ -29,7 +29,9 @@
         "magento/module-review-sample-data": "100.1.0",
         "magento/module-swatches-sample-data": "100.1.0",
         "magento/sample-data-media": "100.1.0",
-        "magento/module-offline-shipping-sample-data": "100.1.0"
+        "magento/module-offline-shipping-sample-data": "100.1.0",
+        "mandrill/mandrill": "^1.0",
+        "magepal/magento2-gmailsmtpapp": "^1.4"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.0",

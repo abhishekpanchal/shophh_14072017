@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Core/Http/IRequest.php';
 //require_once 'Customweb/Core/Http/ContextRequest.php';
+//require_once 'Customweb/Core/Http/IRequest.php';
 
 
 
@@ -187,7 +187,9 @@ class Customweb_Core_Http_ContextRequest implements Customweb_Core_Http_IRequest
 		}
 	}
 	
-
+	public function toSendableString($fullUri) {
+		return $this->toString();
+	}
 
 	/**
 	 * Returns the message as a string.

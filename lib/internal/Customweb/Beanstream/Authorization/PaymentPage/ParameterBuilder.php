@@ -18,8 +18,8 @@
  * See the customweb software licence agreement for more details.
  *
  */
-//require_once 'Customweb/Util/String.php';
 //require_once 'Customweb/Util/Currency.php';
+//require_once 'Customweb/Util/String.php';
 //require_once 'Customweb/Beanstream/Authorization/AbstractParameterBuilder.php';
 
 

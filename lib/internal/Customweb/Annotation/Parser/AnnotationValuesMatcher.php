@@ -1,8 +1,8 @@
 <?php
 
+//require_once 'Customweb/Annotation/Parser/AnnotationHashMatcher.php';
 //require_once 'Customweb/Annotation/Parser/ParallelMatcher.php';
 //require_once 'Customweb/Annotation/Parser/AnnotationTopValueMatcher.php';
-//require_once 'Customweb/Annotation/Parser/AnnotationHashMatcher.php';
 
 
 class Customweb_Annotation_Parser_AnnotationValuesMatcher extends Customweb_Annotation_Parser_ParallelMatcher {

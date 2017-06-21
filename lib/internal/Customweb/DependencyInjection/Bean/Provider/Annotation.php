@@ -18,9 +18,9 @@
  *
  */
 
-//require_once 'Customweb/DependencyInjection/Bean/Provider/Annotation/Util.php';
 //require_once 'Customweb/DependencyInjection/Bean/IProvider.php';
 //require_once 'Customweb/Annotation/Scanner.php';
+//require_once 'Customweb/DependencyInjection/Bean/Provider/Annotation/Util.php';
 
 
 /**

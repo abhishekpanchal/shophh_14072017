@@ -19,7 +19,7 @@
  *
  * @category	Customweb
  * @package		Customweb_BeanstreamCw
- * 
+ *
  */
 
 namespace Customweb\BeanstreamCw\Block\Payment\Method;
@@ -55,6 +55,13 @@ class Info extends \Magento\Payment\Block\Info
 	) {
 		parent::__construct($context, $data);
 		$this->_transactionFactory = $transactionFactory;
+	}
+
+	public function getMethod()
+	{
+		$method = parent::getMethod();
+		$method->setStore($this->getTransaction()->getStoreId());
+		return $method;
 	}
 
 	/**

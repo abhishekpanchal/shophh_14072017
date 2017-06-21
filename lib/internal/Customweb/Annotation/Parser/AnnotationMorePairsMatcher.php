@@ -1,9 +1,9 @@
 <?php
 
-//require_once 'Customweb/Annotation/Parser/RegexMatcher.php';
-//require_once 'Customweb/Annotation/Parser/AnnotationPairMatcher.php';
-//require_once 'Customweb/Annotation/Parser/SerialMatcher.php';
 //require_once 'Customweb/Annotation/Parser/AnnotationHashMatcher.php';
+//require_once 'Customweb/Annotation/Parser/RegexMatcher.php';
+//require_once 'Customweb/Annotation/Parser/SerialMatcher.php';
+//require_once 'Customweb/Annotation/Parser/AnnotationPairMatcher.php';
 
 
 class Customweb_Annotation_Parser_AnnotationMorePairsMatcher extends Customweb_Annotation_Parser_SerialMatcher {

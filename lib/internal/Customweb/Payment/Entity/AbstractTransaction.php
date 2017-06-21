@@ -19,11 +19,11 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/DefaultTransaction.php';
-//require_once 'Customweb/Payment/Authorization/ITransaction.php';
-//require_once 'Customweb/Payment/Entity/AbstractPaymentCustomerContext.php';
 //require_once 'Customweb/Payment/Authorization/ErrorMessage.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Payment/Entity/AbstractPaymentCustomerContext.php';
+//require_once 'Customweb/Payment/Authorization/ITransaction.php';
+//require_once 'Customweb/Payment/Authorization/DefaultTransaction.php';
 
 
 
@@ -111,9 +111,17 @@ abstract class Customweb_Payment_Entity_AbstractTransaction {
 			
 			$this->setVersionNumber($this->getTransactionObject()->getVersionNumber());
 			
-			if ($this->getTransactionObject()->getAliasForDisplay() != null && $this->getTransactionObject()->getAliasForDisplay() != '') {
-				$this->setAliasForDisplay($this->getTransactionObject()->getAliasForDisplay());
+			$aliasForDisplay = $this->getTransactionObject()->getAliasForDisplay();
+			if (!empty($aliasForDisplay)){
+				$this->setAliasForDisplay($aliasForDisplay);
 			}
+			
+			// When the alias for display is empty and the alias was once set as active we deactivate it.
+			$currentSetAlias = $this->getAliasForDisplay();
+			if (empty($aliasForDisplay) && !empty($currentSetAlias)) {
+				$this->setAliasActive(false);
+			}
+			
 			$this->setAuthorizationType($this->getTransactionObject()->getAuthorizationMethod());
 			$this->setPaymentMachineName($this->getTransactionObject()->getPaymentMethod()->getPaymentMethodName());
 			$this->setPaymentId($this->getTransactionObject()->getPaymentId());

@@ -18,9 +18,9 @@
  *
  */
 
+//require_once 'Customweb/Payment/Update/IHandler.php';
 //require_once 'Customweb/Payment/Update/AbstractProcessor.php';
 //require_once 'Customweb/Util/String.php';
-//require_once 'Customweb/Payment/Update/IHandler.php';
 
 
 /**

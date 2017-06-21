@@ -17,8 +17,8 @@
  * See the customweb software licence agreement for more details.
  *
  */
-//require_once 'Customweb/Core/Util/Language.php';
 //require_once 'Customweb/Core/String.php';
+//require_once 'Customweb/Core/Util/Language.php';
 //require_once 'Customweb/Util/String.php';
 //require_once 'Customweb/Payment/Util.php';
 

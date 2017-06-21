@@ -18,10 +18,10 @@
  *
  */
 
-//require_once 'Customweb/Asset/IResolver.php';
 //require_once 'Customweb/Core/Stream/Input/File.php';
-//require_once 'Customweb/Asset/Exception/UnresolvableAssetException.php';
 //require_once 'Customweb/Core/Url.php';
+//require_once 'Customweb/Asset/IResolver.php';
+//require_once 'Customweb/Asset/Exception/UnresolvableAssetException.php';
 //require_once 'Customweb/Asset/Exception/NonPublicAssetException.php';
 //require_once 'Customweb/Core/MimeType.php';
 

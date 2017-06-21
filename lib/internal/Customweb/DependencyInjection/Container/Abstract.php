@@ -18,9 +18,9 @@
  *
  */
 
-//require_once 'Customweb/Core/Util/Class.php';
 //require_once 'Customweb/DependencyInjection/Exception/BeanNotFoundException.php';
 //require_once 'Customweb/DependencyInjection/IContainer.php';
+//require_once 'Customweb/Core/Util/Class.php';
 
 
 /**

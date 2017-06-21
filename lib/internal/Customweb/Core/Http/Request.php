@@ -18,14 +18,14 @@
  *
  */
 
-//require_once 'Customweb/Core/Http/Request.php';
-//require_once 'Customweb/Core/Http/Cookie.php';
-//require_once 'Customweb/Core/Util/Class.php';
-//require_once 'Customweb/Core/Http/AbstractMessage.php';
-//require_once 'Customweb/Core/Http/IRequest.php';
 //require_once 'Customweb/Core/Http/ICookie.php';
 //require_once 'Customweb/Core/Url.php';
+//require_once 'Customweb/Core/Http/AbstractMessage.php';
 //require_once 'Customweb/Core/Http/IAuthorization.php';
+//require_once 'Customweb/Core/Util/Class.php';
+//require_once 'Customweb/Core/Http/IRequest.php';
+//require_once 'Customweb/Core/Http/Cookie.php';
+//require_once 'Customweb/Core/Http/Request.php';
 
 
 /**
@@ -142,6 +142,25 @@ final class Customweb_Core_Http_Request extends Customweb_Core_Http_AbstractMess
 
 	public function getStatusLine() {
 		return strtoupper($this->getMethod()) . ' ' . $this->getPath() . ' ' . 'HTTP/' . $this->getProtocolVersion(); 
+	}
+	
+	/**
+	 * This method converts the request into a sendable string representation of the request. This is required when the request is sent through a proxy.
+	 * 
+	 * @param boolean $fullUri if the full URI should be included in the header.
+	 */
+	public function toSendableString($fullUri) {
+		$path = $this->getPath();
+		if ($fullUri) {
+			$path = $this->url->toString();
+		}
+		$output = strtoupper($this->getMethod()) . ' ' . $path . ' ' . 'HTTP/' . $this->getProtocolVersion() . "\r\n"; 
+		foreach ($this->getHeaders() as $header) {
+			$output .= $header . "\r\n";
+		}
+		$output .= "\r\n";
+		$output .= $this->getBody();
+		return $output;
 	}
 	
 	protected function parseStatusLine($line) {

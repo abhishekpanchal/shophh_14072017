@@ -1,11 +1,11 @@
 <?php
 
-//require_once 'Customweb/Annotation/Cache/Annotation.php';
+//require_once 'Customweb/Annotation/AnnotationsCollection.php';
+//require_once 'Customweb/Annotation/Util.php';
 //require_once 'Customweb/Core/String.php';
 //require_once 'Customweb/Core/Util/Class.php';
-//require_once 'Customweb/Annotation/AnnotationsCollection.php';
 //require_once 'Customweb/Annotation/Cache/Reader.php';
-//require_once 'Customweb/Annotation/Util.php';
+//require_once 'Customweb/Annotation/Cache/Annotation.php';
 
 
 class Customweb_Annotation_AnnotationsBuilder {

@@ -20,11 +20,11 @@
  */
 
 //require_once 'Customweb/Payment/BackendOperation/IForm.php';
-//require_once 'Customweb/Form/Button.php';
+//require_once 'Customweb/Util/Rand.php';
 //require_once 'Customweb/Payment/BackendOperation/Form/IProcessable.php';
 //require_once 'Customweb/I18n/Translation.php';
 //require_once 'Customweb/Form/IButton.php';
-//require_once 'Customweb/Util/Rand.php';
+//require_once 'Customweb/Form/Button.php';
 
 abstract class Customweb_Payment_BackendOperation_Form_Abstract implements Customweb_Payment_BackendOperation_IForm, 
 		Customweb_Payment_BackendOperation_Form_IProcessable {

@@ -28,11 +28,11 @@
 class Customweb_Beanstream_BackendOperation_Form_About extends Customweb_Payment_BackendOperation_Form_AbstractAbout {
 	
 	protected function getVersion() {
-		return '3.0.82';	
+		return '3.0.125';	
 	}
 	
 	protected function getReleaseDate() {
-		return 'Fri, 13 Jan 2017 09:22:42 +0100';
+		return 'Tue, 20 Jun 2017 17:14:06 +0200';
 	}
 	
 	protected function getOrderNumber() {
