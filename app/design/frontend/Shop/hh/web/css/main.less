@@ -5122,6 +5122,29 @@ Shot Thumbs
   margin-right: -10px !important;
 }
 
+.lookbookslider-index-index .column.main .row.no-gutters {
+  text-align: center;
+  .col-md-3 {
+    float: none;
+    display: inline-block;
+    width: 24.5%;
+    @media only screen and (max-width: 1024px) {
+      width: 49.5%;
+    }
+    @media only screen and (max-width: 550px) and (min-width: 300px) {
+      width: 100%;
+    }
+  }
+}
+
+.more-shots {
+  .more-shots-thumbs, .col-md-3 {
+    &:nth-of-type(n+5) {
+      display: none;
+    }
+  }
+}
+
 .green {
   color: #3c6338;
 }
