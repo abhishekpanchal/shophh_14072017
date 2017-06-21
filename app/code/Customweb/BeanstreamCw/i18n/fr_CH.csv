@@ -295,6 +295,7 @@
 "Payment Id","Payment ID"
 "Payment Information","Conditions de vente"
 "Payment Method","Mode de paiement"
+"Payment Surcharge","Payment Surcharge"
 "Payment captured successfully.","Paiement a réussi à capturer."
 "Payment could not be authorized. Cancelling order. Reason :","Le paiement ne peut être autorisée. Commande annulée. Raison:"
 "Payment details can be entered after placing the order","Détails de paiement peuvent être insérés après avoir placé la commande"

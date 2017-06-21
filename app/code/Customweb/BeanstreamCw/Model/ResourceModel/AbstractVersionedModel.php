@@ -19,7 +19,7 @@
  *
  * @category	Customweb
  * @package		Customweb_BeanstreamCw
- * 
+ *
  */
 
 namespace Customweb\BeanstreamCw\Model\ResourceModel;
@@ -44,6 +44,17 @@ abstract class AbstractVersionedModel extends \Magento\Framework\Model\ResourceM
 			throw new \Exception(__('Empty version number field name'));
 		}
 		return $this->_versionNumberFieldName;
+	}
+
+	public function save(\Magento\Framework\Model\AbstractModel $object)
+	{
+		try {
+			return parent::save($object);
+		} catch (\Customweb\BeanstreamCw\Model\Exception\OptimisticLockingException $e) {
+			// Loads the model's latest version from the database in case an optimistic locking exception occurred.
+			$this->load($object, $object->getId());
+			throw $e;
+		}
 	}
 
 	protected function updateObject(\Magento\Framework\Model\AbstractModel $object)

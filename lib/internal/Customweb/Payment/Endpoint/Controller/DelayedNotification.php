@@ -19,15 +19,15 @@
  *
  */
 
-//require_once 'Customweb/Payment/Endpoint/Controller/Abstract.php';
-//require_once 'Customweb/Payment/Endpoint/Annotation/ExtractionMethod.php';
 //require_once 'Customweb/Mvc/Template/RenderContext.php';
-//require_once 'Customweb/Core/Http/Response.php';
-//require_once 'Customweb/Payment/Authorization/DefaultTransaction.php';
-//require_once 'Customweb/Mvc/Layout/RenderContext.php';
-//require_once 'Customweb/Mvc/Template/SecurityPolicy.php';
-//require_once 'Customweb/Util/JavaScript.php';
+//require_once 'Customweb/Payment/Endpoint/Controller/Abstract.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Payment/Endpoint/Annotation/ExtractionMethod.php';
+//require_once 'Customweb/Mvc/Template/SecurityPolicy.php';
+//require_once 'Customweb/Mvc/Layout/RenderContext.php';
+//require_once 'Customweb/Payment/Authorization/DefaultTransaction.php';
+//require_once 'Customweb/Core/Http/Response.php';
+//require_once 'Customweb/Util/JavaScript.php';
 
 
 

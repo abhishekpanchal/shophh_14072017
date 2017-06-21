@@ -19,8 +19,8 @@
  *
  */
 
-//require_once 'Customweb/Beanstream/AbstractAdapter.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Beanstream/AbstractAdapter.php';
 
 
 

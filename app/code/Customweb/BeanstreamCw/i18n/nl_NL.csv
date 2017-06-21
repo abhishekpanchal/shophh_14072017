@@ -297,6 +297,7 @@
 "Payment Id","Betaling ID"
 "Payment Information","Informatie over betaling"
 "Payment Method","Betalingsmethode"
+"Payment Surcharge","Payment Surcharge"
 "Payment captured successfully.","Betaling succes gevangen"
 "Payment could not be authorized. Cancelling order. Reason :","De betaling is niet geatoriseerde. De bestelling wordt geannuleerd. Reden:"
 "Payment details can be entered after placing the order","Betaling informatie kan worden ingevoerd na het plaatsen van de bestelling"

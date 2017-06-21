@@ -19,7 +19,7 @@
  *
  * @category	Customweb
  * @package		Customweb_BeanstreamCw
- * 
+ *
  */
 
 namespace Customweb\BeanstreamCw\Model;
@@ -67,6 +67,13 @@ class Configuration
      */
     private $store = null;
 
+    /**
+     * @var array
+     */
+    private $_reservedIds = [
+    	'instance'
+    ];
+
 	public function __construct(
 			\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
 			\Magento\Store\Model\StoreManagerInterface $storeManager,
@@ -94,15 +101,21 @@ class Configuration
 	}
 
 	/**
-	 * @param \Magento\Store\Model\Store $store
+	 * @param \Magento\Store\Model\Store|int $store
 	 */
-	public function setStore(\Magento\Store\Model\Store $store)
+	public function setStore($store)
 	{
-		$this->store = $store;
+		if ($store instanceof \Magento\Store\Model\Store) {
+			$this->store = $store;
+		} else {
+			$this->store = $this->_storeManager->getStore($store);
+		}
 	}
 
 	public function getConfigurationValue($path, $key)
 	{
+		$key = $this->getCleanId($key);
+
 		$value = $this->_scopeConfig->getValue($path . '/' . $key, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $this->store->getId());
 
 		switch ($this->getType($key)) {
@@ -120,6 +133,8 @@ class Configuration
 
 	public function existsConfiguration($path, $key)
 	{
+		$key = $this->getCleanId($key);
+
 		return $this->_scopeConfig->getValue($path . '/' . $key, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $this->store->getId()) !== null;
 	}
 
@@ -187,6 +202,20 @@ class Configuration
 			return $this->types[$key];
 		} else {
 			return 'text';
+		}
+	}
+
+	/**
+	 *
+	 * @param string $id
+	 * @return string
+	 */
+	private function getCleanId($id) {
+		$cleanId = preg_replace('/[^a-zA-Z0-9_\/]/', '_', $id);
+		if (in_array($cleanId, $this->_reservedIds)) {
+			return $cleanId . '_value';
+		} else {
+			return $cleanId;
 		}
 	}
 

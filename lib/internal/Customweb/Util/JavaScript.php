@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
   * You are allowed to use this API in your web application.
  *
@@ -22,16 +22,70 @@
 
 /**
  * This Util provides some functionality to generate code to use jQuery.
- * 
+ *
  * @author Thomas Hunzik
  *
  */
 final class Customweb_Util_JavaScript {
-	
+
 	private function __construct() {
-		
+
 	}
-	
+
+	/**
+	 * Returns a Javascript Snippet that loads a script and invokes a callback function as soon
+	 * as the script is loaded and the test function succeeds (i.e. returns true).
+	 *
+	 * The test function checks whether the loaded script has been executed and the needed
+	 * functionality is available. If this is the case, the test function returns true.
+	 *
+	 * The callback as well as the test function can either be a named or an anonymous function.
+	 *
+	 * @param string $scriptPath
+	 * @param string $onLoadTestFunction
+	 * @param string $onLoadCallbackFunction
+	 * @return string
+	 */
+	public static function loadScript($scriptPath, $onLoadTestFunction, $onLoadCallbackFunction) {
+		$onLoadTestFunction= trim($onLoadTestFunction);
+		if (strpos($onLoadTestFunction, 'function') === 0) {
+			$onLoadTestFunction = '(' . $onLoadTestFunction. ')';
+		}
+
+		$onLoadCallbackFunction= trim($onLoadCallbackFunction);
+		if (strpos($onLoadCallbackFunction, 'function') === 0) {
+			$onLoadCallbackFunction= '(' . $onLoadCallbackFunction. ')';
+		}
+
+		$js = '';
+
+		$callbackAfterLoadFunctionName = 'a' . Customweb_Util_Rand::getRandomString(30);
+		$js .= 'var ' . $callbackAfterLoadFunctionName . ' = function() {' . "\n";
+		$js .= 'var callbackTimer = setInterval(function() {' . "\n";
+		$js .= 'var call = false;' . "\n";
+		$js .= 'try {' . "\n";
+		$js .= 'call = ' . $onLoadTestFunction . '();' . "\n";
+		$js .= '} catch (e) {}' . "\n";
+		$js .= 'if (call) {' . "\n";
+		$js .= 'clearInterval(callbackTimer);' . "\n";
+		$js .= $onLoadCallbackFunction. '();' . "\n";
+		$js .= '}' . "\n";
+		$js .= '}, 10);' . "\n";
+		$js .= '}' . "\n\n";
+
+		$js .= 'var script_tag = document.createElement(\'script\');' . "\n";
+		$js .= 'script_tag.setAttribute(\'type\', \'text/javascript\');' . "\n";
+		$js .= 'script_tag.setAttribute(\'src\', \'' . $scriptPath . '\');' . "\n";
+		$js .= 'script_tag.onload = ' . $callbackAfterLoadFunctionName . ';' . "\n";
+		$js .= 'script_tag.onreadystatechange = function() { // IE hack' . "\n";
+		$js .= 'if (this.readyState == \'complete\' || this.readyState == \'loaded\') {' . "\n";
+		$js .= $callbackAfterLoadFunctionName . '();' . "\n";
+		$js .= '}' . "\n";
+		$js .= '}' . "\n";
+		$js .= 'document.getElementsByTagName(\'head\')[0].appendChild(script_tag);' . "\n";
+		return $js;
+	}
+
 	public static function loadLibrary($libraryName) {
 		$js = Customweb_Core_Util_Class::readResource('Customweb_Util_JavaScript', $libraryName . '.js');
 		if (strpos($js, '____jQueryNameSpace____') !== false) {
@@ -42,30 +96,30 @@ final class Customweb_Util_JavaScript {
 			foreach ($variables as $variableName => $value) {
 				$js = str_replace('____' . $variableName . '____', $value, $js);
 			}
-			
+
 			$js .= self::getLoadJQueryCode('1.10.2', $jqueryVariableName, 'CustomwebModal.init');
 		}
 		return $js;
 	}
-	
+
 	public static function loadLibraryCss($libraryName) {
 		return Customweb_Core_Util_Class::readResource('Customweb_Util_JavaScript', $libraryName . '.css');
 	}
-	
+
 	/**
-	 * This method returns a JavaScript snipped which loads jQuery library. The process checks if the given 
+	 * This method returns a JavaScript snipped which loads jQuery library. The process checks if the given
 	 * version is already present, then the library is not loaded again. In any case the jQuery is linked to
-	 * the given variable name. Which allows the loading in "noConflict" mode. This makes it more easy to 
+	 * the given variable name. Which allows the loading in "noConflict" mode. This makes it more easy to
 	 * load jQuery in multiple versions and no conflicts with other libraries should occur.
-	 * 
+	 *
 	 * When the library is loaded the callback function is called. The callback function is either a named
 	 * function or better an anonymous function. The anonymous function must be formulated as following:
 	 *    <code>
-	 *    function() { 
+	 *    function() {
 	 *       alert("this code is executed");
 	 *    }
 	 *    </code>
-	 * 
+	 *
 	 * @param string $versionNumber The version number to be used. Deprecated, not used anymore.
 	 * @param string $jqueryVariableName The variable name into which jQuery will be loaded into.
 	 * @param string $onLoadCallbackFunction The callback function, which is called when jQuery is loaded.
@@ -77,24 +131,24 @@ final class Customweb_Util_JavaScript {
 		if (file_exists($localJqueryScript)) {
 			$jqueryScriptUrl = file_get_contents($localJqueryScript);
 		}
-		
+
 		$functionInvocationCode = $onLoadCallbackFunction . '();';
 		$onLoadCallbackFunction = trim($onLoadCallbackFunction);
 		if (strpos($onLoadCallbackFunction, 'function') === 0) {
 			$functionInvocationCode = '(' . $onLoadCallbackFunction . ')();';
 		}
-		
+
 		$globalJQueryVariableName = 'cwJquery' . md5($_SERVER['SERVER_NAME']);
-		
+
 		$js = '';
 		$callbackAfterLoadFunctionName = 'a' . Customweb_Util_Rand::getRandomString(30);
 		$js .= 'var ' . $jqueryVariableName . ' = "";';
 		$js .= 'var ' . $callbackAfterLoadFunctionName . ' = function() { ' . $jqueryVariableName . ' = wKWa7Q3254geN4.noConflict( true ); window.' . $globalJQueryVariableName . ' = ' . $jqueryVariableName .'; ';
-		
+
 		$js .= $jqueryVariableName . '( document ).ready(function() { ';
 		$js .= ' ' . $functionInvocationCode . ' ';
 		$js .= ' }); };'. "\n";
-		
+
 		$js .= '{ function cwReloadReadyMethodWhichHasToBeUnique(f){/in/.test(document.readyState)?setTimeout("cwReloadReadyMethodWhichHasToBeUnique("+f+")",9):f()} cwReloadReadyMethodWhichHasToBeUnique(function() {';
 		$js .= 'if (typeof window.' . $globalJQueryVariableName . ' !== "undefined") {' . "\n";
 			$js .= $jqueryVariableName . ' = window.' . $globalJQueryVariableName . ';';
@@ -113,13 +167,13 @@ final class Customweb_Util_JavaScript {
 			$js .= '}' . "\n";
 			$js .= 'document.getElementsByTagName("head")[0].appendChild(script_tag);' . "\n";
 		$js .= '}}); }' . "\n";
-		
+
 		return $js;
 	}
-	
+
 	/**
 	 * This method converts a given PHP array to JavaScript object.
-	 * 
+	 *
 	 * @param array $array
 	 * @return string
 	 */
@@ -139,8 +193,8 @@ final class Customweb_Util_JavaScript {
 			$elements[] = $element;
 		}
 		$output = '{' . implode(', ', $elements) . '}';
-		
+
 		return $output;
 	}
-	
+
 }

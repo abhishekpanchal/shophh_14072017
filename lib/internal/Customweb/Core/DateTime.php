@@ -19,7 +19,6 @@
  */
 
 //require_once 'Customweb/Core/Util/Error.php';
-//require_once 'Customweb/Core/DateTime.php';
 
 
 /**
@@ -31,7 +30,7 @@
  * @author Thomas Hunziker
  *        
  */
-class Customweb_Core_DateTime extends DateTime {
+abstract class Customweb_Core_DateTimeAbstract extends DateTime {
 	/**
 	 *
 	 * @var DateTime
@@ -125,15 +124,6 @@ class Customweb_Core_DateTime extends DateTime {
 
 	public function getOffset() {
 		return $this->dateTime->getOffset ();
-	}
-
-	public function setTime($hour, $minute, $second = null) {
-		if ($second === null) {
-			return $this->dateTime->setTime ( $hour, $minute);
-		}
-		else {
-			return $this->dateTime->setTime ( $hour, $minute, $second );
-		}
 	}
 
 	public function setDate($year, $month, $day) {
@@ -231,5 +221,38 @@ class Customweb_Core_DateTime extends DateTime {
 	}
 }
 
+if(version_compare(PHP_VERSION, 7.1) < 0){
+	
+	class Customweb_Core_DateTime extends Customweb_Core_DateTimeAbstract {
+		
+		public function setTime($hour, $minute, $second = null) {
+			if ($second === null) {
+				return $this->dateTime->setTime ( $hour, $minute);
+			}
+			else {
+				return $this->dateTime->setTime ( $hour, $minute, $second );
+			}
+		}
+	}
+	
+}
+else{
+	
+	class Customweb_Core_DateTime extends Customweb_Core_DateTimeAbstract {
 
-
+		public function setTime($hour, $minute, $second = null, $microseconds = null) {
+			
+			if($microseconds === null) {
+				if ($second === null) {
+					return $this->dateTime->setTime ( $hour, $minute);
+				}
+				else {
+					return $this->dateTime->setTime ( $hour, $minute, $second );
+				}
+			}
+			else{
+				return $this->dateTime->setTime ( $hour, $minute, $second, $microseconds );
+			}
+		}
+	}
+}

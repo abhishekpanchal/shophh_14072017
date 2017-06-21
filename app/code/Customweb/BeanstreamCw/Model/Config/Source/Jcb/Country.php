@@ -47,6 +47,7 @@ class Country implements \Magento\Framework\Option\ArrayInterface
 			['value' => 'AT', 'label' => __('Austria')],
 			['value' => 'AU', 'label' => __('Australia')],
 			['value' => 'AW', 'label' => __('Aruba')],
+			['value' => 'AX', 'label' => __('Aland Islands')],
 			['value' => 'AZ', 'label' => __('Azerbaijan')],
 			['value' => 'BA', 'label' => __('Bosnia & Herzegovina')],
 			['value' => 'BB', 'label' => __('Barbados')],

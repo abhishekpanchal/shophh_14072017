@@ -19,11 +19,11 @@
  *
  */
 
-//require_once 'Customweb/Payment/BackendOperation/Adapter/Service/IRefund.php';
 //require_once 'Customweb/Util/Currency.php';
-//require_once 'Customweb/Util/Invoice.php';
-//require_once 'Customweb/Beanstream/AbstractAdapter.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Payment/BackendOperation/Adapter/Service/IRefund.php';
+//require_once 'Customweb/Beanstream/AbstractAdapter.php';
+//require_once 'Customweb/Util/Invoice.php';
 
 
 
@@ -38,7 +38,7 @@ class Customweb_Beanstream_BackendOperation_Adapter_RefundAdapter extends Custom
 
 	public function refund(Customweb_Payment_Authorization_ITransaction $transaction){
 		$items = $transaction->getTransactionContext()->getOrderContext()->getInvoiceItems();
-		return partialRefund($transaction, $items, true);
+		return $this->partialRefund($transaction, $items, true);
 	}
 
 	public function partialRefund(Customweb_Payment_Authorization_ITransaction $transaction, $items, $close){

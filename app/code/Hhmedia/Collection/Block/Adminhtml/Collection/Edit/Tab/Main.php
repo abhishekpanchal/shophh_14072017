@@ -78,7 +78,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name' => 'collection_subtitle',
                 'label' => __('Collection Subtitle'),
                 'title' => __('Collection Subtitle'),
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled
             ]
         );

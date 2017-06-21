@@ -264,21 +264,32 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
     );
   });
 
-  //checkout page login flow
-  window.addEventListener('load', function() {
-    setTimeout(function(){
-
-    $('#guest-checkout-btn').click(function() {
-      var email = $("input[name='guest-checkout-email']").val();
-      $("#customer-email").val(email);
-      $('.checkout-login-container').hide();
-      $('.checkout-login-container').siblings().not(".opc-estimated-wrapper").show();
-    });
-    if (!window.isCustomerLoggedIn) {
-      $('.checkout-login-container').siblings().hide();
+    //checkout login flow - needs to be localized to just that page
+  $(document).ready(checkDOMChange());
+  function checkDOMChange()
+  {
+    if ($(".checkout-index-index").length) {
+      if ($(".checkout-progress-bar").length) {
+        $('#guest-checkout-btn').click(function() {
+          var email = $("input[name='guest-checkout-email']").val();
+          $("#customer-email").val(email);
+          $('.checkout-login-container').hide();
+          $('.checkout-login-container').siblings().not(".opc-estimated-wrapper").show();
+        });
+        $("input[name='guest-checkout-email']").keydown(function(event){
+          if(event.keyCode == 13){
+            $("#guest-checkout-btn").click();
+          }
+        });
+        if (!window.isCustomerLoggedIn) {
+          $('.checkout-login-container').siblings().hide();
+        }
+      }
+      else {
+        setTimeout( checkDOMChange, 100 );
+      }
     }
-    }, 10000);
-  });
+  }
   // mobile nav dropdown
   $('.mobile-nav .nav-tabs.nav-justified .title a').click(function(e) {
     $('.mobile-nav').toggleClass('expanded');

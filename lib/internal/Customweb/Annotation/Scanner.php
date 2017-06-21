@@ -1,8 +1,8 @@
 <?php
 
+//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
 //require_once 'Customweb/Core/Util/Class.php';
 //require_once 'Customweb/Annotation/Cache/Reader.php';
-//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
 
 
 class Customweb_Annotation_Scanner {

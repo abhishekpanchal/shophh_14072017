@@ -65,6 +65,8 @@ class InvoiceItem extends \Magento\Framework\App\Helper\AbstractHelper
 	 * @param int $customerId
 	 * @param double $grandTotal
 	 * @param boolean $useBaseCurrency
+	 * @param float $foomanSurchargeAmount
+	 * @param boolean $adjust
 	 * @return \Customweb_Payment_Authorization_IInvoiceItem[]
 	 */
 	public function getInvoiceItems(
@@ -81,6 +83,7 @@ class InvoiceItem extends \Magento\Framework\App\Helper\AbstractHelper
 			$customerId,
 			$grandTotal,
 			$useBaseCurrency,
+			$foomanSurchargeAmount = 0,
 			$adjust = true
 	) {
 		$invoiceItems = [];
@@ -114,7 +117,7 @@ class InvoiceItem extends \Magento\Framework\App\Helper\AbstractHelper
 		}
 
 		if ($discountAmount < 0) {
-			$discountTaxRate = $discountTaxAmount / ($discountAmount - $discountTaxAmount) * 100;
+			$discountTaxRate = abs($discountTaxAmount) / (abs($discountAmount) - abs($discountTaxAmount)) * 100;
 			$discountItem = new \Customweb_Payment_Authorization_DefaultInvoiceItem(
 					'discount',
 					(string)__('Discount'),
@@ -137,6 +140,18 @@ class InvoiceItem extends \Magento\Framework\App\Helper\AbstractHelper
 					\Customweb_Payment_Authorization_IInvoiceItem::TYPE_SHIPPING
 			);
 			$invoiceItems[] = $shippingItem;
+		}
+
+		if ($foomanSurchargeAmount > 0) {
+			$foomanSurcharge = new \Customweb_Payment_Authorization_DefaultInvoiceItem(
+					'fooman_surcharge',
+					(string)__('Payment Surcharge'),
+					0,
+					(double)$foomanSurchargeAmount,
+					1,
+					\Customweb_Payment_Authorization_IInvoiceItem::TYPE_FEE
+			);
+			$invoiceItems[] = $foomanSurcharge;
 		}
 
 		if ($adjust) {

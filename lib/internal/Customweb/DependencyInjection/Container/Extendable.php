@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/DependencyInjection/IContainer.php';
 //require_once 'Customweb/DependencyInjection/Bean/Object.php';
+//require_once 'Customweb/DependencyInjection/IContainer.php';
 
 
 /**

@@ -1,11 +1,11 @@
 <?php
 
+//require_once 'Customweb/Core/Reflection/Class.php';
+//require_once 'Customweb/Annotation/IAnnotationReflector.php';
+//require_once 'Customweb/Annotation/AnnotationsBuilder.php';
+//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
 //require_once 'Customweb/Annotation/ReflectionAnnotatedMethod.php';
 //require_once 'Customweb/Annotation/ReflectionAnnotatedProperty.php';
-//require_once 'Customweb/Annotation/IAnnotationReflector.php';
-//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
-//require_once 'Customweb/Core/Reflection/Class.php';
-//require_once 'Customweb/Annotation/AnnotationsBuilder.php';
 
 class Customweb_Annotation_ReflectionAnnotatedClass extends Customweb_Core_Reflection_Class implements Customweb_Annotation_IAnnotationReflector {
 	private $annotations;

@@ -19,13 +19,13 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/Ajax/IAdapter.php';
-//require_once 'Customweb/Beanstream/Authorization/AbstractAdapter.php';
 //require_once 'Customweb/Beanstream/Authorization/Transaction.php';
-//require_once 'Customweb/Util/JavaScript.php';
-//require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Beanstream/Authorization/AbstractAdapter.php';
 //require_once 'Customweb/Beanstream/Authorization/Ajax/AliasParameterBuilder.php';
 //require_once 'Customweb/Beanstream/Authorization/Ajax/ParameterBuilder.php';
+//require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Payment/Authorization/Ajax/IAdapter.php';
+//require_once 'Customweb/Util/JavaScript.php';
 
 
 
