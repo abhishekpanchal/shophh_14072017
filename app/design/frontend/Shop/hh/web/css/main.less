@@ -3253,6 +3253,66 @@ Checkout
   .checkout-success {
     margin: auto;
     width: 66%;
+    &-header {
+      text-align: center;
+      font-size: 20px;
+      font-family: @baseFont;
+    }
+    &-totals {
+      background-color: #f0f0f0;
+      padding: 2em;
+      .totals-wrapper {
+        border-bottom: 1px solid #8d8d8d;
+        padding-bottom: 20px;
+      }
+      .price-row {
+        margin-bottom: 1em;
+        .price-label {
+          font-family: @headlineFont;
+          font-size: 14px;
+        }
+        .price {
+          font-family: @fancyFont;
+          font-size: 16px;
+          float: right;
+          &:before {
+            content: "$";
+          }
+        }
+        .grand-total {
+          font-size: 28px;
+          position: relative;
+          &:after {
+            content: "CAD";
+            color: #8d8d8d;
+            font-size: 12px;
+            position: absolute;
+            top: 17px;
+            right: 0px;
+          }
+        }
+      }
+      .payment-method {
+        margin-top: 1em;
+        p {
+          margin-bottom: 10px;
+        }
+        p, .card {
+          font-family: @headlineFont;
+          font-size: 14px;
+        }
+        .price {
+          font-family: @fancyFont;
+          font-size: 16px;
+          float: right;
+          &:before {
+            content: "$";
+          }
+        }
+
+      }
+    }
+
   }
   .page-title-wrapper {
     height: 100px;
@@ -3260,12 +3320,42 @@ Checkout
     position: static;
   }
   .order-products {
-    .order-product-name {
-      font-family: 'Droid Serif';
-      font-style: italic;
+    .row {
+      margin-bottom: 1em;
+    }
+    img {
+      float: left;
+    }
+    .order-product-details {
+      display: inline;
+      vertical-align: top;
+      .order-product-name {
+        font-family: @fancyFont;
+        font-style: italic;
+        font-size: 16px;
+      }
+      .order-product-options {
+        font-family: @headlineFont;
+        font-size: 12px;
+        color: #8d8d8d;
+        span:not(:first-child):not(.sku):before {
+          content: "|";
+          padding: 0 .5em;
+        }
+        .sku {
+          display: block;
+        }
+      }
+    }
+    .order-product-price {
+      font-family: @fancyFont;
+      font-size: 16px;
+      float: right;
+      &:before {
+        content: "$";
+      }
     }
   }
-
 }
 
 .review-form {
@@ -4206,7 +4296,6 @@ Checkout
 }
 
 .payment-method {
-  display: none;
   &.credit {
     display: block;
     &.general, &.americanexpress {
