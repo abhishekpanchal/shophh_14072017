@@ -190,10 +190,11 @@ switch ($type = $block->getType()) {
                     <strong class="product name product-item-name"><a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php echo $block->getProductUrl($_item) ?>">
                         <?php echo $block->escapeHtml($_item->getName()) ?></a>
                     </strong>
+                    <?php echo $block->getProductPrice($_item); ?>
+                    
                     <?php if ($description):?>
                         <?php echo $_item->getShortDescription(); ?>
                     <?php endif; ?>
-                    <?php echo $block->getProductPrice($_item); ?>
 
                     <?php if ($templateType): ?>
                         <?php echo $block->getReviewsSummaryHtml($_item, $templateType) ?>

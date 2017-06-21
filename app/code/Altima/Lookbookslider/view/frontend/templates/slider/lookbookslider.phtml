@@ -254,6 +254,8 @@ if ($helper->getEnabled()) :
                             <strong class="product name product-item-name">
                               <a class="product-item-link hover-effect" href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
                             </strong>
+                            <h5><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
+                            
                             <div class="product description product-item-description">
                               <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
                               <?php if($customHelper->getStockQty($product)): ?>
@@ -273,7 +275,6 @@ if ($helper->getEnabled()) :
                               <?php endif; ?>
                               <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
                               <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                              <h5><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
                             </div>
                           </div>
                         </div>

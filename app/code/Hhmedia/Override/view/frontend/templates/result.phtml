@@ -63,6 +63,7 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
                 <strong class="product name product-item-name">
                     <a class="product-item-link hover-effect" href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
                 </strong>
+                <?php echo $abstractProductBlock->getProductPrice($product) ?>
                 <div class="product description product-item-description">
                     <?php if($customHelper->getStockQty($product)): ?>
                         <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
@@ -82,7 +83,6 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
                     <p><?php echo $customHelper->limit_description($product->getShortDescription(), 10); ?></p>
                 </div>
                 <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                <?php echo $abstractProductBlock->getProductPrice($product) ?>
             </div>
         </div>
     </div>
