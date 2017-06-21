@@ -19,7 +19,7 @@
  *
  * @category	Customweb
  * @package		Customweb_BeanstreamCw
- * 
+ *
  */
 
 /* @var $block \Customweb\BeanstreamCw\Block\Payment\Method\Info */
@@ -68,5 +68,12 @@
 			</ul>
 		<?php endforeach; ?>
 	</div>
+	<?php endif; ?>
+
+	<?php if ($block->getTransaction()->getTransactionObject()->getPaymentInformation() != null) : ?>
+		<div class="beanstreamcw-transaction-payment-information-block">
+			<h4><?php echo __('Payment Information') ?></h4>
+			<?php echo $block->getTransaction()->getTransactionObject()->getPaymentInformation() ?>
+		</div>
 	<?php endif; ?>
 <?php endif; ?>

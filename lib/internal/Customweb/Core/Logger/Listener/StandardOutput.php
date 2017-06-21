@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Core/Logger/Factory.php';
 //require_once 'Customweb/Core/Logger/IListener.php';
+//require_once 'Customweb/Core/Logger/Factory.php';
 
 /**
  * Listener class to log messages to the standard output.

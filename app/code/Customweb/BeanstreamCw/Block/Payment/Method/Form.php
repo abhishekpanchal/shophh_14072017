@@ -89,10 +89,10 @@ class Form extends \Magento\Payment\Block\Form
 	{
 		
 		$arguments = null;
-		return \Customweb_Licensing_BeanstreamCw_License::run('qlceiip17l2eon4n', $this, $arguments);
+		return \Customweb_Licensing_BeanstreamCw_License::run('mi93ckrssv1l342f', $this, $arguments);
 	}
 
-	final public function call_5osm34q3vcmsvlf8() {
+	final public function call_7rbd2l5r7b7ma5h6() {
 		$arguments = func_get_args();
 		$method = $arguments[0];
 		$call = $arguments[1];

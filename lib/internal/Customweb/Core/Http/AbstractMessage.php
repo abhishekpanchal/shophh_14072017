@@ -18,10 +18,10 @@
  *
  */
 
-//require_once 'Customweb/Core/Http/AbstractMessage.php';
 //require_once 'Customweb/Core/String.php';
-//require_once 'Customweb/Core/Url.php';
 //require_once 'Customweb/Core/Http/IMessage.php';
+//require_once 'Customweb/Core/Url.php';
+//require_once 'Customweb/Core/Http/AbstractMessage.php';
 
 
 /**
@@ -165,7 +165,7 @@ abstract class Customweb_Core_Http_AbstractMessage implements Customweb_Core_Htt
 	 *
 	 * 
 	 * @param string|array $body
-	 * @return void
+	 * @return Customweb_Core_Http_AbstractMessage
 	 */
 	public function setBody($body) {
 		if (is_array($body)) {
@@ -180,6 +180,7 @@ abstract class Customweb_Core_Http_AbstractMessage implements Customweb_Core_Htt
 		if ($length > 0) {
 			$this->appendHeader(self::HEADER_KEY_CONTENT_LENGTH . ': ' . $length);			
 		}
+		return $this;
 	}
 	
 	/**

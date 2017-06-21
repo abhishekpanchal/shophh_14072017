@@ -18,9 +18,9 @@
  *
  */
 
-//require_once 'Customweb/Mvc/Template/SecurityException.php';
 //require_once 'Customweb/Core/Exception/CastException.php';
 //require_once 'Customweb/Mvc/Template/ISecurityPolicy.php';
+//require_once 'Customweb/Mvc/Template/SecurityException.php';
 
 
 /**

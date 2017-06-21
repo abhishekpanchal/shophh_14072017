@@ -18,10 +18,10 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/Recurring/IAdapter.php';
-//require_once 'Customweb/Beanstream/Authorization/AbstractAdapter.php';
 //require_once 'Customweb/Beanstream/Authorization/Transaction.php';
+//require_once 'Customweb/Beanstream/Authorization/AbstractAdapter.php';
 //require_once 'Customweb/Beanstream/Authorization/Ajax/ParameterBuilder.php';
+//require_once 'Customweb/Payment/Authorization/Recurring/IAdapter.php';
 
 
 /**

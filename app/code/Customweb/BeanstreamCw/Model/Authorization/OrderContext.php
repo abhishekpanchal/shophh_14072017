@@ -113,6 +113,7 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 	 * @param \Magento\Customer\Model\CustomerFactory $customerFactory
 	 * @param \Magento\Directory\Model\RegionFactory $regionFactory
 	 * @param \Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper
+	 * @param \Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper
 	 * @param \Magento\Sales\Model\Order\Address|\Magento\Quote\Model\Quote\Address $order
 	 * @param \Customweb\BeanstreamCw\Model\Payment\Method\AbstractMethod|string $paymentMethod
 	 * @throws \Exception
@@ -124,6 +125,7 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 			\Magento\Customer\Model\CustomerFactory $customerFactory,
 			\Magento\Directory\Model\RegionFactory $regionFactory,
 			\Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper,
+			\Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper,
 			$order,
 			$paymentMethod
 	) {
@@ -140,9 +142,9 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 		}
 
 		if ($order instanceof \Magento\Sales\Model\Order) {
-			$this->assembleDataFromOrder($invoiceItemHelper, $scopeConfig, $checkoutSession, $order);
+			$this->assembleDataFromOrder($invoiceItemHelper, $foomanSurchargeHelper, $scopeConfig, $checkoutSession, $order);
 		} elseif ($order instanceof \Magento\Quote\Model\Quote) {
-			$this->assembleDataFromQuote($invoiceItemHelper, $scopeConfig, $checkoutSession, $order);
+			$this->assembleDataFromQuote($invoiceItemHelper, $foomanSurchargeHelper, $scopeConfig, $checkoutSession, $order);
 		} else {
 			throw new \Exception("Unsupported type for argument 'order'.");
 		}
@@ -499,6 +501,7 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 	 */
 	private function assembleDataFromQuote(
 			\Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper,
+			\Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper,
 			\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
 			\Magento\Checkout\Model\Session $checkoutSession,
 			\Magento\Quote\Model\Quote $quote
@@ -530,7 +533,8 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 				$address->getShippingDescription(),
 				$quote->getCustomerId(),
 				$useBaseCurrency ? $quote->getBaseGrandTotal() : $quote->getGrandTotal(),
-				$useBaseCurrency
+				$useBaseCurrency,
+				$foomanSurchargeHelper->getQuoteSurchargeAmount($quote->getId())
 		);
 		$this->shippingMethod = ($quote->getShippingAddress() != null) ? $quote->getShippingAddress()->getShippingMethod() : null;
 		$this->language = $this->assembleLanguage($scopeConfig, $quote->getStore());
@@ -544,6 +548,7 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 	 */
 	private function assembleDataFromOrder(
 			\Customweb\BeanstreamCw\Helper\InvoiceItem $invoiceItemHelper,
+			\Customweb\BeanstreamCw\Helper\FoomanSurcharge $foomanSurchargeHelper,
 			\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
 			\Magento\Checkout\Model\Session $checkoutSession,
 			\Magento\Sales\Model\Order $order
@@ -574,7 +579,8 @@ class OrderContext implements \Customweb_Payment_Authorization_IOrderContext
 				$order->getShippingDescription(),
 				$order->getCustomerId(),
 				$useBaseCurrency ? $order->getBaseGrandTotal() : $order->getGrandTotal(),
-				$useBaseCurrency
+				$useBaseCurrency,
+				$foomanSurchargeHelper->getQuoteSurchargeAmount($order->getQuoteId())
 		);
 		$this->shippingMethod = $order->getShippingMethod();
 		$this->language = $this->assembleLanguage($scopeConfig, $order->getStore());

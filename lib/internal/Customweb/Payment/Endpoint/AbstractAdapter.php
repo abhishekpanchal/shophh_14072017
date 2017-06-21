@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Mvc/Controller/AbstractAdapter.php';
 //require_once 'Customweb/Payment/Endpoint/IAdapter.php';
+//require_once 'Customweb/Mvc/Controller/AbstractAdapter.php';
 
 
 /**

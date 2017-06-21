@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/IFrontendTransactionContext.php';
 //require_once 'Customweb/Payment/Authorization/ITransactionContext.php';
+//require_once 'Customweb/Payment/Authorization/IFrontendTransactionContext.php';
 
 
 interface Customweb_Payment_Authorization_Ajax_ITransactionContext extends 
