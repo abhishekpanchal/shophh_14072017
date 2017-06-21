@@ -117,10 +117,10 @@ class ConfigProvider implements \Magento\Checkout\Model\ConfigProviderInterface
 		$arguments = array(
 			'method' => $method,
  		);
-		return \Customweb_Licensing_BeanstreamCw_License::run('k95poo225feikh3k', $this, $arguments);
+		return \Customweb_Licensing_BeanstreamCw_License::run('5oh5qjopc5r1131m', $this, $arguments);
 	}
 
-	final public function call_aocm66iktj33kn9j() {
+	final public function call_qd2563u1s7rt48gu() {
 		$arguments = func_get_args();
 		$method = $arguments[0];
 		$call = $arguments[1];

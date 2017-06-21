@@ -19,13 +19,13 @@
  *
  */
 
-//require_once 'Customweb/Core/Http/Request.php';
-//require_once 'Customweb/Core/String.php';
-//require_once 'Customweb/Core/Util/Error.php';
 //require_once 'Customweb/Core/Http/Client/ConnectionException.php';
+//require_once 'Customweb/Core/String.php';
+//require_once 'Customweb/Core/Http/Client/ConnectionTimeoutException.php';
+//require_once 'Customweb/Core/Util/Error.php';
+//require_once 'Customweb/Core/Http/Request.php';
 //require_once 'Customweb/Core/Http/Response.php';
 //require_once 'Customweb/Core/Http/Client/Abstract.php';
-//require_once 'Customweb/Core/Http/Client/ConnectionTimeoutException.php';
 
 
 
@@ -277,7 +277,7 @@ class Customweb_Core_Http_Client_Socket extends Customweb_Core_Http_Client_Abstr
 		$request = new Customweb_Core_Http_Request($request);
 		$this->configureRequest($request);
 		
-		$message = $request->toString();
+		$message = $request->toSendableString($this->isProxyActive());
 		$socket = $this->createSocketStream($request);
 		
 		Customweb_Core_Util_Error::startErrorHandling();
@@ -451,6 +451,11 @@ class Customweb_Core_Http_Client_Socket extends Customweb_Core_Http_Client_Abstr
 					'bindto' => '[::]:0' 
 				);
 			}
+		}
+		
+		if ($this->isProxyActive()) {
+			$options['http']['proxy'] = $this->getProxyUrl()->toString();
+			$options['http']['request_fulluri'] = true;
 		}
 		
 		return $options;

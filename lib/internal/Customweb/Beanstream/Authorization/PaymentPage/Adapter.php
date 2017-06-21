@@ -18,11 +18,11 @@
  * See the customweb software licence agreement for more details.
  *
  */
-//require_once 'Customweb/Beanstream/Authorization/PaymentPage/ParameterBuilder.php';
-//require_once 'Customweb/Beanstream/Authorization/AbstractAdapter.php';
-//require_once 'Customweb/Util/Url.php';
 //require_once 'Customweb/Beanstream/Authorization/Transaction.php';
+//require_once 'Customweb/Beanstream/Authorization/AbstractAdapter.php';
+//require_once 'Customweb/Beanstream/Authorization/PaymentPage/ParameterBuilder.php';
 //require_once 'Customweb/Core/Url.php';
+//require_once 'Customweb/Util/Url.php';
 //require_once 'Customweb/Payment/Authorization/PaymentPage/IAdapter.php';
 
 

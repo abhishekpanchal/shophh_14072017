@@ -17,12 +17,12 @@
  * See the customweb software licence agreement for more details.
  *
  */
-//require_once 'Customweb/Annotation/ReflectionAnnotatedMethod.php';
+//require_once 'Customweb/Annotation/IAnnotationReflector.php';
 //require_once 'Customweb/Core/String.php';
+//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
+//require_once 'Customweb/Annotation/ReflectionAnnotatedMethod.php';
 //require_once 'Customweb/Annotation/ReflectionAnnotatedProperty.php';
 //require_once 'Customweb/Core/Util/String.php';
-//require_once 'Customweb/Annotation/IAnnotationReflector.php';
-//require_once 'Customweb/Annotation/ReflectionAnnotatedClass.php';
 
 
 /**

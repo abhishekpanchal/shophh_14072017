@@ -693,7 +693,6 @@ Shop the Spot Desktop Responsive
 		min-width: 212px;
 	}
 	.sorter-container {
-		max-width: 120px;
 		margin-right: 10px;
 	}
 	.column.main .product-items, .collection-container {
@@ -941,8 +940,13 @@ All small devices - till 768px
 
 
 	/* ===============================
-	Magazine
+	Account
 	=================================*/
+	.customer-account-edit .form-edit-account {
+		input, .customer-dob input {
+			width: 100%;
+		}
+	}
 
 	/* ===============================
 	404
@@ -959,6 +963,9 @@ All small devices - till 768px
 		}
 	}
 
+	.sorter-container {
+		max-width: 170px;
+	}
 
 	.main-breadcrumb {
 		margin-top: 0;
@@ -988,7 +995,20 @@ All small devices - till 768px
 			line-height: 18px;
 		}
 	}
+
 	
+
+
+	
+	.account .page-title-wrapper {
+		margin-bottom: 0;
+	}
+	.account .page.messages {
+		margin-bottom: 20px;
+	}
+	.account .inner-content, .contact-index-index .inner-content {
+		padding-left: 15px;
+	}
 
 }
 
@@ -1079,7 +1099,6 @@ All small devices - till 768px
 	.notes-index-view .column.main {
 		width: 100%;
 	}
-
 }
 
 
@@ -1183,8 +1202,7 @@ Somewhere in between
 		}
 	}
 	.sorter-container {
-		max-width: 140px;
-		margin: 0;
+		max-width: 46%;
 		& + .sorter-container {
 			float: right;
 		}
@@ -1512,10 +1530,10 @@ Extra Small Screens
 	=================================*/
 	.catalog-product-view {
 		div.MagicToolboxSelectorsContainer {
-			margin: -180px auto 30px;
+		//	margin: -180px auto 30px;
 		}
 		.mcs-wrapper {
-			display: none !important;
+		//	display: none !important;
 		}
 		.MagicScroll .mcs-hidden {
 			display: block !important;
@@ -1545,6 +1563,23 @@ Extra Small Screens
 	.lookbookslider-index-index .column.main .col-md-3 {
 		width: 100%;
 	}
+
+	.catalog-product-view {
+		.product-info-main {
+			text-align: center;
+			.product-info-price {
+				float: none;
+			}
+		}
+		.product-qty .styled-select {
+			display: inline-block;
+		}
+	}
+	.review-details-div .text-center {
+		text-align: center;
+	}
+
+
 
 
 	.editor-index-view {

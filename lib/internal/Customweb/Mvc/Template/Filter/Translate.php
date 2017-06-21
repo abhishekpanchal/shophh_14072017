@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Mvc/Template/IFilter.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Mvc/Template/IFilter.php';
 
 
 class Customweb_Mvc_Template_Filter_Translate implements Customweb_Mvc_Template_IFilter

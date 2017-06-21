@@ -18,10 +18,10 @@
  *
  */
 
-//require_once 'Customweb/Core/Util/Error.php';
-//require_once 'Customweb/Core/Exception/ResourceNotFoundException.php';
 //require_once 'Customweb/Core/Exception/ClassNotFoundException.php';
+//require_once 'Customweb/Core/Exception/ResourceNotFoundException.php';
 //require_once 'Customweb/Core/Exception/FileNotFoundException.php';
+//require_once 'Customweb/Core/Util/Error.php';
 
 
 /**

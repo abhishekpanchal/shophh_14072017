@@ -18,8 +18,8 @@
  *
  */
 
-//require_once 'Customweb/Payment/Authorization/IBackendTransactionContext.php';
 //require_once 'Customweb/Payment/Authorization/ITransactionContext.php';
+//require_once 'Customweb/Payment/Authorization/IBackendTransactionContext.php';
 
 
 interface Customweb_Payment_Authorization_Moto_ITransactionContext extends Customweb_Payment_Authorization_ITransactionContext, 

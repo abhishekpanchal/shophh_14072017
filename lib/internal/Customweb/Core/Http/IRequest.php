@@ -119,4 +119,11 @@ interface Customweb_Core_Http_IRequest extends Customweb_Core_Http_IMessage {
 	 */
 	public function getCookies();
 	
+	/**
+	 * This method converts the request into a sendable string representation of the request. This is required when the request is sent through a proxy.
+	 *
+	 * @param boolean $fullUri if the full URI should be included in the header.
+	 */
+	public function toSendableString($fullUri);
+	
 }

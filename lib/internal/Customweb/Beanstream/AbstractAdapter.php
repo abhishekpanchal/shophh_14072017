@@ -18,11 +18,11 @@
  *
  */
 
-//require_once 'Customweb/Core/Http/Request.php';
-//require_once 'Customweb/Core/Http/Client/Factory.php';
-//require_once 'Customweb/Payment/Util.php';
 //require_once 'Customweb/Beanstream/Container.php';
 //require_once 'Customweb/I18n/Translation.php';
+//require_once 'Customweb/Core/Http/Client/Factory.php';
+//require_once 'Customweb/Core/Http/Request.php';
+//require_once 'Customweb/Payment/Util.php';
 
 
 class Customweb_Beanstream_AbstractAdapter

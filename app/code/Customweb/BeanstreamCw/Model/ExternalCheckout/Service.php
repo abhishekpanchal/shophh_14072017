@@ -239,7 +239,10 @@ class Service implements \Customweb_Payment_ExternalCheckout_ICheckoutService
 		}
 
 		if ($context->getBillingAddress() === null) {
-			throw new \Exception("The authenticate method can not be called before the billing address is set on the context.");
+			$billingAddress = new \Customweb_Payment_Authorization_OrderContext_Address_Default();
+			$billingAddress->setFirstName('First')->setLastName('Last')->setCity('unkown')->setStreet('unkown 1')->setCountryIsoCode('DE')->setPostCode(
+					'10000');
+			$context->setBillingAddress($billingAddress);
 		}
 
 		if ($this->_customerSession->isLoggedIn()) {

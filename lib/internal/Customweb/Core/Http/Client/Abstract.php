@@ -19,9 +19,9 @@
  *
  */
 
-//require_once 'Customweb/Core/Stream/Util.php';
 //require_once 'Customweb/Core/Url.php';
 //require_once 'Customweb/Core/Http/IClient.php';
+//require_once 'Customweb/Core/Stream/Util.php';
 
 abstract class Customweb_Core_Http_Client_Abstract implements Customweb_Core_Http_IClient {
 	
@@ -202,8 +202,14 @@ abstract class Customweb_Core_Http_Client_Abstract implements Customweb_Core_Htt
 		if ($this->environmentProxyUrl !== null) {
 			return $this->environmentProxyUrl;
 		}
-		
+
 		$proxyUrl = $this->readEnvironmentVariable(self::ENVIRONMENT_VARIABLE_PROXY_URL);
+		if ($proxyUrl !== null) {
+			$this->environmentProxyUrl = new Customweb_Core_Url($proxyUrl);
+			return $this->environmentProxyUrl;
+		}
+
+		$proxyUrl = $this->readEnvironmentVariable(self::ENVIRONMENT_VARIABLE_PROXY_URL_LEGACY);
 		if ($proxyUrl !== null) {
 			$this->environmentProxyUrl = new Customweb_Core_Url($proxyUrl);
 			return $this->environmentProxyUrl;

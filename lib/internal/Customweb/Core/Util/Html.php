@@ -46,6 +46,8 @@ final class Customweb_Core_Util_Html {
 		$html = str_replace('<br />', "\n", $html);
 		$html = str_replace('<br>', "\n", $html);
 		$html = str_replace('<br/>', "\n", $html);
+		//Replace the a tag with the href information for plain text
+		$html = preg_replace('/<a .*href="([^"]*)".*?<\/a>/', '$1', $html);
 		return strip_tags($html);
 	}
 	

@@ -45,10 +45,10 @@ class LicenseFailed implements \Magento\Framework\Notification\MessageInterface
     {
 		
 		$arguments = null;
-		return \Customweb_Licensing_BeanstreamCw_License::run('nvjkinf44bltnive', $this, $arguments);
+		return \Customweb_Licensing_BeanstreamCw_License::run('rhv9g79d39a1g78t', $this, $arguments);
 	}
 
-	final public function call_v6n9vqn25nfm6anh() {
+	final public function call_gc94snnjdf2scj0e() {
 		$arguments = func_get_args();
 		$method = $arguments[0];
 		$call = $arguments[1];
@@ -72,10 +72,10 @@ class LicenseFailed implements \Magento\Framework\Notification\MessageInterface
     {
 		
 		$arguments = null;
-		return \Customweb_Licensing_BeanstreamCw_License::run('juqprd2n2gc2suuu', $this, $arguments);
+		return \Customweb_Licensing_BeanstreamCw_License::run('ifsj64ut0akiij46', $this, $arguments);
 	}
 
-	final public function call_h79upfh533573gjc() {
+	final public function call_1kj20mqam20nk6ob() {
 		$arguments = func_get_args();
 		$method = $arguments[0];
 		$call = $arguments[1];

@@ -649,9 +649,6 @@ Product Description
 Products
 ========================================================================== */
 .catalog-product-view {
-  header.header {
-    margin-bottom: 40px;
-  }
   .product.media img:hover {
     opacity: 1 !important;
   }
@@ -679,7 +676,7 @@ Products
   .product-info-main {
     .name .value {
       font-size: 34px;
-      line-height: 32px;
+      line-height: 40px;
       font-family: @fancyFont;
       color: #000;
       font-style: italic;
@@ -836,8 +833,8 @@ Products
 
 
 /* mobile styling of tabs at all devices */
-.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
-  &.additional-attributes tbody th {
+.table.additional-attributes {
+  tbody th {
     display: none;
   }
   tbody > tr td:before {
@@ -1096,6 +1093,7 @@ Footer
   padding-bottom: 30px;
   background: #e6e6e7;
   font: normal 11px/11px 'Montserrat', Helvetica, Arial, sans-serif;
+  overflow: auto;
 
   a:hover {
     text-decoration: underline;
@@ -1138,6 +1136,9 @@ Footer
   ul {
     margin-top: 10px;
   }
+}
+.footer-subscribe {
+  margin-left: 8%;
 }
 
 div.mage-error[generated] {
@@ -1690,6 +1691,9 @@ Cart
         label {
           line-height: 2;
         }
+        .label {
+          padding: .2em .2em .3em;
+        }
       }
       padding: 0px 2px;
       display: inline;
@@ -1748,7 +1752,7 @@ Cart
   .product-item-catalog {
     .product-item-details {
       text-align: center;
-      font-family: @fancyFont;
+      font-family: @baseFont;
     }
     .product-item-link {
       font-size: 16px;
@@ -1871,7 +1875,7 @@ Cart
   .customer-service {
       margin-top: 3em;
       padding: 0 10px;
-      font-family: @headlineFont;
+      font-family: @baseFont;
       font-size: 14px;
       color: #8d8d8d;
     }
@@ -3193,33 +3197,129 @@ Checkout
       }
       .address-actions {
         width: 100%;
-        background-color: #000;
+        background-color: #8d8d8d;
         color: #fff;
         font-family: @fancyFont;
         font-style: italic;
         text-align: center;
+        span {
+          &:hover { 
+            cursor: pointer;
+          }
+        }
       }
       .selected-item {
         background-color: #f0f0f0;
-         &:after {
-           background: #f0f0f0;
-           color: #000;
-           content: "\f058";
-           font-family: FontAwesome;
-         }
+        &:after {
+          background: #f0f0f0;
+          color: #000;
+          content: "\f058";
+          font-family: FontAwesome;
+        }
         .address-actions {
-          background-color: #8d8d8d;
+          background-color: #000;
         }
       }
       .not-selected-item {
-         &:after {
-           content: "";
+        &:after {
+          content: "";
 
-         }
+        }
+      }
+    }
+    button.action.action-show-popup {
+      text-transform: uppercase;
+      font-family: @headlineFont !important;
+      border: none;
+      padding: none !important;
+      background: none;
+      span {
+        font-size: 12px;
+        &:before {
+          content: "";
+        }
+        &:after {
+          content: ">";
+          padding-left: .5em;
+        }
+        &:hover {
+          color: #000;
+        }
       }
     }
   }
-  .customer-service {
+    #co-shipping-form {
+      max-width: none;
+      width: 100%;
+    }
+    .form.form-login {
+      .note {
+        display: none !important; 
+      }
+    }
+    #shipping-new-address-form, .form.form-login {
+      .fieldset > .field {
+        margin-bottom: 40px !important;
+      }
+      .field {
+        width: 50%;
+        display: inline-block;
+        position: relative;
+      }
+      .field.choice {
+        display: none;
+      }
+      fieldset.field {
+        display: block;
+        margin-bottom: 15px;
+        .control .field {
+          width: 100%;
+        }
+      }
+      input.input-text {
+        border-radius: 8px;
+        background-color: #f0f0f0;
+        padding: 11px 16px;
+        width: 80%;
+        height: 42px;
+      }
+      label.label {
+        padding: 0;
+        text-align: left;
+        position: absolute;
+        top: -25px;
+      }
+      legend.label {
+        padding: 0;
+        text-align: left;
+        position: absolute;
+        top: -30px;
+      }
+      select {
+        height: 42px;
+        background-color: #f0f0f0;
+        color: #8d8d8d;
+        option:checked {
+          color: #000;
+        }
+      }
+    }
+    h1.modal-title {
+      font-family: @fancyFont;
+      font-style: italic;
+      border-bottom: none;
+    }
+    .modal-content {
+      #opc-new-shipping-address {
+        margin-top: 50px;
+      }
+    }
+    .modal-footer {
+      button.action span {
+        font-style: italic;
+      }
+    }
+    .customer-service {
     margin-top: 3em;
     padding: 2em;
     font-family: @headlineFont;
@@ -3228,6 +3328,27 @@ Checkout
     background-color: #f0f0f0;
     text-align: center;
   }
+}
+
+//Order confirmation page
+
+.checkout-onepage-success {
+  .checkout-success {
+    margin: auto;
+    width: 66%;
+  }
+  .page-title-wrapper {
+    height: 100px;
+    width: auto;
+    position: static;
+  }
+  .order-products {
+    .order-product-name {
+      font-family: 'Droid Serif';
+      font-style: italic;
+    }
+  }
+
 }
 
 .review-form {
@@ -3244,9 +3365,6 @@ Checkout
   }
 }
 
-.field.review-field-text.required {
-
-}
 
 .review-field-ratings {
   .relative;
@@ -3257,7 +3375,7 @@ Checkout
 
   legend.label {
     display: inline-block;
-    width: 12%;
+    width: auto;
     float: left;
     text-align: left;
     font-weight: normal!important;
@@ -4456,7 +4574,7 @@ Cart Page
 
 
 
-.customer-account-login, .customer-account-create, .customer-account-forgotpassword {
+.customer-account-login, .customer-account-create, .customer-account-forgotpassword, .customer-account-createpassword {
 
   .main {
     .fieldset > .field:not(.choice) > .label {
@@ -4495,6 +4613,10 @@ Cart Page
     }
   }
 
+}
+
+.customer-account-forgotpassword .main .back {
+  display: block;
 }
 
 
@@ -5406,6 +5528,7 @@ Hotspot Details
   
   .main-content {
     margin-bottom: 5px;
+    overflow: auto;
   }
 
   .quickview-btn {
@@ -5597,6 +5720,9 @@ Awe Menu
       margin-left: 10px;
       margin-top: 3px;
       color: #a30046;
+    }
+    span {
+      float: left;
     }
   }
 }
@@ -6587,7 +6713,7 @@ Limiter
   margin-left: 60px;
 }
 .sorter-container {
-  max-width: 120px;
+  max-width: 140px;
   float: left;
   margin-right: 30px;
   .sorter-options {
@@ -6599,6 +6725,7 @@ Limiter
   color: #8d8d8d;
   font-family: @headlineFont;
   font-size: 13px;
+  white-space: nowrap;
 }
 .limiter-option {
   width: 40%!important;
@@ -6643,21 +6770,23 @@ div.MagicToolboxSelectorsContainer a {
   }
 }
 
-.mcs-item {
-  /*border: 1px solid #d3d3d3;
-  border-right: none;*/
 
+.MagicScroll-horizontal .mcs-item {
+  height: auto !important;
   &:last-child {
     border-right: 1px solid #d3d3d3;
   }
+  .mt-thumb-switcher.active-selector img {
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
 }
-// div.MagicToolboxSelectorsContainer img {
-//   max-height: 125px;
-//   min-width: 125px;
-// }
 
-.mcs-wrapper {
-
+.MagicScroll-horizontal.MagicScroll-bullets {
+  margin-bottom: 0!important;
+}
+.MagicScroll-horizontal .mcs-button-arrow-next, .MagicScroll-horizontal .mcs-button-arrow-prev {
+  top: -50% !important;
 }
 
 .MagicScroll-horizontal .mcs-button-arrow-next:before{
@@ -6938,6 +7067,9 @@ Editos Main Page
     .editor_list_item {
       text-align: center;
       margin-bottom: 35px;
+      &:nth-child(n+7) {
+        display: none;
+      }
 
       img {
         width: 80%;
@@ -7311,15 +7443,6 @@ Contact Pages
       font-family: @baseFont;
       margin-top: 15px;
 
-      &:after {
-        content: "\f104";
-        font-family: "Ionicons";
-        position: absolute;
-        pointer-events: none;
-        right: 10px;
-        top: 13px;
-        z-index: 1;
-      }
       select {
         appearance: none;
         -webkit-appearance: none;
@@ -8352,7 +8475,7 @@ Account reviews
     width: 100%;
   }
   .toolbar-sorter {
-    width: 17%;
+    width: 22%;
     min-width: 180px;
   }
 }
@@ -8625,6 +8748,7 @@ Account reviews
     width: 75px;
     padding: 7px 2px;
     display: inline;
+    white-space: nowrap;
     label span {
       text-transform: uppercase!important; /*fighting important with important */
     }

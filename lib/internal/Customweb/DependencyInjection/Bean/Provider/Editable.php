@@ -19,8 +19,8 @@
  */
 
 //require_once 'Customweb/DependencyInjection/Bean/IProvider.php';
-//require_once 'Customweb/DependencyInjection/Bean/Object.php';
 //require_once 'Customweb/DependencyInjection/Bean/Simple.php';
+//require_once 'Customweb/DependencyInjection/Bean/Object.php';
 
 
 class Customweb_DependencyInjection_Bean_Provider_Editable implements Customweb_DependencyInjection_Bean_IProvider {

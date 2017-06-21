@@ -20,7 +20,7 @@ return array (
       'default' => 
       array (
         'host' => 'chp-rds.crfjybhiwfvf.us-east-1.rds.amazonaws.com',
-        'dbname' => 'shophh',
+        'dbname' => 'shophh_aws',
         'username' => 'chp_dbuser',
         'password' => 'a3c3804ed2',
         'active' => '1',
@@ -51,6 +51,7 @@ return array (
     'config_integration_api' => 1,
     'translate' => 1,
     'config_webservice' => 1,
+    'compiled_config' => 1,
   ),
   'install' => 
   array (

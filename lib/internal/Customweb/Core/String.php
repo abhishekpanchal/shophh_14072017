@@ -19,11 +19,11 @@
  *
  */
 
-//require_once 'Customweb/Core/Exception/BadMethodCallException.php';
-//require_once 'Customweb/Core/String.php';
 //require_once 'Customweb/Core/Exception/CastException.php';
+//require_once 'Customweb/Core/String.php';
 //require_once 'Customweb/Core/Charset.php';
 //require_once 'Customweb/Core/Charset/UTF8.php';
+//require_once 'Customweb/Core/Exception/BadMethodCallException.php';
 
 
 

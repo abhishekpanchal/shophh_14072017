@@ -295,6 +295,7 @@
 "Payment Id","Payment ID"
 "Payment Information","Payment Information"
 "Payment Method","Payment Method"
+"Payment Surcharge","Payment Surcharge"
 "Payment captured successfully.","Payment captured successfully"
 "Payment could not be authorized. Cancelling order. Reason :","Payment could not be authorised. Order is being cancelled for the reason:"
 "Payment details can be entered after placing the order","Payment details can be entered after placing the order"

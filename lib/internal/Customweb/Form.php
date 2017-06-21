@@ -18,9 +18,9 @@
  *
  */
 
+//require_once 'Customweb/Util/Rand.php';
 //require_once 'Customweb/Form/ElementGroup.php';
 //require_once 'Customweb/IForm.php';
-//require_once 'Customweb/Util/Rand.php';
 
 
 /**
