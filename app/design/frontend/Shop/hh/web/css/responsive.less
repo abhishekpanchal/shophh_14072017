@@ -1053,13 +1053,41 @@ All small devices - till 768px
 	}
 
 
+	/* product detail page */
+	.catalog-product-view .product.media {
+		width: 70% !important;
+		margin: 20px auto;
+		overflow: visible;
+		div.MagicToolboxContainer.minWidth {
+			min-width: 0;
+		}
+	}
+	div.MagicToolboxSelectorsContainer {
+		width: 115%;
+		margin-left: -8%;
+		margin-bottom: 40px;
+		.mcs-button-arrow {
+			margin-top: 45px;
+		}
+	}
+	.MagicScroll.MagicScroll-horizontal {
+		max-height: 60px;
+		.mcs-item {
+			vertical-align: middle;
+			max-height: 100%;
+			img {
+				max-height: 60px;
+			}
+		}
+	}
+
+
 	/* login / signup */
 	.actions-toolbar {
 		.primary .action, .secondary .action {
 			text-align: center;
 		}
 	}
-
 
 	.customer-account-login .main, .customer-account-create .main, .customer-account-forgotpassword {
 		.col-md-6 {
@@ -1576,6 +1604,9 @@ Extra Small Screens
 	.catalog-product-view {
 		.product-info-main {
 			text-align: center;
+			.name .value {
+				font-size: 28px;
+			}
 			.product-info-price {
 				float: none;
 			}
@@ -1595,7 +1626,6 @@ Extra Small Screens
 	.review-details-div .text-center {
 		text-align: center;
 	}
-
 
 
 
