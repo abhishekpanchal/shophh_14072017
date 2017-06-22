@@ -2,6 +2,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Bluebadger_Multiship',
+    'Bluebadger_Dropship',
     __DIR__
 );

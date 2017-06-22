@@ -1,19 +1,20 @@
 <?php
 
-namespace Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate;
+namespace Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate;
 
-use Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate;
+use Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate;
+use Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\AbstractImporter;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Store\Api\Data\WebsiteInterface;
 
 /**
  * Class Import
- * @package Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate
+ * @package Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate
  */
-class Import
+class Importer extends AbstractImporter
 {
     /**
-     * @var \Bluebadger\Multiship\Helper\Config
+     * @var \Bluebadger\Dropship\Helper\Config
      */
     protected $config;
 
@@ -69,13 +70,13 @@ class Import
 
     /**
      * Import constructor.
-     * @param \Bluebadger\Multiship\Helper\Config $config
+     * @param \Bluebadger\Dropship\Helper\Config $config
      * @param \Magento\Framework\File\Csv $csvProcessor
      * @param \Magento\Catalog\Model\Product $product
      * @param \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformationAcquirer
      */
     public function __construct(
-        \Bluebadger\Multiship\Helper\Config $config,
+        \Bluebadger\Dropship\Helper\Config $config,
         \Magento\Framework\File\Csv $csvProcessor,
         \Magento\Catalog\Model\Product $product,
         \Magento\Directory\Api\CountryInformationAcquirerInterface $countryInformationAcquirer

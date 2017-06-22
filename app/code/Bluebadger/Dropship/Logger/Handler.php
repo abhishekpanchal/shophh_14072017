@@ -1,12 +1,12 @@
 <?php
 
-namespace Bluebadger\Multiship\Logger;
+namespace Bluebadger\Dropship\Logger;
 
 use Monolog\Logger as MonoLogger;
 
 /**
  * Class Handler
- * @package Bluebadger\Multiship\Logger
+ * @package Bluebadger\Dropship\Logger
  */
 class Handler extends \Magento\Framework\Logger\Handler\Base
 {
@@ -20,5 +20,5 @@ class Handler extends \Magento\Framework\Logger\Handler\Base
      * Log filename.
      * @var string
      */
-    protected $fileName = '/var/log/bluebadger_multiship.log';
+    protected $fileName = '/var/log/bluebadger_dropship.log';
 }

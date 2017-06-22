@@ -1,17 +1,17 @@
 <?php
 
-namespace Bluebadger\Multiship\Model\ResourceModel\Carrier;
+namespace Bluebadger\Dropship\Model\ResourceModel\Carrier;
 
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Filesystem;
-use Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate\ImportFactory;
+use Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate\ImportFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Class Rate
- * @package Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate
+ * @package Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate
  */
 class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
@@ -38,7 +38,7 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected $filesystem;
 
     /**
-     * @var \Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate\ImportFactory
+     * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate\ImportFactory
      */
     protected $importFactory;
 
@@ -71,7 +71,7 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('bluebadger_multiship_rate', 'pk');
+        $this->_init('bluebadger_dropship_rate', 'pk');
     }
 
     /**
@@ -84,16 +84,16 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         /**
          * @var \Magento\Framework\App\Config\Value $object
          */
-        if (empty($_FILES['groups']['tmp_name']['multiship']['fields']['import']['value'])) {
+        if (empty($_FILES['groups']['tmp_name']['dropship']['fields']['import']['value'])) {
             return $this;
         }
-        $filePath = $_FILES['groups']['tmp_name']['multiship']['fields']['import']['value'];
+        $filePath = $_FILES['groups']['tmp_name']['dropship']['fields']['import']['value'];
         $websiteId = $this->storeManager->getWebsite($object->getScopeId())->getId();
 
         $file = $this->getCsvFile($filePath);
 
         try {
-            /** @var \Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate\Import $importer */
+            /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate\Import $importer */
             $importer = $this->importFactory->create();
             $importer->setWebsite($this->storeManager->getWebsite());
             $importer->setFilePath($filePath);

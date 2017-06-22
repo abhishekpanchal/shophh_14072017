@@ -1,26 +1,25 @@
 <?php
 
-namespace Bluebadger\Multiship\Model\Config\Backend;
+namespace Bluebadger\Dropship\Model\Config\Backend\Tablerate;
 
 /**
- * Class Rate
- * @package Bluebadger\Multiship\Model\Config\Backend
+ * Class Merchant
+ * @package Bluebadger\Dropship\Model\Config\Backend
  */
-class Rate extends \Magento\Framework\App\Config\Value
+class Merchant extends \Magento\Framework\App\Config\Value
 {
     /**
-     * @var \Bluebadger\Multiship\Model\ResourceModel\Carrier\RateFactory
+     * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\RateFactory
      */
     protected $rateFactory;
 
     /**
-     * Rate constructor.
-     * TODO Display number of records successfully importer
+     * Tablerate constructor.
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
      * @param \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
-     * @param \Bluebadger\Multiship\Model\ResourceModel\Carrier\RateFactory $rateFactory
+     * @param \Bluebadger\Dropship\Model\ResourceModel\Carrier\TablerateFactory $tablerateFactory
      * @param \Magento\Framework\Model\ResourceModel\AbstractResource|null $resource
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
@@ -30,13 +29,13 @@ class Rate extends \Magento\Framework\App\Config\Value
         \Magento\Framework\Registry $registry,
         \Magento\Framework\App\Config\ScopeConfigInterface $config,
         \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList,
-        \Bluebadger\Multiship\Model\ResourceModel\Carrier\RateFactory $rateFactory,
+        \Bluebadger\Dropship\Model\ResourceModel\Carrier\TablerateFactory $tablerateFactory,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
     )
     {
-        $this->rateFactory = $rateFactory;
+        $this->tablerateFactory = $tablerateFactory;
         parent::__construct($context, $registry, $config, $cacheTypeList, $resource, $resourceCollection, $data);
     }
 
@@ -45,13 +44,13 @@ class Rate extends \Magento\Framework\App\Config\Value
      */
     public function afterSave()
     {
-        /** @var \Bluebadger\Multiship\Model\ResourceModel\Carrier\Rate $rate */
+        /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate $rate */
         $rate = $this->rateFactory->create();
 
         try {
             $rate->uploadAndImport($this);
         } catch (\Exception $e) {
-            $this->_logger->critical('Error while importing rates: ' . $e->getMessage());
+            $this->_logger->critical('Error while importing merchants: ' . $e->getMessage());
         }
 
         return parent::afterSave();
