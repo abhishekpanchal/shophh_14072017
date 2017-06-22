@@ -33,17 +33,29 @@ class InstallSchema implements InstallSchemaInterface
             ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
             'Primary key'
         )->addColumn(
-            'merchant',
+            'vendor_name',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
-            ['nullable' => false, 'default' => '0'],
-            'Merchant'
+            ['nullable' => false],
+            'Name'
         )->addColumn(
-            'carrier',
+            'vendor_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            10,
+            ['nullable' => false, 'unsigned' => true],
+            'Name'
+        )->addColumn(
+            'carrier_code',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
+            50,
             ['nullable' => false, 'default' => '0'],
-            'Carrier'
+            'Carrier Code'
+        )->addColumn(
+            'origin',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            50,
+            ['nullable' => false, 'default' => '0'],
+            'Origin'
         )->setComment(
             'Merchant list'
         );
@@ -60,23 +72,29 @@ class InstallSchema implements InstallSchemaInterface
             ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
             'Primary key'
         )->addColumn(
-            'postcode',
+            'area_code',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            10,
+            3,
             ['nullable' => false, 'default' => '0'],
-            'Postcode'
+            'Area Code'
         )->addColumn(
-            'carrier',
+            'carrier_code',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
+            50,
             ['nullable' => false, 'default' => '0'],
-            'Carrier'
+            'Carrier Code'
+        )->addColumn(
+            'origin',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            50,
+            ['nullable' => false, 'default' => '0'],
+            'Origin'
         )->addColumn(
             'zone',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             2,
             ['nullable' => false, 'default' => '0'],
-            'Zone code'
+            'Zone'
         )->setComment(
             'Zones'
         );
@@ -94,19 +112,25 @@ class InstallSchema implements InstallSchemaInterface
             ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
             'Primary key'
         )->addColumn(
-            'lb',
+            'weight_lb',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             5,
-            ['nullable' => false, 'default' => '0'],
+            ['nullable' => false, 'unsigned' => true, 'default' => '0'],
             'Lb'
         )->addColumn(
-            'carrier',
+            'carrier_code',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
+            50,
             ['nullable' => false, 'default' => '0'],
-            'Carrier'
+            'Carrier Code'
         )->addColumn(
-            'shipping_cost',
+            'origin',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            50,
+            ['nullable' => false, 'default' => '0'],
+            'Origin'
+        )->addColumn(
+            'rate',
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
             '12,4',
             ['nullable' => false, 'default' => '0'],
