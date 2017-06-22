@@ -5377,23 +5377,17 @@ Hotspot Details
 ========================================================================== */
 .hotspot-details {
   background-color: #FFF;
-//  margin: 25px;
   padding: 45px;
   box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
   text-align: center;
-  /*
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 90%;  
-  width: 100%;
-  */
   position: absolute;
   top: 25px;
   bottom: 25px;
   left: 25px;
   right: 25px;
-
+  .hotspot-default, .hotspot-details-placeholder {
+    width: 100%;
+  }
 
   h1 {
     color: #27577b;
@@ -5421,6 +5415,7 @@ Hotspot Details
   p {
     font-size: 14px;
     margin-bottom: 15px;
+    width: 100%;
   }
 
   .desc {
@@ -5446,7 +5441,7 @@ Hotspot Details
     text-align: center;
     font-family: @fancyFont;
     font-style: italic;
-
+    width: 100%;
     &:hover {
       background: rgba(0, 0, 0, 0.7)
     }
