@@ -1628,8 +1628,11 @@ Cart
         .price-label {
           display: none;
         }
-        #old-price-1:before {
+        [id^=old-price-]:before {
           content: "was ";
+        }
+        [id^=product-price-]:after {
+          content: " ea.";
         }
       }
       span:not(:last-child):not([class*="price"]):after {
@@ -1766,6 +1769,9 @@ Cart
   }
   .cart-summary {
     top: 0px !important;
+    .cart-totals {
+      border-top: none;
+    }
     strong {
       font-family: @headlineFont;
     }
@@ -1857,12 +1863,13 @@ Cart
     }
     #discount-coupon-form {
       input {
-        width: 60%;
+        width: auto;
       }
       .cart-promo {
         button {
           padding: 5px 15px;
           font-style: italic;
+          width: 40%;
         }
       }
     }
