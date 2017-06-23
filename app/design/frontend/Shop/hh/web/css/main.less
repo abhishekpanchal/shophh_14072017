@@ -1587,6 +1587,9 @@ Cart
   .checkout-cart-index .cart-summary {
     width: 26.4%;
 
+      .cart .qty .cart-qty-wrapper {
+        float: right;
+      }
     > .title {
       font-size: 14px;
       color: #8d8d8d;
@@ -1683,7 +1686,6 @@ Cart
     .qty {
       .cart-qty-wrapper {
         border: 1px solid #000;
-        float: right;
         width: 110px;
         overflow: visible;
         height: 36px;
@@ -1869,7 +1871,6 @@ Cart
         button {
           padding: 5px 15px;
           font-style: italic;
-          width: 40%;
         }
       }
     }
@@ -3265,6 +3266,19 @@ Checkout
       font-size: 20px;
       font-family: @baseFont;
     }
+    .order-summary {
+      p {
+        margin-bottom: 0;
+        font-size: 14px;
+        &:nth-last-child(2) {
+          margin-bottom: 5px;
+        }
+      }
+      .box-title {
+        font-weight: bold;
+      }
+
+    }
     &-totals {
       background-color: #f0f0f0;
       padding: 2em;
@@ -3332,6 +3346,7 @@ Checkout
     }
     img {
       float: left;
+      margin-right: 1em;
     }
     .order-product-details {
       display: inline;
@@ -3340,6 +3355,7 @@ Checkout
         font-family: @fancyFont;
         font-style: italic;
         font-size: 16px;
+        margin-bottom: 3px;
       }
       .order-product-options {
         font-family: @headlineFont;
