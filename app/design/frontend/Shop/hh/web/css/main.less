@@ -4422,8 +4422,29 @@ Checkout
   .fieldset > .field-select-billing > .control {
     display: none;
   }
+  .step-title {
+    margin-bottom: 20px;
+  }
+  .field-select-billing {
+    display: none;
+  }
+  .action-show, .action-cancel {
+    span {
+      color: #000;
+      font-family: @baseFont;
+      font-size: 14px;
+      margin-left: 5px;
+      &:hover {
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
   .billing-address-form {
     display: block !important;
+    max-width: none;
+    margin-top: 6px;
+
     .fieldset > .field {
       float: left;
       width: 48%;
@@ -4434,7 +4455,44 @@ Checkout
     .fieldset fieldset.field .label {
       padding-top: 0;
     }
+    select {
+      height: 42px;
+      background-color: #f0f0f0;
+      color: #8d8d8d;
+    }
+    input[type="radio"] {
+      display: none;
+      & + label:before {
+        content: '';
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: 1px solid #343434;
+        margin-right: 10px;
+      }
+      &:checked + label:before {
+        width: 14px;
+        height: 14px;
+        background: #8d8d8d;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px #343434;
+      }
+      & + label span {
+        position: relative;
+        top: -3px;
+      }
+    }
   }
+  .payment-method-billing-address .primary .action-update {
+    background: #000;
+    color: #EFEFEF;
+    font-style: italic;
+    border: none;
+    padding: 10px 25px;
+  }
+
+
   .payment-method-content {
     padding-left: 0;
     .label {
@@ -9116,6 +9174,8 @@ Account reviews
     }
   }
 }
+
+
 
 
 
