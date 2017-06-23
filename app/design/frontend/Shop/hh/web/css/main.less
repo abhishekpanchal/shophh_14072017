@@ -370,7 +370,7 @@ Buttons
 
 .product-item-details {
   .price-box, h5 {
-    margin-top: 10px;
+    margin-bottom: 5px;
   }
 }
 
@@ -447,6 +447,7 @@ Content
 
 .page-wrapper {
   min-height: auto!important;
+  display: block !important;
 }
 
 
@@ -649,6 +650,12 @@ Product Description
 Products
 ========================================================================== */
 .catalog-product-view {
+  .product.media {
+    margin-top: 40px;
+    img:hover {
+      opacity: 1 !important;
+    }
+  }
   header.header {
     margin-bottom: 40px;
   }
@@ -4416,6 +4423,7 @@ Checkout
 }
 
 .payment-method {
+//  display: none;
   &.credit {
     display: block;
     &.general, &.americanexpress {
@@ -4439,7 +4447,13 @@ Checkout
     display: block !important;
     .fieldset > .field {
       float: left;
-      width: 50%;
+      width: 48%;
+      &:nth-child(odd) {
+        margin-right: 4%;
+      }
+    }
+    .fieldset fieldset.field .label {
+      padding-top: 0;
     }
   }
   .payment-method-content {
@@ -4771,7 +4785,7 @@ Cart Page
   background-color: #fcf8e3;
   border-color: #faebcc;
   padding: 15px;
-  margin-bottom: 20px;
+  margin: 20px 0;
   border: 1px solid transparent;
   border-radius: 4px;
 }
@@ -5367,6 +5381,29 @@ Shot Thumbs
   margin-right: -10px !important;
 }
 
+.lookbookslider-index-index .column.main .row.no-gutters {
+  text-align: center;
+  .col-md-3 {
+    float: none;
+    display: inline-block;
+    width: 24.5%;
+    @media only screen and (max-width: 1024px) {
+      width: 49.5%;
+    }
+    @media only screen and (max-width: 550px) and (min-width: 300px) {
+      width: 100%;
+    }
+  }
+}
+
+.more-shots {
+  .more-shots-thumbs, .col-md-3 {
+    &:nth-of-type(n+5) {
+      display: none;
+    }
+  }
+}
+
 .green {
   color: #3c6338;
 }
@@ -5475,23 +5512,17 @@ Hotspot Details
 ========================================================================== */
 .hotspot-details {
   background-color: #FFF;
-//  margin: 25px;
   padding: 45px;
   box-shadow: 1px 1px 8px rgba(0,0,0,0.1);
   text-align: center;
-  /*
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 90%;  
-  width: 100%;
-  */
   position: absolute;
   top: 25px;
   bottom: 25px;
   left: 25px;
   right: 25px;
-
+  .hotspot-default, .hotspot-details-placeholder {
+    width: 100%;
+  }
 
   h1 {
     color: #27577b;
@@ -5519,6 +5550,7 @@ Hotspot Details
   p {
     font-size: 14px;
     margin-bottom: 15px;
+    width: 100%;
   }
 
   .desc {
@@ -5544,7 +5576,7 @@ Hotspot Details
     text-align: center;
     font-family: @fancyFont;
     font-style: italic;
-
+    width: 100%;
     &:hover {
       background: rgba(0, 0, 0, 0.7)
     }
@@ -6263,14 +6295,13 @@ Home Page
     }
     .guest-editor {
       background-color: #344a6a;
-
       .guest-editor-details {
         padding: 20px;
         margin: 15px 0;
         border: 1px solid #FFF;
         color: #FFF;
         text-align: center;
-
+        width: 100%;
         h4 {
           font-size: 18px;
           display: block;
@@ -6294,7 +6325,7 @@ Home Page
           padding: 30px 0;
           border-top: 1px solid #889dbb;
           border-bottom: 1px solid #889dbb;
-
+          width: 100%;
           p {
             margin-bottom: 0;
           }
@@ -6305,7 +6336,7 @@ Home Page
           padding: 25px 34px;
           position: relative;
           font-weight: normal;
-
+          width: 100%;
           &:after {
             content: '';
             right: 0;
@@ -7342,6 +7373,7 @@ Editors Details
     }
   }
   .editor-single-thumb {
+    margin-bottom: 35px;
     img {
       width: 80%;
       display: block;
@@ -8482,6 +8514,7 @@ Account reviews
   .account-reviews-listing {
     border-bottom: 1px solid #ababab;
     padding: 25px 0;
+    overflow: hidden;
     h4 {
       font-family: @headlineFont;
       font-weight: normal;
@@ -9080,6 +9113,30 @@ Account reviews
 
 
 
+
+.customer-account-createpassword {
+  .fieldset {
+    margin-bottom: 0;
+    text-align: center;
+    input {
+      margin: 0 auto !important;
+    }
+  }
+  .actions-toolbar {
+    text-align: center;
+    .primary {
+      float: none;
+    }
+  }
+  #password-strength-meter-container {
+    max-width: 100%;
+  }
+  @media (max-width: 767px) {
+    .fieldset input {
+      width: 100% !important;
+    }
+  }
+}
 
 
 

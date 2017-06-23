@@ -19,7 +19,7 @@ if($customerSession->isLoggedIn()) { ?>
 			<?php $id = $block->getProductId(); ?>
 			<a target="_parent"
 				href="<?php echo $this->getUrl('wishlist').'index/add/product/'.$id.'/form_key/71UD2LR6HIYz7Uwj'; ?>"
-				data-action="add-to-wishlist">
+				data-action="add-to-wishlist" class="add-to-wishlist">
 				<span class="single-product-wishlist">
 					<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />
 					<span>Add to Wishlist</span>
@@ -28,7 +28,7 @@ if($customerSession->isLoggedIn()) { ?>
 		<?php else: ?>
 			<a 	href="#"
 				data-post='<?php /* @escapeNotVerified */ echo $block->getWishlistParams(); ?>'
-				data-action="add-to-wishlist">
+				data-action="add-to-wishlist" class="add-to-wishlist">
 				<span class="single-product-wishlist">
 					<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />
 					<span>Add to Wishlist</span>
@@ -37,7 +37,7 @@ if($customerSession->isLoggedIn()) { ?>
 		<?php endif; ?>
 	<?php endif; ?>
 <?php } else { ?>
-	<a href="#social-login-popup" class="wishlist-login-popup">
+	<a href="#social-login-popup" class="wishlist-login-popup add-to-wishlist">
 		<span class="single-product-wishlist">
 			<img src="<?php echo $this->getViewFileUrl('images/wishlist-save.png'); ?>" />
 			<span>Add to Wishlist</span>
