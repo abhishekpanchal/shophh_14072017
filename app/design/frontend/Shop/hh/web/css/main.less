@@ -3409,7 +3409,28 @@ Checkout
 
       }
     }
-
+    &-actions {
+      width: 66%;
+      margin: auto;
+      margin-top: 2em;
+      .print {
+        width: auto;
+        font-style: italic;
+        font-weight: 400;
+        margin-bottom: 1em;
+      }
+      .checkout-success-continue span {
+        display: block;
+        font-family: @headlineFont;
+        font-size: 12px;
+        font-style: bold;
+        text-transform: uppercase;
+        &:before {
+          content: "<";
+          padding-right: 1em;
+        }
+      }
+    }
   }
   .page-title-wrapper {
     height: 100px;
