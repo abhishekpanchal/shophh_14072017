@@ -1,4 +1,4 @@
-<h4 class="subtitle"><?php echo __('Vancouver Design Star Curates her favorite items for spring - Just For Us'); ?></h4>
+<h4 class="subtitle"><?php echo __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum varius ex a tellus facilisis bibendum.'); ?></h4>
 <?php if ($this->getGuestEditor()->getSize()): ?>
 <div class="guest-editor-top">
     <div class="row">
@@ -22,7 +22,8 @@
 <?php 
 $pastEditor = $this->getCollection()
             ->addFieldToFilter('past', 1)
-            ->addFieldToFilter('guest',0);   
+            ->addFieldToFilter('guest',0)
+            ->setOrder('sort_order','ASC');
 ?>
 <?php if ($pastEditor->getSize()): ?>
 <div class="editor_list_view">

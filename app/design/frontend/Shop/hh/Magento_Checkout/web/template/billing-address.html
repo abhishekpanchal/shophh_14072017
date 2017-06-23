@@ -6,14 +6,13 @@
 -->
 <div class="step-title" >Billing Address</div>
 
-<!--
 <div class="billing-address-same-as-shipping-block field choice" data-bind="visible: canUseShippingAddress()">
     <input type="checkbox" name="billing-address-same-as-shipping" data-bind="checked: isAddressSameAsShipping, click: useShippingAddress, attr: {id: 'billing-address-same-as-shipping-' + $parent.getCode()}"/>
     <label data-bind="attr: {for: 'billing-address-same-as-shipping-' + $parent.getCode()}"><span data-bind="i18n: 'My billing and shipping address are the same'"></span></label>
 </div>
--->
 
 
+<!--
 <div class="margintop-20">
     <label>
         <input type="radio" name="newship" checked="checked"> <span> Same as my shipping address</span>
@@ -25,7 +24,7 @@
     </label>
 </div>
 
-<!--
+
 <div class="payment-method-title field choice">
     <input type="radio" name="billing-address-same-as-shipping1" class="radio" data-bind="attr: {id: 'billing-address-same-as-shipping-' + $parent.getCode()}">
     <label class="label" for="billing-address-same-as-shipping1"><span data-bind="i18n: 'Same as my shipping address'"></span></label>

@@ -9,7 +9,13 @@
 ?>
 <?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
 
-<?php if ($block->getCanViewOrder() && $block->getCanPrintOrder()) :?>
-    <?php /* @escapeNotVerified */ echo __('<a href="%1" onclick="this.target=\'_blank\'" class="print">Print receipt</a>', $block->getPrintUrl()) ?>
-    <?php echo $block->getChildHtml() ?>
-<?php endif;?>
+<div class="checkout-success-actions">
+  <?php if (true) :?>
+      <?php /* @escapeNotVerified */ echo __('<a href="%1" onclick="this.target=\'_blank\'" class="print action primary">Print Order Details</a>', $block->getPrintUrl()) ?>
+      <?php echo $block->getChildHtml() ?>
+  <?php endif;?>
+
+  <a class="checkout-success-continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>">
+    <span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span>
+  </a>
+</div>

@@ -54,7 +54,7 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
         <div class="product-item-info">
             <div class="category-thumb relative">
                 <a href="<?php echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
-                    <img class="photo image" src="<?php echo $customHelper->resize($image,240,240); ?>" width="240" height="240">
+                    <img class="photo image" src="<?php echo $customHelper->resize($image,280,280); ?>" width="240" height="240">
                 </a>
                 <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product->getId(); ?>
                 <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
@@ -63,6 +63,8 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
                 <strong class="product name product-item-name">
                     <a class="product-item-link hover-effect" href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
                 </strong>
+                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                <?php echo $abstractProductBlock->getProductPrice($product) ?>
                 <div class="product description product-item-description">
                     <?php if($customHelper->getStockQty($product)): ?>
                         <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
@@ -81,8 +83,7 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
                     <?php endif; ?>
                     <p><?php echo $customHelper->limit_description($product->getShortDescription(), 10); ?></p>
                 </div>
-                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                <?php echo $abstractProductBlock->getProductPrice($product) ?>
+                
             </div>
         </div>
     </div>
