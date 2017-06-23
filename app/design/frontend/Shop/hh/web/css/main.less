@@ -3416,7 +3416,28 @@ Checkout
 
       }
     }
-
+    &-actions {
+      width: 66%;
+      margin: auto;
+      margin-top: 2em;
+      .print {
+        width: auto;
+        font-style: italic;
+        font-weight: 400;
+        margin-bottom: 1em;
+      }
+      .checkout-success-continue span {
+        display: block;
+        font-family: @headlineFont;
+        font-size: 12px;
+        font-style: bold;
+        text-transform: uppercase;
+        &:before {
+          content: "<";
+          padding-right: 1em;
+        }
+      }
+    }
   }
   .page-title-wrapper {
     height: 100px;
@@ -4402,7 +4423,6 @@ Checkout
 }
 
 .payment-method {
-//  display: none;
   &.credit {
     display: block;
     &.general, &.americanexpress {
@@ -9114,6 +9134,14 @@ Account reviews
     .fieldset input {
       width: 100% !important;
     }
+  }
+}
+  /* ===============================
+  Live Chat
+  =================================*/
+body:not(.account):not(.checkout-cart-index):not(.checkout-index-index):not(.contact-index-index):not(.checkout-onepage-success) {
+  #launcher {
+    display: none;
   }
 }
 
