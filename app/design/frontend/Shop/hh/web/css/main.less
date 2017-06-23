@@ -656,6 +656,12 @@ Products
       opacity: 1 !important;
     }
   }
+  header.header {
+    margin-bottom: 40px;
+  }
+  .product.media img:hover {
+    opacity: 1 !important;
+  }
 
   .product-qty {
 
@@ -680,7 +686,7 @@ Products
   .product-info-main {
     .name .value {
       font-size: 34px;
-      line-height: 40px;
+      line-height: 32px;
       font-family: @fancyFont;
       color: #000;
       font-style: italic;
@@ -837,8 +843,8 @@ Products
 
 
 /* mobile styling of tabs at all devices */
-.table.additional-attributes {
-  tbody th {
+.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
+  &.additional-attributes tbody th {
     display: none;
   }
   tbody > tr td:before {
@@ -1097,7 +1103,6 @@ Footer
   padding-bottom: 30px;
   background: #e6e6e7;
   font: normal 11px/11px 'Montserrat', Helvetica, Arial, sans-serif;
-  overflow: auto;
 
   a:hover {
     text-decoration: underline;
@@ -1140,9 +1145,6 @@ Footer
   ul {
     margin-top: 10px;
   }
-}
-.footer-subscribe {
-  margin-left: 8%;
 }
 
 div.mage-error[generated] {
@@ -1592,6 +1594,9 @@ Cart
   .checkout-cart-index .cart-summary {
     width: 26.4%;
 
+      .cart .qty .cart-qty-wrapper {
+        float: right;
+      }
     > .title {
       font-size: 14px;
       color: #8d8d8d;
@@ -1633,8 +1638,11 @@ Cart
         .price-label {
           display: none;
         }
-        #old-price-1:before {
+        [id^=old-price-]:before {
           content: "was ";
+        }
+        [id^=product-price-]:after {
+          content: " ea.";
         }
       }
       span:not(:last-child):not([class*="price"]):after {
@@ -1647,9 +1655,6 @@ Cart
       font-size: 12px;
       color: #8d8d8d;
       display: block;
-    }
-    .cart-item-shipping:before {
-      content: "This item ships in approximately ";
     }
     .call-for-quote {
       color: #A42335;
@@ -1688,7 +1693,6 @@ Cart
     .qty {
       .cart-qty-wrapper {
         border: 1px solid #000;
-        float: right;
         width: 110px;
         overflow: visible;
         height: 36px;
@@ -1774,6 +1778,9 @@ Cart
   }
   .cart-summary {
     top: 0px !important;
+    .cart-totals {
+      border-top: none;
+    }
     strong {
       font-family: @headlineFont;
     }
@@ -1865,7 +1872,7 @@ Cart
     }
     #discount-coupon-form {
       input {
-        width: 60%;
+        width: auto;
       }
       .cart-promo {
         button {
@@ -3246,9 +3253,6 @@ Checkout
           content: ">";
           padding-left: .5em;
         }
-        &:hover {
-          color: #000;
-        }
       }
     }
   }
@@ -3340,6 +3344,79 @@ Checkout
   .checkout-success {
     margin: auto;
     width: 66%;
+    &-header {
+      text-align: center;
+      font-size: 20px;
+      font-family: @baseFont;
+    }
+    .order-summary {
+      p {
+        margin-bottom: 0;
+        font-size: 14px;
+        &:nth-last-child(2) {
+          margin-bottom: 5px;
+        }
+      }
+      .box-title {
+        font-weight: bold;
+      }
+
+    }
+    &-totals {
+      background-color: #f0f0f0;
+      padding: 2em;
+      .totals-wrapper {
+        border-bottom: 1px solid #8d8d8d;
+        padding-bottom: 20px;
+      }
+      .price-row {
+        margin-bottom: 1em;
+        .price-label {
+          font-family: @headlineFont;
+          font-size: 14px;
+        }
+        .price {
+          font-family: @fancyFont;
+          font-size: 16px;
+          float: right;
+          &:before {
+            content: "$";
+          }
+        }
+        .grand-total {
+          font-size: 28px;
+          position: relative;
+          &:after {
+            content: "CAD";
+            color: #8d8d8d;
+            font-size: 12px;
+            position: absolute;
+            top: 17px;
+            right: 0px;
+          }
+        }
+      }
+      .payment-method {
+        margin-top: 1em;
+        p {
+          margin-bottom: 10px;
+        }
+        p, .card {
+          font-family: @headlineFont;
+          font-size: 14px;
+        }
+        .price {
+          font-family: @fancyFont;
+          font-size: 16px;
+          float: right;
+          &:before {
+            content: "$";
+          }
+        }
+
+      }
+    }
+
   }
   .page-title-wrapper {
     height: 100px;
@@ -3347,12 +3424,44 @@ Checkout
     position: static;
   }
   .order-products {
-    .order-product-name {
-      font-family: 'Droid Serif';
-      font-style: italic;
+    .row {
+      margin-bottom: 1em;
+    }
+    img {
+      float: left;
+      margin-right: 1em;
+    }
+    .order-product-details {
+      display: inline;
+      vertical-align: top;
+      .order-product-name {
+        font-family: @fancyFont;
+        font-style: italic;
+        font-size: 16px;
+        margin-bottom: 3px;
+      }
+      .order-product-options {
+        font-family: @headlineFont;
+        font-size: 12px;
+        color: #8d8d8d;
+        span:not(:first-child):not(.sku):before {
+          content: "|";
+          padding: 0 .5em;
+        }
+        .sku {
+          display: block;
+        }
+      }
+    }
+    .order-product-price {
+      font-family: @fancyFont;
+      font-size: 16px;
+      float: right;
+      &:before {
+        content: "$";
+      }
     }
   }
-
 }
 
 .review-form {
@@ -3369,6 +3478,9 @@ Checkout
   }
 }
 
+.field.review-field-text.required {
+
+}
 
 .review-field-ratings {
   .relative;
@@ -3379,7 +3491,7 @@ Checkout
 
   legend.label {
     display: inline-block;
-    width: auto;
+    width: 12%;
     float: left;
     text-align: left;
     font-weight: normal!important;
@@ -4584,7 +4696,7 @@ Cart Page
 
 
 
-.customer-account-login, .customer-account-create, .customer-account-forgotpassword, .customer-account-createpassword {
+.customer-account-login, .customer-account-create, .customer-account-forgotpassword {
 
   .main {
     .fieldset > .field:not(.choice) > .label {
@@ -4623,10 +4735,6 @@ Cart Page
     }
   }
 
-}
-
-.customer-account-forgotpassword .main .back {
-  display: block;
 }
 
 
@@ -5556,7 +5664,6 @@ Hotspot Details
   
   .main-content {
     margin-bottom: 5px;
-    overflow: auto;
   }
 
   .quickview-btn {
@@ -5748,9 +5855,6 @@ Awe Menu
       margin-left: 10px;
       margin-top: 3px;
       color: #a30046;
-    }
-    span {
-      float: left;
     }
   }
 }
@@ -6740,7 +6844,7 @@ Limiter
   margin-left: 60px;
 }
 .sorter-container {
-  max-width: 140px;
+  max-width: 120px;
   float: left;
   margin-right: 30px;
   .sorter-options {
@@ -6752,7 +6856,6 @@ Limiter
   color: #8d8d8d;
   font-family: @headlineFont;
   font-size: 13px;
-  white-space: nowrap;
 }
 .limiter-option {
   width: 40%!important;
@@ -6797,23 +6900,21 @@ div.MagicToolboxSelectorsContainer a {
   }
 }
 
+.mcs-item {
+  /*border: 1px solid #d3d3d3;
+  border-right: none;*/
 
-.MagicScroll-horizontal .mcs-item {
-  height: auto !important;
   &:last-child {
     border-right: 1px solid #d3d3d3;
   }
-  .mt-thumb-switcher.active-selector img {
-    filter: none !important;
-    -webkit-filter: none !important;
-  }
 }
+// div.MagicToolboxSelectorsContainer img {
+//   max-height: 125px;
+//   min-width: 125px;
+// }
 
-.MagicScroll-horizontal.MagicScroll-bullets {
-  margin-bottom: 0!important;
-}
-.MagicScroll-horizontal .mcs-button-arrow-next, .MagicScroll-horizontal .mcs-button-arrow-prev {
-  top: -50% !important;
+.mcs-wrapper {
+
 }
 
 .MagicScroll-horizontal .mcs-button-arrow-next:before{
@@ -8501,7 +8602,7 @@ Account reviews
     width: 100%;
   }
   .toolbar-sorter {
-    width: 22%;
+    width: 17%;
     min-width: 180px;
   }
 }
@@ -8774,7 +8875,6 @@ Account reviews
     width: 75px;
     padding: 7px 2px;
     display: inline;
-    white-space: nowrap;
     label span {
       text-transform: uppercase!important; /*fighting important with important */
     }
