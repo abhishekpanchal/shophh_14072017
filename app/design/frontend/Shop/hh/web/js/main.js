@@ -299,6 +299,7 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
     e.preventDefault();
     e.stopPropagation();
     $("#launcher").show();
+    $("#launcher").contents().find(".src-component-Launcher-wrapper").click();
   });
 });
 
