@@ -4290,7 +4290,7 @@ Checkout
 }
 
 .payment-method {
-  display: none;
+//  display: none;
   &.credit {
     display: block;
     &.general, &.americanexpress {
@@ -4314,7 +4314,13 @@ Checkout
     display: block !important;
     .fieldset > .field {
       float: left;
-      width: 50%;
+      width: 48%;
+      &:nth-child(odd) {
+        margin-right: 4%;
+      }
+    }
+    .fieldset fieldset.field .label {
+      padding-top: 0;
     }
   }
   .payment-method-content {
