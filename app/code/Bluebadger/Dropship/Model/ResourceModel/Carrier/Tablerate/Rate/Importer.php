@@ -43,10 +43,10 @@ class Importer extends AbstractImporter
             $zone = $chunks[1];
 
             $records[] = [
-                Rate::FIELD_WEIGHT => $row[0],
-                Rate::FIELD_CARRIER => $carrier,
-                Rate::FIELD_ZONE => $zone,
-                Rate::FIELD_RATE => floatval(str_replace('$', '', $row[$key]))
+                Rate::FIELD_WEIGHT => trim($row[0]),
+                Rate::FIELD_CARRIER => trim($carrier),
+                Rate::FIELD_ZONE => trim($zone),
+                Rate::FIELD_RATE => floatval(trim(str_replace('$', '', $row[$key])))
             ];
         }
 

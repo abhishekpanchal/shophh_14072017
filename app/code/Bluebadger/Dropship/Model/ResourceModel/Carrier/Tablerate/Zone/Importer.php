@@ -45,10 +45,10 @@ class Importer extends AbstractImporter
             $origin = $chunks[1];
 
             $records[] = [
-                Zone::FIELD_AREA_CODE => $row[0],
-                Zone::FIELD_ORIGIN => $origin,
-                Zone::FIELD_CARRIER => $carrier,
-                Zone::FIELD_ZONE => $row[$key]
+                Zone::FIELD_AREA_CODE => trim($row[0]),
+                Zone::FIELD_CARRIER => trim($carrier),
+                Zone::FIELD_ORIGIN => trim($origin),
+                Zone::FIELD_ZONE => trim($row[$key])
             ];
         }
 

@@ -16,6 +16,9 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     const KEY_COUNTRY_ID_CA = 'CA';
     const KEY_COUNTRY_ID_US = 'US';
     const KEY_UDROPSHIP_VENDOR = 'udropship_vendor';
+    const KEY_PACKAGE_WEIGHT_LBS = 'package_weight_lbs';
+    const KEY_TITLE = 'title';
+    const KEY_VENDOR_ID = 'vendor_id';
 
     /**
      * @var string
@@ -33,9 +36,19 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     protected $rateResultFactory;
 
     /**
-     * @var \Bluebadger\Dropship\Api\RateRepositoryInterface
+     * @var \Magento\Catalog\Api\ProductRepositoryInterface
      */
-    protected $rateRepository;
+    protected $productRepository;
+
+    /**
+     * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Rate
+     */
+    protected $rateResourceFactory;
+
+    /**
+     * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\ItemFactory
+     */
+    protected $quoteItemFactory;
 
     /**
      * Tablerate constructor.
@@ -45,7 +58,7 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
      * @param \Magento\Shipping\Model\Rate\ResultFactory $rateResultFactory
      * @param \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory
      * @param \Magento\Catalog\Api\ProductRepositoryInterface $productRepository
-     * @param \Bluebadger\Dropship\Api\RateRepositoryInterface $rateRepository
+     * @param \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Rate $rateResourceFactory
      * @param array $data
      */
     public function __construct(
@@ -55,13 +68,16 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
         \Magento\Shipping\Model\Rate\ResultFactory $rateResultFactory,
         \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory,
         \Magento\Catalog\Api\ProductRepositoryInterface $productRepository,
-        \Bluebadger\Dropship\Api\RateRepositoryInterface $rateRepository,
+        \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\RateFactory $rateResourceFactory,
+        \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\ItemFactory $quoteItemFactory,
         array $data = []
     )
     {
         $this->rateResultFactory = $rateResultFactory;
         $this->rateMethodFactory = $rateMethodFactory;
-        $this->rateRepository = $rateRepository;
+        $this->productRepository = $productRepository;
+        $this->rateResourceFactory = $rateResourceFactory;
+        $this->quoteItemFactory = $quoteItemFactory;
 
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
     }
@@ -78,10 +94,10 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
         $method = $this->rateMethodFactory->create();
 
         $method->setCarrier($this->_code);
-        $method->setCarrierTitle($this->getConfigData('title'));
+        $method->setCarrierTitle($this->getConfigData(self::KEY_TITLE));
 
         $method->setMethod($this->_code);
-        $method->setMethodTitle($this->getConfigData('title'));
+        $method->setMethodTitle($this->getConfigData(self::KEY_TITLE));
 
         /* Postcode or state abbreviation depending on country */
         $destCountryId = $request->getDestCountryId();
@@ -93,7 +109,9 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
             throw new LocalizedException(__('Invalid country ID: ' . $destCountryId));
         }
 
-        $amount = $this->getTotalAmount($request->getAllItems(), $zoneCode);
+        if ($zoneCode) {
+            $amount = $this->getTotalAmount($request->getAllItems(), $zoneCode);
+        }
 
         $method->setPrice($amount);
         $method->setCost($amount);
@@ -108,11 +126,13 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
      */
     public function getAllowedMethods()
     {
-        return ['dropship' => $this->getConfigData('name')];
+        return ['dropshiptablerate' => $this->getConfigData('name')];
     }
 
     /**
-     *
+     * @param array $items
+     * @param string $zoneCode
+     * @return int
      */
     private function getTotalAmount(array $items, string $zoneCode)
     {
@@ -120,14 +140,21 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
 
         /** @var Item $item */
         foreach ($items as $item) {
-            $rate = $this->rateRepository->getRateByWeightVendorZone(
-                $item->getWeight(),
-                $item->getData(self::KEY_UDROPSHIP_VENDOR),
-                $zoneCode
-            );
-        }
+            $product = $this->productRepository->getById($item->getProduct()->getId());
+            $weight = $product->getData(self::KEY_PACKAGE_WEIGHT_LBS);
+            $vendorId = $item->getData(self::KEY_UDROPSHIP_VENDOR);
 
-        /* Update quote items */
+            /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Rate $rateResource */
+            $rateResource = $this->rateResourceFactory->create();
+            $rateInfo = $rateResource->getRateInfo($weight, $vendorId, $zoneCode);
+            $itemTotal = $rateInfo->rate * $item->getQty();
+
+            /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item $quoteItemResource */
+            $quoteItemResource = $this->quoteItemFactory->create();
+            $quoteItemResource->updateItem($item, $itemTotal);
+
+            $total += $itemTotal;
+        }
 
         return $total;
     }

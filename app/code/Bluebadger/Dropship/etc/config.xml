@@ -5,7 +5,7 @@
             <dropshiptablerate>
                 <active>0</active>
                 <sallowspecific>0</sallowspecific>
-                <model>Bluebadger\Dropship\Model\Carrier\Rate</model>
+                <model>Bluebadger\Dropship\Model\Carrier\Tablerate</model>
                 <name>Dropship (Table Rate)</name>
                 <title>Dropship (Table Rate)</title>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
