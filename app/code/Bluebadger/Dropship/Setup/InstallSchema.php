@@ -33,7 +33,7 @@ class InstallSchema implements InstallSchemaInterface
             ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
             'Primary key'
         )->addColumn(
-            'vendor_name',
+            'name',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
             ['nullable' => false],
@@ -43,13 +43,13 @@ class InstallSchema implements InstallSchemaInterface
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             10,
             ['nullable' => false, 'unsigned' => true],
-            'Name'
+            'Vendor ID'
         )->addColumn(
-            'carrier_code',
+            'carrier',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             50,
             ['nullable' => false, 'default' => '0'],
-            'Carrier Code'
+            'Carrier'
         )->addColumn(
             'origin',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -78,7 +78,7 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => false, 'default' => '0'],
             'Area Code'
         )->addColumn(
-            'carrier_code',
+            'carrier',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             50,
             ['nullable' => false, 'default' => '0'],
@@ -112,23 +112,23 @@ class InstallSchema implements InstallSchemaInterface
             ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
             'Primary key'
         )->addColumn(
-            'weight_lb',
+            'weight',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             5,
             ['nullable' => false, 'unsigned' => true, 'default' => '0'],
             'Lb'
         )->addColumn(
-            'carrier_code',
+            'carrier',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             50,
             ['nullable' => false, 'default' => '0'],
-            'Carrier Code'
+            'Carrier'
         )->addColumn(
-            'origin',
+            'zone',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            50,
+            2,
             ['nullable' => false, 'default' => '0'],
-            'Origin'
+            'Zone'
         )->addColumn(
             'rate',
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,

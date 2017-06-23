@@ -1,67 +1,62 @@
 <?php
 
-namespace Bluebadger\Dropship\Model\ResourceModel\Carrier;
+namespace Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate;
 
+use Bluebadger\Dropship\Logger\Logger;
+use Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Merchant\Importer;
+use Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Merchant\ImporterFactory;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Filesystem\DirectoryList;
 use Magento\Framework\Model\ResourceModel\Db\Context;
 use Magento\Framework\Filesystem;
-use Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate\ImportFactory;
-use Magento\Store\Model\StoreManagerInterface;
+
 
 /**
- * Class Rate
- * @package Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate
+ * Class Merchant
+ * @package Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate
  */
-class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
-    const FIELD_WEBSITE_ID = 'website_id';
-    const FIELD_SKU = 'sku';
-    const FIELD_VENDOR = 'vendor';
-    const FIELD_POSTCODE = 'postcode';
-    const FIELD_REGION = 'region';
-    const FIELD_REGION_ID = 'region_id';
-    const FIELD_COUNTRY = 'country';
+    const FIELD_NAME = 'name';
+    const FIELD_VENDOR_ID = 'vendor_id';
     const FIELD_CARRIER = 'carrier';
-    const FIELD_COST = 'cost';
-    const FIELD_SHIP_TIME_UNIT = 'ship_time_unit';
-    const FIELD_SHIP_TIME_VALUE = 'ship_time_value';
+    const FIELD_ORIGIN = 'origin';
 
     /**
-     * @var \Magento\Store\Model\StoreManagerInterface
-     */
-    protected $storeManager;
-
-    /**
-     * @var \Magento\Framework\Filesystem
+     * @var Filesystem
      */
     protected $filesystem;
 
     /**
-     * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate\ImportFactory
+     * @var ImportFactory
      */
     protected $importFactory;
 
     /**
-     * Rate constructor.
+     * @var Logger
+     */
+    protected $logger;
+
+    /**
+     * Merchant constructor.
      * @param Context $context
-     * @param StoreManagerInterface $storeManager
      * @param Filesystem $filesystem
      * @param ImportFactory $importFactory
+     * @param Logger $logger
      * @param null $connectionName
      */
     public function __construct(
         Context $context,
-        StoreManagerInterface $storeManager,
         Filesystem $filesystem,
         ImportFactory $importFactory,
+        Logger $logger,
         $connectionName = null
     )
     {
         parent::__construct($context, $connectionName);
-        $this->storeManager = $storeManager;
         $this->filesystem = $filesystem;
         $this->importFactory = $importFactory;
+        $this->logger = $logger;
     }
 
     /**
@@ -71,10 +66,11 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected function _construct()
     {
-        $this->_init('bluebadger_dropship_rate', 'pk');
+        $this->_init('bluebadger_dropship_tablerate_merchant', 'merchant_id');
     }
 
     /**
+     * Upload a import data.
      * @param \Magento\Framework\DataObject $object
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -84,30 +80,29 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         /**
          * @var \Magento\Framework\App\Config\Value $object
          */
-        if (empty($_FILES['groups']['tmp_name']['dropship']['fields']['import']['value'])) {
+        if (empty($_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['merchant']['value'])) {
             return $this;
         }
-        $filePath = $_FILES['groups']['tmp_name']['dropship']['fields']['import']['value'];
-        $websiteId = $this->storeManager->getWebsite($object->getScopeId())->getId();
-
+        $filePath = $_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['merchant']['value'];
         $file = $this->getCsvFile($filePath);
 
         try {
-            /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Rate\Import $importer */
+            /** @var Importer $importer */
             $importer = $this->importFactory->create();
-            $importer->setWebsite($this->storeManager->getWebsite());
             $importer->setFilePath($filePath);
             $importer->setIsFirstRowHeaders(true);
             $importer->import();
 
             if ($importer->hasErrors()) {
-                throw new LocalizedException(
-                    'Something when wrong while importing rates: ' . implode(', ', $importer->getErrors())
-                );
+                $message = 'Something when wrong while importing rates: ';
+                $message .= implode(', ', $importer->getErrors());
+                throw new LocalizedException(__($message));
             }
-            $this->importData($this->getFields(), $importer->getImportedData());
+            $this->importData($this->getColumns(), $importer->getImportedData());
         } catch (\Exception $e) {
-            throw new LocalizedException(__('Something went wrong while importing rates: ' . $e->getMessage()));
+            throw new LocalizedException(
+                __('Something went wrong while importing rates: ' . $e->getMessage())
+            );
         } finally {
             $file->close();
         }
@@ -116,6 +111,7 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     }
 
     /**
+     * Get the path to the CSV file.
      * @param string $filePath
      * @return \Magento\Framework\Filesystem\File\ReadInterface
      */
@@ -125,25 +121,23 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $path = $tmpDirectory->getRelativePath($filePath);
         return $tmpDirectory->openFile($path);
     }
-    
-    private function getFields()
+
+    /**
+     * Return a list of columns to insert.
+     * @return array
+     */
+    private function getColumns()
     {
         return [
-            self::FIELD_SKU,
-            self::FIELD_VENDOR,
-            self::FIELD_POSTCODE,
-            self::FIELD_REGION,
-            self::FIELD_COUNTRY,
+            self::FIELD_NAME,
+            self::FIELD_VENDOR_ID,
             self::FIELD_CARRIER,
-            self::FIELD_COST,
-            self::FIELD_SHIP_TIME_UNIT,
-            self::FIELD_SHIP_TIME_VALUE,
-            self::FIELD_WEBSITE_ID,
-            self::FIELD_REGION_ID
+            self::FIELD_ORIGIN
         ];
     }
-    
+
     /**
+     * Import data.
      * @param array $fields
      * @param array $values
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -156,16 +150,17 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         try {
             if (count($fields) && count($values)) {
-                $this->getConnection()->insertArray($this->getMainTable(), $fields, $values);
+                $this->getConnection()
+                    ->insertArray($this->getMainTable(), $fields, $values);
             }
         } catch (\Magento\Framework\Exception\LocalizedException $e) {
             $connection->rollback();
-            throw new \Magento\Framework\Exception\LocalizedException(__('Unable to import data'), $e);
+            throw new LocalizedException(__('Unable to import merchant data'), $e);
         } catch (\Exception $e) {
             $connection->rollback();
             $this->logger->critical($e);
-            throw new \Magento\Framework\Exception\LocalizedException(
-                __('Something went wrong while importing table rates.')
+            throw new LocalizedException(
+                __('Something went wrong while importing merchant information.')
             );
         }
         $connection->commit();

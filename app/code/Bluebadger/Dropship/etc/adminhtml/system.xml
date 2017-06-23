@@ -13,7 +13,7 @@
                 </field>
                 <field id="import" translate="label" type="Magento\OfflineShipping\Block\Adminhtml\Form\Field\Import" sortOrder="6" showInDefault="0" showInWebsite="1" showInStore="0">
                     <label>Import</label>
-                    <backend_model>Bluebadger\Dropship\Model\Config\Backend\Rate</backend_model>
+                    <backend_model>Bluebadger\Dropship\Model\Config\Backend\Tablerate\Import\Merchant</backend_model>
                 </field>
                 <field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Method Name</label>

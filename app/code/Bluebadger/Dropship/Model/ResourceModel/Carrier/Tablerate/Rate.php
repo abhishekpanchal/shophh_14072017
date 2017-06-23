@@ -2,8 +2,17 @@
 
 namespace Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate;
 
+/**
+ * Class Rate
+ * @package Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate
+ */
 class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
+    const FIELD_WEIGHT = 'weight';
+    const FIELD_CARRIER = 'carrier';
+    const FIELD_ZONE = 'zone';
+    const FIELD_RATE = 'rate';
+
     /**
      * @inheritdoc
      */
@@ -49,6 +58,6 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         ];
        */
 
-        return $connection->fetchOne($select, $bind);
+        //return $connection->fetchOne($select, $bind);
     }
 }
