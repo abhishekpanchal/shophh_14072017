@@ -4423,7 +4423,6 @@ Checkout
 }
 
 .payment-method {
-//  display: none;
   &.credit {
     display: block;
     &.general, &.americanexpress {
@@ -9135,6 +9134,14 @@ Account reviews
     .fieldset input {
       width: 100% !important;
     }
+  }
+}
+  /* ===============================
+  Live Chat
+  =================================*/
+body:not(.account):not(.checkout-cart-index):not(.checkout-index-index):not(.contact-index-index):not(.checkout-onepage-success) {
+  #launcher {
+    display: none;
   }
 }
 
