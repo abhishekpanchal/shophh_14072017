@@ -842,22 +842,6 @@ Products
 }
 
 
-/* mobile styling of tabs at all devices */
-.table-wrapper .table:not(.cart):not(.totals):not(.table-comparison) {
-  &.additional-attributes tbody th {
-    display: none;
-  }
-  tbody > tr td:before {
-    padding-right: 10px;
-    content: attr(data-th) ': ';
-    display: inline-block;
-    color: #111111;
-    font-weight: 700;
-  }
-}
-
-
-
 
 
 
@@ -891,6 +875,18 @@ Products Tabs
 ========================================================================== */
 .product.data.items {
   margin-top: 20px;
+  .additional-attributes {
+    tbody th {
+      display: none;
+    }
+    tbody > tr td:before {
+      padding-right: 10px;
+      content: attr(data-th) ': ';
+      display: inline-block;
+      color: #111111;
+      font-weight: 700;
+    }
+  }
 }
 .product.data.items > .item.title {
   margin: 0;
