@@ -15,14 +15,17 @@ class InstallSchema implements InstallSchemaInterface
     /**
      * @inheritdoc
      */
-    public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
+    public function install(
+        SchemaSetupInterface $setup,
+        ModuleContextInterface $context
+    )
     {
         $installer = $setup;
 
         $installer->startSetup();
 
         /**
-         * Create table 'bluebadger_dropship_tablerate_vendor_carrier'
+         * Create table 'bluebadger_dropship_tablerate_merchant'
          */
         $table = $installer->getConnection()->newTable(
             $installer->getTable('bluebadger_dropship_tablerate_merchant')
@@ -30,7 +33,12 @@ class InstallSchema implements InstallSchemaInterface
             'merchant_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             null,
-            ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
+            [
+                'identity' => true,
+                'unsigned' => true,
+                'nullable' => false,
+                'primary' => true
+            ],
             'Primary key'
         )->addColumn(
             'name',
@@ -59,6 +67,7 @@ class InstallSchema implements InstallSchemaInterface
         )->setComment(
             'Merchant list'
         );
+        $installer->getConnection()->createTable($table);
 
         /**
          * Create table 'bluebadger_dropship_tablerate_zone
@@ -92,17 +101,17 @@ class InstallSchema implements InstallSchemaInterface
         )->addColumn(
             'zone',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            2,
+            5,
             ['nullable' => false, 'default' => '0'],
             'Zone'
         )->setComment(
             'Zones'
         );
+        $installer->getConnection()->createTable($table);
 
         /**
          * Create table 'bluebadger_dropship_tablerate_rate
          */
-        $installer->getConnection()->createTable($table);
         $table = $installer->getConnection()->newTable(
             $installer->getTable('bluebadger_dropship_tablerate_rate')
         )->addColumn(
@@ -126,7 +135,7 @@ class InstallSchema implements InstallSchemaInterface
         )->addColumn(
             'zone',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            2,
+            5,
             ['nullable' => false, 'default' => '0'],
             'Zone'
         )->addColumn(
@@ -134,15 +143,15 @@ class InstallSchema implements InstallSchemaInterface
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
             '12,4',
             ['nullable' => false, 'default' => '0'],
-            ''
+            'Rate'
         )->setComment(
             'Rate'
         );
+        $installer->getConnection()->createTable($table);
 
         /**
          * Create table 'bluebadger_dropship_tablerate_quote_item'
          */
-        $installer->getConnection()->createTable($table);
         $table = $installer->getConnection()->newTable(
             $installer->getTable('bluebadger_dropship_tablerate_quote_item')
         )->addColumn(
@@ -162,34 +171,36 @@ class InstallSchema implements InstallSchemaInterface
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
             ['nullable' => false, 'default' => '0'],
-            ''
+            'Merchant'
         )->addColumn(
             'carrier',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             255,
             ['nullable' => false, 'default' => '0'],
-            ''
+            'Carrier'
         )->addColumn(
             'zone',
             \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
             2,
             ['nullable' => false, 'default' => '0'],
-            ''
+            'Zone'
         )->addColumn(
             'rate',
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
             '12,4',
             ['nullable' => false, 'default' => '0'],
-            ''
+            'Rate'
         )->addColumn(
             'shipping_cost',
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
             '12,4',
             ['nullable' => false, 'default' => '0'],
-            ''
+            'Cost'
         )->setComment(
             'Quote Item'
         );
+        $installer->getConnection()->createTable($table);
+
 
         $installer->endSetup();
 

@@ -82,6 +82,7 @@ abstract class AbstractImporter
         }
 
         $csvData = $this->csvProcessor->getData($this->filePath);
+        $this->importedData = [];
         $fields = [];
 
         /**
@@ -95,10 +96,12 @@ abstract class AbstractImporter
             }
 
             try {
-                $this->importedData = array_merge(
-                    $this->importedData,
-                    $this->processRow($csvDatum, $fields)
-                );
+                $data = $this->processRow($csvDatum, $fields);
+                if ($this->isMulti($data)) {
+                    $this->importedData = array_merge($this->importedData, $data);
+                } else {
+                    $this->importedData[] = $data;
+                }
             } catch (\Exception $e) {
                 $this->errors[] = 'Error at line ' . $rowIndex . ': ' . $e->getMessage();
             }
@@ -136,4 +139,9 @@ abstract class AbstractImporter
      * @param array $row
      */
     abstract function processRow(array $row, array $fields);
+
+    private function isMulti($array)
+    {
+        return (count($array) != count($array, 1));
+    }
 }

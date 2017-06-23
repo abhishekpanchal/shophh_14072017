@@ -56,33 +56,33 @@ class Importer extends AbstractImporter
         $processedRow = [];
 
         /* Basic validation */
-        foreach ($this->getCsvprocessedRow() as $index => $fieldName) {
+        foreach ($this->getCsvFields() as $index => $fieldName) {
             if (!isset($row[$index])) {
                 throw new LocalizedException(__('Field ' . $fieldName . ' is missing'));
             }
         }
 
         /* Validate merchant */
-        $processedRow[Merchant::FIELD_NAME] = $row[self::FIELD_CSV_MERCHANT];
+        $processedRow[Merchant::FIELD_NAME] = $row[0];
 
         /** @var \Unirgy\Dropship\Model\ResourceModel\Vendor\Collection $vendor */
         $vendor = $this->vendorCollectionFactory->create();
-        $vendor->addFieldToFilter('vendor_name', $row[self::FIELD_CSV_MERCHANT]);
+        $vendor->addFieldToFilter('vendor_name', $row[0]);
 
         if (!$vendor->getSize()) {
-            throw new LocalizedException(__('Invalid merchant name: ' . $row[self::FIELD_CSV_MERCHANT]));
+            throw new LocalizedException(__('Invalid merchant name: ' . $row[0]));
         }
 
         $processedRow[Merchant::FIELD_VENDOR_ID] = $vendor->getFirstItem()->getId();
 
         /* Validate carrier */
-        $chunks = explode('-', $row[self::FIELD_CSV_CARRIER]);
+        $chunks = explode('-', $row[1]);
         if (!isset($chunks[0])) {
             throw new LocalizedException(__('Carrier is missing'));
         }
 
         /* Validate origin */
-        $processedRow[Merchant::FIELD_CARRIER_CODE] = trim($chunks[0]);
+        $processedRow[Merchant::FIELD_CARRIER] = trim($chunks[0]);
 
         if (!isset($chunks[1])) {
             throw new LocalizedException(__('Origin is missing'));

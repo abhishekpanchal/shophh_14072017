@@ -1,5 +1,5 @@
 {
-    "name": "bluebadger/multiship",
+    "name": "bluebadger/dropship",
     "description": "",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0",
@@ -19,14 +19,14 @@
             "registration.php"
         ],
         "psr-4": {
-            "Bluebadger\\Multiship\\": ""
+            "Bluebadger\\Dropship\\": ""
         }
     },
     "extra": {
         "map": [
             [
                 "*",
-                "Bluebadger/Multiship"
+                "Bluebadger/Dropship"
             ]
         ]
     }

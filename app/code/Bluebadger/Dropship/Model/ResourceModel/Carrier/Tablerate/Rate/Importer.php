@@ -46,7 +46,7 @@ class Importer extends AbstractImporter
                 Rate::FIELD_WEIGHT => $row[0],
                 Rate::FIELD_CARRIER => $carrier,
                 Rate::FIELD_ZONE => $zone,
-                Rate::FIELD_RATE => $row[$key]
+                Rate::FIELD_RATE => floatval(str_replace('$', '', $row[$key]))
             ];
         }
 

@@ -28,9 +28,9 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     protected $filesystem;
 
     /**
-     * @var ImportFactory
+     * @var ImporterFactory
      */
-    protected $importFactory;
+    protected $importerFactory;
 
     /**
      * @var Logger
@@ -41,21 +41,21 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * Merchant constructor.
      * @param Context $context
      * @param Filesystem $filesystem
-     * @param ImportFactory $importFactory
+     * @param ImporterFactory $importerfactory
      * @param Logger $logger
      * @param null $connectionName
      */
     public function __construct(
         Context $context,
         Filesystem $filesystem,
-        ImportFactory $importFactory,
+        ImporterFactory $importerFactory,
         Logger $logger,
         $connectionName = null
     )
     {
         parent::__construct($context, $connectionName);
         $this->filesystem = $filesystem;
-        $this->importFactory = $importFactory;
+        $this->importerFactory = $importerFactory;
         $this->logger = $logger;
     }
 
@@ -88,7 +88,7 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         try {
             /** @var Importer $importer */
-            $importer = $this->importFactory->create();
+            $importer = $this->importerFactory->create();
             $importer->setFilePath($filePath);
             $importer->setIsFirstRowHeaders(true);
             $importer->import();
