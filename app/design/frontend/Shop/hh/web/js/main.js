@@ -295,11 +295,13 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
     $('.mobile-nav').toggleClass('expanded');
   });
   // Live Chat Toggle
-  $("#live-chat").click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    $("#launcher").show();
-    $("#launcher").contents().find(".src-component-Launcher-wrapper").click();
+  $(document).ready(function() {
+    $("#live-chat").click(function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      $("#launcher").show();
+      $("#launcher").contents().find(".src-component-Launcher-wrapper").click();
+    });
   });
 });
 
