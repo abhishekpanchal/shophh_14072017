@@ -1917,8 +1917,21 @@ Cart
     .cart-item-remove {
       padding: 0;
     }
+    .col-xs-5:not(.qty) {
+      width: auto;
+      padding: 0 0 0 5px;
+      float: right;
+    }
     .qty {
       font-size: 16px;
+      width: auto;
+      .select2-container {
+        vertical-align: top;
+        line-height: 0;
+      }
+      .cart-qty-wrapper *{
+        position: relative;
+      }
     }
     .price-including-tax, .price-excluding-tax {
       .price {
@@ -3239,6 +3252,9 @@ Checkout
       }
     }
     button.action.action-show-popup {
+      &:hover {
+        color: #000;
+      }
       text-transform: uppercase;
       font-family: @headlineFont !important;
       border: none;
@@ -4238,6 +4254,20 @@ Checkout
   .modal-header {
     padding: 0;
     border-bottom: 0;
+  }
+  .discount {
+    .title {
+      color: #000;
+      text-transform: none;
+      margin: 0;
+    }
+    .discount.coupon {
+      margin-left: .5em;
+      text-transform: uppercase;
+      color: #8d8d8d;
+      font-size: .8rem;
+    }
+
   }
 }
 
