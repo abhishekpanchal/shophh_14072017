@@ -2281,7 +2281,7 @@ Social Login
     text-align: center;
     background-color: rgba(255,255,255,0.8);
     font-family: @fancyFont;
-    font-size: 30px;
+    font-size: 34px;
     display: block;
     margin: 0 auto;
     font-style: italic;
@@ -3144,6 +3144,7 @@ Checkout
           font-size: 20px;
           font-weight: normal;
           border-bottom: 1px solid #8d8d8d;
+          padding-bottom: 10px;
           text-transform: capitalize;
         }
       }
@@ -3262,7 +3263,7 @@ Checkout
       }
     }
   }
-    #co-shipping-form {
+    #co-shipping-form, .opc-wrapper .form-login {
       max-width: none;
       width: 100%;
     }
@@ -3286,6 +3287,9 @@ Checkout
           font-size: 11px;
           line-height: 24px;
         }
+        @media (max-width: 767px) {
+          width: 100%;
+        }
       }
       .field.choice {
         display: none;
@@ -3301,8 +3305,11 @@ Checkout
         border-radius: 8px;
         background-color: #f0f0f0;
         padding: 11px 16px;
-        width: 80%;
+        width: 90%;
         height: 42px;
+      }
+      select {
+        width: 90%;
       }
       label.label {
         padding: 0;
@@ -3350,6 +3357,7 @@ Checkout
     text-align: center;
   }
 }
+
 
 //Order confirmation page
 
@@ -4252,6 +4260,9 @@ Checkout
     padding: 0;
     border-bottom: 0;
   }
+  .modal-content {
+    display: block;
+  }
 }
 
 .opc-block-summary {
@@ -4270,6 +4281,13 @@ Checkout
       font-size: 14px;
     }
   }
+  .grand.incl + .grand.excl {
+    .mark, .amount {
+      font-size: 14px;
+    }
+  }
+
+
   .items-in-cart {
     background: #fff;
     border: 1px solid #f0f0f0;
@@ -4403,38 +4421,6 @@ Checkout
 }
 
 
-/* Payment */
-.opc-payment {
-  .payment-methods .payment-method:nth-child(n+3) {
-  //  display: none;
-  }
-  .payment-method-title input[type="radio"], input[type="checkbox"] {
-    float: left;
-    margin-right: 6px;
-  }
-  .label {
-    text-transform: none;
-    font-size: 14px;
-  }
-  input[type="text"] {
-    background-color: #f0f0f0;
-    display: block;
-    text-align: left;
-    border-radius: 8px;
-    padding: 0;
-    height: auto;
-    padding: 11px 16px;
-    width: 100%;
-    margin: 0;
-    margin-top: 15px;
-    font-size: 16px;
-    color: #8d8d8d;
-  }
-  .help-block {
-    display: none;
-  }
-}
-
 .payment-method {
   display: none;
   &.supporting {
@@ -4458,8 +4444,12 @@ Checkout
   .fieldset > .field-select-billing > .control {
     display: none;
   }
-  .step-title {
-    margin-bottom: 20px;
+  .billing-address-same-as-shipping-block {
+    margin: 20px 0;
+    label {
+      font-size: 14px;
+      margin-left: 5px;
+    }
   }
   .action-show, .action-cancel {
     span {
