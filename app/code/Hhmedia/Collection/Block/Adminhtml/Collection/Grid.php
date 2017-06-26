@@ -70,35 +70,14 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
      */
     protected function _prepareColumns()
     {
+
         $this->addColumn('collection_id', [
-            'header'    => __('ID'),
+            'header'    => __('Collection Page URL'),
             'index'     => 'collection_id',
+            'renderer'  => 'Hhmedia\Collection\Block\Adminhtml\Collection\Edit\Tab\Renderer\Url'
         ]);
         
-        $this->addColumn('title', ['header' => __('Title'), 'index' => 'title']);
-        $this->addColumn('author', ['header' => __('Author'), 'index' => 'author']);
-        
-        $this->addColumn(
-            'published_at',
-            [
-                'header' => __('Published On'),
-                'index' => 'published_at',
-                'type' => 'date',
-                'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
-            ]
-        );
-        
-        $this->addColumn(
-            'created_at',
-            [
-                'header' => __('Created'),
-                'index' => 'created_at',
-                'type' => 'datetime',
-                'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
-            ]
-        );
+        $this->addColumn('collection_title', ['header' => __('Title'), 'index' => 'collection_title']);
         
         $this->addColumn(
             'action',
