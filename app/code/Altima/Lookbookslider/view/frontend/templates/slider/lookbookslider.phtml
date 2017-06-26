@@ -185,9 +185,9 @@ if ($helper->getEnabled()) :
                     -->
 
 
-                    <?php $noteId = $slide->getLink(); ?>
-                    <?php if($noteId != NULL && $noteId > 0): ?>
-                      <a href="<?php echo $this->getUrl('tags').'index/view/id/'.$noteId; ?>" class="btn-fullscreen">Shop Now</a>
+                    <?php $shopNowLink = $slide->getLink(); ?>
+                    <?php if($shopNowLink != NULL): ?>
+                      <a href="<?php echo $shopNowLink; ?>" class="btn-fullscreen">Shop Now</a>
                     <?php endif; ?>
                 </div>
                 <div class="hotspot-details-placeholder hidden"></div>
