@@ -3273,7 +3273,7 @@ Checkout
         display: none !important; 
       }
     }
-    #shipping-new-address-form, .form.form-login {
+    #shipping-new-address-form, #billing-new-address-form, .form.form-login {
       .fieldset > .field {
         margin-bottom: 40px !important;
       }
@@ -4410,15 +4410,9 @@ Checkout
 }
 
 .payment-method {
-//  display: none;
-  &.credit {
+  display: none;
+  &.supporting {
     display: block;
-    &.general, &.americanexpress {
-      display: none;
-    }
-  }
-  &.visa .payment-method-title {
-    border-top: none;
   }
 }
 
@@ -4432,9 +4426,6 @@ Checkout
   }
   .step-title {
     margin-bottom: 20px;
-  }
-  .field-select-billing {
-    display: none;
   }
   .action-show, .action-cancel {
     span {
@@ -4475,22 +4466,6 @@ Checkout
     display: block !important;
     max-width: none;
     margin-top: 6px;
-
-    .fieldset > .field {
-      float: left;
-      width: 48%;
-      &:nth-child(odd) {
-        margin-right: 4%;
-      }
-    }
-    .fieldset fieldset.field .label {
-      padding-top: 0;
-    }
-    select {
-      height: 42px;
-      background-color: #f0f0f0;
-      color: #8d8d8d;
-    }
   }
   .payment-method-billing-address .primary .action-update {
     background: #000;
