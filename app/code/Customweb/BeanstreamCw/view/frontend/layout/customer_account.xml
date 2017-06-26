@@ -5,7 +5,7 @@
             <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="beanstreamcw/shop/alias_management" name="customer-account-navigation-beanstreamcw-alias-link">
                 <arguments>
                     <argument name="path" xsi:type="string">beanstreamcw/customer/aliases</argument>
-                    <argument name="label" xsi:type="string" translate="true">My Beanstream Aliases</argument>
+                    <argument name="label" xsi:type="string" translate="true">My Credit Cards</argument>
                 </arguments>
             </block>
         </referenceBlock>
