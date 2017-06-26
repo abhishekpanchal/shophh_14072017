@@ -98,25 +98,14 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
 
         $method->setMethod($this->_code);
         $method->setMethodTitle($this->getConfigData(self::KEY_TITLE));
-
-        /* Postcode or state abbreviation depending on country */
-        $destCountryId = $request->getDestCountryId();
-        if ($destCountryId === self::KEY_COUNTRY_ID_CA) {
-            $zoneCode = substr($request->getDestPostcode(), 0, 3);
-        } else if ($destCountryId === self::KEY_COUNTRY_ID_US) {
-            $zoneCode = $request->getDestRegionCode();
-        } else {
-            throw new LocalizedException(__('Invalid country ID: ' . $destCountryId));
-        }
+        $zoneCode = substr($request->getDestPostcode(), 0, 3);
 
         if ($zoneCode) {
             $amount = $this->getTotalAmount($request->getAllItems(), $zoneCode);
+            $method->setPrice($amount);
+            $method->setCost($amount);
+            $result->append($method);
         }
-
-        $method->setPrice($amount);
-        $method->setCost($amount);
-
-        $result->append($method);
 
         return $result;
     }
@@ -140,20 +129,23 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
 
         /** @var Item $item */
         foreach ($items as $item) {
-            $product = $this->productRepository->getById($item->getProduct()->getId());
-            $weight = $product->getData(self::KEY_PACKAGE_WEIGHT_LBS);
-            $vendorId = $item->getData(self::KEY_UDROPSHIP_VENDOR);
+            /* Make sure the item has an ID */
+            if ($item->getId()) {
+                $product = $this->productRepository->getById($item->getProduct()->getId());
+                $weight = $product->getData(self::KEY_PACKAGE_WEIGHT_LBS);
+                $vendorId = $item->getData(self::KEY_UDROPSHIP_VENDOR);
 
-            /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Rate $rateResource */
-            $rateResource = $this->rateResourceFactory->create();
-            $rateInfo = $rateResource->getRateInfo($weight, $vendorId, $zoneCode);
-            $itemTotal = $rateInfo->rate * $item->getQty();
+                /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Rate $rateResource */
+                $rateResource = $this->rateResourceFactory->create();
+                $rateInfo = $rateResource->getRateInfo($weight, $vendorId, $zoneCode);
+                $itemTotal = $rateInfo->rate * $item->getQty();
 
-            /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item $quoteItemResource */
-            $quoteItemResource = $this->quoteItemFactory->create();
-            $quoteItemResource->updateItem($item, $itemTotal);
+                /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item $quoteItemResource */
+                $quoteItemResource = $this->quoteItemFactory->create();
+                $quoteItemResource->updateItem($item, $itemTotal);
 
-            $total += $itemTotal;
+                $total += $itemTotal;
+            }
         }
 
         return $total;

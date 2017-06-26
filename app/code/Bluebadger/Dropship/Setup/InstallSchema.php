@@ -161,6 +161,12 @@ class InstallSchema implements InstallSchemaInterface
             ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
             'Primary key'
         )->addColumn(
+            'quote_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            10,
+            ['nullable' => false, 'default' => '0'],
+            'Quote ID'
+        )->addColumn(
             'quote_item_id',
             \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
             10,
