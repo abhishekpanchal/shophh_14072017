@@ -950,8 +950,9 @@ Products Buttons
 /* ==========================================================================
 Messages
  ========================================================================== */
-.message.info {
-  font-size: 13px!important;
+.message.warning, .message.error, .message.info {
+  font-size: 11px;
+  line-height: 16px;
 }
 
 /* ==========================================================================
@@ -1844,9 +1845,6 @@ Cart
         span {
           font-weight: normal;
         }
-      }
-      .message.warning {
-        font-size: 1em;
       }
     }
     #co-shipping-method-form {
@@ -3281,6 +3279,13 @@ Checkout
         width: 50%;
         display: inline-block;
         position: relative;
+        padding-bottom: 20px;
+        margin: 0;
+        div.mage-error[generated] {
+          position: absolute;
+          font-size: 11px;
+          line-height: 24px;
+        }
       }
       .field.choice {
         display: none;
@@ -4413,6 +4418,14 @@ Checkout
   display: none;
   &.supporting {
     display: block;
+    .payment-method-title {
+      border-top: none;
+    }
+    & ~ .supporting {
+      .payment-method-title {
+        border-top: 1px solid #ccc;
+      }
+    }
   }
 }
 
@@ -9063,7 +9076,6 @@ Account reviews
     }
   }
 }
-
 
 
 
