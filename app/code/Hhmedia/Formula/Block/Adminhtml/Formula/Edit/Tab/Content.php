@@ -67,7 +67,7 @@ class Content extends \Magento\Backend\Block\Widget\Form\Generic implements
             [
                 'name' => 'content',
                 'style' => 'height:36em;',
-                'required' => true,
+                'required' => false,
                 'disabled' => $isElementDisabled,
                 'config' => $wysiwygConfig
             ]
