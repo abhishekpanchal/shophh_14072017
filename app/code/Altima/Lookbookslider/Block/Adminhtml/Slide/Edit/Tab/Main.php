@@ -144,7 +144,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 ]
         );
 
-        $noteOptions = $this->helperData->getCollection();
+        /*$noteOptions = $this->helperData->getCollection();
 
         $fieldset->addField(
             'link', 'select', 
@@ -154,6 +154,17 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'name'     => 'slide[link]',
                 'required' => false,
                 'options'  => $noteOptions,
+                'disabled' => $isElementDisabled
+            ]
+        );*/
+
+        $fieldset->addField(
+            'link', 'text', 
+            [
+                'label'    => __('Shop Now Link'),
+                'title'    => __('Shop Now Link'),
+                'name'     => 'slide[link]',
+                'required' => false,
                 'disabled' => $isElementDisabled
             ]
         );
