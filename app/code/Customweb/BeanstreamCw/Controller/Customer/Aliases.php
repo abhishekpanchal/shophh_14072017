@@ -61,7 +61,7 @@ class Aliases extends \Magento\Framework\App\Action\Action
 
         /** @var \Magento\Framework\View\Result\Page $resultPage */
         $resultPage = $this->_resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->set(__('My Beanstream Aliases'));
+        $resultPage->getConfig()->getTitle()->set(__('My Credit Cards'));
 
         $block = $resultPage->getLayout()->getBlock('customer.account.link.back');
         if ($block) {
