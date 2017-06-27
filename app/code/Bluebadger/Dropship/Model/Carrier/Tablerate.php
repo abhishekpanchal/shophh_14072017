@@ -155,7 +155,7 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
                 continue;
             }
             if (!$isQuoteCleaned) {
-                //$quoteItemResource->deletByQuoteId($item->getQuote()->getId());
+                $quoteItemResource->deleteByQuoteId($item->getQuote()->getId(), $vendorId);
                 $isQuoteCleaned = true;
             }
             $product = $this->productRepository->getById($item->getProduct()->getId());
