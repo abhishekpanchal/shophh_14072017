@@ -951,8 +951,8 @@ Products Buttons
 Messages
  ========================================================================== */
 .message.warning, .message.error, .message.info {
-  font-size: 11px;
-  line-height: 16px;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 /* ==========================================================================
@@ -3104,6 +3104,9 @@ Checkout
         float: none;
       }
       border-right: 1px solid #8d8d8d;
+      @media (max-width: 992px) {
+        border: none;
+      }
     }
     .checkout-user {
       button, a {
@@ -3273,10 +3276,38 @@ Checkout
         display: none !important; 
       }
     }
-    #shipping-new-address-form, #billing-new-address-form, .form.form-login {
-      .fieldset > .field {
-        margin-bottom: 40px !important;
+    #shipping-new-address-form, #billing-new-address-form, .form.form-login, .customweb-beanstreamcw-payment-form {
+      input.input-text {
+        border-radius: 8px;
+        background-color: #f0f0f0;
+        padding: 11px 16px;
+        width: 90%;
+        height: 42px;
       }
+      select {
+        height: 42px;
+        background-color: #f0f0f0;
+        color: #8d8d8d;
+        option:checked {
+          color: #000;
+        }
+      }
+    }
+    .customweb-beanstreamcw-payment-form .field {
+      margin-bottom: 10px !important;
+      &.expiration-date .control {
+        width: 90%;
+        &:first-child {
+          margin-bottom: 10px;
+        }
+      }
+      &.card-holder-name, &.card-number {
+        input.input-text {
+          width: 95%;
+        }
+      }
+    }
+    #shipping-new-address-form, #billing-new-address-form, .form.form-login {
       .field {
         width: 50%;
         display: inline-block;
@@ -3302,13 +3333,6 @@ Checkout
           width: 100%;
         }
       }
-      input.input-text {
-        border-radius: 8px;
-        background-color: #f0f0f0;
-        padding: 11px 16px;
-        width: 90%;
-        height: 42px;
-      }
       select {
         width: 90%;
       }
@@ -3323,14 +3347,6 @@ Checkout
         text-align: left;
         position: absolute;
         top: -30px;
-      }
-      select {
-        height: 42px;
-        background-color: #f0f0f0;
-        color: #8d8d8d;
-        option:checked {
-          color: #000;
-        }
       }
     }
     h1.modal-title {
@@ -4428,6 +4444,9 @@ Checkout
     display: block;
     .payment-method-title {
       border-top: none;
+      label:hover {
+        cursor: pointer;
+      }
     }
     & ~ .supporting {
       .payment-method-title {
@@ -4460,7 +4479,9 @@ Checkout
       margin-left: 5px;
       &:hover {
         color: #000;
-        text-decoration: none;
+        span {
+          text-decoration: none !important;
+        }
       }
     }
   }
@@ -4522,7 +4543,6 @@ Checkout
     }
   }
   .payment-method-billing-address {
-    border-bottom: 1px solid #8d8d8d;
     padding-bottom: 20px;
     .billing-address-details {
       display: none;
@@ -9054,11 +9074,9 @@ Account reviews
 /* this isnt updating on dev!? */
 
 /* overriding ':' from styles-m */ 
-.product-info-main, .product-options-bottom {
-  .old-price .price-label, .special-price .price-label {
-    &:after {
-      content: none;
-    }
+.old-price .price-label, .special-price .price-label {
+  &:after {
+    content: none;
   }
 }
 
