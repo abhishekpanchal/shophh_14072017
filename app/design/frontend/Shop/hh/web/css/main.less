@@ -9117,8 +9117,24 @@ body:not(.account):not(.checkout-cart-index):not(.checkout-index-index):not(.con
 
 
 
-
-
+/* ===============================
+  Hiding Social Share Icons
+  =================================*/
+#at-expanded-menu-host {
+  border: 50px solid lime;
+  .at-expanded-menu-service-list {
+    padding-top: 100px !important;
+    .top-service {
+      display: none;
+      &.at3winsvc_facebook, &.at3winsvc_twitter, &.at3winsvc_email, &.at3winsvc_pinterest_share {
+        display: inline-block;
+      }
+    }
+  }
+  .at-expanded-menu-ft {
+    display: none;
+  }
+}
 
 
 
