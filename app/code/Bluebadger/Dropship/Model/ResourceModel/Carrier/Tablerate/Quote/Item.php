@@ -77,7 +77,7 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * @param int $quoteId
      */
-    public function deletByQuoteId(int $quoteId)
+    public function deleteByQuoteId(int $quoteId)
     {
         if ($quoteId) {
             $this->getConnection()->delete($this->getMainTable(), ['quote_id = ?' => $quoteId]);
