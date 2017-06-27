@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Bluebadger\Importer\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">importerLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="system" xsi:type="object">Bluebadger\Importer\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="bluebadger_import_attributesets" xsi:type="object">Bluebadger\Importer\Console\Command\ImportAttributeSetsCommand</item>
+                <item name="bluebadger_import_attributes" xsi:type="object">Bluebadger\Importer\Console\Command\ImportAttributesCommand</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

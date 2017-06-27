@@ -1,0 +1,64 @@
+attribute_id|entity_type_id|attribute_code|attribute_model|backend_model|backend_type|backend_table|frontend_model|frontend_input|frontend_label|frontend_class|source_model|is_required|is_user_defined|default_value|is_unique|note|backend_renderer|frontend_input_renderer|is_global|is_visible|is_searchable|is_filterable|is_comparable|is_visible_on_front|is_html_allowed_on_front|is_used_for_price_rules|is_filterable_in_search|used_in_product_listing|used_for_sort_by|apply_to|is_visible_in_advanced_search|position|is_wysiwyg_enabled|is_used_for_promo_rules|is_required_in_admin_store|is_used_in_grid|is_visible_in_grid|is_filterable_in_grid|search_weight|additional_data|_options
+73|4|name|||varchar|||text|Product Name|validate-length maximum-length-255||1|0||0||||0|1|1|0|0|0|0|0|0|1|1||1|0|0|0|0|0|0|0|5||
+74|4|sku||Magento\Catalog\Model\Product\Attribute\Backend\Sku|static|||text|SKU|validate-length maximum-length-64||1|0||1||||1|1|1|0|1|0|0|0|0|0|0||1|0|0|0|0|0|0|0|6||
+75|4|description|||text|||textarea|Description|||0|0||0||||0|1|1|0|1|0|1|0|0|0|0||1|0|1|0|0|0|0|0|1||
+76|4|short_description|||text|||textarea|Short Description|||0|0||0||||0|1|1|0|1|0|1|0|0|1|0||1|0|1|0|0|1|0|0|1||
+77|4|price||Magento\Catalog\Model\Product\Attribute\Backend\Price|decimal|||price|Price|||1|0||0||||1|1|1|1|0|0|0|0|0|1|1|simple|virtual|bundle|downloadable|configurable|1|0|0|0|0|0|0;0;1
+78|4|special_price||Magento\Catalog\Model\Product\Attribute\Backend\Price|decimal|||price|Special Price|||0|0||0||||1|1|0|0|0|0|0|0|0|1|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|1|0;1;1
+79|4|special_from_date||Magento\Catalog\Model\Attribute\Backend\Startdate|datetime|||date|Special Price From Date|||0|0||0||||2|1|0|0|0|0|0|0|0|1|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|1|0;0;1
+80|4|special_to_date||Magento\Eav\Model\Entity\Attribute\Backend\Datetime|datetime|||date|Special Price To Date|||0|0||0||||2|1|0|0|0|0|0|0|0|1|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|1|0;0;1
+81|4|cost||Magento\Catalog\Model\Product\Attribute\Backend\Price|decimal|||price|Cost|||0|1||0||||1|1|0|0|0|0|0|0|0|0|0|simple|virtual|downloadable|0|0|0|0|0|1|0|1|1
+82|4|weight||Magento\Catalog\Model\Product\Attribute\Backend\Weight|decimal|||weight|Weight|||0|0||0|||Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Weight|1|1|0|0|0|0|0|0|0|0|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|1|0;1;1
+83|4|manufacturer|||int|||select|Manufacturer|||0|1||0||||1|1|1|1|1|0|0|0|0|0|0|simple|1|0|0|0|0|1|0|1|1||
+84|4|meta_title|||varchar|||text|Meta Title|||0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|1|1||
+85|4|meta_keyword|||text|||textarea|Meta Keywords|||0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|1|1||
+86|4|meta_description|||varchar|||textarea|Meta Description|||0|0||0|Maximum 255 chars. Meta Description should optimally be between 150-160 characters|||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|1|1||
+87|4|image|||varchar||Magento\Catalog\Model\Product\Attribute\Frontend\Image|media_image|Base|||0|0||0||||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+88|4|small_image|||varchar||Magento\Catalog\Model\Product\Attribute\Frontend\Image|media_image|Small|||0|0||0||||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+89|4|thumbnail|||varchar||Magento\Catalog\Model\Product\Attribute\Frontend\Image|media_image|Thumbnail|||0|0||0||||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+90|4|media_gallery|||static|||gallery|Media Gallery|||0|0||0||||1|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+91|4|old_id|||int|||text||||0|0||0||||1|0|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+92|4|tier_price||Magento\Catalog\Model\Product\Attribute\Backend\Tierprice|decimal|||text|Tier Price|||0|0||0||||2|1|0|0|0|0|0|0|0|0|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|0|0;0;1
+93|4|color|||int|||select|Color|||0|1||0||||1|1|1|1|1|0|0|0|0|0|0|simple|virtual|configurable|1|0|0|0|0|1|0|1|1
+94|4|news_from_date||Magento\Catalog\Model\Attribute\Backend\Startdate|datetime|||date|Set Product as New from Date|||0|0||0||||2|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|1|0|0|1||
+95|4|news_to_date||Magento\Eav\Model\Entity\Attribute\Backend\Datetime|datetime|||date|Set Product as New to Date|||0|0||0||||2|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|1|0|0|1||
+96|4|gallery|||varchar|||gallery|Image Gallery|||0|0||0||||1|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+97|4|status|||int|||select|Enable Product||Magento\Catalog\Model\Product\Attribute\Source\Status|0|0|1|0|||Magento\Framework\Data\Form\Element\Hidden|2|1|1|0|0|0|0|0|0|1|0||0|0|0|0|1|0|0|0|1||
+98|4|minimal_price|||decimal|||price|Minimal Price|||0|0||0||||0|0|0|0|0|0|0|0|0|0|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|0|0;0;1
+99|4|visibility|||int|||select|Visibility||Magento\Catalog\Model\Product\Visibility|0|0|4|0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|1|0|0|0|1||
+100|4|custom_design|||varchar|||select|New Theme||Magento\Theme\Model\Theme\Source\Theme|0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|1|1||
+101|4|custom_design_from||Magento\Catalog\Model\Attribute\Backend\Startdate|datetime|||date|Active From|||0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|0|1||
+102|4|custom_design_to||Magento\Eav\Model\Entity\Attribute\Backend\Datetime|datetime|||date|Active To|||0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|0|1||
+103|4|custom_layout_update||Magento\Catalog\Model\Attribute\Backend\Customlayoutupdate|text|||textarea|Layout Update XML|||0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+104|4|page_layout|||varchar|||select|Layout||Magento\Catalog\Model\Product\Attribute\Source\Layout|0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|0|1||
+105|4|category_ids||Magento\Catalog\Model\Product\Attribute\Backend\Category|static|||text|Categories|||0|0||0|||Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Category|1|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+106|4|options_container|||varchar|||select|Display Product Options In||Magento\Catalog\Model\Entity\Product\Attribute\Design\Options\Container|0|0|container2|0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+107|4|required_options|||static|||text||||0|0||0||||1|0|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+108|4|has_options|||static|||text||||0|0||0||||1|0|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+109|4|image_label|||varchar|||text|Image Label|||0|0||0||||0|0|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+110|4|small_image_label|||varchar|||text|Small Image Label|||0|0||0||||0|0|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+111|4|thumbnail_label|||varchar|||text|Thumbnail Label|||0|0||0||||0|0|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+112|4|created_at|||static|||date||||1|0||0||||1|0|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+113|4|updated_at|||static|||date||||1|0||0||||1|0|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+114|4|country_of_manufacture|||varchar|||select|Country of Manufacture||Magento\Catalog\Model\Product\Attribute\Source\Countryofmanufacture|0|0||0||||2|1|0|0|0|0|0|0|0|0|0|simple|bundle|grouped|configurable|0|0|0|0|0|1|0|1;1
+115|4|quantity_and_stock_status||Magento\Catalog\Model\Product\Attribute\Backend\Stock|int|||select|Quantity||Magento\CatalogInventory\Model\Source\Stock|0|0|1|0|||Magento\CatalogInventory\Block\Adminhtml\Form\Field\Stock|1|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+116|4|custom_layout|||varchar|||select|New Layout||Magento\Catalog\Model\Product\Attribute\Source\Layout|0|0||0||||0|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|0|1||
+119|4|url_key|||varchar|||text|URL Key|||0|0||0||||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|1|0|1|1||
+120|4|url_path|||varchar|||text||||0|0||0||||0|0|0|0|0|0|0|0|0|0|0||0|0|0|0|0|0|0|0|1||
+121|4|msrp||Magento\Catalog\Model\Product\Attribute\Backend\Price|decimal|||price|Manufacturer's Suggested Retail Price|||0|0||0|||Magento\Msrp\Block\Adminhtml\Product\Helper\Form\Type|1|1|0|0|0|0|0|0|0|1|0|simple|virtual|downloadable|bundle|configurable|0|0|0|0|0|1|0;1;1
+122|4|msrp_display_actual_price_type||Magento\Catalog\Model\Product\Attribute\Backend\Boolean|varchar|||select|Display Actual Price||Magento\Msrp\Model\Product\Attribute\Source\Type\Price|0|0|0|0|||Magento\Msrp\Block\Adminhtml\Product\Helper\Form\Type\Price|2|1|0|0|0|0|0|0|0|1|0|simple|virtual|downloadable|bundle|configurable|0|0|0|0|0|0|0;0;1
+123|4|price_type|||int|||boolean|Dynamic Price|||1|0|0|0||||1|1|0|0|0|0|0|0|0|1|0|bundle|0|0|0|0|0|0|0|0|1||
+124|4|sku_type|||int|||boolean|Dynamic SKU|||1|0|0|0||||1|1|0|0|0|0|0|0|0|0|0|bundle|0|0|0|0|0|0|0|0|1||
+125|4|weight_type|||int|||boolean|Dynamic Weight|||1|0|0|0||||1|1|0|0|0|0|0|0|0|1|0|bundle|0|0|0|0|0|0|0|0|1||
+126|4|price_view|||int|||select|Price View||Magento\Bundle\Model\Product\Attribute\Source\Price\View|1|0||0||||1|1|0|0|0|0|0|0|0|1|0|bundle|0|0|0|0|0|0|0|0|1||
+127|4|shipment_type|||int|||select|Ship Bundle Items||Magento\Bundle\Model\Product\Attribute\Source\Shipment\Type|1|0|0|0||||1|1|0|0|0|0|0|0|0|1|0|bundle|0|0|0|0|0|0|0|0|1||
+128|4|links_purchased_separately|||int||||Links can be purchased separately|||1|0||0||||1|0|0|0|0|0|0|0|0|1|0|downloadable|0|0|0|0|0|0|0|0|1||
+129|4|samples_title|||varchar||||Samples title|||1|0||0||||0|0|0|0|0|0|0|0|0|0|0|downloadable|0|0|0|0|0|0|0|0|1||
+130|4|links_title|||varchar||||Links title|||1|0||0||||0|0|0|0|0|0|0|0|0|0|0|downloadable|0|0|0|0|0|0|0|0|1||
+131|4|links_exist|||int|||||||0|0|0|0||||1|0|0|0|0|0|0|0|0|1|0|downloadable|0|0|0|0|0|0|0|0|1||
+132|4|swatch_image|||varchar||Magento\Catalog\Model\Product\Attribute\Frontend\Image|media_image|Swatch|||0|0||0||||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|1||
+133|4|tax_class_id|||int|||select|Tax Class||Magento\Tax\Model\TaxClass\Source\Product|0|0|2|0||||2|1|1|0|0|0|0|0|0|1|0|simple|virtual|bundle|downloadable|configurable|0|0|0|0|0|1|0;1;1
+134|4|gift_message_available||Magento\Catalog\Model\Product\Attribute\Backend\Boolean|varchar|||select|Allow Gift Message||Magento\Catalog\Model\Product\Attribute\Source\Boolean|0|0||0|||Magento\GiftMessage\Block\Adminhtml\Product\Helper\Form\Config|1|1|0|0|0|0|0|0|0|0|0||0|0|0|0|0|1|0|0|1||
+135|4|ships_from_warehouse_unit|||varchar|||text|Ships from Warehouse Window UNIT|||0|1|Days|0|Ships from Warehouse Window UNIT|||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|0||
+136|4|ships_from_warehouse_high|||int|||text|Ships from Warehouse Window High Value|||0|1||0|Ships from Warehouse Window High Value|||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|0||
+137|4|ships_from_warehouse_low|||int|||text|Ships from Warehouse Window Low Value|||0|1||0|Ships from Warehouse Window Low Value|||0|1|0|0|0|0|0|0|0|1|0||0|0|0|0|0|0|0|0|0||
