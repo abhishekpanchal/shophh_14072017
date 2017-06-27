@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<body>
+    <referenceContainer name="order.success.additional.info">
+        <block class="Bluebadger\Dropship\Block\Summary"
+               name="amit.order.success"
+               template="Bluebadger_Dropship::summary.phtml"
+               after="-">
+        </block>
+    </referenceContainer>
+</body>
