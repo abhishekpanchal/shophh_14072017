@@ -428,10 +428,6 @@ h4.decorating-formula-price {
 /* ==========================================================================
 Content
  ========================================================================== */
-.main-content {
-}
-
-
 .list-inline {
   margin: 0;
 }
@@ -448,6 +444,9 @@ Content
 .page-wrapper {
   min-height: auto!important;
   display: block !important;
+}
+.ie10 .page-wrapper, .ie11 .page-wrapper {
+  height: auto !important;
 }
 
 
@@ -953,6 +952,7 @@ Messages
 .message.warning, .message.error, .message.info {
   font-size: 12px;
   line-height: 18px;
+  float: none;
 }
 
 /* ==========================================================================
@@ -1100,7 +1100,8 @@ Footer
   padding-bottom: 30px;
   background: #e6e6e7;
   font: normal 11px/11px 'Montserrat', Helvetica, Arial, sans-serif;
-
+  overflow: auto;
+  clear: both;
   a:hover {
     text-decoration: underline;
   }
@@ -3106,6 +3107,7 @@ Checkout
       border-right: 1px solid #8d8d8d;
       @media (max-width: 992px) {
         border: none;
+        margin-bottom: 40px;
       }
     }
     .checkout-user {
@@ -3270,6 +3272,12 @@ Checkout
     #co-shipping-form, .opc-wrapper .form-login {
       max-width: none;
       width: 100%;
+    }
+    .opc-wrapper .form-login {
+      padding-bottom: 40px;
+      .field:last-child {
+        padding-bottom: 0;
+      }
     }
     .form.form-login {
       .note {
@@ -3716,6 +3724,7 @@ Checkout
 
 .main-content {
   margin-bottom: 60px;
+  overflow: hidden;
 }
 
 
@@ -4523,7 +4532,7 @@ Checkout
 
 
   .payment-method-content {
-    padding-left: 0;
+    padding-left: 75px;
     .label {
       text-transform: uppercase;
       padding: 0 !important;
@@ -7128,7 +7137,7 @@ Editos Main Page
       border: 1px solid #FFF;
       color: #FFF;
       text-align: center;
-
+      width: 100%;
       h4 {
         font-size: 18px;
         display: block;
@@ -7152,6 +7161,7 @@ Editos Main Page
         padding: 25px 0;
         border-top: 1px solid #889dbb;
         border-bottom: 1px solid #889dbb;
+        width: 100%;
         p {
           margin-bottom: 0;
         }
