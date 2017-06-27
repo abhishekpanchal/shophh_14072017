@@ -76,11 +76,13 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
     /**
      * @param int $quoteId
+     * @param int $vendorId
      */
-    public function deleteByQuoteId(int $quoteId)
+    public function deleteByQuoteId(int $quoteId, int $vendorId)
     {
-        if ($quoteId) {
-            $this->getConnection()->delete($this->getMainTable(), ['quote_id = ?' => $quoteId]);
+        if (!empty($quoteId) && !empty($vendorId)) {
+            $sql = "DELETE FROM `" . $this->getMainTable() . "` WHERE `quote_id` = {$quoteId} AND `vendor_id` = {$vendorId}";
+            $this->getConnection()->query($sql);
         }
     }
 }
