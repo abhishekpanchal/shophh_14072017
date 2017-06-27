@@ -16,7 +16,7 @@
                 <container name="checkout.cart.items" as="with-items">
                     <container name="checkout.cart.container" htmlTag="div" htmlClass="cart-container" before="-">
                         <container name="checkout.cart.form.before" as="form_before" label="Shopping Cart Items Before" htmlTag="div" htmlClass="rewards"/>
-                        <container name="cart.summary" label="Cart Summary Container" htmlTag="div" htmlClass="cart-summary" after="-">
+                        <container name="cart.summary" label="Cart Summary Container" htmlTag="div" htmlClass="cart-summary" after="cart.item.form">
                             <block class="Magento\Framework\View\Element\Template" name="checkout.cart.summary.title" before="-" template="Magento_Theme::text.phtml">
                                 <arguments>
                                     <argument translate="true" name="text" xsi:type="string">Order Summary</argument>
@@ -51,6 +51,19 @@
                                                                 <item name="title" xsi:type="string" translate="true">Shipping</item>
                                                                 <item name="template" xsi:type="string">Magento_Checkout/cart/totals/shipping</item>
                                                             </item>
+                                                        </item>
+                                                        <item name="discount" xsi:type="array">
+                                                          <item name="component"     xsi:type="string">Magento_SalesRule/js/view/cart/totals/discount</item>
+                                                          <item name="config" xsi:type="array">
+                                                            <item name="title" xsi:type="string" translate="true">Discount</item>
+                                                          </item>
+                                                        </item>
+                                                        <item name="tax" xsi:type="array">
+                                                          <item name="component"  xsi:type="string">Magento_Tax/js/view/checkout/cart/totals/tax</item>
+                                                          <item name="config" xsi:type="array">
+                                                            <item name="template" xsi:type="string">Magento_Tax/checkout/cart/totals/tax</item>
+                                                            <item name="title" xsi:type="string" translate="true">Tax</item>
+                                                          </item>
                                                         </item>
                                                         <item name="grand-total" xsi:type="array">
                                                             <item name="component"  xsi:type="string">Magento_Checkout/js/view/summary/grand-total</item>

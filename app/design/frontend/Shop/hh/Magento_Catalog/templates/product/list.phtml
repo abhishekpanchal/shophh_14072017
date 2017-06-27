@@ -65,12 +65,21 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                     }
                     ?>
                     <?php // Product Image ?>
-
+                    <?php 
+                    $productId = $_product->getEntityId();
+                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+                    $pro = $objectManager->get('Magento\Catalog\Model\Product')->load($_product->getEntityId());
+                    $colorId = $pro->getColor();
+                    $product = $objectManager->create('Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable')->getParentIdsByChild($_product->getEntityId());
+                    if(isset($product[0])){
+                        $productId = $product[0];
+                    }
+                    ?>
                     <div class="category-thumb relative">
                         <a href="<?php /* @escapeNotVerified */ echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
                             <?php echo $productImage->toHtml(); ?>
                         </a>
-                        <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$_product->getEntityId(); ?>
+                        <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$productId.'?color='.$colorId; ?>
                         <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
                     </div>
 
@@ -84,6 +93,9 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                 <?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
                             </a>
                         </strong>
+                        
+                        <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
+
                          <?php if ($showDescription):?>
                                 <div class="product description product-item-description">
                                     <?php if($customHelper->getStockQty($_product)): ?>
@@ -106,10 +118,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                 </div>
                             <?php endif; ?>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>
-                        <?php /* @escapeNotVerified */ echo $block->getProductPrice($_product) ?>
                         <?php echo $block->getProductDetailsHtml($_product); ?>
-
-
                     </div>
                 </div>
                 <?php echo($iterator == count($_productCollection)+1) ? '</li>' : '' ?>

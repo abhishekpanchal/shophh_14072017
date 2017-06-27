@@ -71,36 +71,13 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _prepareColumns()
     {
         $this->addColumn('tags_id', [
-            'header'    => __('ID'),
+            'header'    => __('Tag Page URL'),
             'index'     => 'tags_id',
+            'renderer'  => 'Hhmedia\Tags\Block\Adminhtml\Tags\Edit\Tab\Renderer\Url'
         ]);
         
         $this->addColumn('title', ['header' => __('Title'), 'index' => 'title']);
-        $this->addColumn('subtitle', ['header' => __('Subtitle'), 'index' => 'subtitle']);
-        $this->addColumn('url_key', ['header' => __('URL Key'), 'index' => 'url_key']);
-        $this->addColumn('url', ['header' => __('URL'), 'index' => 'url']);
-        
-        /*$this->addColumn(
-            'published_at',
-            [
-                'header' => __('Published On'),
-                'index' => 'published_at',
-                'type' => 'date',
-                'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
-            ]
-        );*/
-        
-        $this->addColumn(
-            'created_at',
-            [
-                'header' => __('Created'),
-                'index' => 'created_at',
-                'type' => 'datetime',
-                'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
-            ]
-        );
+
         
         $this->addColumn(
             'action',

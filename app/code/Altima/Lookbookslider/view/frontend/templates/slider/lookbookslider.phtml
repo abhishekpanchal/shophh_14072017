@@ -185,9 +185,9 @@ if ($helper->getEnabled()) :
                     -->
 
 
-                    <?php $noteId = $slide->getLink(); ?>
-                    <?php if($noteId != NULL && $noteId > 0): ?>
-                      <a href="<?php echo $this->getUrl('notes').'index/view/id/'.$noteId; ?>" class="btn-fullscreen">Shop Now</a>
+                    <?php $shopNowLink = $slide->getLink(); ?>
+                    <?php if($shopNowLink != NULL): ?>
+                      <a href="<?php echo $shopNowLink; ?>" class="btn-fullscreen">Shop Now</a>
                     <?php endif; ?>
                 </div>
                 <div class="hotspot-details-placeholder hidden"></div>
@@ -200,7 +200,7 @@ if ($helper->getEnabled()) :
 </div>
 </div>
 
-    
+      <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
       <?php $currentSlide = $blockObj->getSlide($sliderId, $slideId); ?>
       
             <?php foreach($currentSlide as $cs): ?>
@@ -245,7 +245,7 @@ if ($helper->getEnabled()) :
                         <div class="product-item-info">
                           <div class="category-thumb relative">
                               <a href="<?php echo $product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
-                                <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" />
+                                <img class="photo image" src="<?php echo $customHelper->resize($image,280,280); ?>" width="240" height="240">
                               </a>
                               <?php $quickViewUrl = $this->getUrl('').'weltpixel_quickview/catalog_product/view/id/'.$product->getId(); ?>
                               <a href="javascript: void(0);" data-quickview-url="<?php echo $quickViewUrl ?>" class="weltpixel-quickview quickview-bar2" title="Quick View">Quick Look</a>
@@ -254,6 +254,9 @@ if ($helper->getEnabled()) :
                             <strong class="product name product-item-name">
                               <a class="product-item-link hover-effect" href="<?php echo $product->getProductUrl() ?>"><?php echo $product->getName(); ?></a>
                             </strong>
+                            <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                            <h5><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
+                            
                             <div class="product description product-item-description">
                               <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
                               <?php if($customHelper->getStockQty($product)): ?>
@@ -272,8 +275,7 @@ if ($helper->getEnabled()) :
                                   <span class="callout last-call"><?php echo __('Last Call'); ?></span>
                               <?php endif; ?>
                               <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
-                              <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                              <h5><?php echo $abstractProductBlock->getProductPrice($product) ?></h5>
+                              
                             </div>
                           </div>
                         </div>
@@ -313,7 +315,7 @@ if ($helper->getEnabled()) :
 
       <div class="container">
                 <div class="row">
-                    <div class="page-title marginbottom-40"><span><?php echo __("In This Shot") ?></span></div>
+                    <div class="page-title marginbottom-40"><span><?php echo __("From the Collection") ?></span></div>
                     <div class="products list items product-items row">
                     <?php foreach ($slideCollection as $slide): ?>
                         <?php if($slide->getId() == $slideId): ?>
@@ -331,7 +333,7 @@ if ($helper->getEnabled()) :
 
             <div class="more-shots row no-gutters">
                 <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
-                <h4 class="subtitle"><?php echo __('Inspiration for every room in the house') ?></h4>
+                <h4 class="subtitle"><?php echo __('Lorem ipsum dolor sit amet, consectetur adipiscing elit') ?></h4>
                 <?php $shotCollection =  $blockObj->getShotCollection($sliderId); ?>
                 <?php foreach($shotCollection as $shot): ?>
                     <?php if($slideId != $shot->getSlideId()): ?> 

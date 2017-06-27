@@ -16,16 +16,18 @@
 <?php $_items = $orderDetail->getAllVisibleItems(); ?>
 
 <div class="checkout-success">
-    <?php if ($block->getOrderId()):?>
-          <p><?php /* @escapeNotVerified */ echo __('Your order has been confirmed.') ?></p>
-      <?php if ($block->getCanViewOrder()) :?>
-          <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
-      <?php  else :?>
-          <p><?php echo __('Your order number is: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
-      <?php endif;?>
-  <?php endif;?>
+  <div class="checkout-success-header">
+      <?php if ($block->getOrderId()):?>
+            <p><?php /* @escapeNotVerified */ echo __('Your order has been confirmed.') ?></p>
+        <?php if ($block->getCanViewOrder()) :?>
+            <p><?php echo __('Your order number is: %1.', sprintf('<a href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
+        <?php  else :?>
+            <p><?php echo __('Your order number is: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
+        <?php endif;?>
+    <?php endif;?>
 
-  <?php echo $block->getAdditionalInfoHtml() ?>
+    <?php echo $block->getAdditionalInfoHtml() ?>
+  </div>
 
   <div class="order-summary">
     <div class="block block-dashboard-addresses">
@@ -69,30 +71,51 @@
           <?php $productOptions = $_item->getProductOptions(); ?>
 
           <div class="row">
-            <img src="<?php echo $proHelper->resize($image,80,80); ?>" />
-            <span class="order-product-name"><?php echo $product->getName() ?></span>
-            <div class="order-product-options">
-            <?php 
-            foreach($productOptions as $key => $val):
-            if($key == 'attributes_info'):
-            foreach($val as $attribute):
-            echo $attribute['value'];
-            endforeach;
-            endif;
-            endforeach;
-            ?>
-            <span><?php echo 'Qty: '.($qty)*1; ?></span>
-            <span><?php echo 'SKU# '.$_item->getSku() ?></span>
-            <span><?php echo ($_item->getPrice())*$qty*1; ?></span>
+            <div class="col-md-6">
+              <img src="<?php echo $proHelper->resize($image,80,80); ?>" />
+              <div class="order-product-details">
+                <span class="order-product-name"><?php echo $product->getName() ?></span>
+                <div class="order-product-options">
+                  <?php 
+                    foreach($productOptions as $key => $val):
+                      if($key == 'attributes_info'):
+                        foreach($val as $attribute):
+                          echo "<span class='product-option'>", $attribute['value'], "</span>";
+                        endforeach;
+                      endif;
+                    endforeach;
+                  ?>
+                  <span><?php echo 'Qty: '.($qty)*1; ?></span>
+                  <span class="sku"><?php echo 'SKU# '.$_item->getSku() ?></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <span class="order-product-price"><?php echo ($_item->getPrice())*$qty*1; ?></span>
+            </div>
           </div>
         <?php endforeach; ?>
       </div>
     </div>
   </div>
-  <span>Subtotal</span><?php echo ($orderDetail->getSubTotal())*1; ?>
-  <span>Shipping</span><?php echo ($orderDetail->getShippingAmount())*1; ?>
-  <span>Taxes</span><?php echo ($orderDetail->getTaxAmount())*1; ?>
-  <span>Total</span><?php echo ($orderDetail->getGrandTotal())*1; ?>
-              <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
-
+  <div class="checkout-success-totals">
+    <div class="totals-wrapper">
+      <div class="price-row">
+        <span class="price-label">Subtotal</span> <span class="price"><?php echo ($orderDetail->getSubTotal())*1; ?></span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Shipping</span><span class="price"><?php echo ($orderDetail->getShippingAmount())*1; ?></span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Taxes</span><span class="price"><?php echo ($orderDetail->getTaxAmount())*1; ?></span>
+      </div>
+      <div class="price-row">
+        <span class="price-label">Total</span><span class="price grand-total"><?php echo ($orderDetail->getGrandTotal())*1; ?></span>
+      </div>
+    </div>
+    <div class="payment-method">
+      <p>Payment Method</p>
+      <span class="card">VISA 0124</span><span class="price"><?php echo ($orderDetail->getGrandTotal())*1; ?></span>
+    </div>
+  </div>
 </div>
