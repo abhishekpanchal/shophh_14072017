@@ -74,6 +74,9 @@
                                     <a class="product-item-link hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
                                 </strong>
 
+                                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                                <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
+
                                 <div class="product description product-item-description">
                                     <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
                                     <?php if($customHelper->getStockQty($pro)): ?>
@@ -93,9 +96,6 @@
                                     <?php endif; ?>
                                     <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
                                 </div>
-
-                                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                                <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
                             </div>
 
                         </div>
