@@ -173,35 +173,47 @@ class InstallSchema implements InstallSchemaInterface
             ['nullable' => false, 'default' => '0'],
             'Quote item ID'
         )->addColumn(
-            'merchant',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
-            ['nullable' => false, 'default' => '0'],
-            'Merchant'
-        )->addColumn(
-            'carrier',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            255,
-            ['nullable' => false, 'default' => '0'],
-            'Carrier'
-        )->addColumn(
-            'zone',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-            2,
-            ['nullable' => false, 'default' => '0'],
-            'Zone'
-        )->addColumn(
-            'rate',
-            \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
-            '12,4',
-            ['nullable' => false, 'default' => '0'],
-            'Rate'
-        )->addColumn(
             'shipping_cost',
             \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
             '12,4',
             ['nullable' => false, 'default' => '0'],
             'Cost'
+        )->addColumn(
+            'vendor_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            10,
+            ['nullable' => false, 'default' => '0'],
+            'Vendor ID'
+        )->addColumn(
+            'ship_time_low',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            2,
+            ['nullable' => false, 'default' => '0'],
+            'Lowest shipping time'
+        )->addColumn(
+            'ship_time_high',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            2,
+            ['nullable' => false, 'default' => '0'],
+            'Highest shipping time'
+        )->addColumn(
+            'ship_time_unit',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            10,
+            ['nullable' => false],
+            'Ship time unit'
+        )->addColumn(
+            'weight',
+            \Magento\Framework\DB\Ddl\Table::TYPE_DECIMAL,
+            '12,4',
+            ['nullable' => false, 'default' => '0'],
+            'Weight'
+        )->addColumn(
+            'call_for_quote',
+            \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
+            1,
+            ['nullable' => false, 'default' => '0'],
+            'Call for quote'
         )->setComment(
             'Quote Item'
         );

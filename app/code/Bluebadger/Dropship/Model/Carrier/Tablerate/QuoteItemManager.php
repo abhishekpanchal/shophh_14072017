@@ -108,10 +108,30 @@ class QuoteItemManager
                 ->getUrl();
             $quoteItem->setData('name', $cartItemData->getData('name'));
             $quoteItem->setData('sku', $cartItemData->getData('sku'));
-            $quoteItem->setData('price', $this->priceHelper->currency($cartItemData->getPrice(), true, false));
+            $quoteItem->setData('price', $this->priceHelper->currency($product->getPrice() * $cartItemData->getTotalQty(), true, false));
+            $quoteItem->setData('size', $product->getAttributeText('size'));
+
+            /* Add size */
+            $attr = $product->getResource()->getAttribute('size');
+            if ($attr->usesSource()) {
+                $size = $attr->getSource()->getOptionText($product->getData('size'));
+                $quoteItem->setData('size', $size);
+            }
+
+            /* Add color */
+            $attr = $product->getResource()->getAttribute('color');
+            if ($attr->usesSource()) {
+                $color = $attr->getSource()->getOptionText($product->getData('color'));
+                $quoteItem->setData('color', $color);
+            }
+
+
             $quoteItem->setData('thumbnail', $image);
             $vendors[$quoteItem->getData('vendor_id')]['items'][] = $quoteItem->getData();
-            $vendors[$quoteItem->getData('vendor_id')]['total_qty'] = (int)$cartItemData->getTotalQty();
+            if (!isset($vendors[$quoteItem->getData('vendor_id')]['total_qty'])) {
+                $vendors[$quoteItem->getData('vendor_id')]['total_qty'] = (int)0;
+            }
+            $vendors[$quoteItem->getData('vendor_id')]['total_qty'] += (int)$cartItemData->getTotalQty();
             $quoteData['total_qty'] += $cartItemData->getTotalQty();
         }
 
@@ -122,7 +142,8 @@ class QuoteItemManager
             $highestTime = 0;
 
             foreach ($vendor['items'] as $item) {
-                $time = ($item['ship_time_high'] + $item['ship_time_low']) * $this->textToInt[$item['ship_time_unit']];
+                $days = ($item['ship_time_unit'] == 'week') ? 5 : 1;
+                $time = $item['ship_time_high'] * $days;
 
                 if ($time > $highestTime) {
                     $highestTime = $time;

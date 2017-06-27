@@ -18,6 +18,7 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     const FIELD_CARRIER = 'carrier';
     const FIELD_RATE = 'rate';
     const FIELD_SHIPPING_COST = 'shipping_cost';
+    const KEY_PACKAGE_WEIGHT_LBS = 'package_weight_lbs';
 
     /**
      * @var Logger
@@ -53,31 +54,33 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     }
 
     /**
-     * TODO Ship time attributes must be changed.
      * @param \Magento\Quote\Model\Quote\Item $item
      * @param float $shippingCost
      */
-    public function updateItem(\Magento\Quote\Model\Quote\Item $item, float $shippingCost)
+    public function updateItem(\Magento\Quote\Model\Quote\Item $item, float $shippingCost, bool $callForQuote = false)
     {
-        /** TODO Randomly generated dates for testing purposes */
-        $item->setData('ship_time_low', rand(1, 4));
-        $item->setData('ship_time_high', rand(5, 10));
-        $item->setData('ship_time_unit', rand(1, 2));
-
         $data = [
             'quote_id' => $item->getQuoteId(),
             'quote_item_id' => $item->getId(),
-            'merchant' => 'merchant',
-            'carrier' => 'carrier',
-            'zone' => 'zone',
-            'rate' => 10.0,
             'shipping_cost' => $shippingCost,
             'vendor_id' => $item->getData('udropship_vendor'),
             'ship_time_low' => $item->getData('ship_time_low'),
             'ship_time_high' => $item->getData('ship_time_high'),
-            'ship_time_unit' => $item->getData('ship_time_unit')
+            'ship_time_unit' => $item->getData('ship_time_unit'),
+            'weight' => $item->getData(self::KEY_PACKAGE_WEIGHT_LBS),
+            'call_for_quote' => $callForQuote
         ];
 
         $this->getConnection()->insertOnDuplicate($this->getMainTable(), $data);
+    }
+
+    /**
+     * @param int $quoteId
+     */
+    public function deletByQuoteId(int $quoteId)
+    {
+        if ($quoteId) {
+            $this->getConnection()->delete($this->getMainTable(), ['quote_id = ?' => $quoteId]);
+        }
     }
 }
