@@ -15,6 +15,7 @@ $isVisibleProduct = $product->isVisibleInSiteVisibility();
 $helper = $this->helper('Magento\Msrp\Helper\Data');
 $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinimalPriceLessMsrp($product);
 ?>
+<?php $overrideHelper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
 <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 <div class="row cart-item">
   <div class="col-md-3 col-sm-4 col-xs-3">
@@ -37,13 +38,12 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
     <div class="row">
       <div class="col-md-6 col-sm-12 col-xs-12 cart-item-name-container">
         <?php if ($block->hasProductUrl()):?>
-        <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl() ?>" class="cart-item-name"><?php echo $block->escapeHtml($block->getProductName()) ?></a>
+        <a href="<?php /* @escapeNotVerified */ echo $block->getProductUrl() ?>" class="cart-item-name"><?php echo $block->escapeHtml($overrideHelper->getProductBySku($_item->getSku())->getName()) ?></a>
         <?php else: ?>
         <span class="cart-item-name">
-          <?php echo $block->escapeHtml($block->getProductName()) ?>
+          <?php echo $block->escapeHtml($overrideHelper->getProductBySku($_item->getSku())->getName()) ?>
         </span>
         <?php endif; ?>
-
       </div>
       <div class="col-md-3 col-sm-4 col-xs-6 qty" data-th="<?php echo $block->escapeHtml(__('Qty')); ?>">
         <div class="cart-qty-wrapper">
@@ -117,7 +117,6 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       <span class="cart-item-sku">
         SKU: <?php /* @escapeNotVerified */ echo $_item->getSku() ?>
       </span>
-      <?php $overrideHelper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
       <?php $custProd = $overrideHelper->getLoadProduct($product->getId()); ?>
       <?php if($custProd->getShipWarehouse()): ?>
         <span class="cart-item-shipping">
