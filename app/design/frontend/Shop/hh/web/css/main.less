@@ -1905,7 +1905,16 @@ Cart
 }
 
 @media only screen and (min-width: 300px) and (max-width: 550px) {
+  .cart-continue {
+    margin-bottom: 25px;
+    display: block;
+  }
   .cart-container {
+    .cart-details-container {
+      .cart-item-details, .cart-item-actions {
+        font-size: 14px;
+      }
+    }
     display: flex;
     flex-direction: column-reverse;
     .cart-item-name-container {
