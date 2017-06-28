@@ -1902,8 +1902,16 @@ Cart
   }
 }
 
-@media only screen and (min-width: 300px) and (max-width: 550px) {
+@media only screen and (min-width: 300px) and (max-width: @screen-md-min) {
   .checkout-cart-index {
+    .cart-container {
+      .form-cart {
+        width: 100%;
+      }
+    }
+    .cart-summary {
+      width: 100%;
+    }
     .page-title {
       margin-bottom: 10px;
     }
@@ -2038,6 +2046,13 @@ Cart
 
 
 @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
+  .checkout-cart-index {
+    .cart {
+      .cart-item-remove {
+        position: absolute;
+      }
+    }
+  }
 }
 /* ==========================================================================
 Social Login
