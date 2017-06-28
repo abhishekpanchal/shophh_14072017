@@ -731,6 +731,28 @@ Shop the Spot Desktop Responsive
 
 
 
+	/* ===============================
+	Checkout
+	=================================*/
+	.checkout-index-index {
+		.opc-wrapper, .opc-sidebar {
+			float: none;
+			width: 100%;
+			padding: 0;
+		}
+	}
+	.checkout-cart-index .cart-container {
+		.cart-summary, .form-cart {
+			width: 100%;
+		}
+		.cart-summary {
+			margin-top: 20px;
+		}
+	}
+
+
+
+
 
 
 
@@ -1127,6 +1149,66 @@ All small devices - till 768px
 	.notes-index-view .column.main {
 		width: 100%;
 	}
+
+
+
+
+	/* ===============================
+	Checkout
+	=================================*/
+	.opc-estimated-wrapper {
+		display: none;
+	}
+	.checkout-index-index {
+		.checkout-progress-bar li {
+			width: 49%;
+			white-space: nowrap;
+			span {
+				padding-left: 10px;
+			}
+			&:first-child:before {
+				width: 25px;
+				height: 26px;
+				background-size: cover;
+			}
+			&:last-child:before {
+				width: 34px;
+				height: 25px;
+				background-size: cover;
+			}
+		}
+		.custom-slide {
+			position: static;
+			.modal-inner-wrap {
+				transform: none;
+				visibility: visible;
+				box-shadow: none;
+			}
+		}
+		#shipping-new-address-form, #billing-new-address-form, .form.form-login {
+			input.input-text, select {
+				width: 100%;
+			}
+		}
+	}
+	.checkout-payment-method .payment-methods, .checkout-payment-method .payment-option {
+		margin: 0;
+	}
+	.checkout-payment-method {
+		.payment-method-content {
+			padding-right: 0;
+		}
+		.payment-method-title {
+			padding: 15px 0;
+		}
+	}
+	.checkout-index-index .customweb-beanstreamcw-payment-form {
+		.field.card-holder-name, .field.card-number {
+			input.input-text {
+				width: 100%;
+			}
+		}
+	}
 }
 
 
@@ -1373,6 +1455,10 @@ Somewhere in between
 
 	.cms-about-us .signature {
 		padding-left: 40%;
+	}
+
+	.checkout-payment-method .payment-method-content {
+		padding-left: 0;
 	}
 }
 

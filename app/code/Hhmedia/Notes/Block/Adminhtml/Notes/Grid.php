@@ -71,22 +71,12 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     protected function _prepareColumns()
     {
         $this->addColumn('notes_id', [
-            'header'    => __('ID'),
+            'header'    => __('Decorating Notes URL'),
             'index'     => 'notes_id',
+            'renderer'  => 'Hhmedia\Notes\Block\Adminhtml\Notes\Edit\Tab\Renderer\Url'
         ]);
         
         $this->addColumn('title', ['header' => __('Title'), 'index' => 'title']);
-        
-        $this->addColumn(
-            'created_at',
-            [
-                'header' => __('Created'),
-                'index' => 'created_at',
-                'type' => 'datetime',
-                'header_css_class' => 'col-date',
-                'column_css_class' => 'col-date'
-            ]
-        );
         
         $this->addColumn(
             'action',

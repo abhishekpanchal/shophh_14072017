@@ -36,11 +36,11 @@
                         <label class="sort-label" for="sorter">Sort</label>
                         <?php $sort = !empty($_GET['sort']) ? $_GET['sort'] : 'position'; ?>
                         <select id="sorter" data-role="sorter" class="sorter-options">
+                            <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=position'; ?>" <?php echo $sort == 'position' ? 'selected' : ''; ?>>All Products</option>
                             <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=created_at'; ?>" <?php echo $sort == 'created_at' ? 'selected' : ''; ?>>Newest</option>
-                            <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=position'; ?>" <?php echo $sort == 'position' ? 'selected' : ''; ?>>Featured</option>
-                            <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=bestseller'; ?>" <?php echo $sort == 'bestseller' ? 'selected' : ''; ?>>Best Selling</option>
                             <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=price_low'; ?>" <?php echo $sort == 'price_low' ? 'selected' : ''; ?>>Price Low to High</option>
                             <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=price_high'; ?>" <?php echo $sort == 'price_high' ? 'selected' : ''; ?>>Price High to Low</option>
+                            <option value="<?php echo $this->getUrl('tags').'index/view/id/'.$tags->getTagsId().'/?sort=bestseller'; ?>" <?php echo $sort == 'bestseller' ? 'selected' : ''; ?>>Best Selling</option>
                         </select>
                     </div>                    
                 </div>
@@ -57,8 +57,7 @@
                         $pro = $this->getProductData($_product->getEntityId());
                         $image = $pro->getData('small_image');
                     ?>
-
-
+                    
                     <div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">
                         <div class="product-item-info" >
                             <div class="product-img relative">
@@ -73,6 +72,9 @@
                                 <strong class="product name product-item-name">
                                     <a class="product-item-link hover-effect" href="<?php echo $pro->getProductUrl() ?>"><?php echo $pro->getName(); ?></a>
                                 </strong>
+
+                                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
+                                <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
 
                                 <div class="product description product-item-description">
                                     <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
@@ -93,9 +95,6 @@
                                     <?php endif; ?>
                                     <p><?php echo $customHelper->limit_description($pro->getShortDescription(), 10); ?></p>
                                 </div>
-
-                                <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
-                                <h5><?php echo $abstractProductBlock->getProductPrice($pro) ?></h5>
                             </div>
 
                         </div>
