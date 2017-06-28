@@ -1,0 +1,122 @@
+attribute_set_name|attribute_set_sort_order|group|group_sort_order|attribute|attribute_sort_order
+Default|1|Product Details|10|name|10
+Default|1|Product Details|10|sku|20
+Default|1|Product Details|10|price|30
+Default|1|Product Details|10|weight|70
+Default|1|Product Details|10|old_id|6
+Default|1|Product Details|10|news_from_date|90
+Default|1|Product Details|10|news_to_date|100
+Default|1|Product Details|10|status|5
+Default|1|Product Details|10|visibility|80
+Default|1|Product Details|10|category_ids|80
+Default|1|Product Details|10|required_options|14
+Default|1|Product Details|10|has_options|15
+Default|1|Product Details|10|image_label|16
+Default|1|Product Details|10|small_image_label|17
+Default|1|Product Details|10|thumbnail_label|18
+Default|1|Product Details|10|created_at|19
+Default|1|Product Details|10|updated_at|20
+Default|1|Product Details|10|country_of_manufacture|110
+Default|1|Product Details|10|quantity_and_stock_status|60
+Default|1|Product Details|10|url_path|11
+Default|1|Product Details|10|price_type|31
+Default|1|Product Details|10|sku_type|21
+Default|1|Product Details|10|weight_type|71
+Default|1|Product Details|10|links_purchased_separately|111
+Default|1|Product Details|10|samples_title|112
+Default|1|Product Details|10|links_title|113
+Default|1|Product Details|10|links_exist|114
+Default|1|Product Details|10|tax_class_id|40
+Default|1|Product Details|10|color|14
+Default|1|Advanced Pricing|40|special_price|3
+Default|1|Advanced Pricing|40|special_from_date|4
+Default|1|Advanced Pricing|40|special_to_date|5
+Default|1|Advanced Pricing|40|cost|6
+Default|1|Advanced Pricing|40|tier_price|7
+Default|1|Advanced Pricing|40|minimal_price|8
+Default|1|Advanced Pricing|40|msrp|9
+Default|1|Advanced Pricing|40|msrp_display_actual_price_type|10
+Default|1|Advanced Pricing|40|price_view|11
+Default|1|Search Engine Optimization|30|meta_title|20
+Default|1|Search Engine Optimization|30|meta_keyword|30
+Default|1|Search Engine Optimization|30|meta_description|40
+Default|1|Search Engine Optimization|30|url_key|10
+Default|1|Images|20|image|1
+Default|1|Images|20|small_image|2
+Default|1|Images|20|thumbnail|3
+Default|1|Images|20|media_gallery|4
+Default|1|Images|20|gallery|5
+Default|1|Images|20|swatch_image|3
+Default|1|Design|50|custom_layout_update|10
+Default|1|Design|50|page_layout|5
+Default|1|Design|50|options_container|6
+Default|1|Content|15|description|90
+Default|1|Content|15|short_description|100
+Default|1|Schedule Design Update|55|custom_design|40
+Default|1|Schedule Design Update|55|custom_design_from|20
+Default|1|Schedule Design Update|55|custom_design_to|30
+Default|1|Schedule Design Update|55|custom_layout|50
+Default|1|Bundle Items|16|shipment_type|1
+Default|1|Gift Options|61|gift_message_available|10
+House & Home|2|Product Details|10|name|10
+House & Home|2|Product Details|10|sku|20
+House & Home|2|Product Details|10|price|30
+House & Home|2|Product Details|10|weight|70
+House & Home|2|Product Details|10|old_id|6
+House & Home|2|Product Details|10|news_from_date|90
+House & Home|2|Product Details|10|news_to_date|100
+House & Home|2|Product Details|10|status|5
+House & Home|2|Product Details|10|visibility|80
+House & Home|2|Product Details|10|category_ids|80
+House & Home|2|Product Details|10|required_options|14
+House & Home|2|Product Details|10|has_options|15
+House & Home|2|Product Details|10|image_label|16
+House & Home|2|Product Details|10|small_image_label|17
+House & Home|2|Product Details|10|thumbnail_label|18
+House & Home|2|Product Details|10|created_at|19
+House & Home|2|Product Details|10|updated_at|20
+House & Home|2|Product Details|10|country_of_manufacture|110
+House & Home|2|Product Details|10|quantity_and_stock_status|60
+House & Home|2|Product Details|10|url_path|11
+House & Home|2|Product Details|10|price_type|31
+House & Home|2|Product Details|10|sku_type|21
+House & Home|2|Product Details|10|weight_type|71
+House & Home|2|Product Details|10|links_purchased_separately|111
+House & Home|2|Product Details|10|samples_title|112
+House & Home|2|Product Details|10|links_title|113
+House & Home|2|Product Details|10|links_exist|114
+House & Home|2|Product Details|10|tax_class_id|40
+House & Home|2|Product Details|10|color|14
+House & Home|2|Advanced Pricing|40|special_price|3
+House & Home|2|Advanced Pricing|40|special_from_date|4
+House & Home|2|Advanced Pricing|40|special_to_date|5
+House & Home|2|Advanced Pricing|40|cost|6
+House & Home|2|Advanced Pricing|40|tier_price|7
+House & Home|2|Advanced Pricing|40|minimal_price|8
+House & Home|2|Advanced Pricing|40|msrp|9
+House & Home|2|Advanced Pricing|40|msrp_display_actual_price_type|10
+House & Home|2|Advanced Pricing|40|price_view|11
+House & Home|2|Search Engine Optimization|30|meta_title|20
+House & Home|2|Search Engine Optimization|30|meta_keyword|30
+House & Home|2|Search Engine Optimization|30|meta_description|40
+House & Home|2|Search Engine Optimization|30|url_key|10
+House & Home|2|Images|20|image|1
+House & Home|2|Images|20|small_image|2
+House & Home|2|Images|20|thumbnail|3
+House & Home|2|Images|20|media_gallery|4
+House & Home|2|Images|20|gallery|5
+House & Home|2|Images|20|swatch_image|3
+House & Home|2|Design|50|custom_layout_update|10
+House & Home|2|Design|50|page_layout|5
+House & Home|2|Design|50|options_container|6
+House & Home|2|Content|15|description|90
+House & Home|2|Content|15|short_description|100
+House & Home|2|Schedule Design Update|55|custom_design|40
+House & Home|2|Schedule Design Update|55|custom_design_from|20
+House & Home|2|Schedule Design Update|55|custom_design_to|30
+House & Home|2|Schedule Design Update|55|custom_layout|50
+House & Home|2|Bundle Items|16|shipment_type|1
+House & Home|2|Gift Options|61|gift_message_available|10
+House & Home|2|Shop HH|20|ships_from_warehouse_unit|10
+House & Home|2|Shop HH|20|ships_from_warehouse_high|20
+House & Home|2|Shop HH|20|ships_from_warehouse_low|30

@@ -23,7 +23,7 @@
     </div>
         <?php if ($block->getContinueShoppingUrl()): ?>
             <a href="<?php echo $block->escapeUrl($block->getContinueShoppingUrl()) ?>"
-               title="<?php echo $block->escapeHtml(__('Continue Shopping')); ?>">
+               title="<?php echo $block->escapeHtml(__('Continue Shopping')); ?>" class="hover-effect">
                 <span class="cart-continue"><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span>
             </a>
         <?php endif; ?>
