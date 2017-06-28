@@ -742,13 +742,11 @@ Shop the Spot Desktop Responsive
 		}
 	}
 	.checkout-cart-index .cart-container {
-	//	display: flex;
 		.cart-summary, .form-cart {
 			width: 100%;
-			border: 1px solid rebeccapurple;
 		}
 		.cart-summary {
-		//	order: 2;
+			margin-top: 20px;
 		}
 	}
 
@@ -1196,8 +1194,20 @@ All small devices - till 768px
 	.checkout-payment-method .payment-methods, .checkout-payment-method .payment-option {
 		margin: 0;
 	}
-	.checkout-payment-method .payment-method-title {
-		padding: 15px 0;
+	.checkout-payment-method {
+		.payment-method-content {
+			padding-right: 0;
+		}
+		.payment-method-title {
+			padding: 15px 0;
+		}
+	}
+	.checkout-index-index .customweb-beanstreamcw-payment-form {
+		.field.card-holder-name, .field.card-number {
+			input.input-text {
+				width: 100%;
+			}
+		}
 	}
 }
 
@@ -1445,6 +1455,10 @@ Somewhere in between
 
 	.cms-about-us .signature {
 		padding-left: 40%;
+	}
+
+	.checkout-payment-method .payment-method-content {
+		padding-left: 0;
 	}
 }
 
