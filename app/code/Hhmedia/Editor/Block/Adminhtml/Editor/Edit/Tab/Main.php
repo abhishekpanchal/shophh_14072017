@@ -69,7 +69,7 @@ class Main extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
             'name',
             'text',
             [
-                'name' => 'name',
+                'name' => 'editors_name',
                 'label' => __('Editor Name'),
                 'title' => __('Editor Name'),
                 'required' => true,
