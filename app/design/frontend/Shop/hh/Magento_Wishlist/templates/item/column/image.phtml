@@ -10,7 +10,7 @@
 $item = $block->getItem();
 $product = $item->getProduct();
 ?>
-<div class="col-md-3 col-sm-4 col-xs-3">
+<div class="col-md-3 col-sm-4 col-xs-4">
     <a class="product-item-photo" href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($item) ?>" title="<?php echo $block->escapeHtml($product->getName()) ?>">
         <?php echo $block->getImage($product, 'wishlist_thumbnail')->toHtml(); ?>
     </a>

@@ -245,8 +245,7 @@ Icon Font
 /* ==========================================================================
 buttons
 ========================================================================== */
-.btn-main,
-.actions-toolbar > .primary .action, .actions-toolbar > .secondary .action {
+.btn-main {
   background-color: #000;
   color: #FFF;
   border: none;
@@ -267,9 +266,6 @@ buttons
   }
 }
 
-.actions-toolbar > .primary .action, .actions-toolbar > .secondary .action {
-  display: inline-block;
-}
 
 .btn, button {
   &:hover {
@@ -4858,6 +4854,7 @@ Cart Page
   margin: 20px 0;
   border: 1px solid transparent;
   border-radius: 4px;
+  font-size: 12px;
 }
 
 .c-sidebar {
@@ -8936,14 +8933,25 @@ Account reviews
     display: block;
     .product-item {
       width: 100% !important;
+      margin: 0;
+      .price-box {
+        float: left;
+      }
+      .box-tocart {
+        padding-left: 0;
+        margin-right: 0;
+      }
     }
   }
   .products-grid.wishlist {
     .product-item-photo {
       float: left;
-      width: 140px;
+      width: 110%;
+      margin: 0 0 0 -15px;
     }
     .product-item-name {
+      padding: 0;
+      margin: 0 0 20px;
       a {
         font-size: 20px;
         font-family: @fancyFont;
@@ -8964,11 +8972,14 @@ Account reviews
   }
   .wishlist-qty-container {
     border: 1px solid black;
-    width: 75px;
-    padding: 7px 2px;
-    display: inline;
-    label span {
-      text-transform: uppercase!important; /*fighting important with important */
+    padding: 5px 2px 8px;
+    display: block;
+    label {
+      padding-right: 0;
+      span {
+        text-transform: uppercase!important; /*fighting important with important */
+        font-size: 12px;
+      }
     }
     input {
       background-color: #fff;
@@ -8978,9 +8989,11 @@ Account reviews
       width: 40px;
     }
     .wishlist-item-qty {
-      height: 0.9rem;
-      width: 40px;
+      height: 22px;
+      width: 20px;
       border: 0;
+      float: right;
+      font-size: 12px;
       &:focus {
         outline: none;
         border-color: inherit;
@@ -8995,13 +9008,13 @@ Account reviews
       color: #AC2232;
       float: right;
       padding: 0 5px;
-      font-size: 1.8rem;
+      font-size: 1.2rem;
     }
   }
     .product-item-actions {
       display: block;
       float: left;
-      a {
+      a.action {
         background: none;
         text-decoration: none;
         span {
@@ -9024,16 +9037,24 @@ Account reviews
         }
       }
     }
-  .products-grid + .actions-toolbar {
+  .actions-toolbar {
+    padding-left: 25%;
+    .primary {
+      margin-left: 40px;
+      display: block;
+      float: none;
+    }
     button.update {
       display: none;
     }
+    
     button.tocart {
       color: #fff;
       background: #000;
       border: 0;
       font-style: italic;
       float: left;
+      padding: 10px 25px;
       span {
         font-size: 16px;
       }
@@ -9045,6 +9066,7 @@ Account reviews
       font-family: @headlineFont;
       text-transform: uppercase;
     }
+    
   }
   .form-wishlist-items {
     .product-item-comment {
@@ -9052,9 +9074,50 @@ Account reviews
     }
   }
 }
+@media only screen and (max-width: 767px) {
+  .products-grid.wishlist {
+    margin: 0;
+  }
+  .wishlist-index-index {
+    .product-item-info {
+      padding: 10px 0;
+    }
+    .products-grid .product-item {
+      padding: 0;
+      width: auto !important;
+      .price-box {
+        margin-left: 0;
+        .price {
+          font-size: 15px;
+        }
+      }
+      .box-tocart + div {
+        padding-right: 0;
+        width: 58%;
+      }
+    }
+    .actions-toolbar {
+      padding-left: 0;
+      .primary {
+        margin: 0;
+        padding: 0 15px;
+      }
+    }
+  }
+  .products-grid.wishlist .product-item-actions .action.edit {
+    margin-top: 3px;
+  }
+}
 
-
-
+@media only screen and (max-width: 639px) {
+  .products-grid.wishlist {
+    border-bottom: 1px solid #e8e8e8;
+    .product-item {
+      border-bottom: none;
+      margin-bottom: 20px;
+    }
+  }
+}
 
 
 
