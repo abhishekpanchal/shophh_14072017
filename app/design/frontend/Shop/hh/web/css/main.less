@@ -245,7 +245,8 @@ Icon Font
 /* ==========================================================================
 buttons
 ========================================================================== */
-.btn-main {
+.btn-main,
+.actions-toolbar > .primary .action, .actions-toolbar > .secondary .action {
   background-color: #000;
   color: #FFF;
   border: none;
@@ -264,6 +265,10 @@ buttons
     margin-right: 10px;
     font-size: 15px;
   }
+}
+
+.actions-toolbar > .primary .action, .actions-toolbar > .secondary .action {
+  display: inline-block;
 }
 
 .btn, button {
