@@ -3463,6 +3463,10 @@ Checkout
       text-align: center;
       font-size: 20px;
       font-family: @baseFont;
+      margin-bottom: 40px;
+      strong {
+        font-family: @headlineFont;
+      }
     }
     .order-summary {
       p {
@@ -3474,6 +3478,16 @@ Checkout
       }
       .box-title {
         font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 15px;
+        margin: 10px 0;
+        display: block;
+        text-transform: uppercase;
+      }
+      .block-dashboard-addresses + div .box-title {
+        border-bottom: 1px solid #e8e8e8;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
       }
 
     }
@@ -3506,7 +3520,7 @@ Checkout
             color: #8d8d8d;
             font-size: 12px;
             position: absolute;
-            top: 17px;
+            top: 22px;
             right: 0px;
           }
         }
@@ -3535,7 +3549,9 @@ Checkout
       width: 66%;
       margin: auto;
       margin-top: 2em;
-      text-align: center;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
       .print {
         width: auto;
         font-style: italic;
@@ -3574,8 +3590,9 @@ Checkout
       .order-product-name {
         font-family: @fancyFont;
         font-style: italic;
-        font-size: 16px;
+        font-size: 18px;
         margin-bottom: 3px;
+        text-transform: capitalize;
       }
       .order-product-options {
         font-family: @headlineFont;
@@ -3592,7 +3609,7 @@ Checkout
     }
     .order-product-price {
       font-family: @fancyFont;
-      font-size: 16px;
+      font-size: 18px;
       float: right;
       &:before {
         content: "$";
