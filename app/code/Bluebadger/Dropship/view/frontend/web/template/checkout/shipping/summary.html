@@ -1,0 +1,20 @@
+<div class="checkout-block" id="block-summary">
+    <span class="total-qty" data-bind="text: totalQty"></span>
+    <div data-bind="foreach: itemList">
+        <!-- ko foreach: items -->
+        <div>
+            <img data-bind="attr: { src: thumbnail }"/>
+        </div>
+        <div>
+            <span data-bind="html: name"></span><br>
+            <span data-bind="text: sku"></span><br>
+            <span data-bind="text: price"></span><br>
+            <span data-bind="html: color"></span><br>
+            <span data-bind="html: size"></span><br>
+        </div>
+        <!-- /ko -->
+        <span data-bind="text: time"></span>
+        <span data-bind="text: shipping_cost"></span>
+        <hr>
+    </div>
+</div>
