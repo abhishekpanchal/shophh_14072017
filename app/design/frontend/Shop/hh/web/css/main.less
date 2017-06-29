@@ -307,7 +307,7 @@ Buttons
 .action.primary {
   background: #000;
   border: 1px solid #000;
-  border-radius: 0;
+  border-radius: 0 !important;
   font-family: @fancyFont;
   text-align: left;
   font-size: 16px;
@@ -3603,6 +3603,19 @@ Checkout
     text-align: center;
   }
 }
+@media (max-width: 768px) {
+  .checkout-onepage-success .checkout-success {
+    width: 100%;
+    .block-dashboard-addresses {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+
+
+
+
 
 .review-form {
   max-width: 100%;
@@ -9298,6 +9311,25 @@ body:not(.account):not(.checkout-cart-index):not(.checkout-index-index):not(.con
   }
 }
 
+
+  /* ===============================
+  Confirmation Print Page
+  =================================*/
+.sales-order-print {
+  padding-top: 40px;
+  .order-date .label {
+    padding: 0;
+  }
+  .block-dashboard-addresses {
+    padding: 0;
+  }
+  .block-order-details-view {
+    display: none;
+  }
+  .table-order-items .mark {
+    background: none;
+  }
+}
 
 
 
