@@ -299,9 +299,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<div class="out-of-stock"><span>' . __('Out of stock') . '</span></div>';
                 }
 
-                if($this->helperData->getStockQty($product_details)){
-                    $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
-                }elseif($this->helperData->isEditorsPick($product_details)){
+                if($this->helperData->isEditorsPick($product_details)){
                     $html_content .= '<span class="callout editors-pick">' . __('Editor’s Pick') . '</span>';
                 }elseif($this->helperData->isExclusive($product_details)){
                     $html_content .= '<span class="callout exclusive">' . __('H&H exclusive') . '</span>';
@@ -309,6 +307,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<span class="callout one-sale">' . __('On Sale') . '</span>';
                 }elseif($this->helperData->isOneOfKind($product_details)){
                     $html_content .= '<span class="callout one-kind">' . __('One of a Kind') . '</span>';
+                }elseif($this->helperData->getStockQty($product_details)){
+                    $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
                 }elseif($this->helperData->isProductNew($product_details)){
                     $html_content .= '<span class="callout new-product">' . __('New') . '</span>';
                 }elseif($this->helperData->isLastCall($product_details)){
@@ -431,9 +431,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
 
                 $html_content .= '<div class="desc">';
 
-                if($this->helperData->getStockQty($product_details)){
-                    $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
-                }elseif($this->helperData->isEditorsPick($product_details)){
+                if($this->helperData->isEditorsPick($product_details)){
                     $html_content .= '<span class="callout editors-pick">' . __('Editor’s Pick') . '</span>';
                 }elseif($this->helperData->isExclusive($product_details)){
                     $html_content .= '<span class="callout exclusive">' . __('H&H exclusive') . '</span>';
@@ -441,6 +439,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
                     $html_content .= '<span class="callout one-sale">' . __('On Sale') . '</span>';
                 }elseif($this->helperData->isOneOfKind($product_details)){
                     $html_content .= '<span class="callout one-kind">' . __('One of a Kind') . '</span>';
+                }elseif($this->helperData->getStockQty($product_details)){
+                    $html_content .= '<span class="callout one-left">' . __('Only 1 left') . '</span>';
                 }elseif($this->helperData->isProductNew($product_details)){
                     $html_content .= '<span class="callout new-product">' . __('New') . '</span>';
                 }elseif($this->helperData->isLastCall($product_details)){
