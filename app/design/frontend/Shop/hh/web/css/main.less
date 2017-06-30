@@ -8241,8 +8241,10 @@ Shop the issue page
     font-size: 18px;
 
     i {
-      padding: 5px 10px;
-      background: #ececec;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      background: url(../images/shoptheissue.png) no-repeat center;
     }
   }
   .magazine-hero {
@@ -8262,7 +8264,7 @@ Shop the issue page
     }
   }
   .magazine-desc {
-    h4 {
+    h5 {
       font-family: @headlineFont;
       text-transform: uppercase;
       font-size: 15px;
@@ -8276,6 +8278,11 @@ Shop the issue page
       padding-bottom: 15px;
       margin-bottom: 30px;
       .inline-block;
+    }
+    h4 {
+      font-family: @fancyFont;
+      font-size: 18px;
+      font-style: italic;
     }
     .magazine-content {
       p {
@@ -8291,6 +8298,12 @@ Shop the issue page
   }
   .past-issue-listing {
     margin-bottom: 60px;
+    text-align: center;
+    .past-issue {
+      float: none;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
 
     img {
       margin: 0 auto;
