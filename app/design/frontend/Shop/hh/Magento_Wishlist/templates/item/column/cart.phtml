@@ -14,7 +14,7 @@ $product = $item->getProduct();
 <?php foreach ($block->getChildNames() as $childName): ?>
     <?php /* @escapeNotVerified */ echo $block->getLayout()->renderElement($childName, false); ?>
 <?php endforeach;?>
-<div class="box-tocart col-md-3 col-sm-4 col-xs-3">
+<div class="box-tocart col-md-3 col-sm-4 col-xs-5">
     <?php if ($item->canHaveQty() && $product->isVisibleInSiteVisibility()): ?>
         <div class="wishlist-qty-container">
             <label class="label" for="qty[<?php /* @escapeNotVerified */ echo $item->getId() ?>]"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>

@@ -266,6 +266,7 @@ buttons
   }
 }
 
+
 .btn, button {
   &:hover {
     background: rgba(0, 0, 0, 0.7);
@@ -306,7 +307,7 @@ Buttons
 .action.primary {
   background: #000;
   border: 1px solid #000;
-  border-radius: 0;
+  border-radius: 0 !important;
   font-family: @fancyFont;
   text-align: left;
   font-size: 16px;
@@ -1938,8 +1939,6 @@ Cart
     display: block;
   }
   .cart-container {
-    display: flex;
-    flex-direction: column-reverse;
     .cart-item-name-container {
       padding: 5px 15px;
       .cart-item-name {
@@ -3493,6 +3492,10 @@ Checkout
       text-align: center;
       font-size: 20px;
       font-family: @baseFont;
+      margin-bottom: 40px;
+      strong {
+        font-family: @headlineFont;
+      }
     }
     .order-summary {
       p {
@@ -3504,6 +3507,16 @@ Checkout
       }
       .box-title {
         font-weight: bold;
+        font-size: 14px;
+        margin-bottom: 15px;
+        margin: 10px 0;
+        display: block;
+        text-transform: uppercase;
+      }
+      .block-dashboard-addresses + div .box-title {
+        border-bottom: 1px solid #e8e8e8;
+        padding-bottom: 5px;
+        margin-bottom: 20px;
       }
 
     }
@@ -3536,7 +3549,7 @@ Checkout
             color: #8d8d8d;
             font-size: 12px;
             position: absolute;
-            top: 17px;
+            top: 22px;
             right: 0px;
           }
         }
@@ -3565,6 +3578,9 @@ Checkout
       width: 66%;
       margin: auto;
       margin-top: 2em;
+      @media (max-width: 768px) {
+        width: 100%;
+      }
       .print {
         width: auto;
         font-style: italic;
@@ -3608,6 +3624,17 @@ Checkout
       font-size: 16px;
       margin-bottom: 3px;
     }
+    .order-product-details {
+      display: inline;
+      vertical-align: top;
+      .order-product-name {
+        font-family: @fancyFont;
+        font-style: italic;
+        font-size: 18px;
+        margin-bottom: 3px;
+        text-transform: capitalize;
+      }
+    }
     .order-product-options {
       font-family: @headlineFont;
       font-size: 12px;
@@ -3619,6 +3646,10 @@ Checkout
       .sku {
         display: block;
       }
+    }
+    .order-product-price {
+      font-family: @fancyFont;
+      font-size: 18px;
     }
   }
   .order-product-price {
@@ -3656,8 +3687,26 @@ Checkout
       float: right;
     }
   }
+  .followup {
+    text-align: center;
+  }
 }
-.checkout-index-index
+@media (max-width: 768px) {
+  .checkout-onepage-success .checkout-success {
+    width: 100%;
+    .block-dashboard-addresses {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+
+
+
+
+
+
+.checkout-index-index,
 .review-form {
   max-width: 100%;
 
@@ -4462,13 +4511,18 @@ Checkout
       border: none;
       padding: 0;
       cursor: default;
-      margin-bottom: 8px;
+      margin: 15px 18px 12px;
+      &:after {
+        top: 2px;
+      }
     }
     .minicart-items-wrapper {
       max-height: none !important;
       padding: 0;
       margin: 0 20px;
       width: 88%;
+      position: relative;
+      top: 1px;
       .product-item-name {
         font-family: @fancyFont;
         font-size: 16px;
@@ -4904,6 +4958,7 @@ Cart Page
   margin: 20px 0;
   border: 1px solid transparent;
   border-radius: 4px;
+  font-size: 12px;
 }
 
 .c-sidebar {
@@ -8186,8 +8241,10 @@ Shop the issue page
     font-size: 18px;
 
     i {
-      padding: 5px 10px;
-      background: #ececec;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      background: url(../images/shoptheissue.png) no-repeat center;
     }
   }
   .magazine-hero {
@@ -8207,7 +8264,7 @@ Shop the issue page
     }
   }
   .magazine-desc {
-    h4 {
+    h5 {
       font-family: @headlineFont;
       text-transform: uppercase;
       font-size: 15px;
@@ -8221,6 +8278,11 @@ Shop the issue page
       padding-bottom: 15px;
       margin-bottom: 30px;
       .inline-block;
+    }
+    h4 {
+      font-family: @fancyFont;
+      font-size: 18px;
+      font-style: italic;
     }
     .magazine-content {
       p {
@@ -8236,6 +8298,12 @@ Shop the issue page
   }
   .past-issue-listing {
     margin-bottom: 60px;
+    text-align: center;
+    .past-issue {
+      float: none;
+      display: inline-block;
+      margin-bottom: 40px;
+    }
 
     img {
       margin: 0 auto;
@@ -8982,14 +9050,25 @@ Account reviews
     display: block;
     .product-item {
       width: 100% !important;
+      margin: 0;
+      .price-box {
+        float: left;
+      }
+      .box-tocart {
+        padding-left: 0;
+        margin-right: 0;
+      }
     }
   }
   .products-grid.wishlist {
     .product-item-photo {
       float: left;
-      width: 140px;
+      width: 110%;
+      margin: 0 0 0 -15px;
     }
     .product-item-name {
+      padding: 0;
+      margin: 0 0 20px;
       a {
         font-size: 20px;
         font-family: @fancyFont;
@@ -9010,11 +9089,14 @@ Account reviews
   }
   .wishlist-qty-container {
     border: 1px solid black;
-    width: 75px;
-    padding: 7px 2px;
-    display: inline;
-    label span {
-      text-transform: uppercase!important; /*fighting important with important */
+    padding: 5px 2px 8px;
+    display: block;
+    label {
+      padding-right: 0;
+      span {
+        text-transform: uppercase!important; /*fighting important with important */
+        font-size: 12px;
+      }
     }
     input {
       background-color: #fff;
@@ -9024,9 +9106,11 @@ Account reviews
       width: 40px;
     }
     .wishlist-item-qty {
-      height: 0.9rem;
-      width: 40px;
+      height: 22px;
+      width: 20px;
       border: 0;
+      float: right;
+      font-size: 12px;
       &:focus {
         outline: none;
         border-color: inherit;
@@ -9041,13 +9125,13 @@ Account reviews
       color: #AC2232;
       float: right;
       padding: 0 5px;
-      font-size: 1.8rem;
+      font-size: 1.2rem;
     }
   }
     .product-item-actions {
       display: block;
       float: left;
-      a {
+      a.action {
         background: none;
         text-decoration: none;
         span {
@@ -9070,16 +9154,24 @@ Account reviews
         }
       }
     }
-  .products-grid + .actions-toolbar {
+  .actions-toolbar {
+    padding-left: 25%;
+    .primary {
+      margin-left: 40px;
+      display: block;
+      float: none;
+    }
     button.update {
       display: none;
     }
+    
     button.tocart {
       color: #fff;
       background: #000;
       border: 0;
       font-style: italic;
       float: left;
+      padding: 10px 25px;
       span {
         font-size: 16px;
       }
@@ -9091,6 +9183,7 @@ Account reviews
       font-family: @headlineFont;
       text-transform: uppercase;
     }
+    
   }
   .form-wishlist-items {
     .product-item-comment {
@@ -9098,9 +9191,50 @@ Account reviews
     }
   }
 }
+@media only screen and (max-width: 767px) {
+  .products-grid.wishlist {
+    margin: 0;
+  }
+  .wishlist-index-index {
+    .product-item-info {
+      padding: 10px 0;
+    }
+    .products-grid .product-item {
+      padding: 0;
+      width: auto !important;
+      .price-box {
+        margin-left: 0;
+        .price {
+          font-size: 15px;
+        }
+      }
+      .box-tocart + div {
+        padding-right: 0;
+        width: 58%;
+      }
+    }
+    .actions-toolbar {
+      padding-left: 0;
+      .primary {
+        margin: 0;
+        padding: 0 15px;
+      }
+    }
+  }
+  .products-grid.wishlist .product-item-actions .action.edit {
+    margin-top: 3px;
+  }
+}
 
-
-
+@media only screen and (max-width: 639px) {
+  .products-grid.wishlist {
+    border-bottom: 1px solid #e8e8e8;
+    .product-item {
+      border-bottom: none;
+      margin-bottom: 20px;
+    }
+  }
+}
 
 
 
@@ -9281,6 +9415,25 @@ body:not(.account):not(.checkout-cart-index):not(.checkout-index-index):not(.con
   }
 }
 
+
+  /* ===============================
+  Confirmation Print Page
+  =================================*/
+.sales-order-print {
+  padding-top: 40px;
+  .order-date .label {
+    padding: 0;
+  }
+  .block-dashboard-addresses {
+    padding: 0;
+  }
+  .block-order-details-view {
+    display: none;
+  }
+  .table-order-items .mark {
+    background: none;
+  }
+}
 
 
 

@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
-        <h4 class="magazine-notice text-center">Look for this <i class="ion-android-close"></i> icon in the magazine to lorem ipsum gravida nibh vel velit auctor aliquet quis auctor.</h4>
+        <h4 class="magazine-notice text-center">Look for this <i class="magazine"></i> icon in the <span>House & Home Magazine</span> to identify products that you buy on Shop H&H.</h4>
     </div>
 </div>
 
@@ -18,9 +18,10 @@
                             <img src="<?php echo $this->getUrl('pub/media').$_magazineItem->getImage() ?>" alt="<?php echo $this->escapeHtml($_magazineItem->getTitle()); ?>" class="img-responsive" />
                         </div>
                         <div class="col-md-7 col-md-offset-1 magazine-desc">
-                            <h4 class="title"><?php echo $_magazineItem->getTitle(); ?></h4>
+                            <h5 class="title"><?php echo $_magazineItem->getTitle(); ?></h5>
                             <h3 class="volume-name"><?php echo $_magazineItem->getVolumeName() ?></h3>
                             <div class="magazine-content"><?php echo $_magazineItem->getContent() ?></div>
+                            <h4>Shop Now!</h4>
                         </div>
                     </div>
                 </div>
@@ -104,7 +105,7 @@
     <div class="row past-issue-listing">
     <?php foreach($_magazine as $magazine): ?>
         <?php if($magazine->getMagazineId() != $this->getRequest()->getParam('id')): ?>
-            <div class="past-issue text-center col-md-3">
+            <div class="past-issue text-center col-md-3 col-sm-3 col-xs-6">
                 <a href="<?php echo $obj->getItemUrl($magazine) ?>">
                     <img src="<?php echo $this->getUrl('pub/media').$magazine->getImage() ?>" alt="<?php echo $this->escapeHtml($magazine->getTitle()); ?>" />
                     <h4>
