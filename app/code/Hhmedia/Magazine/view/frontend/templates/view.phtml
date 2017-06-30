@@ -74,9 +74,7 @@
                 <?php endif; ?>
                 <h4><a href="<?php echo $pro->getProductUrl() ?>" class="hover-effect"><?php echo $pro->getName(); ?></a></h4>
                 <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                <?php if($customHelper->getStockQty($pro)): ?>
-                    <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-                <?php elseif($customHelper->isEditorsPick($pro)): ?>
+                <?php if($customHelper->isEditorsPick($pro)): ?>
                     <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
                 <?php elseif($customHelper->isExclusive($pro)): ?>
                     <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
@@ -84,6 +82,8 @@
                     <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
                 <?php elseif($customHelper->isOneOfKind($pro)): ?>
                     <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+                <?php elseif($customHelper->getStockQty($pro)): ?>
+                    <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
                 <?php elseif($customHelper->isProductNew($pro)): ?>
                     <span class="callout new-product"><?php echo __('New'); ?></span>
                 <?php elseif($customHelper->isLastCall($pro)): ?>

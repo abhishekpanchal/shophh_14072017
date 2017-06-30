@@ -1,14 +1,14 @@
 <?php $_product = $block->getProduct(); ?>
 <?php $helper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 
-<?php if($helper->getStockQty($_product)): ?>
-	<span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-<?php elseif($helper->isExclusive($_product)): ?>
+<?php if($helper->isExclusive($_product)): ?>
 	<span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
 <?php elseif($helper->isOnSale($_product)): ?>
 	<span class="callout one-sale"><?php echo __('On Sale'); ?></span>
 <?php elseif($helper->isOneOfKind($_product)): ?>
 	<span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+<?php elseif($helper->getStockQty($_product)): ?>
+	<span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
 <?php elseif($helper->isProductNew($_product)): ?>
     <span class="callout new-product"><?php echo __('New'); ?></span>
 <?php elseif($helper->isLastCall($_product)): ?>
