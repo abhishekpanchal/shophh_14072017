@@ -269,9 +269,7 @@ switch ($type = $block->getType()) {
                             <?php /* @escapeNotVerified */ echo $block->getProductPrice($_item); ?>
                             <?php if ($description):?>
                                 <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-                                <?php if($customHelper->getStockQty($_item)): ?>
-                                    <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-                                <?php elseif($customHelper->isEditorsPick($_item)): ?>
+                                <?php if($customHelper->isEditorsPick($_item)): ?>
                                     <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>  
                                 <?php elseif($customHelper->isExclusive($_item)): ?>
                                     <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
@@ -279,6 +277,8 @@ switch ($type = $block->getType()) {
                                     <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
                                 <?php elseif($customHelper->isOneOfKind($_item)): ?>
                                     <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+                                <?php elseif($customHelper->getStockQty($_item)): ?>
+                                    <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
                                 <?php elseif($customHelper->isProductNew($_item)): ?>
                                     <span class="callout new-product"><?php echo __('New'); ?></span>
                                 <?php elseif($customHelper->isLastCall($_item)): ?>

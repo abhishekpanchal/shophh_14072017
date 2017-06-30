@@ -66,9 +66,7 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
                 <?php $abstractProductBlock = $block->getLayout()->createBlock('\Magento\Catalog\Block\Product\AbstractProduct'); ?>
                 <?php echo $abstractProductBlock->getProductPrice($product) ?>
                 <div class="product description product-item-description">
-                    <?php if($customHelper->getStockQty($product)): ?>
-                        <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-                    <?php elseif($customHelper->isEditorsPick($product)): ?>
+                    <?php if($customHelper->isEditorsPick($product)): ?>
                         <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
                     <?php elseif($customHelper->isExclusive($product)): ?>
                         <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span> 
@@ -76,6 +74,8 @@ echo "Showing ".$block->getResultCount()." Results for '".$query."'";
                         <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
                     <?php elseif($customHelper->isOneOfKind($product)): ?>
                         <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+                    <?php elseif($customHelper->getStockQty($product)): ?>
+                        <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
                     <?php elseif($customHelper->isProductNew($product)): ?>
                         <span class="callout new-product"><?php echo __('New'); ?></span>
                     <?php elseif($customHelper->isLastCall($product)): ?>
