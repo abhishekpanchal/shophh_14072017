@@ -348,12 +348,10 @@ Buttons
   /* ===============================
   Prices
   =================================*/
-.price-container {
-  .price {
-    color: #8d8d8d;
-    font-family: @headlineFont;
-    font-size: 14px;
-  }
+.price-container .price, .product-item-details h5 {
+  color: #8d8d8d;
+  font-family: @headlineFont;
+  font-size: 14px;
 }
 .old-price, .old.price {
   text-decoration: none;
@@ -6868,6 +6866,7 @@ span.callout {
 .product-item-listing {
   margin-bottom: 30px;
   text-align: center;
+  overflow: hidden;
   .pro-detail-div {
     img {
       width: 100%;
@@ -6886,6 +6885,26 @@ span.callout {
       margin-top: 0;
       font-size: 14px;
     }
+  }
+  &.soldout {
+    pointer-events: none;
+    .product-item-info {
+      opacity: .5;
+    }
+  }
+  .soldout {
+    background: #ea7535;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: @headlineFont;
+    font-size: 13px;
+    opacity: .9;
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    left: -35px;
+    padding: 4px 50px;
+    transform: rotate(-45deg);
   }
 }
 
@@ -8239,12 +8258,17 @@ Shop the issue page
   .magazine-notice {
     font-family: @baseFont;
     font-size: 18px;
-
+    line-height: 26px;
     i {
       display: inline-block;
       width: 35px;
       height: 35px;
       background: url(../images/shoptheissue.png) no-repeat center;
+      position: relative;
+      top: 10px;
+    }
+    span {
+      font-family: @headlineFont;
     }
   }
   .magazine-hero {
@@ -8317,45 +8341,7 @@ Shop the issue page
   }
 }
 
-/* ==========================================================================
-Product Meta Details (all pages)
-========================================================================== *
-.product-details-block {
-  margin-bottom: 50px;
-  .center;
-  h4 {
-    margin-bottom: 5px;
 
-    a {
-      font-family: @fancyFont;
-      font-size: 16px;
-      font-weight: normal;
-    }
-  }
-  p {
-    font-family: @baseFont;
-    font-size: 13px;
-    display: inline;
-  }
-  h5 {
-    margin-top: 10px;
-    font-size: 14px;
-    font-family: @headlineFont;
-    color: #666;
-  }
-  .product-img {
-    margin-bottom: 10px;
-    .relative;
-
-    &:hover .quickview-bar2 {
-      opacity: 1;
-    }
-  }
-
-  &:nth-child(4n+1) {
-    .clear;
-  }
-}
 
 /* ==========================================================================
 Section Breadcrumb
