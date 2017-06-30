@@ -526,12 +526,16 @@ $fcBlock->setFieldValue([
                     </li>
 <?php endif ?>
                     <li>
+                        <label for="custom-shipping"><?php echo __('Custom Shipping Amount') ?></label>
+                        <input id="custom_shipping-<?php echo $_masterId?>" title="<?php echo __('Custom Shipping Amount') ?>" type="text" name="custom_shipping" />
+                    </li>
+                    <li>
                         <label>&nbsp;</label>
                         <button class="form-button" type="button" id="submit-<?php echo $_masterId ?>"><span><?php echo __('Submit') ?></span></button>
                         <span class="shipment-info-loader" style="display:none" id="submit-loader-<?php echo $_masterId ?>"><?php echo __('Please wait, submitting...')?></span>
                     </li>
                 </ul>
-
+                
                 <?php if (count($_comments)): ?>
                 <br />
                 <h4><?php echo __('Comments history') ?></h4>

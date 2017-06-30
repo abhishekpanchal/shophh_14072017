@@ -29,6 +29,19 @@ class UpgradeSchema implements UpgradeSchemaInterface
 	            ]);
 		}
 
+		if (version_compare($context->getVersion(), '1.0.2', '<')) {
+			$connection->addColumn(
+	            $installer->getTable('sales_shipment'),
+	            'custom_shipping_amount',
+	            [
+	                'type'     => Table::TYPE_DECIMAL,
+	                'length'   => '12,4',
+	                'nullable' => true,
+	                'default'  => NULL,
+	                'comment'  => 'Custom Shipping Amount'
+	            ]);
+		}
+
 		$installer->endSetup();
 
 	}

@@ -44,7 +44,7 @@ class Save extends \Magento\Backend\App\Action
     public function execute()
     {
         $data = $this->getRequest()->getPostValue();
-
+        $name = $this->getRequest()->getParam('editors_name');
         if ($data) {
             $data = $this->dataProcessor->filter($data);
             $model = $this->_objectManager->create('Hhmedia\Editor\Model\Editor');
@@ -70,7 +70,8 @@ class Save extends \Magento\Backend\App\Action
             }
 
             $model->addData($data);
-
+            $model->setName($name);
+            
             if (!$this->dataProcessor->validate($data)) {
                 $this->_redirect('*/*/edit', ['editor_id' => $model->getId(), '_current' => true]);
                 return;

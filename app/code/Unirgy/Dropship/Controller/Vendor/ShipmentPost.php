@@ -28,6 +28,11 @@ class ShipmentPost extends AbstractVendor
             $track = null;
             $highlight = array();
 
+            $customShipping = $r->getParam('custom_shipping');
+            if(isset($customShipping)){
+                $shipment->setCustomShippingAmount($customShipping);    
+            }
+
             $partial = $r->getParam('partial_availability');
             $partialQty = $r->getParam('partial_qty');
 
