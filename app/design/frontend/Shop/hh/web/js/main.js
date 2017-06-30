@@ -283,6 +283,22 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
         });
         if (!window.isCustomerLoggedIn) {
           $('.checkout-login-container').siblings().hide();
+          //listen for a response from the login request, so we can catch the error message & display it
+					(function() {
+						var origOpen = XMLHttpRequest.prototype.open;
+						XMLHttpRequest.prototype.open = function() {
+							this.addEventListener('load', function() {
+								if (this.responseURL.includes("shophh/customer/ajax")) {
+                  var resp = $.parseJSON(this.responseText);
+                  if(resp.errors) {
+                    $("#checkout-login-messages").show();
+                    $("#checkout-login-messages").html(resp.message);
+                  }
+								}
+							});
+							origOpen.apply(this, arguments);
+						};
+					})();
         }
       }
       else {
