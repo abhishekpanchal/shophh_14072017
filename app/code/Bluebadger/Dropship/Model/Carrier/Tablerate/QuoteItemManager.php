@@ -1,5 +1,6 @@
 <?php
 namespace Bluebadger\Dropship\Model\Carrier\Tablerate;
+use Bluebadger\Dropship\Model\Carrier\Tablerate;
 use Magento\Catalog\Api\ProductRepositoryInterface;
 
 /**
@@ -9,8 +10,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 class QuoteItemManager
 {
     const KEY_QUOTE_ID = 'quote_id';
-    const INT_VAL_DAY = 1;
-    const INT_VAL_WEEK = 2;
+    const KEY_WEEK = 'week';
 
     /**
      * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\Collection
@@ -46,14 +46,6 @@ class QuoteItemManager
      * @var \Magento\Framework\Pricing\Helper\Data
      */
     protected $priceHelper;
-
-    /**
-     * @var array
-     */
-    private $textToInt = [
-        'day' => 1,
-        'week' => 2
-    ];
 
     /**
      * QuoteItemManager constructor.
@@ -142,7 +134,7 @@ class QuoteItemManager
             $highestTime = 0;
 
             foreach ($vendor['items'] as $item) {
-                $days = ($item['ship_time_unit'] == 'week') ? 5 : 1;
+                $days = ($item['ship_time_unit'] == self::KEY_WEEK) ? 5 : 1;
                 $time = $item['ship_time_high'] * $days;
 
                 if ($time > $highestTime) {
