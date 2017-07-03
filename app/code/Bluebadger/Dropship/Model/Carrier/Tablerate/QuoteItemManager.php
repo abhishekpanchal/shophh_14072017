@@ -2,6 +2,7 @@
 namespace Bluebadger\Dropship\Model\Carrier\Tablerate;
 use Bluebadger\Dropship\Model\Carrier\Tablerate;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\Exception\NotFoundException;
 
 /**
  * Class QuoteItemManager
@@ -93,7 +94,15 @@ class QuoteItemManager
         /** @var \Bluebadger\Dropship\Model\Carrier\Tablerate\Quote\Item $quoteItem */
         foreach ($quoteItems as $quoteItem) {
             $cartItemData = $quoteItem->getCartItem();
-            $product = $this->productRepository->get($cartItemData->getSku(), $storeId);
+
+            /* Remove bogus items from quote item table */
+            try {
+                $product = $this->productRepository->get($cartItemData->getSku(), $storeId);
+            } catch (\Exception $e) {
+                $quoteItem->delete();
+                continue;
+            }
+
             $image = $this->imageHelper->init($product, 'product_page_image_small')
                 ->setImageFile($product->getFile())
                 ->resize(100, 100)

@@ -56,7 +56,7 @@ class Summary extends \Magento\Framework\App\Action\Action
             $quoteId = $this->session->getQuoteId();
             $quoteItems = $this->quoteItemManager->getQuoteItemsSortedByVendor($quoteId);
         } catch (\Exception $e) {
-            $errors = __('An error occurred while retrieving the quote items.');
+            $errors = __('An error occurred while retrieving the quote items: ' . $e->getMessage());
         }
 
         return $result->setData(['errors' => $errors, 'quote' => $quoteItems]);

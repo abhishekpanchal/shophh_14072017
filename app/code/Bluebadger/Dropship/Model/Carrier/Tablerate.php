@@ -108,7 +108,7 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     public function collectRates(RateRequest $request)
     {
         /** @var \Magento\Shipping\Model\Rate\Result $result */
-        $result = $this->rateResultFactory->create();
+         $result = $this->rateResultFactory->create();
 
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->rateMethodFactory->create();

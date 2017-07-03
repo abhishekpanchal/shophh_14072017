@@ -2,21 +2,25 @@ define([
     'uiComponent',
     'ko',
     'mage/url',
-    'mage/storage'
-], function (Component, ko, urlBuilder, storage) {
+    'mage/storage',
+    'Magento_Checkout/js/model/quote'
+], function (Component, ko, urlBuilder, storage, quote) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: 'Bluebadger_Dropship/checkout/shipping/summary'
         },
-        totalQty: '',
-        itemList: ko.observableArray([]),
-
         initialize: function() {
-            this._super();
+            this.itemList = ko.observableArray([]);
+            this.totalQty = ko.observable(0);
             var self = this;
-            self.getItems();
+            this._super();
+
+            quote.shippingAddress.subscribe(function() {
+                self.getItems();
+                console.log('re-rendering template');
+            }, null, 'change');
         },
 
         getItems: function() {
@@ -29,8 +33,13 @@ define([
             ).done(
                 function (response) {
                     if (!response.error) {
-                        self.itemList = response.quote.vendors;
-                        self.totalQty = response.quote.total_qty;
+                        console.log(response.quote.vendors.length);
+                        if (!response.quote.vendors.length) {
+                            window.location.reload();
+                        } else {
+                            self.itemList = response.quote.vendors;
+                            self.totalQty = response.quote.total_qty;
+                        }
                     } else {
                         alert(response.error);
                     }
