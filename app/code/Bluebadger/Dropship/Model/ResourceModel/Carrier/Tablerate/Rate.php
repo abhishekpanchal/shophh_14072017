@@ -91,15 +91,12 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             $importer->import();
 
             if ($importer->hasErrors()) {
-                $message = 'Something when wrong while importing rates: ';
-                $message .= implode(', ', $importer->getErrors());
+                $message = implode(PHP_EOL, $importer->getErrors());
                 throw new LocalizedException(__($message));
             }
             $this->importData($this->getColumns(), $importer->getImportedData());
         } catch (\Exception $e) {
-            throw new LocalizedException(
-                __('Something went wrong while importing rates: ' . $e->getMessage())
-            );
+            throw $e;
         } finally {
             $file->close();
         }
