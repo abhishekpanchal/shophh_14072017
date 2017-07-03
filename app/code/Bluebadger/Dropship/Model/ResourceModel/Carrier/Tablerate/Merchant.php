@@ -134,7 +134,7 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     }
 
     /**
-     * Import data.
+     * Delete current merchants and insert new merchants.
      * @param array $fields
      * @param array $values
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -147,18 +147,13 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         try {
             if (count($fields) && count($values)) {
-                $this->getConnection()
-                    ->insertArray($this->getMainTable(), $fields, $values);
+                $connection->delete($this->getMainTable());
+                $connection->insertArray($this->getMainTable(), $fields, $values);
             }
-        } catch (\Magento\Framework\Exception\LocalizedException $e) {
-            $connection->rollback();
-            throw new LocalizedException(__('Unable to import merchant data'), $e);
         } catch (\Exception $e) {
             $connection->rollback();
             $this->logger->critical($e);
-            throw new LocalizedException(
-                __('Something went wrong while importing merchant information.')
-            );
+            throw $e;
         }
         $connection->commit();
     }
