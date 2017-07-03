@@ -56,7 +56,11 @@ class Zone extends \Magento\Framework\App\Config\Value
         $zone = $this->zoneFactory->create();
 
         try {
-            $zone->uploadAndImport($this);
+            $numRecords = $zone->uploadAndImport($this);
+
+            if ($numRecords) {
+                $this->messageManager->addSuccessMessage(__($numRecords . ' zone records have been imported successfully.'));
+            }
         } catch (\Exception $e) {
             $message = 'Error while importing zones: ' . $e->getMessage();
             $this->_logger->critical($message);

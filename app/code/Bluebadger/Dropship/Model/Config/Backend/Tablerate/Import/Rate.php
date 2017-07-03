@@ -56,7 +56,10 @@ class Rate extends \Magento\Framework\App\Config\Value
         $rate = $this->rateFactory->create();
 
         try {
-            $rate->uploadAndImport($this);
+            $numRecords = $rate->uploadAndImport($this);
+            if ($numRecords) {
+                $this->messageManager->addSuccessMessage(__($numRecords . ' rate records have been imported successfully.'));
+            }
         } catch (\Exception $e) {
             $message = 'Error while importing rates: ' . $e->getMessage();
             $this->_logger->critical($message);

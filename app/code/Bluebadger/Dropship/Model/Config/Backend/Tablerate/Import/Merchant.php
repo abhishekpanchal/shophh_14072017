@@ -56,8 +56,10 @@ class Merchant extends \Magento\Framework\App\Config\Value
         $merchant = $this->merchantFactory->create();
 
         try {
-            $merchant->uploadAndImport($this);
-            $this->messageManager->addSuccessMessage(__('The merchants have been imported successfully.'));
+            $numRecords = $merchant->uploadAndImport($this);
+            if ($numRecords) {
+                $this->messageManager->addSuccessMessage(__($numRecords . ' merchants have been imported successfully.'));
+            }
         } catch (\Exception $e) {
             $message = 'Error while importing merchants: ' . $e->getMessage();
             $this->_logger->critical($message);

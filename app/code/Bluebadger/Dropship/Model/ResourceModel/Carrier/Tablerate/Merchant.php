@@ -72,39 +72,40 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Upload a import data.
      * @param \Magento\Framework\DataObject $object
-     * @return $this
+     * @return int
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function uploadAndImport(\Magento\Framework\DataObject $object)
     {
+        $numRecords = 0;
+
         /**
          * @var \Magento\Framework\App\Config\Value $object
          */
-        if (empty($_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['merchant']['value'])) {
-            return $this;
-        }
-        $filePath = $_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['merchant']['value'];
-        $file = $this->getCsvFile($filePath);
+        if (!empty($_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['merchant']['value'])) {
+            $filePath = $_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['merchant']['value'];
+            $file = $this->getCsvFile($filePath);
 
-        try {
-            /** @var Importer $importer */
-            $importer = $this->importerFactory->create();
-            $importer->setFilePath($filePath);
-            $importer->setIsFirstRowHeaders(true);
-            $importer->import();
+            try {
+                /** @var Importer $importer */
+                $importer = $this->importerFactory->create();
+                $importer->setFilePath($filePath);
+                $importer->setIsFirstRowHeaders(true);
+                $importer->import();
 
-            if ($importer->hasErrors()) {
-                $message = implode(PHP_EOL, $importer->getErrors());
-                throw new LocalizedException(__($message));
+                if ($importer->hasErrors()) {
+                    $message = implode(PHP_EOL, $importer->getErrors());
+                    throw new LocalizedException(__($message));
+                }
+                $numRecords = $this->importData($this->getColumns(), $importer->getImportedData());
+            } catch (\Exception $e) {
+                throw $e;
+            } finally {
+                $file->close();
             }
-            $this->importData($this->getColumns(), $importer->getImportedData());
-        } catch (\Exception $e) {
-            throw $e;
-        } finally {
-            $file->close();
         }
 
-        return $this;
+        return $numRecords;
     }
 
     /**
@@ -138,7 +139,7 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @param array $fields
      * @param array $values
      * @throws \Magento\Framework\Exception\LocalizedException
-     * @return void
+     * @return int
      */
     private function importData(array $fields, array $values)
     {
@@ -152,9 +153,10 @@ class Merchant extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             }
         } catch (\Exception $e) {
             $connection->rollback();
-            $this->logger->critical($e);
             throw $e;
         }
         $connection->commit();
+
+        return count($values);
     }
 }
