@@ -22,11 +22,16 @@
         <move element="product.price.final" destination="product.info.form.content" before="goto.product" />
 
         <!--remove the short description-->
-        <referenceBlock name="product.info.overview">
-            <action method="setTemplate" ifconfig="weltpixel_quickview/general/remove_short_description">
-                <argument name='template' xsi:type='string'></argument>
-            </action>
+        <referenceBlock name="product.info.description">
+            <arguments>
+                <argument name="at_call" xsi:type="string">getShortDescription</argument>
+                <argument name="at_code" xsi:type="string">short_description</argument>
+                <argument name="css_class" xsi:type="string">description</argument>
+                <argument name="at_label" xsi:type="string">none</argument>
+                <argument name="title" translate="true" xsi:type="string">Details</argument>
+            </arguments>
         </referenceBlock>
+
         <referenceBlock name="product.info.sku">
             <action method="setTemplate">
                 <argument name="template" xsi:type="helper" helper="WeltPixel\Quickview\Helper\Data::getSkuTemplate">

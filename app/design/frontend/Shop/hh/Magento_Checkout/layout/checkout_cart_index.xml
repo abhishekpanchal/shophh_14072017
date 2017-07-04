@@ -208,6 +208,13 @@
 	                        </block>
 	                    </container>
                         <container name="checkout.cart.widget" as="checkout_cart_widget" label="Shopping Cart Items After"/>
+                        <container name="continue.shopping" htmlTag="div" htmlClass="hidden-md hidden-lg" after="-">
+                                <block class="Magento\Cms\Block\Block" name="shopping.continue" after="-">
+                                    <arguments>
+                                        <argument name="block_id" xsi:type="string">continue_shopping</argument>
+                                    </arguments>
+                                </block>
+                            </container>
                     </container>
                     <block class="Magento\Checkout\Block\Cart\Crosssell" name="checkout.cart.crosssell" template="Magento_Catalog::product/list/items.phtml" after="-">
                         <arguments>
