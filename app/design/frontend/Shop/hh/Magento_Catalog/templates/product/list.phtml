@@ -98,9 +98,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 
                          <?php if ($showDescription):?>
                                 <div class="product description product-item-description">
-                                    <?php if($customHelper->getStockQty($_product)): ?>
-                                        <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
-                                    <?php elseif($customHelper->isEditorsPick($_product)): ?>
+                                    <?php if($customHelper->isEditorsPick($_product)): ?>
                                         <span class="callout editors-pick"><?php echo __('Editor’s Pick'); ?></span>
                                     <?php elseif($customHelper->isExclusive($_product)): ?>
                                         <span class="callout exclusive"><?php echo __('H&H exclusive'); ?></span>   
@@ -108,6 +106,8 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                         <span class="callout one-sale"><?php echo __('On Sale'); ?></span>
                                     <?php elseif($customHelper->isOneOfKind($_product)): ?>
                                         <span class="callout one-kind"><?php echo __('One of a Kind'); ?></span>
+                                    <?php elseif($customHelper->getStockQty($_product)): ?>
+                                        <span class="callout one-left"><?php echo __('Only 1 left'); ?></span>
                                     <?php elseif($customHelper->isProductNew($_product)): ?>
                                         <span class="callout new-product"><?php echo __('New'); ?></span>
                                     <?php elseif($customHelper->isLastCall($_product)): ?>
