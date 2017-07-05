@@ -35,7 +35,7 @@
         Order Summary
       </div>
       <div class="block-content row">
-        <div class="box col-md-6">
+        <div class="box col-md-6 col-sm-6">
           <span class="box-title">Shipping Address:</span>
           <div class="box-content">
             <p><?php echo $shippingAddress['firstname'].' '.$shippingAddress['lastname']; ?></p>
@@ -45,7 +45,7 @@
             <p><?php echo $shippingAddress['telephone']; ?></p>
           </div>
         </div>
-        <div class="box col-md-6">
+        <div class="box col-md-6 col-sm-6">
           <span class="box-title">Billing Address:</span>
           <div class="box-content">
             <p><?php echo $billingAddress['firstname'].' '.$billingAddress['lastname']; ?></p>
@@ -71,7 +71,7 @@
           <?php $productOptions = $_item->getProductOptions(); ?>
 
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10 col-sm-10 col-xs-10">
               <img src="<?php echo $proHelper->resize($image,80,80); ?>" />
               <div class="order-product-details">
                 <span class="order-product-name"><?php echo $product->getName() ?></span>
@@ -90,7 +90,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2 col-sm-2 col-xs-2">
               <span class="order-product-price"><?php echo ($_item->getPrice())*$qty*1; ?></span>
             </div>
           </div>
