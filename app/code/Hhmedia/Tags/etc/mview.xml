@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Mview/etc/mview.xsd">
+	<view id="tags_indexer" class="Hhmedia\Tags\Model\Indexer\Custom" group="indexer">
+		<subscriptions>
+			<table name="hhmedia_tags_product" entity_column="product_id" />
+		</subscriptions>
+	</view>
+</config>

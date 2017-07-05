@@ -348,12 +348,10 @@ Buttons
   /* ===============================
   Prices
   =================================*/
-.price-container {
-  .price {
-    color: #8d8d8d;
-    font-family: @headlineFont;
-    font-size: 14px;
-  }
+.price-container .price, .product-item-details h5 {
+  color: #8d8d8d;
+  font-family: @headlineFont;
+  font-size: 14px;
 }
 .old-price, .old.price {
   text-decoration: none;
@@ -1369,6 +1367,9 @@ Quick View
   color: #000;
   line-height: 35px;
 }
+button.mz-button.mz-button-close {
+  left: 0 !important;
+}
 
 .mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
   padding: 0;
@@ -2060,6 +2061,9 @@ Cart
     }
   }
 }
+
+
+
 /* ==========================================================================
 Social Login
 ========================================================================== */
@@ -3355,6 +3359,9 @@ Checkout
     }
     .opc-wrapper .form-login {
       padding-bottom: 40px;
+      .fieldset.hidden-fields {
+        display: none !important;
+      }
       .field:last-child {
         padding-bottom: 0;
       }
@@ -6745,6 +6752,36 @@ Home Page
   }
 }
 
+@media (min-width: 1025px) {
+  .cms-home {
+    .homeslider {
+      .homepage-controls {
+        width: 165px;
+        bottom: 95px;
+        .carousel-indicators {
+          bottom: 15px;
+          .active {
+            background-color: #000;
+          }
+          li {
+            border: 1px solid #8d8d8d;
+            background-color: #ccc;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+          }
+        }
+        .carousel-control.right {
+          background: url(../images/right-arrow.png) no-repeat center center;
+          background-size: 20px 35px;
+        }
+        .carousel-control.left {
+          background: url(../images/left-arrow.png) no-repeat center center;
+          background-size: 20px 35px;
+        }
+      }
+    }
+  }
+}
+
 
 
 
@@ -6890,6 +6927,7 @@ span.callout {
 .product-item-listing {
   margin-bottom: 30px;
   text-align: center;
+  overflow: hidden;
   .pro-detail-div {
     img {
       width: 100%;
@@ -6908,6 +6946,26 @@ span.callout {
       margin-top: 0;
       font-size: 14px;
     }
+  }
+  &.soldout {
+    pointer-events: none;
+    .product-item-info {
+      opacity: .5;
+    }
+  }
+  .soldout {
+    background: #ea7535;
+    text-transform: uppercase;
+    color: #fff;
+    font-family: @headlineFont;
+    font-size: 13px;
+    opacity: .9;
+    position: absolute;
+    z-index: 10;
+    top: 30px;
+    left: -35px;
+    padding: 4px 50px;
+    transform: rotate(-45deg);
   }
 }
 
@@ -7586,6 +7644,9 @@ Editors Details
       font-size: 12px;
       text-transform: uppercase;
     }
+    &:nth-child(n+5) {
+      display: none;
+    } 
     &.active {
       img {
         opacity: 0.5;
@@ -7598,13 +7659,12 @@ Editors Details
 }
 
 
-
-
 /* ==========================================================================
 CMS Pages
 ========================================================================== */
 .cms-page-view,
-.contact-index-index {
+.contact-index-index,
+.faqs-index-index {
   .inner-content {
     font-size: 0.85rem;
 
@@ -8266,12 +8326,17 @@ Shop the issue page
   .magazine-notice {
     font-family: @baseFont;
     font-size: 18px;
-
+    line-height: 26px;
     i {
       display: inline-block;
       width: 35px;
       height: 35px;
       background: url(../images/shoptheissue.png) no-repeat center;
+      position: relative;
+      top: 10px;
+    }
+    span {
+      font-family: @headlineFont;
     }
   }
   .magazine-hero {
@@ -8344,45 +8409,7 @@ Shop the issue page
   }
 }
 
-/* ==========================================================================
-Product Meta Details (all pages)
-========================================================================== *
-.product-details-block {
-  margin-bottom: 50px;
-  .center;
-  h4 {
-    margin-bottom: 5px;
 
-    a {
-      font-family: @fancyFont;
-      font-size: 16px;
-      font-weight: normal;
-    }
-  }
-  p {
-    font-family: @baseFont;
-    font-size: 13px;
-    display: inline;
-  }
-  h5 {
-    margin-top: 10px;
-    font-size: 14px;
-    font-family: @headlineFont;
-    color: #666;
-  }
-  .product-img {
-    margin-bottom: 10px;
-    .relative;
-
-    &:hover .quickview-bar2 {
-      opacity: 1;
-    }
-  }
-
-  &:nth-child(4n+1) {
-    .clear;
-  }
-}
 
 /* ==========================================================================
 Section Breadcrumb
@@ -8446,9 +8473,11 @@ Collection Page
       text-transform: capitalize;
     }
     a {
+      /*
       text-transform: uppercase;
       font-family: @headlineFont;
       font-size: 14px;
+      */
     }
   }
   .highlighted-products-title {
