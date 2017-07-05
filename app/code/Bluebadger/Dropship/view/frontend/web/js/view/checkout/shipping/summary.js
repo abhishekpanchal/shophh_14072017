@@ -19,7 +19,6 @@ define([
 
             quote.shippingAddress.subscribe(function() {
                 self.getItems();
-                console.log('re-rendering template');
             }, null, 'change');
         },
 
@@ -33,13 +32,8 @@ define([
             ).done(
                 function (response) {
                     if (!response.error) {
-                        console.log(response.quote.vendors.length);
-                        if (!response.quote.vendors.length) {
-                            window.location.reload();
-                        } else {
-                            self.itemList = response.quote.vendors;
-                            self.totalQty = response.quote.total_qty;
-                        }
+                        self.itemList = response.quote.vendors;
+                        self.totalQty = response.quote.total_qty;
                     } else {
                         alert(response.error);
                     }

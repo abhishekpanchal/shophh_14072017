@@ -11,6 +11,7 @@ namespace Bluebadger\Importer\Setup;
 use Bluebadger\Importer\Helper\Config;
 use Bluebadger\Importer\Model\AttributeImporter;
 use Bluebadger\Importer\Model\AttributeSetsImporter;
+use Magento\Eav\Setup\EavSetupFactory;
 use Magento\Framework\Setup\UpgradeDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -63,6 +64,11 @@ class UpgradeData implements UpgradeDataInterface
      */
     protected $storeManager;
 
+    /**
+     * @var EavSetupFactory
+     */
+    protected $eavSetupFactory;
+
 
     public function __construct(
         AttributeSetsImporter $attributeSetsImporter,
@@ -71,7 +77,8 @@ class UpgradeData implements UpgradeDataInterface
         StoreFactory $storeFactory,
         StoreManagerInterface $storeManager,
         CategoryFactory $categoryFactory,
-        CategoryRepositoryInterface $categoryRepository
+        CategoryRepositoryInterface $categoryRepository,
+        EavSetupFactory $eavSetupFactory
     )
     {
         $this->attributeSetsImporter = $attributeSetsImporter;
@@ -81,6 +88,7 @@ class UpgradeData implements UpgradeDataInterface
         $this->storeManager       = $storeManager;
         $this->categoryFactory    = $categoryFactory;
         $this->categoryRepository = $categoryRepository;
+        $this->eavSetupFactory = $eavSetupFactory;
     }
 
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
@@ -100,7 +108,43 @@ class UpgradeData implements UpgradeDataInterface
             $this->attributeSetsImporter->process();
         }
 
+        if (version_compare($currentVersion, '0.1.2') < 0) {
+            /* Delete old attribute */
+            $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+            $eavSetup->removeAttribute(
+                \Magento\Catalog\Model\Product::ENTITY,
+                'ships_from_warehouse_unit');
 
+            /* Re-created attribute */
+            $eavSetup->addAttribute(
+                \Magento\Catalog\Model\Product::ENTITY,
+                'ships_from_warehouse_unit',
+                [
+                    'type' => 'int',
+                    'backend' => '',
+                    'frontend' => '',
+                    'label' => 'Ships From Warehouse Unit',
+                    'input' => 'select',
+                    'class' => '',
+                    'source' => 'eav/entity_attribute_source_table',
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_WEBSITE,
+                    'visible' => true,
+                    'required' => true,
+                    'user_defined' => false,
+                    'default' => '',
+                    'searchable' => false,
+                    'filterable' => false,
+                    'comparable' => false,
+                    'visible_on_front' => false,
+                    'used_in_product_listing' => true,
+                    'unique' => false,
+                    'apply_to' => '',
+                    'option' => ['values' => ['Day', 'Week']]
+                ]
+            );
+
+            $eavSetup->addAttributeToGroup(\Magento\Catalog\Model\Product::ENTITY, 'House & Home', 'Shipping', 'ships_from_warehouse_unit',3);
+        }
 
         $setup->endSetup();
     }
