@@ -1442,11 +1442,6 @@ button.mz-button.mz-button-close {
   text-align: center!important;
 }
 
-.weltpixel-quickview-catalog-product-view {
-  .main-content {
-    margin-top: 50px;
-  }
-}
 .page-products {
   .product-item-inner {
     display: inline-block;
@@ -7192,15 +7187,28 @@ Magic Scroll
     font-size: 42px!important;
 }
 .mfp-content {
-  min-height: 500px;
+  height: 540px !important;
   min-width: 500px;
 }
-
-
 .weltpixel-quickview-catalog-product-view {
-  .main-content {
-    margin-bottom: 50px;
+  .page-wrapper {
+    display: table !important;
+    height: 100%;
+    width: 100%;
   }
+  .main-content {
+    display: table-cell;
+    vertical-align: middle;
+    .column.main {
+      width: 750px;
+      margin: 0 auto;
+    }
+  }
+
+  .product-info-main .product.attribute.name {
+    margin-top: 0;
+  }
+
   .description {
     margin-top: 20px;
   }
@@ -7616,6 +7624,9 @@ Editors Details
     }
     &:nth-child(n+5) {
       display: none;
+    }
+    &:active img {
+      opacity: .5;
     }
   }
   .view-all-editors {
