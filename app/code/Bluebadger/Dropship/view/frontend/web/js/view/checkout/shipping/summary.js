@@ -3,8 +3,9 @@ define([
     'ko',
     'mage/url',
     'mage/storage',
-    'Magento_Checkout/js/model/quote'
-], function (Component, ko, urlBuilder, storage, quote) {
+    'Magento_Checkout/js/model/quote',
+    'Magento_Checkout/js/model/step-navigator'
+], function (Component, ko, urlBuilder, storage, quote, stepNavigator) {
     'use strict';
 
     return Component.extend({
@@ -17,7 +18,17 @@ define([
             var self = this;
             this._super();
 
+            self.getItems();
+
             quote.shippingAddress.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
+
+            quote.totals.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
+
+            stepNavigator.steps.subscribe(function() {
                 self.getItems();
             }, null, 'change');
         },
@@ -32,7 +43,10 @@ define([
             ).done(
                 function (response) {
                     if (!response.error) {
-                        self.itemList = response.quote.vendors;
+                        self.itemList([]);
+                        for (var i = 0; i < response.quote.vendors.length; i++) {
+                            self.itemList.push(response.quote.vendors[i]);
+                        }
                         self.totalQty = response.quote.total_qty;
                     } else {
                         alert(response.error);
