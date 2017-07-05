@@ -35,16 +35,28 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
         <table class="data table additional-attributes" id="product-attribute-specs-table">
             <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('More Information') ?></caption>
             <tbody>
-            <?php foreach ($_additional as $_data): 
-		   $_MyValue = $_data['value'];
-		   if (is_numeric($_MyValue))
-			$_MyValue = round($_MyValue, 2); //round to 0.00
-
-	    ?>
+            <?php 
+            foreach ($_additional as $_data): 
+                $_MyValue = $_data['value'];
+                if (is_numeric($_MyValue))
+                $_MyValue = round($_MyValue, 2); //round to 0.00
+            ?>
                 <tr>
                     <th class="col label" scope="row"><?php echo $block->escapeHtml(__($_data['label'])) ?></th>
                     <td class="col data" data-th="<?php echo $block->escapeHtml(__($_data['label'])) ?>"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_MyValue, $_data['code']) ?></td>
                 </tr>
+                <?php if($_data['code'] == 'product_dimensions_inches'): ?>
+                    <?php if($_data['value'] != ''): ?>
+                    <tr>
+                        <th class="col label" scope="row"><?php echo 'Product Dimensions in CMs (W x D x H):'; ?></th>
+                        <?php 
+                        $inches = explode('x',$_data['value']);
+                        $cms = ((trim($inches[0])*2.54) .' x '. (trim($inches[1])*2.54) .' x '. (trim($inches[2])*2.54));
+                        ?>
+                        <td class="col data" data-th="<?php echo 'Product Dimensions in CMs (W x D x H):'; ?>"><?php echo $cms ?></td>
+                    </tr> 
+                    <?php endif; ?>
+                <?php endif; ?>
             <?php endforeach; ?>
             </tbody>
         </table>
