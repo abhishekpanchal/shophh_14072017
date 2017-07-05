@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
-        <title>FAQS</title>
+        <title>FAQ</title>
     </head>
     <body>
     	<referenceBlock name="category-sidebar" remove="true" />
@@ -10,7 +10,7 @@
         </referenceContainer>
         <referenceBlock name="faqs.list">
         	<action method="setPageTitle">
-        		<argument translate="true" name="title" xsi:type="string">FAQS</argument>
+        		<argument translate="true" name="title" xsi:type="string">FAQ</argument>
       		</action>
       	</referenceBlock>
       	<referenceContainer name="columns">
