@@ -19,7 +19,6 @@ use Magento\Catalog\Api\CategoryRepositoryInterface;
 use Magento\Catalog\Model\CategoryFactory;
 use Magento\Store\Model\StoreFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use Psr\Log\LogLevel;
 
 /**
  * @codeCoverageIgnore
@@ -70,6 +69,17 @@ class UpgradeData implements UpgradeDataInterface
     protected $eavSetupFactory;
 
 
+    /**
+     * UpgradeData constructor.
+     * @param AttributeSetsImporter $attributeSetsImporter
+     * @param AttributeImporter $attributeImporter
+     * @param Config $configHelper
+     * @param StoreFactory $storeFactory
+     * @param StoreManagerInterface $storeManager
+     * @param CategoryFactory $categoryFactory
+     * @param CategoryRepositoryInterface $categoryRepository
+     * @param EavSetupFactory $eavSetupFactory
+     */
     public function __construct(
         AttributeSetsImporter $attributeSetsImporter,
         AttributeImporter $attributeImporter,
@@ -109,8 +119,10 @@ class UpgradeData implements UpgradeDataInterface
         }
 
         if (version_compare($currentVersion, '0.1.2') < 0) {
-            /* Delete old attribute */
+            /** @var \Magento\Eav\Setup\EavSetup $eavSetup */
             $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
+
+            /* Remove attribute */
             $eavSetup->removeAttribute(
                 \Magento\Catalog\Model\Product::ENTITY,
                 'ships_from_warehouse_unit');
@@ -123,13 +135,13 @@ class UpgradeData implements UpgradeDataInterface
                     'type' => 'int',
                     'backend' => '',
                     'frontend' => '',
-                    'label' => 'Ships From Warehouse Unit',
+                    'label' => 'Ships From Warehouse Window Unit',
                     'input' => 'select',
                     'class' => '',
-                    'source' => 'eav/entity_attribute_source_table',
-                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_WEBSITE,
+                    'source' => 'Magento\Eav\Model\Entity\Attribute\Source\Table',
+                    'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_STORE,
                     'visible' => true,
-                    'required' => true,
+                    'required' => false,
                     'user_defined' => false,
                     'default' => '',
                     'searchable' => false,
@@ -139,11 +151,12 @@ class UpgradeData implements UpgradeDataInterface
                     'used_in_product_listing' => true,
                     'unique' => false,
                     'apply_to' => '',
-                    'option' => ['values' => ['Day', 'Week']]
+                    'option' => ['values' => ['days', 'weeks']]
                 ]
             );
 
-            $eavSetup->addAttributeToGroup(\Magento\Catalog\Model\Product::ENTITY, 'House & Home', 'Shipping', 'ships_from_warehouse_unit',3);
+            /* Add attribute to group */
+            $eavSetup->addAttributeToGroup(\Magento\Catalog\Model\Product::ENTITY, 'House & Home', 'Shipping', 'ships_from_warehouse_unit', 3);
         }
 
         $setup->endSetup();

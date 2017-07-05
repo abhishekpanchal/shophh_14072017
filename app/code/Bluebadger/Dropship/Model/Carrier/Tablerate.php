@@ -24,8 +24,8 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     const KEY_SHIP_TIME_HIGH = 'ship_time_high';
     const SHIP_TIME_LOW_DEFAULT = 5;
     const SHIP_TIME_HIGH_DEFAULT = 10;
-    const KEY_WEEK = 'week';
-    const KEY_DAY = 'day';
+    const KEY_WEEK = 'weeks';
+    const KEY_DAY = 'days';
     const KEY_SHIP_TIME_UNIT = 'ship_time_unit';
     const KEY_SHIPS_FROM_WAREHOUSE_LOW = 'ships_from_warehouse_low';
     const KEY_SHIPS_FROM_WAREHOUSE_HIGH = 'ships_from_warehouse_high';

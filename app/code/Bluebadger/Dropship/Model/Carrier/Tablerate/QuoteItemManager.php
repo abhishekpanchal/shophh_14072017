@@ -11,7 +11,7 @@ use Magento\Framework\Exception\NotFoundException;
 class QuoteItemManager
 {
     const KEY_QUOTE_ID = 'quote_id';
-    const KEY_WEEK = 'week';
+    const KEY_WEEK = 'weeks';
 
     /**
      * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\Collection
