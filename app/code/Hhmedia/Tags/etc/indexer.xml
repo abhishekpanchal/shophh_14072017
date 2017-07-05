@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Indexer/etc/indexer.xsd">
+	<indexer id="tags_indexer" view_id="tags_indexer" class="Hhmedia\Tags\Model\Indexer\Custom">
+		<title translate="true">Tags Product</title>
+		<description translate="true">Tags Product</description>
+	</indexer>
+</config>
