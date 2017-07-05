@@ -4,8 +4,9 @@ define([
     'mage/url',
     'mage/storage',
     'Magento_Checkout/js/model/quote',
-    'Magento_Checkout/js/model/step-navigator'
-], function (Component, ko, urlBuilder, storage, quote, stepNavigator) {
+    'Magento_Checkout/js/model/step-navigator',
+    'Magento_Checkout/js/model/shipping-service'
+], function (Component, ko, urlBuilder, storage, quote, stepNavigator, shippingService) {
     'use strict';
 
     return Component.extend({
@@ -29,6 +30,10 @@ define([
             }, null, 'change');
 
             stepNavigator.steps.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
+
+            shippingService.isLoading.subscribe(function() {
                 self.getItems();
             }, null, 'change');
         },
