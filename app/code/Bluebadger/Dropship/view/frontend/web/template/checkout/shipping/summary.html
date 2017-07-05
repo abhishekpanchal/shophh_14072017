@@ -2,19 +2,23 @@
     <span class="total-qty" data-bind="text: totalQty"></span>
     <div data-bind="foreach: itemList">
         <!-- ko foreach: items -->
-        <div>
-            <img data-bind="attr: { src: thumbnail }"/>
-        </div>
-        <div>
-            <span data-bind="html: name"></span><br>
-            <span data-bind="text: sku"></span><br>
-            <span data-bind="text: price"></span><br>
-            <span data-bind="html: color"></span><br>
-            <span data-bind="html: size"></span><br>
+        <div class="row">
+            <div class="col-md-6">
+                <img data-bind="attr: { src: thumbnail }"/>
+                <div class="order-product-details">
+                    <span class="order-product-name" data-bind="html: name"></span>
+                    <div class="order-product-options">
+                        <span class="product-option" data-bind="html: color"></span>
+                        <span class="product-option" data-bind="html: size"></span>
+                        <span class="sku" data-bind="text: sku"></span>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /ko -->
-        <span data-bind="text: time"></span>
-        <span data-bind="text: shipping_cost"></span>
-        <hr>
+        <div class="order-shipping-container">
+            <span class="order-shipping-time" data-bind="text: time"></span>
+            <span class="order-shipping-cost" data-bind="text: shipping_cost"></span>
+        </div>
     </div>
 </div>

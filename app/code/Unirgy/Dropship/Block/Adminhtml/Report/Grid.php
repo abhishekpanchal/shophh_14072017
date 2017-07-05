@@ -232,6 +232,15 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         	'filter_index' => 'grid.total_qty',
             'type'      => 'number',
         ));
+
+        $this->addColumn('custom_shipping_amount', array(
+            'header'    => __("$poStr Custom Shipping"),
+            'index'     => 'custom_shipping_amount',
+            'filter_index' => 'grid.custom_shipping_amount',
+            'type'  => 'price',
+            'currency' => 'base_currency_code',
+            'currency_code' => $this->_scopeConfig->getValue('currency/options/base'),
+        ));
         
         $this->addColumn('udropship_vendor', array(
             'header' => __('Vendor'),
@@ -272,6 +281,8 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
         	'type' => 'text',
         	'nl2br' => true,
         ));
+
+
 
         $this->addExportType('*/*/exportCsv', __('CSV'));
         $this->addExportType('*/*/exportXml', __('XML'));

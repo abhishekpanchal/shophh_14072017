@@ -45,7 +45,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
         </span>
         <?php endif; ?>
       </div>
-      <div class="col-md-3 col-sm-4 col-xs-6 qty" data-th="<?php echo $block->escapeHtml(__('Qty')); ?>">
+      <div class="col-md-3 col-sm-4 col-xs-5 qty" data-th="<?php echo $block->escapeHtml(__('Qty')); ?>">
         <div class="cart-qty-wrapper">
           <label class="label" for="qty"><span><?php /* @escapeNotVerified */ echo __('Qty') ?></span></label>
           <div class="styled-select">
@@ -71,7 +71,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
           </div>
         </div>
       </div>
-      <div class="col-md-3 col-sm-8 col-xs-6">
+      <div class="col-md-3 col-sm-8 col-xs-5">
         <?php if ($canApplyMsrp): ?>
         <span class="cart msrp subtotal">--</span>
         <?php else: ?>
