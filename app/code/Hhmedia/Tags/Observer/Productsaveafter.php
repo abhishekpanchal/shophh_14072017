@@ -35,7 +35,6 @@ class Productsaveafter implements ObserverInterface
         $productId = $observer->getEvent()->getProduct()->getId();
 
         if(isset($productTags)){
-            echo 'TAGS FOUND FOR PRODUCT ID ' . $productId . PHP_EOL;
         	try {
 			    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 			    $tagCollection = $objectManager->create('Hhmedia\Tags\Model\Tags');
