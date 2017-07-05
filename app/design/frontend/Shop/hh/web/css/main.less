@@ -4533,6 +4533,7 @@ Checkout
       padding: 0;
       cursor: default;
       margin: 15px 18px 12px;
+      pointer-events: none;
       &:after {
         top: 2px;
       }
@@ -4595,6 +4596,7 @@ Checkout
       }
     }
   }
+
   .table-totals {
     width: 90%;
     margin: 0 20px 10px;
@@ -4602,6 +4604,7 @@ Checkout
       font-family: @fancyFont;
       font-size: 16px;
     }
+
     .shipping.excl .value {
       display: none;
     }
@@ -4615,6 +4618,9 @@ Checkout
         font-size: 12px;
         color: #8d8d8d;
         margin-top: 12px;
+      }
+      strong {
+        font-weight: 200;
       }
     }
   }
@@ -4660,6 +4666,13 @@ Checkout
   }
 }
 
+
+.help-block {
+  display: none;
+}
+.card-cvc .help-block {
+  display: block;
+}
 
 .payment-method {
   display: none;
@@ -4766,7 +4779,8 @@ Checkout
     }
   }
   .payment-method-billing-address {
-    padding-bottom: 20px;
+    padding: 20px 0;
+    clear: both;
     .billing-address-details {
       display: none;
       padding-left: 0;
