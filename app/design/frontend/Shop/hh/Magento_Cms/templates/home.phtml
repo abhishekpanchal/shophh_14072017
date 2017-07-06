@@ -140,7 +140,7 @@
             <?php $_editor = $objEditor->getCollection(); ?>
             <?php if ($_editor->getSize()): ?>
             <div class="editors-pick-title">
-                <h4>Editor's Picks</h4>
+                <h4>Editors' Picks</h4>
                 <h3> <a href="<?php echo $this->getUrl('editor') ?>">
                     See <em>H&amp;H</em> Editors Favourite Finds
                     </a>
@@ -174,7 +174,7 @@
             <div class="guest-editor-details vcenter vcenter-col">
                 <?php foreach ($_editor as $editorItem): ?>
                 <?php if($editorItem->getPast() == 0 && $editorItem->getGuest() == 1): ?>
-                    <h4>Guest Editors</h4>
+                    <h4>Guest Editors'</h4>
                     <h3>
                         <a href="<?php echo $this->getUrl('editor').'index/view/id/'.$editorItem->getEditorId(); ?>">
                             <?php echo $editorItem->getName(); ?>
