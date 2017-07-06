@@ -14,6 +14,7 @@ class Importer extends AbstractImporter
 {
     const FIELD_CSV_MERCHANT = 'Merchant';
     const FIELD_CSV_CARRIER = 'Carrier';
+    const FIELD_CSV_ORIGIN = 'Origin';
 
     /**
      * @var \Unirgy\Dropship\Model\ResourceModel\Vendor\CollectionFactory
@@ -58,37 +59,29 @@ class Importer extends AbstractImporter
         /* Basic validation */
         foreach ($this->getCsvFields() as $index => $fieldName) {
             if (!isset($row[$index])) {
-                throw new LocalizedException(__('Field ' . $fieldName . ' is missing'));
+                throw new LocalizedException(__('Field ' . $fieldName . ' is missing.'));
             }
-        }
 
-        /* Validate merchant */
-        $processedRow[Merchant::FIELD_NAME] = $row[0];
+            $value = trim($row[$index]);
+
+            if (empty($value)) {
+                throw new LocalizedException(__('Field ' . $fieldName . ' does not have a value'));
+            }
+
+            $row[$index] = $value;
+        }
 
         /** @var \Unirgy\Dropship\Model\ResourceModel\Vendor\Collection $vendor */
         $vendor = $this->vendorCollectionFactory->create();
         $vendor->addFieldToFilter('vendor_name', $row[0]);
 
         if (!$vendor->getSize()) {
-            throw new LocalizedException(__('Invalid merchant name: ' . $row[0]));
+            throw new LocalizedException(__('Merchant does not exist: ' . $row[0] . '.'));
         }
-
+        $processedRow[Merchant::FIELD_NAME] = $row[0];
         $processedRow[Merchant::FIELD_VENDOR_ID] = $vendor->getFirstItem()->getId();
-
-        /* Validate carrier */
-        $chunks = explode('-', $row[1]);
-        if (!isset($chunks[0])) {
-            throw new LocalizedException(__('Carrier is missing'));
-        }
-
-        /* Validate origin */
-        $processedRow[Merchant::FIELD_CARRIER] = trim($chunks[0]);
-
-        if (!isset($chunks[1])) {
-            throw new LocalizedException(__('Origin is missing'));
-        }
-
-        $processedRow[Merchant::FIELD_ORIGIN] = trim($chunks[1]);
+        $processedRow[Merchant::FIELD_CARRIER] = $row[1];
+        $processedRow[Merchant::FIELD_ORIGIN] = $row[2];
 
         return $processedRow;
     }

@@ -72,42 +72,40 @@ class Zone extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * Upload a import data.
      * @param \Magento\Framework\DataObject $object
-     * @return $this
+     * @return int
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function uploadAndImport(\Magento\Framework\DataObject $object)
     {
+        $numRecords = 0;
+
         /**
          * @var \Magento\Framework\App\Config\Value $object
          */
-        if (empty($_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['zone']['value'])) {
-            return $this;
-        }
-        $filePath = $_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['zone']['value'];
-        $file = $this->getCsvFile($filePath);
+        if (!empty($_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['zone']['value'])) {
+            $filePath = $_FILES['groups']['tmp_name']['dropshiptablerate']['fields']['zone']['value'];
+            $file = $this->getCsvFile($filePath);
 
-        try {
-            /** @var Importer $importer */
-            $importer = $this->importerFactory->create();
-            $importer->setFilePath($filePath);
-            $importer->setIsFirstRowHeaders(true);
-            $importer->import();
+            try {
+                /** @var Importer $importer */
+                $importer = $this->importerFactory->create();
+                $importer->setFilePath($filePath);
+                $importer->setIsFirstRowHeaders(true);
+                $importer->import();
 
-            if ($importer->hasErrors()) {
-                $message = 'Something when wrong while importing zones: ';
-                $message .= implode(', ', $importer->getErrors());
-                throw new LocalizedException(__($message));
+                if ($importer->hasErrors()) {
+                    $message = implode(PHP_EOL, $importer->getErrors());
+                    throw new LocalizedException(__($message));
+                }
+                $numRecords = $this->importData($this->getColumns(), $importer->getImportedData());
+            } catch (\Exception $e) {
+                throw $e;
+            } finally {
+                $file->close();
             }
-            $this->importData($this->getColumns(), $importer->getImportedData());
-        } catch (\Exception $e) {
-            throw new LocalizedException(
-                __('Something went wrong while importing zones: ' . $e->getMessage())
-            );
-        } finally {
-            $file->close();
         }
 
-        return $this;
+        return $numRecords;
     }
 
     /**
@@ -141,7 +139,7 @@ class Zone extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * @param array $fields
      * @param array $values
      * @throws \Magento\Framework\Exception\LocalizedException
-     * @return void
+     * @return int
      */
     private function importData(array $fields, array $values)
     {
@@ -150,19 +148,15 @@ class Zone extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
         try {
             if (count($fields) && count($values)) {
-                $this->getConnection()
-                    ->insertArray($this->getMainTable(), $fields, $values);
+                $connection->delete($this->getMainTable());
+                $connection->insertArray($this->getMainTable(), $fields, $values);
             }
-        } catch (\Magento\Framework\Exception\LocalizedException $e) {
-            $connection->rollback();
-            throw new LocalizedException(__('Unable to import zone data'), $e);
         } catch (\Exception $e) {
             $connection->rollback();
-            $this->logger->critical($e);
-            throw new LocalizedException(
-                __('Something went wrong while importing zone information.')
-            );
+            throw $e;
         }
         $connection->commit();
+
+        return count($values);
     }
 }

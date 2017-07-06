@@ -24,20 +24,20 @@ class Importer extends AbstractImporter
 
         /* The carriers are store in the fields */
         foreach ($fields as $key => $field) {
-            if ($key == 0) {
+            if ($key == 0 || empty($field)) {
                 continue;
             }
 
             $chunks = explode('-', $field);
 
             if (!isset($chunks[0])) {
-                throw new LocalizedException(__('Carrier is missing'));
+                throw new LocalizedException(__('Carrier is missing.'));
             }
 
             $carrier = $chunks[0];
 
             if (!isset($chunks[1])) {
-                throw new LocalizedException(__('Zone is missing'));
+                throw new LocalizedException(__('Zone is missing.'));
             }
 
             $zone = $chunks[1];

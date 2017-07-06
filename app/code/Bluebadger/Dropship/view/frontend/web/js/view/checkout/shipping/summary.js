@@ -2,21 +2,40 @@ define([
     'uiComponent',
     'ko',
     'mage/url',
-    'mage/storage'
-], function (Component, ko, urlBuilder, storage) {
+    'mage/storage',
+    'Magento_Checkout/js/model/quote',
+    'Magento_Checkout/js/model/step-navigator',
+    'Magento_Checkout/js/model/shipping-service'
+], function (Component, ko, urlBuilder, storage, quote, stepNavigator, shippingService) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: 'Bluebadger_Dropship/checkout/shipping/summary'
         },
-        totalQty: '',
-        itemList: ko.observableArray([]),
-
         initialize: function() {
-            this._super();
+            this.itemList = ko.observableArray([]);
+            this.totalQty = ko.observable(0);
             var self = this;
+            this._super();
+
             self.getItems();
+
+            quote.shippingAddress.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
+
+            quote.totals.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
+
+            stepNavigator.steps.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
+
+            shippingService.isLoading.subscribe(function() {
+                self.getItems();
+            }, null, 'change');
         },
 
         getItems: function() {
@@ -29,7 +48,10 @@ define([
             ).done(
                 function (response) {
                     if (!response.error) {
-                        self.itemList = response.quote.vendors;
+                        self.itemList([]);
+                        for (var i = 0; i < response.quote.vendors.length; i++) {
+                            self.itemList.push(response.quote.vendors[i]);
+                        }
                         self.totalQty = response.quote.total_qty;
                     } else {
                         alert(response.error);
