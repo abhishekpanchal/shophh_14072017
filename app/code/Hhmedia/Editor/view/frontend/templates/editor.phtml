@@ -9,7 +9,7 @@
             <div class="guest-editor-details vcenter vcenter-col">
                 <h3 class="guest-name"><a href="<?php echo $this->getItemUrl($guest) ?>"><?php echo $guest->getName(); ?></a></h3>
                 <h4 class="guest-job"><?php echo $guest->getJobTitle(); ?></h4>
-                <div class="editor-blurb"><?php echo $guest->getContent(); ?></div>
+                <div class="editor-blurb"><?php echo $guest->getQuote(); ?></div>
                 <!--<div class="editor-quote"><?php echo $guest->getShortQuote(); ?></div>-->
                 <a href="<?php echo $this->getItemUrl($guest) ?>" class="btn btn-main btn-picks">See Picks</a>
             </div>
