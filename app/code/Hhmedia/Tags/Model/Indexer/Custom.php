@@ -1,43 +1,67 @@
 <?php
 namespace Hhmedia\Tags\Model\Indexer;
 
-class Custom implements \Magento\Indexer\Model\ActionInterface, \Magento\Framework\Mview\ActionInterface
-{  
-	public function execute(\Magento\Framework\Event\Observer $observer)
+/**
+ * Class Custom
+ * @package Hhmedia\Tags\Model\Indexer
+ */
+class Custom implements \Magento\Framework\Indexer\ActionInterface, \Magento\Framework\Mview\ActionInterface
+{
+    /**
+     * @var \Magento\Framework\Event\ManagerInterface
+     */
+    protected $manager;
+
+    /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     */
+    protected $collectionFactory;
+
+    /**
+     * Custom constructor.
+     * @param \Magento\Framework\Event\ManagerInterface $manager
+     * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $collectionFactory
+     */
+    public function __construct(
+        \Magento\Framework\Event\ManagerInterface $manager,
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $collectionFactory
+    )
     {
-        $productTags = 	$observer->getEvent()->getProduct()->getData('product_tags');
-        $productId = $observer->getEvent()->getProduct()->getId();
-        
-        if(isset($productTags)){
-        	try {
-			    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-			    $tagCollection = $objectManager->create('Hhmedia\Tags\Model\Tags');
+        $this->manager = $manager;
+        $this->collectionFactory = $collectionFactory;
+    }
 
-			    $oldTags = (array)$tagCollection->getTags($productId);
-			    $newTags = explode(",",$productTags);
+    /**
+     * @inheritdoc
+     */
+    public function execute($ids) {}
 
-			    $this->_resources = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\App\ResourceConnection');
-		        $connection = $this->_resources->getConnection();
+    /**
+     * @inheritdoc
+     */
+    public function executeFull()
+    {
+        $products = $this->collectionFactory->create();
+        $products->addAttributeToSelect('product_tags');
 
-			    $table = $this->_resources->getTableName(\Hhmedia\Tags\Model\ResourceModel\Tags::TBL_ATT_PRODUCT);
-		        $insert = array_diff($newTags, $oldTags);
-		        $delete = array_diff($oldTags, $newTags);
+        foreach ($products as $product) {
+            $this->manager->dispatch('catalog_product_save_after',  ['product' => $product]);
+        }
+    }
 
-		        if ($delete) {
-		            $where = ['product_id = ?' => (int)$productId, 'tags_id IN (?)' => $delete];
-		            $connection->delete($table, $where);
-		        }
+    /**
+     * @inheritdoc
+     */
+    public function executeList(array $ids)
+    {
 
-		        if ($insert) {
-		            $data = [];
-		            foreach ($insert as $tag_id) {
-		                $data[] = ['product_id' => (int)$productId, 'tags_id' => (int)$tag_id];
-		            }
-		            $connection->insertMultiple($table, $data);
-		        }
-		    }catch (Exception $e) {
-                $this->messageManager->addException($e, __('Something went wrong while saving the contact.'));
-            }
-	    }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function executeRow($id)
+    {
+
     }
 }

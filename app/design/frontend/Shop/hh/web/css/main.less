@@ -1847,6 +1847,12 @@ Cart
           font-weight: normal;
         }
       }
+      .fieldset.estimate {
+        margin: 0 0 0 5px;
+        .field {
+          margin-bottom: 5px !important; /*fighting important with important */
+        }
+      }
     }
     #co-shipping-method-form {
       label {
@@ -1868,7 +1874,7 @@ Cart
     }
     #discount-coupon-form {
       input {
-        width: auto;
+        width: 50%;
       }
       .cart-promo {
         button {

@@ -2,6 +2,7 @@
 
 namespace Bluebadger\Dropship\Model\Carrier;
 
+use Bluebadger\Dropship\Model\Carrier\Tablerate\QuoteItemManager;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Item;
 
@@ -19,6 +20,16 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     const KEY_TITLE = 'title';
     const KEY_VENDOR_ID = 'vendor_id';
     const KEY_CALL_FOR_QUOTE = 'call_for_quote';
+    const KEY_SHIP_TIME_LOW = 'ship_time_low';
+    const KEY_SHIP_TIME_HIGH = 'ship_time_high';
+    const SHIP_TIME_LOW_DEFAULT = 5;
+    const SHIP_TIME_HIGH_DEFAULT = 10;
+    const KEY_WEEK = 'weeks';
+    const KEY_DAY = 'days';
+    const KEY_SHIP_TIME_UNIT = 'ship_time_unit';
+    const KEY_SHIPS_FROM_WAREHOUSE_LOW = 'ships_from_warehouse_low';
+    const KEY_SHIPS_FROM_WAREHOUSE_HIGH = 'ships_from_warehouse_high';
+    const KEY_SHIPS_FROM_WAREHOUSE_UNIT = 'ships_from_warehouse_unit';
 
     /**
      * @var string
@@ -97,7 +108,7 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     public function collectRates(RateRequest $request)
     {
         /** @var \Magento\Shipping\Model\Rate\Result $result */
-        $result = $this->rateResultFactory->create();
+         $result = $this->rateResultFactory->create();
 
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->rateMethodFactory->create();
@@ -158,13 +169,32 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
                 $quoteItemResource->deleteByQuoteId($item->getQuote()->getId(), $vendorId);
                 $isQuoteCleaned = true;
             }
+
+            /** @var \Magento\Catalog\Model\Product $product */
             $product = $this->productRepository->getById($item->getProduct()->getId());
 
-            /** TODO Randomly generated dates for testing purposes */
-            $item->setData('ship_time_low', rand(1, 4));
-            $item->setData('ship_time_high', rand(5, 10));
-            $item->setData('ship_time_unit', rand(1, 2));
+            /* Set ship time low */
+            $shipTimeLow = $product->getData(self::KEY_SHIPS_FROM_WAREHOUSE_LOW);
+            if (empty($shipTimeLow)) {
+                $shipTimeLow = self::SHIP_TIME_LOW_DEFAULT;
+            }
+            $item->setData(self::KEY_SHIP_TIME_LOW, $shipTimeLow);
 
+            /* Set ship time high */
+            $shipTimeHigh = $product->getData(self::KEY_SHIPS_FROM_WAREHOUSE_HIGH);
+            if (empty($shipTimeHigh)) {
+                $shipTimeHigh = self::SHIP_TIME_HIGH_DEFAULT;
+            }
+            $item->setData(self::KEY_SHIP_TIME_HIGH, $shipTimeHigh);
+
+            /* Set ship time unit */
+            $shipTimeUnit = strtolower(trim($product->getAttributeText(self::KEY_SHIPS_FROM_WAREHOUSE_UNIT)));
+            if (empty($shipTimeUnit)) {
+                $shipTimeUnit = self::KEY_DAY;
+            }
+            $item->setData(self::KEY_SHIP_TIME_UNIT, $shipTimeUnit);
+
+            /* Set weight */
             if (!isset($weights[$vendorId])) {
                 $weights[$vendorId] = 0;
             }
