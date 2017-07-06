@@ -4674,6 +4674,9 @@ Checkout
   }
 }
 
+.checkout-agreements-block {
+  clear: both;
+}
 
 .help-block {
   display: none;
@@ -4782,8 +4785,17 @@ Checkout
       width: 100% !important;
       text-align: left !important;
     }
-    .payment-image, .payment-description, .field.alias {
+    .payment-image, .payment-description {
       display: none;
+    }
+    .field.alias {
+      .label {
+        display: none !important;
+      }
+      input[type="checkbox"] {
+        float: left;
+        margin-right: 8px;
+      }
     }
   }
   .payment-method-billing-address {
