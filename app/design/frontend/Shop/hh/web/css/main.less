@@ -9241,6 +9241,9 @@ Account reviews
           font-family: @headlineFont;
           font-size: 12px;
           font-weight: 600;
+          &:hover {
+            cursor: pointer;
+          }
         }
         white-space: nowrap;
         height: auto;
@@ -9281,8 +9284,25 @@ Account reviews
       float: right;
       background: 0;
       border: 0;
-      font-family: @headlineFont;
+      font-family: @headlineFont !important;
       text-transform: uppercase;
+      &:hover {
+        color: #000;
+        opacity: .85;
+      }
+      span {
+        font-size: 13px;
+        &:before {
+          content: '';
+          background: url('../images/share-icon.png');
+          display: inline-block;
+          width: 20px;
+          height: 18px;
+          position: relative;
+          top: 4px;
+          left: -8px;
+        }
+      }
     }
     
   }
