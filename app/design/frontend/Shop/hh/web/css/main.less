@@ -7487,6 +7487,18 @@ Editos Main Page
         border-top: 1px solid #889dbb;
         border-bottom: 1px solid #889dbb;
         width: 100%;
+        background: url(../images/quote-open-white.png) no-repeat 0 20px;
+        position: relative;
+        &:after {
+          content: '';
+          right: 0;
+          width: 26px;
+          height: 22px;
+          background: url(../images/quote-close-white.png);
+          position: absolute;
+          z-index: 9;
+          background-repeat: no-repeat;
+        }
         p {
           margin-bottom: 0;
         }
