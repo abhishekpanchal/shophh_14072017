@@ -8,7 +8,7 @@
         </referenceContainer>
         <referenceBlock name="page.main.title">
       		<action method="setPageTitle">
-        		<argument translate="true" name="title" xsi:type="string">Featured Guest Editor's</argument>
+        		<argument translate="true" name="title" xsi:type="string">Featured Guest Editors</argument>
       		</action>
     	</referenceBlock>
     </body>
