@@ -184,13 +184,10 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
     }
 
     function limit_description($text, $limit) {
-        if (str_word_count($text, 0) > $limit) {
-            $words = str_word_count($text, 2);
-            $pos = array_keys($words);
-            $shortDescription = substr($text, 0, $pos[$limit]).'...';
-            return $shortDescription;
+        if(strlen($text) > $limit){
+            return substr($text,0,90)."...";
         }else{
-            return $text;
+            $text;
         }
     }
 
