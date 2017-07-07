@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--<preference for="Magento\Catalog\Block\Product\View\Gallery" type="Bluebadger\ConfigurableProduct\Block\Product\View\Gallery" />-->
+    <preference for="Magento\Catalog\Block\Product\View\Description" type="Bluebadger\ConfigurableProduct\Block\Product\View\Description" />
+    <preference for="Magento\Catalog\Block\Product\View\Attributes" type="Bluebadger\ConfigurableProduct\Block\Product\View\Attributes" />
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="injectPricing" type="Bluebadger\ConfigurableProduct\Plugin\Block\Product\View\Type\Configurable" />
+    </type>
+</config>
