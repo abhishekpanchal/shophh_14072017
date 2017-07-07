@@ -140,9 +140,9 @@
             <?php $_editor = $objEditor->getCollection(); ?>
             <?php if ($_editor->getSize()): ?>
             <div class="editors-pick-title">
-                <h4>Editor's Picks</h4>
+                <h4>Editors Picks</h4>
                 <h3> <a href="<?php echo $this->getUrl('editor') ?>">
-                    See <em>H&amp;H</em> Editors Favourite Finds
+                    See <em>H&amp;H</em> Editors' Favourite Finds
                     </a>
                 </h3>
             </div>
@@ -280,7 +280,7 @@
 <!-- Shop MORE Shots Start -->
 <div class="more-shots row no-gutters">
     <h2 class="page-title basefont"><span><strong class="dietdidot">Shop</strong> MORE SHOTS</span></h2>
-    <h4 class="subtitle"><?php echo __('Lorem ipsum dolor sit amet, consectetur adipiscing elit.') ?></h4>
+    <h4 class="subtitle"><?php echo __('Click on the look to see the full collection') ?></h4>
     <?php $j=1; ?>
     <?php foreach($shotCollection as $shot): ?>
         <?php $imagePath = $helper->getResizedUrl($shot->getImagePath(),'400','400'); ?>

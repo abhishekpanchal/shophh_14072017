@@ -114,7 +114,7 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
                                         <span class="callout last-call"><?php echo __('Last Call'); ?></span>
                                     <?php endif; ?>
                                     <p><?php $shortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?></p>
-                                    <p><?php echo $customHelper->limit_description($shortDescription, 8); ?></p>
+                                    <p><?php echo $customHelper->limit_description($shortDescription, 90); ?></p>
                                 </div>
                             <?php endif; ?>
                         <?php echo $block->getReviewsSummaryHtml($_product, $templateType); ?>

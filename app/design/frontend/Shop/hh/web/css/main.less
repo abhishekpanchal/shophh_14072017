@@ -1442,11 +1442,6 @@ button.mz-button.mz-button-close {
   text-align: center!important;
 }
 
-.weltpixel-quickview-catalog-product-view {
-  .main-content {
-    margin-top: 50px;
-  }
-}
 .page-products {
   .product-item-inner {
     display: inline-block;
@@ -3377,7 +3372,7 @@ Checkout
         display: none !important; 
       }
     }
-    #shipping-new-address-form, #billing-new-address-form, .form.form-login, .customweb-beanstreamcw-payment-form {
+    #shipping-new-address-form, #billing-new-address-form, .form.form-login, .customweb-beanstreamcw-payment-form, #discount-form {
       input.input-text {
         border-radius: 8px;
         background-color: #f0f0f0;
@@ -3393,6 +3388,14 @@ Checkout
           color: #000;
         }
       }
+    }
+    #discount-form button {
+      background: #000;
+      border: 1px solid #000;
+      border-radius: 0 !important;
+      font-family: @fancyFont;
+      padding: 10px 30px;
+      color: #fff;
     }
     .customweb-beanstreamcw-payment-form .field {
       margin-bottom: 10px !important;
@@ -4544,6 +4547,7 @@ Checkout
       padding: 0;
       cursor: default;
       margin: 15px 18px 12px;
+      pointer-events: none;
       &:after {
         top: 2px;
       }
@@ -4606,6 +4610,7 @@ Checkout
       }
     }
   }
+
   .table-totals {
     width: 90%;
     margin: 0 20px 10px;
@@ -4613,6 +4618,7 @@ Checkout
       font-family: @fancyFont;
       font-size: 16px;
     }
+
     .shipping.excl .value {
       display: none;
     }
@@ -4626,6 +4632,9 @@ Checkout
         font-size: 12px;
         color: #8d8d8d;
         margin-top: 12px;
+      }
+      strong {
+        font-weight: 200;
       }
     }
   }
@@ -4671,6 +4680,16 @@ Checkout
   }
 }
 
+.checkout-agreements-block {
+  clear: both;
+}
+
+.help-block {
+  display: none;
+}
+.card-cvc .help-block {
+  display: block;
+}
 
 .payment-method {
   display: none;
@@ -4772,12 +4791,22 @@ Checkout
       width: 100% !important;
       text-align: left !important;
     }
-    .payment-image, .payment-description, .field.alias {
+    .payment-image, .payment-description {
       display: none;
+    }
+    .field.alias {
+      .label {
+        display: none !important;
+      }
+      input[type="checkbox"] {
+        float: left;
+        margin-right: 8px;
+      }
     }
   }
   .payment-method-billing-address {
-    padding-bottom: 20px;
+    padding: 20px 0;
+    clear: both;
     .billing-address-details {
       display: none;
       padding-left: 0;
@@ -4922,7 +4951,7 @@ Cart Page
 
 
 
-.customer-account-login, .customer-account-create, .customer-account-forgotpassword {
+.customer-account-login, .customer-account-create, .customer-account-forgotpassword, .customer-account-createpassword {
 
   .main {
     .fieldset > .field:not(.choice) > .label {
@@ -7228,15 +7257,28 @@ Magic Scroll
     font-size: 42px!important;
 }
 .mfp-content {
-  min-height: 500px;
+  height: 540px !important;
   min-width: 500px;
 }
-
-
 .weltpixel-quickview-catalog-product-view {
-  .main-content {
-    margin-bottom: 50px;
+  .page-wrapper {
+    display: table !important;
+    height: 100%;
+    width: 100%;
   }
+  .main-content {
+    display: table-cell;
+    vertical-align: middle;
+    .column.main {
+      width: 750px;
+      margin: 0 auto;
+    }
+  }
+
+  .product-info-main .product.attribute.name {
+    margin-top: 0;
+  }
+
   .description {
     margin-top: 20px;
   }
@@ -7397,6 +7439,12 @@ Editos Main Page
 .editor-index-index {
   .main-content {
     margin-bottom: 30px;
+    h4.subtitle {
+      display: none;
+    }
+    .page-title {
+      margin-bottom: 20px;
+    }
   }
   .editor-guest-image {
     background: url(../images/guest-editor.jpg);
@@ -7439,6 +7487,18 @@ Editos Main Page
         border-top: 1px solid #889dbb;
         border-bottom: 1px solid #889dbb;
         width: 100%;
+        background: url(../images/quote-open-white.png) no-repeat 0 20px;
+        position: relative;
+        &:after {
+          content: '';
+          right: 0;
+          width: 26px;
+          height: 22px;
+          background: url(../images/quote-close-white.png);
+          position: absolute;
+          z-index: 9;
+          background-repeat: no-repeat;
+        }
         p {
           margin-bottom: 0;
         }
@@ -7474,6 +7534,9 @@ Editos Main Page
     .editor_list_item {
       text-align: center;
       margin-bottom: 35px;
+      &:nth-child(6n+1) {
+        clear: both;
+      }
 
       img {
         width: 80%;
@@ -7651,12 +7714,15 @@ Editors Details
       text-transform: uppercase;
     }
     &:nth-child(n+5) {
-      display: none;
+      clear: both;
     } 
     &.active {
       img {
         opacity: 0.5;
       }
+    }
+    &:active img {
+      opacity: .5;
     }
   }
   .view-all-editors {
@@ -9054,7 +9120,7 @@ Account reviews
 }
 
 
-.form.password.forget {
+.form.password.forget, .form.password.reset {
   .note {
     font-family: @fancyFont;
     font-size: 16px;
@@ -9202,6 +9268,9 @@ Account reviews
           font-family: @headlineFont;
           font-size: 12px;
           font-weight: 600;
+          &:hover {
+            cursor: pointer;
+          }
         }
         white-space: nowrap;
         height: auto;
@@ -9242,8 +9311,25 @@ Account reviews
       float: right;
       background: 0;
       border: 0;
-      font-family: @headlineFont;
+      font-family: @headlineFont !important;
       text-transform: uppercase;
+      &:hover {
+        color: #000;
+        opacity: .85;
+      }
+      span {
+        font-size: 13px;
+        &:before {
+          content: '';
+          background: url('../images/share-icon.png');
+          display: inline-block;
+          width: 20px;
+          height: 18px;
+          position: relative;
+          top: 4px;
+          left: -8px;
+        }
+      }
     }
     
   }
@@ -9421,7 +9507,6 @@ Account reviews
     content: none !important;
   }
 }
-
 
 
 
