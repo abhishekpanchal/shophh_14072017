@@ -16,8 +16,6 @@
 <p><?php echo "Placed on ".$block->formatDate($_order->getCreatedAt(), \IntlDateFormatter::LONG); ?></p>
 <p><?php echo count($_order->getItemsCollection())." Items"; ?></p>
 
-
-
 <?php $blockObj = $block->getLayout()->createBlock('Magento\Sales\Block\Order\Info'); ?>
 <div class="block-content shipping-container row">
     <div class="box block-dashboard-addresses col-md-6 col-sm-6">
@@ -39,15 +37,6 @@
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 <div class="table-wrapper order-items">
     <table class="data table table-order-items" id="my-orders-table" summary="<?php /* @escapeNotVerified */ echo __('Items Ordered') ?>">
@@ -101,10 +90,10 @@
                 <?php endif ?>
             </tbody>
         <?php endforeach; ?>
-        <tfoot>
-            <?php echo $block->getChildHtml('order_totals') ?>
-        </tfoot>
     </table>
+    <div class="order-totals">
+        <?php echo $block->getChildHtml('order_totals') ?>
+    </div>
 </div>
 <?php if ($_giftMessage): ?>
 <script type="text/x-magento-init">
