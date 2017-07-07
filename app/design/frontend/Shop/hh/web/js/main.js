@@ -273,6 +273,10 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
         $('#guest-checkout-btn').click(function() {
           var email = $("input[name='guest-checkout-email']").val();
           $("#customer-email").val(email);
+
+          /* Trigger change event manually */
+          document.getElementById('customer-email').dispatchEvent(new Event('change'));
+
           $('.checkout-login-container').hide();
           $('.checkout-login-container').siblings().not(".opc-estimated-wrapper").show();
         });

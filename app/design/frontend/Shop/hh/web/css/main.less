@@ -5564,6 +5564,12 @@ Shot Thumbs
     margin: 0 auto;
   }
 }
+@media only screen and (max-width: 1024px) and (min-width: 681px) {
+  .more-shots .more-shots-thumbs:nth-child(even) > .shot-thumb {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+}
 .shot-thumb * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -6793,6 +6799,7 @@ Home Page
       .homepage-controls {
         width: 165px;
         bottom: 95px;
+        position: static; 
         .carousel-indicators {
           bottom: 15px;
           .active {
@@ -7713,9 +7720,6 @@ Editors Details
       font-size: 12px;
       text-transform: uppercase;
     }
-    &:nth-child(n+5) {
-      clear: both;
-    } 
     &.active {
       img {
         opacity: 0.5;
@@ -8668,6 +8672,7 @@ Orders
 
 .order-details-items {
   font-size: 14px;
+  border-bottom: none;
   
   .block-main-title {
     border: 0;
@@ -8702,8 +8707,8 @@ Orders
 }
 
 .order-details-items {
-  tbody td {
-    padding: 20px !important;
+  .table > tbody > tr > td {
+    padding: 20px;
   }
   td.name {
     font-size: 12px;
@@ -8736,18 +8741,6 @@ Orders
 .sales-order-view .block-order-details-view {
   display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 .customer-account-index {
   .block-tickets-dashboard {
@@ -9582,5 +9575,69 @@ body:not(.account):not(.checkout-cart-index):not(.checkout-index-index):not(.con
   }
 }
 
-
+  /* ===============================
+  Account: Orders Page
+  =================================*/
+.account.sales-order-view {
+  .order-items {
+    table.table-order-items {
+      tr > td {
+        &.name, &.qty {
+          padding-left: 0px;
+        }
+        &.qty, &.price, &.subtotal {
+          padding-right: 0px;
+        }
+      }
+    }
+    .order-totals {
+      background: #f0f0f0;
+      padding: 2em;
+      font-size: 15px;
+      line-height: 2em;
+      &-label, &-value {
+        width: 50%;
+      }
+      &-label {
+        font-family: @headlineFont;
+      }
+      &-value {
+        float: right;
+        text-align: right;
+        font-family: @fancyFont;
+      }
+      &-value[data-th="Grand Total"] {
+        font-size: 28px;
+        position: relative;
+          &:after {
+            content: "CAD";
+            color: #8d8d8d;
+            font-size: 12px;
+            position: absolute;
+            top: 22px;
+            right: 0px;
+          }
+      }
+      .tax-container {
+        display: block;
+        margin-bottom: 1em;
+        .price {
+          float: right;
+          text-align: right;
+          font-family: @fancyFont;
+          width: 50%;
+        }
+      }
+      .payment-method-container {
+        border-top: 1px solid #a2a2a2;
+        margin-top: 2.5em;
+        padding-top: 1em;
+        line-height: 1.8;
+        .title, .method {
+          display: block;
+        }
+      }
+    }
+  }
+}
 

@@ -11,11 +11,17 @@ $_item = $block->getItem();
 ?>
 <tr id="order-item-row-<?php /* @escapeNotVerified */ echo $_item->getId() ?>">
     <td>
-        <?php $helper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
-        <?php $product = $helper->getLoadProduct($_item->getId()); ?>
-        <?php $image = $product->getData('small_image'); ?>
         <a href="<?php echo $this->getUrl()."catalog/product/view/id/".$_item->getId(); ?>">
-            <img src="<?php echo $this->getUrl('pub/media/catalog').'product'.$image ?>" class="product-image" />
+            <?php
+            $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+            if($childProd = current($_item->getChildrenItems())){
+                $productImage = $_imagehelper->init($childProd->getProduct(), 'category_page_list', array('height' => 105 , 'width'=> 105))->getUrl();
+            }
+            else{
+               $productImage = $_imagehelper->init($_item->getProduct(), 'category_page_list', array('height' => 105 , 'width'=> 105))->getUrl();
+            }
+            ?>
+            <img src="<?=$productImage?>" title="<?= $block->escapeHtml($_item->getName()) ?>" alt="<?= $block->escapeHtml($_item->getName()) ?>" class="product-image" />
         </a>
     </td>
     <td class="col name" data-th="<?php echo $block->escapeHtml(__('Product Name')); ?>">
