@@ -8,7 +8,6 @@ define(['jquery'], function ($) {
             mtConfig: {
                 enabled: false,
                 simpleProductId: null,
-                enabled: false,
                 useOriginalGallery: true,
                 currentProductId: null,
                 galleryData: [],
