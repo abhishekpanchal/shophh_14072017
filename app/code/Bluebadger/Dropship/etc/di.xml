@@ -13,4 +13,5 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Unirgy\Dropship\Block\Vendor\HtmlHeader" type="Bluebadger\Dropship\Block\Vendor\HtmlHeader" />
 </config>
