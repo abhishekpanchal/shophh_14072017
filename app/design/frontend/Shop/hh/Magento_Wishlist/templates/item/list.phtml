@@ -17,7 +17,7 @@ $columns = $block->getColumns();
     <?php if (count($block->getItems())): ?>
     <div class="product-items">
         <?php foreach ($block->getItems() as $item): ?>
-        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div data-row="product-item" class="row product-item" id="item_' . $item->getId() . '">' : '</div><div class="row product-item" id="item_' . $item->getId() . '">' ?>
+        <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<div data-row="product-item" class="row product-item test" id="item_' . $item->getId() . '">' : '<div class="row product-item" id="item_' . $item->getId() . '">' ?>
             <div class="product-item-info">
                 <?php foreach ($columns as $column): ?>
                     <?php $column->setItem($item); echo $column->toHtml($item);?>
@@ -26,6 +26,8 @@ $columns = $block->getColumns();
         <?php echo($iterator == count($block->getItems())+1) ? '</div>' : '' ?>
         <?php endforeach; ?>
     </div>
+
+
     <?php else: ?>
         <div class="message info empty">
             <span><?php /* @escapeNotVerified */ echo __('This Wish List has no Items');?></span>
