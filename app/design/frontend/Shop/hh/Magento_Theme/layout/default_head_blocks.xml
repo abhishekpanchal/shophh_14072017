@@ -10,6 +10,7 @@
     <css src="css/fonts.css" />
     <css src="css/main.css" />
     <css src="css/responsive.css"/>
+    <css src="css/dropship.css"/>
     <script src="js/main.js"/>
   </head>
 </page>

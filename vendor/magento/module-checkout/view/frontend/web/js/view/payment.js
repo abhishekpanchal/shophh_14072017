@@ -53,7 +53,7 @@ define(
                 stepNavigator.registerStep(
                     'payment',
                     null,
-                    $t('2. Payment'),
+                    $t('Payment'),
                     this.isVisible,
                     _.bind(this.navigate, this),
                     20

@@ -1,6 +1,8 @@
 <?php
 namespace Bluebadger\Dropship\Model\Carrier\Tablerate;
+use Bluebadger\Dropship\Model\Carrier\Tablerate;
 use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Framework\Exception\NotFoundException;
 
 /**
  * Class QuoteItemManager
@@ -9,8 +11,7 @@ use Magento\Catalog\Api\ProductRepositoryInterface;
 class QuoteItemManager
 {
     const KEY_QUOTE_ID = 'quote_id';
-    const INT_VAL_DAY = 1;
-    const INT_VAL_WEEK = 2;
+    const KEY_WEEK = 'weeks';
 
     /**
      * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\Collection
@@ -46,14 +47,6 @@ class QuoteItemManager
      * @var \Magento\Framework\Pricing\Helper\Data
      */
     protected $priceHelper;
-
-    /**
-     * @var array
-     */
-    private $textToInt = [
-        'day' => 1,
-        'week' => 2
-    ];
 
     /**
      * QuoteItemManager constructor.
@@ -101,7 +94,15 @@ class QuoteItemManager
         /** @var \Bluebadger\Dropship\Model\Carrier\Tablerate\Quote\Item $quoteItem */
         foreach ($quoteItems as $quoteItem) {
             $cartItemData = $quoteItem->getCartItem();
-            $product = $this->productRepository->get($cartItemData->getSku(), $storeId);
+
+            /* Remove bogus items from quote item table */
+            try {
+                $product = $this->productRepository->get($cartItemData->getSku(), $storeId);
+            } catch (\Exception $e) {
+                $quoteItem->delete();
+                continue;
+            }
+
             $image = $this->imageHelper->init($product, 'product_page_image_small')
                 ->setImageFile($product->getFile())
                 ->resize(100, 100)
@@ -142,7 +143,7 @@ class QuoteItemManager
             $highestTime = 0;
 
             foreach ($vendor['items'] as $item) {
-                $days = ($item['ship_time_unit'] == 'week') ? 5 : 1;
+                $days = ($item['ship_time_unit'] == self::KEY_WEEK) ? 5 : 1;
                 $time = $item['ship_time_high'] * $days;
 
                 if ($time > $highestTime) {
