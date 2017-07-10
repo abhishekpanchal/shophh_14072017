@@ -126,6 +126,64 @@ Temp var
 
 
 
+
+/* ==========================================================================
+New shop the spot very early breakpoint to accomodate for extra content
+========================================================================== */
+@media only screen and (max-width: 1400px) {
+	.lookbook-container .display-block-xs {
+		display: block;
+	}
+	.lookbook-container {
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+			min-height: 0;
+		}
+	}
+	.lookbook-main .lookbook-container {
+		margin-bottom: 0;
+	}
+	.hotspot-details {
+		padding: 25px 10%;
+		box-shadow: none;
+		position: static;
+		
+		.hotspot-details-placeholder {
+			width: 116%;
+			margin-top: -4%;
+		}
+		.btn-fullscreen {
+			display: inline-block;
+			margin-top: 10px;
+		}
+		
+		.image {
+			float: left;
+			margin-right: 30px;
+		}
+		h2 {
+			padding-top: 35px;
+		}
+		.pro-detail-div {
+			img {
+				width: 100%;
+			}
+			.actions-primary {
+				margin-top: 20px;
+			}
+			.hotspot-btn {
+				min-width: 25%;
+			}
+		}
+	}
+}
+
+
+
+
 @media only screen and (max-width: 1300px) {
 	.pro-detail-div img {
 		width: 50%;
@@ -345,36 +403,6 @@ Tablet Portrait size to standard 1024 (devices and browsers)
     }
   }
   
-  
-  	/* ===============================
-	Shop the Spot
-	=================================*/
-	.hotspot-details {
-		padding: 0 15px;
-		.hotspot-details-placeholder {
-			padding: 15px 0;
-		}
-		h2 {
-			margin-top: 10px;
-		}
-	}
-
-	.shot-thumb .shot-thumb-meta {
-		width: 50%;
-		height: 50%;
-		background: rgba(255,250,250,.9);
-		h4 {
-			&:before {
-				content: none;
-			}
-			span {
-				background: none;
-			}
-		}
-	}
-
-	
-
 
 	/* ===============================
 	Product Page
@@ -617,63 +645,6 @@ Shop the Spot Desktop Responsive
 		margin-bottom: 30px;
 	}
 
-
-
-
-
-
-
-	/* ===============================
-	Shop the Shot
-	=================================*/
-	.lookbook-container .display-block-xs {
-		display: block;
-	}
-	.lookbook-container {
-		.homepage-hero, .mood-bg {
-			width: 100%;
-		}
-		.mood-bg {
-			background: none !important;
-			min-height: 0;
-		}
-	}
-	.lookbook-main .lookbook-container {
-		margin-bottom: 0;
-	}
-	.hotspot-details {
-		padding: 25px 10%;
-		box-shadow: none;
-		position: static;
-		
-		.hotspot-details-placeholder {
-			width: 116%;
-			margin-top: -4%;
-		}
-		.btn-fullscreen {
-			display: inline-block;
-			margin-top: 10px;
-		}
-		
-		.image {
-			float: left;
-			margin-right: 30px;
-		}
-		h2 {
-			padding-top: 35px;
-		}
-		.pro-detail-div {
-			img {
-				width: 100%;
-			}
-			.actions-primary {
-				margin-top: 20px;
-			}
-			.hotspot-btn {
-				min-width: 25%;
-			}
-		}
-	}
 
 
 
