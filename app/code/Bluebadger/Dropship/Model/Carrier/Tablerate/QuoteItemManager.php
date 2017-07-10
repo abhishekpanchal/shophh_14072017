@@ -140,6 +140,7 @@ class QuoteItemManager
 
         foreach ($vendors as &$vendor) {
             $vendor['shipping_cost'] = 0;
+            $vendor['shipping_cost_class'] = '';
             $highestTime = 0;
 
             foreach ($vendor['items'] as $item) {
@@ -155,6 +156,7 @@ class QuoteItemManager
             }
             if (empty($vendor['shipping_cost'])) {
                 $vendor['shipping_cost'] = __('Shipping Cost: Call for a quote');
+                $vendor['shipping_cost_class'] = 'call-for-quote';
             } else {
                 $vendor['shipping_cost'] = __('Shipping Cost: ' . $this->priceHelper->currency($vendor['shipping_cost'], true, false));
             }
