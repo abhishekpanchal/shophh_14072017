@@ -151,7 +151,7 @@ class QuoteItemManager
 
                 if ($time > $highestTime) {
                     $highestTime = $time;
-                    $timeText = __($vendor['total_qty'] . ' item(s) ships in approximately ' . $item['ship_time_low'] . '-' . $item['ship_time_high'] . ' business ' . $item['ship_time_unit'] . '(s)');
+                    $timeText = __($vendor['total_qty'] . ' item(s) will ship in approximately ' . $item['ship_time_low'] . '-' . $item['ship_time_high'] . ' business ' . substr($item['ship_time_unit'], 0,-1) . '(s).');
                     $vendor['time'] = $timeText;
                     $vendor['shipping_cost'] += $item['shipping_cost'];
                 }
