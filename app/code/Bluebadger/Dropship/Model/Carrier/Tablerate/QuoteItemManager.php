@@ -126,6 +126,8 @@ class QuoteItemManager
                 $quoteItem->setData('color', $color);
             }
 
+            /* Format qty */
+            $quoteItem->setData('qty', (int)$cartItemData->getQty());
 
             $quoteItem->setData('thumbnail', $image);
             $vendors[$quoteItem->getData('vendor_id')]['items'][] = $quoteItem->getData();
