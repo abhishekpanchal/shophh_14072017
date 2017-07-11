@@ -231,7 +231,7 @@ class QuoteItemManager
         if ($isFree) {
             $shippingCostText = __('FREE');
         } else if (empty($shippingCost)) {
-            $shippingCostText = __('Rate not found: Call for quote');
+            $shippingCostText = __('Call for quote');
         } else {
             $shippingCostText = __('Shipping Cost: ' . $this->priceHelper->currency($shippingCost, true, false));
         }
