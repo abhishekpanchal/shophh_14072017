@@ -13,7 +13,9 @@
         <referenceBlock name="magiczoom-header" display="false" />
 
         <referenceContainer name="product.info.media">
+
             <block class="MagicToolbox\MagicZoomPlus\Block\Product\View\Gallery" name="continue.shopping" template="product/view/continue_shopping.phtml" before="product.info.media.magiczoomplus" />
+            
             <block class="MagicToolbox\MagicZoomPlus\Block\Product\View\Gallery" name="product.info.media.magiczoomplus" template="product/view/gallery.phtml" />
         </referenceContainer>
 

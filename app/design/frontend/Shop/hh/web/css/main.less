@@ -649,7 +649,14 @@ Products
 ========================================================================== */
 .catalog-product-view {
   .product.media {
-    margin-top: 40px;
+    a.hover-effect {
+      display: inline-block;
+      margin: 30px 0 20px;
+      @media (max-width: 767px) {
+        margin-left: -21%;
+        margin-top: 0;
+      }
+    }
     img:hover {
       opacity: 1 !important;
     }
@@ -1739,16 +1746,6 @@ Cart
     }
     border-bottom: 1px solid #8d8d8d;
   }
-
-  .cart-continue {
-    text-transform: uppercase;
-    font-family: @headlineFont;
-    &:before {
-      font-family: FontAwesome; 
-      content: "\f104 ";
-      padding-right: 5px;
-    }
-  }
   .product-item-catalog {
     .product-item-details {
       text-align: center;
@@ -1905,6 +1902,16 @@ Cart
     z-index: -1;
   }
 }
+a span.cart-continue {
+  text-transform: uppercase;
+  font-family: @headlineFont;
+  font-size: 13px;
+  &:before {
+    font-family: FontAwesome; 
+    content: "\f104 ";
+    padding-right: 5px;
+  }
+}
 
 @media only screen and (min-width: 300px) and (max-width: @screen-md-min) {
   .checkout-cart-index {
@@ -1935,10 +1942,6 @@ Cart
         }
       }
     }
-  }
-  .cart-continue {
-    margin-bottom: 25px;
-    display: block;
   }
   .cart-container {
     .cart-item-name-container {
@@ -5790,8 +5793,14 @@ Hotspot Details
 
   p {
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     width: 100%;
+  }
+
+  .instruction {
+    background: url(../images/shop-keyline-faded-center.png) no-repeat top center;
+    background-size: contain;
+    padding-top: 10px;
   }
 
   .desc {
@@ -6015,7 +6024,7 @@ Hotspot Details
 }
 @media (max-width: 992px) {
   .cycle-slideshow1 .slide {
-    padding-bottom: 50%;
+    padding-bottom: 60%;
   }
 }
 
@@ -6890,7 +6899,7 @@ Select
     }
   }
 
-  .sorter-options {
+  .sorter-options, .limit-options {
     margin: 0;
     width: 70%;
     padding: 0;
@@ -7034,7 +7043,9 @@ span.callout {
   .product-item-details {
     text-align: center;
     display: block;
-
+    .product-item-name {
+      hyphens: none;
+    }
     .product-item-link {
       font-family: @fancyFont;
       font-size: 16px;
@@ -7284,6 +7295,9 @@ Magic Scroll
 
   .product-info-main .product.attribute.name {
     margin-top: 0;
+  }
+  .product.media a.hover-effect {
+    display: none;
   }
 
   .description {
@@ -9022,12 +9036,22 @@ Account reviews
     font-size: 16px;
     line-height: 24px;
   }
+  .col-md-5 + .col-md-5 {
+    padding-left: 4%;
+    @media (max-width: 992px) {
+      padding-left: 15px;
+    }
+  }
 
   img.portrait {
     border-radius: 50%;
     width: 140px;
     float: left;
-    margin: 0 15px 2px 0;
+    margin: 0 22px 2px 0;
+  }
+  img.icon {
+    position: relative;
+    top: 8px;
   }
   .signature {
     padding-left: 60%;
