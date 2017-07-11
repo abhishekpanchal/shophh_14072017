@@ -10,8 +10,8 @@
                     <div class="order-product-options">
                         <span class="product-option" data-bind="html: color"></span>
                         <span class="product-option" data-bind="html: size"></span>
-                        <span class="sku" data-bind="text: sku"></span>
                         <span>Qty: <span class="qty" data-bind="text: qty"></span></span>
+                        <span class="sku" data-bind="text: sku"></span>
                     </div>
                 </div>
             </div>
@@ -19,6 +19,9 @@
         <!-- /ko -->
         <div class="order-shipping-container">
             <span class="order-shipping-time" data-bind="text: shipping_time_text"></span>
+            <!-- ko if: shipping_cost_class -->
+                <a id="call-for-quote-link" href="javascript: void(0)">More Info</a>
+            <!-- /ko -->
             <span class="order-shipping-cost" data-bind="text: shipping_cost_text, css: shipping_cost_class"></span>
         </div>
     </div>

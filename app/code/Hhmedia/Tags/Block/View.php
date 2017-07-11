@@ -2,6 +2,8 @@
 
 namespace Hhmedia\Tags\Block;
 
+use Magento\Framework\App\Filesystem\DirectoryList;
+
 class View extends \Magento\Framework\View\Element\Template
 {
 
@@ -26,6 +28,10 @@ class View extends \Magento\Framework\View\Element\Template
      * @var \Magento\Framework\Image\AdapterFactory
      */
     protected $_imageFactory;
+
+    protected $_storeConfig;
+
+    protected $_filesystem;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -48,6 +54,8 @@ class View extends \Magento\Framework\View\Element\Template
         $this->httpContext = $httpContext;
         $this->_dataHelper = $dataHelper;
         $this->_productRepository = $productRepository;
+        $this->_storeConfig = $context->getScopeConfig();
+        $this->_filesystem = $context->getFilesystem();
         parent::__construct($context, $data);
     }
 
@@ -175,5 +183,15 @@ class View extends \Magento\Framework\View\Element\Template
         $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product/tags/'.$width.$image;
         return $resizedURL;
     }
+
+    public function getMediaUrl(){
+        return $this->_filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath(); 
+        //return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+    }
+
+    public function getPlaceHolderUrl(){
+        $image =  $this->_storeConfig->getValue('catalog/placeholder/small_image_placeholder');
+        return '/placeholder/'.$image;
+    }    
 
 }

@@ -110,20 +110,23 @@ class QuoteItemManager
             $quoteItem->setData('name', $cartItemData->getData('name'));
             $quoteItem->setData('sku', $cartItemData->getData('sku'));
             $quoteItem->setData('price', $this->priceHelper->currency($product->getPrice() * $cartItemData->getTotalQty(), true, false));
-            $quoteItem->setData('size', $product->getAttributeText('size'));
 
             /* Add size */
             $attr = $product->getResource()->getAttribute('size');
             if ($attr->usesSource()) {
                 $size = $attr->getSource()->getOptionText($product->getData('size'));
-                $quoteItem->setData('size', $size);
+                if ($size) {
+                    $quoteItem->setData('size', $size);
+                }
             }
 
             /* Add color */
             $attr = $product->getResource()->getAttribute('color');
             if ($attr->usesSource()) {
                 $color = $attr->getSource()->getOptionText($product->getData('color'));
-                $quoteItem->setData('color', $color);
+                if ($color) {
+                    $quoteItem->setData('color', $color);
+                }
             }
 
             /* Format qty */
@@ -168,7 +171,6 @@ class QuoteItemManager
                 $vendor['call_for_quote']['shipping_cost_class'] = 'call-for-quote';
                 $vendor['call_for_quote']['shipping_cost_text'] = __('Call for quote.');
                 $combinedVendors[] = $vendor['call_for_quote'];
-            }
 
             if (isset($vendor['rate'])) {
                 $vendor['rate']['shipping_time_text'] = $this->getShippingTimeText(

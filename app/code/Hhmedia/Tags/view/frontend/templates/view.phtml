@@ -56,9 +56,12 @@
                         foreach($products as $_product):
                         $pro = $this->getProductData($_product->getEntityId());
                         $image = $pro->getData('small_image');
+                        $media_url = $this->getMediaUrl().'catalog/product';
+                        if(!file_exists($media_url . $image))
+                        {
+                            $image = $this->getPlaceHolderUrl();
+                        }
                     ?>
-                    
-
                     <div class="item product product-item-listing col-xs-6 col-sm-3 col-md-3">
                         <div class="product-item-info" >
                             <div class="product-img relative">
