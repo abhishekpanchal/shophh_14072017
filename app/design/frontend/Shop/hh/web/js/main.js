@@ -38,6 +38,17 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
 
   jQuery(document).ready(function () {
 
+    // about us animation
+    $("#logoslideshow > div:gt(0)").hide();
+      setInterval(function() {
+      $('#logoslideshow > div:first')
+        .fadeOut(1000)
+        .next()
+        .fadeIn(1000)
+        .end()
+        .appendTo('#logoslideshow');
+    }, 4000);
+
     // register popup tabs 
     $('.tabs-replica li, .create-btn').click(function(event) {
       event.preventDefault();
@@ -324,6 +335,8 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
     });
   });
 });
+
+
 
 // Live Chat Code
 window.zEmbed || function(e, t) {
