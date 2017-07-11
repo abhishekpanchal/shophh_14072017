@@ -126,6 +126,64 @@ Temp var
 
 
 
+
+/* ==========================================================================
+New shop the spot very early breakpoint to accomodate for extra content
+========================================================================== */
+@media only screen and (max-width: 1400px) {
+	.lookbook-container .display-block-xs {
+		display: block;
+	}
+	.lookbook-container {
+		.homepage-hero, .mood-bg {
+			width: 100%;
+		}
+		.mood-bg {
+			background: none !important;
+			min-height: 0;
+		}
+	}
+	.lookbook-main .lookbook-container {
+		margin-bottom: 0;
+	}
+	.hotspot-details {
+		padding: 25px 10%;
+		box-shadow: none;
+		position: static;
+		
+		.hotspot-details-placeholder {
+			width: 116%;
+			margin-top: -4%;
+		}
+		.btn-fullscreen {
+			display: inline-block;
+			margin-top: 10px;
+		}
+		
+		.image {
+			float: left;
+			margin-right: 30px;
+		}
+		h2 {
+			padding-top: 35px;
+		}
+		.pro-detail-div {
+			img {
+				width: 100%;
+			}
+			.actions-primary {
+				margin-top: 20px;
+			}
+			.hotspot-btn {
+				min-width: 25%;
+			}
+		}
+	}
+}
+
+
+
+
 @media only screen and (max-width: 1300px) {
 	.pro-detail-div img {
 		width: 50%;
@@ -249,8 +307,183 @@ Tablet Portrait size to standard 1024 (devices and browsers)
   Homepage
   =================================*/
   .cms-home {
+    .decorating-formula {
+      .decorating-formula-product {
+        margin-top: 0;
+      }
+      .formula_list_view {
+        .decorating-formula-product:nth-of-type(3):before,
+        .decorating-formula-product:nth-of-type(3):after  {
+          background-size: 50% 50%!important;
+          background-position: center center;
+          top: 33%;
+        }
+      }
 
-  	.homeslider {
+    }
+
+    .editors-area {
+		margin-bottom: 30px;
+		.editors-area-wrap {
+			display: block;
+		}
+		
+		.editors-pick, .editor-guest-image, .guest-editor {
+			min-height: 480px;
+		}
+      .editors-pick {
+        padding: 20px;
+        width: 100%;
+        min-height: 0;
+        .editors-thumbs {
+			margin-bottom: 0;
+			li {
+				margin-bottom: 5px;
+				width: 25%;
+			}
+        }
+      }
+      
+      .guest-editor {
+        .guest-editor-details {
+          .editor-quote {
+            margin-bottom: 0;
+          }
+          .editor-blurb {
+            padding: 20px 0;
+          }
+
+        }
+      }
+    }
+
+    .shop-the-issue {
+      .magazine_list_item {
+        padding: 0 30px;
+
+        .issue-img {
+          width: 80%;
+          .block-center;
+        }
+      }
+      .carousel-control.right {
+        right: -3%;
+      }
+      .carousel-control.left {
+        left: -3%;
+      }
+    }
+  }
+  #formula-slider {
+		.carousel-control.right, .carousel-control.left {
+  			height: 40px;
+  		}
+  }
+
+  	.shot-thumb {
+  		box-shadow: none;
+  	}
+	.shot-thumb .shot-thumb-meta {
+		-webkit-transform: translate(-50%, -50%) scale(1);
+		transform: translate(-50%, -50%) scale(1);
+		transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+		box-shadow: none;
+	}
+
+	.more-shots {
+		width: 100%;
+		overflow: hidden;
+	}
+
+  .more-shots .col-md-3 {
+	width: 50%;
+	float: left;
+    &:nth-of-type(2n+1) {
+      clear: both;
+    }
+  }
+  
+
+	/* ===============================
+	Product Page
+	=================================*/
+	.description p, span.callout {
+	//	font-size: 13px;
+	}
+
+	/* ===============================
+	Product Detail
+	=================================*/
+	.catalog-product-view {
+		.product-info-main .product-info-price {
+		//	margin-bottom: 0;
+		}
+		.product-editors-pick {
+			display: none;
+			position: static;
+			clear: both;
+			margin-bottom: 10px;
+			img {
+				display: none;
+			}
+			h4, h5 {
+				display: inline;
+			}
+		}
+	}
+	
+
+
+	
+	/* ===============================
+	Editors
+	=================================*/
+	.editor-index-index {
+		.vcenter-flex.display-block-xs {
+			display: flex !important;
+		}
+	}
+	
+	.cms-no-route .main-content p {
+		width: 100%;
+	}
+	
+	
+	
+	/* ===============================
+	Account
+	=================================*/
+	.account-nav .item, .faq-sidebar li {
+		a, > strong {
+			padding: 14px 5px;
+		}
+	}
+	.account .sidebar .current {
+		padding: 0;
+	}
+	
+
+
+	.notes-index-view .img-crop {
+		height: auto;
+	}
+
+
+	.footer-col.col-md-2 {
+		width: 16%;
+	}
+	
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 1023px) {
+.cms-home {
+	.homeslider {
 		.vcenter-flex {
 			display: block;
 		}
@@ -354,206 +587,8 @@ Tablet Portrait size to standard 1024 (devices and browsers)
         }
       }
     }
-    
-
-    .decorating-formula {
-      .decorating-formula-product {
-        margin-top: 0;
-      }
-      .formula_list_view {
-        .decorating-formula-product:nth-of-type(3):before,
-        .decorating-formula-product:nth-of-type(3):after  {
-          background-size: 50% 50%!important;
-          background-position: center center;
-          top: 33%;
-        }
-      }
-
-    }
-
-    .editors-area {
-		margin-bottom: 30px;
-		.editors-area-wrap {
-			display: block;
-		}
-		
-		.editors-pick, .editor-guest-image, .guest-editor {
-			min-height: 480px;
-		}
-      .editors-pick {
-        padding: 20px;
-        width: 100%;
-        min-height: 0;
-        .editors-thumbs {
-			margin-bottom: 0;
-			li {
-				margin-bottom: 5px;
-				width: 25%;
-			}
-        }
-      }
-      
-      .guest-editor {
-        .guest-editor-details {
-          .editor-quote {
-            margin-bottom: 0;
-          }
-          .editor-blurb {
-            padding: 20px 0;
-          }
-
-        }
-      }
-    }
-
-    .shop-the-issue {
-      .magazine_list_item {
-        padding: 0 30px;
-
-        .issue-img {
-          width: 80%;
-          .block-center;
-        }
-      }
-      .carousel-control.right {
-        right: -3%;
-      }
-      .carousel-control.left {
-        left: -3%;
-      }
-    }
-  }
-  #formula-slider {
-		.carousel-control.right, .carousel-control.left {
-  			height: 40px;
-  		}
-  }
-
-  	.shot-thumb {
-  		box-shadow: none;
-  	}
-	.shot-thumb .shot-thumb-meta {
-		-webkit-transform: translate(-50%, -50%) scale(1);
-		transform: translate(-50%, -50%) scale(1);
-		transition: all 300ms 100ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-		box-shadow: none;
-	}
-
-	.more-shots {
-		width: 100%;
-		overflow: hidden;
-	}
-
-  .more-shots .col-md-3 {
-	width: 50%;
-	float: left;
-    &:nth-of-type(2n+1) {
-      clear: both;
-    }
-  }
-  
-  
-  	/* ===============================
-	Shop the Spot
-	=================================*/
-	.hotspot-details {
-		padding: 0 15px;
-		.hotspot-details-placeholder {
-			padding: 15px 0;
-		}
-		h2 {
-			margin-top: 10px;
-		}
-	}
-
-	.shot-thumb .shot-thumb-meta {
-		width: 50%;
-		height: 50%;
-		background: rgba(255,250,250,.9);
-		h4 {
-			&:before {
-				content: none;
-			}
-			span {
-				background: none;
-			}
-		}
-	}
-
-	
-
-
-	/* ===============================
-	Product Page
-	=================================*/
-	.description p, span.callout {
-	//	font-size: 13px;
-	}
-
-	/* ===============================
-	Product Detail
-	=================================*/
-	.catalog-product-view {
-		.product-info-main .product-info-price {
-		//	margin-bottom: 0;
-		}
-		.product-editors-pick {
-			display: none;
-			position: static;
-			clear: both;
-			margin-bottom: 10px;
-			img {
-				display: none;
-			}
-			h4, h5 {
-				display: inline;
-			}
-		}
-	}
-	
-
-
-	
-	/* ===============================
-	Editors
-	=================================*/
-	.editor-index-index {
-		.vcenter-flex.display-block-xs {
-			display: flex !important;
-		}
-	}
-	
-	.cms-no-route .main-content p {
-		width: 100%;
-	}
-	
-	
-	
-	/* ===============================
-	Account
-	=================================*/
-	.account-nav .item, .faq-sidebar li {
-		a, > strong {
-			padding: 14px 5px;
-		}
-	}
-	.account .sidebar .current {
-		padding: 0;
-	}
-	
-
-
-	.notes-index-view .img-crop {
-		height: auto;
-	}
-
-
-	.footer-col.col-md-2 {
-		width: 16%;
-	}
-	
 }
-
+}
 
 
 
@@ -610,63 +645,6 @@ Shop the Spot Desktop Responsive
 		margin-bottom: 30px;
 	}
 
-
-
-
-
-
-
-	/* ===============================
-	Shop the Shot
-	=================================*/
-	.lookbook-container .display-block-xs {
-		display: block;
-	}
-	.lookbook-container {
-		.homepage-hero, .mood-bg {
-			width: 100%;
-		}
-		.mood-bg {
-			background: none !important;
-			min-height: 0;
-		}
-	}
-	.lookbook-main .lookbook-container {
-		margin-bottom: 0;
-	}
-	.hotspot-details {
-		padding: 25px 10%;
-		box-shadow: none;
-		position: static;
-		
-		.hotspot-details-placeholder {
-			width: 116%;
-			margin-top: -4%;
-		}
-		.btn-fullscreen {
-			display: inline-block;
-			margin-top: 10px;
-		}
-		
-		.image {
-			float: left;
-			margin-right: 30px;
-		}
-		h2 {
-			padding-top: 35px;
-		}
-		.pro-detail-div {
-			img {
-				width: 100%;
-			}
-			.actions-primary {
-				margin-top: 20px;
-			}
-			.hotspot-btn {
-				min-width: 25%;
-			}
-		}
-	}
 
 
 
@@ -1076,9 +1054,12 @@ All small devices - till 768px
 
 
 	/* product detail page */
+	.catalog-product-view .main-content {
+		margin-top: -20px;
+	}
 	.catalog-product-view .product.media {
 		width: 70% !important;
-		margin: 20px auto;
+		margin: 0 auto 20px;
 		overflow: visible;
 		div.MagicToolboxContainer.minWidth {
 			min-width: 0;
@@ -1087,9 +1068,9 @@ All small devices - till 768px
 	div.MagicToolboxSelectorsContainer {
 		width: 115%;
 		margin-left: -8%;
-		margin-bottom: 40px;
+		margin-bottom: 0;
 		.mcs-button-arrow {
-			margin-top: 45px;
+			margin-top: 7%;
 		}
 	}
 	.MagicScroll.MagicScroll-horizontal {
@@ -1330,6 +1311,10 @@ Somewhere in between
 		.product-shop-the-shot .shop-the-shot-hover {
 			margin-bottom: 0;
 		}
+	}
+
+	#product-review-container .page-title {
+		margin-bottom: 15px;
 	}
 
 	/* tab system to match that of faqs */
@@ -1699,11 +1684,6 @@ Extra Small Screens
 			.product.info.detailed {
 				text-align: left;
 			}
-		}
-		.addthis_toolbox {
-			float: none !important;
-			display: inline-block;
-			margin-left: 10px;
 		}
 		.product-qty .styled-select {
 			display: inline-block;

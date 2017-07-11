@@ -33,11 +33,11 @@ define([
                     case 8: // COMMENT_NODE
                         elements.push(el);
                         break;
-
+                    
                     case 9: // DOCUMENT_NODE
                         var hostName = window.location.hostname,
                             iFrameHostName = $('<a>')
-                                .prop('href', element.prop('src'))
+                                .prop('href', $(element).prop('src'))
                                 .prop('hostname');
 
                         if (hostName === iFrameHostName) {
