@@ -47,8 +47,6 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Tags\Helper\Data $dataHelper,
         \Magento\Framework\Image\AdapterFactory $imageFactory,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\Filesystem $_filesystem,
         array $data = []
     ) {
         $this->_imageFactory = $imageFactory;
@@ -56,8 +54,8 @@ class View extends \Magento\Framework\View\Element\Template
         $this->httpContext = $httpContext;
         $this->_dataHelper = $dataHelper;
         $this->_productRepository = $productRepository;
-        $this->_storeConfig = $scopeConfig;
-        $this->_filesystem = $_filesystem;
+        $this->_storeConfig = $context->getScopeConfig();
+        $this->_filesystem = $context->getFilesystem();
         parent::__construct($context, $data);
     }
 
