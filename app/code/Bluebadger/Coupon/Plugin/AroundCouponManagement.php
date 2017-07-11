@@ -66,7 +66,8 @@ class AroundCouponManagement
     public function aroundSet(\Magento\Quote\Model\CouponManagement $couponManagement, callable $proceed, $cartId, $couponCode)
     {
         if ($this->config->isEnabled()) {
-            if ($this->config->getCouponCode() == $couponCode) {
+            $ruleCouponCode = $this->config->getCouponCode();
+            if (strtolower($couponCode) == strtolower($ruleCouponCode)) {
                 $email = $this->session->getQuote()->getCustomerEmail();
 
                 if (empty($email)) {

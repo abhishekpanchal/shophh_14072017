@@ -17,20 +17,22 @@ class Config extends AbstractHelper
     /**
      * @var \Magento\SalesRule\Api\RuleRepositoryInterface
      */
-    protected $ruleRepositoryInterface;
+    protected $coupon;
 
     /**
      * Config constructor.
      * @param Context $context
      * @param \Magento\SalesRule\Api\RuleRepositoryInterface $ruleRepositoryInterface
+     * @param \Magento\SalesRule\Model\Coupon $coupon
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \Magento\SalesRule\Api\RuleRepositoryInterface $ruleRepositoryInterface
+        \Magento\SalesRule\Api\RuleRepositoryInterface $ruleRepositoryInterface,
+        \Magento\SalesRule\Model\Coupon $coupon
     )
     {
         parent::__construct($context);
-        $this->ruleRepositoryInterface = $ruleRepositoryInterface;
+        $this->coupon = $coupon;
     }
 
     /**
@@ -57,11 +59,8 @@ class Config extends AbstractHelper
     public function getCouponCode()
     {
         $ruleId = $this->getRuleId();
+        $coupon = $this->coupon->loadPrimaryByRule($ruleId);
 
-        /** @var \Magento\SalesRule\Model\Rule $rule */
-        $rule = $this->ruleRepositoryInterface->getById($ruleId);
-        $couponCode = $rule->getCouponCode();
-
-        return $couponCode;
+        return $coupon->getCode();
     }
 }

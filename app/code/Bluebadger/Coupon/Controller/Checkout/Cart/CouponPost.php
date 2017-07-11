@@ -88,7 +88,7 @@ class CouponPost extends \Magento\Checkout\Controller\Cart\CouponPost
             if ($this->config->isEnabled()) {
                 $ruleCouponCode = $this->config->getCouponCode();
 
-                if ($couponCode == $ruleCouponCode) {
+                if (strtolower($couponCode) == strtolower($ruleCouponCode)) {
                     $email = $this->_checkoutSession->getQuote()->getCustomerEmail();
 
                     if (empty($email)) {
