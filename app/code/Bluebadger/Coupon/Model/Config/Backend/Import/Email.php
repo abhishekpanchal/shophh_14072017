@@ -51,20 +51,23 @@ class Email extends \Magento\Config\Model\Config\Backend\File
     public function afterSave()
     {
         $fileData = $this->getFileData();
-        $uploadDir = $this->_filesystem->getDirectoryRead('pub')->getAbsolutePath();
-        $filename = $this->getValue();
 
-        try {
-            $csvData = $this->csvProcessor->getData($uploadDir . 'upload' . DIRECTORY_SEPARATOR . $filename);
-            $connection = $this->_resource->getConnection();
-            $connection->delete($this->getTableName());
-            $connection->insertArray(
-                $this->getTableName(),
-                ['email'],
-                $csvData
-            );
-        } catch (\Exception $e) {
-            throw $e;
+        if ($fileData) {
+            $uploadDir = $this->_filesystem->getDirectoryRead('pub')->getAbsolutePath();
+            $filename = $this->getValue();
+
+            try {
+                $csvData = $this->csvProcessor->getData($uploadDir . 'email' . DIRECTORY_SEPARATOR . $filename);
+                $connection = $this->_resource->getConnection();
+                $connection->delete($this->getTableName());
+                $connection->insertArray(
+                    $this->getTableName(),
+                    ['email'],
+                    $csvData
+                );
+            } catch (\Exception $e) {
+                throw $e;
+            }
         }
 
         return parent::afterSave();
