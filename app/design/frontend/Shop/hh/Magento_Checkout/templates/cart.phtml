@@ -16,3 +16,39 @@ if ($block->getItemsCount()) {
 } else {
     echo $block->getChildHtml('no-items');
 }
+?>
+<!-- call for quote modal popup -->
+<div id="popup-modal" style="display:none;">
+    <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('call_for_quote_popup')->toHtml(); ?>
+</div>
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/modal',
+        ],function($,modal) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: $.mage.__('Continue to Checkout'),
+                    class: '',
+                    click: function () {
+                      $("button[data-role='proceed-to-checkout']").click();
+                    }
+                }]
+            };
+            var popup = modal(options, $('#popup-modal'));
+
+            var cfqLink = $("#call-for-quote-link");
+            if (cfqLink.length) {
+                window.showCallForQuote = true;
+                cfqLink.click(function() {
+                    $('#popup-modal').modal('openModal');
+                });
+            }
+        }
+    );
+</script>
+<!-- end call for quote modal popup --> 
+

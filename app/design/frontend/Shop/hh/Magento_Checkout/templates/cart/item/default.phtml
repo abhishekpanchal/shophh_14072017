@@ -125,7 +125,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
       <?php endif; ?>
       <?php if($custProd->getCallForQuote()): ?>
         <span class="call-for-quote">
-          Call or email for shipping quote. <a target="_blank" href="<?php echo $this->getUrl('shipping-information'); ?>">Get more info</a>
+          Call or email for shipping quote. <a id="call-for-quote-link" href="javascript:void(0);">Get more info</a>
         </span>
       <?php endif; ?>
       <div class="cart-item-actions">
