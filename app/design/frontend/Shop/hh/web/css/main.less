@@ -7411,17 +7411,30 @@ textarea {
 .addthis_toolbox {
   position: relative;
   padding-left: 30px;
-
   img {
     position: absolute;
     left: 0;
   }
-}
-.addthis_toolbox a {
-  line-height: initial;
-  font-size: 13px;
-  font-family: @headlineFont;
-  text-transform: uppercase;
+  a {
+    line-height: initial;
+    font-size: 13px;
+    font-family: @headlineFont;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  img, a {
+    opacity: .5;
+  }
+  &:after {
+    content: 'Coming in August';
+    display: block;
+    position: relative;
+    left: -40px;
+    opacity: 0;
+  }
+  &:hover:after {
+    opacity: 1;
+  }
 }
 
 
