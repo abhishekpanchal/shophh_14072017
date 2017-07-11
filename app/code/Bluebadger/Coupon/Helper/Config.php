@@ -15,22 +15,22 @@ class Config extends AbstractHelper
     const XML_PATH_GENERAL_RULE = 'coupon/general/rule';
 
     /**
-     * @var \Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory
+     * @var \Magento\SalesRule\Api\RuleRepositoryInterface
      */
-    protected $ruleCollectionFactory;
+    protected $ruleRepositoryInterface;
 
     /**
      * Config constructor.
      * @param Context $context
-     * @param \Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory $ruleCollectionFactory
+     * @param \Magento\SalesRule\Api\RuleRepositoryInterface $ruleRepositoryInterface
      */
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
-        \Magento\SalesRule\Model\ResourceModel\Rule\CollectionFactory $ruleCollectionFactory
+        \Magento\SalesRule\Api\RuleRepositoryInterface $ruleRepositoryInterface
     )
     {
         parent::__construct($context);
-        $this->ruleCollectionFactory = $ruleCollectionFactory;
+        $this->ruleRepositoryInterface = $ruleRepositoryInterface;
     }
 
     /**
@@ -51,8 +51,17 @@ class Config extends AbstractHelper
         return (string)$this->scopeConfig->getValue(self::XML_PATH_GENERAL_RULE);
     }
 
+    /**
+     * @return string
+     */
     public function getCouponCode()
     {
-        $rule = $this->ruleCollectionFactory->create();
+        $ruleId = $this->getRuleId();
+
+        /** @var \Magento\SalesRule\Model\Rule $rule */
+        $rule = $this->ruleRepositoryInterface->getById($ruleId);
+        $couponCode = $rule->getCouponCode();
+
+        return $couponCode;
     }
 }

@@ -66,14 +66,16 @@ class AroundCouponManagement
     public function aroundSet(\Magento\Quote\Model\CouponManagement $couponManagement, callable $proceed, $cartId, $couponCode)
     {
         if ($this->config->isEnabled()) {
-            $email = $this->session->getQuote()->getCustomerEmail();
+            if ($this->config->getCouponCode() == $couponCode) {
+                $email = $this->session->getQuote()->getCustomerEmail();
 
-            if (empty($email)) {
-                throw new LocalizedException(__('Not email address set.'));
-            }
+                if (empty($email)) {
+                    throw new LocalizedException(__('Not email address set.'));
+                }
 
-            if (!$this->emailManagement->isEmailValid($email)) {
-                throw new LocalizedException(__('Email address is invalid'));
+                if (!$this->emailManagement->isEmailValid($email)) {
+                    throw new LocalizedException(__('Email address is invalid'));
+                }
             }
         }
 
