@@ -157,10 +157,10 @@ class QuoteItemManager
                 }
             }
             if (empty($vendor['shipping_cost'])) {
-                $vendor['shipping_cost'] = __('Shipping Cost: Call for a quote');
+                $vendor['shipping_cost'] = __('Call for Shipping Quote.');
                 $vendor['shipping_cost_class'] = 'call-for-quote';
             } else {
-                $vendor['shipping_cost'] = __('Shipping Cost: ' . $this->priceHelper->currency($vendor['shipping_cost'], true, false));
+                $vendor['shipping_cost'] = __($this->priceHelper->currency($vendor['shipping_cost'], true, false));
             }
         }
 
