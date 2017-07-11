@@ -5903,6 +5903,9 @@ Hotspot Details
   .addthis_toolbox {
     width: 160px;
     margin: 0 auto 25px;
+    &:after {
+      left: -15px;
+    }
   }
 }
 
@@ -6195,10 +6198,9 @@ Awe Menu
     a {
       padding: 0;
     }
-
-    img {
-      width: 100%;
-    }
+  }
+  img {
+    width: 100%;
   }
 }
 
@@ -7422,17 +7424,30 @@ textarea {
 .addthis_toolbox {
   position: relative;
   padding-left: 30px;
-
   img {
     position: absolute;
     left: 0;
   }
-}
-.addthis_toolbox a {
-  line-height: initial;
-  font-size: 13px;
-  font-family: @headlineFont;
-  text-transform: uppercase;
+  a {
+    line-height: initial;
+    font-size: 13px;
+    font-family: @headlineFont;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  img, a {
+    opacity: .5;
+  }
+  &:after {
+    content: 'Coming in August';
+    display: block;
+    position: relative;
+    left: -40px;
+    opacity: 0;
+  }
+  &:hover:after {
+    opacity: 1;
+  }
 }
 
 
@@ -9102,6 +9117,22 @@ Account reviews
     margin-top: 70px;
   }
 
+  #logoslideshow {
+    width: 201px;
+    height: 201px;
+    border-width: 1px solid #D3D3D3;
+    margin: 0 auto 20px;
+    div {
+      position: absolute;
+    }
+    & + h4 {
+      text-align: center;
+    }
+  }
+  .logoslideimg {  
+    width: 200px;
+    height: 200px;
+  }
 }
 
 
