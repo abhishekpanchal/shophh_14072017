@@ -26,6 +26,8 @@ class View extends \Magento\Framework\View\Element\Template
      * @var \Magento\Framework\Image\AdapterFactory
      */
     protected $_imageFactory;
+
+    protected $_storeConfig;
     
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -41,6 +43,7 @@ class View extends \Magento\Framework\View\Element\Template
         \Magento\Catalog\Model\ProductRepository $productRepository,
         \Hhmedia\Tags\Helper\Data $dataHelper,
         \Magento\Framework\Image\AdapterFactory $imageFactory,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
         $this->_imageFactory = $imageFactory;
@@ -48,6 +51,7 @@ class View extends \Magento\Framework\View\Element\Template
         $this->httpContext = $httpContext;
         $this->_dataHelper = $dataHelper;
         $this->_productRepository = $productRepository;
+        $this->_storeConfig = $scopeConfig;
         parent::__construct($context, $data);
     }
 
@@ -175,5 +179,14 @@ class View extends \Magento\Framework\View\Element\Template
         $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA).'catalog/product/tags/'.$width.$image;
         return $resizedURL;
     }
+
+    public function getMediaUrl(){
+        return $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+    }
+
+    public function getPlaceHolderUrl(){
+        $image =  $this->_storeConfig->getValue('catalog/placeholder/small_image_placeholder');
+        return '/placeholder/'.$image;
+    }    
 
 }
