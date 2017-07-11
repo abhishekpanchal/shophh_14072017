@@ -1,0 +1,37 @@
+<?php /** @var $block \Bluebadger\Dropship\Block\Onepage\Success\Summary */ ?>
+<?php $quoteItems = $block->getQuoteItems(); ?>
+
+<div class="block">
+    <div class="box-title">
+        <?php echo $quoteItems['total_qty']; ?>
+    </div>
+    <div class="block-content order-products">
+        <?php foreach ($quoteItems['vendors'] as $key => $vendor): ?>
+            <?php foreach ($vendor['items'] as $item): ?>
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-10">
+                        <img src="<?php echo $item['thumbnail']; ?>"/>
+                        <div class="order-product-details">
+                            <span class="order-product-name"><?php echo $item['name']; ?></span>
+                            <div class="order-product-options">
+                                <span class="product-option"><?php echo $item['color']; ?></span>
+                                <span class="product-option"><?php echo $item['size']; ?></span>
+                                <span><?php echo 'Qty: ' . $item['qty']; ?></span>
+                                <span class="sku"><?php echo 'SKU# ' . $item['sku']; ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <span class="order-product-price"><?php echo $item['price']; ?></span>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            <div class="order-shipping-container">
+                <span class="order-shipping-time"><?php echo $vendor['shipping_time_text']; ?></span>
+                <span class="order-shipping-cost <?php echo $vendor['shipping_cost_class']; ?>">
+                    <?php echo $vendor['shipping_cost_text']; ?>
+                </span>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

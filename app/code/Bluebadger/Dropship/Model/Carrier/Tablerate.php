@@ -2,7 +2,6 @@
 
 namespace Bluebadger\Dropship\Model\Carrier;
 
-use Bluebadger\Dropship\Model\Carrier\Tablerate\QuoteItemManager;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Item;
 
@@ -108,7 +107,7 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
     public function collectRates(RateRequest $request)
     {
         /** @var \Magento\Shipping\Model\Rate\Result $result */
-         $result = $this->rateResultFactory->create();
+        $result = $this->rateResultFactory->create();
 
         /** @var \Magento\Quote\Model\Quote\Address\RateResult\Method $method */
         $method = $this->rateMethodFactory->create();
@@ -208,6 +207,7 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
 
         foreach ($weights as $vendorId => $weight) {
             $callForQuote = false;
+            $isFree = false;
 
             /* Check if there is a least one 'call for quote' for current vendor */
             foreach ($vendorItems[$vendorId] as $vendorItem) {
@@ -222,13 +222,16 @@ class Tablerate extends \Magento\Shipping\Model\Carrier\AbstractCarrier implemen
                 /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Rate $rateResource */
                 $rateResource = $this->rateResourceFactory->create();
                 $rateInfo = $rateResource->getRateInfo($weight, $vendorId, $zoneCode);
+                if ($rateInfo->isFree) {
+                    $isFree = true;
+                }
                 $shippingCost += $rateInfo->rate;
                 $total += $shippingCost;
             }
 
             /* Set rate for each item */
             foreach ($vendorItems[$vendorId] as $vendorItem) {
-                $quoteItemResource->updateItem($vendorItem, $shippingCost, $callForQuote);
+                $quoteItemResource->updateItem($vendorItem, $shippingCost, $callForQuote, $isFree);
             }
         }
 

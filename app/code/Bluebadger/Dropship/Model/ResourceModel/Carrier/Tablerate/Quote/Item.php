@@ -56,8 +56,10 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     /**
      * @param \Magento\Quote\Model\Quote\Item $item
      * @param float $shippingCost
+     * @param bool $callForQuote
+     * @param bool $isFree
      */
-    public function updateItem(\Magento\Quote\Model\Quote\Item $item, float $shippingCost, bool $callForQuote = false)
+    public function updateItem(\Magento\Quote\Model\Quote\Item $item, float $shippingCost, bool $callForQuote = false, bool $isFree = false)
     {
         $data = [
             'quote_id' => $item->getQuoteId(),
@@ -68,7 +70,8 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
             'ship_time_high' => $item->getData('ship_time_high'),
             'ship_time_unit' => $item->getData('ship_time_unit'),
             'weight' => $item->getData(self::KEY_PACKAGE_WEIGHT_LBS),
-            'call_for_quote' => $callForQuote
+            'call_for_quote' => $callForQuote,
+            'is_free' => $isFree
         ];
 
         $this->getConnection()->insertOnDuplicate($this->getMainTable(), $data);

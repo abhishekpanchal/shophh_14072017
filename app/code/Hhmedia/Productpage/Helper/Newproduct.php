@@ -187,7 +187,7 @@ class Newproduct extends \Magento\Framework\Url\Helper\Data
         if(strlen($text) > $limit){
             return substr($text,0,90)."...";
         }else{
-            $text;
+            return $text;
         }
     }
 
