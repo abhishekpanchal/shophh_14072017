@@ -36,7 +36,7 @@
 <div class="product attribute <?php /* @escapeNotVerified */ echo $_className?>">
 	<?php if($this->getRequest()->getModuleName() == "weltpixel_quickview" && $_code=="description"): ?>
 		<?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
-		<div class="value" <?php echo $_attributeAddAttribute;?>><?php echo $customHelper->limit_description($_attributeValue, 15); ?></div>
+		<div class="value" <?php echo $_attributeAddAttribute;?>><?php echo $customHelper->limit_description($_attributeValue, 90); ?></div>
 	<?php else: ?>
 	    <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?>><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
 	<?php endif; ?>

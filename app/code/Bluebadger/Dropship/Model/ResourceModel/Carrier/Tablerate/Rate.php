@@ -113,22 +113,26 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $obj = new \stdClass;
         $obj->rate = 0;
+        $obj->isFree = false;
         $merchantQuery = "SELECT * FROM `bluebadger_dropship_tablerate_merchant` WHERE `vendor_id` = {$vendorId} LIMIT 1";
         $merchantInfo = $this->getConnection()->fetchRow($merchantQuery);
 
         if ($merchantInfo) {
-            $carrier = $merchantInfo['carrier'];
-            $origin = $merchantInfo['origin'];
-            $zoneQuery = "SELECT * FROM `bluebadger_dropship_tablerate_zone` WHERE `carrier`= '{$carrier}' AND `origin` = '{$origin}' AND `area_code` = '{$areaCode}'";
-            $zoneInfo = $this->getConnection()->fetchRow($zoneQuery);
+            if ($merchantInfo['is_wholesaler']) {
+                $obj->isFree = true;
+            } else {
+                $carrier = $merchantInfo['carrier'];
+                $origin = $merchantInfo['origin'];
+                $zoneQuery = "SELECT * FROM `bluebadger_dropship_tablerate_zone` WHERE `carrier`= '{$carrier}' AND `origin` = '{$origin}' AND `area_code` = '{$areaCode}'";
+                $zoneInfo = $this->getConnection()->fetchRow($zoneQuery);
 
-            if ($zoneInfo) {
-                $zone = $zoneInfo['zone'];
-                $rateQuery = "SELECT * FROM `bluebadger_dropship_tablerate_rate` WHERE `zone` = '{$zone}' AND `carrier` = '{$carrier}' AND `weight` = {$weight}";
-                $rate = $this->getConnection()->fetchRow($rateQuery);
-                $obj->rate = $rate['rate'];
+                if ($zoneInfo) {
+                    $zone = $zoneInfo['zone'];
+                    $rateQuery = "SELECT * FROM `bluebadger_dropship_tablerate_rate` WHERE `zone` = '{$zone}' AND `carrier` = '{$carrier}' AND `weight` = {$weight}";
+                    $rate = $this->getConnection()->fetchRow($rateQuery);
+                    $obj->rate = $rate['rate'];
+                }
             }
-
         }
 
         return $obj;

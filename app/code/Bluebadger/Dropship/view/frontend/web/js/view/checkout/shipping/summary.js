@@ -16,6 +16,7 @@ define([
         initialize: function() {
             this.itemList = ko.observableArray([]);
             this.totalQty = ko.observable(0);
+
             var self = this;
             this._super();
 

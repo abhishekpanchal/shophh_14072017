@@ -1,0 +1,21 @@
+.main-nav li:not(.show-list){
+    display:none;
+}
+.form-list label{
+    display:block;
+}
+input.checkbox{
+    float:left;
+    margin-right:10px !important;
+}
+.dropship-pagination{
+    display:inline-block;
+}
+.toolbar-amount{
+    position: relative;
+    top: 5px;
+}
+.pager .limiter {
+    position: relative;
+    top: 6px;
+}

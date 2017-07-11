@@ -57,19 +57,19 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
             <?php endif; ?>
         </div>
     </div>
-<?php elseif($moduleName == "catalogsearch"): ?>
+<?php /*elseif($moduleName == "catalogsearch"): ?>
     <div class="field limiter hidden-xs">
         <div class="styled-select limiter-container ">
             <label class="sort-label" for="limiter">
-                <span><?php /* @escapeNotVerified */ echo __('Show') ?></span>
+                <span><?php echo __('Show') ?></span>
             </label>
             <?php $count = 2; ?>
             <?php if($count > 20): ?>
                 <select id="limiter" data-role="limiter" class="sorter-options limiter-option">
                     <?php foreach ($block->getAvailableLimit() as $_key => $_limit): ?>
-                        <option value="<?php /* @escapeNotVerified */ echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
+                        <option value="<?php echo $_key ?>"<?php if ($block->isLimitCurrent($_key)): ?>
                             selected="selected"<?php endif ?>>
-                            <?php /* @escapeNotVerified */ echo $_limit ?>
+                            <?php echo $_limit ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -77,7 +77,7 @@ use Magento\Catalog\Model\Product\ProductList\Toolbar;
                 <?php echo "All"; ?>
             <?php endif; ?>
         </div>
-    </div>
+    </div> */ ?>
 <?php else: ?>
     <div class="field limiter hidden-xs">
         <div class="styled-select limiter-container ">

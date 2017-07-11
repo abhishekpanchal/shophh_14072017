@@ -7,5 +7,11 @@
         <add id="Hhmedia_Editor::cms_block_welcome" title="Welcome to Shop HH" translate="title" module="Magento_Cms" sortOrder="300" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/10" resource="Magento_Cms::block"/>
         <add id="Hhmedia_Editor::cms_block_contact" title="Contact Information" translate="title" module="Magento_Cms" sortOrder="301" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/8" resource="Magento_Cms::block"/>
         <add id="Hhmedia_Editor::cms_block_customer" title="Cart Customer Service" translate="title" module="Magento_Cms" sortOrder="302" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/12" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_13" title="Call For Quote" translate="title" module="Magento_Cms" sortOrder="303" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/13" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_14" title="Returns Exchanges - Selecting a shipping carrier" translate="title" module="Magento_Cms" sortOrder="304" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/14" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_15" title="Returns Exchanges - Sending to the right partner" translate="title" module="Magento_Cms" sortOrder="305" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/15" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_16" title="Returns Exchanges Guide" translate="title" module="Magento_Cms" sortOrder="306" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/16" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_17" title="Returns Exchanges - White Glove Service" translate="title" module="Magento_Cms" sortOrder="307" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/17" resource="Magento_Cms::block"/>
+        <add id="Hhmedia_Editor::cms_block_18" title="Package Insurance" translate="title" module="Magento_Cms" sortOrder="308" parent="Hhmedia_Editor::editor" action="cms/block/edit/block_id/18" resource="Magento_Cms::block"/>
     </menu>
 </config>

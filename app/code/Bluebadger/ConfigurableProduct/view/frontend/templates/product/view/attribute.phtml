@@ -1,0 +1,60 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product view template
+ *
+ * @see \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $block->getProduct();
+$_call = $block->getAtCall();
+$_code = $block->getAtCode();
+$_className = $block->getCssClass();
+$_attributeLabel = $block->getAtLabel();
+$_attributeType = $block->getAtType();
+$_attributeAddAttribute = $block->getAddAttribute();
+
+if ($_attributeLabel && $_attributeLabel == 'default') {
+    $_attributeLabel = $_product->getResource()->getAttribute($_code)->getFrontendLabel();
+}
+if ($_attributeType && $_attributeType == 'text') {
+    $_attributeValue = ($_helper->productAttribute($_product, $_product->$_call(), $_code)) ? $_product->getAttributeText($_code) : '';
+} else {
+    $_attributeValue = $_helper->productAttribute($_product, $_product->$_call(), $_code);
+}
+?>
+
+<?php if ($_attributeValue): ?>
+    <div class="product attribute <?php /* @escapeNotVerified */ echo $_className?>">
+        <?php if($this->getRequest()->getModuleName() == "weltpixel_quickview" && $_code=="description"): ?>
+            <?php $customHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
+            <div class="value" <?php echo $_attributeAddAttribute;?> attributeprop="<?php echo $_code; ?>"><?php echo $customHelper->limit_description($_attributeValue, 90); ?></div>
+        <?php else: ?>
+            <div class="value" <?php /* @escapeNotVerified */ echo $_attributeAddAttribute;?> attributeprop="<?php echo $_code; ?>"><?php /* @escapeNotVerified */ echo $_attributeValue; ?></div>
+        <?php endif; ?>
+    </div>
+    <?php if($_code == 'description'): ?>
+        <?php $objEditor = $block->getLayout()->createBlock('Hhmedia\Editor\Block\Editor'); ?>
+        <?php $_editors = $objEditor->getCollection(); ?>
+        <?php $name = ''; ?>
+        <?php foreach($_editors as $editor): ?>
+            <?php $editorProduct = $objEditor->getEditor($editor->getEditorId()); ?>
+            <?php if(in_array($_product->getId(),$editorProduct)): ?>
+                <?php $name = $this->escapeHtml($editor->getName()); ?>
+                <div class="product-editors-pick-quote">
+                    <span class="what-editor-says"><?php echo "What ".$name." Says:" ?></span>
+                    <span class="what-editor-say-quote"><?php echo $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getEditorsQuote(), 'editors_quote') ?></span>
+                </div>
+                <?php break; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    <?php endif; ?>
+<?php endif; ?>

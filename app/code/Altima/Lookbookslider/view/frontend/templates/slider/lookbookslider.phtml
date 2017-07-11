@@ -277,7 +277,7 @@ if ($helper->getEnabled()) :
                               <?php elseif($customHelper->isLastCall($product)): ?>
                                   <span class="callout last-call"><?php echo __('Last Call'); ?></span>
                               <?php endif; ?>
-                              <p><?php echo $customHelper->limit_description($product->getShortDescription(),10) ?></p>
+                              <p><?php echo $customHelper->limit_description($product->getShortDescription(),90) ?></p>
                               
                             </div>
                           </div>

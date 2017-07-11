@@ -5,7 +5,7 @@
  */
 
 // @codingStandardsIgnoreFile
-
+$block->setFrameLength(7);
 ?>
 <?php
 /**
@@ -35,13 +35,13 @@
         <?php endif ?>
 
         <?php if ($block->getLastPageNum()>1): ?>
-        <nav class="main-pagination" aria-label="<?php /* @escapeNotVerified */ echo __('Page navigation') ?>">
+        <nav class="main-pagination dropship-pagination" aria-label="<?php /* @escapeNotVerified */ echo __('Page navigation') ?>">
             <ul class="items pages-items" aria-labelledby="paging-label" style="margin: 0;">
 
              <?php if($block->getFirstNum() != 1): ?>
                 <li class="item pages-item-previous">
                     <?php $text = $block->getAnchorTextForPrevious() ? $block->getAnchorTextForPrevious() : '';?>
-                    <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'actions ' ?> previous"
+                    <a class="page"
                        href="<?php /* @escapeNotVerified */ echo $block->getPreviousPageUrl() ?>"
                        title="<?php /* @escapeNotVerified */ echo $text ? $text : __('Previous') ?>"
                        aria-label="<?php /* @escapeNotVerified */ echo $text ? $text : __('Previous') ?>">
@@ -99,7 +99,7 @@
             <?php if($block->getLastNum() != $block->getTotalNum()): ?>
                 <li class="item pages-item-next">
                     <?php $text = $block->getAnchorTextForNext() ? $block->getAnchorTextForNext() : '';?>
-                    <a class="<?php /* @escapeNotVerified */ echo $text ? 'link ' : 'actions '?> next"
+                    <a class="page"
                        href="<?php /* @escapeNotVerified */ echo $block->getNextPageUrl() ?>"
                        title="<?php /* @escapeNotVerified */ echo $text ? $text : __('Next') ?>"
                        aria-label="<?php /* @escapeNotVerified */ echo $text ? $text : __('Next') ?>">

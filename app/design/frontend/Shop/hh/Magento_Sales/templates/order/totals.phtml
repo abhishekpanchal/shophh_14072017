@@ -1,0 +1,46 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Sales\Block\Order\Totals
+ * @see \Magento\Sales\Block\Order\Totals
+ */
+?>
+<?php $_order = $block->getOrder() ?>
+<?php
+  $payment = $_order->getPayment();
+    $method = $payment->getMethodInstance();
+    $methodTitle = $method->getTitle();
+?>
+<?php foreach ($block->getTotals() as $_code => $_total): ?>
+    <?php if ($_total->getBlockName()): ?>
+        <span class="tax-container"><?php echo $block->getChildHtml($_total->getBlockName(), false); ?></span>
+    <?php else:?>
+    <div class="<?php /* @escapeNotVerified */ echo $_code?>">
+        <span <?php /* @escapeNotVerified */ echo $block->getLabelProperties()?> >
+            <?php echo $block->escapeHtml($_total->getLabel());?>
+        </span>
+        <span <?php /* @escapeNotVerified */ echo $block->getValueProperties()?> data-th="<?php echo $block->escapeHtml($_total->getLabel());?>">
+            <?php if ($_total->getStrong()):?>
+            <strong><?php /* @escapeNotVerified */ echo $block->formatValue($_total) ?></strong>
+            <?php else:?>
+            <?php /* @escapeNotVerified */ echo $block->formatValue($_total) ?>
+            <?php endif?>
+        </span>
+    </span>
+    <?php endif?>
+<?php endforeach?>
+
+<div class="payment-method-container">
+  <span class="title">
+    Payment Method
+  </span>
+  <span class="method">
+    <?php echo $methodTitle; ?>
+  </span>
+</div>

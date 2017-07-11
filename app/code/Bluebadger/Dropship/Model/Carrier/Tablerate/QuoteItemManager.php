@@ -126,44 +126,116 @@ class QuoteItemManager
                 $quoteItem->setData('color', $color);
             }
 
+            /* Format qty */
+            $quoteItem->setData('qty', (int)$cartItemData->getQty());
 
             $quoteItem->setData('thumbnail', $image);
-            $vendors[$quoteItem->getData('vendor_id')]['items'][] = $quoteItem->getData();
-            if (!isset($vendors[$quoteItem->getData('vendor_id')]['total_qty'])) {
-                $vendors[$quoteItem->getData('vendor_id')]['total_qty'] = (int)0;
+
+            /* Check if item is call for quote */
+            $type = ($quoteItem->getData('call_for_quote')) ? 'call_for_quote' : 'rate';
+            $vendorId = $quoteItem->getData('vendor_id');
+
+            if (!isset($vendors[$vendorId])) {
+                $vendors[$vendorId] = [];
             }
-            $vendors[$quoteItem->getData('vendor_id')]['total_qty'] += (int)$cartItemData->getTotalQty();
+            if (!isset($vendors[$vendorId][$type])) {
+                $vendors[$vendorId][$type] = [];
+            }
+            if (!isset($vendors[$vendorId][$type]['items'])) {
+                $vendors[$vendorId][$type]['items'] = [];
+            }
+            $vendors[$vendorId][$type]['items'][] = $quoteItem->getData();
+
+            if (!isset($vendors[$vendorId][$type]['total_qty'])) {
+                $vendors[$vendorId][$type]['total_qty'] = (int)0;
+            }
+
+            $vendors[$vendorId][$type]['total_qty'] += (int)$cartItemData->getTotalQty();
             $quoteData['total_qty'] += $cartItemData->getTotalQty();
         }
 
         $quoteData['total_qty'] .= __(' item(s) purchased.');
 
-        foreach ($vendors as &$vendor) {
-            $vendor['shipping_cost'] = 0;
-            $highestTime = 0;
+        $combinedVendors = [];
 
-            foreach ($vendor['items'] as $item) {
-                $days = ($item['ship_time_unit'] == self::KEY_WEEK) ? 5 : 1;
-                $time = $item['ship_time_high'] * $days;
-
-                if ($time > $highestTime) {
-                    $highestTime = $time;
-                    $timeText = __($vendor['total_qty'] . ' item(s) ships in approximately ' . $item['ship_time_low'] . '-' . $item['ship_time_high'] . ' business ' . $item['ship_time_unit'] . '(s)');
-                    $vendor['time'] = $timeText;
-                    $vendor['shipping_cost'] += $item['shipping_cost'];
-                }
+        /** @var array $vendor */
+        foreach ($vendors as $key => $vendor) {
+            if (isset($vendor['call_for_quote'])) {
+                $vendor['call_for_quote']['shipping_time_text'] = $this->getShippingTimeText(
+                    $vendor['call_for_quote']['items'],
+                    $vendor['call_for_quote']['total_qty']
+                );
+                $vendor['call_for_quote']['shipping_cost_class'] = 'call-for-quote';
+                $vendor['call_for_quote']['shipping_cost_text'] = __('Call for quote.');
+                $combinedVendors[] = $vendor['call_for_quote'];
             }
-            if (empty($vendor['shipping_cost'])) {
-                $vendor['shipping_cost'] = __('Shipping Cost: Call for a quote');
-            } else {
-                $vendor['shipping_cost'] = __('Shipping Cost: ' . $this->priceHelper->currency($vendor['shipping_cost'], true, false));
+
+            if (isset($vendor['rate'])) {
+                $vendor['rate']['shipping_time_text'] = $this->getShippingTimeText(
+                    $vendor['rate']['items'],
+                    $vendor['rate']['total_qty']
+                );
+                $vendor['rate']['shipping_cost_class'] = '';
+                $vendor['rate']['shipping_cost_text'] = $this->getShippingCostText($vendor['rate']['items']);
+                $combinedVendors[] = $vendor['rate'];
             }
         }
 
-        $vendors = array_values($vendors);
-        $quoteData['vendors'] = $vendors;
+        $quoteData['vendors'] = $combinedVendors;
         $this->appEmulation->stopEnvironmentEmulation();
 
         return $quoteData;
+    }
+
+    /**
+     * @param array $items
+     * @param int $totalQty
+     * @return \Magento\Framework\Phrase
+     */
+    private function getShippingTimeText(array $items, int $totalQty)
+    {
+        $shippingTime = 0;
+        $highestTime = 0;
+
+        /** @var array $item */
+        foreach ($items as $item) {
+            $days = ($item['ship_time_unit'] == self::KEY_WEEK) ? 5 : 1;
+            $time = $item['ship_time_high'] * $days;
+
+            if ($time > $highestTime) {
+                $highestTime = $time;
+                $shippingTime = __($totalQty . ' item(s) will ship in approximately ' . $item['ship_time_low'] . '-' . $item['ship_time_high'] . ' business ' . substr($item['ship_time_unit'], 0, -1) . '(s).');
+            }
+        }
+
+        return $shippingTime;
+    }
+
+    /**
+     * @param array $items
+     */
+    private function getShippingCostText(array $items)
+    {
+        $isFree = false;
+        $shippingCost = 0;
+
+        foreach ($items as $item) {
+            if ($item['is_free']) {
+                $isFree = true;
+                break;
+            }
+
+            $shippingCost += $item['shipping_cost'];
+        }
+
+        if ($isFree) {
+            $shippingCostText = __('FREE');
+        } else if (empty($shippingCost)) {
+            $shippingCostText = __('Call for quote');
+        } else {
+            $shippingCostText = __('Shipping Cost: ' . $this->priceHelper->currency($shippingCost, true, false));
+        }
+
+        return $shippingCostText;
     }
 }
