@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="Bluebadger" translate="label" sortOrder="10">
+            <label>Bluebadger</label>
+        </tab>
+        <section id="coupon" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Email Coupons</label>
+            <tab>Bluebadger</tab>
+            <resource>Bluebadger_Coupon::bluebadger_coupon</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <comment>General settings.</comment>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <comment>Enable/Disable module</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rule" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sales Rule</label>
+                    <comment>Rule which will be applied after email validation.</comment>
+                    <source_model>Bluebadger\Coupon\Model\Config\Source\Rule</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

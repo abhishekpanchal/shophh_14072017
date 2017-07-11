@@ -16,7 +16,9 @@
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magento\Checkout\Block\Onepage\Success" name="checkout.success" template="success.phtml" cacheable="false"/>
+            <block class="Magento\Checkout\Block\Onepage\Success" name="checkout.success" template="success.phtml" cacheable="false">
+                <block class="Bluebadger\Dropship\Block\Onepage\Success\Summary" name="checkout.success.summary" as="checkout_summary_block" template="Bluebadger_Dropship::summary.phtml"/>
+            </block>
             <block class="Magento\Checkout\Block\Onepage\Success" name="checkout.success.print.button" template="button.phtml" before="" after="checkout.success"/>
             <block class="Magento\Checkout\Block\Registration" name="checkout.registration" template="registration.phtml" cacheable="false"/>
         </referenceContainer>
