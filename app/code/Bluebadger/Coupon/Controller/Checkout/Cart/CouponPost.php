@@ -85,16 +85,19 @@ class CouponPost extends \Magento\Checkout\Controller\Cart\CouponPost
         try {
             $isCodeLengthValid = $codeLength && $codeLength <= \Magento\Checkout\Helper\Cart::COUPON_CODE_MAX_LENGTH;
 
-            /* Validate email address */
             if ($this->config->isEnabled()) {
-                $email = $this->_checkoutSession->getQuote()->getCustomerEmail();
+                $ruleCouponCode = $this->config->getCouponCode();
 
-                if (empty($email)) {
-                    throw new LocalizedException(__('An email address must be set.'));
-                }
+                if (strtolower($couponCode) == strtolower($ruleCouponCode)) {
+                    $email = $this->_checkoutSession->getQuote()->getCustomerEmail();
 
-                if (!$this->emailManagement->isEmailValid($email)) {
-                    throw new LocalizedException(__('Invalid email address.'));
+                    if (empty($email)) {
+                        throw new LocalizedException(__('An email address must be set.'));
+                    }
+
+                    if (!$this->emailManagement->isEmailValid($email)) {
+                        throw new LocalizedException(__('Invalid email address.'));
+                    }
                 }
             }
 

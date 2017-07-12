@@ -172,6 +172,7 @@ class QuoteItemManager
                 $vendor['call_for_quote']['shipping_cost_text'] = __('Call for quote.');
                 $combinedVendors[] = $vendor['call_for_quote'];
             }
+
             if (isset($vendor['rate'])) {
                 $vendor['rate']['shipping_time_text'] = $this->getShippingTimeText(
                     $vendor['rate']['items'],

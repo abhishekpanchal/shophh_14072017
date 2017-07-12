@@ -18,8 +18,13 @@
                 </field>
                 <field id="email" translate="label" type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Email Import</label>
-                    <upload_dir>upload</upload_dir>
+                    <upload_dir>email</upload_dir>
                     <backend_model>Bluebadger\Coupon\Model\Config\Backend\Import\Email</backend_model>
+                </field>
+                <field id="rule" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sales Rule</label>
+                    <comment>Sales rule for which email validation is required.</comment>
+                    <source_model>Bluebadger\Coupon\Model\Config\Source\Rule</source_model>
                 </field>
             </group>
         </section>
