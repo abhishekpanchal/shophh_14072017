@@ -30,3 +30,40 @@
 <!-- ko foreach: getRegion('sidebar') -->
     <!-- ko template: getTemplate() --><!-- /ko -->
 <!--/ko-->
+
+<div id="popup-modal" style="display:none;">
+<div data-bind="html: window.checkoutConfig.cms_block_message"></div>
+</div>
+<script>
+    require([
+            'jquery',
+            'Magento_Ui/js/modal/modal',
+        ],function($,modal) {
+            var options = {
+                autoOpen: true,
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        $('#popup-modal').modal('closeModal');
+                    }
+                }]
+            };
+            var popup = modal(options, $('#popup-modal'));
+
+            var cfqLink = $("#call-for-quote-link");
+                console.log(cfqLink.length);
+            if (cfqLink.length) {
+                cfqLink.click(function() {
+                console.log('pickle');
+                    $('#popup-modal').modal('openModal');
+                });
+            }
+        }
+    );
+</script>
+
+
