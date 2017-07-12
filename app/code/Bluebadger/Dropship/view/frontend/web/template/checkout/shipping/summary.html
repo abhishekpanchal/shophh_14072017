@@ -8,8 +8,12 @@
                 <div class="order-product-details">
                     <span class="order-product-name" data-bind="html: name"></span>
                     <div class="order-product-options">
+                        <!-- ko if: $data.color -->
                         <span class="product-option" data-bind="html: color"></span>
+                        <!-- /ko -->
+                        <!-- ko if: $data.size -->
                         <span class="product-option" data-bind="html: size"></span>
+                        <!-- /ko -->
                         <span>Qty: <span class="qty" data-bind="text: qty"></span></span>
                         <span class="sku" data-bind="text: sku"></span>
                     </div>
