@@ -14,4 +14,7 @@
         </arguments>
     </type>
     <preference for="Unirgy\Dropship\Block\Vendor\HtmlHeader" type="Bluebadger\Dropship\Block\Vendor\HtmlHeader" />
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="unholdPlugin" type="Bluebadger\Dropship\Plugin\Unhold" />
+    </type>
 </config>

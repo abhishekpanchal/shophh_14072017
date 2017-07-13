@@ -11,11 +11,6 @@ use Magento\Framework\Exception\LocalizedException;
 class ChangeOrderStatus implements ObserverInterface
 {
     /**
-     * @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\CollectionFactory
-     */
-    protected $itemCollectionFactory;
-
-    /**
      * @var \Bluebadger\Dropship\Logger\Logger
      */
     protected $logger;
@@ -26,18 +21,21 @@ class ChangeOrderStatus implements ObserverInterface
     protected $orderRepository;
 
     /**
+     * @var \Unirgy\Dropship\Helper\ProtectedCode\OrderSave
+     */
+    protected $helperProtectedCode;
+
+    /**
      * ChangeOrderStatus constructor.
      * @param \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\CollectionFactory $itemCollectionFactory
      * @param \Bluebadger\Dropship\Logger\Logger $logger
      * @param \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
      */
     public function __construct(
-        \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\CollectionFactory $itemCollectionFactory,
         \Bluebadger\Dropship\Logger\Logger $logger,
         \Magento\Sales\Api\OrderRepositoryInterface $orderRepository
     )
     {
-        $this->itemCollectionFactory = $itemCollectionFactory;
         $this->logger = $logger;
         $this->orderRepository = $orderRepository;
     }
@@ -64,20 +62,6 @@ class ChangeOrderStatus implements ObserverInterface
             throw new LocalizedException(__($message));
         }
 
-        $quoteId = $order->getQuoteId();
-
-        /** @var \Bluebadger\Dropship\Model\ResourceModel\Carrier\Tablerate\Quote\Item\Collection $items */
-        $items = $this->itemCollectionFactory->create();
-        $items->addFieldToFilter('quote_id', $quoteId);
-
-        if ($items->count()) {
-            /** @var \Bluebadger\Dropship\Model\Carrier\Tablerate\Quote\Item $item */
-            foreach ($items as $item) {
-                if ($item->getData('call_for_quote')) {
-                    $order->hold()->save();
-                    break;
-                }
-            }
-        }
+        $order->hold()->save();
     }
 }
