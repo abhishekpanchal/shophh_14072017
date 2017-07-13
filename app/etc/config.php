@@ -4,7 +4,6 @@ return array (
   array (
     'Altima_Lookbookslider' => 1,
     'Magento_Store' => 1,
-    'Bg_Freshdesk' => 1,
     'Magento_Directory' => 1,
     'Customweb_Base' => 1,
     'Magento_Eav' => 1,
