@@ -18,6 +18,23 @@
 	            <block class="Sebwite\Sidebar\Block\Sidebar" name="cms-sidebar" template="Magento_Cms::sidebar.phtml"/>
 	        </container>
 	    </referenceContainer>
+      <referenceBlock name="breadcrumbs">
+          <action method="addCrumb">
+              <argument name="crumbName" xsi:type="string">Home</argument>
+              <argument name="crumbInfo" xsi:type="array">
+                  <item name="title" xsi:type="string">Home</item>
+                  <item name="label" xsi:type="string">Home</item>
+                  <item name="link" xsi:type="string">/</item>
+              </argument>
+          </action>
+          <action method="addCrumb">
+              <argument name="crumbName" xsi:type="string">FAQs</argument>
+              <argument name="crumbInfo" xsi:type="array">
+                  <item name="title" xsi:type="string">FAQs</item>
+                  <item name="label" xsi:type="string">FAQs</item>
+              </argument>
+          </action>
+      </referenceBlock>
     </body>
 </page>
 
