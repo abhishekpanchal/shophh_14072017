@@ -591,6 +591,12 @@ Page Title
   }
 }
 
+.collection-index-view, .editor-index-view {
+  .page-title {
+    display: none;
+  }
+}
+
 /* ==========================================================================
 Breadcrumb
  ========================================================================== */
@@ -620,10 +626,6 @@ Breadcrumb
   }
 }
 
-
-.breadcrumb li.item.home {
-  color: #000;
-}
 .breadcrumb > li + li:before {
     content: ">";
 }
@@ -7597,6 +7599,7 @@ Editors Details
 ========================================================================== */
 .editor-index-view {
   .editor-intro {
+    margin-top: 20px;
     .editor-img {
       margin-right: 30px;
     }
