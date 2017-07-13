@@ -9,7 +9,6 @@
 ?>
 <?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
 <?php $helper = $this->helper('Hhmedia\Override\Helper\Override'); ?>
-<?php $proHelper = $this->helper('Hhmedia\Productpage\Helper\Newproduct'); ?>
 <?php $orderDetail = $helper->getOrderDetails($block->getOrderId()); ?>
 <?php $billingAddress = $orderDetail->getBillingAddress()->getData(); ?>
 <?php $shippingAddress = $orderDetail->getShippingAddress()->getData(); ?>
@@ -58,45 +57,7 @@
       </div>
 
     </div>
-    <div class="block">
-      <div class="box-title">
-        <?php echo count($_items).' items purchased:'; ?>
-      </div>
-      <div class="block-content order-products">
-        <?php foreach ($_items as $_item): ?>
-
-          <?php $product = $helper->getProductBySku($_item->getSku()); ?>
-          <?php $image = $product->getData('thumbnail'); ?>
-          <?php $qty = $_item->getQtyOrdered(); ?>
-          <?php $productOptions = $_item->getProductOptions(); ?>
-
-          <div class="row">
-            <div class="col-md-10 col-sm-10 col-xs-10">
-              <img src="<?php echo $proHelper->resize($image,80,80); ?>" />
-              <div class="order-product-details">
-                <span class="order-product-name"><?php echo $product->getName() ?></span>
-                <div class="order-product-options">
-                  <?php 
-                    foreach($productOptions as $key => $val):
-                      if($key == 'attributes_info'):
-                        foreach($val as $attribute):
-                          echo "<span class='product-option'>", $attribute['value'], "</span>";
-                        endforeach;
-                      endif;
-                    endforeach;
-                  ?>
-                  <span><?php echo 'Qty: '.($qty)*1; ?></span>
-                  <span class="sku"><?php echo 'SKU# '.$_item->getSku() ?></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-2 col-sm-2 col-xs-2">
-              <span class="order-product-price"><?php echo ($_item->getPrice())*$qty*1; ?></span>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      </div>
-    </div>
+      <?php echo $this->getChildHtml('checkout_summary_block'); ?>
   </div>
   <div class="checkout-success-totals">
     <div class="totals-wrapper">

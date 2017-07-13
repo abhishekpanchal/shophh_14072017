@@ -31,6 +31,41 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
 }
 ?>
 <?php if ($_additional = $block->getAdditionalData()): ?>
+    <?php
+    $hasInchDimensions = false;
+    $hasCmDimensions = false;
+    $hasLbWeight = false;
+    $hasKgWeight = false;
+
+    if(array_key_exists('product_dimensions_inches', $_additional)) {
+        $inchDimensions = $_additional['product_dimensions_inches'];
+        if($inchDimensions['value'] != '') {
+            $hasInchDimensions = true;
+        }
+    }
+
+    if(array_key_exists('product_dimensions_cm', $_additional)) {
+        $cmDimensions = $_additional['product_dimensions_cm'];
+        if($cmDimensions['value'] != '') {
+            $hasCmDimensions = true;
+        }
+    }
+
+    if(array_key_exists('weight', $_additional)) {
+        $lbWeight = $_additional['weight'];
+        if($lbWeight['value'] != '') {
+            $hasLbWeight = true;
+        }
+    }
+
+    if(array_key_exists('weight_kg', $_additional)) {
+        $kgWeight = $_additional['weight_kg'];
+        if($kgWeight['value'] != '') {
+            $hasKgWeight = true;
+        }
+    }
+    ?>
+
     <div class="additional-attributes-wrapper table-wrapper">
         <table class="data table additional-attributes" id="product-attribute-specs-table">
             <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('More Information') ?></caption>
@@ -45,18 +80,59 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                     <th class="col label" scope="row"><?php echo $block->escapeHtml(__($_data['label'])) ?></th>
                     <td class="col data" data-th="<?php echo $block->escapeHtml(__($_data['label'])) ?>" attributeprop="<?php echo $_data['code']; ?>"><?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_MyValue, $_data['code']) ?></td>
                 </tr>
-                <?php if($_data['code'] == 'product_dimensions_inches'): ?>
-                <?php if($_data['value'] != ''): ?>
-                    <tr>
-                        <th class="col label" scope="row"><?php echo 'Product Dimensions in CMs (W x D x H):'; ?></th>
-                        <?php
-                        $inches = explode('x',$_data['value']);
-                        $cms = ((trim($inches[0])*2.54) .' x '. (trim($inches[1])*2.54) .' x '. (trim($inches[2])*2.54));
-                        ?>
-                        <td class="col data" data-th="<?php echo 'Product Dimensions in CMs (W x D x H):'; ?>" attributeprop="<?php echo $_data['code']; ?>"><?php echo $cms ?></td>
-                    </tr>
+                <?php if($_data['code'] == 'product_dimensions_inches' && !$hasCmDimensions): ?>
+                    <?php if($_data['value'] != ''): ?>
+                        <tr>
+                            <th class="col label" scope="row"><?php echo 'Product Dimensions in CM (W x D x H):'; ?></th>
+                            <?php
+                            $inches = explode('x',$_data['value']);
+                            $cmArray = [];
+                            foreach($inches as $inch) {
+                                if($inch != 'N/A') {
+                                    $inch = trim($inch)*2.54;
+                                }
+                                $cmArray[] = $inch;
+                            }
+                            $cms = implode(' x ', $cmArray);
+                            ?>
+                            <td class="col data" data-th="<?php echo 'Product Dimensions in CM (W x D x H):'; ?>" attributeprop="product_dimensions_cm"><?php echo $cms ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php elseif($_data['code'] == 'product_dimensions_cm' && !$hasInchDimensions): ?>
+                    <?php if($_data['value'] != ''): ?>
+                        <tr>
+                            <th class="col label" scope="row"><?php echo 'Product Dimensions in Inches (W x D x H):'; ?></th>
+                            <?php
+                            $cms = explode('x',$_data['value']);
+                            $inchArray = [];
+                            foreach($cms as $cm) {
+                                if($cm != 'N/A') {
+                                    $cm = trim($cm)/2.54;
+                                }
+                                $inchArray[] = $cm;
+                            }
+                            $inches = implode(' x ', $inchArray);
+                            ?>
+                            <td class="col data" data-th="<?php echo 'Product Dimensions in Inches (W x D x H):'; ?>" attributeprop="product_dimensions_inches"><?php echo $inches ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php elseif($_data['code'] == 'weight' && !$hasKgWeight): ?>
+                    <?php if($_data['value'] != ''): ?>
+                        <tr>
+                            <th class="col label" scope="row"><?php echo 'Product weight in KGs:'; ?></th>
+                            <?php $kg = trim($_data['value'])*0.45; ?>
+                            <td class="col data" data-th="<?php echo 'Product weight in KGs:'; ?>" attributeprop="weight_kg"><?php echo $kg ?></td>
+                        </tr>
+                    <?php endif; ?>
+                <?php elseif($_data['code'] == 'weight_kg' && !$hasLbWeight): ?>
+                    <?php if($_data['value'] != ''): ?>
+                        <tr>
+                            <th class="col label" scope="row"><?php echo 'Product weight in KGs:'; ?></th>
+                            <?php $lb = trim($_data['value'])*2.20; ?>
+                            <td class="col data" data-th="<?php echo 'Product weight in KGs:'; ?>" attributeprop="weight"><?php echo $lb ?></td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endif; ?>
-            <?php endif; ?>
             <?php endforeach; ?>
             </tbody>
         </table>

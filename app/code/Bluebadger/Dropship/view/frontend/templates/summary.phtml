@@ -14,8 +14,12 @@
                         <div class="order-product-details">
                             <span class="order-product-name"><?php echo $item['name']; ?></span>
                             <div class="order-product-options">
+                                <?php if (isset($item['color']) && !empty($item['color'])): ?>
                                 <span class="product-option"><?php echo $item['color']; ?></span>
+                                <?php endif; ?>
+                                <?php if (isset($item['size']) && !empty($item['size'])): ?>
                                 <span class="product-option"><?php echo $item['size']; ?></span>
+                                <?php endif; ?>
                                 <span><?php echo 'Qty: ' . $item['qty']; ?></span>
                                 <span class="sku"><?php echo 'SKU# ' . $item['sku']; ?></span>
                             </div>

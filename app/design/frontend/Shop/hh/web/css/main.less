@@ -3721,8 +3721,19 @@ Checkout
     margin-bottom: 2em;
     .order-shipping-cost {
       font-size: 14px;
-      text-transform: uppercase;
       float: right;
+      &.call-for-quote {
+        color: #AC2232;
+      }
+    }
+    .order-shipping-cost:not(.call-for-quote) {
+      text-transform: uppercase;
+    }
+    a#call-for-quote-link {
+      text-decoration: underline;
+      color: #AC2232;
+      float: right;
+      padding-left: 0.5em;
     }
   }
   .followup {
@@ -9496,7 +9507,7 @@ Account reviews
   /* ===============================
   Homepage Modal
   =================================*/
-.cms-home .modal-inner-wrap {
+.checkout-cart-index .modal-inner-wrap, .cms-home .modal-inner-wrap {
   width: 50%;
   max-width: 600px;
   .modal-header {
