@@ -224,7 +224,7 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
 
 
 
-
+/*
   $('.editor-bio').each(function(event){
     var max_length = 250;
     if($(this).html().length > max_length){
@@ -243,6 +243,7 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
       });
     }
   });
+*/
 
 
      $('.tags-index-view .styled-select select').change( function() {
