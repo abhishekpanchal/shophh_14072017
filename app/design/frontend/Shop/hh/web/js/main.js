@@ -110,10 +110,22 @@ require(['jquery', 'jquery.bootstrap', 'mage/select2'], function($){
         $(defaultHotspotIcon).removeClass().addClass('ion-android-search hotspot-inactive');
         $(numHotspot).addClass('visible').removeClass('hidden');
       }
-
-
     });
+
+    jQuery(document).on('click', '.hotspot-details .pro-detail-div .ion-android-close', function (event) {
+      $('.hotspot-details-placeholder').empty().removeClass('visible').addClass('hidden');
+      $('.hotspot-default').removeClass('hidden').addClass('visible');
+      $('.hotspot-active').removeClass().addClass('ion-android-search hotspot-inactive');
+      $(numHotspot).addClass('visible').removeClass('hidden');
+    });
+
+
   });
+
+
+
+
+
 
   $(window).scroll(function() {
     "use strict";

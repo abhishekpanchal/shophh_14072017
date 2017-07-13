@@ -5813,8 +5813,19 @@ Hotspot Details
     }
   }
 
-  .pro-detail-div img {
-    max-width: 280px;
+  .pro-detail-div {
+    .ion-android-close {
+      background: none;
+      color: #AC2232;
+      top: 6px !important;
+      left: 6px !important;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    img {
+      max-width: 280px;
+    }
   }
 
   .btn-fullscreen {
@@ -6544,6 +6555,7 @@ Home Page
       background: url(../images/guest-editor.jpg);
       background-repeat: no-repeat;
       background-size: cover!important;
+      background-position: center;
     }
     .guest-editor {
       background-color: #344a6a;
