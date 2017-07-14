@@ -57,8 +57,11 @@
                         $pro = $this->getProductData($_product->getEntityId());
                         $image = $pro->getData('small_image');
                         $media_url = $this->getMediaUrl().'catalog/product';
-                        if(!file_exists($media_url . $image))
-                        {
+                        if(isset($image)){
+                            if(!file_exists($media_url . $image)){
+                                $image = $this->getPlaceHolderUrl();
+                            }
+                        }else{
                             $image = $this->getPlaceHolderUrl();
                         }
                     ?>

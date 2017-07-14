@@ -59,7 +59,7 @@ class View extends \Magento\Framework\View\Element\Template
      */
     protected function _prepareLayout()
     {
-        $this->pageConfig->getTitle()->set($this->getCollection()->getTitle());
+        $this->pageConfig->getTitle()->set($this->getCollection()->getCollectionTitle());
     }
 
     /**
