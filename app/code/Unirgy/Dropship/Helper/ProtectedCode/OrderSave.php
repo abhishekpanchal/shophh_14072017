@@ -58,11 +58,6 @@ class OrderSave
         }
 
         $order = $observer instanceof \Magento\Sales\Model\Order ? $observer : $observer->getEvent()->getOrder();
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/test.log');
-        $logger = new \Zend\Log\Logger();
-        $logger->addWriter($writer);
-        $logger->info('Order status is ' . $order->getStatus());
-
         $store = $order->getStore();
         $storeId = $store->getId();
         $enableVirtual = $this->_hlp->getScopeConfig('udropship/misc/enable_virtual', $order->getStoreId());
