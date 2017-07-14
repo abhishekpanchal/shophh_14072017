@@ -591,6 +591,12 @@ Page Title
   }
 }
 
+.collection-index-view, .editor-index-view {
+  .page-title {
+    display: none;
+  }
+}
+
 /* ==========================================================================
 Breadcrumb
  ========================================================================== */
@@ -603,7 +609,6 @@ Breadcrumb
   font-family: @headlineFont;
   text-transform: uppercase;
   font-size: 11px;
-  margin-bottom: 40px;
 
   li {
     color: #8d8d8d;
@@ -621,9 +626,8 @@ Breadcrumb
   }
 }
 
-
-.breadcrumb li.item.home {
-  color: #000;
+.breadcrumb > li + li:before {
+    content: ">";
 }
 
 
@@ -3928,9 +3932,6 @@ Checkout
 .cms-page-view, .faqs-index-index, .contact-index-index, .cms-privacy-policy, .cms-terms-conditions {
   .inner-content {
     padding-left: 70px;
-  }
-  .main-breadcrumb {
-    display: none;
   }
   .page-title {
     margin-bottom: 40px;
@@ -7613,6 +7614,7 @@ Editors Details
 ========================================================================== */
 .editor-index-view {
   .editor-intro {
+    margin-top: 20px;
     .editor-img {
       margin-right: 30px;
     }

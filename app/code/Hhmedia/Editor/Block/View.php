@@ -57,7 +57,13 @@ class View extends \Magento\Framework\View\Element\Template
      */
     protected function _prepareLayout()
     {
-        $this->pageConfig->getTitle()->set($this->getEditor()->getTitle());
+        $this->pageConfig->getTitle()->set($this->getEditor()->getName());
+        $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+        if ($breadcrumbs) {
+            $breadcrumbs->addCrumb('home',['label' => 'Home', 'title' => 'Home', 'link'=>$this->getUrl()]);
+            $breadcrumbs->addCrumb('editor',['label' => 'All Editors', 'title' => 'All Editors', 'link'=>$this->getUrl('editor')]);
+            $breadcrumbs->addCrumb('name',['label' => $this->getEditor()->getName(), 'title' => $this->getEditor()->getName()]);
+        }
     }
 
     /**
