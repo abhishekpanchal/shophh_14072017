@@ -125,6 +125,9 @@ class Configurable
             foreach ($attributes as $attribute) {
                 if ($attribute->getIsVisibleOnFront()) {
                     $value = $attribute->getFrontend()->getValue($product);
+                    if (is_numeric($value)) {
+                        $value = round($value, 2); //round to 0.00
+                    }
 
                     if (!$product->hasData($attribute->getAttributeCode())) {
                         $value = __('N/A');
