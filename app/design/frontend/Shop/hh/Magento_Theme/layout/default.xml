@@ -151,7 +151,7 @@
     <move element="copyright" destination="footer-logo" after="footer_logo_inner" />
     <move element="top.links" destination="header.toplinks"/>
     <move element="header.top" destination="header-wrapper" before="-"/>
-    <move element="breadcrumbs" destination="page.main.title" after="-"/>
+    <move element="breadcrumbs" destination="header-wrapper" after="-"/>
     <move element="navigation.sections" destination="nav.left"/>
     <move element="header.main.topbar" destination="header.top" before="-" />
 

@@ -128,7 +128,7 @@ class Rate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
                 if ($zoneInfo) {
                     $zone = $zoneInfo['zone'];
-                    $rateQuery = "SELECT * FROM `bluebadger_dropship_tablerate_rate` WHERE `zone` = '{$zone}' AND `carrier` = '{$carrier}' AND `weight` = {$weight}";
+                    $rateQuery = "SELECT * FROM `bluebadger_dropship_tablerate_rate` WHERE `zone` = '{$zone}' AND `carrier` = '{$carrier}' AND `weight` >= {$weight}";
                     $rate = $this->getConnection()->fetchRow($rateQuery);
                     $obj->rate = $rate['rate'];
                 }

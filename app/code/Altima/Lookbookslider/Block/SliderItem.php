@@ -272,6 +272,8 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             }
             $html_content .= '"><div class="pro-detail-div">';
 
+
+
             if ($product_details) {
                 $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of Object Manager
                 $priceHelper   = $objectManager->create('Magento\Framework\Pricing\Helper\Data'); // Instance of Pricing Helper
@@ -402,7 +404,7 @@ class SliderItem extends \Magento\Framework\View\Element\Template {
             } else {
                 $html_content .= 'width: ' . strlen($decoded_array[$key]['text']) * 8 . 'px;';
             }
-            $html_content .= '"><div class="pro-detail-div">';
+            $html_content .= '"><div class="pro-detail-div"><a class="exit"><i class="ion-android-close"></i></a>';
 
 
             if ($product_details) {

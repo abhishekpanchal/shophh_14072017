@@ -70,6 +70,15 @@ class Lookbookslider extends \Magento\Framework\View\Element\Template {
         return '';
     }
 
+    protected function _prepareLayout()
+    {
+        $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+        if ($breadcrumbs) {
+            $breadcrumbs->addCrumb('home',['label' => 'Home', 'title' => 'Home', 'link'=>$this->getUrl()]);
+            $breadcrumbs->addCrumb('name',['label' => 'Shop the Shot', 'title' => 'Shop the Shot']);
+        }
+    }
+
     public function appendChildBlockSlider($slider) {
         $this->append(
                 $this->getLayout()->createBlock(
