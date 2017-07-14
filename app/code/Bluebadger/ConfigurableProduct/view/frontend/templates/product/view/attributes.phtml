@@ -90,7 +90,7 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                             $cmArray = [];
                             foreach($inches as $inch) {
                                 if($inch != 'N/A') {
-                                    $inch = trim($inch)*2.54;
+                                    $inch = round(trim($inch)*2.54, 2);
                                 }
                                 $cmArray[] = $inch;
                             }
@@ -108,7 +108,7 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                             $inchArray = [];
                             foreach($cms as $cm) {
                                 if($cm != 'N/A') {
-                                    $cm = trim($cm)/2.54;
+                                    $cm = round(trim($cm)/2.54, 2);
                                 }
                                 $inchArray[] = $cm;
                             }
@@ -121,7 +121,7 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                     <?php if($_data['value'] != ''): ?>
                         <tr>
                             <th class="col label" scope="row"><?php echo 'Product weight in KGs'; ?></th>
-                            <?php $kg = trim($_data['value'])*0.45; ?>
+                            <?php $kg = round(trim($_data['value'])*0.45, 2); ?>
                             <td class="col data calculated" data-th="<?php echo 'Product weight in KGs'; ?>" attributeprop="weight_kg"><?php echo $kg ?></td>
                         </tr>
                     <?php endif; ?>
@@ -129,7 +129,7 @@ switch($this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->
                     <?php if($_data['value'] != ''): ?>
                         <tr>
                             <th class="col label" scope="row"><?php echo 'Product weight in LBs'; ?></th>
-                            <?php $lb = trim($_data['value'])*2.20; ?>
+                            <?php $lb = round(trim($_data['value'])*2.20, 2); ?>
                             <td class="col data calculated" data-th="<?php echo 'Product weight in LBs'; ?>" attributeprop="weight"><?php echo $lb ?></td>
                         </tr>
                     <?php endif; ?>
