@@ -69,9 +69,14 @@ class Item extends AbstractModel implements \Magento\Framework\DataObject\Identi
     {
         if (!$this->quoteItem) {
             $item = $this->itemFactory->create();
+            /** @var \Magento\Quote\Model\Quote\Item quoteItem */
             $this->quoteItem = $item->load($this->getData(self::KEY_QUOTE_ID));
+            if ($this->quoteItem->getData('parent_item_id')) {
+                $parent = $this->itemFactory->create();
+                $parent->load($this->quoteItem->getData('parent_item_id'));
+                $this->quoteItem->setQty($parent->getQty());
+            }
         }
-
         return $this->quoteItem;
     }
 }

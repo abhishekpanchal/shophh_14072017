@@ -94,7 +94,7 @@ class QuoteItemManager
         /** @var \Bluebadger\Dropship\Model\Carrier\Tablerate\Quote\Item $quoteItem */
         foreach ($quoteItems as $quoteItem) {
             $cartItemData = $quoteItem->getCartItem();
-
+            
             /* Remove bogus items from quote item table */
             try {
                 $product = $this->productRepository->get($cartItemData->getSku(), $storeId);
