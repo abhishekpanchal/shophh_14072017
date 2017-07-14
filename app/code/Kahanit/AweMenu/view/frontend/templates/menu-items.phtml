@@ -119,13 +119,13 @@
         <div class="am-item am-html<?= $class; ?><?= $classautogen; ?>">
             <?php $menuHelper = $this->helper('Hhmedia\Topbar\Helper\Data'); ?>
             <div class="menu-img">
-                <a href="<?php echo $menuHelper->getMenuLink(); ?>" target="_blank">
+                <a href="<?php echo $menuHelper->getMenuLink(); ?>" >
                     <img src="<?php echo $this->getUrl().'pub/media/promotions/'.$menuHelper->getImage(); ?>" height="200" width="300">
                 </a>
             </div>
             <div class="menu-img-meta">
                 <h4><?php echo $menuHelper->getMenuSubtitle(); ?></h4>
-                <h3><a href="<?php echo $menuHelper->getMenuLink(); ?>" target="_blank" class="hover-effect"><?php echo $menuHelper->getMenuTitle(); ?></a></h3>
+                <h3><a href="<?php echo $menuHelper->getMenuLink(); ?>" class="hover-effect"><?php echo $menuHelper->getMenuTitle(); ?></a></h3>
             </div>
         </div>
     <?php } elseif ($item['xtype'] == 'youtube') { ?>

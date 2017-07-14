@@ -5825,8 +5825,19 @@ Hotspot Details
     }
   }
 
-  .pro-detail-div img {
-    max-width: 280px;
+  .pro-detail-div {
+    .ion-android-close {
+      background: none;
+      color: #AC2232;
+      top: 6px !important;
+      left: 6px !important;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    img {
+      max-width: 280px;
+    }
   }
 
   .btn-fullscreen {
@@ -6521,10 +6532,12 @@ Home Page
           img {
             width: 100%;
             padding: 5px;
-            padding-bottom: 0;
+            padding-bottom: 4px;
             .relative;
             .block;
-
+            @media (max-width: 1024px) {
+              padding-bottom: 0;
+            }
           }
 
           .editor-link {
@@ -6556,6 +6569,7 @@ Home Page
       background: url(../images/guest-editor.jpg);
       background-repeat: no-repeat;
       background-size: cover!important;
+      background-position: center;
     }
     .guest-editor {
       background-color: #344a6a;
@@ -8591,8 +8605,8 @@ Collection Page
       text-transform: capitalize;
     }
     a {
-      /*
       text-transform: uppercase;
+      /*
       font-family: @headlineFont;
       font-size: 14px;
       */
@@ -9101,6 +9115,23 @@ Account reviews
     margin-top: 50px;
     padding-bottom: 8px;
   }
+  p.ontario {
+    margin-top: 80px;
+    overflow: auto;
+    width: 80%;
+    float: right;
+    span {
+      float: left;
+      width: 50%;
+      font-size: 13px;
+      line-height: 18px;
+      margin-top: 20px;
+    }
+    img {
+      float: right;
+      width: 44%;
+    }
+  }
 
   .pinch a:hover {
     text-decoration: underline;
@@ -9471,7 +9502,7 @@ Account reviews
     margin: 40px 0 20px;
   }
   .img-crop {
-    height: 580px;
+  //  height: 580px;
     overflow: hidden;
   }
   .notes_item_content p {
